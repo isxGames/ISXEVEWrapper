@@ -111,21 +111,13 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
-		/// Wrapper for the GetFleet member of the character type.
-		/// </summary>
-		/// <returns></returns>
-		public List<FleetMember> GetFleet()
-		{
-			return Util.GetListFromMember<FleetMember>(this, "GetFleet", "fleetmember");
-		}
-
-		/// <summary>
 		/// Wrapper for the GetActiveDrones member of the character type.
 		/// </summary>
 		/// <returns></returns>
 		public List<ActiveDrone> GetActiveDrones()
 		{
-			return Util.GetListFromMember<ActiveDrone>(this, "GetActiveDrones", "activedrone");
+			Tracing.SendCallback("Character.DoGetActiveDrones");
+			return Util.GetListFromMethod<ActiveDrone>(this, "DoGetActiveDrones", "activedrone");
 		}
 
 		/// <summary>
@@ -134,7 +126,8 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public List<long> GetActiveDroneIDs()
 		{
-			return Util.GetListFromMember<long>(this, "GetActiveDroneIDs", "int64");
+			Tracing.SendCallback("Character.DoGetActiveDroneIDs");
+			return Util.GetListFromMethod<long>(this, "DoGetActiveDroneIDs", "int64");
 		}
 
 		#region SelfCorpLocation
@@ -575,19 +568,9 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public List<Skill> GetSkills()
 		{
-			return Util.GetListFromMember<Skill>(this, "GetSkills", "skill");
+			return Util.GetListFromMethod<Skill>(this, "DoGetSkills", "skill");
 		}
 
-		/// <summary>
-		/// Wrapper for the SkillCount member of the character type.
-		/// </summary>
-		public int SkillCount
-		{
-			get
-			{
-				return GetMember<int>("GetSkills");
-			}
-		}
 
 		/// <summary>
 		/// Wrapper for the SkillPoints member of the character type.
@@ -619,30 +602,12 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
-		/// Wrapper for the TargetCount member of the character type.
-		/// </summary>
-		public int TargetCount
-		{
-			get
-			{
-				LavishScriptObject targetCount = GetMember("GetTargets");
-				if (!LavishScriptObject.IsNullOrInvalid(targetCount))
-				{
-					return targetCount.GetValue<int>();
-				}
-				else
-				{
-					return -1;
-				}
-			}
-		}
-
-		/// <summary>
 		/// Entities you are currently locked on
 		/// </summary>
 		public List<Entity> GetTargets()
 		{
-			return Util.GetListFromMember<Entity>(this, "GetTargets", "entity");
+			Tracing.SendCallback("Character.DoGetTargets");
+			return Util.GetListFromMethod<Entity>(this, "DoGetTargets", "entity");
 		}
 
 		/// <summary>
@@ -651,7 +616,8 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public Entity GetTarget(int i)
 		{
-			return Util.GetFromIndexMember<Entity>(this, "GetTargets", "entity", i);
+			Tracing.SendCallback("Character.DoGetTargets", i.ToString());
+			return Util.GetFromIndexMethod<Entity>(this, "DoGetTargets", "entity", i);
 		}
 
 		/// <summary>
@@ -659,7 +625,8 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public List<Entity> GetTargeting()
 		{
-			return Util.GetListFromMember<Entity>(this, "GetTargeting", "entity");
+			Tracing.SendCallback("Character.DoGetTargeting");
+			return Util.GetListFromMethod<Entity>(this, "DoGetTargeting", "entity");
 		}
 
 		/// <summary>
@@ -667,7 +634,8 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public List<Entity> GetTargetedBy()
 		{
-			return Util.GetListFromMember<Entity>(this, "GetTargetedBy", "entity");
+			Tracing.SendCallback("Character.DoGetTargetedBy");
+			return Util.GetListFromMethod<Entity>(this, "DoGetTargetedBy", "entity");
 		}
 		#endregion
 
@@ -677,9 +645,8 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public List<Item> GetHangarItems()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Character.GetHangarItems", string.Empty);
-			return Util.GetListFromMember<Item>(this, "GetHangarItems", "item");
+			Tracing.SendCallback("Character.DoGetHangarItems");
+			return Util.GetListFromMethod<Item>(this, "DoGetHangarItems", "item");
 		}
 
 		/// <summary>
@@ -688,7 +655,8 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public List<Item> GetHangarShips()
 		{
-			return Util.GetListFromMember<Item>(this, "GetHangarShips", "item");
+			Tracing.SendCallback("Character.DoGetHangarShips");
+			return Util.GetListFromMethod<Item>(this, "DoGetHangarShips", "item");
 		}
 
 		/// <summary>
@@ -697,24 +665,17 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public List<Item> GetCorpHangarItems()
 		{
-			return Util.GetListFromMember<Item>(this, "GetCorpHangarItems", "item");
+			Tracing.SendCallback("Character.DoGetCorpHangarItems");
+			return Util.GetListFromMethod<Item>(this, "DoGetCorpHangarItems", "item");
 		}
-
-        /// <summary>
-        /// Wrapper for the GetCorpHangarShips member of the character type.
-        /// </summary>
-        /// <returns></returns>
-        public List<Item> GetCorpHangarShips()
-        {
-            return Util.GetListFromMember<Item>(this, "GetCorpHangarShips", "item");
-        }
 
 		/// <summary>
 		/// 1. GetAssets[&lt;index:asset&gt;] (int type) [Retrieves all items that are in your assets window]
 		/// </summary>
 		public List<Asset> GetAssets()
 		{
-			return Util.GetListFromMember<Asset>(this, "GetAssets", "asset");
+			Tracing.SendCallback("Character.DoGetAssets");
+			return Util.GetListFromMethod<Asset>(this, "DoGetAssets", "asset");
 		}
 
 		/// <summary>
@@ -722,7 +683,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public List<Asset> GetAssets(Int64 StationID)
 		{
-			return Util.GetListFromMember<Asset>(this, "GetAssets", "asset", StationID.ToString());
+			return Util.GetListFromMethod<Asset>(this, "DoGetAssets", "asset", StationID.ToString());
 		}
 
 		/// <summary>
@@ -730,7 +691,8 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public List<Int64> GetStationsWithAssets()
 		{
-			return Util.GetListFromMember<Int64>(this, "GetStationsWithAssets", "int64");
+			Tracing.SendCallback("Character.DoGetStationsWithAssets");
+			return Util.GetListFromMethod<Int64>(this, "DoGetStationsWithAssets", "int64");
 		}
 
 		/// <summary>
@@ -743,7 +705,8 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public List<MyOrder> GetMyOrders()
 		{
-			return Util.GetListFromMember<MyOrder>(this, "GetMyOrders", "myorder");
+			Tracing.SendCallback("Character.GetMyOrders");
+			return Util.GetListFromMethod<MyOrder>(this, "GetMyOrders", "myorder");
 		}
 
 		/// <summary>
@@ -753,7 +716,8 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public List<MyOrder> GetMyOrders(int typeID)
 		{
-			return Util.GetListFromMember<MyOrder>(this, "GetMyOrders", "myorder", typeID.ToString());
+			Tracing.SendCallback("Character.GetMyOrders", typeID.ToString());
+			return Util.GetListFromMethod<MyOrder>(this, "GetMyOrders", "myorder", typeID.ToString());
 		}
 
 		/// <summary>
@@ -763,7 +727,8 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public List<MyOrder> GetMyOrders(OrderType buyOrSell)
 		{
-			return Util.GetListFromMember<MyOrder>(this, "GetMyOrders", "myorder", buyOrSell.ToString());
+			Tracing.SendCallback("Character.GetMyOrders", buyOrSell.ToString());
+			return Util.GetListFromMethod<MyOrder>(this, "GetMyOrders", "myorder", buyOrSell.ToString());
 		}
 
 		/// <summary>
@@ -774,7 +739,8 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public List<MyOrder> GetMyOrders(OrderType buyOrSell, int typeID)
 		{
-			return Util.GetListFromMember<MyOrder>(this, "GetMyOrders", "myorder", buyOrSell.ToString(), typeID.ToString());
+			Tracing.SendCallback("Character.GetMyOrders", buyOrSell.ToString(), typeID.ToString());
+			return Util.GetListFromMethod<MyOrder>(this, "GetMyOrders", "myorder", buyOrSell.ToString(), typeID.ToString());
 		}
 		#endregion
 
@@ -784,8 +750,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool SetVelocity(int SpeedAsPercentage)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Character.SetVelocity", SpeedAsPercentage.ToString());
+			Tracing.SendCallback("Character.SetVelocity", SpeedAsPercentage.ToString());
 			return ExecuteMethod("SetVelocity", SpeedAsPercentage.ToString());
 		}
 
@@ -798,8 +763,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool SetCorpStanding(int CorpID, float Standing, string Reason)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Character.SetCorpStanding", String.Format("{0},{1},{2}", CorpID, Standing, Reason));
+			Tracing.SendCallback("Character.SetCorpStanding", CorpID, Standing, Reason);
 			return ExecuteMethod("SetCorpStanding", CorpID.ToString(), Standing.ToString(), Reason);
 		}
 
@@ -812,31 +776,8 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool SetPilotStanding(int CharID, float Standing, string Reason)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Character.SetPilotStanding", String.Format("{0},{1},{2}", CharID, Standing, Reason));
+			Tracing.SendCallback("Character.SetPilotStanding", CharID, Standing, Reason);
 			return ExecuteMethod("SetPilotStanding", CharID.ToString(), Standing.ToString(), Reason);
-		}
-
-		/// <summary>
-		/// Wrapper for the AcceptFleetInvite method of the character type.
-		/// </summary>
-		/// <returns></returns>
-		public bool AcceptFleetInvite()
-		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Character.AcceptFleetInvite", string.Empty);
-			return ExecuteMethod("AcceptFleetInvite");
-		}
-
-		/// <summary>
-		/// Wrapper for the RejectFleetInvite method of the character type.
-		/// </summary>
-		/// <returns></returns>
-		public bool RejectFleetInvite()
-		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Character.RejectFleetInvite", string.Empty);
-			return ExecuteMethod("RejectFleetInvite");
 		}
 
 		/// <summary>
@@ -845,8 +786,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool OpenCorpHangar()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Character.OpenCorpHangar", string.Empty);
+			Tracing.SendCallback("Character.OpenCorpHangar");
 			return ExecuteMethod("OpenCorpHangar");
 		}
 
@@ -856,8 +796,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool StackAllHangarItems()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Character.StackAllHangarItems", string.Empty);
+			Tracing.SendCallback("Character.StackAllHangarItems");
 			return ExecuteMethod("StackAllHangarItems");
 		}
 
@@ -867,8 +806,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool UpdateMyOrders()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Character.UpdateMyOrders", string.Empty);
+			Tracing.SendCallback("Character.UpdateMyOrders");
 			return ExecuteMethod("UpdateMyOrders");
 		}
 		#endregion

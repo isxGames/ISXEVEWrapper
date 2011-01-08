@@ -99,8 +99,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public void Unload()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("ISXEVE.Unload", string.Empty);
+			Tracing.SendCallback("ISXEVE.Unload");
 			ExecuteMethod("Unload");
 		}
 
@@ -109,8 +108,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public void Reload()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("ISXEVE.Reload", string.Empty);
+			Tracing.SendCallback("ISXEVE.Reload");
 			ExecuteMethod("Reload");
 		}
 
@@ -119,8 +117,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public void Patch()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("ISXEVE.Patch", string.Empty);
+			Tracing.SendCallback("ISXEVE.Patch");
 			ExecuteMethod("Patch");
 		}
 
@@ -129,8 +126,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public void Update()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("ISXEVE.Update", string.Empty);
+			Tracing.SendCallback("ISXEVE.Update");
 			ExecuteMethod("Update");
 		}
 		#endregion

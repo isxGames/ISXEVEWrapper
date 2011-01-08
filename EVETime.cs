@@ -8,23 +8,23 @@ using LavishScriptAPI;
 namespace EVE.ISXEVE
 {
 	/// <summary>
-  /// Wrapper for the evetime data type.
+	/// Wrapper for the evetime data type.
 	/// </summary>
-  public class EVETime : LavishScriptObject
+	public class EVETime : LavishScriptObject
 	{
 		#region Constructors
-    /// <summary>
-    /// EVETime copy constructor.
-    /// </summary>
-    /// <param name="Obj"></param>
+		/// <summary>
+		/// EVETime copy constructor.
+		/// </summary>
+		/// <param name="Obj"></param>
 		public EVETime(LavishScriptObject Obj)
 			: base(Obj)
 		{
 		}
 
-    /// <summary>
-    /// EVETime constructor.
-    /// </summary>
+		/// <summary>
+		/// EVETime constructor.
+		/// </summary>
 		public EVETime()
 			: base(LavishScript.Objects.GetObject("EVETime"))
 		{
@@ -32,9 +32,9 @@ namespace EVE.ISXEVE
 		#endregion
 
 		#region Members
-    /// <summary>
-    /// Wrapper for the DateAndTime member of a evetime type.
-    /// </summary>
+		/// <summary>
+		/// Wrapper for the DateAndTime member of a evetime type.
+		/// </summary>
 		public string DateAndTime
 		{
 			get
@@ -43,9 +43,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for the Date member of a evetime type.
-    /// </summary>
+		/// <summary>
+		/// Wrapper for the Date member of a evetime type.
+		/// </summary>
 		public string Date
 		{
 			get
@@ -54,9 +54,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for the Time member of a evetime type.
-    /// </summary>
+		/// <summary>
+		/// Wrapper for the Time member of a evetime type.
+		/// </summary>
 		public string Time
 		{
 			get
@@ -65,9 +65,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for the AsInt64 member of a evetime type.
-    /// </summary>
+		/// <summary>
+		/// Wrapper for the AsInt64 member of a evetime type.
+		/// </summary>
 		public Int64 AsInt64
 		{
 			get

@@ -8,15 +8,15 @@ using LavishScriptAPI;
 namespace EVE.ISXEVE
 {
 	/// <summary>
-  /// Wrapper for the activedrone data type.
+	/// Wrapper for the activedrone data type.
 	/// </summary>
-  public class ActiveDrone : LavishScriptObject
+	public class ActiveDrone : LavishScriptObject
 	{
 		#region Constructors
-    /// <summary>
-    /// ActiveDrone copy constructor.
-    /// </summary>
-    /// <param name="Obj"></param>
+		/// <summary>
+		/// ActiveDrone copy constructor.
+		/// </summary>
+		/// <param name="Obj"></param>
 		public ActiveDrone(LavishScriptObject Obj)
 			: base(Obj)
 		{
@@ -24,9 +24,9 @@ namespace EVE.ISXEVE
 		#endregion
 
 		#region Members
-    /// <summary>
-    /// Wrapper for the ID member of the activedrone type.
-    /// </summary>
+		/// <summary>
+		/// Wrapper for the ID member of the activedrone type.
+		/// </summary>
 		public Int64 ID
 		{
 			get
@@ -40,9 +40,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for the Owner member of the activedrone type.
-    /// </summary>
+		/// <summary>
+		/// Wrapper for the Owner member of the activedrone type.
+		/// </summary>
 		public Pilot Owner
 		{
 			get
@@ -51,9 +51,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for the Controller member of the activedrone type.
-    /// </summary>
+		/// <summary>
+		/// Wrapper for the Controller member of the activedrone type.
+		/// </summary>
 		public Entity Controller
 		{
 			get
@@ -63,9 +63,9 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
-    /// Wrapper for the Type member of the activedrone type.
+		/// Wrapper for the Type member of the activedrone type.
 		/// </summary>
-    public string Type
+		public string Type
 		{
 			get
 			{
@@ -73,9 +73,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for the TypeID member of the activedrone type.
-    /// </summary>
+		/// <summary>
+		/// Wrapper for the TypeID member of the activedrone type.
+		/// </summary>
 		public int TypeID
 		{
 			get
@@ -100,9 +100,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for the ToEntity member of the activedrone type.
-    /// </summary>
+		/// <summary>
+		/// Wrapper for the ToEntity member of the activedrone type.
+		/// </summary>
 		public Entity ToEntity
 		{
 			get
@@ -111,9 +111,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for the Target member of the activedrone type.
-    /// </summary>
+		/// <summary>
+		/// Wrapper for the Target member of the activedrone type.
+		/// </summary>
 		public Entity Target
 		{
 			get

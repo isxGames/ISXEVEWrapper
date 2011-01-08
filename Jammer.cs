@@ -7,23 +7,23 @@ using InnerSpaceAPI;
 
 namespace EVE.ISXEVE
 {
-  /// <summary>
-  /// Jammer class
-  /// </summary>
+	/// <summary>
+	/// Jammer class
+	/// </summary>
 	public class Jammer : LavishScriptObject
 	{
 		#region Constructors
-    /// <summary>
-    /// Jammer copy constructor
-    /// </summary>
-    /// <param name="copy"></param>
+		/// <summary>
+		/// Jammer copy constructor
+		/// </summary>
+		/// <param name="copy"></param>
 		public Jammer(LavishScriptObject copy) : base(copy) { }
 		#endregion
 
 		#region Members
-    /// <summary>
-    /// Type member
-    /// </summary>
+		/// <summary>
+		/// Type member
+		/// </summary>
 		public string Type
 		{
 			get
@@ -37,9 +37,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// CycleTimeRemaining member
-    /// </summary>
+		/// <summary>
+		/// CycleTimeRemaining member
+		/// </summary>
 		public double CycleTimeRemaining
 		{
 			get
@@ -53,9 +53,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Origin member
-    /// </summary>
+		/// <summary>
+		/// Origin member
+		/// </summary>
 		public Entity Origin
 		{
 			get
@@ -64,9 +64,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// StartTime member
-    /// </summary>
+		/// <summary>
+		/// StartTime member
+		/// </summary>
 		public EVETime StartTime
 		{
 			get

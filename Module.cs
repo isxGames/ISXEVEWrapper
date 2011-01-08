@@ -183,7 +183,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public List<Item> GetAvailableAmmo()
 		{
-			return Util.GetListFromMember<Item>(this, "GetAvailableAmmo", "item");
+			return Util.GetListFromMethod<Item>(this, "DoGetAvailableAmmo", "item");
 		}
 
 
@@ -1258,8 +1258,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool Click()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Module.Click", string.Empty);
+			Tracing.SendCallback("Module.Click");
 			return ExecuteMethod("Click");
 		}
 
@@ -1269,8 +1268,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool Activate()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Module.Activate", string.Empty);
+			Tracing.SendCallback("Module.Activate");
 			return ExecuteMethod("Activate");
 		}
 
@@ -1280,8 +1278,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool Activate(Int64 EntityID)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Module.Activate", EntityID.ToString());
+			Tracing.SendCallback("Module.Activate", EntityID.ToString());
 			return ExecuteMethod("Activate", EntityID.ToString());
 		}
 
@@ -1291,8 +1288,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool Deactivate()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Module.Deactivate", string.Empty);
+			Tracing.SendCallback("Module.Deactivate", string.Empty);
 			return ExecuteMethod("Deactivate");
 		}
 
@@ -1303,8 +1299,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool ChangeAmmo(Int64 AmmoID)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Module.ChangeAmmo", AmmoID.ToString());
+			Tracing.SendCallback("Module.ChangeAmmo", AmmoID.ToString());
 			return ExecuteMethod("ChangeAmmo", AmmoID.ToString());
 		}
 
@@ -1315,8 +1310,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool ChangeAmmo(Int64 AmmoID, int Quantity)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Module.ChangeAmmo", String.Format("{0},{1}", AmmoID, Quantity));
+			Tracing.SendCallback("Module.ChangeAmmo", AmmoID, Quantity);
 			return ExecuteMethod("ChangeAmmo", AmmoID.ToString(), Quantity.ToString());
 		}
 
@@ -1326,8 +1320,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool SetAutoReloadOn()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Module.SetAutoReloadOn", string.Empty);
+			Tracing.SendCallback("Module.SetAutoReloadOn");
 			return ExecuteMethod("SetAutoReloadOn");
 		}
 
@@ -1337,8 +1330,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool SetAutoReloadOff()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Module.SetAutoReloadOff", string.Empty);
+			Tracing.SendCallback("Module.SetAutoReloadOff");
 			return ExecuteMethod("SetAutoReloadOff");
 		}
 
@@ -1348,8 +1340,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool PutOnline()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Module.PutOnline", string.Empty);
+			Tracing.SendCallback("Module.PutOnline");
 			return ExecuteMethod("PutOnline");
 		}
 
@@ -1359,8 +1350,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool PutOffline()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Module.PutOffline", string.Empty);
+			Tracing.SendCallback("Module.PutOffline");
 			return ExecuteMethod("PutOffline");
 		}
 		#endregion

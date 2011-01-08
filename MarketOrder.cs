@@ -32,16 +32,16 @@ using LavishScriptAPI;
 
 namespace EVE.ISXEVE
 {
-  /// <summary>
-  /// Wrapper for the marketorder type.
-  /// </summary>
+	/// <summary>
+	/// Wrapper for the marketorder type.
+	/// </summary>
 	public class MarketOrder : LavishScriptObject
 	{
 		#region Constructors
-    /// <summary>
-    /// MarketOrder copy constructor.
-    /// </summary>
-    /// <param name="Obj"></param>
+		/// <summary>
+		/// MarketOrder copy constructor.
+		/// </summary>
+		/// <param name="Obj"></param>
 		public MarketOrder(LavishScriptObject Obj)
 			: base(Obj)
 		{

@@ -215,8 +215,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool SetStanding(int Standing, string Reason)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Pilot.SetStanding", String.Format("{0},{1}", Standing, Reason));
+			Tracing.SendCallback("Pilot.SetStanding", Standing, Reason);
 			return ExecuteMethod("SetStanding", Standing.ToString(), Reason);
 		}
 
@@ -226,8 +225,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool InviteToFleet()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Pilot.InviteToFleet", string.Empty);
+			Tracing.SendCallback("Pilot.InviteToFleet");
 			return ExecuteMethod("InviteToFleet");
 		}
 		#endregion

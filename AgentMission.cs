@@ -8,15 +8,15 @@ using LavishScriptAPI;
 namespace EVE.ISXEVE
 {
 	/// <summary>
-  /// Wrapper for the agentmission data type.
+	/// Wrapper for the agentmission data type.
 	/// </summary>
-  public class AgentMission : LavishScriptObject
+	public class AgentMission : LavishScriptObject
 	{
 		#region Constructors
-    /// <summary>
-    /// AgentMission copy constructor.
-    /// </summary>
-    /// <param name="Obj"></param>
+		/// <summary>
+		/// AgentMission copy constructor.
+		/// </summary>
+		/// <param name="Obj"></param>
 		public AgentMission(LavishScriptObject Obj)
 			: base(Obj)
 		{
@@ -24,9 +24,9 @@ namespace EVE.ISXEVE
 		#endregion
 
 		#region Members
-    /// <summary>
-    /// Wrapper for the State member of the agentmission type.
-    /// </summary>
+		/// <summary>
+		/// Wrapper for the State member of the agentmission type.
+		/// </summary>
 		public int State
 		{
 			get
@@ -35,9 +35,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for the Type member of the agentmission type.
-    /// </summary>
+		/// <summary>
+		/// Wrapper for the Type member of the agentmission type.
+		/// </summary>
 		public string Type
 		{
 			get
@@ -46,9 +46,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for the Name member of the agentmission type.
-    /// </summary>
+		/// <summary>
+		/// Wrapper for the Name member of the agentmission type.
+		/// </summary>
 		public string Name
 		{
 			get
@@ -57,9 +57,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for the AgentID member of the agentmission type.
-    /// </summary>
+		/// <summary>
+		/// Wrapper for the AgentID member of the agentmission type.
+		/// </summary>
 		public int AgentID
 		{
 			get
@@ -68,9 +68,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for the Expires member of the agentmission type.
-    /// </summary>
+		/// <summary>
+		/// Wrapper for the Expires member of the agentmission type.
+		/// </summary>
 		public EVETime Expires
 		{
 			get
@@ -87,13 +87,14 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for the GetBookmarks member of the agentmission type.
-    /// </summary>
-    /// <returns></returns>
+		/// <summary>
+		/// Wrapper for the GetBookmarks member of the agentmission type.
+		/// </summary>
+		/// <returns></returns>
 		public List<BookMark> GetBookmarks()
 		{
-			return Util.GetListFromMember<BookMark>(this, "GetBookmarks", "bookmark");
+			Tracing.SendCallback("AgentMission.DoGetDetails");
+			return Util.GetListFromMethod<BookMark>(this, "DoGetBookmarks", "bookmark");
 		}
 		#endregion
 
@@ -103,6 +104,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool GetDetails()
 		{
+			Tracing.SendCallback("AgentMission.GetDetails");
 			return ExecuteMethod("GetDetails");
 		}
 		#endregion

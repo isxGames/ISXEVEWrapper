@@ -17,7 +17,7 @@ namespace EVE.ISXEVE
 		/// CharSelect copy constructor.
 		/// </summary>
 		/// <param name="Obj"></param>
-    public CharSelect(LavishScriptObject Obj)
+		public CharSelect(LavishScriptObject Obj)
 			: base(Obj)
 		{
 		}
@@ -51,26 +51,26 @@ namespace EVE.ISXEVE
 		#endregion
 
 		#region Methods
-    /// <summary>
-    /// Wrapper for ClickCharacter method of charselect type.
-    /// </summary>
-    /// <returns></returns>
+		/// <summary>
+		/// Wrapper for ClickCharacter method of charselect type.
+		/// </summary>
+		/// <returns></returns>
 		public bool ClickCharacter()
 		{
-            if (Tracing.Callback != null)
-                Tracing.SendCallback("CharSelect.ClickCharacter", string.Empty);
+			if (Tracing.Callback != null)
+				Tracing.SendCallback("CharSelect.ClickCharacter", string.Empty);
 			return ExecuteMethod("ClickCharacter");
 		}
 
-    /// <summary>
-    /// Wrapper for ClickCharacter method of charselect type.
-    /// </summary>
-    /// <param name="CharID"></param>
-    /// <returns></returns>
+		/// <summary>
+		/// Wrapper for ClickCharacter method of charselect type.
+		/// </summary>
+		/// <param name="CharID"></param>
+		/// <returns></returns>
 		public bool ClickCharacter(int CharID)
 		{
-            if (Tracing.Callback != null)
-                Tracing.SendCallback("CharSelect.ClickCharacter", CharID.ToString());
+			if (Tracing.Callback != null)
+				Tracing.SendCallback("CharSelect.ClickCharacter", CharID.ToString());
 			return ExecuteMethod("ClickCharacter", CharID.ToString());
 		}
 		#endregion

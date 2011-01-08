@@ -675,23 +675,13 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
-		/// Wrapper for the CargoCount member of the ship type.
-		/// </summary>
-		public int CargoCount
-		{
-			get
-			{
-				return GetMember<int>("GetCargo");
-			}
-		}
-
-		/// <summary>
 		/// Wrapper for the GetCargo member of the ship type.
 		/// </summary>
 		/// <returns></returns>
 		public List<Item> GetCargo()
 		{
-			return Util.GetListFromMember<Item>(this, "GetCargo", "item");
+			Tracing.SendCallback("Ship.DoGetCargo");
+			return Util.GetListFromMethod<Item>(this, "DoGetCargo", "item");
 		}
 		#endregion
 
@@ -739,30 +729,13 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
-		/// This is GetDrones(), renamed to DroneCount
-		/// </summary>
-		public int DroneCount
-		{
-			get
-			{
-				LavishScriptObject getDrones = GetMember("GetDrones");
-				if (LavishScriptObject.IsNullOrInvalid(getDrones))
-				{
-					return 0;
-				}
-				return getDrones.GetValue<int>();
-			}
-		}
-
-		/// <summary>
 		/// Wrapper for the GetDrones member of the ship type.
 		/// </summary>
 		/// <returns></returns>
 		public List<Item> GetDrones()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Ship.GetDrones", string.Empty);
-			return Util.GetListFromMember<Item>(this, "GetDrones", "item");
+			Tracing.SendCallback("Ship.DoGetDrones", string.Empty);
+			return Util.GetListFromMethod<Item>(this, "DoGetDrones", "item");
 		}
 		#endregion
 
@@ -809,26 +782,13 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
-		/// Number of modules fit to the ship
-		/// Note: Must be in space.
-		/// </summary>
-		public int ModuleCount
-		{
-			get
-			{
-				return GetMember<int>("GetModules");
-			}
-		}
-
-		/// <summary>
 		/// Modules fit to the ship
 		/// Note: Must be in space.
 		/// </summary>
 		public List<Module> GetModules()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Ship.GetModules", string.Empty);
-			return Util.GetListFromMember<Module>(this, "GetModules", "module");
+			Tracing.SendCallback("Ship.DoGetModules");
+			return Util.GetListFromMethod<Module>(this, "DoGetModules", "module");
 		}
 		#endregion
 		#endregion
@@ -840,8 +800,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool StackAllCargo()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Ship.StackAllCargo", string.Empty);
+			Tracing.SendCallback("Ship.StackAllCargo");
 			return ExecuteMethod("StackAllCargo");
 		}
 
@@ -854,8 +813,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool LaunchAllDrones()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Ship.LaunchAllDrones", string.Empty);
+			Tracing.SendCallback("Ship.LaunchAllDrones");
 			return ExecuteMethod("LaunchAllDrones");
 		}
 
@@ -865,8 +823,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool OpenCargo()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Ship.OpenCargo", string.Empty);
+			Tracing.SendCallback("Ship.OpenCargo");
 			return ExecuteMethod("OpenCargo");
 		}
 		#endregion

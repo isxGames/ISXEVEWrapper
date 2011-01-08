@@ -6,15 +6,15 @@ using LavishScriptAPI;
 namespace EVE.ISXEVE
 {
 	/// <summary>
-  /// Wrapper for the standing data type.
+	/// Wrapper for the standing data type.
 	/// </summary>
-  public class Standing : LavishScriptObject
+	public class Standing : LavishScriptObject
 	{
 		#region Constructors
-    /// <summary>
-    /// Standing object copy constructor.
-    /// </summary>
-    public Standing(LavishScriptObject obj) :
+		/// <summary>
+		/// Standing object copy constructor.
+		/// </summary>
+		public Standing(LavishScriptObject obj) :
 			base(obj)
 		{
 

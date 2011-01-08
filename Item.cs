@@ -63,7 +63,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public List<Item> GetCargo()
 		{
-			return Util.GetListFromMember<Item>(this, "GetCargo", "item");
+			return Util.GetListFromMethod<Item>(this, "DoGetCargo", "item");
 		}
 
 		/// <summary>
@@ -415,8 +415,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool Jettison()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Item.Jettison", string.Empty);
+			Tracing.SendCallback("Item.Jettison");
 			return ExecuteMethod("Jettison");
 		}
 
@@ -425,8 +424,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool MoveToMyShip()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Item.MoveToMyShip", string.Empty);
+			Tracing.SendCallback("Item.MoveToMyShip");
 			return ExecuteMethod("MoveTo", "MyShip");
 		}
 
@@ -437,8 +435,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool MoveToMyShip(int Quantity)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Item.MoveToMyShip", Quantity.ToString());
+			Tracing.SendCallback("Item.MoveToMyShip", Quantity.ToString());
 			return ExecuteMethod("MoveTo", "MyShip", Quantity.ToString());
 		}
 
@@ -447,8 +444,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool MoveToHangar()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Item.MoveToHangar", string.Empty);
+			Tracing.SendCallback("Item.MoveToHangar");
 			return ExecuteMethod("MoveTo", "Hangar");
 		}
 
@@ -459,8 +455,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool MoveToHangar(int Quantity)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Item.MoveToHangar", Quantity.ToString());
+			Tracing.SendCallback("Item.MoveToHangar", Quantity.ToString());
 			return ExecuteMethod("MoveTo", "Hangar", Quantity.ToString());
 		}
 
@@ -469,8 +464,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool MoveToDroneBay()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Item.MoveToDroneBay", string.Empty);
+			Tracing.SendCallback("Item.MoveToDroneBay");
 			return ExecuteMethod("MoveTo", "DroneBay");
 		}
 
@@ -481,8 +475,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool MoveToDroneBay(int Quantity)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Item.MoveToDroneBay", Quantity.ToString());
+			Tracing.SendCallback("Item.MoveToDroneBay", Quantity.ToString());
 			return ExecuteMethod("MoveTo", "DroneBay", Quantity.ToString());
 		}
 
@@ -491,8 +484,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool MoveToCorporationHanger()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Item.MoveToCorpHangar", string.Empty);
+			Tracing.SendCallback("Item.MoveToCorpHangar");
 			return ExecuteMethod("MoveTo", "Corporation Hangar");
 		}
 
@@ -501,8 +493,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool MoveToCorporationHanger(int Quantity)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Item.MoveToCorpHangar", Quantity.ToString());
+			Tracing.SendCallback("Item.MoveToCorpHangar", Quantity.ToString());
 			return ExecuteMethod("MoveTo", "Corporation Hangar", Quantity.ToString());
 		}
 
@@ -514,8 +505,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool MoveToCorporationHanger(int Quantity, int FolderID)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Item.MoveToCorpHangar", String.Format("{0},{1}", Quantity, FolderID));
+			Tracing.SendCallback("Item.MoveToCorpHangar", Quantity, FolderID);
 			return ExecuteMethod("MoveTo", "Corporation Hangar", Quantity.ToString(),
 				"Corporate Folder " + FolderID.ToString());
 		}
@@ -525,8 +515,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool MoveTo(Int64 ID)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Item.MoveTo", ID.ToString());
+			Tracing.SendCallback("Item.MoveTo", ID.ToString());
 			return ExecuteMethod("MoveTo", ID.ToString());
 		}
 
@@ -538,8 +527,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool MoveTo(Int64 ID, int Quantity)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Item.MoveTo", String.Format("{0},{1}", ID, Quantity));
+			Tracing.SendCallback("Item.MoveTo", ID, Quantity);
 			return ExecuteMethod("MoveTo", ID.ToString(), Quantity.ToString());
 		}
 
@@ -552,8 +540,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool MoveTo(Int64 ID, int Quantity, int CorporateHangarFolder)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Item.MoveTo", String.Format("{0},{1},{2}", ID, Quantity, CorporateHangarFolder));
+			Tracing.SendCallback("Item.MoveTo", ID, Quantity, CorporateHangarFolder);
 			return ExecuteMethod("MoveTo", ID.ToString(), Quantity.ToString(),
 				String.Format("Corporation Folder {0}", CorporateHangarFolder));
 		}
@@ -564,8 +551,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool Launch()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Item.Launch", string.Empty);
+			Tracing.SendCallback("Item.Launch");
 			return ExecuteMethod("Launch");
 		}
 
@@ -575,8 +561,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool MakeActive()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Item.MakeActive", string.Empty);
+			Tracing.SendCallback("Item.MakeActive");
 			return ExecuteMethod("MakeActive");
 		}
 
@@ -589,8 +574,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool Repackage()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Item.Repackage", string.Empty);
+			Tracing.SendCallback("Item.Repackage");
 			return ExecuteMethod("Repackage");
 		}
 
@@ -600,8 +584,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool FitToActiveShip()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Item.FitToActiveShip", string.Empty);
+			Tracing.SendCallback("Item.FitToActiveShip");
 			return ExecuteMethod("FitToActiveShip");
 		}
 
@@ -611,8 +594,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool TrainSkill()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Item.TrainSkill", string.Empty);
+			Tracing.SendCallback("Item.TrainSkill", string.Empty);
 			return ExecuteMethod("TrainSkill");
 		}
 
@@ -629,8 +611,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool PlaceSellOrder(double price, int quantity, int duration)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Item.PlaceSellOrder", String.Format("{0},{1},{2}", price, quantity, duration));
+			Tracing.SendCallback("Item.PlaceSellOrder", price, quantity, duration);
 			return ExecuteMethod("PlaceSellOrder",
 				price.ToString(),
 				quantity.ToString(),
@@ -643,8 +624,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool Open()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Item.Open", string.Empty);
+			Tracing.SendCallback("Item.Open");
 			return ExecuteMethod("Open");
 		}
 
@@ -654,8 +634,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool Close()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Item.Close", string.Empty);
+			Tracing.SendCallback("Item.Close");
 			return ExecuteMethod("Close");
 		}
 		#endregion

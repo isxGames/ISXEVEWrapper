@@ -6,25 +6,25 @@ using LavishScriptAPI;
 namespace EVE.ISXEVE
 {
 	/// <summary>
-    /// Wrapper for the skill data type.
+	/// Wrapper for the skill data type.
 	/// </summary>
-    public class Skill : LavishScriptObject
+	public class Skill : LavishScriptObject
 	{
 		#region Constructors
-        /// <summary>
-        /// Skill object copy constructor.
-        /// </summary>
-        public Skill(LavishScriptObject Copy)
+		/// <summary>
+		/// Skill object copy constructor.
+		/// </summary>
+		public Skill(LavishScriptObject Copy)
 			: base(Copy)
 		{
 		}
 		#endregion
 
 		#region Statics
-        /// <summary>
-        /// Get all skills our character knows.
-        /// </summary>
-        /// <returns></returns>
+		/// <summary>
+		/// Get all skills our character knows.
+		/// </summary>
+		/// <returns></returns>
 		public static List<Skill> GetSkills()
 		{
 			Me me = new Me();
@@ -35,11 +35,11 @@ namespace EVE.ISXEVE
 			return new List<Skill>();
 		}
 
-    /// <summary>
-    /// Return a skill object based on the skill name parameter.
-    /// </summary>
-    /// <param name="name"></param>
-    /// <returns></returns>
+		/// <summary>
+		/// Return a skill object based on the skill name parameter.
+		/// </summary>
+		/// <param name="name"></param>
+		/// <returns></returns>
 		public static Skill GetSkill(string name)
 		{
 			Me me = new Me();
@@ -77,9 +77,9 @@ namespace EVE.ISXEVE
 		#endregion
 
 		#region Members
-        /// <summary>
-        /// Wrapper for Name member of skill type.
-        /// </summary>
+		/// <summary>
+		/// Wrapper for Name member of skill type.
+		/// </summary>
 		public string Name
 		{
 			get
@@ -88,9 +88,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-        /// <summary>
-        /// Wrapper for ID member of skill type.
-        /// </summary>
+		/// <summary>
+		/// Wrapper for ID member of skill type.
+		/// </summary>
 		public int ID
 		{
 			get
@@ -99,9 +99,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for Group member of skill type.
-    /// </summary>
+		/// <summary>
+		/// Wrapper for Group member of skill type.
+		/// </summary>
 		public string Group
 		{
 			get
@@ -110,9 +110,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for GroupID member of skill type.
-    /// </summary>
+		/// <summary>
+		/// Wrapper for GroupID member of skill type.
+		/// </summary>
 		public int GroupID
 		{
 			get
@@ -121,9 +121,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for IsTraining member of skill type.
-    /// </summary>
+		/// <summary>
+		/// Wrapper for IsTraining member of skill type.
+		/// </summary>
 		public bool IsTraining
 		{
 			get
@@ -148,9 +148,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for TrainingTimeMultiplier member of skill type.
-    /// </summary>
+		/// <summary>
+		/// Wrapper for TrainingTimeMultiplier member of skill type.
+		/// </summary>
 		public double TrainingTimeMultiplier
 		{
 			get
@@ -159,9 +159,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for SkillPoints member of skill type.
-    /// </summary>
+		/// <summary>
+		/// Wrapper for SkillPoints member of skill type.
+		/// </summary>
 		public int SkillPoints
 		{
 			get
@@ -170,9 +170,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for Level member of skill type.
-    /// </summary>
+		/// <summary>
+		/// Wrapper for Level member of skill type.
+		/// </summary>
 		public int Level
 		{
 			get
@@ -183,36 +183,33 @@ namespace EVE.ISXEVE
 		#endregion
 
 		#region Methods
-        /// <summary>
-        /// Wrapper for AddToQueue method of the skill type.
-        /// </summary>
-        /// <returns></returns>
-        public bool AddToQueue(int skillLevel)
-        {
-            if (Tracing.Callback != null)
-                Tracing.SendCallback("Skill.AddtoQueue", skillLevel.ToString());
-            return ExecuteMethod("AddToQueue", skillLevel.ToString());
-        }
+		/// <summary>
+		/// Wrapper for AddToQueue method of the skill type.
+		/// </summary>
+		/// <returns></returns>
+		public bool AddToQueue(int skillLevel)
+		{
+			Tracing.SendCallback("Skill.AddtoQueue", skillLevel.ToString());
+			return ExecuteMethod("AddToQueue", skillLevel.ToString());
+		}
 
-        /// <summary>
-        /// Wrapper for AbortTraining method of the skill type.
-        /// </summary>
-        /// <returns></returns>
-        public bool AbortTraining()
-        {
-            if (Tracing.Callback != null)
-                Tracing.SendCallback("Skill.AbortTraining", string.Empty);
-            return ExecuteMethod("AbortTraining");
-        }
+		/// <summary>
+		/// Wrapper for AbortTraining method of the skill type.
+		/// </summary>
+		/// <returns></returns>
+		public bool AbortTraining()
+		{
+			Tracing.SendCallback("Skill.AbortTraining", string.Empty);
+			return ExecuteMethod("AbortTraining");
+		}
 
-        /// <summary>
-        /// Wrapper for StartTraining method of the skill type.
-        /// </summary>
-        /// <returns></returns>
+		/// <summary>
+		/// Wrapper for StartTraining method of the skill type.
+		/// </summary>
+		/// <returns></returns>
 		public bool StartTraining()
 		{
-            if (Tracing.Callback != null)
-                Tracing.SendCallback("Skill.StartTraining", string.Empty);
+			Tracing.SendCallback("Skill.StartTraining", string.Empty);
 			return ExecuteMethod("StartTraining");
 		}
 		#endregion

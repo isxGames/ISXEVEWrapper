@@ -35,16 +35,16 @@ using LavishScriptAPI;
 
 namespace EVE.ISXEVE
 {
-  /// <summary>
-  /// Wrapper for the myorder type.
-  /// </summary>
+	/// <summary>
+	/// Wrapper for the myorder type.
+	/// </summary>
 	public class MyOrder : LavishScriptObject
 	{
 		#region Constructors
-    /// <summary>
-    /// MyOrder copy constructor.
-    /// </summary>
-    /// <param name="Obj"></param>
+		/// <summary>
+		/// MyOrder copy constructor.
+		/// </summary>
+		/// <param name="Obj"></param>
 		public MyOrder(LavishScriptObject Obj)
 			: base(Obj)
 		{
@@ -281,6 +281,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool Cancel()
 		{
+			Tracing.SendCallback("MyOrder.Cancel");
 			return ExecuteMethod("Cancel");
 		}
 		/// <summary>
@@ -288,6 +289,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool Modify(double newPrice)
 		{
+			Tracing.SendCallback("MyOrder.Modify", newPrice);
 			return ExecuteMethod("Modify", newPrice.ToString());
 		}
 		#endregion

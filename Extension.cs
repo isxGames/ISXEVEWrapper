@@ -10,27 +10,27 @@ namespace EVE.ISXEVE
 	/// <summary>
 	/// Utility class that wraps common ISXEVE elements.
 	/// </summary>
-  public class Extension
+	public class Extension
 	{
 		/// <summary>
 		/// Extension object constructor.
 		/// </summary>
-    public Extension()
+		public Extension()
 		{
 		}
 
-    /// <summary>
-    /// Return a new EVE object.
-    /// </summary>
-    /// <returns></returns>
+		/// <summary>
+		/// Return a new EVE object.
+		/// </summary>
+		/// <returns></returns>
 		public EVE EVE()
 		{
 			return new EVE();
 		}
 
-    /// <summary>
-    /// Return a new "me" object.
-    /// </summary>
+		/// <summary>
+		/// Return a new "me" object.
+		/// </summary>
 		public Character Me
 		{
 			get
@@ -44,16 +44,16 @@ namespace EVE.ISXEVE
 		/// </summary>
 		/// <param name="ID"></param>
 		/// <returns></returns>
-    public Entity Entity(int ID)
+		public Entity Entity(int ID)
 		{
 			return new Entity(ID);
 		}
 
-    /// <summary>
-    /// Create a new Entity object based on a lookup string.
-    /// </summary>
-    /// <param name="Args"></param>
-    /// <returns></returns>
+		/// <summary>
+		/// Create a new Entity object based on a lookup string.
+		/// </summary>
+		/// <param name="Args"></param>
+		/// <returns></returns>
 		public Entity Entity(params string[] Args)
 		{
 			return new Entity(Args);
@@ -71,9 +71,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Returns a new ISXEVE object
-    /// </summary>
+		/// <summary>
+		/// Returns a new ISXEVE object
+		/// </summary>
 		public ISXEVE ISXEVE
 		{
 			get
@@ -91,10 +91,10 @@ namespace EVE.ISXEVE
 			return new EVEWindow(name);
 		}
 
-    /// <summary>
-    /// Returns a new EVETime object
-    /// </summary>
-    public EVETime EVETime()
+		/// <summary>
+		/// Returns a new EVETime object
+		/// </summary>
+		public EVETime EVETime()
 		{
 			return new EVETime();
 		}

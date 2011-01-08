@@ -10,10 +10,10 @@ namespace EVE.ISXEVE
 	public class Interstellar : LavishScriptObject
 	{
 		#region Constructors
-    /// <summary>
-    /// Interstellar object copy constructor.
-    /// </summary>
-    /// <param name="Copy"></param>
+		/// <summary>
+		/// Interstellar object copy constructor.
+		/// </summary>
+		/// <param name="Copy"></param>
 		public Interstellar(LavishScriptObject Copy)
 			: base(Copy)
 		{
@@ -21,9 +21,9 @@ namespace EVE.ISXEVE
 		#endregion
 
 		#region Members
-    /// <summary>
-    /// Wrapper for ID member of interstellar type.
-    /// </summary>
+		/// <summary>
+		/// Wrapper for ID member of interstellar type.
+		/// </summary>
 		public int ID
 		{
 			get
@@ -32,9 +32,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for Name member of interstellar type.
-    /// </summary>
+		/// <summary>
+		/// Wrapper for Name member of interstellar type.
+		/// </summary>
 		public string Name
 		{
 			get
@@ -43,9 +43,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for Type member of interstellar type.
-    /// </summary>
+		/// <summary>
+		/// Wrapper for Type member of interstellar type.
+		/// </summary>
 		public string Type
 		{
 			get
@@ -54,9 +54,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for TypeID member of interstellar type.
-    /// </summary>
+		/// <summary>
+		/// Wrapper for TypeID member of interstellar type.
+		/// </summary>
 		public int TypeID
 		{
 			get
@@ -65,9 +65,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for Region member of interstellar type.
-    /// </summary>
+		/// <summary>
+		/// Wrapper for Region member of interstellar type.
+		/// </summary>
 		public Interstellar Region
 		{
 			get
@@ -87,9 +87,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for Security member of interstellar type.
-    /// </summary>
+		/// <summary>
+		/// Wrapper for Security member of interstellar type.
+		/// </summary>
 		public float Security
 		{
 			get
@@ -105,8 +105,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool AddWaypoint()
 		{
-            if (Tracing.Callback != null)
-                Tracing.SendCallback("Interstellar.AddWaypoint", string.Empty);
+			Tracing.SendCallback("Interstellar.AddWaypoint");
 			return ExecuteMethod("AddWaypoint");
 		}
 
@@ -115,8 +114,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool SetDestination()
 		{
-            if (Tracing.Callback != null)
-                Tracing.SendCallback("Interstellar.SetDestination", string.Empty);
+			Tracing.SendCallback("Interstellar.SetDestination");
 			return ExecuteMethod("SetDestination");
 		}
 		#endregion

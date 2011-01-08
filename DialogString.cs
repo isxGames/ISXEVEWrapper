@@ -60,8 +60,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool Say(int ToWhomID)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("DialogString.Say", ToWhomID.ToString());
+			Tracing.SendCallback("DialogString.Say", ToWhomID.ToString());
 			return ExecuteMethod("Say", ToWhomID.ToString());
 		}
 		#endregion

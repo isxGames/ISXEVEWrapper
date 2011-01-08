@@ -84,7 +84,7 @@ namespace EVE.ISXEVE
 			string methodName = "IndexToLSOList";
 			Tracing.SendCallback(methodName, LSTypeName);
 
-			Tracing.SendCallback(methodName, "getmember Used");
+			//Tracing.SendCallback(methodName, "getmember Used");
 			List<T> List = new List<T>();
 			int Count = Index.GetMember<int>("Used");
 
@@ -93,10 +93,10 @@ namespace EVE.ISXEVE
 				return List;
 			}
 
-			Tracing.SendCallback(methodName, "get constructor info");
+			//Tracing.SendCallback(methodName, "get constructor info");
 			ConstructorInfo constructor = typeof(T).GetConstructor(new Type[] { typeof(LavishScriptObject) });
 
-			Tracing.SendCallback(methodName, "loop add items");
+			//Tracing.SendCallback(methodName, "loop add items");
 			for (int i = 1; i <= Count; i++)
 			{
 				LavishScriptObject lsObject = LavishScript.Objects.NewObject(LSTypeName, Index.GetIndex(i.ToString()).GetMember<string>("ID"));
@@ -106,7 +106,7 @@ namespace EVE.ISXEVE
 				//lsObject.Invalidate();
 			}
 
-			Tracing.SendCallback(methodName, "return");
+			//Tracing.SendCallback(methodName, "return");
 			return List;
 		}
 
@@ -123,10 +123,10 @@ namespace EVE.ISXEVE
 
 		private static List<T> IndexToList<T>(LavishScriptObject Index, string LSTypeName)
 		{
-			Tracing.SendCallback("IndextoList", LSTypeName);
+			//Tracing.SendCallback("IndextoList", LSTypeName);
 			if (typeof(T).IsSubclassOf(typeof(LavishScriptObject)))
 			{
-				Tracing.SendCallback("IndexToList", "call IndexToLSOList");
+				//Tracing.SendCallback("IndexToList", "call IndexToLSOList");
 				return IndexToLavishScriptObjectList<T>(Index, LSTypeName);
 			}
 			else
@@ -156,10 +156,10 @@ namespace EVE.ISXEVE
 			if (Obj == null || !Obj.IsValid)
 				return null;
 
-			Tracing.SendCallback(methodName, "Create new LSO of index. Type: ", LSTypeName);
+			//Tracing.SendCallback(methodName, "Create new LSO of index. Type: ", LSTypeName);
 			LavishScriptObject Index = LavishScript.Objects.NewObject("index:" + LSTypeName);
 
-			Tracing.SendCallback(methodName, "Collapsing Args[]");
+			//Tracing.SendCallback(methodName, "Collapsing Args[]");
 
 			string[] allargs;
 			if (Args.Length > 0)
@@ -172,24 +172,24 @@ namespace EVE.ISXEVE
 				allargs[0] = Index.LSReference;
 			}
 
-			Tracing.SendCallback(methodName, "Execute method, name: ", MethodName);
+			//Tracing.SendCallback(methodName, "Execute method, name: ", MethodName);
             if (!Obj.ExecuteMethod(MethodName, allargs))
                 return null;
 
-			Tracing.SendCallback(methodName, "Get member Used");
+			//Tracing.SendCallback(methodName, "Get member Used");
 			LavishScriptObject used = Index.GetMember("Used");
 
-			Tracing.SendCallback(methodName, "LSO.IsNullOrInvalid (used)");
+			//Tracing.SendCallback(methodName, "LSO.IsNullOrInvalid (used)");
 			if (LavishScriptObject.IsNullOrInvalid(used))
 				return null;
 
-			Tracing.SendCallback(methodName, "IndexToList");
+			//Tracing.SendCallback(methodName, "IndexToList");
 			List<T> list = IndexToList<T>(Index, LSTypeName);
 
-			Tracing.SendCallback(methodName, "Invalidate");
+			//Tracing.SendCallback(methodName, "Invalidate");
 			Index.Invalidate();
 
-			Tracing.SendCallback(methodName, "Returning");
+			//Tracing.SendCallback(methodName, "Returning");
 			return list;
 		}
 
@@ -227,25 +227,25 @@ namespace EVE.ISXEVE
 			if (Obj == null || !Obj.IsValid)
 				return null;
 
-			Tracing.SendCallback(methodName, "new index");
+			//Tracing.SendCallback(methodName, "new index");
 			LavishScriptObject Index = LavishScript.Objects.NewObject("index:" + LSTypeName);
 
-			Tracing.SendCallback(methodName, "arg condensing");
+			//Tracing.SendCallback(methodName, "arg condensing");
 			string[] allargs = PrefixArray<string>(Index.LSReference, Args);
 
-			Tracing.SendCallback(methodName, "getmember retval");
+			//Tracing.SendCallback(methodName, "getmember retval");
 			LavishScriptObject retval = Obj.GetMember(MemberName, allargs);
 
 			if (LavishScriptObject.IsNullOrInvalid(retval))
 				return null;
 
-			Tracing.SendCallback(methodName, "index to list");
+			//Tracing.SendCallback(methodName, "index to list");
 			List<T> list = IndexToList<T>(Index, LSTypeName);
 
-			Tracing.SendCallback(methodName, "invalidate");
+			//Tracing.SendCallback(methodName, "invalidate");
 			Index.Invalidate();
 
-			Tracing.SendCallback(methodName, "return");
+			//Tracing.SendCallback(methodName, "return");
 			return list;
 		}
 

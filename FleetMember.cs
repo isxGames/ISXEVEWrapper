@@ -143,8 +143,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool WarpTo()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("FleetMember.WarpTo", string.Empty);
+			Tracing.SendCallback("FleetMember.WarpTo", string.Empty);
 			return ExecuteMethod("WarpTo");
 		}
 
@@ -153,8 +152,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool WarpTo(int Distance)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("FleetMember.WarpTo", Distance.ToString());
+			Tracing.SendCallback("FleetMember.WarpTo", Distance.ToString());
 			return ExecuteMethod("WarpTo", Distance.ToString());
 		}
 
@@ -163,8 +161,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool WarpFleetTo()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("FleetMember.WarpFleetTo", string.Empty);
+			Tracing.SendCallback("FleetMember.WarpFleetTo");
 			return ExecuteMethod("WarpFleetTo");
 		}
 
@@ -173,8 +170,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool WarpFleetTo(int Distance)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("FleetMember.WarpFleetTo", Distance.ToString());
+			Tracing.SendCallback("FleetMember.WarpFleetTo", Distance.ToString());
 			return ExecuteMethod("WarpFleetTo", Distance.ToString());
 		}
 
@@ -183,8 +179,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool Kick()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("FleetMember.Kick", string.Empty);
+			Tracing.SendCallback("FleetMember.Kick");
 			return ExecuteMethod("Kick");
 		}
 
@@ -194,8 +189,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool MakeLeader()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("FleetMember.MakeLeader", string.Empty);
+			Tracing.SendCallback("FleetMember.MakeLeader");
 			return ExecuteMethod("MakeLeader");
 		}
 
@@ -207,8 +201,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool Move(Int64 WingID, Int64 SquadID)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("FleetMember.Move", String.Format("{0},{1}", WingID, SquadID));
+			Tracing.SendCallback("FleetMember.Move", WingID, SquadID);
 			return ExecuteMethod("Move", WingID.ToString(), SquadID.ToString());
 		}
 
@@ -220,8 +213,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool MoveToSquadCommander(Int64 WingID, Int64 SquadID)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("FleetMember.MoveToSquadCommander", String.Format("{0},{1}", WingID, SquadID));
+			Tracing.SendCallback("FleetMember.MoveToSquadCommander", WingID, SquadID);
 			return ExecuteMethod("MoveToSquadCommander", WingID.ToString(), SquadID.ToString());
 		}
 
@@ -232,8 +224,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool MoveToWingCommander(Int64 WingID)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("FleetMember.MoveToWingCommander", WingID.ToString());
+			Tracing.SendCallback("FleetMember.MoveToWingCommander", WingID.ToString());
 			return ExecuteMethod("MoveToWingCommander", WingID.ToString());
 		}
 
@@ -243,8 +234,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool MoveToFleetCommander()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("FleetMember.MoveToFleetCommander", string.Empty);
+			Tracing.SendCallback("FleetMember.MoveToFleetCommander");
 			return ExecuteMethod("MoveToFleetCommander");
 		}
 		#endregion

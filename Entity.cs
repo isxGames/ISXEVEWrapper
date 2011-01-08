@@ -373,9 +373,9 @@ namespace EVE.ISXEVE
 		public List<ActiveDrone> GetActiveDrones()
 		{
 			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.GetActiveDrones", string.Empty);
+				Tracing.SendCallback("Entity.DoGetActiveDrones", string.Empty);
 
-			return Util.GetListFromMember<ActiveDrone>(this, "GetActiveDrones", "activedrone");
+			return Util.GetListFromMethod<ActiveDrone>(this, "DoGetActiveDrones", "activedrone");
 		}
 
 		/// <summary>
@@ -885,32 +885,14 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
-		/// Number of items in the cargo.  Keep in mind this might
-		/// be wrong if the cargo hold isn't open.
-		/// </summary>
-		public int CargoCount
-		{
-			get
-			{
-				LavishScriptObject cargoCount = GetMember("GetCargo");
-				if (LavishScriptObject.IsNullOrInvalid(cargoCount))
-				{
-					return -1;
-				}
-				return cargoCount.GetValue<int>();
-			}
-		}
-
-		/// <summary>
 		/// List of all cargo items.  Keep in mind this might
 		/// be empty or invalid if the cargo hold isn't open
 		/// </summary>
 		/// <returns></returns>
 		public List<Item> GetCargo()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.GetCargo", string.Empty);
-			return Util.GetListFromMember<Item>(this, "GetCargo", "item");
+			Tracing.SendCallback("Entity.DoGetCargo");
+			return Util.GetListFromMethod<Item>(this, "DoGetCargo", "item");
 		}
 
 		/// <summary>
@@ -957,8 +939,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool Activate()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.Activate", string.Empty);
+			Tracing.SendCallback("Entity.Activate");
 			return ExecuteMethod("Activate");
 		}
 		/// <summary>
@@ -966,8 +947,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool WarpTo()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.WarpTo", string.Empty);
+			Tracing.SendCallback("Entity.WarpTo");
 			return ExecuteMethod("WarpTo");
 		}
 
@@ -976,8 +956,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool WarpTo(int Distance)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.WarpTo", Distance.ToString());
+			Tracing.SendCallback("Entity.WarpTo", Distance.ToString());
 			return ExecuteMethod("WarpTo", Distance.ToString());
 		}
 
@@ -986,8 +965,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool WarpFleetTo()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.WarpFleetTo", string.Empty);
+			Tracing.SendCallback("Entity.WarpFleetTo");
 			return ExecuteMethod("WarpFleetTo");
 		}
 
@@ -996,8 +974,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool WarpFleetTo(int Distance)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("StartConversation", string.Empty);
+			Tracing.SendCallback("Entity.WarpFleetTo", string.Empty);
 			return ExecuteMethod("WarpFleetTo", Distance.ToString());
 		}
 
@@ -1006,8 +983,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool Align()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.Align", string.Empty);
+			Tracing.SendCallback("Entity.Align");
 			return ExecuteMethod("Align");
 		}
 
@@ -1017,8 +993,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool LockTarget()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.LockTarget", string.Empty);
+			Tracing.SendCallback("Entity.LockTarget");
 			return ExecuteMethod("LockTarget");
 		}
 
@@ -1028,8 +1003,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool UnlockTarget()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.UnlockTarget", string.Empty);
+			Tracing.SendCallback("Entity.UnlockTarget");
 			return ExecuteMethod("UnlockTarget");
 		}
 
@@ -1038,8 +1012,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool Approach()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.Approach", string.Empty);
+			Tracing.SendCallback("Entity.Approach");
 			return ExecuteMethod("Approach");
 		}
 
@@ -1048,8 +1021,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool Approach(int Distance)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.Approach", Distance.ToString());
+			Tracing.SendCallback("Entity.Approach", Distance.ToString());
 			return ExecuteMethod("Approach", Distance.ToString());
 		}
 
@@ -1058,8 +1030,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool KeepAtRange()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.KeepAtRange", string.Empty);
+			Tracing.SendCallback("Entity.KeepAtRange");
 			return ExecuteMethod("KeepAtRange");
 		}
 
@@ -1068,8 +1039,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool KeepAtRange(int Distance)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.KeepAtRange", Distance.ToString());
+			Tracing.SendCallback("Entity.KeepAtRange", Distance.ToString());
 			return ExecuteMethod("KeepAtRange", Distance.ToString());
 		}
 
@@ -1079,8 +1049,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool Orbit()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.Orbit", string.Empty);
+			Tracing.SendCallback("Entity.Orbit");
 			return ExecuteMethod("Orbit");
 		}
 
@@ -1089,8 +1058,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool Orbit(int Distance)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.Orbit", Distance.ToString());
+			Tracing.SendCallback("Entity.Orbit", Distance.ToString());
 			return ExecuteMethod("Orbit", Distance.ToString());
 		}
 
@@ -1099,8 +1067,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool Dock()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.Dock", string.Empty);
+			Tracing.SendCallback("Entity.Dock");
 			return ExecuteMethod("Dock");
 		}
 
@@ -1109,8 +1076,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool MakeActiveTarget()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.MakeActiveTarget", string.Empty);
+			Tracing.SendCallback("Entity.MakeActiveTarget");
 			return ExecuteMethod("MakeActiveTarget");
 		}
 
@@ -1120,8 +1086,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool OpenCargo()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.OpenCargo", string.Empty);
+			Tracing.SendCallback("Entity.OpenCargo");
 			return ExecuteMethod("OpenCargo");
 		}
 
@@ -1131,8 +1096,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool CloseCargo()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.CloseCargo", string.Empty);
+			Tracing.SendCallback("Entity.CloseCargo");
 			return ExecuteMethod("CloseCargo");
 		}
 
@@ -1141,8 +1105,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool StackAllCargo()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.StackAllCargo", string.Empty);
+			Tracing.SendCallback("Entity.StackAllCargo");
 			return ExecuteMethod("StackAllCargo");
 		}
 
@@ -1151,8 +1114,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool SetName(string Name)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.SetName", Name);
+			Tracing.SendCallback("Entity.SetName", Name);
 			return ExecuteMethod("SetName", Name);
 		}
 
@@ -1181,20 +1143,17 @@ namespace EVE.ISXEVE
 			if (!string.IsNullOrEmpty(Label) &&
 				!string.IsNullOrEmpty(Notes))
 			{
-				if (Tracing.Callback != null)
-					Tracing.SendCallback("Entity.CreateBM", String.Format("{0},{1}", Label, Notes));
+				Tracing.SendCallback("Entity.CreateBookmark", Label, Notes);
 				return ExecuteMethod("CreateBookmark", Label, Notes);
 			}
 			else if (!string.IsNullOrEmpty(Label))
 			{
-				if (Tracing.Callback != null)
-					Tracing.SendCallback("Entity.CreateBM", Label);
+				Tracing.SendCallback("Entity.CreateBookmark", Label);
 				return ExecuteMethod("CreateBookmark", Label);
 			}
 			else
 			{
-				if (Tracing.Callback != null)
-					Tracing.SendCallback("Entity.CreateBM", string.Empty);
+				Tracing.SendCallback("Entity.CreateBookmark");
 				return ExecuteMethod("CreateBookmark");
 			}
 		}
@@ -1204,8 +1163,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool WarpToAndDock()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.WarpToAndDock", string.Empty);
+		Tracing.SendCallback("Entity.WarpToAndDock");
 			return ExecuteMethod("WarpToAndDock");
 		}
 
@@ -1214,8 +1172,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool Jump()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.Jump", string.Empty);
+			Tracing.SendCallback("Entity.Jump");
 			return ExecuteMethod("Jump");
 		}
 

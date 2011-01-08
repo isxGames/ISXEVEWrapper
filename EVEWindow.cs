@@ -13,10 +13,10 @@ namespace EVE.ISXEVE
 	public class EVEWindow : LavishScriptObject
 	{
 		#region Constructors
-    /// <summary>
-    /// EVEWindow copy constructor.
-    /// </summary>
-    /// <param name="Obj"></param>
+		/// <summary>
+		/// EVEWindow copy constructor.
+		/// </summary>
+		/// <param name="Obj"></param>
 		public EVEWindow(LavishScriptObject Obj)
 			: base(Obj)
 		{
@@ -41,11 +41,11 @@ namespace EVE.ISXEVE
 			return new EVEWindow(LavishScript.Objects.GetObject("EVEWindow", "ByCaption", caption));
 		}
 
-    /// <summary>
-    /// Returns an evewindow type based on a window name.
-    /// </summary>
-    /// <param name="name"></param>
-    /// <returns></returns>
+		/// <summary>
+		/// Returns an evewindow type based on a window name.
+		/// </summary>
+		/// <param name="name"></param>
+		/// <returns></returns>
 		public static EVEWindow GetWindowByName(string name)
 		{
 			return new EVEWindow(LavishScript.Objects.GetObject("EVEWindow", name));
@@ -53,9 +53,9 @@ namespace EVE.ISXEVE
 		#endregion
 
 		#region Members
-    /// <summary>
-    /// Wrapper for the Caption member of the evewindow type.
-    /// </summary>
+		/// <summary>
+		/// Wrapper for the Caption member of the evewindow type.
+		/// </summary>
 		public string Caption
 		{
 			get
@@ -64,9 +64,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for the Minimized member of the evewindow type.
-    /// </summary>
+		/// <summary>
+		/// Wrapper for the Minimized member of the evewindow type.
+		/// </summary>
 		public bool Minimized
 		{
 			get
@@ -75,9 +75,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for the HTML member of the evewindow type.
-    /// </summary>
+		/// <summary>
+		/// Wrapper for the HTML member of the evewindow type.
+		/// </summary>
 		public string HTML
 		{
 			get
@@ -88,36 +88,33 @@ namespace EVE.ISXEVE
 		#endregion
 
 		#region Methods
-    /// <summary>
-    /// Wrapper for the Close method of the evewindow type.
-    /// </summary>
-    /// <returns></returns>
+		/// <summary>
+		/// Wrapper for the Close method of the evewindow type.
+		/// </summary>
+		/// <returns></returns>
 		public bool Close()
 		{
-            if (Tracing.Callback != null)
-                Tracing.SendCallback("EVEWindow.Close", string.Empty);
+			Tracing.SendCallback("EVEWindow.Close");
 			return ExecuteMethod("Close");
 		}
 
-    /// <summary>
-    /// Wrapper for the Maximize method of the evewindow type.
-    /// </summary>
-    /// <returns></returns>
+		/// <summary>
+		/// Wrapper for the Maximize method of the evewindow type.
+		/// </summary>
+		/// <returns></returns>
 		public bool Maximize()
 		{
-            if (Tracing.Callback != null)
-                Tracing.SendCallback("EVEWindow.Maximise", string.Empty);
+			Tracing.SendCallback("EVEWindow.Maximize");
 			return ExecuteMethod("Maximize");
 		}
 
-    /// <summary>
-    /// Wrapper for the Minimize method of the evewindow type.
-    /// </summary>
-    /// <returns></returns>
+		/// <summary>
+		/// Wrapper for the Minimize method of the evewindow type.
+		/// </summary>
+		/// <returns></returns>
 		public bool Minimize()
 		{
-            if (Tracing.Callback != null)
-                Tracing.SendCallback("EVEWindow.Minimize", string.Empty);
+			Tracing.SendCallback("EVEWindow.Minimize");
 			return ExecuteMethod("Minimize");
 		}
 		#endregion

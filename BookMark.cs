@@ -249,8 +249,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool WarpTo()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("BM.WarpTo", string.Empty);
+			Tracing.SendCallback("BM.WarpTo");
 			return ExecuteMethod("WarpTo");
 		}
 
@@ -259,8 +258,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool WarpTo(int Distance)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("BM.WarpTo", Distance.ToString());
+			Tracing.SendCallback("BM.WarpTo", Distance.ToString());
 			return ExecuteMethod("WarpTo", Distance.ToString());
 		}
 
@@ -269,8 +267,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool Remove()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("BM.Remove", string.Empty);
+			Tracing.SendCallback("BM.Remove");
 			return ExecuteMethod("Remove");
 		}
 
@@ -279,8 +276,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool SetDestination()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("BM.SetDestination", string.Empty);
+			Tracing.SendCallback("BM.SetDestination");
 			return ExecuteMethod("SetDestination");
 		}
 
@@ -289,8 +285,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool AddWaypoint()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("BM.AddWaypoint", string.Empty);
+			Tracing.SendCallback("BM.AddWaypoint");
 			return ExecuteMethod("AddWaypoint");
 		}
 		#endregion

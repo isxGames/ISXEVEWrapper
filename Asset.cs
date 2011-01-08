@@ -12,7 +12,7 @@ using LavishScriptAPI;
 //***
 //*** 1. "GetAssets" will NOT include items that are in the same station you are currently residing (if applicable).  However,
 //***    "GetStationsWithAssets" and "NumAssetsAtStation" WILL contain information about your current station.
-//*** 2. ISXEVE cannot override the 5 minute updating delay present in EVE.  In other words, the information given by ISXEVE
+//*** 2. ISXEVE cannot override the 5 minute updating delay present in EVE. In other words, the information given by ISXEVE
 //***    will match what you see in your UI.
 //*** 3. StationID#s match the "LocationID" member of the 'asset' datatype as well as the "ID" member of the 'entity' datatype.
 //*** 4. You will need to open the assets window and have all stations expanded to have access to the items at that station.
@@ -54,16 +54,16 @@ using LavishScriptAPI;
 
 namespace EVE.ISXEVE
 {
-  /// <summary>
-  /// Wrapper for the asset type.
-  /// </summary>
+	/// <summary>
+	/// Wrapper for the asset type.
+	/// </summary>
 	public class Asset : LavishScriptObject
 	{
 		#region Constructors
-    /// <summary>
-    /// Asset copy constructor.
-    /// </summary>
-    /// <param name="Obj"></param>
+		/// <summary>
+		/// Asset copy constructor.
+		/// </summary>
+		/// <param name="Obj"></param>
 		public Asset(LavishScriptObject Obj)
 			: base(Obj)
 		{
