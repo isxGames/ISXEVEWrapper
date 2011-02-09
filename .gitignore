@@ -1,4 +1,10 @@
+/*.suo
 ISXEVEProfiler/bin
 ISXEVEProfiler/obj
 ISXEVEWrapperTest/bin
 ISXEVEWrapperTest/obj
+/Lavish.InnerSpace.dll
+/Lavish.LavishNav.dll
+/Lavish.LavishVMRuntime.dll
+/bin
+/obj
