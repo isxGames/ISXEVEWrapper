@@ -87,9 +87,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for Security member of interstellar type.
-    /// </summary>
+        /// <summary>
+        /// Wrapper for Security member of interstellar type.
+        /// </summary>
 		public float Security
 		{
 			get
@@ -97,6 +97,28 @@ namespace EVE.ISXEVE
 				return GetMember<float>("Security");
 			}
 		}
+
+        /// <summary>
+        /// Only works for solar systems
+        /// </summary>
+        public int FactionID
+        {
+            get
+            {
+                return GetMember<int>("FactionID");
+            }
+        }
+
+        /// <summary>
+        /// Only works for solar systems
+        /// </summary>
+        public string Faction
+        {
+            get
+            {
+                return GetMember<string>("Faction");
+            }
+        }
 		#endregion
 
 		#region Methods

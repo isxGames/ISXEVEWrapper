@@ -33,9 +33,9 @@ namespace EVE.ISXEVE
 		#endregion
 
 		#region Members
-    /// <summary>
-    /// Wrapper for the IsConnecting member of the login type.
-    /// </summary>
+        /// <summary>
+        /// Wrapper for the IsConnecting member of the login type.
+        /// </summary>
 		public bool IsConnecting
 		{
 			get
@@ -44,9 +44,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for the ServerStatus member of the login type.
-    /// </summary>
+        /// <summary>
+        /// Wrapper for the ServerStatus member of the login type.
+        /// </summary>
 		public string ServerStatus
 		{
 			get
@@ -55,9 +55,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for the ServerPopulation member of the login type.
-    /// </summary>
+        /// <summary>
+        /// Wrapper for the ServerPopulation member of the login type.
+        /// </summary>
 		public int ServerPopulation
 		{
 			get
@@ -65,6 +65,14 @@ namespace EVE.ISXEVE
 				return GetMember<int>("ServerPopulation");
 			}
 		}
+
+        public string ServerMOTD
+        {
+            get
+            {
+                return GetMember<string>("ServerMOTD");
+            }
+        }
 		#endregion
 
 		#region Methods

@@ -87,14 +87,30 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for the GetBookmarks member of the agentmission type.
-    /// </summary>
-    /// <returns></returns>
+        /// <summary>
+        /// Wrapper for the GetBookmarks member of the agentmission type.
+        /// </summary>
+        /// <returns></returns>
 		public List<BookMark> GetBookmarks()
 		{
 			return Util.GetListFromMember<BookMark>(this, "GetBookmarks", "bookmark");
 		}
+
+        public bool RemoteOfferable
+        {
+            get
+            {
+                return GetMember<bool>("RemoteOfferable");
+            }
+        }
+
+        public bool RemoteCompletable
+        {
+            get
+            {
+                return GetMember<bool>("RemoteCompletable");
+            }
+        }
 		#endregion
 
 		#region Methods

@@ -241,6 +241,17 @@ namespace EVE.ISXEVE
 				}
 			}
 		}
+
+        /// <summary>
+        /// (NOTE:  Only works for agent bookmarks.)
+        /// </summary>
+        public bool DeadSpace
+        {
+            get
+            {
+                return GetMember<bool>("DeadSpace");
+            }
+        }
 		#endregion
 
 		#region Methods
@@ -253,6 +264,17 @@ namespace EVE.ISXEVE
 				Tracing.SendCallback("BM.WarpTo", string.Empty);
 			return ExecuteMethod("WarpTo");
 		}
+
+        /// <summary>
+        /// This will only work with bookmarks for which there is an "Align To" option available via the in-game UI.
+        /// </summary>
+        /// <returns></returns>
+        public bool AlignTo()
+        {
+            if (Tracing.Callback != null)
+                Tracing.SendCallback("BM.AlignTo", string.Empty);
+            return ExecuteMethod("AlignTo");
+        }
 
 		/// <summary>
 		/// Warp to the given distance
