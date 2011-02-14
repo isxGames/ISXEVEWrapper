@@ -778,7 +778,21 @@ namespace EVE.ISXEVE
 		}
 		#endregion
 
-		#region Methods
+        /// <summary>
+        /// January 21, 2010
+        /// [ISXEVE-20100121.0001]
+        /// * Added the following MEMBERS to the 'character' datatype
+        /// 1. GetMyOrdersIsReady     (bool) If this is true, you are able to call GetMyOrders, otherwise they will fail.
+        /// </summary>
+        public bool GetMyOrdersIsReady
+        {
+            get
+            {
+                return GetMember<bool>("GetMyOrdersIsReady");
+            }
+        }
+
+        #region Methods
 		/// <summary>
 		/// Argument is a PERCENTAGE of your max velocity.
 		/// </summary>
