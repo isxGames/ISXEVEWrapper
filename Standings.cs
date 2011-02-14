@@ -87,6 +87,30 @@ namespace EVE.ISXEVE
 				return GetMember<int>("AllianceToAlliance");
 			}
 		}
+
+        public int MeToAlliance
+        {
+            get
+            {
+                return GetMember<int>("MeToAlliance");
+            }
+        }
+
+        public int AllianceToCorp
+        {
+            get
+            {
+                return GetMember<int>("AllianceToCorp");
+            }
+        }
+
+        public int AllianceToPilot
+        {
+            get
+            {
+                return GetMember<int>("AllianceToPilot");
+            }
+        }
 		#endregion
 	}
 }

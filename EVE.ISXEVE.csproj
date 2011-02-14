@@ -71,7 +71,6 @@
     <Compile Include="ActiveDrone.cs" />
     <Compile Include="Agent.cs" />
     <Compile Include="AgentMission.cs" />
-    <Compile Include="Asset.cs" />
     <Compile Include="Attack.cs" />
     <Compile Include="Attacker.cs" />
     <Compile Include="Being.cs" />

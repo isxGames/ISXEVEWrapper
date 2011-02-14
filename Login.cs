@@ -65,6 +65,14 @@ namespace EVE.ISXEVE
 				return GetMember<int>("ServerPopulation");
 			}
 		}
+
+        public string ServerMOTD
+        {
+            get
+            {
+                return GetMember<string>("ServerMOTD");
+            }
+        }
 		#endregion
 
 		#region Methods

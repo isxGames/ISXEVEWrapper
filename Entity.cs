@@ -427,6 +427,19 @@ namespace EVE.ISXEVE
 			}
 		}
 
+        public bool IsAbandoned
+        {
+            get
+            {
+                LavishScriptObject IsAbandoned = GetMember("IsAbandoned");
+                if (LavishScriptObject.IsNullOrInvalid(IsAbandoned))
+                {
+                    return false;
+                }
+                return IsAbandoned.GetValue<bool>();
+            }
+        }
+
 		#region Location
 		/// <summary>
 		/// Wrapper for the X member of the entity type.
@@ -1175,6 +1188,26 @@ namespace EVE.ISXEVE
 			Tracing.SendCallback("Entity.Jump");
 			return ExecuteMethod("Jump");
 		}
+
+        /// <summary>
+        /// This is the preferred method if your script is abandoning one thing at a time.
+        /// </summary>
+        public bool Abandon()
+        {
+            if (Tracing.Callback != null)
+                Tracing.SendCallback("Entity.Abandon", string.Empty);
+            return ExecuteMethod("Abandon");
+        }
+
+        /// <summary>
+        /// Abandons all of nearby entities of the same group type
+        /// </summary>
+        public bool AbandonAll()
+        {
+            if (Tracing.Callback != null)
+                Tracing.SendCallback("Entity.AbandonAll", string.Empty);
+            return ExecuteMethod("AbandonAll");
+        }
 
 		#region Mines
 		/// <summary>

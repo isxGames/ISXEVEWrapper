@@ -96,6 +96,22 @@ namespace EVE.ISXEVE
 			Tracing.SendCallback("AgentMission.DoGetDetails");
 			return Util.GetListFromMethod<BookMark>(this, "DoGetBookmarks", "bookmark");
 		}
+
+        public bool RemoteOfferable
+        {
+            get
+            {
+                return GetMember<bool>("RemoteOfferable");
+            }
+        }
+
+        public bool RemoteCompletable
+        {
+            get
+            {
+                return GetMember<bool>("RemoteCompletable");
+            }
+        }
 		#endregion
 
 		#region Methods

@@ -5,28 +5,6 @@ using System.Text;
 using InnerSpaceAPI;
 using LavishScriptAPI;
 
-//November 4, 2007 -- By Amadeus
-//[ISXEVE-20070911.0505]
-//*** 
-//*** NOTES ABOUT ASSETS:
-//***
-//*** 1. "GetAssets" will NOT include items that are in the same station you are currently residing (if applicable).  However,
-//***    "GetStationsWithAssets" and "NumAssetsAtStation" WILL contain information about your current station.
-//*** 2. ISXEVE cannot override the 5 minute updating delay present in EVE.  In other words, the information given by ISXEVE
-//***    will match what you see in your UI.
-//*** 3. StationID#s match the "LocationID" member of the 'asset' datatype as well as the "ID" member of the 'entity' datatype.
-//*** 4. You will need to open the assets window and have all stations expanded to have access to the items at that station.
-//*** 5. I have placed an example script at http://www.isxgames.com/forums/showthread.php?p=11830&posted=1#post11830
-//***
-//* Added new MEMBERS to the 'character' datatype:
-//  1. GetAssets[<index:asset>]                            (int type)   [Retrieves all items that are in your assets window]
-//     GetAssets[<index:asset>,#]                          (int type)   [Retrieves all items that match the StationID# given]
-//  2. GetStationsWithAssets[<index:int>]                  (int type)   [Retrieves a list of StationID#s where you currently have assets.]
-//* Added new METHODS to the 'character' datatype:
-//  1. DoGetAssets[<index:asset>]                                       [Retrieves all items that are in your assets window]
-//     DoGetAssets[<index:asset>,#]                                     [Retrieves all items that match the StationID# given]
-//  2. DoGetStationsWithAssets[<index:int>]                             [Retrieves a list of StationID#s where you currently have assets.]  
-
 namespace EVE.ISXEVE
 {
 	/// <summary>
@@ -572,21 +550,46 @@ namespace EVE.ISXEVE
 		}
 
 
-		/// <summary>
-		/// Wrapper for the SkillPoints member of the character type.
-		/// </summary>
-		public int SkillPoints
-		{
-			get
-			{
-				LavishScriptObject skillPoints = GetMember("SkillPoints");
-				if (LavishScriptObject.IsNullOrInvalid(skillPoints))
-				{
-					return -1;
-				}
-				return skillPoints.GetValue<int>();
-			}
-		}
+        /// <summary>
+        /// Wrapper for the SkillPoints member of the character type.
+        /// </summary>
+        public double SkillPoints
+        {
+            get
+            {
+                LavishScriptObject skillPoints = GetMember("SkillPoints");
+                if (!LavishScriptObject.IsNullOrInvalid(skillPoints))
+                {
+                    return skillPoints.GetValue<double>();
+                }
+                else
+                {
+                    return -1.0f;
+                }
+            }
+        }
+
+        /// <summary>
+        /// *** Note:  The return value from this datatype member does not correlate, in any way, with the way that humans typically
+        /// ***        tell time.   However, it is useful in the following contexts:
+        /// ***        1.  If it's >0, then you are still training.  If it's 0 or NULL, then you're not training.  Etc...
+        /// ***        2.  echo "My training queue will end at {$EVETime[${Math.Calc64[${Me.SkillQueueLength}+${EVETime.AsInt64}]}]}"
+        /// </summary>
+        public double SkillQueueLength
+        {
+            get
+            {
+                LavishScriptObject SkillQueueLength = GetMember("SkillQueueLength");
+                if (!LavishScriptObject.IsNullOrInvalid(SkillQueueLength))
+                {
+                    return SkillQueueLength.GetValue<double>();
+                }
+                else
+                {
+                    return -1.0f;
+                }
+            }
+        }
 		#endregion
 
 		#region Targeting
@@ -669,21 +672,30 @@ namespace EVE.ISXEVE
 			return Util.GetListFromMethod<Item>(this, "DoGetCorpHangarItems", "item");
 		}
 
+        /// <summary>
+        /// Wrapper for the GetCorpHangarShips member of the character type.
+        /// </summary>
+        /// <returns></returns>
+        public List<Item> GetCorpHangarShips()
+        {
+            return Util.GetListFromMember<Item>(this, "GetCorpHangarShips", "item");
+        }
+
 		/// <summary>
-		/// 1. GetAssets[&lt;index:asset&gt;] (int type) [Retrieves all items that are in your assets window]
+        /// 1. GetAssets[index:item] (int type) [Retrieves all items that are in your assets window]
 		/// </summary>
-		public List<Asset> GetAssets()
+		public List<Item> GetAssets()
 		{
 			Tracing.SendCallback("Character.DoGetAssets");
-			return Util.GetListFromMethod<Asset>(this, "DoGetAssets", "asset");
+			return Util.GetListFromMethod<Item>(this, "DoGetAssets", "item");
 		}
 
 		/// <summary>
-		/// GetAssets[&lt;index:asset&gt;,#] (int type) [Retrieves all items that match the StationID# given]
+        /// GetAssets[index:item,#] (int type) [Retrieves all items that match the StationID# given]
 		/// </summary>
-		public List<Asset> GetAssets(Int64 StationID)
+        public List<Item> GetAssets(Int64 StationID)
 		{
-			return Util.GetListFromMethod<Asset>(this, "DoGetAssets", "asset", StationID.ToString());
+            return Util.GetListFromMethod<Item>(this, "DoGetAssets", "item", StationID.ToString());
 		}
 
 		/// <summary>
@@ -742,6 +754,17 @@ namespace EVE.ISXEVE
 			Tracing.SendCallback("Character.GetMyOrders", buyOrSell.ToString(), typeID.ToString());
 			return Util.GetListFromMethod<MyOrder>(this, "GetMyOrders", "myorder", buyOrSell.ToString(), typeID.ToString());
 		}
+
+        /// <summary>
+        /// 1. GetMyOrdersIsReady     (bool) If this is true, you are able to call GetMyOrders, otherwise they will fail.
+        /// </summary>
+        public bool GetMyOrdersIsReady
+        {
+            get
+            {
+                return GetMember<bool>("GetMyOrdersIsReady");
+            }
+        }
 		#endregion
 
 		#region Methods

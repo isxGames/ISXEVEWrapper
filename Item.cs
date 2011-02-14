@@ -166,25 +166,6 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
-		/// Wrapper for the IsContraband member of the item type.
-		/// </summary>
-		public bool IsContraband
-		{
-			get
-			{
-				LavishScriptObject isContraband = GetMember("IsContraband");
-				if (LavishScriptObject.IsNullOrInvalid(isContraband))
-				{
-					return false;
-				}
-				else
-				{
-					return isContraband.GetValue<bool>();
-				}
-			}
-		}
-
-		/// <summary>
 		/// This returns TRUE if the item is a 'repackable' type AND if it's currently 
 		/// in a state to be repackaged. However, it does not make sure that the item 
 		/// is in a location where it CAN be repackaged (ie, your hangar).

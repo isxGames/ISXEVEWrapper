@@ -58,6 +58,15 @@ namespace EVE.ISXEVE
 			return Util.GetListFromMethod<Item>(this, "DoGetCorpHangarItems", "item");
 		}
 
+        /// <summary>
+        /// Wrapper for the GetCorpHangarShips member of the station type.
+        /// </summary>
+        /// <returns></returns>
+        public List<Item> GetCorpHangarShips()
+        {
+            return Util.GetListFromMember<Item>(this, "GetCorpHangarShips", "item");
+        }
+
 		/// <summary>
 		/// Wrapper for Name member of station type.
 		/// </summary>
