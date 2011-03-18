@@ -21,58 +21,22 @@ namespace EVE.ISXEVE
 		#endregion
 
 		#region Members
-    /// <summary>
-    /// Type member
-    /// </summary>
-		public string Type
+		/// <summary>
+		/// Get the Entity this Jammer is from.
+		/// </summary>
+		public Entity ToEntity
 		{
 			get
 			{
-				LavishScriptObject type = GetMember("Type");
-				if (LavishScriptObject.IsNullOrInvalid(type))
-				{
-					return string.Empty;
-				}
-				return type.GetValue<string>();
+				return new Entity(GetMember("ToEntity"));
 			}
 		}
+		#endregion
 
-    /// <summary>
-    /// CycleTimeRemaining member
-    /// </summary>
-		public double CycleTimeRemaining
+		#region Methods
+		public List<string> GetJams()
 		{
-			get
-			{
-				LavishScriptObject cycleTimeRemaining = GetMember("CycleTimeRemaining");
-				if (LavishScriptObject.IsNullOrInvalid(cycleTimeRemaining))
-				{
-					return -1;
-				}
-				return cycleTimeRemaining.GetValue<double>();
-			}
-		}
-
-    /// <summary>
-    /// Origin member
-    /// </summary>
-		public Entity Origin
-		{
-			get
-			{
-				return new Entity(GetMember("Origin"));
-			}
-		}
-
-    /// <summary>
-    /// StartTime member
-    /// </summary>
-		public EVETime StartTime
-		{
-			get
-			{
-				return new EVETime(GetMember("StartTime"));
-			}
+			return Util.GetListFromMethod<string>(this, "GetJams", "string");
 		}
 		#endregion
 	}

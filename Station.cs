@@ -88,19 +88,9 @@ namespace EVE.ISXEVE
 			return Util.GetListFromMember<Item>(this, "GetCorpHangarItems", "item");
 		}
 
-        /// <summary>
-        /// Wrapper for the GetCorpHangarShips member of the station type.
-        /// </summary>
-        /// <returns></returns>
-        public List<Item> GetCorpHangarShips()
-        {
-            return Util.GetListFromMember<Item>(this, "GetCorpHangarShips", "item");
-        }
-
-
-        /// <summary>
-        /// Wrapper for Name member of station type.
-        /// </summary>
+    /// <summary>
+    /// Wrapper for Name member of station type.
+    /// </summary>
 		public string Name
 		{
 			get
@@ -372,7 +362,7 @@ namespace EVE.ISXEVE
 			return ExecuteMethod("StackAllHangarItems");
 		}
 
-        /// <summary>
+    /// <summary>
         /// Open the corp hangar.
         /// </summary>
         /// <returns></returns>

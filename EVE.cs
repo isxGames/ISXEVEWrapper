@@ -354,7 +354,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public List<MarketOrder> GetMarketOrders(int typeID)
 		{
-			return Util.GetListFromMethod<MarketOrder>(this, "GetMarketOrders", "marketorder", typeID.ToString());
+			return Util.GetListFromMember<MarketOrder>(this, "DoGetMarketOrders", "marketorder", typeID.ToString());
 		}
 
 		/// <summary>
@@ -365,7 +365,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public List<MarketOrder> GetMarketOrders(int typeID, OrderType buyOrSell)
 		{
-			return Util.GetListFromMethod<MarketOrder>(this, "GetMarketOrders", "marketorder", typeID.ToString(), buyOrSell.ToString());
+			return Util.GetListFromMember<MarketOrder>(this, "DoGetMarketOrders", "marketorder", typeID.ToString(), buyOrSell.ToString());
 		}
 		#endregion
 
@@ -766,8 +766,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool RefreshStandings()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("EVE.RefreshStandings", string.Empty);
+			Tracing.SendCallback("EVE.RefreshStandings", string.Empty);
 			return ExecuteMethod("RefreshStandings");
 		}
 	}

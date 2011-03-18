@@ -694,15 +694,6 @@ namespace EVE.ISXEVE
 			return Util.GetListFromMember<Item>(this, "GetCorpHangarItems", "item");
 		}
 
-        /// <summary>
-        /// Wrapper for the GetCorpHangarShips member of the character type.
-        /// </summary>
-        /// <returns></returns>
-        public List<Item> GetCorpHangarShips()
-        {
-            return Util.GetListFromMember<Item>(this, "GetCorpHangarShips", "item");
-        }
-
 		/// <summary>
         /// 1. GetAssets[index:item] (int type) [Retrieves all items that are in your assets window]
 		/// </summary>
@@ -851,8 +842,45 @@ namespace EVE.ISXEVE
 		public bool UpdateMyOrders()
 		{
 			if (Tracing.Callback != null)
-				Tracing.SendCallback("Character.UpdateMyOrders", string.Empty);
+				Tracing.SendCallback("Character.UpdateMyOrders");
 			return ExecuteMethod("UpdateMyOrders");
+		}
+
+		/// <summary>
+		/// Get a list of Attackers.
+		/// Note: This will return a null list if there are no attackers.
+		/// </summary>
+		/// <returns></returns>
+		public List<Attacker> GetAttackers()
+		{
+			if (Tracing.Callback != null)
+				Tracing.SendCallback("Character.GetAttackers");
+
+			return Util.GetListFromMember<Attacker>(this, "GetAttackers", "attacker");
+		}
+
+		/// <summary>
+		/// Get a list of Attackers as entities.
+		/// </summary>
+		/// <returns></returns>
+		public List<Entity> GetAttackersAsEntities()
+		{
+			if (Tracing.Callback != null)
+				Tracing.SendCallback("Character.GetAttackersAsEntities");
+
+			return Util.GetListFromMember<Entity>(this, "GetAttackers", "entity");
+		}
+
+		/// <summary>
+		/// Get a list of Jammers on us.
+		/// </summary>
+		/// <returns></returns>
+		public List<Jammer> GetJammers()
+		{
+			if (Tracing.Callback != null)
+				Tracing.SendCallback("Character.GetAttackers");
+
+			return Util.GetListFromMember<Jammer>(this, "GetJammers", "jammer");
 		}
 		#endregion
 

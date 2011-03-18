@@ -70,7 +70,7 @@ namespace ISXEVEWrapperTest
 
                 InnerSpace.Echo("You have " + stationList.Count + " stations with assets.");
 
-                foreach (long station in stationList)
+                foreach (int station in stationList)
                 {
                     List<Asset> assetList;
                     assetList = Ext.Me.GetAssets(station);

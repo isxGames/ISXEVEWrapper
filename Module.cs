@@ -113,28 +113,6 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
-		/// Wrapper for the IsWaitingForActiveTarget member of a module object.
-		/// </summary>
-		public bool IsChangingAmmo
-		{
-			get
-			{
-				return GetMember<bool>("IsChangingAmmo");
-			}
-		}
-
-		/// <summary>
-		/// Wrapper for the IsReloadingAmmo member of a module object.
-		/// </summary>
-		public bool IsReloadingAmmo
-		{
-			get
-			{
-				return GetMember<bool>("IsReloadingAmmo");
-			}
-		}
-
-		/// <summary>
 		/// Is module online (as opposed to active)
 		/// </summary>
 		public bool IsOnline
@@ -1294,6 +1272,18 @@ namespace EVE.ISXEVE
 			if (Tracing.Callback != null)
 				Tracing.SendCallback("Module.Deactivate", string.Empty);
 			return ExecuteMethod("Deactivate");
+		}
+
+		/// <summary>
+		/// Reload the module with the currently loaded charge type.
+		/// NOTE: Does not work on empty modules.
+		/// </summary>
+		/// <returns></returns>
+		public bool ChangeAmmo()
+		{
+			if (Tracing.Callback != null)
+				Tracing.SendCallback("Module.ChangeAmmo");
+			return ExecuteMethod("ChangeAmmo");
 		}
 
 		/// <summary>

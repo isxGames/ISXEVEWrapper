@@ -21,6 +21,9 @@ namespace EVE.ISXEVE
 		#endregion
 
 		#region Members
+		/// <summary>
+		/// The EntityID of the Attacker.
+		/// </summary>
 		public Int64 ID
 		{
 			get
@@ -40,17 +43,12 @@ namespace EVE.ISXEVE
 		/// <summary>
 		/// GetAttacks member
 		/// </summary>
-		public int GetAttacks
+		public List<Attack> GetAttacks()
 		{
-			get
-			{
-				LavishScriptObject getAttacks = GetMember("GetAttacks");
-				if (LavishScriptObject.IsNullOrInvalid(getAttacks))
-				{
-					return -1;
-				}
-				return getAttacks.GetValue<int>();
-			}
+			if (Tracing.Callback != null)
+				Tracing.SendCallback("Attacker.GetAttacks");
+
+			return Util.GetListFromMember<Attack>(this, "GetAttacks", "attack");
 		}
 
 		/// <summary>
@@ -79,18 +77,16 @@ namespace EVE.ISXEVE
 				return new Entity(GetMember("ToEntity"));
 			}
 		}
-		#endregion
 
-		#region Methods
 		/// <summary>
-		/// DoGetAttacks method
+		/// Get the Jammer member of the Attacker object
 		/// </summary>
-		/// <returns></returns>
-		public List<Attack> DoGetAttacks()
+		public Jammer ToJammer
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Attacker.DoGetAttacks", string.Empty);
-			return Util.GetListFromMethod<Attack>(this, "DoGetAttacks", "attack");
+			get
+			{
+				return new Jammer(GetMember("ToJammer"));
+			}
 		}
 		#endregion
 	}

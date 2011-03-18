@@ -67,17 +67,6 @@ namespace EVE.ISXEVE
 				return new EVETime(GetMember("TimeStarted"));
 			}
 		}
-
-		/// <summary>
-		/// Jammer member
-		/// </summary>
-		public Jammer Jammer
-		{
-			get
-			{
-				return new Jammer(GetMember("Jammer"));
-			}
-		}
 		#endregion
 	}
 }
