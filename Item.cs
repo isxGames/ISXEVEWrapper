@@ -24,7 +24,7 @@ namespace EVE.ISXEVE
 		#endregion
 
 		#region Members
-		/// <summary>
+		/// <summary>1
 		/// Wrapper for the BasePrice member of the item type.
 		/// </summary>
 		public double BasePrice
@@ -164,6 +164,24 @@ namespace EVE.ISXEVE
 				return GetMember<Int64>("ID");
 			}
 		}
+
+        /// Wrapper for the IsContraband member of the item type.
+        /// </summary>
+        public bool IsContraband
+        {
+            get
+            {
+                LavishScriptObject isContraband = GetMember("IsContraband");
+                if (LavishScriptObject.IsNullOrInvalid(isContraband))
+                {
+                    return false;
+                }
+                else
+                {
+                    return isContraband.GetValue<bool>();
+                }
+            }
+        }
 
 		/// <summary>
 		/// This returns TRUE if the item is a 'repackable' type AND if it's currently 

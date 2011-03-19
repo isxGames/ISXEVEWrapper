@@ -88,9 +88,18 @@ namespace EVE.ISXEVE
 			return Util.GetListFromMember<Item>(this, "GetCorpHangarItems", "item");
 		}
 
-    /// <summary>
-    /// Wrapper for Name member of station type.
-    /// </summary>
+        /// <summary>
+        /// Wrapper for the GetCorpHangarShips member of the station type.
+        /// </summary>
+        /// <returns></returns>
+        public List<Item> GetCorpHangarShips()
+        {
+            return Util.GetListFromMember<Item>(this, "GetCorpHangarShips", "item");
+        }
+
+        /// <summary>
+        /// Wrapper for Name member of station type.
+        /// </summary>
 		public string Name
 		{
 			get
@@ -99,9 +108,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for Description member of station type.
-    /// </summary>
+        /// <summary>
+        /// Wrapper for Description member of station type.
+        /// </summary>
 		public string Description
 		{
 			get
@@ -110,9 +119,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for ID member of station type.
-    /// </summary>
+        /// <summary>
+        /// Wrapper for ID member of station type.
+        /// </summary>
 		public int ID
 		{
 			get
@@ -121,9 +130,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for TypeID member of station type.
-    /// </summary>
+        /// <summary>
+        /// Wrapper for TypeID member of station type.
+        /// </summary>
 		public int TypeID
 		{
 			get
@@ -132,9 +141,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for Type member of station type.
-    /// </summary>
+        /// <summary>
+        /// Wrapper for Type member of station type.
+        /// </summary>
 		public string Type
 		{
 			get
@@ -143,9 +152,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for OwnerID member of station type.
-    /// </summary>
+        /// <summary>
+        /// Wrapper for OwnerID member of station type.
+        /// </summary>
 		public int OwnerID
 		{
 			get
@@ -154,9 +163,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for Owner member of station type.
-    /// </summary>
+        /// <summary>
+        /// Wrapper for Owner member of station type.
+        /// </summary>
 		public string Owner
 		{
 			get
@@ -165,9 +174,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for OwnerTypeID member of station type.
-    /// </summary>
+        /// <summary>
+        /// Wrapper for OwnerTypeID member of station type.
+        /// </summary>
 		public int OwnerTypeID
 		{
 			get
@@ -176,9 +185,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for OwnerType member of station type.
-    /// </summary>
+        /// <summary>
+        /// Wrapper for OwnerType member of station type.
+        /// </summary>
 		public string OwnerType
 		{
 			get
@@ -187,9 +196,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for SolarSystem member of station type.
-    /// </summary>
+        /// <summary>
+        /// Wrapper for SolarSystem member of station type.
+        /// </summary>
 		public Interstellar SolarSystem
 		{
 			get
@@ -198,9 +207,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for Constellation member of station type.
-    /// </summary>
+        /// <summary>
+        /// Wrapper for Constellation member of station type.
+        /// </summary>
 		public Interstellar Constellation
 		{
 			get
@@ -209,9 +218,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for Region member of station type.
-    /// </summary>
+        /// <summary>
+        /// Wrapper for Region member of station type.
+        /// </summary>
 		public Interstellar Region
 		{
 			get
@@ -220,9 +229,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for X member of station type.
-    /// </summary>
+        /// <summary>
+        /// Wrapper for X member of station type.
+        /// </summary>
 		public double X
 		{
 			get
@@ -231,9 +240,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for Y member of station type.
-    /// </summary>
+        /// <summary>
+        /// Wrapper for Y member of station type.
+        /// </summary>
 		public double Y
 		{
 			get
@@ -242,9 +251,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for Z member of station type.
-    /// </summary>
+        /// <summary>
+        /// Wrapper for Z member of station type.
+        /// </summary>
 		public double Z
 		{
 			get
@@ -253,9 +262,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for Radius member of station type.
-    /// </summary>
+        /// <summary>
+        /// Wrapper for Radius member of station type.
+        /// </summary>
 		public double Radius
 		{
 			get
@@ -264,9 +273,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for Security member of station type.
-    /// </summary>
+        /// <summary>
+        /// Wrapper for Security member of station type.
+        /// </summary>
 		public int Security
 		{
 			get
@@ -275,9 +284,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for DockingCostPerVolume member of station type.
-    /// </summary>
+        /// <summary>
+        /// Wrapper for DockingCostPerVolume member of station type.
+        /// </summary>
 		public double DockingCostPerVolume
 		{
 			get
@@ -286,9 +295,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for MaxShipVolumeDockable member of station type.
-    /// </summary>
+        /// <summary>
+        /// Wrapper for MaxShipVolumeDockable member of station type.
+        /// </summary>
 		public double MaxShipVolumeDockable
 		{
 			get
@@ -297,9 +306,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for OfficeRentalCost member of station type.
-    /// </summary>
+        /// <summary>
+        /// Wrapper for OfficeRentalCost member of station type.
+        /// </summary>
 		public int OfficeRentalCost
 		{
 			get
@@ -308,9 +317,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for ReprocessingEfficiency member of station type.
-    /// </summary>
+        /// <summary>
+        /// Wrapper for ReprocessingEfficiency member of station type.
+        /// </summary>
 		public double ReprocessingEfficiency
 		{
 			get
@@ -319,9 +328,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for ReprocessingStationTakes member of station type.
-    /// </summary>
+        /// <summary>
+        /// Wrapper for ReprocessingStationTakes member of station type.
+        /// </summary>
 		public double ReprocessingStationTakes
 		{
 			get
@@ -330,9 +339,9 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for Conquerable member of station type.
-    /// </summary>
+        /// <summary>
+        /// Wrapper for Conquerable member of station type.
+        /// </summary>
 		public bool Conquerable
 		{
 			get
@@ -341,10 +350,10 @@ namespace EVE.ISXEVE
 			}
 		}
 
-    /// <summary>
-    /// Wrapper for GetServices member of station type.
-    /// </summary>
-    /// <returns></returns>
+        /// <summary>
+        /// Wrapper for GetServices member of station type.
+        /// </summary>
+        /// <returns></returns>
 		public List<string> GetServices()
 		{
 			return Util.GetListFromMember<string>(this, "GetServices", "string");

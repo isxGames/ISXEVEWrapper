@@ -766,7 +766,8 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool RefreshStandings()
 		{
-			Tracing.SendCallback("EVE.RefreshStandings", string.Empty);
+            if (Tracing.Callback != null)
+			    Tracing.SendCallback("EVE.RefreshStandings", string.Empty);
 			return ExecuteMethod("RefreshStandings");
 		}
 	}

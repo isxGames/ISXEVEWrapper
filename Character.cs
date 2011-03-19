@@ -694,6 +694,15 @@ namespace EVE.ISXEVE
 			return Util.GetListFromMember<Item>(this, "GetCorpHangarItems", "item");
 		}
 
+        /// <summary>
+        /// Wrapper for the GetCorpHangarShips member of the character type.
+        /// </summary>
+        /// <returns></returns>
+        public List<Item> GetCorpHangarShips()
+        {
+            return Util.GetListFromMember<Item>(this, "GetCorpHangarShips", "item");
+        }
+
 		/// <summary>
         /// 1. GetAssets[index:item] (int type) [Retrieves all items that are in your assets window]
 		/// </summary>
