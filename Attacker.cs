@@ -63,6 +63,15 @@ namespace EVE.ISXEVE
 				return new Entity(GetMember("ToEntity"));
 			}
 		}
+
+		/// Get the Jammer member of the Attacker object
+        public Jammer ToJammer
+        {
+            get
+            {
+                return new Jammer(GetMember("ToJammer"));
+            }
+        }
 		#endregion
 
 		#region Methods

@@ -832,6 +832,43 @@ namespace EVE.ISXEVE
 			Tracing.SendCallback("Character.UpdateMyOrders");
 			return ExecuteMethod("UpdateMyOrders");
 		}
+
+        /// <summary>
+        /// Get a list of Attackers.
+        /// Note: This will return a null list if there are no attackers.
+        /// </summary>
+        /// <returns></returns>
+        public List<Attacker> GetAttackers()
+        {
+            if (Tracing.Callback != null)
+                Tracing.SendCallback("Character.GetAttackers");
+
+            return Util.GetListFromMember<Attacker>(this, "GetAttackers", "attacker");
+        }
+
+        /// <summary>
+        /// Get a list of Attackers as entities.
+        /// </summary>
+        /// <returns></returns>
+        public List<Entity> GetAttackersAsEntities()
+        {
+            if (Tracing.Callback != null)
+                Tracing.SendCallback("Character.GetAttackersAsEntities");
+
+            return Util.GetListFromMember<Entity>(this, "GetAttackers", "entity");
+        }
+
+        /// <summary>
+        /// Get a list of Jammers on us.
+        /// </summary>
+        /// <returns></returns>
+        public List<Jammer> GetJammers()
+        {
+            if (Tracing.Callback != null)
+                Tracing.SendCallback("Character.GetAttackers");
+
+            return Util.GetListFromMember<Jammer>(this, "GetJammers", "jammer");
+        }
 		#endregion
 
 		/// <summary>

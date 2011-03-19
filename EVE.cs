@@ -301,7 +301,7 @@ namespace EVE.ISXEVE
 		public List<MarketOrder> GetMarketOrders(int typeID)
 		{
 			Tracing.SendCallback("EVE.GetMarketOrders", typeID.ToString());
-			return Util.GetListFromMethod<MarketOrder>(this, "GetMarketOrders", "marketorder", typeID.ToString());
+            return Util.GetListFromMember<MarketOrder>(this, "GetMarketOrders", "marketorder", typeID.ToString());
 		}
 
 		/// <summary>
@@ -313,7 +313,7 @@ namespace EVE.ISXEVE
 		public List<MarketOrder> GetMarketOrders(int typeID, OrderType buyOrSell)
 		{
 			Tracing.SendCallback("EVE.GetMarketOrders", typeID.ToString(), buyOrSell.ToString());
-			return Util.GetListFromMethod<MarketOrder>(this, "GetMarketOrders", "marketorder", typeID.ToString(), buyOrSell.ToString());
+            return Util.GetListFromMember<MarketOrder>(this, "GetMarketOrders", "marketorder", typeID.ToString(), buyOrSell.ToString());
 		}
 
 		/// <summary>

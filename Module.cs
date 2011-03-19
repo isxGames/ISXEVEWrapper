@@ -1292,6 +1292,17 @@ namespace EVE.ISXEVE
 			return ExecuteMethod("Deactivate");
 		}
 
+        /// <summary>
+        /// Reload the module with the currently loaded charge type.
+        /// NOTE: Does not work on empty modules.
+        /// </summary>
+        /// <returns></returns>
+        public bool ChangeAmmo()
+        {
+             Tracing.SendCallback("Module.ChangeAmmo");
+            return ExecuteMethod("ChangeAmmo");
+        }
+
 		/// <summary>
 		/// Parameter is the Item.ID of an ammunition from your ship's cargo
 		/// NOTE: This method will replace your current ammo with the ammo given 
