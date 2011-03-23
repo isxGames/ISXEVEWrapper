@@ -550,24 +550,24 @@ namespace EVE.ISXEVE
 		}
 
 
-        /// <summary>
-        /// Wrapper for the SkillPoints member of the character type.
-        /// </summary>
-        public double SkillPoints
-        {
-            get
-            {
-                LavishScriptObject skillPoints = GetMember("SkillPoints");
-                if (!LavishScriptObject.IsNullOrInvalid(skillPoints))
-                {
-                    return skillPoints.GetValue<double>();
-                }
-                else
-                {
-                    return -1.0f;
-                }
-            }
-        }
+		/// <summary>
+		/// Wrapper for the SkillPoints member of the character type.
+		/// </summary>
+		public double SkillPoints
+		{
+			get
+			{
+				LavishScriptObject skillPoints = GetMember("SkillPoints");
+				if (!LavishScriptObject.IsNullOrInvalid(skillPoints))
+				{
+					return skillPoints.GetValue<double>();
+				}
+				else
+				{
+					return -1.0f;
+				}
+			}
+		}
 
         /// <summary>
         /// *** Note:  The return value from this datatype member does not correlate, in any way, with the way that humans typically
@@ -768,7 +768,18 @@ namespace EVE.ISXEVE
         }
 		#endregion
 
-		#region Methods
+        /// <summary>
+        /// 1. GetMyOrdersIsReady     (bool) If this is true, you are able to call GetMyOrders, otherwise they will fail.
+        /// </summary>
+        public bool GetMyOrdersIsReady
+        {
+            get
+            {
+                return GetMember<bool>("GetMyOrdersIsReady");
+            }
+        }
+
+        #region Methods
 		/// <summary>
 		/// Argument is a PERCENTAGE of your max velocity.
 		/// </summary>
