@@ -82,7 +82,7 @@ namespace EVE.ISXEVE
 		private static List<T> IndexToLavishScriptObjectList<T>(LavishScriptObject Index, string LSTypeName)
 		{
 			string methodName = "IndexToLSOList";
-			Tracing.SendCallback(methodName, LSTypeName);
+			//Tracing.SendCallback(methodName, LSTypeName);
 
 			//Tracing.SendCallback(methodName, "getmember Used");
 			List<T> List = new List<T>();
@@ -151,7 +151,7 @@ namespace EVE.ISXEVE
 		internal static List<T> GetListFromMethod<T>(ILSObject Obj, string MethodName, string LSTypeName, params string[] Args)
 		{
 			string methodName = "GetListFromMethod";
-			Tracing.SendCallback(methodName, MethodName, LSTypeName);
+			//Tracing.SendCallback(methodName, MethodName, LSTypeName);
 
 			if (Obj == null || !Obj.IsValid)
 				return null;
@@ -222,7 +222,7 @@ namespace EVE.ISXEVE
 		internal static List<T> GetListFromMember<T>(ILSObject Obj, string MemberName, string LSTypeName, params string[] Args)
 		{
 			string methodName = "GetListFromMember";
-			Tracing.SendCallback(methodName, MemberName, LSTypeName);
+			//Tracing.SendCallback(methodName, MemberName, LSTypeName);
 			
 			if (Obj == null || !Obj.IsValid)
 				return null;

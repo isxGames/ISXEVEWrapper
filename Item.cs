@@ -63,7 +63,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public List<Item> GetCargo()
 		{
-			return Util.GetListFromMethod<Item>(this, "DoGetCargo", "item");
+			return Util.GetListFromMethod<Item>(this, "GetCargo", "item");
 		}
 
 		/// <summary>

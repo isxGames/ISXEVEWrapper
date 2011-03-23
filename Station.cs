@@ -36,8 +36,8 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public List<Item> GetHangarItems()
 		{
-			Tracing.SendCallback("Station.DoGetHangarItems");
-			return Util.GetListFromMethod<Item>(this, "DoGetHangerItems", "item");
+			Tracing.SendCallback("Station.GetHangarItems");
+			return Util.GetListFromMethod<Item>(this, "GetHangerItems", "item");
 		}
 
 		/// <summary>
@@ -45,8 +45,8 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public List<Item> GetHangarShips()
 		{
-			Tracing.SendCallback("Station.DoGetCorpHangarShips");
-			return Util.GetListFromMethod<Item>(this, "DoGetHangerShips", "item");
+			Tracing.SendCallback("Station.GetCorpHangarShips");
+			return Util.GetListFromMethod<Item>(this, "GetHangerShips", "item");
 		}
 
 		/// <summary>
@@ -54,8 +54,8 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public List<Item> GetCorpHangarItems()
 		{
-			Tracing.SendCallback("Station.DoGetCorpHangarItems");
-			return Util.GetListFromMethod<Item>(this, "DoGetCorpHangarItems", "item");
+			Tracing.SendCallback("Station.GetCorpHangarItems");
+			return Util.GetListFromMethod<Item>(this, "GetCorpHangarItems", "item");
 		}
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace EVE.ISXEVE
         /// <returns></returns>
         public List<Item> GetCorpHangarShips()
         {
-            return Util.GetListFromMember<Item>(this, "GetCorpHangarShips", "item");
+            return Util.GetListFromMethod<Item>(this, "GetCorpHangarShips", "item");
         }
 
 		/// <summary>

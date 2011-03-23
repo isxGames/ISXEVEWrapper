@@ -94,8 +94,8 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public List<ActiveDrone> GetActiveDrones()
 		{
-			Tracing.SendCallback("Character.DoGetActiveDrones");
-			return Util.GetListFromMethod<ActiveDrone>(this, "DoGetActiveDrones", "activedrone");
+			Tracing.SendCallback("Character.GetActiveDrones");
+			return Util.GetListFromMethod<ActiveDrone>(this, "GetActiveDrones", "activedrone");
 		}
 
 		/// <summary>
@@ -104,8 +104,8 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public List<long> GetActiveDroneIDs()
 		{
-			Tracing.SendCallback("Character.DoGetActiveDroneIDs");
-			return Util.GetListFromMethod<long>(this, "DoGetActiveDroneIDs", "int64");
+			Tracing.SendCallback("Character.GetActiveDroneIDs");
+			return Util.GetListFromMethod<long>(this, "GetActiveDroneIDs", "int64");
 		}
 
 		#region SelfCorpLocation
@@ -546,7 +546,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public List<Skill> GetSkills()
 		{
-			return Util.GetListFromMethod<Skill>(this, "DoGetSkills", "skill");
+			return Util.GetListFromMethod<Skill>(this, "GetSkills", "skill");
 		}
 
 
@@ -609,8 +609,8 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public List<Entity> GetTargets()
 		{
-			Tracing.SendCallback("Character.DoGetTargets");
-			return Util.GetListFromMethod<Entity>(this, "DoGetTargets", "entity");
+			Tracing.SendCallback("Character.GetTargets");
+			return Util.GetListFromMethod<Entity>(this, "GetTargets", "entity");
 		}
 
 		/// <summary>
@@ -619,8 +619,8 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public Entity GetTarget(int i)
 		{
-			Tracing.SendCallback("Character.DoGetTargets", i.ToString());
-			return Util.GetFromIndexMethod<Entity>(this, "DoGetTargets", "entity", i);
+			Tracing.SendCallback("Character.GetTargets", i.ToString());
+			return Util.GetFromIndexMethod<Entity>(this, "GetTargets", "entity", i);
 		}
 
 		/// <summary>
@@ -628,8 +628,8 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public List<Entity> GetTargeting()
 		{
-			Tracing.SendCallback("Character.DoGetTargeting");
-			return Util.GetListFromMethod<Entity>(this, "DoGetTargeting", "entity");
+			Tracing.SendCallback("Character.GetTargeting");
+			return Util.GetListFromMethod<Entity>(this, "GetTargeting", "entity");
 		}
 
 		/// <summary>
@@ -637,8 +637,8 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public List<Entity> GetTargetedBy()
 		{
-			Tracing.SendCallback("Character.DoGetTargetedBy");
-			return Util.GetListFromMethod<Entity>(this, "DoGetTargetedBy", "entity");
+			Tracing.SendCallback("Character.GetTargetedBy");
+			return Util.GetListFromMethod<Entity>(this, "GetTargetedBy", "entity");
 		}
 		#endregion
 
@@ -648,8 +648,8 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public List<Item> GetHangarItems()
 		{
-			Tracing.SendCallback("Character.DoGetHangarItems");
-			return Util.GetListFromMethod<Item>(this, "DoGetHangarItems", "item");
+			Tracing.SendCallback("Character.GetHangarItems");
+			return Util.GetListFromMethod<Item>(this, "GetHangarItems", "item");
 		}
 
 		/// <summary>
@@ -658,8 +658,8 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public List<Item> GetHangarShips()
 		{
-			Tracing.SendCallback("Character.DoGetHangarShips");
-			return Util.GetListFromMethod<Item>(this, "DoGetHangarShips", "item");
+			Tracing.SendCallback("Character.GetHangarShips");
+			return Util.GetListFromMethod<Item>(this, "GetHangarShips", "item");
 		}
 
 		/// <summary>
@@ -668,8 +668,8 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public List<Item> GetCorpHangarItems()
 		{
-			Tracing.SendCallback("Character.DoGetCorpHangarItems");
-			return Util.GetListFromMethod<Item>(this, "DoGetCorpHangarItems", "item");
+			Tracing.SendCallback("Character.GetCorpHangarItems");
+			return Util.GetListFromMethod<Item>(this, "GetCorpHangarItems", "item");
 		}
 
         /// <summary>
@@ -678,7 +678,7 @@ namespace EVE.ISXEVE
         /// <returns></returns>
         public List<Item> GetCorpHangarShips()
         {
-            return Util.GetListFromMember<Item>(this, "GetCorpHangarShips", "item");
+            return Util.GetListFromMethod<Item>(this, "GetCorpHangarShips", "item");
         }
 
 		/// <summary>
@@ -686,8 +686,8 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public List<Item> GetAssets()
 		{
-			Tracing.SendCallback("Character.DoGetAssets");
-			return Util.GetListFromMethod<Item>(this, "DoGetAssets", "item");
+			Tracing.SendCallback("Character.GetAssets");
+			return Util.GetListFromMethod<Item>(this, "GetAssets", "item");
 		}
 
 		/// <summary>
@@ -695,7 +695,8 @@ namespace EVE.ISXEVE
 		/// </summary>
         public List<Item> GetAssets(Int64 StationID)
 		{
-            return Util.GetListFromMethod<Item>(this, "DoGetAssets", "item", StationID.ToString());
+			Tracing.SendCallback("Character.GetAssets", StationID);
+            return Util.GetListFromMethod<Item>(this, "GetAssets", "item", StationID.ToString());
 		}
 
 		/// <summary>
@@ -703,8 +704,8 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public List<Int64> GetStationsWithAssets()
 		{
-			Tracing.SendCallback("Character.DoGetStationsWithAssets");
-			return Util.GetListFromMethod<Int64>(this, "DoGetStationsWithAssets", "int64");
+			Tracing.SendCallback("Character.GetStationsWithAssets");
+			return Util.GetListFromMethod<Int64>(this, "GetStationsWithAssets", "int64");
 		}
 
 		/// <summary>
@@ -843,7 +844,7 @@ namespace EVE.ISXEVE
             if (Tracing.Callback != null)
                 Tracing.SendCallback("Character.GetAttackers");
 
-            return Util.GetListFromMember<Attacker>(this, "GetAttackers", "attacker");
+            return Util.GetListFromMethod<Attacker>(this, "GetAttackers", "attacker");
         }
 
         /// <summary>
@@ -855,7 +856,7 @@ namespace EVE.ISXEVE
             if (Tracing.Callback != null)
                 Tracing.SendCallback("Character.GetAttackersAsEntities");
 
-            return Util.GetListFromMember<Entity>(this, "GetAttackers", "entity");
+            return Util.GetListFromMethod<Entity>(this, "GetAttackers", "entity");
         }
 
         /// <summary>
@@ -867,7 +868,7 @@ namespace EVE.ISXEVE
             if (Tracing.Callback != null)
                 Tracing.SendCallback("Character.GetAttackers");
 
-            return Util.GetListFromMember<Jammer>(this, "GetJammers", "jammer");
+            return Util.GetListFromMethod<Jammer>(this, "GetJammers", "jammer");
         }
 		#endregion
 

@@ -93,8 +93,8 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public List<BookMark> GetBookmarks()
 		{
-			Tracing.SendCallback("AgentMission.DoGetDetails");
-			return Util.GetListFromMethod<BookMark>(this, "DoGetBookmarks", "bookmark");
+			Tracing.SendCallback("AgentMission.GetDetails");
+			return Util.GetListFromMethod<BookMark>(this, "GetBookmarks", "bookmark");
 		}
 
         public bool RemoteOfferable

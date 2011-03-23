@@ -183,7 +183,8 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public List<Item> GetAvailableAmmo()
 		{
-			return Util.GetListFromMethod<Item>(this, "DoGetAvailableAmmo", "item");
+			Tracing.SendCallback("Module.GetAvailableAmmo");
+			return Util.GetListFromMethod<Item>(this, "GetAvailableAmmo", "item");
 		}
 
 

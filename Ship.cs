@@ -680,8 +680,8 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public List<Item> GetCargo()
 		{
-			Tracing.SendCallback("Ship.DoGetCargo");
-			return Util.GetListFromMethod<Item>(this, "DoGetCargo", "item");
+			Tracing.SendCallback("Ship.GetCargo");
+			return Util.GetListFromMethod<Item>(this, "GetCargo", "item");
 		}
 		#endregion
 
@@ -734,8 +734,8 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public List<Item> GetDrones()
 		{
-			Tracing.SendCallback("Ship.DoGetDrones", string.Empty);
-			return Util.GetListFromMethod<Item>(this, "DoGetDrones", "item");
+			Tracing.SendCallback("Ship.GetDrones", string.Empty);
+			return Util.GetListFromMethod<Item>(this, "GetDrones", "item");
 		}
 		#endregion
 
@@ -787,8 +787,8 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public List<Module> GetModules()
 		{
-			Tracing.SendCallback("Ship.DoGetModules");
-			return Util.GetListFromMethod<Module>(this, "DoGetModules", "module");
+			Tracing.SendCallback("Ship.GetModules");
+			return Util.GetListFromMethod<Module>(this, "GetModules", "module");
 		}
 		#endregion
 		#endregion

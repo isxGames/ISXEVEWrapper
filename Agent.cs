@@ -223,8 +223,8 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public List<DialogString> GetDialogResponses()
 		{
-			Tracing.SendCallback("Agent.DoGetDialogResponses");
-			return Util.GetListFromMethod<DialogString>(this, "DoGetDialogResponses", "dialogstring");
+			Tracing.SendCallback("Agent.GetDialogResponses");
+			return Util.GetListFromMethod<DialogString>(this, "GetDialogResponses", "dialogstring");
 		}
 		#endregion
 

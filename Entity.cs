@@ -372,10 +372,8 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public List<ActiveDrone> GetActiveDrones()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.DoGetActiveDrones", string.Empty);
-
-			return Util.GetListFromMethod<ActiveDrone>(this, "DoGetActiveDrones", "activedrone");
+			Tracing.SendCallback("Entity.GetActiveDrones");
+			return Util.GetListFromMethod<ActiveDrone>(this, "GetActiveDrones", "activedrone");
 		}
 
 		/// <summary>
@@ -904,8 +902,8 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public List<Item> GetCargo()
 		{
-			Tracing.SendCallback("Entity.DoGetCargo");
-			return Util.GetListFromMethod<Item>(this, "DoGetCargo", "item");
+			Tracing.SendCallback("Entity.GetCargo");
+			return Util.GetListFromMethod<Item>(this, "GetCargo", "item");
 		}
 
 		/// <summary>

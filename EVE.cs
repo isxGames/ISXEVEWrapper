@@ -87,8 +87,8 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public List<Int64> GetEntityIDs()
 		{
-			Tracing.SendCallback("EVE.DoGetEntityIDs");
-			return Util.GetListFromMethod<Int64>(this, "DoGetEntityIDs", "int64");
+			Tracing.SendCallback("EVE.GetEntityIDs");
+			return Util.GetListFromMethod<Int64>(this, "GetEntityIDs", "int64");
 		}
 
 		/// <summary>
@@ -111,7 +111,7 @@ namespace EVE.ISXEVE
 		public List<int> GetToDestinationPath()
 		{
 			Tracing.SendCallback("EVE.GetToDestinationPath");
-			return Util.GetListFromMethod<int>(this, "DoGetToDestinationPath", "int");
+			return Util.GetListFromMethod<int>(this, "GetToDestinationPath", "int");
 		}
 
 		/// <summary>
@@ -119,8 +119,8 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public List<int> GetWaypoints()
 		{
-			Tracing.SendCallback("EVE.DoGetWaypoints");
-			return Util.GetListFromMethod<int>(this, "DoGetWaypoints", "int");
+			Tracing.SendCallback("EVE.GetWaypoints");
+			return Util.GetListFromMethod<int>(this, "GetWaypoints", "int");
 		}
 
 		/// <summary>
@@ -129,8 +129,8 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public List<AgentMission> GetAgentMissions()
 		{
-			Tracing.SendCallback("EVE.DoGetAgentMissions");
-			return Util.GetListFromMethod<AgentMission>(this, "DoGetAgentMissions", "agentmission");
+			Tracing.SendCallback("EVE.GetAgentMissions");
+			return Util.GetListFromMethod<AgentMission>(this, "GetAgentMissions", "agentmission");
 		}
 
 		/// <summary>
@@ -147,8 +147,8 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public List<BookMark> GetBookmarks()
 		{
-			Tracing.SendCallback("EVE.DoGetBookmarks", string.Empty);
-			return Util.GetListFromMethod<BookMark>(this, "DoGetBookmarks", "bookmark");
+			Tracing.SendCallback("EVE.GetBookmarks", string.Empty);
+			return Util.GetListFromMethod<BookMark>(this, "GetBookmarks", "bookmark");
 		}
 
 		/// <summary>
@@ -247,8 +247,8 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public List<Pilot> GetPilots(params string[] Args)
 		{
-			Tracing.SendCallback("EVE.DoGetPilots", Args);
-			return Util.GetListFromMethod<Pilot>(this, "DoGetPilots", "pilot", Args);
+			Tracing.SendCallback("EVE.GetLocalPilots", Args);
+			return Util.GetListFromMethod<Pilot>(this, "GetLocalPilots", "pilot", Args);
 			//return new List<LocalPilots>();
 		}
 
@@ -257,8 +257,8 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public List<Being> GetBuddies()
 		{
-			Tracing.SendCallback("EVE.DoGetBuddies");
-			return Util.GetListFromMethod<Being>(this, "DoGetBuddies", "being");
+			Tracing.SendCallback("EVE.GetBuddies");
+			return Util.GetListFromMethod<Being>(this, "GetBuddies", "being");
 		}
 
 		/// <summary>
@@ -301,7 +301,7 @@ namespace EVE.ISXEVE
 		public List<MarketOrder> GetMarketOrders(int typeID)
 		{
 			Tracing.SendCallback("EVE.GetMarketOrders", typeID.ToString());
-            return Util.GetListFromMember<MarketOrder>(this, "GetMarketOrders", "marketorder", typeID.ToString());
+            return Util.GetListFromMethod<MarketOrder>(this, "GetMarketOrders", "marketorder", typeID.ToString());
 		}
 
 		/// <summary>
@@ -313,7 +313,7 @@ namespace EVE.ISXEVE
 		public List<MarketOrder> GetMarketOrders(int typeID, OrderType buyOrSell)
 		{
 			Tracing.SendCallback("EVE.GetMarketOrders", typeID.ToString(), buyOrSell.ToString());
-            return Util.GetListFromMember<MarketOrder>(this, "GetMarketOrders", "marketorder", typeID.ToString(), buyOrSell.ToString());
+            return Util.GetListFromMethod<MarketOrder>(this, "GetMarketOrders", "marketorder", typeID.ToString(), buyOrSell.ToString());
 		}
 
 		/// <summary>

@@ -79,10 +79,10 @@ namespace EVE.ISXEVE
 		/// DoGetAttacks method
 		/// </summary>
 		/// <returns></returns>
-		public List<Attack> DoGetAttacks()
+		public List<Attack> GetAttacks()
 		{
-			Tracing.SendCallback("Attacker.DoGetAttacks");
-			return Util.GetListFromMethod<Attack>(this, "DoGetAttacks", "attack");
+			Tracing.SendCallback("Attacker.GetAttacks");
+			return Util.GetListFromMethod<Attack>(this, "GetAttacks", "attack");
 		}
 		#endregion
 	}
