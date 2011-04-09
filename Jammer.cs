@@ -10,7 +10,7 @@ namespace EVE.ISXEVE
 	/// <summary>
 	/// Jammer class
 	/// </summary>
-	public class Jammer : LavishScriptObject
+	public class Jammer : Attacker
 	{
 		#region Constructors
 		/// <summary>
@@ -19,19 +19,6 @@ namespace EVE.ISXEVE
 		/// <param name="copy"></param>
 		public Jammer(LavishScriptObject copy) : base(copy) { }
 		#endregion
-
-        #region Members
-        /// <summary>
-        /// Get the Entity this Jammer is from.
-        /// </summary>
-        public Entity ToEntity
-        {
-            get
-            {
-                return new Entity(GetMember("ToEntity"));
-            }
-        }
-        #endregion
 
         #region Methods
         public List<string> GetJams()

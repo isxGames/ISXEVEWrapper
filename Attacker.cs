@@ -10,7 +10,7 @@ namespace EVE.ISXEVE
 	/// <summary>
 	/// Attacker class
 	/// </summary>
-	public class Attacker : LavishScriptObject
+	public class Attacker : Entity
 	{
 		#region Constructors
 		/// <summary>
@@ -53,17 +53,6 @@ namespace EVE.ISXEVE
 			}
 		}
 
-		/// <summary>
-		/// ToEntity member
-		/// </summary>
-		public Entity ToEntity
-		{
-			get
-			{
-				return new Entity(GetMember("ToEntity"));
-			}
-		}
-
 		/// Get the Jammer member of the Attacker object
         public Jammer ToJammer
         {
@@ -76,7 +65,7 @@ namespace EVE.ISXEVE
 
 		#region Methods
 		/// <summary>
-		/// DoGetAttacks method
+		/// GetAttacks method
 		/// </summary>
 		/// <returns></returns>
 		public List<Attack> GetAttacks()

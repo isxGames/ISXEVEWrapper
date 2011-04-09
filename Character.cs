@@ -766,18 +766,55 @@ namespace EVE.ISXEVE
                 return GetMember<bool>("GetMyOrdersIsReady");
             }
         }
-		#endregion
 
-        /// <summary>
-        /// 1. GetMyOrdersIsReady     (bool) If this is true, you are able to call GetMyOrders, otherwise they will fail.
-        /// </summary>
-        public bool GetMyOrdersIsReady
-        {
-            get
-            {
-                return GetMember<bool>("GetMyOrdersIsReady");
-            }
-        }
+		/// <summary>
+		/// Wrapper for Me.TargetCount
+		/// </summary>
+		public int TargetCount
+		{
+			get
+			{
+				LavishScriptObject targetCount = GetMember("TargetCount");
+				if (LavishScriptObject.IsNullOrInvalid(targetCount))
+				{
+					return -1;
+				}
+				return targetCount.GetValue<int>();
+			}
+		}
+
+		/// <summary>
+		/// Wrapper for Me.TargetingCount
+		/// </summary>
+		public int TargetingCount
+		{
+			get
+			{
+				LavishScriptObject targetingCount = GetMember("TargetingCount");
+				if (LavishScriptObject.IsNullOrInvalid(targetingCount))
+				{
+					return -1;
+				}
+				return targetingCount.GetValue<int>();
+			}
+		}
+
+		/// <summary>
+		/// Wrapper for Me.TargetedByCount
+		/// </summary>
+		public int TargetedByCount
+		{
+			get
+			{
+				LavishScriptObject targetedByCount = GetMember("TargetedByCount");
+				if (LavishScriptObject.IsNullOrInvalid(targetedByCount))
+				{
+					return -1;
+				}
+				return targetedByCount.GetValue<int>();
+			}
+		}
+		#endregion
 
         #region Methods
 		/// <summary>
@@ -837,7 +874,7 @@ namespace EVE.ISXEVE
 
 		/// <summary>
 		///  2. UpdateMyOrders   
-		///     ~ This method should be called before any calling of "GetMyOrders" or "DoGetMyOrders".
+		///     ~ This method should be called before any calling of "GetMyOrders".
 		/// </summary>
 		public bool UpdateMyOrders()
 		{

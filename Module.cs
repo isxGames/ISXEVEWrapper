@@ -1249,6 +1249,66 @@ namespace EVE.ISXEVE
 					return null;
 			}
 		}
+
+		/// <summary>
+		/// Wrapper for Module.EnergyTransferAmount
+		/// </summary>
+		public double? EnergyTransferAmount
+		{
+			get
+			{
+				LavishScriptObject obj = GetMember("EnergyTransferAmount");
+				if (!LavishScriptObject.IsNullOrInvalid(obj))
+					return obj.GetValue<double>();
+				else
+					return null;
+			}
+		}
+
+		/// <summary>
+		/// Wrapper for Module.TransferRange
+		/// </summary>
+		public double? TransferRange
+		{
+			get
+			{
+				LavishScriptObject obj = GetMember("TransferRange");
+				if (!LavishScriptObject.IsNullOrInvalid(obj))
+					return obj.GetValue<double>();
+				else
+					return null;
+			}
+		}
+
+		/// <summary>
+		/// Wrapper for Module.MaxNeutralizationRange
+		/// </summary>
+		public double? MaxNeutralizationRange
+		{
+			get
+			{
+				LavishScriptObject obj = GetMember("MaxNeutralizationRange");
+				if (!LavishScriptObject.IsNullOrInvalid(obj))
+					return obj.GetValue<double>();
+				else
+					return null;
+			}
+		}
+
+		/// <summary>
+		/// Wrapper for Module.MaxNeutralizationRange
+		/// </summary>
+		public double? EnergyNeutralized
+		{
+			get
+			{
+				LavishScriptObject obj = GetMember("EnergyNeutralized");
+				if (!LavishScriptObject.IsNullOrInvalid(obj))
+					return obj.GetValue<double>();
+				else
+					return null;
+			}
+		}
 		#endregion
 		#endregion
 

@@ -982,26 +982,6 @@ namespace EVE.ISXEVE
 			return ExecuteMethod("WarpTo", Distance.ToString());
 		}
 
-        /// <summary>
-        /// This is the preferred method if your script is abandoning one thing at a time.
-        /// </summary>
-        public bool Abandon()
-        {
-            if (Tracing.Callback != null)
-                Tracing.SendCallback("Entity.Abandon", string.Empty);
-            return ExecuteMethod("Abandon");
-        }
-
-        /// <summary>
-        /// Abandons all of nearby entities of the same group type
-        /// </summary>
-        public bool AbandonAll()
-        {
-            if (Tracing.Callback != null)
-                Tracing.SendCallback("Entity.AbandonAll", string.Empty);
-            return ExecuteMethod("AbandonAll");
-        }
-
 		/// <summary>
 		/// Warp fleet to zero distance
 		/// </summary>
@@ -1223,8 +1203,7 @@ namespace EVE.ISXEVE
         /// </summary>
         public bool Abandon()
         {
-            if (Tracing.Callback != null)
-                Tracing.SendCallback("Entity.Abandon", string.Empty);
+            Tracing.SendCallback("Entity.Abandon", string.Empty);
             return ExecuteMethod("Abandon");
         }
 
@@ -1233,8 +1212,7 @@ namespace EVE.ISXEVE
         /// </summary>
         public bool AbandonAll()
         {
-            if (Tracing.Callback != null)
-                Tracing.SendCallback("Entity.AbandonAll", string.Empty);
+            Tracing.SendCallback("Entity.AbandonAll", string.Empty);
             return ExecuteMethod("AbandonAll");
         }
 
