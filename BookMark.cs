@@ -28,6 +28,7 @@ namespace EVE.ISXEVE
 		{
 			get
 			{
+				Tracing.SendCallback("Bookmark.ID");
 				return GetMember<Int64>("ID");
 			}
 		}
@@ -197,6 +198,7 @@ namespace EVE.ISXEVE
 		{
 			get
 			{
+				Tracing.SendCallback("Bookmark.LocationID");
 				return GetMember<Int64>("LocationID");
 			}
 		}
@@ -230,6 +232,7 @@ namespace EVE.ISXEVE
 		{
 			get
 			{
+				Tracing.SendCallback("Bookmark.ItemID");
 				LavishScriptObject itemID = GetMember("ItemID");
 				if (LavishScriptObject.IsNullOrInvalid(itemID))
 				{

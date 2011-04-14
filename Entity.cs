@@ -217,6 +217,7 @@ namespace EVE.ISXEVE
 		{
 			get
 			{
+				Tracing.SendCallback("Entity.ID");
 				LavishScriptObject id = GetMember("ID");
 				if (LavishScriptObject.IsNullOrInvalid(id))
 				{

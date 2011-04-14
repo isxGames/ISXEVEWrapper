@@ -261,6 +261,7 @@ namespace EVE.ISXEVE
 		{
 			get
 			{
+				Tracing.SendCallback("Ship.ID");
 				LavishScriptObject shipID = GetMember("ShipID");
 				if (!LavishScriptObject.IsNullOrInvalid(shipID))
 				{

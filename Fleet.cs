@@ -30,6 +30,7 @@ namespace EVE.ISXEVE
 		{
 			get
 			{
+				Tracing.SendCallback("Fleet.ID");
 				LavishScriptObject id = GetMember("ID");
 				if (!LavishScriptObject.IsNullOrInvalid(id))
 				{

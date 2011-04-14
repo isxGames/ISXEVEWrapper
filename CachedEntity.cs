@@ -31,6 +31,7 @@ namespace EVE.ISXEVE
 		{
 			get
 			{
+				Tracing.SendCallback("CachedEntity.ID");
 				LavishScriptObject id = GetMember("ID");
 				if (LavishScriptObject.IsNullOrInvalid(id))
 				{

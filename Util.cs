@@ -99,7 +99,34 @@ namespace EVE.ISXEVE
 			//Tracing.SendCallback(methodName, "loop add items");
 			for (int i = 1; i <= Count; i++)
 			{
-				LavishScriptObject lsObject = LavishScript.Objects.NewObject(LSTypeName, Index.GetIndex(i.ToString()).GetMember<string>("ID"));
+				LavishScriptObject objectLso = Index.GetIndex(i.ToString());
+
+				if (LavishScriptObject.IsNullOrInvalid(objectLso))
+				{
+					if (LavishScriptObject.IsNullOrInvalid(objectLso))
+					{
+						Tracing.SendCallback(String.Format("Error: Index contains invalid LSO. NewObject will fail; aborting."));
+						return List;
+					}
+				}
+
+				LavishScriptObject objectIdLso = objectLso.GetMember("ID");
+
+				if (LavishScriptObject.IsNullOrInvalid(objectIdLso))
+				{
+					Tracing.SendCallback(String.Format("Error: LStype \"{0}\" has no ID member. NewObject will fail; aborting.", LSTypeName));
+					return List;
+				}
+
+				string objectId = objectIdLso.GetValue<string>();
+
+				if (objectId == string.Empty)
+				{
+					Tracing.SendCallback(String.Format("Error: LStype \"{0}\" has an ID member but it is returning an empty string. NewObject will fail; aborting.", LSTypeName));
+					return List;
+				}
+
+				LavishScriptObject lsObject = LavishScript.Objects.NewObject(LSTypeName, objectId);
 				T item = (T)constructor.Invoke(new object[] { lsObject });
 				List.Add(item);
                 // Do not invalidate this object :)

@@ -35,6 +35,7 @@ namespace EVE.ISXEVE
 		{
 			get
 			{
+				Tracing.SendCallback("Module.ID");
 				LavishScriptObject id = GetMember("ID");
 				if (LavishScriptObject.IsNullOrInvalid(id))
 				{
@@ -244,6 +245,7 @@ namespace EVE.ISXEVE
 		{
 			get
 			{
+				Tracing.SendCallback("Target.ID");
 				LavishScriptObject targetID = GetMember("TargetID");
 				if (LavishScriptObject.IsNullOrInvalid(targetID))
 				{

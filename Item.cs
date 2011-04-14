@@ -161,6 +161,7 @@ namespace EVE.ISXEVE
 		{
 			get
 			{
+				Tracing.SendCallback("Item.ID");
 				return GetMember<Int64>("ID");
 			}
 		}

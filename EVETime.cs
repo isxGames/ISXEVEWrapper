@@ -72,6 +72,7 @@ namespace EVE.ISXEVE
 		{
 			get
 			{
+				Tracing.SendCallback("EVETime.AsInt64");
 				return GetMember<Int64>("AsInt64");
 			}
 		}
