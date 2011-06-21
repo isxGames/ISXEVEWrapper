@@ -11,7 +11,7 @@ using LavishScriptAPI;
 //  2.  InitialQuantity                                   (int type) 
 //  3.  QuantityRemaining                                 (double type)
 //  4.  MinQuantityToBuy                                  (int type)
-//  5.  ID                                                (int type)
+//  5.  ID                                                (int64 type)
 //  6.  TimeStampWhenIssued                               (uint64 type)
 //  7.  DateWhenIssued                                    (string type)
 //  8.  TimeWhenIssued                                    (string type)
@@ -93,11 +93,11 @@ namespace EVE.ISXEVE
 		/// <summary>
 		///  5.  ID                                                (int type)
 		/// </summary>
-		public int ID
+		public Int64 ID
 		{
 			get
 			{
-				return GetMember<int>("ID");
+				return GetMember<Int64>("ID");
 			}
 		}
 		/// <summary>
