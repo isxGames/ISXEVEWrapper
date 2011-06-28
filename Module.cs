@@ -215,6 +215,17 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
+		/// Wrapper for Module.Target. Note: Module.Target, LastTarget, and LastTargeted are the same thing.
+		/// </summary>
+		public Entity Target
+		{
+			get
+			{
+				return new Entity(GetMember("Target"));
+			}
+		}
+
+		/// <summary>
 		/// Wrapper for the TargetID member of a module object.
 		/// </summary>
 		public Int64 TargetID
