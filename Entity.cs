@@ -1169,6 +1169,20 @@ namespace EVE.ISXEVE
 			return ExecuteMethod("OpenCargo");
 		}
 
+        public bool OpenStorage()
+        {
+            if (Tracing.Callback != null)
+                Tracing.SendCallback("Entity.OpenStorage", string.Empty);
+            return ExecuteMethod("OpenStorage");
+        }
+
+        public bool CloseStorage()
+        {
+            if (Tracing.Callback != null)
+                Tracing.SendCallback("Entity.CloseStorage", string.Empty);
+            return ExecuteMethod("CloseStorage");
+        }
+
 		/// <summary>
 		/// Close cargo hold of entity.
 		/// </summary>

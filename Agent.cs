@@ -119,17 +119,6 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
-		/// Wrapper for the Quality member of the agent type.
-		/// </summary>
-		public int Quality
-		{
-			get
-			{
-				return GetMember<int>("Quality");
-			}
-		}
-
-		/// <summary>
 		/// Wrapper for the CorporationID member of the agent type.
 		/// </summary>
 		public int CorporationID
