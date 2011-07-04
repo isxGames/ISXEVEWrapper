@@ -949,6 +949,14 @@ namespace EVE.ISXEVE
 				return new EVEWindow(GetMember("CargoWindow"));
 			}
 		}
+
+        public EVEWindow StorageWindow
+        {
+            get
+            {
+                return new EVEWindow(GetMember("StorageWindow"));
+            }
+        }
 		#endregion
 
 		/// <summary>
