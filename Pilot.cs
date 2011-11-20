@@ -96,12 +96,11 @@ namespace EVE.ISXEVE
 			}
 		}
 
-	    public object Corp
+	    public Corporation Corp
 	    {
 	        get
 	        {
-	            //return new Corporation(GetMember("Corp"));
-	            return null;
+	            return new Corporation(GetMember("Corp"));
 	        }
 	    }
 
