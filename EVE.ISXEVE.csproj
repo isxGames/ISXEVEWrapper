@@ -83,6 +83,7 @@
     <Compile Include="CharSelect.cs" />
     <Compile Include="ChatChannel.cs" />
     <Compile Include="Corporation.cs" />
+    <Compile Include="CorporationWallet.cs" />
     <Compile Include="DialogString.cs" />
     <Compile Include="EVETime.cs" />
     <Compile Include="Fleet.cs" />

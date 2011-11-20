@@ -8,6 +8,9 @@
 /BookMark.cs -text
 /CharSelect.cs -text
 /Character.cs -text
+/ChatChannel.cs -text
+/Corporation.cs -text
+/CorporationWallet.cs -text
 /DialogString.cs -text
 /EVE.ISXEVE.csproj -text
 /EVE.ISXEVE.sln -text
@@ -51,6 +54,7 @@ ISXEVEWrapperTest/wraptest.iss -text
 /PostBuild.bat -text
 /PreBuild.bat -text
 Properties/AssemblyInfo.cs -text
+/Scanner.cs -text
 /Ship.cs -text
 /Skill.cs -text
 /SlotType.cs -text
@@ -58,4 +62,5 @@ Properties/AssemblyInfo.cs -text
 /Station.cs -text
 /Universe.cs -text
 /Util.cs -text
+/Wallet.cs -text
 /app.config -text
