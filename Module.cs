@@ -238,6 +238,14 @@ namespace EVE.ISXEVE
 			}
 		}
 
+	    public Entity Target
+	    {
+	        get
+	        {
+	            return new Entity(GetMember("Target"));
+	        }
+	    }
+
 		/// <summary>
 		/// Wrapper for the TargetID member of a module object.
 		/// </summary>

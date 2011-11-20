@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
-
 using InnerSpaceAPI;
 using LavishScriptAPI;
 
@@ -120,46 +118,16 @@ namespace EVE.ISXEVE
 			}
 		}
 
-		/// <summary>
-		/// Wrapper for the Corporation member of the character type.
-		/// </summary>
-		public string Corporation
-		{
-			get
-			{
-				return GetMember<string>("Corporation");
-			}
-		}
-
-		/// <summary>
-		/// Wrapper for the CorporationID member of the character type.
-		/// </summary>
-		public int CorporationID
-		{
-			get
-			{
-				LavishScriptObject corporationID = GetMember("CorporationID");
-				if (!LavishScriptObject.IsNullOrInvalid(corporationID))
-				{
-					return corporationID.GetValue<int>();
-				}
-				else
-				{
-					return -1;
-				}
-			}
-		}
-
-		/// <summary>
-		/// Wrapper for the CorporationTicker member of the character type.
-		/// </summary>
-		public string CorporationTicker
-		{
-			get
-			{
-				return GetMember<string>("CorporationTicker");
-			}
-		}
+        /// <summary>
+        /// Wrapper for the Character Corp member.
+        /// </summary>
+	    public Corporation Corp
+	    {
+	        get
+	        {
+	            return new Corporation(GetMember("Corp"));
+	        }
+	    }
 
 		/// <summary>
 		/// Wrapper for the Alliance member of the character type.
@@ -383,6 +351,11 @@ namespace EVE.ISXEVE
 				return GetMember<double>("Charisma");
 			}
 		}
+
+	    public Wallet Wallet
+	    {
+	        get { return new Wallet(GetMember("Wallet")); }
+	    }
 
 		/// <summary>
 		/// Wrapper for the Willpower member of the character type.
@@ -730,43 +703,32 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public List<MyOrder> GetMyOrders(int typeID)
 		{
-			Tracing.SendCallback("Character.GetMyOrders", typeID.ToString());
+			Tracing.SendCallback("Character.GetMyOrders", typeID);
 			return Util.GetListFromMethod<MyOrder>(this, "GetMyOrders", "myorder", typeID.ToString());
 		}
 
 		/// <summary>
 		/// Wrapper for the GetMyOrders member of the character type.
 		/// </summary>
-		/// <param name="buyOrSell"></param>
+		/// <param name="orderType"></param>
 		/// <returns></returns>
-		public List<MyOrder> GetMyOrders(OrderType buyOrSell)
+		public List<MyOrder> GetMyOrders(OrderType orderType)
 		{
-			Tracing.SendCallback("Character.GetMyOrders", buyOrSell.ToString());
-			return Util.GetListFromMethod<MyOrder>(this, "GetMyOrders", "myorder", buyOrSell.ToString());
+			Tracing.SendCallback("Character.GetMyOrders", orderType);
+			return Util.GetListFromMethod<MyOrder>(this, "GetMyOrders", "myorder", orderType.ToString());
 		}
 
 		/// <summary>
 		/// Wrapper for the GetMyOrders member of the character type.
 		/// </summary>
-		/// <param name="buyOrSell"></param>
+		/// <param name="orderType"></param>
 		/// <param name="typeID"></param>
 		/// <returns></returns>
-		public List<MyOrder> GetMyOrders(OrderType buyOrSell, int typeID)
+		public List<MyOrder> GetMyOrders(OrderType orderType, int typeID)
 		{
-			Tracing.SendCallback("Character.GetMyOrders", buyOrSell.ToString(), typeID.ToString());
-			return Util.GetListFromMethod<MyOrder>(this, "GetMyOrders", "myorder", buyOrSell.ToString(), typeID.ToString());
+			Tracing.SendCallback("Character.GetMyOrders", orderType, typeID);
+			return Util.GetListFromMethod<MyOrder>(this, "GetMyOrders", "myorder", orderType.ToString(), typeID.ToString());
 		}
-
-        /// <summary>
-        /// 1. GetMyOrdersIsReady     (bool) If this is true, you are able to call GetMyOrders, otherwise they will fail.
-        /// </summary>
-        public bool GetMyOrdersIsReady
-        {
-            get
-            {
-                return GetMember<bool>("GetMyOrdersIsReady");
-            }
-        }
 
 		/// <summary>
 		/// Wrapper for Me.TargetCount

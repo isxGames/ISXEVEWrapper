@@ -103,32 +103,32 @@ namespace EVE.ISXEVE
 			ExecuteMethod("Unload");
 		}
 
-		/// <summary>
-		/// Reload the extension.
-		/// </summary>
-		public void Reload()
-		{
-			Tracing.SendCallback("ISXEVE.Reload");
-			ExecuteMethod("Reload");
-		}
+        public void Debug_SetTypeValidation(bool enabled)
+        {
+            Tracing.SendCallback("ISXEVE.Debug_SetTypeValidation", enabled);
+            ExecuteMethod("Debug_SetTypeValidation", enabled.ToString());
+        }
 
-		/// <summary>
-		/// Alias for Reload
-		/// </summary>
-		public void Patch()
-		{
-			Tracing.SendCallback("ISXEVE.Patch");
-			ExecuteMethod("Patch");
-		}
+        /// <summary>
+        /// Disables flushing/closing the ISXEVE logfile between logs, critical for intensive debug logging. Use only when requested by ISXEVE dev.
+        /// </summary>
+        /// <param name="enabled"></param>
+        public void Debug_SetHighPerfLogging(bool enabled)
+        {
+            Tracing.SendCallback("ISXEVE.Debug_SetHighPerfLogging", enabled);
+            ExecuteMethod("Debug_SetHighPerfLogging", enabled.ToString());
+        }
 
-		/// <summary>
-		/// Alias for Reload
-		/// </summary>
-		public void Update()
-		{
-			Tracing.SendCallback("ISXEVE.Update");
-			ExecuteMethod("Update");
-		}
+        /// <summary>
+        /// This will send a message to the ISXEVE logfile. Useful for marking script actions around ISXEVE output.
+        /// </summary>
+        /// <param name="scriptName"></param>
+        /// <param name="logMessage"></param>
+        public void Debug_LogMsg(string scriptName, string logMessage)
+        {
+            Tracing.SendCallback("ISXEVE.Debug_LogMsg", scriptName, logMessage);
+            ExecuteMethod("Debug_LogMsg", scriptName, logMessage);
+        }
 		#endregion
 	}
 }

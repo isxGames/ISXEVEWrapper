@@ -85,6 +85,23 @@ namespace EVE.ISXEVE
 				return GetMember<string>("HTML");
 			}
 		}
+
+	    public string Text
+	    {
+            get { return GetMember<string>("Text"); }
+	    }
+
+        /// <summary>
+        /// The ID of the ship or other object that this window belongs to, i.e. EVEWindow[MyShipCargo].ItemID will be your ship ID
+        /// </summary>
+	    public Int64 ItemID
+	    {
+            get 
+            {
+                var itemID = GetMember("ItemID");
+                return IsNullOrInvalid(itemID) ? -1 : itemID.GetValue<Int64>();
+            }
+	    }
 		#endregion
 
 		#region Methods
@@ -117,6 +134,36 @@ namespace EVE.ISXEVE
 			Tracing.SendCallback("EVEWindow.Minimize");
 			return ExecuteMethod("Minimize");
 		}
+
+        public bool ClickButtonYes()
+        {
+            Tracing.SendCallback("EVEWindow.ClickButtonYes");
+            return ExecuteMethod("ClickButtonYes");
+        }
+
+        public bool ClickButtonNo()
+        {
+            Tracing.SendCallback("EVEWindow.ClickButtonNo");
+            return ExecuteMethod("ClickButtonNo");
+        }
+
+        public bool ClickButtonOK()
+        {
+            Tracing.SendCallback("EVEWindow.ClickButtonOK");
+            return ExecuteMethod("ClickButtonOK");
+        }
+
+        public bool ClickButtonCancel()
+        {
+            Tracing.SendCallback("EVEWindow.ClickButtonCancel");
+            return ExecuteMethod("ClickButtonCancel");
+        }
+
+        public bool ClickButtonClose()
+        {
+            Tracing.SendCallback("EVEWindow.ClickButtonClose");
+            return ExecuteMethod("ClickButtonClose");
+        }
 		#endregion
 	}
 }

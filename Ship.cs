@@ -1,8 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
-
-using InnerSpaceAPI;
 using LavishScriptAPI;
 
 namespace EVE.ISXEVE
@@ -271,6 +268,16 @@ namespace EVE.ISXEVE
 				}
 			}
 		}
+
+	    public Item ToItem
+	    {
+	        get { return new Item(GetMember("ToItem")); }
+	    }
+
+	    public Scanner Scanner
+	    {
+	        get { return new Scanner(GetMember("Scanner")); }
+	    }
 
 		/// <summary>
 		/// Wrapper for the CPULoad member of the ship type.

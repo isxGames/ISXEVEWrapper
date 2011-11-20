@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using InnerSpaceAPI;
 using LavishScriptAPI;
 
 namespace EVE.ISXEVE
@@ -64,6 +62,7 @@ namespace EVE.ISXEVE
         /// <returns></returns>
         public List<Item> GetCorpHangarShips()
         {
+            Tracing.SendCallback("Station.GetCorpHangarShips");
             return Util.GetListFromMethod<Item>(this, "GetCorpHangarShips", "item");
         }
 

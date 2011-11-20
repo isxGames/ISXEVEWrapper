@@ -320,5 +320,35 @@ namespace EVE.ISXEVE
 
 			return member;
 		}
+
+        internal static string GetStringFromLSO(LavishScriptObject obj)
+        {
+            return LavishScriptObject.IsNullOrInvalid(obj) ? null : obj.GetValue<string>();
+        }
+
+        internal static Int64 GetInt64FromLSO(LavishScriptObject obj)
+        {
+            return LavishScriptObject.IsNullOrInvalid(obj) ? -1 : obj.GetValue<Int64>();
+        }
+
+        internal static float GetFloatFromLSO(LavishScriptObject obj)
+        {
+            return LavishScriptObject.IsNullOrInvalid(obj) ? -1 : obj.GetValue<float>();
+        }
+
+        internal static double GetDoubleFromLSO(LavishScriptObject obj)
+        {
+            return LavishScriptObject.IsNullOrInvalid(obj) ? -1 : obj.GetValue<double>();
+        }
+
+        internal static int GetIntFromLSO(LavishScriptObject obj)
+        {
+            return LavishScriptObject.IsNullOrInvalid(obj) ? -1 : obj.GetValue<int>();
+        }
+
+        internal static bool GetBoolFromLSO(LavishScriptObject obj)
+        {
+            return LavishScriptObject.IsNullOrInvalid(obj) ? false : obj.GetValue<bool>();
+        }
 	}
 }

@@ -1,8 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
-
-using InnerSpaceAPI;
 using LavishScriptAPI;
 
 namespace EVE.ISXEVE
@@ -100,38 +96,14 @@ namespace EVE.ISXEVE
 			}
 		}
 
-		/// <summary>
-		/// Wrapper for the Corporation member of a localpilots type.
-		/// </summary>
-		public string Corporation
-		{
-			get
-			{
-				return GetMember<string>("Corporation");
-			}
-		}
-
-		/// <summary>
-		/// Wrapper for the CorporationID member of a localpilots type.
-		/// </summary>
-		public int CorporationID
-		{
-			get
-			{
-				return GetMember<int>("CorporationID");
-			}
-		}
-
-		/// <summary>
-		/// Wrapper for the CorporationTicker member of a localpilots type.
-		/// </summary>
-		public string CorporationTicker
-		{
-			get
-			{
-				return GetMember<string>("CorporationTicker");
-			}
-		}
+	    public object Corp
+	    {
+	        get
+	        {
+	            //return new Corporation(GetMember("Corp"));
+	            return null;
+	        }
+	    }
 
 		/// <summary>
 		/// Wrapper for the Alliance member of a localpilots type.

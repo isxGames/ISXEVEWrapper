@@ -166,6 +166,31 @@ namespace EVE.ISXEVE
 			}
 		}
 
+        /// <summary>
+        /// Basic, STandard, Bronze, Platinum, etc. When opening the insurance window, call IsInsured != null to verify
+        /// it has loaded the insurance records before attempting to validate insurance.
+        /// </summary>
+	    public string InsuranceLevel
+	    {
+	        get
+	        {
+                var insuranceLevel = GetMember("InsuranceLevel");
+	            return IsNullOrInvalid(insuranceLevel) ? null : insuranceLevel.GetValue<string>();
+	        }
+	    }
+
+        /// <summary>
+        /// Ships only, CAN return NULL if insurance window has not fully loaded yet
+        /// </summary>
+	    public bool? IsInsured
+	    {
+            get 
+            {
+                var isInsured = GetMember("IsInsured");
+                return IsNullOrInvalid(isInsured) ? null : (bool?)isInsured.GetValue<bool>();
+            }
+	    }
+
 		/// <summary>
 		/// This returns TRUE if the item is a 'repackable' type AND if it's currently 
 		/// in a state to be repackaged. However, it does not make sure that the item 
@@ -391,6 +416,36 @@ namespace EVE.ISXEVE
 		#endregion
 
 		#region Methods
+        public void ApplyPilotLicense()
+        {
+            Tracing.SendCallback("Item.ApplyPilotLicense");
+            ExecuteMethod("ApplyPilotLicense");
+        }
+
+        public void AssembleShip()
+        {
+            Tracing.SendCallback("Item.AssembleShip");
+            ExecuteMethod("AssembleShip");
+        }
+
+        public void AssembleContainer()
+        {
+            Tracing.SendCallback("Item.AssembleContainer");
+            ExecuteMethod("AssembleContainer");
+        }
+
+        public void ConsumeBooster()
+        {
+            Tracing.SendCallback("Item.ConsumeBooster");
+            ExecuteMethod("ConsumeBooster");
+        }
+
+        public void InjectSkill()
+        {
+            Tracing.SendCallback("Item.InjectSkill");
+            ExecuteMethod("InjectSkill");
+        }
+
 		/// <summary>
 		/// Wrapper for the Jettison method of the item type.
 		/// </summary>
@@ -546,6 +601,12 @@ namespace EVE.ISXEVE
 			Tracing.SendCallback("Item.MakeActive");
 			return ExecuteMethod("MakeActive");
 		}
+
+        public void PluginImplant()
+        {
+            Tracing.SendCallback("Item.PluginImplant");
+            ExecuteMethod("PluginImplant");
+        }
 
 		/// <summary>
 		/// The "Repackage" METHOD of the 'item' datatype is now fully 

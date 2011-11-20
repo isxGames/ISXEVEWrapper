@@ -21,19 +21,19 @@ namespace EVE.ISXEVE
 		#endregion
 
 		#region Members
-		public Int64 ID
+		public int ID
 		{
 			get
 			{
 				Tracing.SendCallback("Attacker.ID");
-				LavishScriptObject id = GetMember("ID");
-				if (LavishScriptObject.IsNullOrInvalid(id))
+				var id = GetMember("ID");
+				if (IsNullOrInvalid(id))
 				{
 					return -1;
 				}
 				else
 				{
-					return id.GetValue<Int64>();
+					return id.GetValue<int>();
 				}
 			}
 		}

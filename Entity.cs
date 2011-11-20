@@ -1,8 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
-
-using InnerSpaceAPI;
 using LavishScriptAPI;
 
 namespace EVE.ISXEVE
@@ -136,38 +133,17 @@ namespace EVE.ISXEVE
 			}
 		}
 
-		/// <summary>
-		/// Wrapper for the Corporation member of the entity type.
-		/// </summary>
-		public string Corporation
-		{
-			get
-			{
-				return GetMember<string>("Corporation");
-			}
-		}
-
-		/// <summary>
-		/// Wrapper for the CorporationID member of the entity type.
-		/// </summary>
-		public int CorporationID
-		{
-			get
-			{
-				return GetMember<int>("CorporationID");
-			}
-		}
-
-		/// <summary>
-		/// Wrapper for the CorporationTicker member of the entity type.
-		/// </summary>
-		public string CorporationTicker
-		{
-			get
-			{
-				return GetMember<string>("CorporationTicker");
-			}
-		}
+	    /// <summary>
+	    /// Wrapper for the Corporation member of the entity type.
+	    /// </summary>
+	    public object Corp
+	    {
+	        get
+	        {
+	            //return new Corporation(GetMember("Corporation"));
+	            return null;
+	        }
+	    }
 
 		/// <summary>
 		/// Wrapper for the FormationID member of the entity type.
@@ -218,17 +194,23 @@ namespace EVE.ISXEVE
 			get
 			{
 				Tracing.SendCallback("Entity.ID");
-				LavishScriptObject id = GetMember("ID");
-				if (LavishScriptObject.IsNullOrInvalid(id))
+				var id = GetMember("ID");
+				if (IsNullOrInvalid(id))
 				{
 					return -1;
 				}
-				else
-				{
-					return id.GetValue<Int64>();
-				}
+			    return id.GetValue<Int64>();
 			}
 		}
+
+	    public bool IsAbandoned
+	    {
+	        get
+	        {
+                var isAbandoned = GetMember("IsAbandoned");
+	            return IsNullOrInvalid(isAbandoned) ? false : isAbandoned.GetValue<bool>();
+	        }
+	    }
 
 		/// <summary>
 		/// Wrapper for the MaxVelocity member of the entity type.
@@ -425,19 +407,6 @@ namespace EVE.ISXEVE
 				return isOwnedByAllianceMember.GetValue<bool>();
 			}
 		}
-
-        public bool IsAbandoned
-        {
-            get
-            {
-                LavishScriptObject IsAbandoned = GetMember("IsAbandoned");
-                if (LavishScriptObject.IsNullOrInvalid(IsAbandoned))
-                {
-                    return false;
-                }
-                return IsAbandoned.GetValue<bool>();
-            }
-        }
 
 		#region Location
 		/// <summary>
@@ -1012,10 +981,10 @@ namespace EVE.ISXEVE
 		/// <summary>
 		/// Align to the entity.
 		/// </summary>
-		public bool Align()
+		public bool AlignTo()
 		{
-			Tracing.SendCallback("Entity.Align");
-			return ExecuteMethod("Align");
+			Tracing.SendCallback("Entity.AlignTo");
+			return ExecuteMethod("AlignTo");
 		}
 
 		/// <summary>
@@ -1131,12 +1100,6 @@ namespace EVE.ISXEVE
         {
             Tracing.SendCallback("Entity.CloseStorage");
             return ExecuteMethod("CloseStorage");
-        }
-
-        public bool OpenCargo()
-        {
-            Tracing.SendCallback("Entity.OpenCargo");
-            return ExecuteMethod("OpenCargo");
         }
 
 		/// <summary>
