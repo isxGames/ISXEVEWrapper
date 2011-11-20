@@ -21,20 +21,12 @@ namespace EVE.ISXEVE
 		#endregion
 
 		#region Members
-		public int ID
+		public Int64 ID
 		{
 			get
 			{
 				Tracing.SendCallback("Attacker.ID");
-				var id = GetMember("ID");
-				if (IsNullOrInvalid(id))
-				{
-					return -1;
-				}
-				else
-				{
-					return id.GetValue<int>();
-				}
+			    return Util.GetInt64FromLSO(GetMember("ID"));
 			}
 		}
 
