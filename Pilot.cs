@@ -36,20 +36,9 @@ namespace EVE.ISXEVE
 		#endregion
 
 		#region Members
-		public int ID
+		public Int64 ID
 		{
-			get
-			{
-				LavishScriptObject id = GetMember("ID");
-				if (LavishScriptObject.IsNullOrInvalid(id))
-				{
-					return -1;
-				}
-				else
-				{
-					return id.GetValue<Int32>();
-				}
-			}
+			get { return Util.GetInt64FromLSO(GetMember("ID")); }
 		}
 
 		/// <summary>
