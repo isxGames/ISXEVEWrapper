@@ -40,12 +40,9 @@ namespace EVE.ISXEVE
 		/// <summary>
 		/// Returns the CharID member of a being object.
 		/// </summary>
-		public int CharID
+		public Int64 CharID
 		{
-			get
-			{
-				return GetMember<int>("CharID");
-			}
+			get { return Util.GetInt64FromLSO(GetMember("CharID")); }
 		}
 
 		/// <summary>

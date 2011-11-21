@@ -70,7 +70,7 @@ namespace EVE.ISXEVE
 		/// <param name="corpID">CorporationID</param>
 		/// <param name="allianceID">AllianceID</param>
 		/// <returns></returns>
-		public Standing StandingTo(int charID, int corpID, int allianceID)
+		public Standing StandingTo(Int64 charID, Int64 corpID, int allianceID)
 		{
 			return new Standing(GetMember("StandingTo", charID.ToString(), corpID.ToString(), allianceID.ToString()));
 		}
@@ -245,20 +245,9 @@ namespace EVE.ISXEVE
 		/// <summary>
 		/// Wrapper for the CharID member of the character type.
 		/// </summary>
-		public int CharID
+		public Int64 CharID
 		{
-			get
-			{
-				LavishScriptObject charID = GetMember("CharID");
-				if (!LavishScriptObject.IsNullOrInvalid(charID))
-				{
-					return charID.GetValue<int>();
-				}
-				else
-				{
-					return -1;
-				}
-			}
+			get { return Util.GetInt64FromLSO(GetMember("CharID")); }
 		}
 
 		/// <summary>
@@ -809,7 +798,7 @@ namespace EVE.ISXEVE
 		/// <param name="Standing"></param>
 		/// <param name="Reason"></param>
 		/// <returns></returns>
-		public bool SetPilotStanding(int CharID, float Standing, string Reason)
+		public bool SetPilotStanding(Int64 CharID, float Standing, string Reason)
 		{
 			Tracing.SendCallback("Character.SetPilotStanding", CharID, Standing, Reason);
 			return ExecuteMethod("SetPilotStanding", CharID.ToString(), Standing.ToString(), Reason);

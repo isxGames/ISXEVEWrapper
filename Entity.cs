@@ -125,12 +125,9 @@ namespace EVE.ISXEVE
 		/// <summary>
 		/// Wrapper for the CharID member of the entity type.
 		/// </summary>
-		public int CharID
+		public Int64 CharID
 		{
-			get
-			{
-				return GetMember<int>("CharID");
-			}
+			get { return Util.GetInt64FromLSO(GetMember("CharID")); }
 		}
 
 	    /// <summary>

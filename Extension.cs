@@ -134,7 +134,7 @@ namespace EVE.ISXEVE
 		/// <summary>
 		/// Get a Local pilot by ID.
 		/// </summary>
-		public Pilot Local(int CharID)
+		public Pilot Local(Int64 CharID)
 		{
 			return new Pilot(CharID);
 		}

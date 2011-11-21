@@ -97,7 +97,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		/// <param name="charID"></param>
 		/// <returns></returns>
-		public FleetMember GetMember(int charID)
+		public FleetMember GetMember(Int64 charID)
 		{
 			return GetMember<FleetMember>("Member", charID.ToString());
 		}
@@ -126,7 +126,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		/// <param name="charID"></param>
 		/// <returns></returns>
-		public bool IsMember(int charID)
+		public bool IsMember(Int64 charID)
 		{
 			LavishScriptObject isMember = GetMember("IsMember", charID.ToString());
 			if (!LavishScriptObject.IsNullOrInvalid(isMember))
@@ -485,7 +485,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		/// <param name="fleetMemberCharID"></param>
 		/// <returns></returns>
-		public bool WarpToFleetMember(int fleetMemberCharID)
+		public bool WarpToFleetMember(Int64 fleetMemberCharID)
 		{
 			Tracing.SendCallback("Fleet.WarpToFleetMember", fleetMemberCharID.ToString());
 			return WarpToFleetMember(fleetMemberCharID, 0);
@@ -497,7 +497,7 @@ namespace EVE.ISXEVE
 		/// <param name="fleetMemberCharID"></param>
 		/// <param name="distance"></param>
 		/// <returns></returns>
-		public bool WarpToFleetMember(int fleetMemberCharID, double distance)
+		public bool WarpToFleetMember(Int64 fleetMemberCharID, double distance)
 		{
 			Tracing.SendCallback("Fleet.WarpToFleetMember", fleetMemberCharID, distance);
 			return ExecuteMethod("WarpToFleetMember", fleetMemberCharID.ToString(), distance.ToString());
