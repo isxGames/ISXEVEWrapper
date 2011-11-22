@@ -510,10 +510,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Velocity
 		{
-			get
-			{
-				return (double)GetMember<float>("Velocity");
-			}
+			get { return Util.GetDoubleFromLSO(GetMember("Velocity")); }
 		}
 
 		/// <summary>
@@ -521,10 +518,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Distance
 		{
-			get
-			{
-				return (double)GetMember<float>("Distance");
-			}
+			get { return Util.GetDoubleFromLSO(GetMember("Distance")); }
 		}
 
 		/// <summary>
