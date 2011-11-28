@@ -1,4 +1,5 @@
 using System;
+using Extensions;
 using LavishScriptAPI;
 
 namespace EVE.ISXEVE
@@ -38,7 +39,7 @@ namespace EVE.ISXEVE
 		#region Members
 		public Int64 ID
 		{
-			get { return Util.GetInt64FromLSO(GetMember("ID")); }
+			get { return this.GetInt64FromLSO("ID"); }
 		}
 
 		/// <summary>
@@ -46,10 +47,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Name
 		{
-			get
-			{
-				return GetMember<string>("Name");
-			}
+			get { return this.GetStringFromLSO("Name"); }
 		}
 
 		/// <summary>
@@ -57,7 +55,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public Int64 CharID
 		{
-			get { return Util.GetInt64FromLSO(GetMember("CharID")); }
+			get { return this.GetInt64FromLSO("CharID"); }
 		}
 
 		/// <summary>
@@ -65,10 +63,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Type
 		{
-			get
-			{
-				return GetMember<string>("Type");
-			}
+			get { return this.GetStringFromLSO("Type"); }
 		}
 
 		/// <summary>
@@ -76,10 +71,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int TypeID
 		{
-			get
-			{
-				return GetMember<int>("TypeID");
-			}
+			get { return this.GetIntFromLSO("TypeID"); }
 		}
 
 	    public Corporation Corp
@@ -95,10 +87,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Alliance
 		{
-			get
-			{
-				return GetMember<string>("Alliance");
-			}
+			get { return this.GetStringFromLSO("Alliance"); }
 		}
 
 		/// <summary>
@@ -106,10 +95,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int AllianceID
 		{
-			get
-			{
-				return GetMember<int>("AllianceID");
-			}
+			get { return this.GetIntFromLSO("AllianceID"); }
 		}
 
 		/// <summary>
@@ -117,10 +103,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string AllianceTicker
 		{
-			get
-			{
-				return GetMember<string>("AllianceTicker");
-			}
+			get { return this.GetStringFromLSO("AllianceTicker"); }
 		}
 
 		/// <summary>
@@ -162,7 +145,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double StandingTo(int ID)
 		{
-			return GetMember<double>("StandingTo", ID.ToString());
+			return this.GetDoubleFromLSO("StandingTo", ID.ToString());
 		}
 		#endregion
 

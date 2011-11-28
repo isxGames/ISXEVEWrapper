@@ -238,13 +238,16 @@ namespace EVE.ISXEVE
 			}
 		}
 
-	    public Entity Target
-	    {
-	        get
-	        {
-	            return new Entity(GetMember("Target"));
-	        }
-	    }
+		/// <summary>
+		/// This member returns the last target upon which the module was activated.
+		/// </summary>
+		public Entity Target
+		{
+			get
+			{
+				return new Entity(GetMember("Target"));
+			}
+		}
 
 		/// <summary>
 		/// Wrapper for the TargetID member of a module object.
@@ -253,7 +256,7 @@ namespace EVE.ISXEVE
 		{
 			get
 			{
-				Tracing.SendCallback("Target.ID");
+				Tracing.SendCallback("TargetID");
 				LavishScriptObject targetID = GetMember("TargetID");
 				if (LavishScriptObject.IsNullOrInvalid(targetID))
 				{

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using InnerSpaceAPI;
 using LavishScriptAPI;
+using Extensions;
 
 namespace EVE.ISXEVE
 {
@@ -80,10 +81,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool AutoPilotOn
 		{
-			get
-			{
-				return GetMember<bool>("AutoPilotOn");
-			}
+			get { return this.GetBoolFromLSO("AutoPilotOn"); }
 		}
 
 		/// <summary>
@@ -112,10 +110,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Name
 		{
-			get
-			{
-				return GetMember<string>("Name");
-			}
+			get { return this.GetStringFromLSO("Name"); }
 		}
 
         /// <summary>
@@ -134,10 +129,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Alliance
 		{
-			get
-			{
-				return GetMember<string>("Alliance");
-			}
+			get { return this.GetStringFromLSO("Alliance"); }
 		}
 
 		/// <summary>
@@ -145,18 +137,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int AllianceID
 		{
-			get
-			{
-				LavishScriptObject allianceID = GetMember("AllianceID");
-				if (!LavishScriptObject.IsNullOrInvalid(allianceID))
-				{
-					return allianceID.GetValue<int>();
-				}
-				else
-				{
-					return -1;
-				}
-			}
+			get { return this.GetIntFromLSO("AllianceID"); }
 		}
 
 		/// <summary>
@@ -164,10 +145,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string AllianceTicker
 		{
-			get
-			{
-				return GetMember<string>("AllianceTicker");
-			}
+			get { return this.GetStringFromLSO("AllianceTicker"); }
 		}
 
 		/// <summary>
@@ -175,10 +153,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int RegionID
 		{
-			get
-			{
-				return GetMember<int>("RegionID");
-			}
+			get { return this.GetIntFromLSO("RegionID"); }
 		}
 
 		/// <summary>
@@ -186,10 +161,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int ConstellationID
 		{
-			get
-			{
-				return GetMember<int>("ConstellationID");
-			}
+			get { return this.GetIntFromLSO("ConstellationID"); }
 		}
 
 		/// <summary>
@@ -197,18 +169,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int SolarSystemID
 		{
-			get
-			{
-				LavishScriptObject solarSystemID = GetMember("SolarSystemID");
-				if (!LavishScriptObject.IsNullOrInvalid(solarSystemID))
-				{
-					return solarSystemID.GetValue<int>();
-				}
-				else
-				{
-					return -1;
-				}
-			}
+			get { return this.GetIntFromLSO("SolarSystemID"); }
 		}
 
 		/// <summary>
@@ -227,19 +188,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public Int64 ShipID
 		{
-			get
-			{
-				Tracing.SendCallback("Ship.ID");
-				LavishScriptObject shipID = GetMember("ShipID");
-				if (!LavishScriptObject.IsNullOrInvalid(shipID))
-				{
-					return shipID.GetValue<Int64>();
-				}
-				else
-				{
-					return -1;
-				}
-			}
+			get { return this.GetInt64FromLSO("ShipID"); }
 		}
 
 		/// <summary>
@@ -247,7 +196,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public Int64 CharID
 		{
-			get { return Util.GetInt64FromLSO(GetMember("CharID")); }
+			get { return this.GetInt64FromLSO("CharID"); }
 		}
 
 		/// <summary>
@@ -256,18 +205,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool InStation
 		{
-			get
-			{
-				LavishScriptObject inStation = GetMember("InStation");
-				if (LavishScriptObject.IsNullOrInvalid(inStation))
-				{
-					return false;
-				}
-				else
-				{
-					return inStation.GetValue<bool>();
-				}
-			}
+			get { return this.GetBoolFromLSO("InStation"); }
 		}
 
 		/// <summary>
@@ -275,18 +213,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool InSpace
 		{
-			get
-			{
-				LavishScriptObject inSpace = GetMember("InSpace");
-				if (LavishScriptObject.IsNullOrInvalid(inSpace))
-				{
-					return false;
-				}
-				else
-				{
-					return inSpace.GetValue<bool>();
-				}
-			}
+			get { return this.GetBoolFromLSO("InSpace"); }
 		}
 
 		/// <summary>
@@ -294,18 +221,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int StationID
 		{
-			get
-			{
-				LavishScriptObject stationID = GetMember("StationID");
-				if (!LavishScriptObject.IsNullOrInvalid(stationID))
-				{
-					return stationID.GetValue<int>();
-				}
-				else
-				{
-					return -1;
-				}
-			}
+			get { return this.GetIntFromLSO("StationID"); }
 		}
 
 		/// <summary>
@@ -313,10 +229,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Intelligence
 		{
-			get
-			{
-				return GetMember<double>("Intelligence");
-			}
+			get { return this.GetDoubleFromLSO("Intelligence"); }
 		}
 
 		/// <summary>
@@ -324,10 +237,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Perception
 		{
-			get
-			{
-				return GetMember<double>("Perception");
-			}
+			get { return this.GetDoubleFromLSO("Perception"); }
 		}
 
 		/// <summary>
@@ -335,10 +245,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Charisma
 		{
-			get
-			{
-				return GetMember<double>("Charisma");
-			}
+			get { return this.GetDoubleFromLSO("Charisma"); }
 		}
 
 	    public Wallet Wallet
@@ -351,10 +258,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Willpower
 		{
-			get
-			{
-				return GetMember<double>("Willpower");
-			}
+			get { return this.GetDoubleFromLSO("Willpower"); }
 		}
 
 		/// <summary>
@@ -362,10 +266,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Memory
 		{
-			get
-			{
-				return GetMember<double>("Memory");
-			}
+			get { return this.GetDoubleFromLSO("Memory"); }
 		}
 
 		/// <summary>
@@ -374,18 +275,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double MaxLockedTargets
 		{
-			get
-			{
-				LavishScriptObject maxLockedTargets = GetMember("MaxLockedTargets");
-				if (!LavishScriptObject.IsNullOrInvalid(maxLockedTargets))
-				{
-					return maxLockedTargets.GetValue<double>();
-				}
-				else
-				{
-					return -1;
-				}
-			}
+			get { return this.GetDoubleFromLSO("MaxLockedTargets"); }
 		}
 
 		/// <summary>
@@ -393,10 +283,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double MiningDroneAmountBonus
 		{
-			get
-			{
-				return GetMember<double>("MiningDroneAmountBonus");
-			}
+			get { return this.GetDoubleFromLSO("MiningDroneAmountBonus"); }
 		}
 
 		/// <summary>
@@ -404,18 +291,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double MaxActiveDrones
 		{
-			get
-			{
-				LavishScriptObject maxActiveDrones = GetMember("MaxActiveDrones");
-				if (!LavishScriptObject.IsNullOrInvalid(maxActiveDrones))
-				{
-					return maxActiveDrones.GetValue<double>();
-				}
-				else
-				{
-					return -1;
-				}
-			}
+			get { return this.GetDoubleFromLSO("MaxActiveDrones"); }
 		}
 
 		/// <summary>
@@ -423,18 +299,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double DroneControlDistance
 		{
-			get
-			{
-				LavishScriptObject droneControlDistance = GetMember("DroneControlDistance");
-				if (!LavishScriptObject.IsNullOrInvalid(droneControlDistance))
-				{
-					return droneControlDistance.GetValue<double>();
-				}
-				else
-				{
-					return -1;
-				}
-			}
+			get { return this.GetDoubleFromLSO("DroneControlDistance"); }
 		}
 
 		/// <summary>
@@ -444,20 +309,7 @@ namespace EVE.ISXEVE
 		{
 			get
 			{
-				try
-				{
-					LavishScriptObject maxJumpClones = GetMember("MaxJumpClones");
-					if (LavishScriptObject.IsNullOrInvalid(maxJumpClones))
-					{
-						return -1;
-					}
-					return maxJumpClones.GetValue<double>();
-				}
-				catch (Exception ex)
-				{
-					InnerSpace.Echo("Exception: MaxJumpClones:" + ex.Message);
-					return -1;
-				}
+				return this.GetDoubleFromLSO("MaxJumpClones");
 			}
 		}
 		#endregion
@@ -518,18 +370,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double SkillPoints
 		{
-			get
-			{
-				LavishScriptObject skillPoints = GetMember("SkillPoints");
-				if (!LavishScriptObject.IsNullOrInvalid(skillPoints))
-				{
-					return skillPoints.GetValue<double>();
-				}
-				else
-				{
-					return -1.0f;
-				}
-			}
+			get { return this.GetDoubleFromLSO("SkillPoints"); }
 		}
 
         /// <summary>
@@ -540,18 +381,7 @@ namespace EVE.ISXEVE
         /// </summary>
         public double SkillQueueLength
         {
-            get
-            {
-                LavishScriptObject SkillQueueLength = GetMember("SkillQueueLength");
-                if (!LavishScriptObject.IsNullOrInvalid(SkillQueueLength))
-                {
-                    return SkillQueueLength.GetValue<double>();
-                }
-                else
-                {
-                    return -1.0f;
-                }
-            }
+            get { return this.GetDoubleFromLSO("SkillQueueLength"); }
         }
 		#endregion
 
@@ -724,15 +554,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int TargetCount
 		{
-			get
-			{
-				LavishScriptObject targetCount = GetMember("TargetCount");
-				if (LavishScriptObject.IsNullOrInvalid(targetCount))
-				{
-					return -1;
-				}
-				return targetCount.GetValue<int>();
-			}
+			get { return this.GetIntFromLSO("TargetCount"); }
 		}
 
 		/// <summary>
@@ -740,15 +562,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int TargetingCount
 		{
-			get
-			{
-				LavishScriptObject targetingCount = GetMember("TargetingCount");
-				if (LavishScriptObject.IsNullOrInvalid(targetingCount))
-				{
-					return -1;
-				}
-				return targetingCount.GetValue<int>();
-			}
+			get { return this.GetIntFromLSO("TargetingCount"); }
 		}
 
 		/// <summary>
@@ -756,15 +570,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int TargetedByCount
 		{
-			get
-			{
-				LavishScriptObject targetedByCount = GetMember("TargetedByCount");
-				if (LavishScriptObject.IsNullOrInvalid(targetedByCount))
-				{
-					return -1;
-				}
-				return targetedByCount.GetValue<int>();
-			}
+			get { return this.GetIntFromLSO("TargetedByCount"); }
 		}
 		#endregion
 

@@ -46,17 +46,17 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public Entity Entity(int ID)
 		{
-			return new Entity(ID);
+			return new Entity(string.Format("ID = \"{0}\"", ID));
 		}
 
 		/// <summary>
 		/// Create a new Entity object based on a lookup string.
 		/// </summary>
-		/// <param name="Args"></param>
+		/// <param name="queryString"></param>
 		/// <returns></returns>
-		public Entity Entity(params string[] Args)
+		public Entity Entity(string queryString)
 		{
-			return new Entity(Args);
+			return new Entity(queryString);
 		}
 
 		/// <summary>

@@ -28,7 +28,7 @@ namespace EVE.ISXEVE
 		{
 			get
 			{
-				Tracing.SendCallback("Bookmark.ID");
+				//Tracing.SendCallback("Bookmark.ID");
 				return GetMember<Int64>("ID");
 			}
 		}

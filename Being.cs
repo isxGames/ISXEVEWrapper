@@ -1,4 +1,5 @@
 using System;
+using Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
 
@@ -23,18 +24,7 @@ namespace EVE.ISXEVE
 		#region Members
 		public Int32 ID
 		{
-			get
-			{
-				LavishScriptObject id = GetMember("ID");
-				if (LavishScriptObject.IsNullOrInvalid(id))
-				{
-					return -1;
-				}
-				else
-				{
-					return id.GetValue<Int32>();
-				}
-			}
+			get { return this.GetIntFromLSO("ID"); }
 		}
 
 		/// <summary>
@@ -42,7 +32,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public Int64 CharID
 		{
-			get { return Util.GetInt64FromLSO(GetMember("CharID")); }
+			get { return this.GetInt64FromLSO("CharID"); }
 		}
 
 		/// <summary>
@@ -50,10 +40,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Name
 		{
-			get
-			{
-				return GetMember<string>("Name");
-			}
+			get { return this.GetStringFromLSO("Name"); }
 		}
 
 		/// <summary>
@@ -61,18 +48,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsOnline
 		{
-			get
-			{
-				LavishScriptObject isOnline = GetMember("IsOnline");
-				if (LavishScriptObject.IsNullOrInvalid(isOnline))
-				{
-					return false;
-				}
-				else
-				{
-					return isOnline.GetValue<bool>();
-				}
-			}
+			get { return this.GetBoolFromLSO("IsOnline"); }
 		}
 
 		/// <summary>
@@ -80,18 +56,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsNPC
 		{
-			get
-			{
-				LavishScriptObject isNPC = GetMember("IsNPC");
-				if (LavishScriptObject.IsNullOrInvalid(isNPC))
-				{
-					return false;
-				}
-				else
-				{
-					return isNPC.GetValue<bool>();
-				}
-			}
+			get { return this.GetBoolFromLSO("IsNPC"); }
 		}
 
 		/// <summary>
@@ -99,18 +64,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsPC
 		{
-			get
-			{
-				LavishScriptObject isPC = GetMember("IsPC");
-				if (LavishScriptObject.IsNullOrInvalid(isPC))
-				{
-					return false;
-				}
-				else
-				{
-					return isPC.GetValue<bool>();
-				}
-			}
+			get { return this.GetBoolFromLSO("IsPC"); }
 		}
 		#endregion
 

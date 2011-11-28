@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Extensions;
 using LavishScriptAPI;
 
 namespace EVE.ISXEVE
@@ -15,27 +16,27 @@ namespace EVE.ISXEVE
 
         public Int64 ID
         {
-            get { return Util.GetInt64FromLSO(GetMember("ID")); }
+            get { return this.GetInt64FromLSO("ID"); }
         }
 
         public string Name
         {
-            get { return Util.GetStringFromLSO(GetMember("Name")); }
+            get { return this.GetStringFromLSO("Name"); }
         }
 
         public Int64 OwnerID
         {
-            get { return Util.GetInt64FromLSO(GetMember("OwnerID")); }
+            get { return this.GetInt64FromLSO("OwnerID"); }
         }
 
         public int PilotCount
         {
-            get { return Util.GetIntFromLSO(GetMember("PilotCount")); }
+            get { return this.GetIntFromLSO("PilotCount"); }
         }
 
         public string MOTD
         {
-            get { return Util.GetStringFromLSO(GetMember("MOTD")); }
+            get { return this.GetStringFromLSO("MOTD"); }
         }
     }
 }

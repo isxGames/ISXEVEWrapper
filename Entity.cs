@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using LavishScriptAPI;
+using Extensions;
 
 namespace EVE.ISXEVE
 {
@@ -20,29 +21,11 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
-		/// Create Entity object by ID
+		/// Search for an Entity using LS Query syntax.
 		/// </summary>
-		/// <param name="ID"></param>
-		public Entity(Int64 ID)
-			: base(LavishScript.Objects.GetObject("Entity", ID.ToString()))
-		{
-		}
-
-		/// <summary>
-		/// Create Entity object by name
-		/// </summary>
-		/// <param name="name"></param>
-		public Entity(string name)
-			: base(LavishScript.Objects.GetObject("Entity", name))
-		{
-		}
-
-		/// <summary>
-		/// Create Entity object by search
-		/// </summary>
-		/// <param name="Args"></param>
-		public Entity(params string[] Args)
-			: base(LavishScript.Objects.GetObject("Entity", Args))
+		/// <param queryString="queryString"></param>
+		public Entity(string queryString)
+			: base(LavishScript.Objects.GetObject("Entity", queryString))
 		{
 		}
 		#endregion
@@ -53,10 +36,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Alliance
 		{
-			get
-			{
-				return GetMember<string>("Alliance");
-			}
+			get { return this.GetStringFromLSO("Alliance"); }
 		}
 
 		/// <summary>
@@ -64,10 +44,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int AllianceID
 		{
-			get
-			{
-				return GetMember<int>("AllianceID");
-			}
+			get { return this.GetIntFromLSO("AllianceID"); }
 		}
 
 		/// <summary>
@@ -75,10 +52,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string AllianceTicker
 		{
-			get
-			{
-				return GetMember<string>("AllianceTicker");
-			}
+			get { return this.GetStringFromLSO("AllianceTicker"); }
 		}
 
 		/// <summary>
@@ -86,10 +60,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Category
 		{
-			get
-			{
-				return GetMember<string>("Category");
-			}
+			get { return this.GetStringFromLSO("Category"); }
 		}
 
 		/// <summary>
@@ -97,18 +68,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int CategoryID
 		{
-			get
-			{
-				LavishScriptObject categoryID = GetMember("CategoryID");
-				if (LavishScriptObject.IsNullOrInvalid(categoryID))
-				{
-					return -1;
-				}
-				else
-				{
-					return categoryID.GetValue<int>();
-				}
-			}
+			get { return this.GetIntFromLSO("CategoryID"); }
 		}
 
 		/// <summary>
@@ -127,18 +87,17 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public Int64 CharID
 		{
-			get { return Util.GetInt64FromLSO(GetMember("CharID")); }
+			get { return this.GetInt64FromLSO("CharID"); }
 		}
 
 	    /// <summary>
 	    /// Wrapper for the Corporation member of the entity type.
 	    /// </summary>
-	    public object Corp
+	    public Corporation Corp
 	    {
 	        get
 	        {
-	            //return new Corporation(GetMember("Corporation"));
-	            return null;
+	            return new Corporation(GetMember("Corporation"));
 	        }
 	    }
 
@@ -147,10 +106,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int FormationID
 		{
-			get
-			{
-				return GetMember<int>("FormationID");
-			}
+			get { return this.GetIntFromLSO("FormationID"); }
 		}
 
 		/// <summary>
@@ -158,10 +114,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Group
 		{
-			get
-			{
-				return GetMember<string>("Group");
-			}
+			get { return this.GetStringFromLSO("Group"); }
 		}
 
 		/// <summary>
@@ -169,18 +122,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int GroupID
 		{
-			get
-			{
-				LavishScriptObject groupID = GetMember("GroupID");
-				if (LavishScriptObject.IsNullOrInvalid(groupID))
-				{
-					return -1;
-				}
-				else
-				{
-					return groupID.GetValue<int>();
-				}
-			}
+			get { return this.GetIntFromLSO("GroupID"); }
 		}
 
 		/// <summary>
@@ -191,22 +133,13 @@ namespace EVE.ISXEVE
 			get
 			{
 				Tracing.SendCallback("Entity.ID");
-				var id = GetMember("ID");
-				if (IsNullOrInvalid(id))
-				{
-					return -1;
-				}
-			    return id.GetValue<Int64>();
+				return this.GetInt64FromLSO("ID");
 			}
 		}
 
 	    public bool IsAbandoned
 	    {
-	        get
-	        {
-                var isAbandoned = GetMember("IsAbandoned");
-	            return IsNullOrInvalid(isAbandoned) ? false : isAbandoned.GetValue<bool>();
-	        }
+	        get { return this.GetBoolFromLSO("IsAbandoned"); }
 	    }
 
 		/// <summary>
@@ -214,18 +147,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double MaxVelocity
 		{
-			get
-			{
-				LavishScriptObject maxVelocity = GetMember("MaxVelocity");
-				if (!LavishScriptObject.IsNullOrInvalid(maxVelocity))
-				{
-					return maxVelocity.GetValue<double>();
-				}
-				else
-				{
-					return -1;
-				}
-			}
+			get { return this.GetDoubleFromLSO("MaxVelocity"); }
 		}
 
 		/// <summary>
@@ -233,10 +155,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Name
 		{
-			get
-			{
-				return GetMember<string>("Name");
-			}
+			get { return this.GetStringFromLSO("Name"); }
 		}
 
 		/// <summary>
@@ -246,9 +165,9 @@ namespace EVE.ISXEVE
 		{
 			get
 			{
-				LavishScriptObject owner = GetMember("Owner");
+				var owner = GetMember("Owner");
 
-				if (!LavishScriptObject.IsNullOrInvalid(owner) && owner.LSType == "pilot")
+				if (!IsNullOrInvalid(owner) && owner.LSType == "pilot")
 					return new Pilot(owner);
 
 				// invalid return
@@ -259,20 +178,9 @@ namespace EVE.ISXEVE
 		/// <summary>
 		/// Wrapper for the OwnerID member of the entity type.
 		/// </summary>
-		public int OwnerID
+		public Int64 OwnerID
 		{
-			get
-			{
-				LavishScriptObject ownerID = GetMember("OwnerID");
-				if (LavishScriptObject.IsNullOrInvalid(ownerID))
-				{
-					return -1;
-				}
-				else
-				{
-					return ownerID.GetValue<int>();
-				}
-			}
+			get { return this.GetInt64FromLSO("OwnerID"); }
 		}
 
 		/// <summary>
@@ -280,18 +188,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Security
 		{
-			get
-			{
-				LavishScriptObject security = GetMember("Security");
-				if (LavishScriptObject.IsNullOrInvalid(security))
-				{
-					return -1;
-				}
-				else
-				{
-					return security.GetValue<double>();
-				}
-			}
+			get { return this.GetDoubleFromLSO("Security"); }
 		}
 
 		/// <summary>
@@ -299,10 +196,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Type
 		{
-			get
-			{
-				return GetMember<string>("Type");
-			}
+			get { return this.GetStringFromLSO("Type"); }
 		}
 
 		/// <summary>
@@ -310,18 +204,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int TypeID
 		{
-			get
-			{
-				LavishScriptObject typeID = GetMember("TypeID");
-				if (LavishScriptObject.IsNullOrInvalid(typeID))
-				{
-					return -1;
-				}
-				else
-				{
-					return typeID.GetValue<int>();
-				}
-			}
+			get { return this.GetIntFromLSO("TypeID"); }
 		}
 
 		/// <summary>
@@ -363,13 +246,11 @@ namespace EVE.ISXEVE
 		{
 			get
 			{
-				LavishScriptObject isWreckEmpty = GetMember("IsWreckEmpty");
-				if (LavishScriptObject.IsNullOrInvalid(isWreckEmpty))
+				using (var isWreckEmpty = GetMember("IsWreckEmpty"))
 				{
 					//return true because a "negative" is empty, aka true
-					return true;
+					return IsNullOrInvalid(isWreckEmpty) || isWreckEmpty.GetValue<bool>();
 				}
-				return isWreckEmpty.GetValue<bool>();
 			}
 		}
 
@@ -378,15 +259,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsOwnedByCorpMember
 		{
-			get
-			{
-				LavishScriptObject isOwnedByCorpMember = GetMember("IsOwnedByCorpMember");
-				if (LavishScriptObject.IsNullOrInvalid(isOwnedByCorpMember))
-				{
-					return false;
-				}
-				return isOwnedByCorpMember.GetValue<bool>();
-			}
+			get { return this.GetBoolFromLSO("IsOwnedByCorpMember"); }
 		}
 
 		/// <summary>
@@ -394,15 +267,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsOwnedByAllianceMember
 		{
-			get
-			{
-				LavishScriptObject isOwnedByAllianceMember = GetMember("IsOwnedByAllianceMember");
-				if (LavishScriptObject.IsNullOrInvalid(isOwnedByAllianceMember))
-				{
-					return false;
-				}
-				return isOwnedByAllianceMember.GetValue<bool>();
-			}
+			get { return this.GetBoolFromLSO("IsOwnedByAllianceMember"); }
 		}
 
 		#region Location
@@ -411,10 +276,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double X
 		{
-			get
-			{
-				return GetMember<double>("X");
-			}
+			get { return this.GetDoubleFromLSO("X"); }
 		}
 
 		/// <summary>
@@ -422,10 +284,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Y
 		{
-			get
-			{
-				return GetMember<double>("Y");
-			}
+			get { return this.GetDoubleFromLSO("Y"); }
 		}
 
 		/// <summary>
@@ -433,10 +292,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Z
 		{
-			get
-			{
-				return GetMember<double>("Z");
-			}
+			get { return this.GetDoubleFromLSO("Z"); }
 		}
 
 		/// <summary>
@@ -444,10 +300,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double vX
 		{
-			get
-			{
-				return GetMember<double>("vX");
-			}
+			get { return this.GetDoubleFromLSO("vX"); }
 		}
 
 		/// <summary>
@@ -455,10 +308,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double vY
 		{
-			get
-			{
-				return GetMember<double>("vY");
-			}
+			get { return this.GetDoubleFromLSO("vY"); }
 		}
 
 		/// <summary>
@@ -466,10 +316,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double vZ
 		{
-			get
-			{
-				return GetMember<double>("vZ");
-			}
+			get { return this.GetDoubleFromLSO("vZ"); }
 		}
 
 		/// <summary>
@@ -477,10 +324,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Pitch
 		{
-			get
-			{
-				return GetMember<double>("Pitch");
-			}
+			get { return this.GetDoubleFromLSO("Pitch"); }
 		}
 
 		/// <summary>
@@ -488,10 +332,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Roll
 		{
-			get
-			{
-				return GetMember<double>("Roll");
-			}
+			get { return this.GetDoubleFromLSO("Roll"); }
 		}
 
 		/// <summary>
@@ -499,10 +340,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Yaw
 		{
-			get
-			{
-				return GetMember<double>("Yaw");
-			}
+			get { return this.GetDoubleFromLSO("Yaw"); }
 		}
 
 		/// <summary>
@@ -510,7 +348,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Velocity
 		{
-			get { return Util.GetDoubleFromLSO(GetMember("Velocity")); }
+			get { return this.GetDoubleFromLSO("Velocity"); }
 		}
 
 		/// <summary>
@@ -518,17 +356,17 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Distance
 		{
-			get { return Util.GetDoubleFromLSO(GetMember("Distance")); }
+			get { return this.GetDoubleFromLSO("Distance"); }
 		}
 
 		/// <summary>
 		/// Wrapper for the DistanceTo member of the entity type.
 		/// </summary>
-		/// <param name="EntityID"></param>
+		/// <param name="entityId"></param>
 		/// <returns></returns>
-		public double DistanceTo(int EntityID)
+		public double DistanceTo(int entityId)
 		{
-			return GetMember<double>("DistanceTo", EntityID.ToString());
+			return this.GetDoubleFromLSO("DistanceTo", entityId.ToString());
 		}
 
 		/// <summary>
@@ -536,10 +374,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double FollowRange
 		{
-			get
-			{
-				return GetMember<double>("FollowRange");
-			}
+			get { return this.GetDoubleFromLSO("FollowRange"); }
 		}
 		#endregion
 
@@ -549,10 +384,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Mass
 		{
-			get
-			{
-				return GetMember<double>("Mass");
-			}
+			get { return this.GetDoubleFromLSO("Mass"); }
 		}
 
 		/// <summary>
@@ -560,10 +392,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Radius
 		{
-			get
-			{
-				return GetMember<double>("Radius");
-			}
+			get { return this.GetDoubleFromLSO("Radius"); }
 		}
 
 		/// <summary>
@@ -571,10 +400,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double ShieldPct
 		{
-			get
-			{
-				return GetMember<double>("ShieldPct");
-			}
+			get { return this.GetDoubleFromLSO("ShieldPct"); }
 		}
 
 		/// <summary>
@@ -582,10 +408,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double ArmorPct
 		{
-			get
-			{
-				return GetMember<double>("ArmorPct");
-			}
+			get { return this.GetDoubleFromLSO("ArmorPct"); }
 		}
 
 		/// <summary>
@@ -593,10 +416,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double StructurePct
 		{
-			get
-			{
-				return GetMember<double>("StructurePct");
-			}
+			get { return this.GetDoubleFromLSO("StructurePct"); }
 		}
 		#endregion
 
@@ -606,10 +426,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsCloaked
 		{
-			get
-			{
-				return GetMember<bool>("IsCloaked");
-			}
+			get { return this.GetBoolFromLSO("IsCloaked"); }
 		}
 
 		/// <summary>
@@ -617,10 +434,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsInteractive
 		{
-			get
-			{
-				return GetMember<bool>("IsInteractive");
-			}
+			get { return this.GetBoolFromLSO("IsInteractive"); }
 		}
 
 		/// <summary>
@@ -628,10 +442,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsMassive
 		{
-			get
-			{
-				return GetMember<bool>("IsMassive");
-			}
+			get { return this.GetBoolFromLSO("IsMassive"); }
 		}
 
 		/// <summary>
@@ -639,10 +450,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsGlobal
 		{
-			get
-			{
-				return GetMember<bool>("IsGlobal");
-			}
+			get { return this.GetBoolFromLSO("IsGlobal"); }
 		}
 
 		/// <summary>
@@ -650,10 +458,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsMoribund
 		{
-			get
-			{
-				return GetMember<bool>("IsMoribund");
-			}
+			get { return this.GetBoolFromLSO("IsMoribund"); }
 		}
 
 		/// <summary>
@@ -661,15 +466,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsWarpScrambled
 		{
-			get
-			{
-				LavishScriptObject isWarpScrambled = GetMember("IsWarpScrambled");
-				if (LavishScriptObject.IsNullOrInvalid(isWarpScrambled))
-				{
-					return false;
-				}
-				return isWarpScrambled.GetValue<bool>();
-			}
+			get { return this.GetBoolFromLSO("IsWarpScrambled"); }
 		}
 
 		/// <summary>
@@ -677,15 +474,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsActiveTarget
 		{
-			get
-			{
-				LavishScriptObject isActiveTarget = GetMember("IsActiveTarget");
-				if (LavishScriptObject.IsNullOrInvalid(isActiveTarget))
-				{
-					return false;
-				}
-				return isActiveTarget.GetValue<bool>();
-			}
+			get { return this.GetBoolFromLSO("IsActiveTarget"); }
 		}
 
 		/// <summary>
@@ -693,10 +482,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsLockedTarget
 		{
-			get
-			{
-				return GetMember<bool>("IsLockedTarget");
-			}
+			get { return this.GetBoolFromLSO("IsLockedTarget"); }
 		}
 
 		/// <summary>
@@ -704,18 +490,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsNPC
 		{
-			get
-			{
-				LavishScriptObject isNPC = GetMember("IsNPC");
-				if (LavishScriptObject.IsNullOrInvalid(isNPC))
-				{
-					return false;
-				}
-				else
-				{
-					return isNPC.GetValue<bool>();
-				}
-			}
+			get { return this.GetBoolFromLSO("IsNPC"); }
 		}
 
 		/// <summary>
@@ -723,18 +498,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsPC
 		{
-			get
-			{
-				LavishScriptObject isPC = GetMember("IsPC");
-				if (LavishScriptObject.IsNullOrInvalid(isPC))
-				{
-					return false;
-				}
-				else
-				{
-					return isPC.GetValue<bool>();
-				}
-			}
+			get { return this.GetBoolFromLSO("IsPC"); }
 		}
 
 		/// <summary>
@@ -742,15 +506,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool HaveLootRights
 		{
-			get
-			{
-				LavishScriptObject haveLootRights = GetMember("HaveLootRights");
-				if (LavishScriptObject.IsNullOrInvalid(haveLootRights))
-				{
-					return false;
-				}
-				return haveLootRights.GetValue<bool>();
-			}
+			get { return this.GetBoolFromLSO("HaveLootRights"); }
 		}
 
 		/// <summary>
@@ -760,10 +516,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int Mode
 		{
-			get
-			{
-				return GetMember<int>("Mode");
-			}
+			get { return this.GetIntFromLSO("Mode"); }
 		}
 
 		/// <summary>
@@ -771,10 +524,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsTargetingMe
 		{
-			get
-			{
-				return GetMember<bool>("IsTargetingMe");
-			}
+			get { return this.GetBoolFromLSO("IsTargetingMe"); }
 		}
 
 		/// <summary>
@@ -782,10 +532,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsWarpScramblingMe
 		{
-			get
-			{
-				return GetMember<bool>("IsWarpScramblingMe");
-			}
+			get { return this.GetBoolFromLSO("IsWarpScramblingMe"); }
 		}
 
 		/// <summary>
@@ -793,10 +540,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsTargetJammingMe
 		{
-			get
-			{
-				return GetMember<bool>("IsTargetJammingMe");
-			}
+			get { return this.GetBoolFromLSO("IsTargetJammingMe"); }
 		}
 
 		/// <summary>
@@ -804,10 +548,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool BeingTargeted
 		{
-			get
-			{
-				return GetMember<bool>("BeingTargeted");
-			}
+			get { return this.GetBoolFromLSO("BeingTargeted"); }
 		}
 
 		/// <summary>
@@ -839,10 +580,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double CargoCapacity
 		{
-			get
-			{
-				return GetMember<double>("CargoCapacity");
-			}
+			get { return this.GetDoubleFromLSO("CargoCapacity"); }
 		}
 
 		/// <summary>
@@ -850,10 +588,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double UsedCargoCapacity
 		{
-			get
-			{
-				return GetMember<double>("UsedCargoCapacity");
-			}
+			get { return this.GetDoubleFromLSO("UsedCargoCapacity"); }
 		}
 
 		/// <summary>

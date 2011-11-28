@@ -1,4 +1,5 @@
 using System;
+using Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
 
@@ -53,7 +54,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public Int64 CharID
 		{
-			get { return Util.GetInt64FromLSO(GetMember("CharID")); }
+			get { return this.GetInt64FromLSO("CharID"); }
 		}
 
 		/// <summary>

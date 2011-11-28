@@ -1,4 +1,5 @@
-﻿using LavishScriptAPI;
+﻿using Extensions;
+using LavishScriptAPI;
 
 namespace EVE.ISXEVE
 {
@@ -10,7 +11,7 @@ namespace EVE.ISXEVE
 
         public double Balance
         {
-            get { return Util.GetDoubleFromLSO(GetMember("Balance")); }
+            get { return this.GetDoubleFromLSO("Balance"); }
         }
     }
 }

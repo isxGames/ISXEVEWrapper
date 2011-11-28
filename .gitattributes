@@ -46,6 +46,7 @@ ISXEVEWrapperTest/wraptest.iss -text
 /Interstellar.cs -text
 /Item.cs -text
 /Jammer.cs -text
+/LavishScriptObjectExtensions.cs -text
 /Login.cs -text
 /MarketOrder.cs -text
 /Module.cs -text

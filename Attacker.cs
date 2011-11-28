@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Extensions;
 using LavishScriptAPI;
 using InnerSpaceAPI;
 
@@ -26,7 +27,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				Tracing.SendCallback("Attacker.ID");
-			    return Util.GetInt64FromLSO(GetMember("ID"));
+			    return this.GetInt64FromLSO("ID");
 			}
 		}
 
