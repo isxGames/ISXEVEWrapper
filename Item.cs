@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-
+using Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
 
@@ -29,10 +29,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double BasePrice
 		{
-			get
-			{
-				return GetMember<double>("BasePrice");
-			}
+			get { return this.GetDoubleFromLSO("BasePrice"); }
 		}
 
 		/// <summary>
@@ -40,10 +37,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Capacity
 		{
-			get
-			{
-				return GetMember<double>("Capacity");
-			}
+			get { return this.GetDoubleFromLSO("Capacity"); }
 		}
 
 		/// <summary>
@@ -51,14 +45,11 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double CargoCapacity
 		{
-			get
-			{
-				return GetMember<double>("CargoCapacity");
-			}
+			get { return this.GetDoubleFromLSO("CargoCapacity"); }
 		}
 
 		/// <summary>
-		/// Wrapper for the GetCargo member of the item type.
+		/// Wrapper for the GetCargo method of the item type.
 		/// </summary>
 		/// <returns></returns>
 		public List<Item> GetCargo()
@@ -71,10 +62,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double UsedCargoCapacity
 		{
-			get
-			{
-				return GetMember<double>("UsedCargoCapacity");
-			}
+			get { return this.GetDoubleFromLSO("UsedCargoCapacity"); }
 		}
 
 		/// <summary>
@@ -82,10 +70,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Category
 		{
-			get
-			{
-				return GetMember<string>("Category");
-			}
+			get { return this.GetStringFromLSO("Category"); }
 		}
 
 		/// <summary>
@@ -93,10 +78,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int CategoryID
 		{
-			get
-			{
-				return GetMember<int>("CategoryID");
-			}
+			get { return this.GetIntFromLSO("CategoryID"); }
 		}
 
 		/// <summary>
@@ -115,10 +97,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Description
 		{
-			get
-			{
-				return GetMember<string>("Description");
-			}
+			get { return this.GetStringFromLSO("Description"); }
 		}
 
 		/// <summary>
@@ -126,10 +105,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int GraphicID
 		{
-			get
-			{
-				return GetMember<int>("GraphicID");
-			}
+			get { return this.GetIntFromLSO("GraphicID"); }
 		}
 
 		/// <summary>
@@ -137,10 +113,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Group
 		{
-			get
-			{
-				return GetMember<string>("Group");
-			}
+			get { return this.GetStringFromLSO("Group"); }
 		}
 
 		/// <summary>
@@ -148,10 +121,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int GroupID
 		{
-			get
-			{
-				return GetMember<int>("GroupID");
-			}
+			get { return this.GetIntFromLSO("GroupID"); }
 		}
 
 		/// <summary>
@@ -162,7 +132,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				Tracing.SendCallback("Item.ID");
-				return GetMember<Int64>("ID");
+				return this.GetInt64FromLSO("ID");
 			}
 		}
 
@@ -172,11 +142,7 @@ namespace EVE.ISXEVE
         /// </summary>
 	    public string InsuranceLevel
 	    {
-	        get
-	        {
-                var insuranceLevel = GetMember("InsuranceLevel");
-	            return IsNullOrInvalid(insuranceLevel) ? null : insuranceLevel.GetValue<string>();
-	        }
+	        get { return this.GetStringFromLSO("InsuranceLevel"); }
 	    }
 
         /// <summary>
@@ -186,8 +152,7 @@ namespace EVE.ISXEVE
 	    {
             get 
             {
-                var isInsured = GetMember("IsInsured");
-                return IsNullOrInvalid(isInsured) ? null : (bool?)isInsured.GetValue<bool>();
+            	return this.GetNullableBoolFromLSO("IsInsured");
             }
 	    }
 
@@ -198,10 +163,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsRepackable
 		{
-			get
-			{
-				return GetMember<bool>("IsRepackable");
-			}
+			get { return this.GetBoolFromLSO("IsRepackable"); }
 		}
 
 		/// <summary>
@@ -209,10 +171,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Location
 		{
-			get
-			{
-				return GetMember<string>("Location");
-			}
+			get { return this.GetStringFromLSO("Location"); }
 		}
 
 		/// <summary>
@@ -220,10 +179,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int LocationID
 		{
-			get
-			{
-				return GetMember<int>("LocationID");
-			}
+			get { return this.GetIntFromLSO("LocationID"); }
 		}
 
 		/// <summary>
@@ -231,10 +187,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string MacroLocation
 		{
-			get
-			{
-				return GetMember<string>("MacroLocation");
-			}
+			get { return this.GetStringFromLSO("MacroLocation"); }
 		}
 
 		/// <summary>
@@ -242,10 +195,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int MacroLocationID
 		{
-			get
-			{
-				return GetMember<int>("MacroLocationID");
-			}
+			get { return this.GetIntFromLSO("MacroLocationID"); }
 		}
 
 		/// <summary>
@@ -253,10 +203,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int MarketGroupID
 		{
-			get
-			{
-				return GetMember<int>("MarketGroupID");
-			}
+			get { return this.GetIntFromLSO("MarketGroupID"); }
 		}
 
 		/// <summary>
@@ -264,10 +211,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double MaxFlightTime
 		{
-			get
-			{
-				return GetMember<double>("MaxFlightTime");
-			}
+			get { return this.GetDoubleFromLSO("MaxFlightTime"); }
 		}
 
 		/// <summary>
@@ -275,10 +219,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double MaxVelocity
 		{
-			get
-			{
-				return GetMember<double>("MaxVelocity");
-			}
+			get { return this.GetDoubleFromLSO("MaxVelocity"); }
 		}
 
 		/// <summary>
@@ -286,10 +227,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Name
 		{
-			get
-			{
-				return GetMember<string>("Name");
-			}
+			get { return this.GetStringFromLSO("Name"); }
 		}
 
 		/// <summary>
@@ -297,10 +235,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int OwnerID
 		{
-			get
-			{
-				return GetMember<int>("OwnerID");
-			}
+			get { return this.GetIntFromLSO("OwnerID"); }
 		}
 
 		/// <summary>
@@ -308,10 +243,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int PortionSize
 		{
-			get
-			{
-				return GetMember<int>("PortionSize");
-			}
+			get { return this.GetIntFromLSO("PortionSize"); }
 		}
 
 		/// <summary>
@@ -319,10 +251,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int Quantity
 		{
-			get
-			{
-				return GetMember<int>("Quantity");
-			}
+			get { return this.GetIntFromLSO("Quantity"); }
 		}
 
 		/// <summary>
@@ -330,10 +259,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int RaceID
 		{
-			get
-			{
-				return GetMember<int>("RaceID");
-			}
+			get { return this.GetIntFromLSO("RaceID"); }
 		}
 
 		/// <summary>
@@ -341,10 +267,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Radius
 		{
-			get
-			{
-				return GetMember<double>("Radius");
-			}
+			get { return this.GetDoubleFromLSO("Radius"); }
 		}
 
 		/// <summary>
@@ -352,10 +275,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Slot
 		{
-			get
-			{
-				return GetMember<string>("Slot");
-			}
+			get { return this.GetStringFromLSO("Slot"); }
 		}
 
 		/// <summary>
@@ -363,10 +283,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int SlotID
 		{
-			get
-			{
-				return GetMember<int>("SlotID");
-			}
+			get { return this.GetIntFromLSO("SlotID"); }
 		}
 
 		/// <summary>
@@ -374,10 +291,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Type
 		{
-			get
-			{
-				return GetMember<string>("Type");
-			}
+			get { return this.GetStringFromLSO("Type"); }
 		}
 
 		/// <summary>
@@ -385,10 +299,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int TypeID
 		{
-			get
-			{
-				return GetMember<int>("TypeID");
-			}
+			get { return this.GetIntFromLSO("TypeID"); }
 		}
 
 		/// <summary>
@@ -396,10 +307,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Volume
 		{
-			get
-			{
-				return GetMember<double>("Volume");
-			}
+			get { return this.GetDoubleFromLSO("Volume"); }
 		}
 
 		/// <summary>
@@ -407,10 +315,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string GivenName
 		{
-			get
-			{
-				return GetMember<string>("GivenName");
-			}
+			get { return this.GetStringFromLSO("GivenName"); }
 		}
 
 		#endregion

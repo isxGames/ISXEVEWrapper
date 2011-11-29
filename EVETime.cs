@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-
+using Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
 
@@ -37,10 +37,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string DateAndTime
 		{
-			get
-			{
-				return GetMember<string>("DateAndTime");
-			}
+			get { return this.GetStringFromLSO("DateAndTime"); }
 		}
 
 		/// <summary>
@@ -48,10 +45,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Date
 		{
-			get
-			{
-				return GetMember<string>("Date");
-			}
+			get { return this.GetStringFromLSO("Date"); }
 		}
 
 		/// <summary>
@@ -59,10 +53,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Time
 		{
-			get
-			{
-				return GetMember<string>("Time");
-			}
+			get { return this.GetStringFromLSO("Time"); }
 		}
 
 		/// <summary>
@@ -73,7 +64,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				Tracing.SendCallback("EVETime.AsInt64");
-				return GetMember<Int64>("AsInt64");
+				return this.GetInt64FromLSO("AsInt64");
 			}
 		}
 		#endregion

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-
+using Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
 
@@ -32,12 +32,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				Tracing.SendCallback("ActiveDrone.ID");
-				LavishScriptObject id = GetMember("ID");
-				if (!LavishScriptObject.IsNullOrInvalid(id))
-				{
-					return id.GetValue<Int64>();
-				}
-				return -1;
+				return this.GetInt64FromLSO("ID");
 			}
 		}
 
@@ -68,10 +63,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Type
 		{
-			get
-			{
-				return GetMember<string>("Type");
-			}
+			get { return this.GetStringFromLSO("Type"); }
 		}
 
 		/// <summary>
@@ -79,10 +71,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int TypeID
 		{
-			get
-			{
-				return GetMember<int>("TypeID");
-			}
+			get { return this.GetIntFromLSO("TypeID"); }
 		}
 
 		/// <summary>
@@ -90,15 +79,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int State
 		{
-			get
-			{
-				LavishScriptObject state = GetMember("State");
-				if (LavishScriptObject.IsNullOrInvalid(state))
-				{
-					return -1;
-				}
-				return state.GetValue<int>();
-			}
+			get { return this.GetIntFromLSO("State"); }
 		}
 
 		/// <summary>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Extensions;
 using LavishScriptAPI;
 
 namespace EVE.ISXEVE
@@ -31,15 +32,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				Tracing.SendCallback("Fleet.ID");
-				LavishScriptObject id = GetMember("ID");
-				if (!LavishScriptObject.IsNullOrInvalid(id))
-				{
-					return id.GetValue<Int64>();
-				}
-				else
-				{
-					return -1;
-				}
+				return this.GetInt64FromLSO("ID");
 			}
 		}
 
@@ -48,10 +41,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string InvitationText
 		{
-			get
-			{
-				return GetMember<string>("InvitationText");
-			}
+			get { return this.GetStringFromLSO("InvitationText"); }
 		}
 
 		/// <summary>
@@ -59,18 +49,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool Invited
 		{
-			get
-			{
-				LavishScriptObject invited = GetMember("Invited");
-				if (!LavishScriptObject.IsNullOrInvalid(invited))
-				{
-					return invited.GetValue<bool>();
-				}
-				else
-				{
-					return false;
-				}
-			}
+			get { return this.GetBoolFromLSO("Invited"); }
 		}
 
 		/// <summary>
@@ -78,18 +57,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsFleetCommander
 		{
-			get
-			{
-				LavishScriptObject isFleetCommander = GetMember("IsFleetCommander");
-				if (!LavishScriptObject.IsNullOrInvalid(isFleetCommander))
-				{
-					return isFleetCommander.GetValue<bool>();
-				}
-				else
-				{
-					return false;
-				}
-			}
+			get { return this.GetBoolFromLSO("IsFleetCommander"); }
 		}
 
 		/// <summary>
@@ -107,18 +75,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int Size
 		{
-			get
-			{
-				LavishScriptObject size = GetMember("Size");
-				if (!LavishScriptObject.IsNullOrInvalid(size))
-				{
-					return size.GetValue<int>();
-				}
-				else
-				{
-					return -1;
-				}
-			}
+			get { return this.GetIntFromLSO("Size"); }
 		}
 
 		/// <summary>
@@ -128,15 +85,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool IsMember(Int64 charID)
 		{
-			LavishScriptObject isMember = GetMember("IsMember", charID.ToString());
-			if (!LavishScriptObject.IsNullOrInvalid(isMember))
-			{
-				return isMember.GetValue<bool>();
-			}
-			else
-			{
-				return false;
-			}
+			return this.GetBoolFromLSO("IsMember", charID.ToString());
 		}
 
 		/// <summary>
@@ -146,7 +95,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public string WingName(Int64 wingID)
 		{
-			return GetMember<string>("WingName", wingID.ToString());
+			return this.GetStringFromLSO("WingName", wingID.ToString());
 		}
 
 		/// <summary>
@@ -156,15 +105,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public Int64 WingNameToID(string wingName)
 		{
-			LavishScriptObject wingID = GetMember("WingNameToID", wingName);
-			if (!LavishScriptObject.IsNullOrInvalid(wingID))
-			{
-				return wingID.GetValue<Int64>();
-			}
-			else
-			{
-				return -1;
-			}
+			return this.GetInt64FromLSO("WingNameToID", wingName);
 		}
 
 		/// <summary>
@@ -174,7 +115,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public string SquadName(Int64 squadID)
 		{
-			return GetMember<string>("SquadName", squadID.ToString());
+			return this.GetStringFromLSO("SquadName", squadID.ToString());
 		}
 
 		/// <summary>
@@ -184,15 +125,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public Int64 SquadNameToID(string squadName)
 		{
-			LavishScriptObject squadID = GetMember("SquadNameToID", squadName);
-			if (!LavishScriptObject.IsNullOrInvalid(squadID))
-			{
-				return squadID.GetValue<Int64>();
-			}
-			else
-			{
-				return -1;
-			}
+			return this.GetInt64FromLSO("SquadNameToID", squadName);
 		}
 		#endregion
 

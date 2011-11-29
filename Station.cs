@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Extensions;
 using LavishScriptAPI;
 
 namespace EVE.ISXEVE
@@ -71,10 +72,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Name
 		{
-			get
-			{
-				return GetMember<string>("Name");
-			}
+			get { return this.GetStringFromLSO("Name"); }
 		}
 
 		/// <summary>
@@ -82,10 +80,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int ID
 		{
-			get
-			{
-				return GetMember<int>("ID");
-			}
+			get { return this.GetIntFromLSO("ID"); }
 		}
 
 		/// <summary>
@@ -93,10 +88,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int TypeID
 		{
-			get
-			{
-				return GetMember<int>("TypeID");
-			}
+			get { return this.GetIntFromLSO("TypeID"); }
 		}
 
 		/// <summary>
@@ -104,10 +96,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Type
 		{
-			get
-			{
-				return GetMember<string>("Type");
-			}
+			get { return this.GetStringFromLSO("Type"); }
 		}
 
 		/// <summary>
@@ -115,10 +104,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int OwnerID
 		{
-			get
-			{
-				return GetMember<int>("OwnerID");
-			}
+			get { return this.GetIntFromLSO("OwnerID"); }
 		}
 
 		/// <summary>
@@ -126,10 +112,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Owner
 		{
-			get
-			{
-				return GetMember<string>("Owner");
-			}
+			get { return this.GetStringFromLSO("Owner"); }
 		}
 
 		/// <summary>
@@ -137,10 +120,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int OwnerTypeID
 		{
-			get
-			{
-				return GetMember<int>("OwnerTypeID");
-			}
+			get { return this.GetIntFromLSO("OwnerTypeID"); }
 		}
 
 		/// <summary>
@@ -148,10 +128,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string OwnerType
 		{
-			get
-			{
-				return GetMember<string>("OwnerType");
-			}
+			get { return this.GetStringFromLSO("OwnerType"); }
 		}
 		#endregion
 

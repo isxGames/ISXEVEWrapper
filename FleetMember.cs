@@ -62,10 +62,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Job
 		{
-			get
-			{
-				return GetMember<string>("Job");
-			}
+			get { return this.GetStringFromLSO("Job"); }
 		}
 
 		/// <summary>
@@ -73,10 +70,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int JobID
 		{
-			get
-			{
-				return GetMember<int>("JobID");
-			}
+			get { return this.GetIntFromLSO("JobID"); }
 		}
 
 		/// <summary>
@@ -84,10 +78,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Role
 		{
-			get
-			{
-				return GetMember<string>("Role");
-			}
+			get { return this.GetStringFromLSO("Role"); }
 		}
 
 		/// <summary>
@@ -95,10 +86,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int RoleID
 		{
-			get
-			{
-				return GetMember<int>("RoleID");
-			}
+			get { return this.GetIntFromLSO("RoleID"); }
 		}
 
 		/// <summary>
@@ -106,10 +94,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int Boosting
 		{
-			get
-			{
-				return GetMember<int>("Boosting");
-			}
+			get { return this.GetIntFromLSO("Boosting"); }
 		}
 
 		/// <summary>
@@ -117,10 +102,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public Int64 SquadID
 		{
-			get
-			{
-				return GetMember<Int64>("SquadID");
-			}
+			get { return this.GetInt64FromLSO("SquadID"); }
 		}
 
 		/// <summary>
@@ -128,10 +110,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public Int64 WingID
 		{
-			get
-			{
-				return GetMember<Int64>("WingID");
-			}
+			get { return this.GetInt64FromLSO("WingID"); }
 		}
 		#endregion
 

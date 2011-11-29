@@ -101,5 +101,85 @@ namespace Extensions
 				return LavishScriptObject.IsNullOrInvalid(lavishScriptObject) ? false : lavishScriptObject.GetValue<bool>();
 			}
 		}
+
+		public static Int64? GetNullableInt64FromLSO(this ILSObject obj, string member)
+		{
+			using (var lavishScriptObject = obj.GetMember(member))
+			{
+				return LavishScriptObject.IsNullOrInvalid(lavishScriptObject) ? null : (Int64?)lavishScriptObject.GetValue<Int64>();
+			}
+		}
+
+		public static Int64? GetNullableInt64FromLSO(this ILSObject obj, string member, params string[] args)
+		{
+			using (var lavishScriptObject = obj.GetMember(member, args))
+			{
+				return LavishScriptObject.IsNullOrInvalid(lavishScriptObject) ? null : (Int64?)lavishScriptObject.GetValue<Int64>();
+			}
+		}
+
+		public static float? GetNullableFloatFromLSO(this ILSObject obj, string member)
+		{
+			using (var lavishScriptObject = obj.GetMember(member))
+			{
+				return LavishScriptObject.IsNullOrInvalid(lavishScriptObject) ? null : (float?)lavishScriptObject.GetValue<float>();
+			}
+		}
+
+		public static float? GetNullableFloatFromLSO(this ILSObject obj, string member, params string[] args)
+		{
+			using (var lavishScriptObject = obj.GetMember(member, args))
+			{
+				return LavishScriptObject.IsNullOrInvalid(lavishScriptObject) ? null : (float?)lavishScriptObject.GetValue<float>();
+			}
+		}
+
+		public static double? GetNullableDoubleFromLSO(this ILSObject obj, string member)
+		{
+			using (var lavishScriptObject = obj.GetMember(member))
+			{
+				return LavishScriptObject.IsNullOrInvalid(lavishScriptObject) ? null : (double?)lavishScriptObject.GetValue<double>();
+			}
+		}
+
+		public static double? GetNullableDoubleFromLSO(this ILSObject obj, string member, params string[] args)
+		{
+			using (var lavishScriptObject = obj.GetMember(member, args))
+			{
+				return LavishScriptObject.IsNullOrInvalid(lavishScriptObject) ? null : (double?)lavishScriptObject.GetValue<double>();
+			}
+		}
+
+		public static int? GetNullableIntFromLSO(this ILSObject obj, string member)
+		{
+			using (var lavishScriptObject = obj.GetMember(member))
+			{
+				return LavishScriptObject.IsNullOrInvalid(lavishScriptObject) ? null : (int?)lavishScriptObject.GetValue<int>();
+			}
+		}
+
+		public static int? GetNullableIntFromLSO(this ILSObject obj, string member, params string[] args)
+		{
+			using (var lavishScriptObject = obj.GetMember(member, args))
+			{
+				return LavishScriptObject.IsNullOrInvalid(lavishScriptObject) ? null : (int?)lavishScriptObject.GetValue<int>();
+			}
+		}
+
+		public static bool? GetNullableBoolFromLSO(this ILSObject obj, string member)
+		{
+			using (var lavishScriptObject = obj.GetMember(member))
+			{
+				return LavishScriptObject.IsNullOrInvalid(lavishScriptObject) ? null : (bool?)lavishScriptObject.GetValue<bool>();
+			}
+		}
+
+		public static bool? GetNullableBoolFromLSO(this ILSObject obj, string member, params string[] args)
+		{
+			using (var lavishScriptObject = obj.GetMember(member, args))
+			{
+				return LavishScriptObject.IsNullOrInvalid(lavishScriptObject) ? null : (bool?)lavishScriptObject.GetValue<bool>();
+			}
+		}
 	}
 }

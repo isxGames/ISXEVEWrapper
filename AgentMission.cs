@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-
+using Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
 
@@ -29,10 +29,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int State
 		{
-			get
-			{
-				return GetMember<int>("State");
-			}
+			get { return this.GetIntFromLSO("State"); }
 		}
 
 		/// <summary>
@@ -40,10 +37,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Type
 		{
-			get
-			{
-				return GetMember<string>("Type");
-			}
+			get { return this.GetStringFromLSO("Type"); }
 		}
 
 		/// <summary>
@@ -51,10 +45,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Name
 		{
-			get
-			{
-				return GetMember<string>("Name");
-			}
+			get { return this.GetStringFromLSO("Name"); }
 		}
 
 		/// <summary>
@@ -62,10 +53,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int AgentID
 		{
-			get
-			{
-				return GetMember<int>("AgentID");
-			}
+			get { return this.GetIntFromLSO("AgentID"); }
 		}
 
 		/// <summary>
@@ -75,15 +63,8 @@ namespace EVE.ISXEVE
 		{
 			get
 			{
-				LavishScriptObject expires = GetMember("Expires");
-				if (LavishScriptObject.IsNullOrInvalid(expires))
-				{
-					return null;
-				}
-				else
-				{
-					return new EVETime(expires);
-				}
+				var expires = GetMember("Expires");
+				return IsNullOrInvalid(expires) ? null : new EVETime(expires);
 			}
 		}
 
@@ -99,18 +80,12 @@ namespace EVE.ISXEVE
 
         public bool RemoteOfferable
         {
-            get
-            {
-                return GetMember<bool>("RemoteOfferable");
-            }
+            get { return this.GetBoolFromLSO("RemoteOfferable"); }
         }
 
         public bool RemoteCompletable
         {
-            get
-            {
-                return GetMember<bool>("RemoteCompletable");
-            }
+            get { return this.GetBoolFromLSO("RemoteCompletable"); }
         }
 		#endregion
 

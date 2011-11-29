@@ -36,15 +36,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsCurrentlyAttacking
 		{
-			get
-			{
-				LavishScriptObject isCurrentlyAttacking = GetMember("IsCurrentlyAttacking");
-				if (LavishScriptObject.IsNullOrInvalid(isCurrentlyAttacking))
-				{
-					return false;
-				}
-				return isCurrentlyAttacking.GetValue<bool>();
-			}
+			get { return this.GetBoolFromLSO("IsCurrentlyAttacking"); }
 		}
 
 		/// Get the Jammer member of the Attacker object

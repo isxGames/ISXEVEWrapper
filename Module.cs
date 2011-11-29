@@ -1,4 +1,5 @@
 using System;
+using Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
 using System.Collections.Generic;
@@ -33,19 +34,7 @@ namespace EVE.ISXEVE
 		#region Members
 		public Int64 ID
 		{
-			get
-			{
-				Tracing.SendCallback("Module.ID");
-				LavishScriptObject id = GetMember("ID");
-				if (LavishScriptObject.IsNullOrInvalid(id))
-				{
-					return -1;
-				}
-				else
-				{
-					return id.GetValue<Int64>();
-				}
-			}
+			get { return this.GetInt64FromLSO("ID"); }
 		}
 
 		/// <summary>
@@ -64,15 +53,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double ShieldTransferRange
 		{
-			get
-			{
-				LavishScriptObject shieldTransferRange = GetMember("ShieldTransferRange");
-				if (LavishScriptObject.IsNullOrInvalid(shieldTransferRange))
-				{
-					return -1;
-				}
-				return shieldTransferRange.GetValue<double>();
-			}
+			get { return this.GetDoubleFromLSO("ShieldTransferRange"); }
 		}
 
 		/// <summary>
@@ -80,15 +61,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool UsesFrequencyCrystals
 		{
-			get
-			{
-				LavishScriptObject usesFrequencyCrystals = GetMember("UsesFrequencyCrystals");
-				if (LavishScriptObject.IsNullOrInvalid(usesFrequencyCrystals))
-				{
-					return false;
-				}
-				return usesFrequencyCrystals.GetValue<bool>();
-			}
+			get { return this.GetBoolFromLSO("UsesFrequencyCrystals"); }
 		}
 
 		/// <summary>
@@ -96,10 +69,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsGoingOnline
 		{
-			get
-			{
-				return GetMember<bool>("IsGoingOnline");
-			}
+			get { return this.GetBoolFromLSO("IsGoingOnline"); }
 		}
 
 		/// <summary>
@@ -107,10 +77,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsWaitingForActiveTarget
 		{
-			get
-			{
-				return GetMember<bool>("IsWaitingForActiveTarget");
-			}
+			get { return this.GetBoolFromLSO("IsWaitingForActiveTarget"); }
 		}
 
 		/// <summary>
@@ -118,10 +85,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsChangingAmmo
 		{
-			get
-			{
-				return GetMember<bool>("IsChangingAmmo");
-			}
+			get { return this.GetBoolFromLSO("IsChangingAmmo"); }
 		}
 
 		/// <summary>
@@ -129,10 +93,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsReloadingAmmo
 		{
-			get
-			{
-				return GetMember<bool>("IsReloadingAmmo");
-			}
+			get { return this.GetBoolFromLSO("IsReloadingAmmo"); }
 		}
 
 		/// <summary>
@@ -140,10 +101,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsOnline
 		{
-			get
-			{
-				return GetMember<bool>("IsOnline");
-			}
+			get { return this.GetBoolFromLSO("IsOnline"); }
 		}
 
 		/// <summary>
@@ -151,10 +109,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsDeactivating
 		{
-			get
-			{
-				return GetMember<bool>("IsDeactivating");
-			}
+			get { return this.GetBoolFromLSO("IsDeactivating"); }
 		}
 
 		/// <summary>
@@ -162,10 +117,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsActivatable
 		{
-			get
-			{
-				return GetMember<bool>("IsActivatable");
-			}
+			get { return this.GetBoolFromLSO("IsActivatabe"); }
 		}
 
 		/// <summary>
@@ -173,10 +125,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsAutoReloadOn
 		{
-			get
-			{
-				return GetMember<bool>("IsAutoReloadOn");
-			}
+			get { return this.GetBoolFromLSO("IsAutoReloadOn"); }
 		}
 
 		/// <summary>
@@ -188,21 +137,12 @@ namespace EVE.ISXEVE
 			return Util.GetListFromMethod<Item>(this, "GetAvailableAmmo", "item");
 		}
 
-
 		/// <summary>
 		/// Wrapper for the SpecialtyCrystalMiningAmount member of a module object.
 		/// </summary>
 		public double SpecialtyCrystalMiningAmount
 		{
-			get
-			{
-				LavishScriptObject specialtyCrystalMiningAmount = GetMember("SpecialtyCrystalMiningAmount");
-				if (LavishScriptObject.IsNullOrInvalid(specialtyCrystalMiningAmount))
-				{
-					return -1;
-				}
-				return specialtyCrystalMiningAmount.GetValue<double>();
-			}
+			get { return this.GetDoubleFromLSO("SpecialtyCrystalMiningAmount"); }
 		}
 
 		/// <summary>
@@ -210,10 +150,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string DefaultEffectName
 		{
-			get
-			{
-				return GetMember<string>("DefaultEffectName");
-			}
+			get { return this.GetStringFromLSO("DefaultEffectiveName"); }
 		}
 
 		/// <summary>
@@ -221,10 +158,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string DefaultEffectDescription
 		{
-			get
-			{
-				return GetMember<string>("DefaultEffectDescription");
-			}
+			get { return this.GetStringFromLSO("DefaultEffectiveDescription"); }
 		}
 
 		/// <summary>
@@ -257,12 +191,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				Tracing.SendCallback("TargetID");
-				LavishScriptObject targetID = GetMember("TargetID");
-				if (LavishScriptObject.IsNullOrInvalid(targetID))
-				{
-					return -1;
-				}
-				return targetID.GetValue<Int64>();
+				return this.GetInt64FromLSO("TargetID");
 			}
 		}
 		#region Activatable
@@ -273,15 +202,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsActive
 		{
-			get
-			{
-				LavishScriptObject isActive = GetMember("IsActive");
-				if (LavishScriptObject.IsNullOrInvalid(isActive))
-				{
-					return false;
-				}
-				return isActive.GetValue<bool>();
-			}
+			get { return this.GetBoolFromLSO("IsActive"); }
 		}
 
 		/// <summary>
@@ -289,10 +210,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsOffensive
 		{
-			get
-			{
-				return GetMember<bool>("IsOffensive");
-			}
+			get { return this.GetBoolFromLSO("IsOffensive"); }
 		}
 
 		/// <summary>
@@ -300,10 +218,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsAssistance
 		{
-			get
-			{
-				return GetMember<bool>("IsAssistance");
-			}
+			get { return this.GetBoolFromLSO("IsAssistance"); }
 		}
 
 		/// <summary>
@@ -311,10 +226,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int EffectCategory
 		{
-			get
-			{
-				return GetMember<int>("EffectCategory");
-			}
+			get { return this.GetIntFromLSO("EffectCategory"); }
 		}
 		#endregion
 
@@ -335,10 +247,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int CurrentCharges
 		{
-			get
-			{
-				return GetMember<int>("CurrentCharges");
-			}
+			get { return this.GetIntFromLSO("CurrentCharges"); }
 		}
 
 		/// <summary>
@@ -346,15 +255,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int MaxCharges
 		{
-			get
-			{
-				LavishScriptObject maxCharges = GetMember("MaxCharges");
-				if (LavishScriptObject.IsNullOrInvalid(maxCharges))
-				{
-					return -1;
-				}
-				return maxCharges.GetValue<int>();
-			}
+			get { return this.GetIntFromLSO("MaxCharges"); }
 		}
 		#endregion
 
@@ -364,14 +265,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? PowergridUsage
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("PowergridUsage");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("PowergridUsage"); }
 		}
 
 		/// <summary>
@@ -379,14 +273,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? OptimalRange
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("OptimalRange");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("OptimalRange"); }
 		}
 
 		/// <summary>
@@ -394,14 +281,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? TechLevel
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("TechLevel");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("TechLevel"); }
 		}
 
 		/// <summary>
@@ -409,14 +289,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? ActivationCost
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("ActivationCost");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("ActivationCost"); }
 		}
 
 		/// <summary>
@@ -424,14 +297,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? HP
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("HP");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("HP"); }
 		}
 
 		/// <summary>
@@ -439,14 +305,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? Damage
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("Damage");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("Damage"); }
 		}
 
 		/// <summary>
@@ -454,14 +313,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? ActivationTime
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("ActivationTime");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("ActivationTime"); }
 		}
 
 		/// <summary>
@@ -469,14 +321,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? Duration
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("Duration");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("Duration"); }
 		}
 
 		/// <summary>
@@ -484,14 +329,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? Volume
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("Volume");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("Volume"); }
 		}
 
 		/// <summary>
@@ -499,14 +337,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? AccessDifficultyBonus
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("AccessDifficultyBonus");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("AccessDifficultyBonus"); }
 		}
 
 		/// <summary>
@@ -514,14 +345,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? CPUUsage
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("CPUUsage");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("CPUUsage"); }
 		}
 
 		/// <summary>
@@ -529,14 +353,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? Capacity
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("Capacity");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("Capacity"); }
 		}
 
 		/// <summary>
@@ -544,14 +361,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? MaxTractorVelocity
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("MaxTractorVelocity");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("MaxTractorVelocity"); }
 		}
 
 		/// <summary>
@@ -559,14 +369,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? Mass
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("Mass");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("Mass"); }
 		}
 
 		/// <summary>
@@ -574,14 +377,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? OverloadSpeedFactorBonus
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("OverloadSpeedFactorBonus");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("OverloadSpeedFactorBonus"); }
 		}
 
 		/// <summary>
@@ -591,11 +387,7 @@ namespace EVE.ISXEVE
 		{
 			get
 			{
-				LavishScriptObject obj = GetMember("MassAddition");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
+				return this.GetNullableDoubleFromLSO("MassAddition");
 			}
 		}
 
@@ -604,14 +396,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? HeatDamage
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("HeatDamage");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("HeatDamage"); }
 		}
 
 		/// <summary>
@@ -619,14 +404,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? Thrust
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("Thrust");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("Thrust"); }
 		}
 
 		/// <summary>
@@ -634,14 +412,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? MaxVelocityBonus
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("MaxVelocityBonus");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("MaxVelocityBonus"); }
 		}
 
 		/// <summary>
@@ -649,14 +420,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? MaxVelocityPenalty
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("MaxVelocityPenalty");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("MaxVelocityPenalty"); }
 		}
 
 		/// <summary>
@@ -664,14 +428,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? StructureHPBonus
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("StructureHPBonus");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("StructureHPBonus"); }
 		}
 
 		/// <summary>
@@ -679,14 +436,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? CargoCapacityBonus
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("CargoCapacityBonus");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return -1;
-			}
+			get { return this.GetNullableDoubleFromLSO("CargoCapacityBonus"); }
 		}
 
 		/// <summary>
@@ -694,18 +444,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? ShieldBonus
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("ShieldBonus");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-				{
-					return obj.GetValue<double>();
-				}
-				else
-				{
-					return -1;
-				}
-			}
+			get { return this.GetNullableDoubleFromLSO("ShieldBonus"); }
 		}
 
 		/// <summary>
@@ -713,14 +452,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? ShieldBoostBonus
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("ShieldBoostBonus");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("ShieldBoostBonus"); }
 		}
 
 		/// <summary>
@@ -728,14 +460,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? CapacitorRechargeRateBonus
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("CapacitorRechargeRateBonus");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("CapacitorRechargeRateBonus"); }
 		}
 
 		/// <summary>
@@ -743,14 +468,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? ShieldRechargeRateBonus
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("ShieldRechargeRateBonus");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("ShieldRechargeRateBonus"); }
 		}
 
 		/// <summary>
@@ -758,14 +476,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? CapacitorBonus
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("CapacitorBonus");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("CapacitorBonus"); }
 		}
 
 		/// <summary>
@@ -773,14 +484,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? PowergridBonus
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("PowergridBonus");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("PowergridBonus"); }
 		}
 
 		/// <summary>
@@ -788,14 +492,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? ShieldHPBonus
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("ShieldHPBonus");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("ShieldHPBonus"); }
 		}
 
 		/// <summary>
@@ -803,14 +500,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? VelocityModifier
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("VelocityModifier");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("VelocityModifier"); }
 		}
 
 		/// <summary>
@@ -818,14 +508,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? ChargeRate
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("ChargeRate");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("ChargeRate"); }
 		}
 
 		/// <summary>
@@ -833,14 +516,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? RateOfFire
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("RateOfFire");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("RateOfFire"); }
 		}
 
 		/// <summary>
@@ -848,14 +524,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? OverloadRateOfFireBonus
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("OverloadRateOfFireBonus");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("OverloadRateOfFireBonus"); }
 		}
 
 		/// <summary>
@@ -863,14 +532,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? MiningAmount
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("MiningAmount");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("MiningAmount"); }
 		}
 
 		/// <summary>
@@ -878,14 +540,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? CrystalsDamage
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("CrystalsDamage");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("CrystalsDamage"); }
 		}
 
 		/// <summary>
@@ -893,14 +548,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int? TargetGroup
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("TargetGroup");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<int>();
-				else
-					return null;
-			}
+			get { return this.GetNullableIntFromLSO("TargetGroup"); }
 		}
 
 		/// <summary>
@@ -908,14 +556,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? SurveyScanRange
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("SurveyScanRange");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("SurveyScanRange"); }
 		}
 
 		/// <summary>
@@ -923,14 +564,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? CPUOutputBonus
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("CPUOutputBonus");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("CPUOutputBonus"); }
 		}
 
 		/// <summary>
@@ -938,14 +572,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? TrackingSpeed
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("TrackingSpeed");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("TrackingSpeed"); }
 		}
 
 		/// <summary>
@@ -953,14 +580,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? DamageModifier
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("DamageModifier");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("DamageModifier"); }
 		}
 
 		/// <summary>
@@ -968,14 +588,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? EMDamage
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("EMDamage");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("EMDamage"); }
 		}
 
 		/// <summary>
@@ -983,14 +596,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? KineticDamage
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("KineticDamage");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("KineticDamage"); }
 		}
 
 		/// <summary>
@@ -998,14 +604,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? ThermalDamage
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("ThermalDamage");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("ThermalDamage"); }
 		}
 
 		/// <summary>
@@ -1013,14 +612,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? ExplosiveDamage
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("ExplosiveDamage");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("ExplosiveDamage"); }
 		}
 
 		/// <summary>
@@ -1028,14 +620,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? ChargeSize
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("ChargeSize");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("ChargeSize"); }
 		}
 
 		/// <summary>
@@ -1043,14 +628,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? AccuracyFalloff
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("AccuracyFalloff");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("AccuracyFalloff"); }
 		}
 
 		/// <summary>
@@ -1058,14 +636,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? SignatureResolution
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("SignatureResolution");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("SignatureResolution"); }
 		}
 
 		/// <summary>
@@ -1073,14 +644,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? OverloadOptimalRangeBonus
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("OverloadOptimalRangeBonus");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("OverloadOptimalRangeBonus"); }
 		}
 
 		/// <summary>
@@ -1088,14 +652,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? OverloadRepairBonus
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("OverloadRepairBonus");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetDoubleFromLSO("OverloadRepairBonus"); }
 		}
 
 		/// <summary>
@@ -1103,14 +660,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? OverloadDurationBonus
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("OverloadDurationBonus");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetDoubleFromLSO("OverloadDurationBonus"); }
 		}
 
 		/// <summary>
@@ -1118,14 +668,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? ArmorHPRepaired
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("ArmorHPRepaired");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("ArmorHPRepaired"); }
 		}
 
 		/// <summary>
@@ -1133,14 +676,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? ExplosiveDmgResistanceBonus
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("ExplosiveDmgResistanceBonus");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("ExplosiveDmgResistanceBonus"); }
 		}
 
 		/// <summary>
@@ -1148,14 +684,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? KineticDmgResistanceBonus
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("KineticDmgResistanceBonus");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("KineticDmgResistanceBonus"); }
 		}
 
 		/// <summary>
@@ -1163,14 +692,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? ThermalDmgResistanceBonus
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("ThermalDmgResistanceBonus");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("ThermalDmgResistanceBonus"); }
 		}
 
 		/// <summary>
@@ -1178,14 +700,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? EMDmgResistanceBonus
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("EMDmgResistanceBonus");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("EMDmgResistanceBonus"); }
 		}
 
 		/// <summary>
@@ -1193,14 +708,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? ArmorHPBonus
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("ArmorHPBonus");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("ArmorHPBonus"); }
 		}
 
 		/// <summary>
@@ -1208,14 +716,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? RateOfFireBonus
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("RateOfFireBonus");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("RateOfFireBonus"); }
 		}
 
 		/// <summary>
@@ -1223,14 +724,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? MiningAmountBonus
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("MiningAmountBonus");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("MiningAmountBonus"); }
 		}
 
 		/// <summary>
@@ -1238,14 +732,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? CPUPenaltyPercent
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("CPUPenaltyPercent");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("CPUPenaltyPercent"); }
 		}
 
 		/// <summary>
@@ -1253,14 +740,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? WarpScrambleStrength
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("WarpScrambleStrength");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("WarpScrambleStrength"); }
 		}
 
 		/// <summary>
@@ -1268,14 +748,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? EnergyTransferAmount
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("EnergyTransferAmount");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("EnergyTransferAmount"); }
 		}
 
 		/// <summary>
@@ -1283,14 +756,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? TransferRange
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("TransferRange");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("TransferRange"); }
 		}
 
 		/// <summary>
@@ -1298,14 +764,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? MaxNeutralizationRange
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("MaxNeutralizationRange");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("MaxNeutralizationRange"); }
 		}
 
 		/// <summary>
@@ -1313,14 +772,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? EnergyNeutralized
 		{
-			get
-			{
-				LavishScriptObject obj = GetMember("EnergyNeutralized");
-				if (!LavishScriptObject.IsNullOrInvalid(obj))
-					return obj.GetValue<double>();
-				else
-					return null;
-			}
+			get { return this.GetNullableDoubleFromLSO("EnergyNeutralized"); }
 		}
 		#endregion
 		#endregion

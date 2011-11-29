@@ -1,4 +1,5 @@
 using System;
+using Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
 
@@ -29,7 +30,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				//Tracing.SendCallback("Bookmark.ID");
-				return GetMember<Int64>("ID");
+				return this.GetInt64FromLSO("ID");
 			}
 		}
 
@@ -38,10 +39,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Type
 		{
-			get
-			{
-				return GetMember<String>("Type");
-			}
+			get { return this.GetStringFromLSO("Type"); }
 		}
 
 		/// <summary>
@@ -49,10 +47,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int TypeID
 		{
-			get
-			{
-				return GetMember<int>("TypeID");
-			}
+			get { return this.GetIntFromLSO("TypeID"); }
 		}
 
 		/// <summary>
@@ -73,10 +68,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int SolarSystemID
 		{
-			get
-			{
-				return GetMember<int>("SolarSystemID");
-			}
+			get { return this.GetIntFromLSO("SolarSystemID"); }
 		}
 
 		/// <summary>
@@ -84,18 +76,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double X
 		{
-			get
-			{
-				LavishScriptObject x = GetMember("X");
-				if (!LavishScriptObject.IsNullOrInvalid(x))
-				{
-					return x.GetValue<double>();
-				}
-				else
-				{
-					return -1;
-				}
-			}
+			get { return this.GetDoubleFromLSO("X"); }
 		}
 
 		/// <summary>
@@ -103,18 +84,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Y
 		{
-			get
-			{
-				LavishScriptObject y = GetMember("Y");
-				if (!LavishScriptObject.IsNullOrInvalid(y))
-				{
-					return y.GetValue<double>();
-				}
-				else
-				{
-					return -1;
-				}
-			}
+			get { return this.GetDoubleFromLSO("Y"); }
 		}
 
 		/// <summary>
@@ -122,18 +92,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Z
 		{
-			get
-			{
-				LavishScriptObject z = GetMember("Z");
-				if (!LavishScriptObject.IsNullOrInvalid(z))
-				{
-					return z.GetValue<double>();
-				}
-				else
-				{
-					return -1;
-				}
-			}
+			get { return this.GetDoubleFromLSO("Z"); }
 		}
 
 		/// <summary>
@@ -141,10 +100,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Label
 		{
-			get
-			{
-				return GetMember<string>("Label");
-			}
+			get { return this.GetStringFromLSO("Label"); }
 		}
 
 		/// <summary>
@@ -152,10 +108,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Note
 		{
-			get
-			{
-				return GetMember<string>("Note");
-			}
+			get { return this.GetStringFromLSO("Note"); }
 		}
 
 		/// <summary>
@@ -163,10 +116,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string DateCreated
 		{
-			get
-			{
-				return GetMember<string>("DateCreated");
-			}
+			get { return this.GetStringFromLSO("DateCreated"); }
 		}
 
 		/// <summary>
@@ -174,10 +124,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string TimeCreated
 		{
-			get
-			{
-				return GetMember<string>("TimeCreated");
-			}
+			get { return this.GetStringFromLSO("TimeCreated"); }
 		}
 
 		/// <summary>
@@ -185,10 +132,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int AgentID
 		{
-			get
-			{
-				return GetMember<int>("AgentID");
-			}
+			get { return this.GetIntFromLSO("AgentID"); }
 		}
 
 		/// <summary>
@@ -199,7 +143,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				Tracing.SendCallback("Bookmark.LocationID");
-				return GetMember<Int64>("LocationID");
+				return this.GetInt64FromLSO("LocationID");
 			}
 		}
 
@@ -208,10 +152,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int LocationNumber
 		{
-			get
-			{
-				return GetMember<int>("LocationNumber");
-			}
+			get { return this.GetIntFromLSO("LocationNumber"); }
 		}
 
 		/// <summary>
@@ -219,10 +160,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string LocationType
 		{
-			get
-			{
-				return GetMember<string>("LocationType");
-			}
+			get { return this.GetStringFromLSO("LocationType"); }
 		}
 
 		/// <summary>
@@ -233,15 +171,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				Tracing.SendCallback("Bookmark.ItemID");
-				LavishScriptObject itemID = GetMember("ItemID");
-				if (LavishScriptObject.IsNullOrInvalid(itemID))
-				{
-					return -1;
-				}
-				else
-				{
-					return itemID.GetValue<Int64>();
-				}
+				return this.GetInt64FromLSO("ItemID");
 			}
 		}
 
@@ -250,10 +180,7 @@ namespace EVE.ISXEVE
         /// </summary>
         public bool DeadSpace
         {
-            get
-            {
-                return GetMember<bool>("DeadSpace");
-            }
+            get { return this.GetBoolFromLSO("DeadSpace"); }
         }
 		#endregion
 

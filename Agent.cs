@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-
+using Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
 
@@ -57,10 +57,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int ID
 		{
-			get
-			{
-				return GetMember<int>("ID");
-			}
+			get { return this.GetIntFromLSO("ID"); }
 		}
 
 		/// <summary>
@@ -68,10 +65,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Name
 		{
-			get
-			{
-				return GetMember<string>("Name");
-			}
+			get { return this.GetStringFromLSO("Name"); }
 		}
 
 		/// <summary>
@@ -79,10 +73,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int TypeID
 		{
-			get
-			{
-				return GetMember<int>("TypeID");
-			}
+			get { return this.GetIntFromLSO("TypeID"); }
 		}
 
 		/// <summary>
@@ -90,10 +81,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Division
 		{
-			get
-			{
-				return GetMember<string>("Division");
-			}
+			get { return this.GetStringFromLSO("Division"); }
 		}
 
 		/// <summary>
@@ -101,10 +89,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int DivisionID
 		{
-			get
-			{
-				return GetMember<int>("DivisionID");
-			}
+			get { return this.GetIntFromLSO("DivisionID"); }
 		}
 
 		/// <summary>
@@ -112,10 +97,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int Level
 		{
-			get
-			{
-				return GetMember<int>("Level");
-			}
+			get { return this.GetIntFromLSO("Level"); }
 		}
 
 		/// <summary>
@@ -123,10 +105,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int CorporationID
 		{
-			get
-			{
-				return GetMember<int>("CorporationID");
-			}
+			get { return this.GetIntFromLSO("CorporationID"); }
 		}
 
 		/// <summary>
@@ -134,10 +113,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int FactionID
 		{
-			get
-			{
-				return GetMember<int>("FactionID");
-			}
+			get { return this.GetIntFromLSO("FactionID"); }
 		}
 
 		/// <summary>
@@ -145,10 +121,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public float StandingTo
 		{
-			get
-			{
-				return GetMember<float>("StandingTo");
-			}
+			get { return this.GetFloatFromLSO("StandingTo"); }
 		}
 
 		/// <summary>
@@ -167,10 +140,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Station
 		{
-			get
-			{
-				return GetMember<string>("Station");
-			}
+			get { return this.GetStringFromLSO("Station"); }
 		}
 
 		/// <summary>
@@ -178,10 +148,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int StationID
 		{
-			get
-			{
-				return GetMember<int>("StationID");
-			}
+			get { return this.GetIntFromLSO("StationID"); }
 		}
 
 		/// <summary>
@@ -189,10 +156,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int Index
 		{
-			get
-			{
-				return GetMember<int>("Index");
-			}
+			get { return this.GetIntFromLSO("Index"); }
 		}
 
 		/// <summary>
@@ -200,10 +164,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Dialog
 		{
-			get
-			{
-				return GetMember<string>("Dialog");
-			}
+			get { return this.GetStringFromLSO("Dialog"); }
 		}
 
 		/// <summary>
