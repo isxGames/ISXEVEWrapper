@@ -940,6 +940,14 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
+		/// Wrapper for the StorageWindow member of the Entity datatype.
+		/// </summary>
+		public EVEWindow StorageWindow
+		{
+			get { return new EVEWindow(GetMember("StorageWindow")); }
+		}
+
+		/// <summary>
 		/// Alias for 'LootWindow'
 		/// </summary>
 		public EVEWindow CargoWindow
@@ -1200,6 +1208,17 @@ namespace EVE.ISXEVE
 			if (Tracing.Callback != null)
 				Tracing.SendCallback("Entity.CloseCargo", string.Empty);
 			return ExecuteMethod("CloseCargo");
+		}
+
+		/// <summary>
+		/// Wrapper for the OpenStorage method of the Entity datatype
+		/// </summary>
+		/// <returns></returns>
+		public bool OpenStorage()
+		{
+			if (Tracing.Callback != null)
+				Tracing.SendCallback("Entity.OpenStorage", string.Empty);
+			return ExecuteMethod("OpenStorage");
 		}
 
 		/// <summary>
