@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-
+using Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
 
@@ -38,10 +38,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsConnecting
 		{
-			get
-			{
-				return GetMember<bool>("IsConnecting");
-			}
+			get { return this.GetBoolFromLSO("IsConnecting"); }
 		}
 
 		/// <summary>
@@ -49,10 +46,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string ServerStatus
 		{
-			get
-			{
-				return GetMember<string>("ServerStatus");
-			}
+			get { return this.GetStringFromLSO("ServerStatus"); }
 		}
 
 		/// <summary>
@@ -60,18 +54,12 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int ServerPopulation
 		{
-			get
-			{
-				return GetMember<int>("ServerPopulation");
-			}
+			get { return this.GetIntFromLSO("ServerPopulation"); }
 		}
 
         public string ServerMOTD
         {
-            get
-            {
-                return GetMember<string>("ServerMOTD");
-            }
+            get { return this.GetStringFromLSO("ServerMOTD"); }
         }
 		#endregion
 

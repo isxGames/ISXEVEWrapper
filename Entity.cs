@@ -212,10 +212,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int WreckID
 		{
-			get
-			{
-				return GetMember<int>("WreckID");
-			}
+			get { return this.GetIntFromLSO("WreckID"); }
 		}
 
 		/// <summary>

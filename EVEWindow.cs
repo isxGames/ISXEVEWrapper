@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-
+using Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
 
@@ -58,10 +58,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Caption
 		{
-			get
-			{
-				return GetMember<string>("Caption");
-			}
+			get { return this.GetStringFromLSO("Caption"); }
 		}
 
 		/// <summary>
@@ -69,10 +66,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool Minimized
 		{
-			get
-			{
-				return GetMember<bool>("Minimized");
-			}
+			get { return this.GetBoolFromLSO("Minimized"); }
 		}
 
 		/// <summary>
@@ -80,15 +74,12 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string HTML
 		{
-			get
-			{
-				return GetMember<string>("HTML");
-			}
+			get { return this.GetStringFromLSO("HTML"); }
 		}
 
 	    public string Text
 	    {
-            get { return GetMember<string>("Text"); }
+			get { return this.GetStringFromLSO("Text"); }
 	    }
 
         /// <summary>
@@ -96,11 +87,7 @@ namespace EVE.ISXEVE
         /// </summary>
 	    public Int64 ItemID
 	    {
-            get 
-            {
-                var itemID = GetMember("ItemID");
-                return IsNullOrInvalid(itemID) ? -1 : itemID.GetValue<Int64>();
-            }
+            get { return this.GetInt64FromLSO("ItemID"); }
 	    }
 		#endregion
 

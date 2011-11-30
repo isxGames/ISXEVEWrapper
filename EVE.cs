@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Extensions;
 using LavishScriptAPI;
 
 namespace EVE.ISXEVE
@@ -48,10 +49,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int EntitiesCount
 		{
-			get
-			{
-				return GetMember<int>("EntitiesCount");
-			}
+			get { return this.GetIntFromLSO("EntitiesCount"); }
 		}
 
         /// <summary>
@@ -59,7 +57,7 @@ namespace EVE.ISXEVE
         /// </summary>
 	    public int NextSessionChange
 	    {
-	        get { return GetMember<int>("NextSessionChange"); }
+			get { return this.GetIntFromLSO("NextSessionChange"); }
 	    }
 
         /// <summary>
@@ -125,16 +123,16 @@ namespace EVE.ISXEVE
 		public int JumpsToStation(int stationID)
 		{
 			Tracing.SendCallback("EVE.JumpsToStation", stationID.ToString());
-			return GetMember<int>("JumpsToStation", stationID.ToString());
+			return this.GetIntFromLSO("JumpsToStation");
 		}
 
 		/// <summary>
 		/// Returns the distance between two entities.
 		/// </summary>
-		public double DistanceBetween(int firstEntityID, int secondEntityID)
+		public double DistanceBetween(Int64 firstEntityID, Int64 secondEntityID)
 		{
 			Tracing.SendCallback("EVE.DistanceBetween", firstEntityID, secondEntityID);
-			return GetMember<double>("DistanceBetween", firstEntityID.ToString(), secondEntityID.ToString());
+			return this.GetDoubleFromLSO("DistanceBetween", firstEntityID.ToString(), secondEntityID.ToString());
 		}
 
 		/// <summary>
@@ -142,10 +140,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Time
 		{
-			get
-			{
-				return GetMember<string>("Time");
-			}
+			get { return this.GetStringFromLSO("Time"); }
 		}
 
 		/// <summary>
@@ -153,10 +148,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string TimeShort
 		{
-			get
-			{
-				return GetMember<string>("Time", "short");
-			}
+			get { return this.GetStringFromLSO("Time", "short"); }
 		}
 
 		/// <summary>
@@ -164,10 +156,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Date
 		{
-			get
-			{
-				return GetMember<string>("Date");
-			}
+			get { return this.GetStringFromLSO("Date"); }
 		}
 
 		/// <summary>
@@ -175,11 +164,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool Is3DDisplayOn
 		{
-			get
-			{
-				var is3DDisplayOn = GetMember("Is3DDisplayOn");
-				return LavishScriptObject.IsNullOrInvalid(is3DDisplayOn) || is3DDisplayOn.GetValue<bool>();
-			}
+			get { return this.GetBoolFromLSO("Is3DDisplayOn"); }
 		}
 
 		/// <summary>
@@ -187,38 +172,22 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsUIDisplayOn
 		{
-			get
-			{
-				var isUiDisplayOn = GetMember("IsUIDisplayOn");
-				return LavishScriptObject.IsNullOrInvalid(isUiDisplayOn) || isUiDisplayOn.GetValue<bool>();
-			}
+			get { return this.GetBoolFromLSO("IsUIDisplayOn"); }
 		}
 
 	    public bool IsTextureLoadingOn
 	    {
-            get 
-            {
-                var isTextureLoadingOn = GetMember("IsTextureLoadingOn");
-                return LavishScriptObject.IsNullOrInvalid(isTextureLoadingOn) || isTextureLoadingOn.GetValue<bool>();
-            }
+            get { return this.GetBoolFromLSO("IsTextureLoadingOn"); }
 	    }
 
 	    public bool IsProgressWindowOpen
 	    {
-	        get
-	        {
-                var isProgressWindowOpen = GetMember("IsProgressWindowOpen");
-                return LavishScriptObject.IsNullOrInvalid(isProgressWindowOpen) || isProgressWindowOpen.GetValue<bool>();
-	        }
+	        get { return this.GetBoolFromLSO("IsProgressWindowOpen"); }
 	    }
 
 	    public string ProgressWindowTitle
 	    {
-            get
-            {
-                var progressWindowTitle = GetMember("ProgressWindowTitle");
-                return LavishScriptObject.IsNullOrInvalid(progressWindowTitle) ? null : progressWindowTitle.GetValue<string>();
-            }
+            get { return this.GetStringFromLSO("ProgressWindowTitle"); }
 	    }
 
 		/// <summary>
@@ -247,10 +216,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public Int32 NumOpenChannels
 		{
-			get
-			{
-				return GetMember<Int32>("NumOpenChannels");
-			}
+			get { return this.GetIntFromLSO("NumOpenChannels"); }
 		}
 
 		/// <summary>
@@ -259,7 +225,7 @@ namespace EVE.ISXEVE
 		public int NumAssetsAtStation(int stationID)
 		{
 			Tracing.SendCallback("EVE.NumAssetsAtStation", stationID);
-			return GetMember<int>("NumAssetsAtStation", stationID.ToString());
+			return this.GetIntFromLSO("NumAssetsAtStation", stationID.ToString());
 		}
 
 		/// <summary>
@@ -268,7 +234,7 @@ namespace EVE.ISXEVE
 		public string GetLocationNameByID(int stationID)
 		{
 			Tracing.SendCallback("EVE.GetLocationNameByID", stationID);
-			return GetMember<string>("GetLocationNameByID", stationID.ToString());
+			return this.GetStringFromLSO("GetLocationNameByID", stationID.ToString());
 		}
 
 		/// <summary>
@@ -277,7 +243,7 @@ namespace EVE.ISXEVE
 		public bool FetchMarketOrders()
 		{
 			Tracing.SendCallback("EVE.FetchMarketOrders");
-			return ExecuteMethod("FetchMarketOrders");
+			return this.GetBoolFromLSO("FetchMarketOrders");
 		}
 
 		/// <summary>

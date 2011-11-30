@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
 
@@ -36,10 +37,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Version
 		{
-			get
-			{
-				return GetMember<string>("Version");
-			}
+			get { return this.GetStringFromLSO("Version"); }
 		}
 
 		/// <summary>
@@ -47,10 +45,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsReady
 		{
-			get
-			{
-				return GetMember<bool>("IsReady");
-			}
+			get { return this.GetBoolFromLSO("IsReady"); }
 		}
 
 		/// <summary>
@@ -58,10 +53,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsLoading
 		{
-			get
-			{
-				return GetMember<bool>("IsLoading");
-			}
+			get { return this.GetBoolFromLSO("IsLoading"); }
 		}
 
 		/// <summary>
@@ -72,7 +64,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string SecsToString(int seconds)
 		{
-			return GetMember<string>("SecsToString", seconds.ToString());
+			return this.GetStringFromLSO("SecsToString", seconds.ToString());
 		}
 
 		/// <summary>
@@ -81,15 +73,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsSafe
 		{
-			get
-			{
-				LavishScriptObject isSafe = GetMember("IsSafe");
-				if (LavishScriptObject.IsNullOrInvalid(isSafe))
-				{
-					return false;
-				}
-				return isSafe.GetValue<bool>();
-			}
+			get { return this.GetBoolFromLSO("IsSafe"); }
 		}
 		#endregion
 

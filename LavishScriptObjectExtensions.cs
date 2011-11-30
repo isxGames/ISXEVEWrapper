@@ -30,6 +30,14 @@ namespace Extensions
 			}
 		}
 
+		public static UInt64 GetUInt64FromLSO(this ILSObject obj, string member)
+		{
+			using (var lavishScriptObject = obj.GetMember(member))
+			{
+				return LavishScriptObject.IsNullOrInvalid(lavishScriptObject) ? 0 : lavishScriptObject.GetValue<UInt64>();
+			}
+		}
+
 		public static Int64 GetInt64FromLSO(this ILSObject obj, string member, params string[] args)
 		{
 			using (var lavishScriptObject = obj.GetMember(member, args))

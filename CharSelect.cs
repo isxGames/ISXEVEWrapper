@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-
+using Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
 
@@ -36,14 +36,14 @@ namespace EVE.ISXEVE
 		/// <summary>
 		/// True if the given character exists on the charselect screen
 		/// </summary>
-		public bool CharExists(int ID)
+		public bool CharExists(Int64 ID)
 		{
-			return GetMember<bool>("CharExists", ID.ToString());
+			return this.GetBoolFromLSO("CharExists", ID.ToString());
 		}
 
         public bool CharExists(string name)
         {
-            return GetMember<bool>("CharExists", name);
+        	return this.GetBoolFromLSO("CharExists", name);
         }
 
 		/// <summary>
@@ -51,23 +51,15 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string SelectedChar
 		{
-			get
-			{
-                var selectedChar = GetMember("SelectedChar");
-			    return IsNullOrInvalid(selectedChar) ? null : selectedChar.GetValue<string>();
-			}
+			get { return this.GetStringFromLSO("SelectedChar"); }
 		}
 
         /// <summary>
         /// Returns the CharID of the currently selected character
         /// </summary>
-	    public int SelectedCharID
+	    public Int64 SelectedCharID
 	    {
-	        get
-	        {
-                var selectedCharID = GetMember("SelectedCharID");
-	            return IsNullOrInvalid(selectedCharID) ? -1 : selectedCharID.GetValue<int>();
-	        }
+	        get { return this.GetInt64FromLSO("SelectedCharID"); }
 	    }
 		#endregion
 

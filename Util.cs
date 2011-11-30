@@ -184,40 +184,39 @@ namespace EVE.ISXEVE
 				return null;
 
 			//Tracing.SendCallback(methodName, "Create new LSO of index. Type: ", LSTypeName);
-			LavishScriptObject Index = LavishScript.Objects.NewObject("index:" + LSTypeName);
-
-			//Tracing.SendCallback(methodName, "Collapsing Args[]");
-
-			string[] allargs;
-			if (Args.Length > 0)
+			using (var Index = LavishScript.Objects.NewObject("index:" + LSTypeName))
 			{
-				allargs = PrefixArray<string>(Index.LSReference, Args);
+				//Tracing.SendCallback(methodName, "Collapsing Args[]");
+
+				string[] allargs;
+				if (Args.Length > 0)
+				{
+					allargs = PrefixArray<string>(Index.LSReference, Args);
+				}
+				else
+				{
+					allargs = new string[1];
+					allargs[0] = Index.LSReference;
+				}
+
+				//Tracing.SendCallback(methodName, "Execute method, name: ", MethodName);
+				if (!Obj.ExecuteMethod(MethodName, allargs))
+					return null;
+
+				//Tracing.SendCallback(methodName, "Get member Used");
+				using (var used = Index.GetMember("Used"))
+				{
+					//Tracing.SendCallback(methodName, "LSO.IsNullOrInvalid (used)");
+					if (LavishScriptObject.IsNullOrInvalid(used))
+						return null;
+				}
+
+				//Tracing.SendCallback(methodName, "IndexToList");
+				var list = IndexToList<T>(Index, LSTypeName);
+
+				//Tracing.SendCallback(methodName, "Returning");
+				return list;
 			}
-			else
-			{
-				allargs = new string[1];
-				allargs[0] = Index.LSReference;
-			}
-
-			//Tracing.SendCallback(methodName, "Execute method, name: ", MethodName);
-            if (!Obj.ExecuteMethod(MethodName, allargs))
-                return null;
-
-			//Tracing.SendCallback(methodName, "Get member Used");
-			LavishScriptObject used = Index.GetMember("Used");
-
-			//Tracing.SendCallback(methodName, "LSO.IsNullOrInvalid (used)");
-			if (LavishScriptObject.IsNullOrInvalid(used))
-				return null;
-
-			//Tracing.SendCallback(methodName, "IndexToList");
-			List<T> list = IndexToList<T>(Index, LSTypeName);
-
-			//Tracing.SendCallback(methodName, "Invalidate");
-			Index.Invalidate();
-
-			//Tracing.SendCallback(methodName, "Returning");
-			return list;
 		}
 
 		internal static T GetFromIndexMethod<T>(ILSObject Obj, string MethodName, string LSTypeName, int number, params string[] Args)
@@ -228,52 +227,54 @@ namespace EVE.ISXEVE
 			if (Obj == null || !Obj.IsValid || number <= 0)
 				return default(T);
 
-			LavishScriptObject Index = LavishScript.Objects.NewObject("index:" + LSTypeName);
+			using (var Index = LavishScript.Objects.NewObject("index:" + LSTypeName))
+			{
+				var allargs = PrefixArray(Index.LSReference, Args);
 
-			string[] allargs = PrefixArray<string>(Index.LSReference, Args);
+				if (!Obj.ExecuteMethod(MethodName, allargs))
+					return default(T);
 
-            if (!Obj.ExecuteMethod(MethodName, allargs))
-                return default(T);
+				using (var used = Index.GetMember("Used"))
+				{
+					// if it failed or we want one off the end, return
+					if (LavishScriptObject.IsNullOrInvalid(used) || used.GetValue<int>() < number)
+						return default(T);
+				}
 
-			LavishScriptObject used = Index.GetMember("Used");
-
-			// if it failed or we want one off the end, return
-			if (LavishScriptObject.IsNullOrInvalid(used) || used.GetValue<int>() < number)
-				return default(T);
-
-			T member = GetIndexMember<T>(Index, number);
-			Index.Invalidate();
-			return member;
+				T member = GetIndexMember<T>(Index, number);
+				return member;
+			}
 		}
 
 		internal static List<T> GetListFromMember<T>(ILSObject Obj, string MemberName, string LSTypeName, params string[] Args)
 		{
-			string methodName = "GetListFromMember";
+			var methodName = "GetListFromMember";
 			//Tracing.SendCallback(methodName, MemberName, LSTypeName);
 			
 			if (Obj == null || !Obj.IsValid)
 				return null;
 
 			//Tracing.SendCallback(methodName, "new index");
-			LavishScriptObject Index = LavishScript.Objects.NewObject("index:" + LSTypeName);
+			using (var Index = LavishScript.Objects.NewObject("index:" + LSTypeName))
+			{
+				//Tracing.SendCallback(methodName, "arg condensing");
+				var allargs = PrefixArray<string>(Index.LSReference, Args);
 
-			//Tracing.SendCallback(methodName, "arg condensing");
-			string[] allargs = PrefixArray<string>(Index.LSReference, Args);
+				//Tracing.SendCallback(methodName, "getmember retval");
+				using (var retval = Obj.GetMember(MemberName, allargs))
+				{
+					if (LavishScriptObject.IsNullOrInvalid(retval))
+						return null;
+				}
 
-			//Tracing.SendCallback(methodName, "getmember retval");
-			LavishScriptObject retval = Obj.GetMember(MemberName, allargs);
+				//Tracing.SendCallback(methodName, "index to list");
+				var list = IndexToList<T>(Index, LSTypeName);
 
-			if (LavishScriptObject.IsNullOrInvalid(retval))
-				return null;
+				//Tracing.SendCallback(methodName, "invalidate");
 
-			//Tracing.SendCallback(methodName, "index to list");
-			List<T> list = IndexToList<T>(Index, LSTypeName);
-
-			//Tracing.SendCallback(methodName, "invalidate");
-			Index.Invalidate();
-
-			//Tracing.SendCallback(methodName, "return");
-			return list;
+				//Tracing.SendCallback(methodName, "return");
+				return list;
+			}
 		}
 
 
@@ -306,19 +307,19 @@ namespace EVE.ISXEVE
 			if (Obj == null || !Obj.IsValid)
 				return default(T);
 
-			LavishScriptObject Index = LavishScript.Objects.NewObject("index:" + LSTypeName);
+			using (var Index = LavishScript.Objects.NewObject("index:" + LSTypeName))
+			{
+				var allargs = PrefixArray(Index.LSReference, Args);
 
-			string[] allargs = PrefixArray<string>(Index.LSReference, Args);
+				using (var retval = Obj.GetMember(MemberName, allargs))
+				{
+					if (LavishScriptObject.IsNullOrInvalid(retval) || retval.GetValue<int>() < number)
+						return default(T);
+				}
 
-			LavishScriptObject retval = Obj.GetMember(MemberName, allargs);
-
-			if (LavishScriptObject.IsNullOrInvalid(retval) || retval.GetValue<int>() < number)
-				return default(T);
-
-			T member = GetIndexMember<T>(Index, number);
-			Index.Invalidate();
-
-			return member;
+				T member = GetIndexMember<T>(Index, number);
+				return member;
+			}
 		}
 	}
 }

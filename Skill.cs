@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
 
@@ -82,10 +83,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Name
 		{
-			get
-			{
-				return GetMember<string>("Name");
-			}
+			get { return this.GetStringFromLSO("Name"); }
 		}
 
 		/// <summary>
@@ -93,10 +91,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int ID
 		{
-			get
-			{
-				return GetMember<int>("ID");
-			}
+			get { return this.GetIntFromLSO("ID"); }
 		}
 
 		/// <summary>
@@ -104,10 +99,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Group
 		{
-			get
-			{
-				return GetMember<string>("Group");
-			}
+			get { return this.GetStringFromLSO("Group"); }
 		}
 
 		/// <summary>
@@ -115,10 +107,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int GroupID
 		{
-			get
-			{
-				return GetMember<int>("GroupID");
-			}
+			get { return this.GetIntFromLSO("GroupID"); }
 		}
 
 		/// <summary>
@@ -126,10 +115,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsTraining
 		{
-			get
-			{
-				return GetMember<bool>("IsTraining");
-			}
+			get { return this.GetBoolFromLSO("IsTraining"); }
 		}
 
 		/// <summary>
@@ -142,10 +128,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double TimeToTrain
 		{
-			get
-			{
-				return GetMember<double>("TimeToTrain");
-			}
+			get { return this.GetDoubleFromLSO("TimeToTrain"); }
 		}
 
 		/// <summary>
@@ -153,10 +136,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double TrainingTimeMultiplier
 		{
-			get
-			{
-				return GetMember<double>("TrainingTimeMultiplier");
-			}
+			get { return this.GetDoubleFromLSO("TrainingTimeMultiplier"); }
 		}
 
 		/// <summary>
@@ -164,10 +144,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int SkillPoints
 		{
-			get
-			{
-				return GetMember<int>("SkillPoints");
-			}
+			get { return this.GetIntFromLSO("SkillPoints"); }
 		}
 
 		/// <summary>
@@ -175,10 +152,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int Level
 		{
-			get
-			{
-				return GetMember<int>("Level");
-			}
+			get { return this.GetIntFromLSO("Level"); }
 		}
 		#endregion
 

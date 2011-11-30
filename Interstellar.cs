@@ -1,4 +1,5 @@
 using System;
+using Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
 
@@ -26,10 +27,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int ID
 		{
-			get
-			{
-				return GetMember<int>("ID");
-			}
+			get { return this.GetIntFromLSO("ID"); }
 		}
 
 		/// <summary>
@@ -37,10 +35,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Name
 		{
-			get
-			{
-				return GetMember<string>("Name");
-			}
+			get { return this.GetStringFromLSO("Name"); }
 		}
 
 		/// <summary>
@@ -48,10 +43,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Type
 		{
-			get
-			{
-				return GetMember<string>("Type");
-			}
+			get { return this.GetStringFromLSO("Type"); }
 		}
 
 		/// <summary>
@@ -59,10 +51,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int TypeID
 		{
-			get
-			{
-				return GetMember<int>("TypeID");
-			}
+			get { return this.GetIntFromLSO("TypeID"); }
 		}
 
 		/// <summary>
@@ -92,10 +81,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public float Security
 		{
-			get
-			{
-				return GetMember<float>("Security");
-			}
+			get { return this.GetFloatFromLSO("Security"); }
 		}
 
         /// <summary>
@@ -103,10 +89,7 @@ namespace EVE.ISXEVE
         /// </summary>
         public int FactionID
         {
-            get
-            {
-                return GetMember<int>("FactionID");
-            }
+            get { return this.GetIntFromLSO("FactionID"); }
         }
 
         /// <summary>
@@ -114,10 +97,7 @@ namespace EVE.ISXEVE
         /// </summary>
         public string Faction
         {
-            get
-            {
-                return GetMember<string>("Faction");
-            }
+            get { return this.GetStringFromLSO("Faction"); }
         }
 		#endregion
 
