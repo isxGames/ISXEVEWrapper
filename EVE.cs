@@ -8,7 +8,7 @@ namespace EVE.ISXEVE
 	/// <summary>
 	/// Wrapper for the eve data type.
 	/// </summary>
-	public class EVE : LavishScriptPersistentObject
+	public class EVE : LavishScriptObject
 	{
 		#region Constants
 		public readonly string EVENT_ON_CHANNEL_MESSAGE = "EVE_OnChannelMessage";
@@ -19,16 +19,16 @@ namespace EVE.ISXEVE
 		/// Copy constructor for the EVE object.
 		/// </summary>
 		/// <param name="Obj"></param>
-		public EVE(LavishScriptPersistentObject Obj)
+		public EVE(LavishScriptObject Obj)
 			: base(Obj)
 		{
 		}
 
 		/// <summary>
-		/// Constructor for the EVE object.  Returns the persistent LS object.
+		/// Constructor for the EVE object.  Returns the  LS object.
 		/// </summary>
 		public EVE()
-			: base(LavishScript.Objects.GetPersistentObject("EVE"))
+			: base(LavishScript.Objects.GetObject("EVE"))
 		{
 		}
 		#endregion

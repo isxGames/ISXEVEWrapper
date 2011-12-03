@@ -30,7 +30,7 @@ namespace EVE.ISXEVE
 		{
 			Me me = new Me();
 
-			if (!LavishScriptPersistentObject.IsNullOrInvalid(me))
+			if (!LavishScriptObject.IsNullOrInvalid(me))
 				return new Me().GetSkills();
 
 			return new List<Skill>();
@@ -45,7 +45,7 @@ namespace EVE.ISXEVE
 		{
 			Me me = new Me();
 
-			if (!LavishScriptPersistentObject.IsNullOrInvalid(me))
+			if (!LavishScriptObject.IsNullOrInvalid(me))
 				return new Me().Skill(name);
 
 			return new Skill(null);
@@ -62,7 +62,7 @@ namespace EVE.ISXEVE
 			{
 				Me me = new Me();
 
-				if (!LavishScriptPersistentObject.IsNullOrInvalid(me))
+				if (!LavishScriptObject.IsNullOrInvalid(me))
 				{
 					List<Skill> skills = GetSkills();
 

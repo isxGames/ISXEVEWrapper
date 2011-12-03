@@ -9,23 +9,23 @@ namespace EVE.ISXEVE
 	/// <summary>
 	/// Wrapper for the character type.
 	/// </summary>
-	public class Character : LavishScriptPersistentObject
+	public class Character : LavishScriptObject
 	{
 		#region Constructors
 		/// <summary>
 		/// Character copy constructor.
 		/// </summary>
 		/// <param name="Obj"></param>
-		public Character(LavishScriptPersistentObject Obj)
+		public Character(LavishScriptObject Obj)
 			: base(Obj)
 		{
 		}
 
 		/// <summary>
-		/// Character constructor.  Returns persistent object.
+		/// Character constructor.  Returns  object.
 		/// </summary>
 		public Character()
-			: base(LavishScript.Objects.GetPersistentObject("Me"))
+			: base(LavishScript.Objects.GetObject("Me"))
 		{
 		}
 		#endregion
