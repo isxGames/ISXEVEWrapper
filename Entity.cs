@@ -957,14 +957,6 @@ namespace EVE.ISXEVE
 				return new EVEWindow(GetMember("CargoWindow"));
 			}
 		}
-
-        public EVEWindow StorageWindow
-        {
-            get
-            {
-                return new EVEWindow(GetMember("StorageWindow"));
-            }
-        }
 		#endregion
 
 		/// <summary>
@@ -1208,17 +1200,6 @@ namespace EVE.ISXEVE
 			if (Tracing.Callback != null)
 				Tracing.SendCallback("Entity.CloseCargo", string.Empty);
 			return ExecuteMethod("CloseCargo");
-		}
-
-		/// <summary>
-		/// Wrapper for the OpenStorage method of the Entity datatype
-		/// </summary>
-		/// <returns></returns>
-		public bool OpenStorage()
-		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.OpenStorage", string.Empty);
-			return ExecuteMethod("OpenStorage");
 		}
 
 		/// <summary>
