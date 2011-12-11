@@ -57,15 +57,20 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
-		/// Wrapper for the Expires member of the agentmission type.
+		/// Wrapper for the ExpirationTime member of the agentmission type.
 		/// </summary>
-		public EVETime Expires
+		public EVETime ExpirationTime
 		{
 			get
 			{
-				var expires = GetMember("Expires");
+				var expires = GetMember("ExpirationTime");
 				return IsNullOrInvalid(expires) ? null : new EVETime(expires);
 			}
+		}
+
+		public bool Expires
+		{
+			get { return this.GetBoolFromLSO("Expires"); }
 		}
 
 		/// <summary>
