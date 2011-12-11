@@ -75,6 +75,11 @@ namespace EVE.ISXEVE
 		{
 			get { return this.GetBoolFromLSO("IsSafe"); }
 		}
+
+		public bool IsBeta
+		{
+			get { return this.GetBoolFromLSO("IsBeta"); }
+		}
 		#endregion
 
 		#region Methods

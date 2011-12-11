@@ -90,11 +90,11 @@ namespace EVE.ISXEVE
 			get { return this.GetInt64FromLSO("ID"); }
 		}
 		/// <summary>
-		///  6.  TimeStampWhenIssued                               (uint64 type)
+		///  6.  TimeStampWhenIssued                               (int64 type)
 		/// </summary>
-		public UInt64 TimeStampWhenIssued
+		public Int64 TimeStampWhenIssued
 		{
-			get { return this.GetUInt64FromLSO("TimeStampWhenIssued"); }
+			get { return this.GetInt64FromLSO("TimeStampWhenIssued"); }
 		}
 		/// <summary>
 		///  7.  DateWhenIssued                                    (string type)

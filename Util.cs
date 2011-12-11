@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Reflection;
+using Extensions;
 using LavishScriptAPI;
 using LavishScriptAPI.Interfaces;
-using InnerSpaceAPI;
 
 namespace EVE.ISXEVE
 {
@@ -48,163 +47,147 @@ namespace EVE.ISXEVE
         /// <param name="args"></param>
         public static void SendCallback(string message, params object[] args)
         {
-            if (Callback != null)
-            {
-				StringBuilder argString = new StringBuilder();
-				if (args.Length > 0)
-				{
-					argString.Append(args[0].ToString());
-				}
-				for (int idx = 1; idx < args.Length; idx++)
-				{
-					argString.Append(String.Format(", {0}", args[idx].ToString()));
-				}
+        	if (Callback == null) return;
 
-                Callback(message, argString.ToString());
-            }
+        	var argString = new StringBuilder();
+        	if (args.Length > 0)
+        	{
+        		argString.Append(args[0].ToString());
+        	}
+        	for (int idx = 1; idx < args.Length; idx++)
+        	{
+        		argString.Append(String.Format(", {0}", args[idx]));
+        	}
+
+        	Callback(message, argString.ToString());
         }
     }
 
 	internal class Util
 	{
-		private static T[] PrefixArray<T>(T First, T[] Rest)
+		private static T[] PrefixArray<T>(T first, T[] rest)
 		{
-			T[] NewArray = new T[Rest.Length + 1];
+			var newArray = new T[rest.Length + 1];
 
-			NewArray[0] = First;
+			newArray[0] = first;
 
-			for (int i = 0; i < Rest.Length; i++)
-				NewArray[i + 1] = Rest[i];
+			for (var i = 0; i < rest.Length; i++)
+				newArray[i + 1] = rest[i];
 
-			return NewArray;
+			return newArray;
 		}
 
-		private static List<T> IndexToLavishScriptObjectList<T>(LavishScriptObject Index, string LSTypeName)
+		private static List<T> IndexToLavishScriptObjectList<T>(LavishScriptObject index, string lsTypeName)
 		{
-			string methodName = "IndexToLSOList";
+			//string methodName = "IndexToLSOList";
 			//Tracing.SendCallback(methodName, LSTypeName);
 
 			//Tracing.SendCallback(methodName, "getmember Used");
-			List<T> List = new List<T>();
-			int Count = Index.GetMember<int>("Used");
+			var list = new List<T>();
+			var count = index.GetMember<int>("Used");
 
-			if (Count == 0)
+			if (count == 0)
 			{	
-				return List;
+				return list;
 			}
 
 			//Tracing.SendCallback(methodName, "get constructor info");
-			ConstructorInfo constructor = typeof(T).GetConstructor(new Type[] { typeof(LavishScriptObject) });
+			var constructor = typeof(T).GetConstructor(new[] { typeof(LavishScriptObject) });
 
 			//Tracing.SendCallback(methodName, "loop add items");
-			for (int i = 1; i <= Count; i++)
+			for (var i = 1; i <= count; i++)
 			{
-				LavishScriptObject objectLso = Index.GetIndex(i.ToString());
+				var objectLso = index.GetIndex(i.ToString());
 
 				if (LavishScriptObject.IsNullOrInvalid(objectLso))
 				{
-					if (LavishScriptObject.IsNullOrInvalid(objectLso))
-					{
-						Tracing.SendCallback(String.Format("Error: Index contains invalid LSO. NewObject will fail; aborting."));
-						return List;
-					}
+					Tracing.SendCallback(String.Format("Error: Index contains invalid LSO. NewObject will fail; aborting."));
+					return list;
 				}
 
-				LavishScriptObject objectIdLso = objectLso.GetMember("ID");
+				var objectId = objectLso.GetStringFromLSO("ID");
 
-				if (LavishScriptObject.IsNullOrInvalid(objectIdLso))
+				if (objectId == null)
 				{
-					Tracing.SendCallback(String.Format("Error: LStype \"{0}\" has no ID member. NewObject will fail; aborting.", LSTypeName));
-					return List;
+					Tracing.SendCallback(String.Format("Error: LStype \"{0}\" has no ID member. NewObject will fail; aborting.", lsTypeName));
+					return list;
 				}
-
-				string objectId = objectIdLso.GetValue<string>();
 
 				if (objectId == string.Empty)
 				{
-					Tracing.SendCallback(String.Format("Error: LStype \"{0}\" has an ID member but it is returning an empty string. NewObject will fail; aborting.", LSTypeName));
-					return List;
+					Tracing.SendCallback(String.Format("Error: LStype \"{0}\" has an ID member but it is returning an empty string. NewObject will fail; aborting.", lsTypeName));
+					return list;
 				}
 
-				LavishScriptObject lsObject = LavishScript.Objects.NewObject(LSTypeName, objectId);
-				T item = (T)constructor.Invoke(new object[] { lsObject });
-				List.Add(item);
-                // Do not invalidate this object :)
-				//lsObject.Invalidate();
+				var lsObject = LavishScript.Objects.NewObject(lsTypeName, objectId);
+				var item = (T) constructor.Invoke(new object[] {lsObject});
+				list.Add(item);
 			}
 
-			//Tracing.SendCallback(methodName, "return");
-			return List;
+			return list;
 		}
 
-		private static List<T> IndexToStructList<T>(LavishScriptObject Index)
+		private static List<T> IndexToStructList<T>(LavishScriptObject index)
 		{
-			List<T> List = new List<T>();
-			int Count = Index.GetMember<int>("Used");
+			var list = new List<T>();
+			var count = index.GetMember<int>("Used");
 
-			for (int i = 1; i <= Count; i++)
-				List.Add(Index.GetIndex<T>(i.ToString()));
+			for (var i = 1; i <= count; i++)
+				list.Add(index.GetIndex<T>(i.ToString()));
 
-			return List;
+			return list;
 		}
 
-		private static List<T> IndexToList<T>(LavishScriptObject Index, string LSTypeName)
+		private static List<T> IndexToList<T>(LavishScriptObject index, string lsTypeName)
 		{
 			//Tracing.SendCallback("IndextoList", LSTypeName);
-			if (typeof(T).IsSubclassOf(typeof(LavishScriptObject)))
-			{
-				//Tracing.SendCallback("IndexToList", "call IndexToLSOList");
-				return IndexToLavishScriptObjectList<T>(Index, LSTypeName);
-			}
-			else
-				return IndexToStructList<T>(Index);
+			return typeof(T).IsSubclassOf(typeof(LavishScriptObject)) ? IndexToLavishScriptObjectList<T>(index, lsTypeName) : IndexToStructList<T>(index);
 		}
 
-		private static T IndexToLavishScriptObject<T>(LavishScriptObject Index, int number)
+		private static T IndexToLavishScriptObject<T>(LavishScriptObject index, int number)
 		{
-			ConstructorInfo constructor = typeof(T).GetConstructor(new Type[] { typeof(LavishScriptObject) });
+			var constructor = typeof(T).GetConstructor(new[] { typeof(LavishScriptObject) });
 
-			return (T)constructor.Invoke(new object[] { Index.GetIndex(number.ToString()) });
+			return (T)constructor.Invoke(new object[] { index.GetIndex(number.ToString()) });
 		}
 
-		public static T GetIndexMember<T>(LavishScriptObject Index, int number)
+		public static T GetIndexMember<T>(LavishScriptObject index, int number)
 		{
 			if (typeof(T).IsSubclassOf(typeof(LavishScriptObject)))
-				return (T)typeof(T).GetConstructor(new Type[] { typeof(LavishScriptObject) }).Invoke(new object[] { Index.GetIndex(number.ToString()) });
-			else
-				return Index.GetIndex<T>(number.ToString());
+				return (T)typeof(T).GetConstructor(new[] { typeof(LavishScriptObject) }).Invoke(new object[] { index.GetIndex(number.ToString()) });
+			return index.GetIndex<T>(number.ToString());
 		}
 
-		internal static List<T> GetListFromMethod<T>(ILSObject Obj, string MethodName, string LSTypeName, params string[] Args)
+		internal static List<T> GetListFromMethod<T>(ILSObject obj, string methodName, string lsTypeName, params string[] args)
 		{
-			string methodName = "GetListFromMethod";
+			//string methodName = "GetListFromMethod";
 			//Tracing.SendCallback(methodName, MethodName, LSTypeName);
 
-			if (Obj == null || !Obj.IsValid)
+			if (obj == null || !obj.IsValid)
 				return null;
 
 			//Tracing.SendCallback(methodName, "Create new LSO of index. Type: ", LSTypeName);
-			using (var Index = LavishScript.Objects.NewObject("index:" + LSTypeName))
+			using (var index = LavishScript.Objects.NewObject("index:" + lsTypeName))
 			{
 				//Tracing.SendCallback(methodName, "Collapsing Args[]");
 
 				string[] allargs;
-				if (Args.Length > 0)
+				if (args.Length > 0)
 				{
-					allargs = PrefixArray<string>(Index.LSReference, Args);
+					allargs = PrefixArray(index.LSReference, args);
 				}
 				else
 				{
 					allargs = new string[1];
-					allargs[0] = Index.LSReference;
+					allargs[0] = index.LSReference;
 				}
 
 				//Tracing.SendCallback(methodName, "Execute method, name: ", MethodName);
-				if (!Obj.ExecuteMethod(MethodName, allargs))
+				if (!obj.ExecuteMethod(methodName, allargs))
 					return null;
 
 				//Tracing.SendCallback(methodName, "Get member Used");
-				using (var used = Index.GetMember("Used"))
+				using (var used = index.GetMember("Used"))
 				{
 					//Tracing.SendCallback(methodName, "LSO.IsNullOrInvalid (used)");
 					if (LavishScriptObject.IsNullOrInvalid(used))
@@ -212,63 +195,63 @@ namespace EVE.ISXEVE
 				}
 
 				//Tracing.SendCallback(methodName, "IndexToList");
-				var list = IndexToList<T>(Index, LSTypeName);
+				var list = IndexToList<T>(index, lsTypeName);
 
 				//Tracing.SendCallback(methodName, "Returning");
 				return list;
 			}
 		}
 
-		internal static T GetFromIndexMethod<T>(ILSObject Obj, string MethodName, string LSTypeName, int number, params string[] Args)
+		internal static T GetFromIndexMethod<T>(ILSObject obj, string methodName, string lsTypeName, int number, params string[] args)
 		{
 			// argument is 0-based
 			number += 1;
 
-			if (Obj == null || !Obj.IsValid || number <= 0)
+			if (obj == null || !obj.IsValid || number <= 0)
 				return default(T);
 
-			using (var Index = LavishScript.Objects.NewObject("index:" + LSTypeName))
+			using (var index = LavishScript.Objects.NewObject("index:" + lsTypeName))
 			{
-				var allargs = PrefixArray(Index.LSReference, Args);
+				var allargs = PrefixArray(index.LSReference, args);
 
-				if (!Obj.ExecuteMethod(MethodName, allargs))
+				if (!obj.ExecuteMethod(methodName, allargs))
 					return default(T);
 
-				using (var used = Index.GetMember("Used"))
+				using (var used = index.GetMember("Used"))
 				{
 					// if it failed or we want one off the end, return
 					if (LavishScriptObject.IsNullOrInvalid(used) || used.GetValue<int>() < number)
 						return default(T);
 				}
 
-				T member = GetIndexMember<T>(Index, number);
+				var member = GetIndexMember<T>(index, number);
 				return member;
 			}
 		}
 
-		internal static List<T> GetListFromMember<T>(ILSObject Obj, string MemberName, string LSTypeName, params string[] Args)
+		internal static List<T> GetListFromMember<T>(ILSObject obj, string memberName, string lsTypeName, params string[] args)
 		{
-			var methodName = "GetListFromMember";
+			//var methodName = "GetListFromMember";
 			//Tracing.SendCallback(methodName, MemberName, LSTypeName);
 			
-			if (Obj == null || !Obj.IsValid)
+			if (obj == null || !obj.IsValid)
 				return null;
 
 			//Tracing.SendCallback(methodName, "new index");
-			using (var Index = LavishScript.Objects.NewObject("index:" + LSTypeName))
+			using (var index = LavishScript.Objects.NewObject("index:" + lsTypeName))
 			{
 				//Tracing.SendCallback(methodName, "arg condensing");
-				var allargs = PrefixArray<string>(Index.LSReference, Args);
+				var allargs = PrefixArray(index.LSReference, args);
 
 				//Tracing.SendCallback(methodName, "getmember retval");
-				using (var retval = Obj.GetMember(MemberName, allargs))
+				using (var retval = obj.GetMember(memberName, allargs))
 				{
 					if (LavishScriptObject.IsNullOrInvalid(retval))
 						return null;
 				}
 
 				//Tracing.SendCallback(methodName, "index to list");
-				var list = IndexToList<T>(Index, LSTypeName);
+				var list = IndexToList<T>(index, lsTypeName);
 
 				//Tracing.SendCallback(methodName, "invalidate");
 
@@ -277,25 +260,25 @@ namespace EVE.ISXEVE
 			}
 		}
 
-		internal static T GetFromIndexMember<T>(ILSObject Obj, string MemberName, string LSTypeName, int number, params string[] Args)
+		internal static T GetFromIndexMember<T>(ILSObject obj, string memberName, string lsTypeName, int number, params string[] args)
 		{
 			// argument is 0-based
 			number += 1;
 
-			if (Obj == null || !Obj.IsValid)
+			if (obj == null || !obj.IsValid)
 				return default(T);
 
-			using (var Index = LavishScript.Objects.NewObject("index:" + LSTypeName))
+			using (var index = LavishScript.Objects.NewObject("index:" + lsTypeName))
 			{
-				var allargs = PrefixArray(Index.LSReference, Args);
+				var allargs = PrefixArray(index.LSReference, args);
 
-				using (var retval = Obj.GetMember(MemberName, allargs))
+				using (var retval = obj.GetMember(memberName, allargs))
 				{
 					if (LavishScriptObject.IsNullOrInvalid(retval) || retval.GetValue<int>() < number)
 						return default(T);
 				}
 
-				T member = GetIndexMember<T>(Index, number);
+				var member = GetIndexMember<T>(index, number);
 				return member;
 			}
 		}

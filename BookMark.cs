@@ -186,7 +186,7 @@ namespace EVE.ISXEVE
 
 		#region Methods
         /// <summary>
-        /// This will only work with bookmarks for which there is an "Align To" option available via the in-game UI.
+        /// This will only work with bookmarks for which there is an "AlignTo To" option available via the in-game UI.
         /// </summary>
         /// <returns></returns>
         public bool AlignTo()
