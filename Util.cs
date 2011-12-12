@@ -249,28 +249,6 @@ namespace EVE.ISXEVE
 			return list;
 		}
 
-
-
-		internal static List<T> GetListFromPersistentMember<T>(ILSObject Obj, string MemberName, string LSTypeName, params string[] Args)
-		{
-			if (Obj == null || !Obj.IsValid)
-				return null;
-
-			LavishScriptObject Index = LavishScript.Objects.NewObject("index:" + LSTypeName);
-
-			string[] allargs = PrefixArray<string>(Index.LSReference, Args);
-
-			LavishScriptPersistentObject retval = Obj.GetPersistentMember(MemberName, allargs);
-
-			if (LavishScriptPersistentObject.IsNullOrInvalid(retval))
-				return null;
-
-			List<T> list = IndexToList<T>(Index, LSTypeName);
-			Index.Invalidate();
-
-			return list;
-		}
-
 		internal static T GetFromIndexMember<T>(ILSObject Obj, string MemberName, string LSTypeName, int number, params string[] Args)
 		{
 			// argument is 0-based

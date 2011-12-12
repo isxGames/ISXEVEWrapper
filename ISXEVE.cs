@@ -9,23 +9,23 @@ namespace EVE.ISXEVE
 	/// <summary>
 	/// Wrapper for the isxeve data type.
 	/// </summary>
-	public class ISXEVE : LavishScriptPersistentObject
+	public class ISXEVE : LavishScriptObject
 	{
 		#region Constructors
 		/// <summary>
 		/// Copy constructor for ISXEVE object
 		/// </summary>
 		/// <param name="Obj"></param>
-		public ISXEVE(LavishScriptPersistentObject Obj)
+		public ISXEVE(LavishScriptObject Obj)
 			: base(Obj)
 		{
 		}
 
 		/// <summary>
-		/// Default constructor for ISXEVE object.  Returns the persistent LS object.
+		/// Default constructor for ISXEVE object.  Returns the LS object.
 		/// </summary>
 		public ISXEVE()
-			: base(LavishScript.Objects.GetPersistentObject("ISXEVE"))
+			: base(LavishScript.Objects.GetObject("ISXEVE"))
 		{
 		}
 		#endregion
