@@ -81,6 +81,11 @@ namespace EVE.ISXEVE
 			get { return this.GetIntFromLSO("CategoryID"); }
 		}
 
+	    public int ChargeSize
+	    {
+            get { return this.GetIntFromLSO("ChargeSize"); }
+	    }
+
 		/// <summary>
 		/// Wrapper for the CategoryType member of the item type.
 		/// </summary>

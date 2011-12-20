@@ -1,4 +1,5 @@
 /*.suo
+/EVE.ISXEVE.5.1.ReSharper.user
 ISXEVEProfiler/bin
 ISXEVEProfiler/obj
 ISXEVEWrapperTest/bin
@@ -6,5 +7,6 @@ ISXEVEWrapperTest/obj
 /Lavish.InnerSpace.dll
 /Lavish.LavishNav.dll
 /Lavish.LavishVMRuntime.dll
+/_ReSharper.EVE.ISXEVE
 /bin
 /obj
