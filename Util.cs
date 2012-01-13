@@ -167,7 +167,7 @@ namespace EVE.ISXEVE
 				return null;
 
 			//Tracing.SendCallback(methodName, "Create new LSO of index. Type: ", LSTypeName);
-			using (var index = LavishScript.Objects.NewObject("index:" + lsTypeName))
+			using (var index = LavishScript.Objects.zNewObject("index:" + lsTypeName))
 			{
 				//Tracing.SendCallback(methodName, "Collapsing Args[]");
 

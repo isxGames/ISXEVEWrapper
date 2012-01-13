@@ -28,6 +28,15 @@ namespace EVE.ISXEVE
 			: base(LavishScript.Objects.GetObject("Entity", queryString))
 		{
 		}
+
+		/// <summary>
+		/// Search for an Entity matching the given ID.
+		/// </summary>
+		/// <param name="entityID"></param>
+		public Entity(long entityID)
+			: base(LavishScript.Objects.GetObject("Entity", entityID.ToString()))
+		{
+		}
 		#endregion
 
 		#region Members
@@ -361,7 +370,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		/// <param name="entityId"></param>
 		/// <returns></returns>
-		public double DistanceTo(int entityId)
+		public double DistanceTo(long entityId)
 		{
 			return this.GetDoubleFromLSO("DistanceTo", entityId.ToString());
 		}

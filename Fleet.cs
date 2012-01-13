@@ -145,7 +145,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		/// <param name="entityID"></param>
 		/// <returns></returns>
-		public bool Broadcast_AlignTo(int entityID)
+		public bool Broadcast_AlignTo(long entityID)
 		{
 			Tracing.SendCallback("Fleet.Broadcast_AlignTo", entityID);
 			return ExecuteMethod("Broadcast_AlignTo", entityID.ToString());
@@ -257,7 +257,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		/// <param name="entityID"></param>
 		/// <returns></returns>
-		public bool Broadcast_Target(int entityID)
+		public bool Broadcast_Target(long entityID)
 		{
 			Tracing.SendCallback("Fleet.Broadcast_Target", entityID);
 			return ExecuteMethod("Broadcast_Target", entityID.ToString());
@@ -279,7 +279,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		/// <param name="entityID"></param>
 		/// <returns></returns>
-		public bool Broadcast_WarpTo(int entityID)
+		public bool Broadcast_WarpTo(long entityID)
 		{
 			Tracing.SendCallback("Fleet.Broadcast_WarpTo", entityID);
 			return ExecuteMethod("Broadcast_WarpTo", entityID.ToString());
