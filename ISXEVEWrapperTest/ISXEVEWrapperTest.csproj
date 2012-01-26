@@ -153,6 +153,6 @@
   <PropertyGroup>
     <PreBuildEvent>
     </PreBuildEvent>
-    <PostBuildEvent>"$(SolutionDir)postbuild.bat" "$(TargetPath)"</PostBuildEvent>
+    <PostBuildEvent>"$(SolutionDir)_Compiler Settings\postbuild.bat" "$(TargetPath)"</PostBuildEvent>
   </PropertyGroup>
 </Project>

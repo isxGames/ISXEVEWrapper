@@ -76,49 +76,49 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Datatypes\ActiveDrone.cs" />
-    <Compile Include="TLO\Agent.cs" />
-    <Compile Include="Datatypes\AgentMission.cs" />
-    <Compile Include="Datatypes\Attack.cs" />
-    <Compile Include="Datatypes\Attacker.cs" />
-    <Compile Include="Datatypes\Being.cs" />
-    <Compile Include="Datatypes\BookMark.cs" />
-    <Compile Include="TLO\Character.cs" />
-    <Compile Include="TLO\CharSelect.cs" />
-    <Compile Include="Datatypes\ChatChannel.cs" />
-    <Compile Include="Datatypes\Corporation.cs" />
-    <Compile Include="Datatypes\CorporationWallet.cs" />
-    <Compile Include="Datatypes\DialogString.cs" />
-    <Compile Include="TLO\EVETime.cs" />
-    <Compile Include="Datatypes\Fleet.cs" />
+    <Compile Include="ActiveDrone.cs" />
+    <Compile Include="Agent.cs" />
+    <Compile Include="AgentMission.cs" />
+    <Compile Include="Attack.cs" />
+    <Compile Include="Attacker.cs" />
+    <Compile Include="Being.cs" />
+    <Compile Include="BookMark.cs" />
+    <Compile Include="Character.cs" />
+    <Compile Include="CharSelect.cs" />
+    <Compile Include="ChatChannel.cs" />
+    <Compile Include="Corporation.cs" />
+    <Compile Include="CorporationWallet.cs" />
+    <Compile Include="DialogString.cs" />
+    <Compile Include="EVETime.cs" />
+    <Compile Include="Fleet.cs" />
     <Compile Include="_Compiler Settings\GlobalSuppressions.cs" />
-    <Compile Include="Datatypes\Jammer.cs" />
-    <Compile Include="Support\LavishScriptObjectExtensions.cs" />
-    <Compile Include="Datatypes\MarketOrder.cs" />
-    <Compile Include="Datatypes\MyOrder.cs" />
-    <Compile Include="TLO\Entity.cs" />
-    <Compile Include="TLO\EVE.cs" />
-    <Compile Include="Datatypes\Event.cs" />
-    <Compile Include="TLO\EVEWindow.cs" />
-    <Compile Include="Support\ExecuteCommand.cs" />
+    <Compile Include="Jammer.cs" />
+    <Compile Include="LavishScriptObjectExtensions.cs" />
+    <Compile Include="MarketOrder.cs" />
+    <Compile Include="MyOrder.cs" />
+    <Compile Include="Entity.cs" />
+    <Compile Include="EVE.cs" />
+    <Compile Include="Event.cs" />
+    <Compile Include="EVEWindow.cs" />
+    <Compile Include="ExecuteCommand.cs" />
     <Compile Include="Extension.cs" />
-    <Compile Include="Datatypes\FleetMember.cs" />
-    <Compile Include="Datatypes\Interstellar.cs" />
-    <Compile Include="TLO\ISXEVE.cs" />
-    <Compile Include="Datatypes\Item.cs" />
-    <Compile Include="TLO\Login.cs" />
-    <Compile Include="Datatypes\Module.cs" />
-    <Compile Include="TLO\Pilot.cs" />
+    <Compile Include="FleetMember.cs" />
+    <Compile Include="Interstellar.cs" />
+    <Compile Include="ISXEVE.cs" />
+    <Compile Include="Item.cs" />
+    <Compile Include="Login.cs" />
+    <Compile Include="Module.cs" />
+    <Compile Include="Pilot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Datatypes\Scanner.cs" />
-    <Compile Include="TLO\Ship.cs" />
-    <Compile Include="Datatypes\Skill.cs" />
-    <Compile Include="Support\SlotType.cs" />
-    <Compile Include="Datatypes\Standings.cs" />
-    <Compile Include="Datatypes\Station.cs" />
-    <Compile Include="TLO\Universe.cs" />
-    <Compile Include="Support\Util.cs" />
-    <Compile Include="Datatypes\Wallet.cs" />
+    <Compile Include="Scanner.cs" />
+    <Compile Include="Ship.cs" />
+    <Compile Include="Skill.cs" />
+    <Compile Include="SlotType.cs" />
+    <Compile Include="Standings.cs" />
+    <Compile Include="Station.cs" />
+    <Compile Include="Universe.cs" />
+    <Compile Include="Util.cs" />
+    <Compile Include="Wallet.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -163,7 +163,7 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>"$(ProjectDir)postbuild.bat" $(TargetFileName)</PostBuildEvent>
-    <PreBuildEvent>"$(ProjectDir)prebuild.bat"</PreBuildEvent>
+    <PostBuildEvent>"$(ProjectDir)_Compiler Settings\postbuild.bat" $(TargetFileName)</PostBuildEvent>
+    <PreBuildEvent>"$(ProjectDir)_Compiler Settings\prebuild.bat"</PreBuildEvent>
   </PropertyGroup>
 </Project>
