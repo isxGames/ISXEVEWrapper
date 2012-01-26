@@ -22,7 +22,7 @@ namespace EVE.ISXEVE
 		#endregion
 
 		#region Members
-		public Int64 ID
+		public new Int64 ID
 		{
 			get
 			{
@@ -40,7 +40,7 @@ namespace EVE.ISXEVE
 		}
 
 		/// Get the Jammer member of the Attacker object
-        public Jammer ToJammer
+        public new Jammer ToJammer
         {
             get
             {

@@ -14,7 +14,6 @@
 /DialogString.cs -text
 /EVE.ISXEVE.csproj -text
 /EVE.ISXEVE.sln -text
-/EVE.ISXEVE.snk -text
 /EVE.cs -text
 /EVETime.cs -text
 /EVEWindow.cs -text
@@ -52,8 +51,6 @@ ISXEVEWrapperTest/wraptest.iss -text
 /Module.cs -text
 /MyOrder.cs -text
 /Pilot.cs -text
-/PostBuild.bat -text
-/PreBuild.bat -text
 Properties/AssemblyInfo.cs -text
 /Scanner.cs -text
 /Ship.cs -text
@@ -64,4 +61,8 @@ Properties/AssemblyInfo.cs -text
 /Universe.cs -text
 /Util.cs -text
 /Wallet.cs -text
-/app.config -text
+_Compiler[!!-~]Settings/EVE.ISXEVE.snk -text
+_Compiler[!!-~]Settings/GlobalSuppressions.cs -text
+_Compiler[!!-~]Settings/PostBuild.bat -text
+_Compiler[!!-~]Settings/PreBuild.bat -text
+_Compiler[!!-~]Settings/app.config -text

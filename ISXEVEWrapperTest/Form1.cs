@@ -60,29 +60,29 @@ namespace ISXEVEWrapperTest
             //*** 4. You will need to open the assets window and manually expand each station to have access to the items at that station.
             //***
             InnerSpace.Echo("ISXEVEWrapperTest (Assets): Begin");
-            using (new FrameLock(true))
-            {
-                Extension Ext = new Extension();
-                InnerSpace.Echo("Name: " + Ext.Me.Name);
-
-                List<long> stationList;
-                stationList = Ext.Me.GetStationsWithAssets();
-
-                InnerSpace.Echo("You have " + stationList.Count + " stations with assets.");
-
-                foreach (int station in stationList)
-                {
-                    List<Asset> assetList;
-                    assetList = Ext.Me.GetAssets(station);
-                    InnerSpace.Echo("  - Station #" + station + " contains " + assetList.Count + " items.");
-                    foreach (Asset asset in assetList)
-                    {
-                        InnerSpace.Echo("  - ID (" + asset.ID + ") " +
-                            "TypeID (" + asset.TypeID + ") " +
-                            "Type (" + asset.Type + ") ");
-                    }
-                }
-            }
+//             using (new FrameLock(true))
+//             {
+//                 Extension Ext = new Extension();
+//                 InnerSpace.Echo("Name: " + Ext.Me.Name);
+// 
+//                 List<long> stationList;
+//                 stationList = Ext.Me.GetStationsWithAssets();
+// 
+//                 InnerSpace.Echo("You have " + stationList.Count + " stations with assets.");
+// 
+//                 foreach (int station in stationList)
+//                 {
+//                     List<Asset> assetList;
+//                     assetList = Ext.Me.GetAssets(station);
+//                     InnerSpace.Echo("  - Station #" + station + " contains " + assetList.Count + " items.");
+//                     foreach (Asset asset in assetList)
+//                     {
+//                         InnerSpace.Echo("  - ID (" + asset.ID + ") " +
+//                             "TypeID (" + asset.TypeID + ") " +
+//                             "Type (" + asset.Type + ") ");
+//                     }
+//                 }
+//             }
             InnerSpace.Echo("ISXEVEWrapperTest (Assets): End");
         }
 
