@@ -557,7 +557,7 @@ namespace EVE.ISXEVE
         {
             Tracing.SendCallback("GetMarketOrders", typeID);
 
-            return Util.GetListFromMethod<MarketOrder>(this, "GetMarketOrders", "order", typeID.ToString());
+            return Util.GetListFromMethod<MarketOrder>(this, "GetMarketOrders", "marketorder", typeID.ToString());
         }
 
         /// <summary>
@@ -570,7 +570,7 @@ namespace EVE.ISXEVE
         {
             Tracing.SendCallback("GetMarketOrders", typeID, orderType);
 
-            return Util.GetListFromMethod<MarketOrder>(this, "GetMarketOrders", "order", typeID.ToString(), orderType.ToString());
+            return Util.GetListFromMethod<MarketOrder>(this, "GetMarketOrders", "marketorder", typeID.ToString(), orderType.ToString());
         }
 
 		/// <summary>

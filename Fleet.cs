@@ -145,7 +145,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		/// <param name="entityID"></param>
 		/// <returns></returns>
-		public bool Broadcast_AlignTo(long entityID)
+		public bool Broadcast_AlignTo(int entityID)
 		{
 			Tracing.SendCallback("Fleet.Broadcast_AlignTo", entityID);
 			return ExecuteMethod("Broadcast_AlignTo", entityID.ToString());
