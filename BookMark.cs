@@ -176,6 +176,18 @@ namespace EVE.ISXEVE
 		}
 
         /// <summary>
+        /// Wrapper for the CreatorID member of a bookmark object
+        /// </summary>
+        public Int64 CreatorID
+        {
+            get
+            {
+                Tracing.SendCallback("Bookmark.CreatorID");
+                return this.GetInt64FromLSO("CreatorID");
+            }
+        }
+
+        /// <summary>
         /// (NOTE:  Only works for agent bookmarks.)
         /// </summary>
         public bool DeadSpace
