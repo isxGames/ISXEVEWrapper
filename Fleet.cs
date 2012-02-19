@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Extensions;
 using LavishScriptAPI;
 
 namespace EVE.ISXEVE
@@ -30,15 +31,8 @@ namespace EVE.ISXEVE
 		{
 			get
 			{
-				LavishScriptObject id = GetMember("ID");
-				if (!LavishScriptObject.IsNullOrInvalid(id))
-				{
-					return id.GetValue<Int64>();
-				}
-				else
-				{
-					return -1;
-				}
+				Tracing.SendCallback("Fleet.ID");
+				return this.GetInt64FromLSO("ID");
 			}
 		}
 
@@ -47,10 +41,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string InvitationText
 		{
-			get
-			{
-				return GetMember<string>("InvitationText");
-			}
+			get { return this.GetStringFromLSO("InvitationText"); }
 		}
 
 		/// <summary>
@@ -58,18 +49,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool Invited
 		{
-			get
-			{
-				LavishScriptObject invited = GetMember("Invited");
-				if (!LavishScriptObject.IsNullOrInvalid(invited))
-				{
-					return invited.GetValue<bool>();
-				}
-				else
-				{
-					return false;
-				}
-			}
+			get { return this.GetBoolFromLSO("Invited"); }
 		}
 
 		/// <summary>
@@ -77,18 +57,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsFleetCommander
 		{
-			get
-			{
-				LavishScriptObject isFleetCommander = GetMember("IsFleetCommander");
-				if (!LavishScriptObject.IsNullOrInvalid(isFleetCommander))
-				{
-					return isFleetCommander.GetValue<bool>();
-				}
-				else
-				{
-					return false;
-				}
-			}
+			get { return this.GetBoolFromLSO("IsFleetCommander"); }
 		}
 
 		/// <summary>
@@ -96,7 +65,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		/// <param name="charID"></param>
 		/// <returns></returns>
-		public FleetMember GetMember(int charID)
+		public FleetMember GetMember(Int64 charID)
 		{
 			return GetMember<FleetMember>("Member", charID.ToString());
 		}
@@ -106,18 +75,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int Size
 		{
-			get
-			{
-				LavishScriptObject size = GetMember("Size");
-				if (!LavishScriptObject.IsNullOrInvalid(size))
-				{
-					return size.GetValue<int>();
-				}
-				else
-				{
-					return -1;
-				}
-			}
+			get { return this.GetIntFromLSO("Size"); }
 		}
 
 		/// <summary>
@@ -125,17 +83,9 @@ namespace EVE.ISXEVE
 		/// </summary>
 		/// <param name="charID"></param>
 		/// <returns></returns>
-		public bool IsMember(int charID)
+		public bool IsMember(Int64 charID)
 		{
-			LavishScriptObject isMember = GetMember("IsMember", charID.ToString());
-			if (!LavishScriptObject.IsNullOrInvalid(isMember))
-			{
-				return isMember.GetValue<bool>();
-			}
-			else
-			{
-				return false;
-			}
+			return this.GetBoolFromLSO("IsMember", charID.ToString());
 		}
 
 		/// <summary>
@@ -145,7 +95,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public string WingName(Int64 wingID)
 		{
-			return GetMember<string>("WingName", wingID.ToString());
+			return this.GetStringFromLSO("WingName", wingID.ToString());
 		}
 
 		/// <summary>
@@ -155,15 +105,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public Int64 WingNameToID(string wingName)
 		{
-			LavishScriptObject wingID = GetMember("WingNameToID", wingName);
-			if (!LavishScriptObject.IsNullOrInvalid(wingID))
-			{
-				return wingID.GetValue<Int64>();
-			}
-			else
-			{
-				return -1;
-			}
+			return this.GetInt64FromLSO("WingNameToID", wingName);
 		}
 
 		/// <summary>
@@ -173,7 +115,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public string SquadName(Int64 squadID)
 		{
-			return GetMember<string>("SquadName", squadID.ToString());
+			return this.GetStringFromLSO("SquadName", squadID.ToString());
 		}
 
 		/// <summary>
@@ -183,15 +125,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public Int64 SquadNameToID(string squadName)
 		{
-			LavishScriptObject squadID = GetMember("SquadNameToID", squadName);
-			if (!LavishScriptObject.IsNullOrInvalid(squadID))
-			{
-				return squadID.GetValue<Int64>();
-			}
-			else
-			{
-				return -1;
-			}
+			return this.GetInt64FromLSO("SquadNameToID", squadName);
 		}
 		#endregion
 
@@ -202,8 +136,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool AcceptInvite()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Fleet.AcceptInvite", string.Empty);
+			Tracing.SendCallback("Fleet.AcceptInvite");
 			return ExecuteMethod("AcceptInvite");
 		}
 
@@ -214,6 +147,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool Broadcast_AlignTo(int entityID)
 		{
+			Tracing.SendCallback("Fleet.Broadcast_AlignTo", entityID);
 			return ExecuteMethod("Broadcast_AlignTo", entityID.ToString());
 		}
 
@@ -223,6 +157,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool Broadcast_EnemySpotted()
 		{
+			Tracing.SendCallback("Fleet.Broadcast_EnemySpotted");
 			return ExecuteMethod("Broadcast_EnemySpotted");
 		}
 
@@ -232,6 +167,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool Broadcast_HealArmor()
 		{
+			Tracing.SendCallback("Fleet.Broadcast_HealArmor");
 			return ExecuteMethod("Broadcast_HealArmor");
 		}
 
@@ -241,6 +177,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool Broadcast_HealCapacitor()
 		{
+			Tracing.SendCallback("Fleet.Broadcast_HealCapacitor");
 			return ExecuteMethod("Broadcast_HealCapacitor");
 		}
 
@@ -250,6 +187,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool Broadcast_HealShield()
 		{
+			Tracing.SendCallback("Fleet.Broadcast_HealShield");
 			return ExecuteMethod("Broadcast_HealShield");
 		}
 
@@ -259,6 +197,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool Broadcast_HoldPosition()
 		{
+			Tracing.SendCallback("Fleet.Broadcast_HoldPosition");
 			return ExecuteMethod("Broadcast_HoldPosition");
 		}
 
@@ -268,6 +207,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool Broadcast_InPosition()
 		{
+			Tracing.SendCallback("Fleet.Broadcast_InPosition");
 			return ExecuteMethod("Broadcast_InPosition");
 		}
 
@@ -277,6 +217,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool Broadcast_JumpBeacon()
 		{
+			Tracing.SendCallback("Fleet.Broadcast_JumpBeacon");
 			return ExecuteMethod("Broadcast_JumpBeacon");
 		}
 
@@ -287,6 +228,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool Broadcast_JumpTo(int solarSystemID)
 		{
+			Tracing.SendCallback("Fleet.Broadcast_JumpTo");
 			return ExecuteMethod("Broadcast_JumpTo", solarSystemID.ToString());
 		}
 
@@ -296,6 +238,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool Broadcast_Location()
 		{
+			Tracing.SendCallback("Fleet.Broadcast_Location");
 			return ExecuteMethod("Broadcast_Location");
 		}
 
@@ -305,6 +248,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool Broadcast_NeedBackup()
 		{
+			Tracing.SendCallback("Fleet.Broadcast_NeedBackup");
 			return ExecuteMethod("Broadcast_NeedBackup");
 		}
 
@@ -313,8 +257,9 @@ namespace EVE.ISXEVE
 		/// </summary>
 		/// <param name="entityID"></param>
 		/// <returns></returns>
-		public bool Broadcast_Target(int entityID)
+		public bool Broadcast_Target(long entityID)
 		{
+			Tracing.SendCallback("Fleet.Broadcast_Target", entityID);
 			return ExecuteMethod("Broadcast_Target", entityID.ToString());
 		}
 
@@ -325,6 +270,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool Broadcast_TravelTo(int solarSystemID)
 		{
+			Tracing.SendCallback("Fleet.Broadcast_TravelTo", solarSystemID);
 			return ExecuteMethod("Broadcast_TravelTo", solarSystemID.ToString());
 		}
 
@@ -333,8 +279,9 @@ namespace EVE.ISXEVE
 		/// </summary>
 		/// <param name="entityID"></param>
 		/// <returns></returns>
-		public bool Broadcast_WarpTo(int entityID)
+		public bool Broadcast_WarpTo(long entityID)
 		{
+			Tracing.SendCallback("Fleet.Broadcast_WarpTo", entityID);
 			return ExecuteMethod("Broadcast_WarpTo", entityID.ToString());
 		}
 
@@ -346,6 +293,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool ChangeSquadName(Int64 squadID, string name)
 		{
+			Tracing.SendCallback("Fleet.ChangeSquadName", squadID, name);
 			return ExecuteMethod("ChangeSquadName", squadID.ToString(), name);
 		}
 
@@ -357,6 +305,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool ChangeWingName(Int64 wingID, string name)
 		{
+			Tracing.SendCallback("Fleet.ChangeWingName", wingID, name);
 			return ExecuteMethod("ChangeWingName", wingID.ToString(), name);
 		}
 
@@ -367,6 +316,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool CreateSquad(Int64 wingID)
 		{
+			Tracing.SendCallback("Fleet.CreateSquad", wingID);
 			return ExecuteMethod("CreateSquad", wingID.ToString());
 		}
 
@@ -376,6 +326,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool CreateWing()
 		{
+			Tracing.SendCallback("Fleet.CreateWing");
 			return ExecuteMethod("CreateWing");
 		}
 
@@ -386,6 +337,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool DeleteSquad(Int64 squadID)
 		{
+			Tracing.SendCallback("Fleet.DeleteSquad");
 			return ExecuteMethod("DeleteSquad", squadID.ToString());
 		}
 
@@ -396,6 +348,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool DeleteWing(Int64 wingID)
 		{
+			Tracing.SendCallback("Fleet.DeleteWing");
 			return ExecuteMethod("DeleteWing", wingID.ToString());
 		}
 
@@ -405,8 +358,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public List<FleetMember> GetMembers()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Fleet.GetMembers", string.Empty);
+			Tracing.SendCallback("Fleet.GetMembers", string.Empty);
 			return Util.GetListFromMethod<FleetMember>(this, "GetMembers", "fleetmember");
 		}
 
@@ -416,8 +368,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public List<Int64> GetSquads()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Fleet.GetSquads", string.Empty);
+			Tracing.SendCallback("Fleet.GetSquads", string.Empty);
 			return Util.GetListFromMethod<Int64>(this, "GetSquads", "int64");
 		}
 
@@ -428,8 +379,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public List<Int64> GetSquads(Int64 wingID)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Fleet.GetSquads", wingID.ToString());
+			Tracing.SendCallback("Fleet.GetSquads", wingID.ToString());
 			return Util.GetListFromMethod<Int64>(this, "GetSquads", "int64", wingID.ToString());
 		}
 
@@ -439,8 +389,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public List<Int64> GetWings()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Fleet.GetWings", string.Empty);
+			Tracing.SendCallback("Fleet.GetWings", string.Empty);
 			return Util.GetListFromMethod<Int64>(this, "GetWings", "int64");
 		}
 
@@ -450,8 +399,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool LeaveFleet()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Fleet.LeaveFleet", string.Empty);
+			Tracing.SendCallback("Fleet.LeaveFleet", string.Empty);
 			return ExecuteMethod("LeaveFleet");
 		}
 
@@ -461,8 +409,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool RejectInvite()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Fleet.RejectInvite", string.Empty);
+			Tracing.SendCallback("Fleet.RejectInvite", string.Empty);
 			return ExecuteMethod("RejectInvite");
 		}
 
@@ -471,10 +418,9 @@ namespace EVE.ISXEVE
 		/// </summary>
 		/// <param name="fleetMemberCharID"></param>
 		/// <returns></returns>
-		public bool WarpToFleetMember(int fleetMemberCharID)
+		public bool WarpToFleetMember(Int64 fleetMemberCharID)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Fleet.WarpToFleetMember", fleetMemberCharID.ToString());
+			Tracing.SendCallback("Fleet.WarpToFleetMember", fleetMemberCharID.ToString());
 			return WarpToFleetMember(fleetMemberCharID, 0);
 		}
 
@@ -484,10 +430,9 @@ namespace EVE.ISXEVE
 		/// <param name="fleetMemberCharID"></param>
 		/// <param name="distance"></param>
 		/// <returns></returns>
-		public bool WarpToFleetMember(int fleetMemberCharID, double distance)
+		public bool WarpToFleetMember(Int64 fleetMemberCharID, double distance)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Fleet.WarpToFleetMember", String.Format("{0},{1}", fleetMemberCharID, distance));
+			Tracing.SendCallback("Fleet.WarpToFleetMember", fleetMemberCharID, distance);
 			return ExecuteMethod("WarpToFleetMember", fleetMemberCharID.ToString(), distance.ToString());
 		}
 		#endregion

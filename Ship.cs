@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
-
-using InnerSpaceAPI;
+using Extensions;
 using LavishScriptAPI;
 
 namespace EVE.ISXEVE
@@ -38,10 +36,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Name
 		{
-			get
-			{
-				return GetMember<string>("Name");
-			}
+			get { return this.GetStringFromLSO("Name"); }
 		}
 
 		/// <summary>
@@ -49,18 +44,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Capacitor
 		{
-			get
-			{
-				LavishScriptObject capacitor = GetMember("Capacitor");
-				if (!LavishScriptObject.IsNullOrInvalid(capacitor))
-				{
-					return capacitor.GetValue<double>();
-				}
-				else
-				{
-					return -1;
-				}
-			}
+			get { return this.GetDoubleFromLSO("Capacitor"); }
 		}
 
 		/// one sec<summary>
@@ -68,18 +52,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double MaxCapacitor
 		{
-			get
-			{
-				LavishScriptObject maxCapacitor = GetMember("MaxCapacitor");
-				if (!LavishScriptObject.IsNullOrInvalid(maxCapacitor))
-				{
-					return maxCapacitor.GetValue<double>();
-				}
-				else
-				{
-					return -1;
-				}
-			}
+			get { return this.GetDoubleFromLSO("MaxCapacitor"); }
 		}
 
 		/// <summary>
@@ -87,18 +60,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double CapacitorPct
 		{
-			get
-			{
-				LavishScriptObject capacitorPct = GetMember("CapacitorPct");
-				if (!LavishScriptObject.IsNullOrInvalid(capacitorPct))
-				{
-					return capacitorPct.GetValue<double>();
-				}
-				else
-				{
-					return -1;
-				}
-			}
+			get { return this.GetDoubleFromLSO("CapacitorPct"); }
 		}
 
 		/// <summary>
@@ -106,18 +68,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Shield
 		{
-			get
-			{
-				LavishScriptObject shield = GetMember("Shield");
-				if (!LavishScriptObject.IsNullOrInvalid(shield))
-				{
-					return shield.GetValue<double>();
-				}
-				else
-				{
-					return -1;
-				}
-			}
+			get { return this.GetDoubleFromLSO("Shield"); }
 		}
 
 		/// <summary>
@@ -125,18 +76,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double MaxShield
 		{
-			get
-			{
-				LavishScriptObject maxShield = GetMember("MaxShield");
-				if (!LavishScriptObject.IsNullOrInvalid(maxShield))
-				{
-					return maxShield.GetValue<double>();
-				}
-				else
-				{
-					return -1;
-				}
-			}
+			get { return this.GetDoubleFromLSO("MaxShield"); }
 		}
 
 		/// <summary>
@@ -144,18 +84,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double ShieldPct
 		{
-			get
-			{
-				LavishScriptObject shieldPct = GetMember("ShieldPct");
-				if (!LavishScriptObject.IsNullOrInvalid(shieldPct))
-				{
-					return shieldPct.GetValue<double>();
-				}
-				else
-				{
-					return -1;
-				}
-			}
+			get { return this.GetDoubleFromLSO("ShieldPct"); }
 		}
 
 		/// <summary>
@@ -163,18 +92,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Armor
 		{
-			get
-			{
-				LavishScriptObject armor = GetMember("Armor");
-				if (!LavishScriptObject.IsNullOrInvalid(armor))
-				{
-					return armor.GetValue<double>();
-				}
-				else
-				{
-					return -1;
-				}
-			}
+			get { return this.GetDoubleFromLSO("Armor"); }
 		}
 
 		/// <summary>
@@ -182,18 +100,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double MaxArmor
 		{
-			get
-			{
-				LavishScriptObject maxArmor = GetMember("MaxArmor");
-				if (!LavishScriptObject.IsNullOrInvalid(maxArmor))
-				{
-					return maxArmor.GetValue<double>();
-				}
-				else
-				{
-					return -1;
-				}
-			}
+			get { return this.GetDoubleFromLSO("MaxArmor"); }
 		}
 
 		/// <summary>
@@ -201,18 +108,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double ArmorPct
 		{
-			get
-			{
-				LavishScriptObject armorPct = GetMember("ArmorPct");
-				if (!LavishScriptObject.IsNullOrInvalid(armorPct))
-				{
-					return armorPct.GetValue<double>();
-				}
-				else
-				{
-					return -1;
-				}
-			}
+			get { return this.GetDoubleFromLSO("ArmorPct"); }
 		}
 
 		/// <summary>
@@ -220,18 +116,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Structure
 		{
-			get
-			{
-				LavishScriptObject structure = GetMember("Structure");
-				if (!LavishScriptObject.IsNullOrInvalid(structure))
-				{
-					return structure.GetValue<double>();
-				}
-				else
-				{
-					return -1;
-				}
-			}
+			get { return this.GetDoubleFromLSO("Structure"); }
 		}
 
 		/// <summary>
@@ -239,18 +124,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double MaxStructure
 		{
-			get
-			{
-				LavishScriptObject maxStructure = GetMember("MaxStructure");
-				if (!LavishScriptObject.IsNullOrInvalid(maxStructure))
-				{
-					return maxStructure.GetValue<double>();
-				}
-				else
-				{
-					return -1;
-				}
-			}
+			get { return this.GetDoubleFromLSO("MaxStructure"); }
 		}
 
 		/// <summary>
@@ -258,29 +132,25 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double StructurePct
 		{
-			get
-			{
-				LavishScriptObject structurePct = GetMember("StructurePct");
-				if (!LavishScriptObject.IsNullOrInvalid(structurePct))
-				{
-					return structurePct.GetValue<double>();
-				}
-				else
-				{
-					return -1;
-				}
-			}
+			get { return this.GetDoubleFromLSO("StructurePct"); }
 		}
+
+	    public Item ToItem
+	    {
+	        get { return new Item(GetMember("ToItem")); }
+	    }
+
+	    public Scanner Scanner
+	    {
+	        get { return new Scanner(GetMember("Scanner")); }
+	    }
 
 		/// <summary>
 		/// Wrapper for the CPULoad member of the ship type.
 		/// </summary>
 		public double CPULoad
 		{
-			get
-			{
-				return GetMember<double>("CPULoad");
-			}
+			get { return this.GetDoubleFromLSO("CPULoad"); }
 		}
 
 		/// <summary>
@@ -288,10 +158,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double CPUOutput
 		{
-			get
-			{
-				return GetMember<double>("CPUOutput");
-			}
+			get { return this.GetDoubleFromLSO("CPUOutput"); }
 		}
 
 		/// <summary>
@@ -299,10 +166,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double PowerLoad
 		{
-			get
-			{
-				return GetMember<double>("PowerLoad");
-			}
+			get { return this.GetDoubleFromLSO("PowerLoad"); }
 		}
 
 		/// <summary>
@@ -310,10 +174,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double PowerOutput
 		{
-			get
-			{
-				return GetMember<double>("PowerOutput");
-			}
+			get { return this.GetDoubleFromLSO("PowerOutput"); }
 		}
 
 		/// <summary>
@@ -321,10 +182,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double TurretSlotsLeft
 		{
-			get
-			{
-				return GetMember<double>("TurretSlotsLeft");
-			}
+			get { return this.GetDoubleFromLSO("TurretSlotsLeft"); }
 		}
 
 		/// <summary>
@@ -332,10 +190,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double HeatCapacityHigh
 		{
-			get
-			{
-				return GetMember<double>("HeatCapacityHigh");
-			}
+			get { return this.GetDoubleFromLSO("HeatCapacityHigh"); }
 		}
 
 		/// <summary>
@@ -343,10 +198,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double HeatCapacityMedium
 		{
-			get
-			{
-				return GetMember<double>("HeatCapacityMedium");
-			}
+			get { return this.GetDoubleFromLSO("HeatCapacityMedium"); }
 		}
 
 		/// <summary>
@@ -354,10 +206,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double HeatCapacityLow
 		{
-			get
-			{
-				return GetMember<double>("HeatCapacityLow");
-			}
+			get { return this.GetDoubleFromLSO("HeatCapacityLow"); }
 		}
 
 		/// <summary>
@@ -365,10 +214,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double RigSlots
 		{
-			get
-			{
-				return GetMember<double>("RigSlots");
-			}
+			get { return this.GetDoubleFromLSO("RigSlots"); }
 		}
 
 		/// <summary>
@@ -376,10 +222,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double RigSlotsLeft
 		{
-			get
-			{
-				return GetMember<double>("RigSlotsLeft");
-			}
+			get { return this.GetDoubleFromLSO("RigSlotsLeft"); }
 		}
 
 		/// <summary>
@@ -387,10 +230,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double ScanSpeed
 		{
-			get
-			{
-				return GetMember<double>("ScanSpeed");
-			}
+			get { return this.GetDoubleFromLSO("ScanSpeed"); }
 		}
 
 		/// <summary>
@@ -398,10 +238,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double MaxTargetRange
 		{
-			get
-			{
-				return GetMember<double>("MaxTargetRange");
-			}
+			get { return this.GetDoubleFromLSO("MaxTargetRange"); }
 		}
 
 		/// <summary>
@@ -409,10 +246,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double LowSlots
 		{
-			get
-			{
-				return GetMember<double>("LowSlots");
-			}
+			get { return this.GetDoubleFromLSO("LowSlots"); }
 		}
 
 		/// <summary>
@@ -420,10 +254,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double MediumSlots
 		{
-			get
-			{
-				return GetMember<double>("MediumSlots");
-			}
+			get { return this.GetDoubleFromLSO("MediumSlots"); }
 		}
 
 		/// <summary>
@@ -431,10 +262,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double HighSlots
 		{
-			get
-			{
-				return GetMember<double>("HighSlots");
-			}
+			get { return this.GetDoubleFromLSO("HighSlots"); }
 		}
 
 		/// <summary>
@@ -442,10 +270,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Radius
 		{
-			get
-			{
-				return GetMember<double>("Radius");
-			}
+			get { return this.GetDoubleFromLSO("Radius"); }
 		}
 
 		/// <summary>
@@ -453,10 +278,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double TechLevel
 		{
-			get
-			{
-				return GetMember<double>("TechLevel");
-			}
+			get { return this.GetDoubleFromLSO("TechLevel"); }
 		}
 
 		/// <summary>
@@ -464,15 +286,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double HeatLow
 		{
-			get
-			{
-				LavishScriptObject heatLow = GetMember("HeatLow");
-				if (LavishScriptObject.IsNullOrInvalid(heatLow))
-				{
-					return -1;
-				}
-				return heatLow.GetValue<double>();
-			}
+			get { return this.GetDoubleFromLSO("HeatLow"); }
 		}
 
 		/// <summary>
@@ -480,15 +294,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double HeatMedium
 		{
-			get
-			{
-				LavishScriptObject heatMedium = GetMember("HeatMedium");
-				if (LavishScriptObject.IsNullOrInvalid(heatMedium))
-				{
-					return -1;
-				}
-				return heatMedium.GetValue<double>();
-			}
+			get { return this.GetDoubleFromLSO("HeatMedium"); }
 		}
 
 		/// <summary>
@@ -496,15 +302,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double HeatHigh
 		{
-			get
-			{
-				LavishScriptObject heatHigh = GetMember("HeatHigh");
-				if (LavishScriptObject.IsNullOrInvalid(heatHigh))
-				{
-					return -1;
-				}
-				return heatHigh.GetValue<double>();
-			}
+			get { return this.GetDoubleFromLSO("HeatHigh"); }
 		}
 
 		/// <summary>
@@ -512,10 +310,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double MaxVelocity
 		{
-			get
-			{
-				return GetMember<double>("MaxVelocity");
-			}
+			get { return this.GetDoubleFromLSO("MaxVelocity"); }
 		}
 
 		/// <summary>
@@ -523,10 +318,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double ScanResolution
 		{
-			get
-			{
-				return GetMember<double>("ScanResolution");
-			}
+			get { return this.GetDoubleFromLSO("ScanResolution"); }
 		}
 
 		/// <summary>
@@ -534,10 +326,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double ScanRadarStrength
 		{
-			get
-			{
-				return GetMember<double>("ScanRadarStrength");
-			}
+			get { return this.GetDoubleFromLSO("ScanRadarStrength"); }
 		}
 
 		/// <summary>
@@ -545,10 +334,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Agility
 		{
-			get
-			{
-				return GetMember<double>("Agility");
-			}
+			get { return this.GetDoubleFromLSO("Agility"); }
 		}
 
 		/// <summary>
@@ -556,10 +342,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double LauncherSlotsLeft
 		{
-			get
-			{
-				return GetMember<double>("LauncherSlotsLeft");
-			}
+			get { return this.GetDoubleFromLSO("LauncherSlotsLeft"); }
 		}
 
 		/// <summary>
@@ -567,10 +350,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double CapacitorRechargeRate
 		{
-			get
-			{
-				return GetMember<double>("CapacitorRechargeRate");
-			}
+			get { return this.GetDoubleFromLSO("CapacitorRechargeRate"); }
 		}
 
 		/// <summary>
@@ -578,10 +358,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double ShieldRechargeRate
 		{
-			get
-			{
-				return GetMember<double>("ShieldRechargeRate");
-			}
+			get { return this.GetDoubleFromLSO("ShieldRechargeRate"); }
 		}
 
 		/// <summary>
@@ -589,10 +366,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double SignatureRadius
 		{
-			get
-			{
-				return GetMember<double>("SignatureRadius");
-			}
+			get { return this.GetDoubleFromLSO("SignatureRadius"); }
 		}
 
 		/// <summary>
@@ -600,18 +374,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double MaxLockedTargets
 		{
-			get
-			{
-				LavishScriptObject maxLockedTarges = GetMember("MaxLockedTargets");
-				if (!LavishScriptObject.IsNullOrInvalid(maxLockedTarges))
-				{
-					return maxLockedTarges.GetValue<double>();
-				}
-				else
-				{
-					return -1;
-				}
-			}
+			get { return this.GetDoubleFromLSO("MaxLockedTargets"); }
 		}
 		#endregion
 
@@ -621,18 +384,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double CargoCapacity
 		{
-			get
-			{
-				LavishScriptObject cargoCapacity = GetMember("CargoCapacity");
-				if (!LavishScriptObject.IsNullOrInvalid(cargoCapacity))
-				{
-					return cargoCapacity.GetValue<double>();
-				}
-				else
-				{
-					return -1;
-				}
-			}
+			get { return this.GetDoubleFromLSO("CargoCapacity"); }
 		}
 
 		/// <summary>
@@ -640,18 +392,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double UsedCargoCapacity
 		{
-			get
-			{
-				LavishScriptObject usedCargoCapacity = GetMember("UsedCargoCapacity");
-				if (!LavishScriptObject.IsNullOrInvalid(usedCargoCapacity))
-				{
-					return usedCargoCapacity.GetValue<double>();
-				}
-				else
-				{
-					return -1;
-				}
-			}
+			get { return this.GetDoubleFromLSO("UsedCargoCapacity"); }
 		}
 
 		/// <summary>
@@ -675,23 +416,13 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
-		/// Wrapper for the CargoCount member of the ship type.
-		/// </summary>
-		public int CargoCount
-		{
-			get
-			{
-				return GetMember<int>("GetCargo");
-			}
-		}
-
-		/// <summary>
 		/// Wrapper for the GetCargo member of the ship type.
 		/// </summary>
 		/// <returns></returns>
 		public List<Item> GetCargo()
 		{
-			return Util.GetListFromMember<Item>(this, "GetCargo", "item");
+			Tracing.SendCallback("Ship.GetCargo");
+			return Util.GetListFromMethod<Item>(this, "GetCargo", "item");
 		}
 		#endregion
 
@@ -701,10 +432,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double DronebayCapacity
 		{
-			get
-			{
-				return GetMember<double>("DronebayCapacity");
-			}
+			get { return this.GetDoubleFromLSO("DronebayCapacity"); }
 		}
 
 		/// <summary>
@@ -712,10 +440,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double UsedDronebayCapacity
 		{
-			get
-			{
-				return GetMember<double>("UsedDronebayCapacity");
-			}
+			get { return this.GetDoubleFromLSO("UsedDronebayCapacity"); }
 		}
 
 		/// <summary>
@@ -739,30 +464,13 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
-		/// This is GetDrones(), renamed to DroneCount
-		/// </summary>
-		public int DroneCount
-		{
-			get
-			{
-				LavishScriptObject getDrones = GetMember("GetDrones");
-				if (LavishScriptObject.IsNullOrInvalid(getDrones))
-				{
-					return 0;
-				}
-				return getDrones.GetValue<int>();
-			}
-		}
-
-		/// <summary>
 		/// Wrapper for the GetDrones member of the ship type.
 		/// </summary>
 		/// <returns></returns>
 		public List<Item> GetDrones()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Ship.GetDrones", string.Empty);
-			return Util.GetListFromMember<Item>(this, "GetDrones", "item");
+			Tracing.SendCallback("Ship.GetDrones", string.Empty);
+			return Util.GetListFromMethod<Item>(this, "GetDrones", "item");
 		}
 		#endregion
 
@@ -809,26 +517,13 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
-		/// Number of modules fit to the ship
-		/// Note: Must be in space.
-		/// </summary>
-		public int ModuleCount
-		{
-			get
-			{
-				return GetMember<int>("GetModules");
-			}
-		}
-
-		/// <summary>
 		/// Modules fit to the ship
 		/// Note: Must be in space.
 		/// </summary>
 		public List<Module> GetModules()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Ship.GetModules", string.Empty);
-			return Util.GetListFromMember<Module>(this, "GetModules", "module");
+			Tracing.SendCallback("Ship.GetModules");
+			return Util.GetListFromMethod<Module>(this, "GetModules", "module");
 		}
 		#endregion
 		#endregion
@@ -840,8 +535,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool StackAllCargo()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Ship.StackAllCargo", string.Empty);
+			Tracing.SendCallback("Ship.StackAllCargo");
 			return ExecuteMethod("StackAllCargo");
 		}
 
@@ -854,8 +548,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool LaunchAllDrones()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Ship.LaunchAllDrones", string.Empty);
+			Tracing.SendCallback("Ship.LaunchAllDrones");
 			return ExecuteMethod("LaunchAllDrones");
 		}
 
@@ -865,8 +558,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool OpenCargo()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Ship.OpenCargo", string.Empty);
+			Tracing.SendCallback("Ship.OpenCargo");
 			return ExecuteMethod("OpenCargo");
 		}
 		#endregion

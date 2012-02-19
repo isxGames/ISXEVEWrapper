@@ -8,9 +8,9 @@ using LavishScriptAPI;
 namespace EVE.ISXEVE
 {
 	/// <summary>
-  /// Wrapper for the universe data type.
+	/// Wrapper for the universe data type.
 	/// </summary>
-  public class Universe
+	public class Universe
 	{
 		#region Statics
 		/// <summary>

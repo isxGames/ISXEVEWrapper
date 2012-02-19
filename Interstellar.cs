@@ -1,4 +1,5 @@
 using System;
+using Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
 
@@ -10,10 +11,10 @@ namespace EVE.ISXEVE
 	public class Interstellar : LavishScriptObject
 	{
 		#region Constructors
-    /// <summary>
-    /// Interstellar object copy constructor.
-    /// </summary>
-    /// <param name="Copy"></param>
+		/// <summary>
+		/// Interstellar object copy constructor.
+		/// </summary>
+		/// <param name="Copy"></param>
 		public Interstellar(LavishScriptObject Copy)
 			: base(Copy)
 		{
@@ -21,53 +22,41 @@ namespace EVE.ISXEVE
 		#endregion
 
 		#region Members
-    /// <summary>
-    /// Wrapper for ID member of interstellar type.
-    /// </summary>
+		/// <summary>
+		/// Wrapper for ID member of interstellar type.
+		/// </summary>
 		public int ID
 		{
-			get
-			{
-				return GetMember<int>("ID");
-			}
+			get { return this.GetIntFromLSO("ID"); }
 		}
 
-    /// <summary>
-    /// Wrapper for Name member of interstellar type.
-    /// </summary>
+		/// <summary>
+		/// Wrapper for Name member of interstellar type.
+		/// </summary>
 		public string Name
 		{
-			get
-			{
-				return GetMember<string>("Name");
-			}
+			get { return this.GetStringFromLSO("Name"); }
 		}
 
-    /// <summary>
-    /// Wrapper for Type member of interstellar type.
-    /// </summary>
+		/// <summary>
+		/// Wrapper for Type member of interstellar type.
+		/// </summary>
 		public string Type
 		{
-			get
-			{
-				return GetMember<string>("Type");
-			}
+			get { return this.GetStringFromLSO("Type"); }
 		}
 
-    /// <summary>
-    /// Wrapper for TypeID member of interstellar type.
-    /// </summary>
+		/// <summary>
+		/// Wrapper for TypeID member of interstellar type.
+		/// </summary>
 		public int TypeID
 		{
-			get
-			{
-				return GetMember<int>("TypeID");
-			}
+			get { return this.GetIntFromLSO("TypeID"); }
 		}
 
-    /// <summary>
-    /// Wrapper for Region member of interstellar type.
-    /// </summary>
+		/// <summary>
+		/// Wrapper for Region member of interstellar type.
+		/// </summary>
 		public Interstellar Region
 		{
 			get
@@ -87,15 +76,12 @@ namespace EVE.ISXEVE
 			}
 		}
 
-        /// <summary>
-        /// Wrapper for Security member of interstellar type.
-        /// </summary>
+		/// <summary>
+		/// Wrapper for Security member of interstellar type.
+		/// </summary>
 		public float Security
 		{
-			get
-			{
-				return GetMember<float>("Security");
-			}
+			get { return this.GetFloatFromLSO("Security"); }
 		}
 
         /// <summary>
@@ -103,10 +89,7 @@ namespace EVE.ISXEVE
         /// </summary>
         public int FactionID
         {
-            get
-            {
-                return GetMember<int>("FactionID");
-            }
+            get { return this.GetIntFromLSO("FactionID"); }
         }
 
         /// <summary>
@@ -114,10 +97,7 @@ namespace EVE.ISXEVE
         /// </summary>
         public string Faction
         {
-            get
-            {
-                return GetMember<string>("Faction");
-            }
+            get { return this.GetStringFromLSO("Faction"); }
         }
 		#endregion
 
@@ -127,8 +107,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool AddWaypoint()
 		{
-            if (Tracing.Callback != null)
-                Tracing.SendCallback("Interstellar.AddWaypoint", string.Empty);
+			Tracing.SendCallback("Interstellar.AddWaypoint");
 			return ExecuteMethod("AddWaypoint");
 		}
 
@@ -137,8 +116,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool SetDestination()
 		{
-            if (Tracing.Callback != null)
-                Tracing.SendCallback("Interstellar.SetDestination", string.Empty);
+			Tracing.SendCallback("Interstellar.SetDestination");
 			return ExecuteMethod("SetDestination");
 		}
 		#endregion

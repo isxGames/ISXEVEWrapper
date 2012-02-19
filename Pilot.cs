@@ -1,8 +1,5 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
-
-using InnerSpaceAPI;
+using Extensions;
 using LavishScriptAPI;
 
 namespace EVE.ISXEVE
@@ -25,7 +22,7 @@ namespace EVE.ISXEVE
 		/// <summary>
 		/// Get a Local pilot by ID.
 		/// </summary>
-		public Pilot(int CharID)
+		public Pilot(Int64 CharID)
 			: base(LavishScript.Objects.GetObject("Local", CharID.ToString()))
 		{
 		}
@@ -40,20 +37,9 @@ namespace EVE.ISXEVE
 		#endregion
 
 		#region Members
-		public int ID
+		public Int64 ID
 		{
-			get
-			{
-				LavishScriptObject id = GetMember("ID");
-				if (LavishScriptObject.IsNullOrInvalid(id))
-				{
-					return -1;
-				}
-				else
-				{
-					return id.GetValue<Int32>();
-				}
-			}
+			get { return this.GetInt64FromLSO("ID"); }
 		}
 
 		/// <summary>
@@ -61,21 +47,15 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Name
 		{
-			get
-			{
-				return GetMember<string>("Name");
-			}
+			get { return this.GetStringFromLSO("Name"); }
 		}
 
 		/// <summary>
 		/// Wrapper for the CharID member of a localpilots type.
 		/// </summary>
-		public int CharID
+		public Int64 CharID
 		{
-			get
-			{
-				return GetMember<int>("CharID");
-			}
+			get { return this.GetInt64FromLSO("CharID"); }
 		}
 
 		/// <summary>
@@ -83,10 +63,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Type
 		{
-			get
-			{
-				return GetMember<string>("Type");
-			}
+			get { return this.GetStringFromLSO("Type"); }
 		}
 
 		/// <summary>
@@ -94,54 +71,23 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int TypeID
 		{
-			get
-			{
-				return GetMember<int>("TypeID");
-			}
+			get { return this.GetIntFromLSO("TypeID"); }
 		}
 
-		/// <summary>
-		/// Wrapper for the Corporation member of a localpilots type.
-		/// </summary>
-		public string Corporation
-		{
-			get
-			{
-				return GetMember<string>("Corporation");
-			}
-		}
-
-		/// <summary>
-		/// Wrapper for the CorporationID member of a localpilots type.
-		/// </summary>
-		public int CorporationID
-		{
-			get
-			{
-				return GetMember<int>("CorporationID");
-			}
-		}
-
-		/// <summary>
-		/// Wrapper for the CorporationTicker member of a localpilots type.
-		/// </summary>
-		public string CorporationTicker
-		{
-			get
-			{
-				return GetMember<string>("CorporationTicker");
-			}
-		}
+	    public Corporation Corp
+	    {
+	        get
+	        {
+	            return new Corporation(GetMember("Corp"));
+	        }
+	    }
 
 		/// <summary>
 		/// Wrapper for the Alliance member of a localpilots type.
 		/// </summary>
 		public string Alliance
 		{
-			get
-			{
-				return GetMember<string>("Alliance");
-			}
+			get { return this.GetStringFromLSO("Alliance"); }
 		}
 
 		/// <summary>
@@ -149,10 +95,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int AllianceID
 		{
-			get
-			{
-				return GetMember<int>("AllianceID");
-			}
+			get { return this.GetIntFromLSO("AllianceID"); }
 		}
 
 		/// <summary>
@@ -160,10 +103,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string AllianceTicker
 		{
-			get
-			{
-				return GetMember<string>("AllianceTicker");
-			}
+			get { return this.GetStringFromLSO("AllianceTicker"); }
 		}
 
 		/// <summary>
@@ -205,7 +145,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double StandingTo(int ID)
 		{
-			return GetMember<double>("StandingTo", ID.ToString());
+			return this.GetDoubleFromLSO("StandingTo", ID.ToString());
 		}
 		#endregion
 
@@ -215,8 +155,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool SetStanding(int Standing, string Reason)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Pilot.SetStanding", String.Format("{0},{1}", Standing, Reason));
+			Tracing.SendCallback("Pilot.SetStanding", Standing, Reason);
 			return ExecuteMethod("SetStanding", Standing.ToString(), Reason);
 		}
 
@@ -226,8 +165,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool InviteToFleet()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Pilot.InviteToFleet", string.Empty);
+			Tracing.SendCallback("Pilot.InviteToFleet");
 			return ExecuteMethod("InviteToFleet");
 		}
 		#endregion

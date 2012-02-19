@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
-
-using InnerSpaceAPI;
 using LavishScriptAPI;
+using Extensions;
 
 namespace EVE.ISXEVE
 {
@@ -23,29 +21,20 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
-		/// Create Entity object by ID
+		/// Search for an Entity using LS Query syntax.
 		/// </summary>
-		/// <param name="ID"></param>
-		public Entity(Int64 ID)
-			: base(LavishScript.Objects.GetObject("Entity", ID.ToString()))
+		/// <param queryString="queryString"></param>
+		public Entity(string queryString)
+			: base(LavishScript.Objects.GetObject("Entity", queryString))
 		{
 		}
 
 		/// <summary>
-		/// Create Entity object by name
+		/// Search for an Entity matching the given ID.
 		/// </summary>
-		/// <param name="name"></param>
-		public Entity(string name)
-			: base(LavishScript.Objects.GetObject("Entity", name))
-		{
-		}
-
-		/// <summary>
-		/// Create Entity object by search
-		/// </summary>
-		/// <param name="Args"></param>
-		public Entity(params string[] Args)
-			: base(LavishScript.Objects.GetObject("Entity", Args))
+		/// <param name="entityID"></param>
+		public Entity(long entityID)
+			: base(LavishScript.Objects.GetObject("Entity", entityID.ToString()))
 		{
 		}
 		#endregion
@@ -56,10 +45,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Alliance
 		{
-			get
-			{
-				return GetMember<string>("Alliance");
-			}
+			get { return this.GetStringFromLSO("Alliance"); }
 		}
 
 		/// <summary>
@@ -67,10 +53,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int AllianceID
 		{
-			get
-			{
-				return GetMember<int>("AllianceID");
-			}
+			get { return this.GetIntFromLSO("AllianceID"); }
 		}
 
 		/// <summary>
@@ -78,10 +61,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string AllianceTicker
 		{
-			get
-			{
-				return GetMember<string>("AllianceTicker");
-			}
+			get { return this.GetStringFromLSO("AllianceTicker"); }
 		}
 
 		/// <summary>
@@ -89,10 +69,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Category
 		{
-			get
-			{
-				return GetMember<string>("Category");
-			}
+			get { return this.GetStringFromLSO("Category"); }
 		}
 
 		/// <summary>
@@ -100,18 +77,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int CategoryID
 		{
-			get
-			{
-				LavishScriptObject categoryID = GetMember("CategoryID");
-				if (LavishScriptObject.IsNullOrInvalid(categoryID))
-				{
-					return -1;
-				}
-				else
-				{
-					return categoryID.GetValue<int>();
-				}
-			}
+			get { return this.GetIntFromLSO("CategoryID"); }
 		}
 
 		/// <summary>
@@ -128,56 +94,28 @@ namespace EVE.ISXEVE
 		/// <summary>
 		/// Wrapper for the CharID member of the entity type.
 		/// </summary>
-		public int CharID
+		public Int64 CharID
 		{
-			get
-			{
-				return GetMember<int>("CharID");
-			}
+			get { return this.GetInt64FromLSO("CharID"); }
 		}
 
-		/// <summary>
-		/// Wrapper for the Corporation member of the entity type.
-		/// </summary>
-		public string Corporation
-		{
-			get
-			{
-				return GetMember<string>("Corporation");
-			}
-		}
-
-		/// <summary>
-		/// Wrapper for the CorporationID member of the entity type.
-		/// </summary>
-		public int CorporationID
-		{
-			get
-			{
-				return GetMember<int>("CorporationID");
-			}
-		}
-
-		/// <summary>
-		/// Wrapper for the CorporationTicker member of the entity type.
-		/// </summary>
-		public string CorporationTicker
-		{
-			get
-			{
-				return GetMember<string>("CorporationTicker");
-			}
-		}
+	    /// <summary>
+	    /// Wrapper for the Corporation member of the entity type.
+	    /// </summary>
+	    public Corporation Corp
+	    {
+	        get
+	        {
+	            return new Corporation(GetMember("Corporation"));
+	        }
+	    }
 
 		/// <summary>
 		/// Wrapper for the FormationID member of the entity type.
 		/// </summary>
 		public int FormationID
 		{
-			get
-			{
-				return GetMember<int>("FormationID");
-			}
+			get { return this.GetIntFromLSO("FormationID"); }
 		}
 
 		/// <summary>
@@ -185,10 +123,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Group
 		{
-			get
-			{
-				return GetMember<string>("Group");
-			}
+			get { return this.GetStringFromLSO("Group"); }
 		}
 
 		/// <summary>
@@ -196,18 +131,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int GroupID
 		{
-			get
-			{
-				LavishScriptObject groupID = GetMember("GroupID");
-				if (LavishScriptObject.IsNullOrInvalid(groupID))
-				{
-					return -1;
-				}
-				else
-				{
-					return groupID.GetValue<int>();
-				}
-			}
+			get { return this.GetIntFromLSO("GroupID"); }
 		}
 
 		/// <summary>
@@ -217,35 +141,22 @@ namespace EVE.ISXEVE
 		{
 			get
 			{
-				LavishScriptObject id = GetMember("ID");
-				if (LavishScriptObject.IsNullOrInvalid(id))
-				{
-					return -1;
-				}
-				else
-				{
-					return id.GetValue<Int64>();
-				}
+				Tracing.SendCallback("Entity.ID");
+				return this.GetInt64FromLSO("ID");
 			}
 		}
+
+	    public bool IsAbandoned
+	    {
+	        get { return this.GetBoolFromLSO("IsAbandoned"); }
+	    }
 
 		/// <summary>
 		/// Wrapper for the MaxVelocity member of the entity type.
 		/// </summary>
 		public double MaxVelocity
 		{
-			get
-			{
-				LavishScriptObject maxVelocity = GetMember("MaxVelocity");
-				if (!LavishScriptObject.IsNullOrInvalid(maxVelocity))
-				{
-					return maxVelocity.GetValue<double>();
-				}
-				else
-				{
-					return -1;
-				}
-			}
+			get { return this.GetDoubleFromLSO("MaxVelocity"); }
 		}
 
 		/// <summary>
@@ -253,10 +164,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Name
 		{
-			get
-			{
-				return GetMember<string>("Name");
-			}
+			get { return this.GetStringFromLSO("Name"); }
 		}
 
 		/// <summary>
@@ -266,9 +174,9 @@ namespace EVE.ISXEVE
 		{
 			get
 			{
-				LavishScriptObject owner = GetMember("Owner");
+				var owner = GetMember("Owner");
 
-				if (!LavishScriptObject.IsNullOrInvalid(owner) && owner.LSType == "pilot")
+				if (!IsNullOrInvalid(owner) && owner.LSType == "pilot")
 					return new Pilot(owner);
 
 				// invalid return
@@ -279,20 +187,9 @@ namespace EVE.ISXEVE
 		/// <summary>
 		/// Wrapper for the OwnerID member of the entity type.
 		/// </summary>
-		public int OwnerID
+		public Int64 OwnerID
 		{
-			get
-			{
-				LavishScriptObject ownerID = GetMember("OwnerID");
-				if (LavishScriptObject.IsNullOrInvalid(ownerID))
-				{
-					return -1;
-				}
-				else
-				{
-					return ownerID.GetValue<int>();
-				}
-			}
+			get { return this.GetInt64FromLSO("OwnerID"); }
 		}
 
 		/// <summary>
@@ -300,18 +197,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Security
 		{
-			get
-			{
-				LavishScriptObject security = GetMember("Security");
-				if (LavishScriptObject.IsNullOrInvalid(security))
-				{
-					return -1;
-				}
-				else
-				{
-					return security.GetValue<double>();
-				}
-			}
+			get { return this.GetDoubleFromLSO("Security"); }
 		}
 
 		/// <summary>
@@ -319,10 +205,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Type
 		{
-			get
-			{
-				return GetMember<string>("Type");
-			}
+			get { return this.GetStringFromLSO("Type"); }
 		}
 
 		/// <summary>
@@ -330,18 +213,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int TypeID
 		{
-			get
-			{
-				LavishScriptObject typeID = GetMember("TypeID");
-				if (LavishScriptObject.IsNullOrInvalid(typeID))
-				{
-					return -1;
-				}
-				else
-				{
-					return typeID.GetValue<int>();
-				}
-			}
+			get { return this.GetIntFromLSO("TypeID"); }
 		}
 
 		/// <summary>
@@ -349,10 +221,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int WreckID
 		{
-			get
-			{
-				return GetMember<int>("WreckID");
-			}
+			get { return this.GetIntFromLSO("WreckID"); }
 		}
 
 		/// <summary>
@@ -372,10 +241,8 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public List<ActiveDrone> GetActiveDrones()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.GetActiveDrones", string.Empty);
-
-			return Util.GetListFromMember<ActiveDrone>(this, "GetActiveDrones", "activedrone");
+			Tracing.SendCallback("Entity.GetActiveDrones");
+			return Util.GetListFromMethod<ActiveDrone>(this, "GetActiveDrones", "activedrone");
 		}
 
 		/// <summary>
@@ -385,13 +252,11 @@ namespace EVE.ISXEVE
 		{
 			get
 			{
-				LavishScriptObject isWreckEmpty = GetMember("IsWreckEmpty");
-				if (LavishScriptObject.IsNullOrInvalid(isWreckEmpty))
+				using (var isWreckEmpty = GetMember("IsWreckEmpty"))
 				{
 					//return true because a "negative" is empty, aka true
-					return true;
+					return IsNullOrInvalid(isWreckEmpty) || isWreckEmpty.GetValue<bool>();
 				}
-				return isWreckEmpty.GetValue<bool>();
 			}
 		}
 
@@ -400,15 +265,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsOwnedByCorpMember
 		{
-			get
-			{
-				LavishScriptObject isOwnedByCorpMember = GetMember("IsOwnedByCorpMember");
-				if (LavishScriptObject.IsNullOrInvalid(isOwnedByCorpMember))
-				{
-					return false;
-				}
-				return isOwnedByCorpMember.GetValue<bool>();
-			}
+			get { return this.GetBoolFromLSO("IsOwnedByCorpMember"); }
 		}
 
 		/// <summary>
@@ -416,29 +273,8 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsOwnedByAllianceMember
 		{
-			get
-			{
-				LavishScriptObject isOwnedByAllianceMember = GetMember("IsOwnedByAllianceMember");
-				if (LavishScriptObject.IsNullOrInvalid(isOwnedByAllianceMember))
-				{
-					return false;
-				}
-				return isOwnedByAllianceMember.GetValue<bool>();
-			}
+			get { return this.GetBoolFromLSO("IsOwnedByAllianceMember"); }
 		}
-
-        public bool IsAbandoned
-        {
-            get
-            {
-                LavishScriptObject IsAbandoned = GetMember("IsAbandoned");
-                if (LavishScriptObject.IsNullOrInvalid(IsAbandoned))
-                {
-                    return false;
-                }
-                return IsAbandoned.GetValue<bool>();
-            }
-        }
 
 		#region Location
 		/// <summary>
@@ -446,10 +282,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double X
 		{
-			get
-			{
-				return GetMember<double>("X");
-			}
+			get { return this.GetDoubleFromLSO("X"); }
 		}
 
 		/// <summary>
@@ -457,10 +290,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Y
 		{
-			get
-			{
-				return GetMember<double>("Y");
-			}
+			get { return this.GetDoubleFromLSO("Y"); }
 		}
 
 		/// <summary>
@@ -468,10 +298,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Z
 		{
-			get
-			{
-				return GetMember<double>("Z");
-			}
+			get { return this.GetDoubleFromLSO("Z"); }
 		}
 
 		/// <summary>
@@ -479,10 +306,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double vX
 		{
-			get
-			{
-				return GetMember<double>("vX");
-			}
+			get { return this.GetDoubleFromLSO("vX"); }
 		}
 
 		/// <summary>
@@ -490,10 +314,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double vY
 		{
-			get
-			{
-				return GetMember<double>("vY");
-			}
+			get { return this.GetDoubleFromLSO("vY"); }
 		}
 
 		/// <summary>
@@ -501,10 +322,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double vZ
 		{
-			get
-			{
-				return GetMember<double>("vZ");
-			}
+			get { return this.GetDoubleFromLSO("vZ"); }
 		}
 
 		/// <summary>
@@ -512,10 +330,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Pitch
 		{
-			get
-			{
-				return GetMember<double>("Pitch");
-			}
+			get { return this.GetDoubleFromLSO("Pitch"); }
 		}
 
 		/// <summary>
@@ -523,10 +338,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Roll
 		{
-			get
-			{
-				return GetMember<double>("Roll");
-			}
+			get { return this.GetDoubleFromLSO("Roll"); }
 		}
 
 		/// <summary>
@@ -534,10 +346,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Yaw
 		{
-			get
-			{
-				return GetMember<double>("Yaw");
-			}
+			get { return this.GetDoubleFromLSO("Yaw"); }
 		}
 
 		/// <summary>
@@ -545,10 +354,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Velocity
 		{
-			get
-			{
-				return (double)GetMember<float>("Velocity");
-			}
+			get { return this.GetDoubleFromLSO("Velocity"); }
 		}
 
 		/// <summary>
@@ -556,20 +362,17 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Distance
 		{
-			get
-			{
-				return (double)GetMember<float>("Distance");
-			}
+			get { return this.GetDoubleFromLSO("Distance"); }
 		}
 
 		/// <summary>
 		/// Wrapper for the DistanceTo member of the entity type.
 		/// </summary>
-		/// <param name="EntityID"></param>
+		/// <param name="entityId"></param>
 		/// <returns></returns>
-		public double DistanceTo(int EntityID)
+		public double DistanceTo(long entityId)
 		{
-			return GetMember<double>("DistanceTo", EntityID.ToString());
+			return this.GetDoubleFromLSO("DistanceTo", entityId.ToString());
 		}
 
 		/// <summary>
@@ -577,10 +380,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double FollowRange
 		{
-			get
-			{
-				return GetMember<double>("FollowRange");
-			}
+			get { return this.GetDoubleFromLSO("FollowRange"); }
 		}
 		#endregion
 
@@ -590,10 +390,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Mass
 		{
-			get
-			{
-				return GetMember<double>("Mass");
-			}
+			get { return this.GetDoubleFromLSO("Mass"); }
 		}
 
 		/// <summary>
@@ -601,10 +398,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Radius
 		{
-			get
-			{
-				return GetMember<double>("Radius");
-			}
+			get { return this.GetDoubleFromLSO("Radius"); }
 		}
 
 		/// <summary>
@@ -612,10 +406,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double ShieldPct
 		{
-			get
-			{
-				return GetMember<double>("ShieldPct");
-			}
+			get { return this.GetDoubleFromLSO("ShieldPct"); }
 		}
 
 		/// <summary>
@@ -623,10 +414,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double ArmorPct
 		{
-			get
-			{
-				return GetMember<double>("ArmorPct");
-			}
+			get { return this.GetDoubleFromLSO("ArmorPct"); }
 		}
 
 		/// <summary>
@@ -634,10 +422,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double StructurePct
 		{
-			get
-			{
-				return GetMember<double>("StructurePct");
-			}
+			get { return this.GetDoubleFromLSO("StructurePct"); }
 		}
 		#endregion
 
@@ -647,10 +432,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsCloaked
 		{
-			get
-			{
-				return GetMember<bool>("IsCloaked");
-			}
+			get { return this.GetBoolFromLSO("IsCloaked"); }
 		}
 
 		/// <summary>
@@ -658,10 +440,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsInteractive
 		{
-			get
-			{
-				return GetMember<bool>("IsInteractive");
-			}
+			get { return this.GetBoolFromLSO("IsInteractive"); }
 		}
 
 		/// <summary>
@@ -669,10 +448,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsMassive
 		{
-			get
-			{
-				return GetMember<bool>("IsMassive");
-			}
+			get { return this.GetBoolFromLSO("IsMassive"); }
 		}
 
 		/// <summary>
@@ -680,10 +456,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsGlobal
 		{
-			get
-			{
-				return GetMember<bool>("IsGlobal");
-			}
+			get { return this.GetBoolFromLSO("IsGlobal"); }
 		}
 
 		/// <summary>
@@ -691,10 +464,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsMoribund
 		{
-			get
-			{
-				return GetMember<bool>("IsMoribund");
-			}
+			get { return this.GetBoolFromLSO("IsMoribund"); }
 		}
 
 		/// <summary>
@@ -702,15 +472,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsWarpScrambled
 		{
-			get
-			{
-				LavishScriptObject isWarpScrambled = GetMember("IsWarpScrambled");
-				if (LavishScriptObject.IsNullOrInvalid(isWarpScrambled))
-				{
-					return false;
-				}
-				return isWarpScrambled.GetValue<bool>();
-			}
+			get { return this.GetBoolFromLSO("IsWarpScrambled"); }
 		}
 
 		/// <summary>
@@ -718,15 +480,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsActiveTarget
 		{
-			get
-			{
-				LavishScriptObject isActiveTarget = GetMember("IsActiveTarget");
-				if (LavishScriptObject.IsNullOrInvalid(isActiveTarget))
-				{
-					return false;
-				}
-				return isActiveTarget.GetValue<bool>();
-			}
+			get { return this.GetBoolFromLSO("IsActiveTarget"); }
 		}
 
 		/// <summary>
@@ -734,10 +488,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsLockedTarget
 		{
-			get
-			{
-				return GetMember<bool>("IsLockedTarget");
-			}
+			get { return this.GetBoolFromLSO("IsLockedTarget"); }
 		}
 
 		/// <summary>
@@ -745,18 +496,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsNPC
 		{
-			get
-			{
-				LavishScriptObject isNPC = GetMember("IsNPC");
-				if (LavishScriptObject.IsNullOrInvalid(isNPC))
-				{
-					return false;
-				}
-				else
-				{
-					return isNPC.GetValue<bool>();
-				}
-			}
+			get { return this.GetBoolFromLSO("IsNPC"); }
 		}
 
 		/// <summary>
@@ -764,18 +504,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsPC
 		{
-			get
-			{
-				LavishScriptObject isPC = GetMember("IsPC");
-				if (LavishScriptObject.IsNullOrInvalid(isPC))
-				{
-					return false;
-				}
-				else
-				{
-					return isPC.GetValue<bool>();
-				}
-			}
+			get { return this.GetBoolFromLSO("IsPC"); }
 		}
 
 		/// <summary>
@@ -783,15 +512,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool HaveLootRights
 		{
-			get
-			{
-				LavishScriptObject haveLootRights = GetMember("HaveLootRights");
-				if (LavishScriptObject.IsNullOrInvalid(haveLootRights))
-				{
-					return false;
-				}
-				return haveLootRights.GetValue<bool>();
-			}
+			get { return this.GetBoolFromLSO("HaveLootRights"); }
 		}
 
 		/// <summary>
@@ -801,10 +522,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int Mode
 		{
-			get
-			{
-				return GetMember<int>("Mode");
-			}
+			get { return this.GetIntFromLSO("Mode"); }
 		}
 
 		/// <summary>
@@ -812,10 +530,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsTargetingMe
 		{
-			get
-			{
-				return GetMember<bool>("IsTargetingMe");
-			}
+			get { return this.GetBoolFromLSO("IsTargetingMe"); }
 		}
 
 		/// <summary>
@@ -823,10 +538,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsWarpScramblingMe
 		{
-			get
-			{
-				return GetMember<bool>("IsWarpScramblingMe");
-			}
+			get { return this.GetBoolFromLSO("IsWarpScramblingMe"); }
 		}
 
 		/// <summary>
@@ -834,10 +546,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsTargetJammingMe
 		{
-			get
-			{
-				return GetMember<bool>("IsTargetJammingMe");
-			}
+			get { return this.GetBoolFromLSO("IsTargetJammingMe"); }
 		}
 
 		/// <summary>
@@ -845,10 +554,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool BeingTargeted
 		{
-			get
-			{
-				return GetMember<bool>("BeingTargeted");
-			}
+			get { return this.GetBoolFromLSO("BeingTargeted"); }
 		}
 
 		/// <summary>
@@ -880,10 +586,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double CargoCapacity
 		{
-			get
-			{
-				return GetMember<double>("CargoCapacity");
-			}
+			get { return this.GetDoubleFromLSO("CargoCapacity"); }
 		}
 
 		/// <summary>
@@ -891,27 +594,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double UsedCargoCapacity
 		{
-			get
-			{
-				return GetMember<double>("UsedCargoCapacity");
-			}
-		}
-
-		/// <summary>
-		/// Number of items in the cargo.  Keep in mind this might
-		/// be wrong if the cargo hold isn't open.
-		/// </summary>
-		public int CargoCount
-		{
-			get
-			{
-				LavishScriptObject cargoCount = GetMember("GetCargo");
-				if (LavishScriptObject.IsNullOrInvalid(cargoCount))
-				{
-					return -1;
-				}
-				return cargoCount.GetValue<int>();
-			}
+			get { return this.GetDoubleFromLSO("UsedCargoCapacity"); }
 		}
 
 		/// <summary>
@@ -921,9 +604,8 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public List<Item> GetCargo()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.GetCargo", string.Empty);
-			return Util.GetListFromMember<Item>(this, "GetCargo", "item");
+			Tracing.SendCallback("Entity.GetCargo");
+			return Util.GetListFromMethod<Item>(this, "GetCargo", "item");
 		}
 
 		/// <summary>
@@ -940,14 +622,6 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
-		/// Wrapper for the StorageWindow member of the Entity datatype.
-		/// </summary>
-		public EVEWindow StorageWindow
-		{
-			get { return new EVEWindow(GetMember("StorageWindow")); }
-		}
-
-		/// <summary>
 		/// Alias for 'LootWindow'
 		/// </summary>
 		public EVEWindow CargoWindow
@@ -957,6 +631,14 @@ namespace EVE.ISXEVE
 				return new EVEWindow(GetMember("CargoWindow"));
 			}
 		}
+
+        public EVEWindow StorageWindow
+        {
+            get
+            {
+                return new EVEWindow(GetMember("StorageWindow"));
+            }
+        }
 		#endregion
 
 		/// <summary>
@@ -970,16 +652,16 @@ namespace EVE.ISXEVE
 			}
 		}
 
-		/// <summary>
-		/// Get the Jammer member of the Entity object
-		/// </summary>
-		public Jammer ToJammer
-		{
-			get
-			{
-				return new Jammer(GetMember("ToJammer"));
-			}
-		}
+        /// <summary>
+        /// Get the Jammer member of the Entity object
+        /// </summary>
+        public Jammer ToJammer
+        {
+            get
+            {
+                return new Jammer(GetMember("ToJammer"));
+            }
+        }
 		#endregion
 
 		#region Methods
@@ -989,8 +671,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool Activate()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.Activate", string.Empty);
+			Tracing.SendCallback("Entity.Activate");
 			return ExecuteMethod("Activate");
 		}
 		/// <summary>
@@ -998,8 +679,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool WarpTo()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.WarpTo", string.Empty);
+			Tracing.SendCallback("Entity.WarpTo");
 			return ExecuteMethod("WarpTo");
 		}
 
@@ -1008,38 +688,16 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool WarpTo(int Distance)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.WarpTo", Distance.ToString());
+			Tracing.SendCallback("Entity.WarpTo", Distance.ToString());
 			return ExecuteMethod("WarpTo", Distance.ToString());
 		}
-
-        /// <summary>
-        /// This is the preferred method if your script is abandoning one thing at a time.
-        /// </summary>
-        public bool Abandon()
-        {
-            if (Tracing.Callback != null)
-                Tracing.SendCallback("Entity.Abandon", string.Empty);
-            return ExecuteMethod("Abandon");
-        }
-
-        /// <summary>
-        /// Abandons all of nearby entities of the same group type
-        /// </summary>
-        public bool AbandonAll()
-        {
-            if (Tracing.Callback != null)
-                Tracing.SendCallback("Entity.AbandonAll", string.Empty);
-            return ExecuteMethod("AbandonAll");
-        }
 
 		/// <summary>
 		/// Warp fleet to zero distance
 		/// </summary>
 		public bool WarpFleetTo()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.WarpFleetTo", string.Empty);
+			Tracing.SendCallback("Entity.WarpFleetTo");
 			return ExecuteMethod("WarpFleetTo");
 		}
 
@@ -1048,19 +706,17 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool WarpFleetTo(int Distance)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("StartConversation", string.Empty);
+			Tracing.SendCallback("Entity.WarpFleetTo", string.Empty);
 			return ExecuteMethod("WarpFleetTo", Distance.ToString());
 		}
 
 		/// <summary>
 		/// Align to the entity.
 		/// </summary>
-		public bool Align()
+		public bool AlignTo()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.Align", string.Empty);
-			return ExecuteMethod("Align");
+			Tracing.SendCallback("Entity.AlignTo");
+			return ExecuteMethod("AlignTo");
 		}
 
 		/// <summary>
@@ -1069,8 +725,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool LockTarget()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.LockTarget", string.Empty);
+			Tracing.SendCallback("Entity.LockTarget");
 			return ExecuteMethod("LockTarget");
 		}
 
@@ -1080,8 +735,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool UnlockTarget()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.UnlockTarget", string.Empty);
+			Tracing.SendCallback("Entity.UnlockTarget");
 			return ExecuteMethod("UnlockTarget");
 		}
 
@@ -1090,8 +744,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool Approach()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.Approach", string.Empty);
+			Tracing.SendCallback("Entity.Approach");
 			return ExecuteMethod("Approach");
 		}
 
@@ -1100,8 +753,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool Approach(int Distance)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.Approach", Distance.ToString());
+			Tracing.SendCallback("Entity.Approach", Distance.ToString());
 			return ExecuteMethod("Approach", Distance.ToString());
 		}
 
@@ -1110,8 +762,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool KeepAtRange()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.KeepAtRange", string.Empty);
+			Tracing.SendCallback("Entity.KeepAtRange");
 			return ExecuteMethod("KeepAtRange");
 		}
 
@@ -1120,8 +771,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool KeepAtRange(int Distance)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.KeepAtRange", Distance.ToString());
+			Tracing.SendCallback("Entity.KeepAtRange", Distance.ToString());
 			return ExecuteMethod("KeepAtRange", Distance.ToString());
 		}
 
@@ -1131,8 +781,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool Orbit()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.Orbit", string.Empty);
+			Tracing.SendCallback("Entity.Orbit");
 			return ExecuteMethod("Orbit");
 		}
 
@@ -1141,8 +790,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool Orbit(int Distance)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.Orbit", Distance.ToString());
+			Tracing.SendCallback("Entity.Orbit", Distance.ToString());
 			return ExecuteMethod("Orbit", Distance.ToString());
 		}
 
@@ -1151,8 +799,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool Dock()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.Dock", string.Empty);
+			Tracing.SendCallback("Entity.Dock");
 			return ExecuteMethod("Dock");
 		}
 
@@ -1161,8 +808,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool MakeActiveTarget()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.MakeActiveTarget", string.Empty);
+			Tracing.SendCallback("Entity.MakeActiveTarget");
 			return ExecuteMethod("MakeActiveTarget");
 		}
 
@@ -1172,22 +818,19 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool OpenCargo()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.OpenCargo", string.Empty);
+			Tracing.SendCallback("Entity.OpenCargo");
 			return ExecuteMethod("OpenCargo");
 		}
 
         public bool OpenStorage()
         {
-            if (Tracing.Callback != null)
-                Tracing.SendCallback("Entity.OpenStorage", string.Empty);
+            Tracing.SendCallback("Entity.OpenStorage");
             return ExecuteMethod("OpenStorage");
         }
 
         public bool CloseStorage()
         {
-            if (Tracing.Callback != null)
-                Tracing.SendCallback("Entity.CloseStorage", string.Empty);
+            Tracing.SendCallback("Entity.CloseStorage");
             return ExecuteMethod("CloseStorage");
         }
 
@@ -1197,8 +840,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool CloseCargo()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.CloseCargo", string.Empty);
+			Tracing.SendCallback("Entity.CloseCargo");
 			return ExecuteMethod("CloseCargo");
 		}
 
@@ -1207,8 +849,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool StackAllCargo()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.StackAllCargo", string.Empty);
+			Tracing.SendCallback("Entity.StackAllCargo");
 			return ExecuteMethod("StackAllCargo");
 		}
 
@@ -1217,8 +858,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool SetName(string Name)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.SetName", Name);
+			Tracing.SendCallback("Entity.SetName", Name);
 			return ExecuteMethod("SetName", Name);
 		}
 
@@ -1247,20 +887,17 @@ namespace EVE.ISXEVE
 			if (!string.IsNullOrEmpty(Label) &&
 				!string.IsNullOrEmpty(Notes))
 			{
-				if (Tracing.Callback != null)
-					Tracing.SendCallback("Entity.CreateBM", String.Format("{0},{1}", Label, Notes));
+				Tracing.SendCallback("Entity.CreateBookmark", Label, Notes);
 				return ExecuteMethod("CreateBookmark", Label, Notes);
 			}
 			else if (!string.IsNullOrEmpty(Label))
 			{
-				if (Tracing.Callback != null)
-					Tracing.SendCallback("Entity.CreateBM", Label);
+				Tracing.SendCallback("Entity.CreateBookmark", Label);
 				return ExecuteMethod("CreateBookmark", Label);
 			}
 			else
 			{
-				if (Tracing.Callback != null)
-					Tracing.SendCallback("Entity.CreateBM", string.Empty);
+				Tracing.SendCallback("Entity.CreateBookmark");
 				return ExecuteMethod("CreateBookmark");
 			}
 		}
@@ -1270,8 +907,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool WarpToAndDock()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.WarpToAndDock", string.Empty);
+		Tracing.SendCallback("Entity.WarpToAndDock");
 			return ExecuteMethod("WarpToAndDock");
 		}
 
@@ -1280,10 +916,27 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool Jump()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Entity.Jump", string.Empty);
+			Tracing.SendCallback("Entity.Jump");
 			return ExecuteMethod("Jump");
 		}
+
+        /// <summary>
+        /// This is the preferred method if your script is abandoning one thing at a time.
+        /// </summary>
+        public bool Abandon()
+        {
+            Tracing.SendCallback("Entity.Abandon", string.Empty);
+            return ExecuteMethod("Abandon");
+        }
+
+        /// <summary>
+        /// Abandons all of nearby entities of the same group type
+        /// </summary>
+        public bool AbandonAll()
+        {
+            Tracing.SendCallback("Entity.AbandonAll", string.Empty);
+            return ExecuteMethod("AbandonAll");
+        }
 
 		#region Mines
 		/// <summary>

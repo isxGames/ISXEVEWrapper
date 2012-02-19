@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-
+using Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
 
@@ -26,18 +26,7 @@ namespace EVE.ISXEVE
 		#region Members
 		public Int32 ID
 		{
-			get
-			{
-				LavishScriptObject id = GetMember("ID");
-				if (LavishScriptObject.IsNullOrInvalid(id))
-				{
-					return -1;
-				}
-				else
-				{
-					return id.GetValue<Int32>();
-				}
-			}
+			get { return this.GetIntFromLSO("ID"); }
 		}
 
 		/// <summary>
@@ -45,10 +34,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Text
 		{
-			get
-			{
-				return GetMember<string>("Text");
-			}
+			get { return this.GetStringFromLSO("Text"); }
 		}
 		#endregion
 
@@ -60,8 +46,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool Say(int ToWhomID)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("DialogString.Say", ToWhomID.ToString());
+			Tracing.SendCallback("DialogString.Say", ToWhomID.ToString());
 			return ExecuteMethod("Say", ToWhomID.ToString());
 		}
 		#endregion

@@ -1,14 +1,13 @@
-using System;
 using System.Collections.Generic;
-using InnerSpaceAPI;
+using Extensions;
 using LavishScriptAPI;
 
 namespace EVE.ISXEVE
 {
 	/// <summary>
-  /// Wrapper for the station data type.
+	/// Wrapper for the station data type.
 	/// </summary>
-  public class Station : LavishScriptObject
+	public class Station : LavishScriptObject
 	{
 		#region Constructors
 		/// <summary>
@@ -20,10 +19,10 @@ namespace EVE.ISXEVE
 		{
 		}
 
-    /// <summary>
-    /// Station copy constructor.
-    /// </summary>
-    /// <param name="Copy"></param>
+		/// <summary>
+		/// Station copy constructor.
+		/// </summary>
+		/// <param name="Copy"></param>
 		public Station(LavishScriptObject Copy)
 			: base(Copy)
 		{
@@ -32,33 +31,12 @@ namespace EVE.ISXEVE
 
 		#region Members
 		/// <summary>
-		/// Get the number of items in the hanger.
-		/// </summary>
-		public int HangarItemsCount
-		{
-			get
-			{
-				return GetMember<int>("GetHangerItems");
-			}
-		}
-
-		/// <summary>
 		/// Get all the items in the hanger
 		/// </summary>
 		public List<Item> GetHangarItems()
 		{
-			return Util.GetListFromMember<Item>(this, "GetHangerItems", "item");
-		}
-
-		/// <summary>
-		/// Get the number of ships in the hanger
-		/// </summary>
-		public int HangarShipsCount
-		{
-			get
-			{
-				return GetMember<int>("GetHangarShips");
-			}
+			Tracing.SendCallback("Station.GetHangarItems");
+			return Util.GetListFromMethod<Item>(this, "GetHangerItems", "item");
 		}
 
 		/// <summary>
@@ -66,18 +44,8 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public List<Item> GetHangarShips()
 		{
-			return Util.GetListFromMember<Item>(this, "GetHangerShips", "item");
-		}
-
-		/// <summary>
-		/// Get the number of items in the corporate hanger (all together)
-		/// </summary>
-		public int CorpHangarItemsCount
-		{
-			get
-			{
-				return GetMember<int>("GetCorpHangarItems");
-			}
+			Tracing.SendCallback("Station.GetCorpHangarShips");
+			return Util.GetListFromMethod<Item>(this, "GetHangerShips", "item");
 		}
 
 		/// <summary>
@@ -85,7 +53,8 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public List<Item> GetCorpHangarItems()
 		{
-			return Util.GetListFromMember<Item>(this, "GetCorpHangarItems", "item");
+			Tracing.SendCallback("Station.GetCorpHangarItems");
+			return Util.GetListFromMethod<Item>(this, "GetCorpHangarItems", "item");
 		}
 
         /// <summary>
@@ -94,269 +63,72 @@ namespace EVE.ISXEVE
         /// <returns></returns>
         public List<Item> GetCorpHangarShips()
         {
-            return Util.GetListFromMember<Item>(this, "GetCorpHangarShips", "item");
+            Tracing.SendCallback("Station.GetCorpHangarShips");
+            return Util.GetListFromMethod<Item>(this, "GetCorpHangarShips", "item");
         }
 
-        /// <summary>
-        /// Wrapper for Name member of station type.
-        /// </summary>
+		/// <summary>
+		/// Wrapper for Name member of station type.
+		/// </summary>
 		public string Name
 		{
-			get
-			{
-				return GetMember<string>("Name");
-			}
+			get { return this.GetStringFromLSO("Name"); }
 		}
 
-        /// <summary>
-        /// Wrapper for Description member of station type.
-        /// </summary>
-		public string Description
-		{
-			get
-			{
-				return GetMember<string>("Description");
-			}
-		}
-
-        /// <summary>
-        /// Wrapper for ID member of station type.
-        /// </summary>
+		/// <summary>
+		/// Wrapper for ID member of station type.
+		/// </summary>
 		public int ID
 		{
-			get
-			{
-				return GetMember<int>("ID");
-			}
+			get { return this.GetIntFromLSO("ID"); }
 		}
 
-        /// <summary>
-        /// Wrapper for TypeID member of station type.
-        /// </summary>
+		/// <summary>
+		/// Wrapper for TypeID member of station type.
+		/// </summary>
 		public int TypeID
 		{
-			get
-			{
-				return GetMember<int>("TypeID");
-			}
+			get { return this.GetIntFromLSO("TypeID"); }
 		}
 
-        /// <summary>
-        /// Wrapper for Type member of station type.
-        /// </summary>
+		/// <summary>
+		/// Wrapper for Type member of station type.
+		/// </summary>
 		public string Type
 		{
-			get
-			{
-				return GetMember<string>("Type");
-			}
+			get { return this.GetStringFromLSO("Type"); }
 		}
 
-        /// <summary>
-        /// Wrapper for OwnerID member of station type.
-        /// </summary>
+		/// <summary>
+		/// Wrapper for OwnerID member of station type.
+		/// </summary>
 		public int OwnerID
 		{
-			get
-			{
-				return GetMember<int>("OwnerID");
-			}
+			get { return this.GetIntFromLSO("OwnerID"); }
 		}
 
-        /// <summary>
-        /// Wrapper for Owner member of station type.
-        /// </summary>
+		/// <summary>
+		/// Wrapper for Owner member of station type.
+		/// </summary>
 		public string Owner
 		{
-			get
-			{
-				return GetMember<string>("Owner");
-			}
+			get { return this.GetStringFromLSO("Owner"); }
 		}
 
-        /// <summary>
-        /// Wrapper for OwnerTypeID member of station type.
-        /// </summary>
+		/// <summary>
+		/// Wrapper for OwnerTypeID member of station type.
+		/// </summary>
 		public int OwnerTypeID
 		{
-			get
-			{
-				return GetMember<int>("OwnerTypeID");
-			}
+			get { return this.GetIntFromLSO("OwnerTypeID"); }
 		}
 
-        /// <summary>
-        /// Wrapper for OwnerType member of station type.
-        /// </summary>
+		/// <summary>
+		/// Wrapper for OwnerType member of station type.
+		/// </summary>
 		public string OwnerType
 		{
-			get
-			{
-				return GetMember<string>("OwnerType");
-			}
-		}
-
-        /// <summary>
-        /// Wrapper for SolarSystem member of station type.
-        /// </summary>
-		public Interstellar SolarSystem
-		{
-			get
-			{
-				return GetMember<Interstellar>("SolarSystem");
-			}
-		}
-
-        /// <summary>
-        /// Wrapper for Constellation member of station type.
-        /// </summary>
-		public Interstellar Constellation
-		{
-			get
-			{
-				return GetMember<Interstellar>("Constellation");
-			}
-		}
-
-        /// <summary>
-        /// Wrapper for Region member of station type.
-        /// </summary>
-		public Interstellar Region
-		{
-			get
-			{
-				return GetMember<Interstellar>("Region");
-			}
-		}
-
-        /// <summary>
-        /// Wrapper for X member of station type.
-        /// </summary>
-		public double X
-		{
-			get
-			{
-				return GetMember<double>("X");
-			}
-		}
-
-        /// <summary>
-        /// Wrapper for Y member of station type.
-        /// </summary>
-		public double Y
-		{
-			get
-			{
-				return GetMember<double>("Y");
-			}
-		}
-
-        /// <summary>
-        /// Wrapper for Z member of station type.
-        /// </summary>
-		public double Z
-		{
-			get
-			{
-				return GetMember<double>("Z");
-			}
-		}
-
-        /// <summary>
-        /// Wrapper for Radius member of station type.
-        /// </summary>
-		public double Radius
-		{
-			get
-			{
-				return GetMember<double>("Radius");
-			}
-		}
-
-        /// <summary>
-        /// Wrapper for Security member of station type.
-        /// </summary>
-		public int Security
-		{
-			get
-			{
-				return GetMember<int>("Security");
-			}
-		}
-
-        /// <summary>
-        /// Wrapper for DockingCostPerVolume member of station type.
-        /// </summary>
-		public double DockingCostPerVolume
-		{
-			get
-			{
-				return GetMember<double>("DockingCostPerVolume");
-			}
-		}
-
-        /// <summary>
-        /// Wrapper for MaxShipVolumeDockable member of station type.
-        /// </summary>
-		public double MaxShipVolumeDockable
-		{
-			get
-			{
-				return GetMember<double>("MaxShipVolumeDockable");
-			}
-		}
-
-        /// <summary>
-        /// Wrapper for OfficeRentalCost member of station type.
-        /// </summary>
-		public int OfficeRentalCost
-		{
-			get
-			{
-				return GetMember<int>("OfficeRentalCost");
-			}
-		}
-
-        /// <summary>
-        /// Wrapper for ReprocessingEfficiency member of station type.
-        /// </summary>
-		public double ReprocessingEfficiency
-		{
-			get
-			{
-				return GetMember<double>("ReprocessingEfficiency");
-			}
-		}
-
-        /// <summary>
-        /// Wrapper for ReprocessingStationTakes member of station type.
-        /// </summary>
-		public double ReprocessingStationTakes
-		{
-			get
-			{
-				return GetMember<double>("ReprocessingStationTakes");
-			}
-		}
-
-        /// <summary>
-        /// Wrapper for Conquerable member of station type.
-        /// </summary>
-		public bool Conquerable
-		{
-			get
-			{
-				return GetMember<bool>("Conquerable");
-			}
-		}
-
-        /// <summary>
-        /// Wrapper for GetServices member of station type.
-        /// </summary>
-        /// <returns></returns>
-		public List<string> GetServices()
-		{
-			return Util.GetListFromMember<string>(this, "GetServices", "string");
+			get { return this.GetStringFromLSO("OwnerType"); }
 		}
 		#endregion
 
@@ -366,19 +138,17 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool StackAllHangarItems()
 		{
-            if (Tracing.Callback != null)
-                Tracing.SendCallback("Station.StackAllHangarItems", string.Empty);
+			Tracing.SendCallback("Station.StackAllHangarItems");
 			return ExecuteMethod("StackAllHangarItems");
 		}
 
-    /// <summary>
-        /// Open the corp hangar.
-        /// </summary>
-        /// <returns></returns>
+		/// <summary>
+		/// Open the corp hangar.
+		/// </summary>
+		/// <returns></returns>
 		public bool OpenCorpHangar()
 		{
-            if (Tracing.Callback != null)
-                Tracing.SendCallback("Station.OpenCorpHangar", string.Empty);
+			Tracing.SendCallback("Station.OpenCorpHangar");
 			return ExecuteMethod("OpenCorpHangar");
 		}
 		#endregion

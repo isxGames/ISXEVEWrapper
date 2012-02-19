@@ -1,4 +1,5 @@
 using System;
+using Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
 
@@ -28,7 +29,8 @@ namespace EVE.ISXEVE
 		{
 			get
 			{
-				return GetMember<Int64>("ID");
+				//Tracing.SendCallback("Bookmark.ID");
+				return this.GetInt64FromLSO("ID");
 			}
 		}
 
@@ -37,10 +39,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Type
 		{
-			get
-			{
-				return GetMember<String>("Type");
-			}
+			get { return this.GetStringFromLSO("Type"); }
 		}
 
 		/// <summary>
@@ -48,10 +47,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int TypeID
 		{
-			get
-			{
-				return GetMember<int>("TypeID");
-			}
+			get { return this.GetIntFromLSO("TypeID"); }
 		}
 
 		/// <summary>
@@ -72,10 +68,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int SolarSystemID
 		{
-			get
-			{
-				return GetMember<int>("SolarSystemID");
-			}
+			get { return this.GetIntFromLSO("SolarSystemID"); }
 		}
 
 		/// <summary>
@@ -83,18 +76,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double X
 		{
-			get
-			{
-				LavishScriptObject x = GetMember("X");
-				if (!LavishScriptObject.IsNullOrInvalid(x))
-				{
-					return x.GetValue<double>();
-				}
-				else
-				{
-					return -1;
-				}
-			}
+			get { return this.GetDoubleFromLSO("X"); }
 		}
 
 		/// <summary>
@@ -102,18 +84,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Y
 		{
-			get
-			{
-				LavishScriptObject y = GetMember("Y");
-				if (!LavishScriptObject.IsNullOrInvalid(y))
-				{
-					return y.GetValue<double>();
-				}
-				else
-				{
-					return -1;
-				}
-			}
+			get { return this.GetDoubleFromLSO("Y"); }
 		}
 
 		/// <summary>
@@ -121,18 +92,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Z
 		{
-			get
-			{
-				LavishScriptObject z = GetMember("Z");
-				if (!LavishScriptObject.IsNullOrInvalid(z))
-				{
-					return z.GetValue<double>();
-				}
-				else
-				{
-					return -1;
-				}
-			}
+			get { return this.GetDoubleFromLSO("Z"); }
 		}
 
 		/// <summary>
@@ -140,10 +100,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Label
 		{
-			get
-			{
-				return GetMember<string>("Label");
-			}
+			get { return this.GetStringFromLSO("Label"); }
 		}
 
 		/// <summary>
@@ -151,10 +108,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Note
 		{
-			get
-			{
-				return GetMember<string>("Note");
-			}
+			get { return this.GetStringFromLSO("Note"); }
 		}
 
 		/// <summary>
@@ -162,10 +116,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string DateCreated
 		{
-			get
-			{
-				return GetMember<string>("DateCreated");
-			}
+			get { return this.GetStringFromLSO("DateCreated"); }
 		}
 
 		/// <summary>
@@ -173,10 +124,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string TimeCreated
 		{
-			get
-			{
-				return GetMember<string>("TimeCreated");
-			}
+			get { return this.GetStringFromLSO("TimeCreated"); }
 		}
 
 		/// <summary>
@@ -184,10 +132,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int AgentID
 		{
-			get
-			{
-				return GetMember<int>("AgentID");
-			}
+			get { return this.GetIntFromLSO("AgentID"); }
 		}
 
 		/// <summary>
@@ -197,7 +142,8 @@ namespace EVE.ISXEVE
 		{
 			get
 			{
-				return GetMember<Int64>("LocationID");
+				Tracing.SendCallback("Bookmark.LocationID");
+				return this.GetInt64FromLSO("LocationID");
 			}
 		}
 
@@ -206,10 +152,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int LocationNumber
 		{
-			get
-			{
-				return GetMember<int>("LocationNumber");
-			}
+			get { return this.GetIntFromLSO("LocationNumber"); }
 		}
 
 		/// <summary>
@@ -217,10 +160,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string LocationType
 		{
-			get
-			{
-				return GetMember<string>("LocationType");
-			}
+			get { return this.GetStringFromLSO("LocationType"); }
 		}
 
 		/// <summary>
@@ -230,59 +170,58 @@ namespace EVE.ISXEVE
 		{
 			get
 			{
-				LavishScriptObject itemID = GetMember("ItemID");
-				if (LavishScriptObject.IsNullOrInvalid(itemID))
-				{
-					return -1;
-				}
-				else
-				{
-					return itemID.GetValue<Int64>();
-				}
+				Tracing.SendCallback("Bookmark.ItemID");
+				return this.GetInt64FromLSO("ItemID");
 			}
 		}
+
+        /// <summary>
+        /// Wrapper for the CreatorID member of a bookmark object
+        /// </summary>
+        public Int64 CreatorID
+        {
+            get
+            {
+                Tracing.SendCallback("Bookmark.CreatorID");
+                return this.GetInt64FromLSO("CreatorID");
+            }
+        }
 
         /// <summary>
         /// (NOTE:  Only works for agent bookmarks.)
         /// </summary>
         public bool DeadSpace
         {
-            get
-            {
-                return GetMember<bool>("DeadSpace");
-            }
+            get { return this.GetBoolFromLSO("DeadSpace"); }
         }
 		#endregion
 
 		#region Methods
+        /// <summary>
+        /// This will only work with bookmarks for which there is an "AlignTo To" option available via the in-game UI.
+        /// </summary>
+        /// <returns></returns>
+        public bool AlignTo()
+        {
+			Tracing.SendCallback("BM.AlignTo", string.Empty);
+            return ExecuteMethod("AlignTo");
+        }
+
 		/// <summary>
 		/// Warp to 0 distance
 		/// </summary>
 		public bool WarpTo()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("BM.WarpTo", string.Empty);
+			Tracing.SendCallback("BM.WarpTo");
 			return ExecuteMethod("WarpTo");
 		}
-
-        /// <summary>
-        /// This will only work with bookmarks for which there is an "Align To" option available via the in-game UI.
-        /// </summary>
-        /// <returns></returns>
-        public bool AlignTo()
-        {
-            if (Tracing.Callback != null)
-                Tracing.SendCallback("BM.AlignTo", string.Empty);
-            return ExecuteMethod("AlignTo");
-        }
 
 		/// <summary>
 		/// Warp to the given distance
 		/// </summary>
 		public bool WarpTo(int Distance)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("BM.WarpTo", Distance.ToString());
+			Tracing.SendCallback("BM.WarpTo", Distance.ToString());
 			return ExecuteMethod("WarpTo", Distance.ToString());
 		}
 
@@ -291,8 +230,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool Remove()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("BM.Remove", string.Empty);
+			Tracing.SendCallback("BM.Remove");
 			return ExecuteMethod("Remove");
 		}
 
@@ -301,8 +239,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool SetDestination()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("BM.SetDestination", string.Empty);
+			Tracing.SendCallback("BM.SetDestination");
 			return ExecuteMethod("SetDestination");
 		}
 
@@ -311,8 +248,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool AddWaypoint()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("BM.AddWaypoint", string.Empty);
+			Tracing.SendCallback("BM.AddWaypoint");
 			return ExecuteMethod("AddWaypoint");
 		}
 		#endregion

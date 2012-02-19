@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-
+using Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
 
@@ -24,15 +24,12 @@ namespace EVE.ISXEVE
 		#endregion
 
 		#region Members
-		/// <summary>1
+		/// <summary>
 		/// Wrapper for the BasePrice member of the item type.
 		/// </summary>
 		public double BasePrice
 		{
-			get
-			{
-				return GetMember<double>("BasePrice");
-			}
+			get { return this.GetDoubleFromLSO("BasePrice"); }
 		}
 
 		/// <summary>
@@ -40,10 +37,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Capacity
 		{
-			get
-			{
-				return GetMember<double>("Capacity");
-			}
+			get { return this.GetDoubleFromLSO("Capacity"); }
 		}
 
 		/// <summary>
@@ -51,19 +45,16 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double CargoCapacity
 		{
-			get
-			{
-				return GetMember<double>("CargoCapacity");
-			}
+			get { return this.GetDoubleFromLSO("CargoCapacity"); }
 		}
 
 		/// <summary>
-		/// Wrapper for the GetCargo member of the item type.
+		/// Wrapper for the GetCargo method of the item type.
 		/// </summary>
 		/// <returns></returns>
 		public List<Item> GetCargo()
 		{
-			return Util.GetListFromMember<Item>(this, "GetCargo", "item");
+			return Util.GetListFromMethod<Item>(this, "GetCargo", "item");
 		}
 
 		/// <summary>
@@ -71,10 +62,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double UsedCargoCapacity
 		{
-			get
-			{
-				return GetMember<double>("UsedCargoCapacity");
-			}
+			get { return this.GetDoubleFromLSO("UsedCargoCapacity"); }
 		}
 
 		/// <summary>
@@ -82,10 +70,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Category
 		{
-			get
-			{
-				return GetMember<string>("Category");
-			}
+			get { return this.GetStringFromLSO("Category"); }
 		}
 
 		/// <summary>
@@ -93,11 +78,13 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int CategoryID
 		{
-			get
-			{
-				return GetMember<int>("CategoryID");
-			}
+			get { return this.GetIntFromLSO("CategoryID"); }
 		}
+
+	    public int ChargeSize
+	    {
+            get { return this.GetIntFromLSO("ChargeSize"); }
+	    }
 
 		/// <summary>
 		/// Wrapper for the CategoryType member of the item type.
@@ -115,10 +102,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Description
 		{
-			get
-			{
-				return GetMember<string>("Description");
-			}
+			get { return this.GetStringFromLSO("Description"); }
 		}
 
 		/// <summary>
@@ -126,10 +110,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int GraphicID
 		{
-			get
-			{
-				return GetMember<int>("GraphicID");
-			}
+			get { return this.GetIntFromLSO("GraphicID"); }
 		}
 
 		/// <summary>
@@ -137,10 +118,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Group
 		{
-			get
-			{
-				return GetMember<string>("Group");
-			}
+			get { return this.GetStringFromLSO("Group"); }
 		}
 
 		/// <summary>
@@ -148,10 +126,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int GroupID
 		{
-			get
-			{
-				return GetMember<int>("GroupID");
-			}
+			get { return this.GetIntFromLSO("GroupID"); }
 		}
 
 		/// <summary>
@@ -161,27 +136,30 @@ namespace EVE.ISXEVE
 		{
 			get
 			{
-				return GetMember<Int64>("ID");
+				Tracing.SendCallback("Item.ID");
+				return this.GetInt64FromLSO("ID");
 			}
 		}
 
-        /// Wrapper for the IsContraband member of the item type.
+        /// <summary>
+        /// Basic, STandard, Bronze, Platinum, etc. When opening the insurance window, call IsInsured != null to verify
+        /// it has loaded the insurance records before attempting to validate insurance.
         /// </summary>
-        public bool IsContraband
-        {
-            get
+	    public string InsuranceLevel
+	    {
+	        get { return this.GetStringFromLSO("InsuranceLevel"); }
+	    }
+
+        /// <summary>
+        /// Ships only, CAN return NULL if insurance window has not fully loaded yet
+        /// </summary>
+	    public bool? IsInsured
+	    {
+            get 
             {
-                LavishScriptObject isContraband = GetMember("IsContraband");
-                if (LavishScriptObject.IsNullOrInvalid(isContraband))
-                {
-                    return false;
-                }
-                else
-                {
-                    return isContraband.GetValue<bool>();
-                }
+            	return this.GetNullableBoolFromLSO("IsInsured");
             }
-        }
+	    }
 
 		/// <summary>
 		/// This returns TRUE if the item is a 'repackable' type AND if it's currently 
@@ -190,10 +168,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsRepackable
 		{
-			get
-			{
-				return GetMember<bool>("IsRepackable");
-			}
+			get { return this.GetBoolFromLSO("IsRepackable"); }
 		}
 
 		/// <summary>
@@ -201,10 +176,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Location
 		{
-			get
-			{
-				return GetMember<string>("Location");
-			}
+			get { return this.GetStringFromLSO("Location"); }
 		}
 
 		/// <summary>
@@ -212,10 +184,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int LocationID
 		{
-			get
-			{
-				return GetMember<int>("LocationID");
-			}
+			get { return this.GetIntFromLSO("LocationID"); }
 		}
 
 		/// <summary>
@@ -223,10 +192,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string MacroLocation
 		{
-			get
-			{
-				return GetMember<string>("MacroLocation");
-			}
+			get { return this.GetStringFromLSO("MacroLocation"); }
 		}
 
 		/// <summary>
@@ -234,10 +200,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int MacroLocationID
 		{
-			get
-			{
-				return GetMember<int>("MacroLocationID");
-			}
+			get { return this.GetIntFromLSO("MacroLocationID"); }
 		}
 
 		/// <summary>
@@ -245,10 +208,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int MarketGroupID
 		{
-			get
-			{
-				return GetMember<int>("MarketGroupID");
-			}
+			get { return this.GetIntFromLSO("MarketGroupID"); }
 		}
 
 		/// <summary>
@@ -256,10 +216,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double MaxFlightTime
 		{
-			get
-			{
-				return GetMember<double>("MaxFlightTime");
-			}
+			get { return this.GetDoubleFromLSO("MaxFlightTime"); }
 		}
 
 		/// <summary>
@@ -267,10 +224,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double MaxVelocity
 		{
-			get
-			{
-				return GetMember<double>("MaxVelocity");
-			}
+			get { return this.GetDoubleFromLSO("MaxVelocity"); }
 		}
 
 		/// <summary>
@@ -278,10 +232,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Name
 		{
-			get
-			{
-				return GetMember<string>("Name");
-			}
+			get { return this.GetStringFromLSO("Name"); }
 		}
 
 		/// <summary>
@@ -289,10 +240,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int OwnerID
 		{
-			get
-			{
-				return GetMember<int>("OwnerID");
-			}
+			get { return this.GetIntFromLSO("OwnerID"); }
 		}
 
 		/// <summary>
@@ -300,10 +248,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int PortionSize
 		{
-			get
-			{
-				return GetMember<int>("PortionSize");
-			}
+			get { return this.GetIntFromLSO("PortionSize"); }
 		}
 
 		/// <summary>
@@ -311,10 +256,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int Quantity
 		{
-			get
-			{
-				return GetMember<int>("Quantity");
-			}
+			get { return this.GetIntFromLSO("Quantity"); }
 		}
 
 		/// <summary>
@@ -322,10 +264,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int RaceID
 		{
-			get
-			{
-				return GetMember<int>("RaceID");
-			}
+			get { return this.GetIntFromLSO("RaceID"); }
 		}
 
 		/// <summary>
@@ -333,10 +272,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Radius
 		{
-			get
-			{
-				return GetMember<double>("Radius");
-			}
+			get { return this.GetDoubleFromLSO("Radius"); }
 		}
 
 		/// <summary>
@@ -344,10 +280,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Slot
 		{
-			get
-			{
-				return GetMember<string>("Slot");
-			}
+			get { return this.GetStringFromLSO("Slot"); }
 		}
 
 		/// <summary>
@@ -355,10 +288,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int SlotID
 		{
-			get
-			{
-				return GetMember<int>("SlotID");
-			}
+			get { return this.GetIntFromLSO("SlotID"); }
 		}
 
 		/// <summary>
@@ -366,10 +296,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Type
 		{
-			get
-			{
-				return GetMember<string>("Type");
-			}
+			get { return this.GetStringFromLSO("Type"); }
 		}
 
 		/// <summary>
@@ -377,10 +304,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int TypeID
 		{
-			get
-			{
-				return GetMember<int>("TypeID");
-			}
+			get { return this.GetIntFromLSO("TypeID"); }
 		}
 
 		/// <summary>
@@ -388,10 +312,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Volume
 		{
-			get
-			{
-				return GetMember<double>("Volume");
-			}
+			get { return this.GetDoubleFromLSO("Volume"); }
 		}
 
 		/// <summary>
@@ -399,23 +320,49 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string GivenName
 		{
-			get
-			{
-				return GetMember<string>("GivenName");
-			}
+			get { return this.GetStringFromLSO("GivenName"); }
 		}
 
 		#endregion
 
 		#region Methods
+        public void ApplyPilotLicense()
+        {
+            Tracing.SendCallback("Item.ApplyPilotLicense");
+            ExecuteMethod("ApplyPilotLicense");
+        }
+
+        public void AssembleShip()
+        {
+            Tracing.SendCallback("Item.AssembleShip");
+            ExecuteMethod("AssembleShip");
+        }
+
+        public void AssembleContainer()
+        {
+            Tracing.SendCallback("Item.AssembleContainer");
+            ExecuteMethod("AssembleContainer");
+        }
+
+        public void ConsumeBooster()
+        {
+            Tracing.SendCallback("Item.ConsumeBooster");
+            ExecuteMethod("ConsumeBooster");
+        }
+
+        public void InjectSkill()
+        {
+            Tracing.SendCallback("Item.InjectSkill");
+            ExecuteMethod("InjectSkill");
+        }
+
 		/// <summary>
 		/// Wrapper for the Jettison method of the item type.
 		/// </summary>
 		/// <returns></returns>
 		public bool Jettison()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Item.Jettison", string.Empty);
+			Tracing.SendCallback("Item.Jettison");
 			return ExecuteMethod("Jettison");
 		}
 
@@ -424,8 +371,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool MoveToMyShip()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Item.MoveToMyShip", string.Empty);
+			Tracing.SendCallback("Item.MoveToMyShip");
 			return ExecuteMethod("MoveTo", "MyShip");
 		}
 
@@ -436,8 +382,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool MoveToMyShip(int Quantity)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Item.MoveToMyShip", Quantity.ToString());
+			Tracing.SendCallback("Item.MoveToMyShip", Quantity.ToString());
 			return ExecuteMethod("MoveTo", "MyShip", Quantity.ToString());
 		}
 
@@ -446,8 +391,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool MoveToHangar()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Item.MoveToHangar", string.Empty);
+			Tracing.SendCallback("Item.MoveToHangar");
 			return ExecuteMethod("MoveTo", "Hangar");
 		}
 
@@ -458,8 +402,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool MoveToHangar(int Quantity)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Item.MoveToHangar", Quantity.ToString());
+			Tracing.SendCallback("Item.MoveToHangar", Quantity.ToString());
 			return ExecuteMethod("MoveTo", "Hangar", Quantity.ToString());
 		}
 
@@ -468,8 +411,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool MoveToDroneBay()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Item.MoveToDroneBay", string.Empty);
+			Tracing.SendCallback("Item.MoveToDroneBay");
 			return ExecuteMethod("MoveTo", "DroneBay");
 		}
 
@@ -480,8 +422,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool MoveToDroneBay(int Quantity)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Item.MoveToDroneBay", Quantity.ToString());
+			Tracing.SendCallback("Item.MoveToDroneBay", Quantity.ToString());
 			return ExecuteMethod("MoveTo", "DroneBay", Quantity.ToString());
 		}
 
@@ -490,8 +431,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool MoveToCorporationHanger()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Item.MoveToCorpHangar", string.Empty);
+			Tracing.SendCallback("Item.MoveToCorpHangar");
 			return ExecuteMethod("MoveTo", "Corporation Hangar");
 		}
 
@@ -500,8 +440,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool MoveToCorporationHanger(int Quantity)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Item.MoveToCorpHangar", Quantity.ToString());
+			Tracing.SendCallback("Item.MoveToCorpHangar", Quantity.ToString());
 			return ExecuteMethod("MoveTo", "Corporation Hangar", Quantity.ToString());
 		}
 
@@ -513,8 +452,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool MoveToCorporationHanger(int Quantity, int FolderID)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Item.MoveToCorpHangar", String.Format("{0},{1}", Quantity, FolderID));
+			Tracing.SendCallback("Item.MoveToCorpHangar", Quantity, FolderID);
 			return ExecuteMethod("MoveTo", "Corporation Hangar", Quantity.ToString(),
 				"Corporate Folder " + FolderID.ToString());
 		}
@@ -524,8 +462,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool MoveTo(Int64 ID)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Item.MoveTo", ID.ToString());
+			Tracing.SendCallback("Item.MoveTo", ID.ToString());
 			return ExecuteMethod("MoveTo", ID.ToString());
 		}
 
@@ -537,8 +474,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool MoveTo(Int64 ID, int Quantity)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Item.MoveTo", String.Format("{0},{1}", ID, Quantity));
+			Tracing.SendCallback("Item.MoveTo", ID, Quantity);
 			return ExecuteMethod("MoveTo", ID.ToString(), Quantity.ToString());
 		}
 
@@ -551,8 +487,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool MoveTo(Int64 ID, int Quantity, int CorporateHangarFolder)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Item.MoveTo", String.Format("{0},{1},{2}", ID, Quantity, CorporateHangarFolder));
+			Tracing.SendCallback("Item.MoveTo", ID, Quantity, CorporateHangarFolder);
 			return ExecuteMethod("MoveTo", ID.ToString(), Quantity.ToString(),
 				String.Format("Corporation Folder {0}", CorporateHangarFolder));
 		}
@@ -563,8 +498,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool Launch()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Item.Launch", string.Empty);
+			Tracing.SendCallback("Item.Launch");
 			return ExecuteMethod("Launch");
 		}
 
@@ -574,10 +508,15 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool MakeActive()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Item.MakeActive", string.Empty);
+			Tracing.SendCallback("Item.MakeActive");
 			return ExecuteMethod("MakeActive");
 		}
+
+        public void PluginImplant()
+        {
+            Tracing.SendCallback("Item.PluginImplant");
+            ExecuteMethod("PluginImplant");
+        }
 
 		/// <summary>
 		/// The "Repackage" METHOD of the 'item' datatype is now fully 
@@ -588,8 +527,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool Repackage()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Item.Repackage", string.Empty);
+			Tracing.SendCallback("Item.Repackage");
 			return ExecuteMethod("Repackage");
 		}
 
@@ -599,8 +537,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool FitToActiveShip()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Item.FitToActiveShip", string.Empty);
+			Tracing.SendCallback("Item.FitToActiveShip");
 			return ExecuteMethod("FitToActiveShip");
 		}
 
@@ -610,8 +547,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool TrainSkill()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Item.TrainSkill", string.Empty);
+			Tracing.SendCallback("Item.TrainSkill", string.Empty);
 			return ExecuteMethod("TrainSkill");
 		}
 
@@ -628,8 +564,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool PlaceSellOrder(double price, int quantity, int duration)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Item.PlaceSellOrder", String.Format("{0},{1},{2}", price, quantity, duration));
+			Tracing.SendCallback("Item.PlaceSellOrder", price, quantity, duration);
 			return ExecuteMethod("PlaceSellOrder",
 				price.ToString(),
 				quantity.ToString(),
@@ -642,8 +577,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool Open()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Item.Open", string.Empty);
+			Tracing.SendCallback("Item.Open");
 			return ExecuteMethod("Open");
 		}
 
@@ -653,8 +587,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool Close()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Item.Close", string.Empty);
+			Tracing.SendCallback("Item.Close");
 			return ExecuteMethod("Close");
 		}
 		#endregion

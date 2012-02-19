@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
-
-using InnerSpaceAPI;
+using Extensions;
 using LavishScriptAPI;
 
 namespace EVE.ISXEVE
@@ -12,6 +10,10 @@ namespace EVE.ISXEVE
 	/// </summary>
 	public class EVE : LavishScriptObject
 	{
+		#region Constants
+		public readonly string EVENT_ON_CHANNEL_MESSAGE = "EVE_OnChannelMessage";
+		#endregion
+
 		#region Constructors
 		/// <summary>
 		/// Copy constructor for the EVE object.
@@ -23,7 +25,7 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
-		/// Constructor for the EVE object.  Returns the LS object.
+		/// Constructor for the EVE object.  Returns the  LS object.
 		/// </summary>
 		public EVE()
 			: base(LavishScript.Objects.GetObject("EVE"))
@@ -31,25 +33,15 @@ namespace EVE.ISXEVE
 		}
 		#endregion
 
-		#region Members
 		/// <summary>
 		/// Wrapper for the StationID member of the eve type.
 		/// </summary>
-		/// <param name="StationID"></param>
+		/// <param name="stationID"></param>
 		/// <returns></returns>
-		public Station Station(int StationID)
+		public Station Station(int stationID)
 		{
-			return GetMember<Station>("Station", StationID.ToString());
-		}
-		/// <summary>
-		/// Number of pilots in the Local channel
-		/// </summary>
-		public int LocalsCount
-		{
-			get
-			{
-				return GetMember<int>("LocalsCount");
-			}
+			Tracing.SendCallback("EVE.Station", stationID);
+			return GetMember<Station>("Station", stationID.ToString());
 		}
 
 		/// <summary>
@@ -57,51 +49,26 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int EntitiesCount
 		{
-			get
-			{
-				return GetMember<int>("EntitiesCount");
-			}
-		}
-		/// <summary>
-		/// This member retrieves the standing between the two ID#s given.  Any 'CharID', 'ShipID', 'CorporationID', or 'AllianceID' should work.
-		/// </summary>
-		public double Standing(int FromID, int ToID)
-		{
-			return GetMember<double>("Standing", FromID.ToString(), ToID.ToString());
+			get { return this.GetIntFromLSO("EntitiesCount"); }
 		}
 
-		/// <summary>
-		/// If no optional parameters are used, then the given List is filled with an array 
-		/// of entities visible to the client at the point of creation (sorted by distance.) 
-		/// The optional parameters can be anything typically used with the entity search 
-		/// routines (including 'sorting' parameters).
-		/// </summary>
-		public List<Entity> GetEntities(params string[] Args)
-		{
-			return Util.GetListFromMember<Entity>(this, "GetEntities", "entity", Args);
-			//return new List<Entity>();
-		}
+        /// <summary>
+        /// # of seconds until a session change can be performed. This includes docking, undocking, exiting a ship, entering a new ship, etc.
+        /// </summary>
+	    public int NextSessionChange
+	    {
+			get { return this.GetIntFromLSO("NextSessionChange"); }
+	    }
 
-		/// <summary>
-		/// Get a list of the IDs of all entities.
-		/// </summary>
-		/// <returns></returns>
-		public List<Int64> GetEntityIDs()
-		{
-			return Util.GetListFromMethod<Int64>(this, "DoGetEntityIDs", "int64");
-		}
-
-		/// <summary>
-		/// If no optional parameters are used, then the given List is filled with an array 
-		/// of cached entities visible to the client at the point of creation (sorted by distance.) 
-		/// The optional parameters can be anything typically used with the entity search 
-		/// routines (including 'sorting' parameters).
-		/// </summary>
-		public List<CachedEntity> GetCachedEntities(params string[] Args)
-		{
-			return Util.GetListFromMethod<CachedEntity>(this, "GetCachedEntities", "cachedentity", Args);
-			//return new List<Entity>();
-		}
+        /// <summary>
+        /// Wrapper for the EVE member ChatChannel[ID]
+        /// </summary>
+        /// <param name="channelID"></param>
+        /// <returns></returns>
+        public ChatChannel ChatChannel(Int64 channelID)
+        {
+            return new ChatChannel(GetMember("ChatChannel", channelID.ToString()));
+        }
 
 		/// <summary>
 		/// Returns a list of the "SystemIDs" of the systems along your current destination (autopilot) route.
@@ -109,7 +76,8 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public List<int> GetToDestinationPath()
 		{
-			return Util.GetListFromMember<int>(this, "GetToDestinationPath", "int");
+			Tracing.SendCallback("EVE.GetToDestinationPath");
+			return Util.GetListFromMethod<int>(this, "GetToDestinationPath", "int");
 		}
 
 		/// <summary>
@@ -117,7 +85,8 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public List<int> GetWaypoints()
 		{
-			return Util.GetListFromMember<int>(this, "GetWaypoints", "int");
+			Tracing.SendCallback("EVE.GetWaypoints");
+			return Util.GetListFromMethod<int>(this, "GetWaypoints", "int");
 		}
 
 		/// <summary>
@@ -126,7 +95,8 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public List<AgentMission> GetAgentMissions()
 		{
-			return Util.GetListFromMember<AgentMission>(this, "GetAgentMissions", "agentmission");
+			Tracing.SendCallback("EVE.GetAgentMissions");
+			return Util.GetListFromMethod<AgentMission>(this, "GetAgentMissions", "agentmission");
 		}
 
 		/// <summary>
@@ -134,6 +104,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public BookMark Bookmark(string label)
 		{
+			Tracing.SendCallback("EVE.Bookmark", label);
 			return new BookMark(GetMember("Bookmark", label));
 		}
 
@@ -142,25 +113,26 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public List<BookMark> GetBookmarks()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("EVE.GetBookmarks", string.Empty);
-			return Util.GetListFromMember<BookMark>(this, "GetBookmarks", "bookmark");
+			Tracing.SendCallback("EVE.GetBookmarks", string.Empty);
+			return Util.GetListFromMethod<BookMark>(this, "GetBookmarks", "bookmark");
 		}
 
 		/// <summary>
 		/// Returns number of jump to a station. Returns -1 if you're currently in the station.
 		/// </summary>
-		public int JumpsToStation(int StationID)
+		public int JumpsToStation(int stationID)
 		{
-			return GetMember<int>("JumpsToStation", StationID.ToString());
+			Tracing.SendCallback("EVE.JumpsToStation", stationID.ToString());
+			return this.GetIntFromLSO("JumpsToStation");
 		}
 
 		/// <summary>
 		/// Returns the distance between two entities.
 		/// </summary>
-		public double DistanceBetween(int Entity1ID, int Entity2ID)
+		public double DistanceBetween(Int64 firstEntityID, Int64 secondEntityID)
 		{
-			return GetMember<double>("DistanceBetween", Entity1ID.ToString(), Entity2ID.ToString());
+			Tracing.SendCallback("EVE.DistanceBetween", firstEntityID, secondEntityID);
+			return this.GetDoubleFromLSO("DistanceBetween", firstEntityID.ToString(), secondEntityID.ToString());
 		}
 
 		/// <summary>
@@ -168,10 +140,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Time
 		{
-			get
-			{
-				return GetMember<string>("Time");
-			}
+			get { return this.GetStringFromLSO("Time"); }
 		}
 
 		/// <summary>
@@ -179,10 +148,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string TimeShort
 		{
-			get
-			{
-				return GetMember<string>("Time", "short");
-			}
+			get { return this.GetStringFromLSO("Time", "short"); }
 		}
 
 		/// <summary>
@@ -190,10 +156,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Date
 		{
-			get
-			{
-				return GetMember<string>("Date");
-			}
+			get { return this.GetStringFromLSO("Date"); }
 		}
 
 		/// <summary>
@@ -201,18 +164,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool Is3DDisplayOn
 		{
-			get
-			{
-				LavishScriptObject is3dDisplayOn = GetMember("Is3DDisplayOn");
-				if (LavishScriptObject.IsNullOrInvalid(is3dDisplayOn))
-				{
-					return true;
-				}
-				else
-				{
-					return is3dDisplayOn.GetValue<bool>();
-				}
-			}
+			get { return this.GetBoolFromLSO("Is3DDisplayOn"); }
 		}
 
 		/// <summary>
@@ -220,40 +172,33 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsUIDisplayOn
 		{
-			get
-			{
-				LavishScriptObject isUiDisplayOn = GetMember("IsUIDisplayOn");
-				if (LavishScriptObject.IsNullOrInvalid(isUiDisplayOn))
-				{
-					return true;
-				}
-				else
-				{
-					return isUiDisplayOn.GetValue<bool>();
-				}
-			}
+			get { return this.GetBoolFromLSO("IsUIDisplayOn"); }
 		}
 
+	    public bool IsTextureLoadingOn
+	    {
+            get { return this.GetBoolFromLSO("IsTextureLoadingOn"); }
+	    }
+
+	    public bool IsProgressWindowOpen
+	    {
+	        get { return this.GetBoolFromLSO("IsProgressWindowOpen"); }
+	    }
+
+	    public string ProgressWindowTitle
+	    {
+            get { return this.GetStringFromLSO("ProgressWindowTitle"); }
+	    }
+
 		/// <summary>
-		/// Wrapper for the GetPilots member of the eve type.
+		/// Wrapper for the GetLocalPilots member of the eve type.
 		/// </summary>
-		/// <param name="Args"></param>
+		/// <param name="args"></param>
 		/// <returns></returns>
-		public List<Pilot> GetPilots(params string[] Args)
+		public List<Pilot> GetLocalPilots(params string[] args)
 		{
-			return Util.GetListFromMember<Pilot>(this, "GetPilots", "pilot", Args);
-			//return new List<LocalPilots>();
-		}
-
-		/// <summary>
-		/// Wrapper for the PilotsCount member of the eve type.
-		/// </summary>
-		public int PilotsCount
-		{
-			get
-			{
-				return GetMember<int>("GetPilots");
-			}
+			Tracing.SendCallback("EVE.GetLocalPilots", args);
+			return Util.GetListFromMethod<Pilot>(this, "GetLocalPilots", "pilot", args);
 		}
 
 		/// <summary>
@@ -261,20 +206,8 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public List<Being> GetBuddies()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("EVE.DoGetBuddies", string.Empty);
-			return Util.GetListFromMethod<Being>(this, "DoGetBuddies", "being");
-		}
-
-		/// <summary>
-		/// the number of agents in your *addressbook*
-		/// </summary>
-		public int BuddiesCount
-		{
-			get
-			{
-				return GetBuddies().Count;
-			}
+			Tracing.SendCallback("EVE.GetBuddies");
+			return Util.GetListFromMethod<Being>(this, "GetBuddies", "being");
 		}
 
 		/// <summary>
@@ -283,93 +216,36 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public Int32 NumOpenChannels
 		{
-			get
-			{
-				return GetMember<Int32>("NumOpenChannels");
-			}
-		}
-
-		/// <summary>
-		/// Retrieve all channel messages
-		/// </summary>
-		/// <returns></returns>
-		public List<String> GetChannelMessages()
-		{
-			return Util.GetListFromMethod<String>(this, "DoGetChannelMessages", "string");
-		}
-
-		/// <summary>
-		/// Retrieves all messages from the given channel
-		/// </summary>
-		/// <param name="ChannelName"></param>
-		/// <returns></returns>
-		public List<String> GetChannelMessages(string ChannelName)
-		{
-			return Util.GetListFromMethod<String>(this, "DoGetChannelMessages", "string", ChannelName);
-		}
-
-		/// <summary>
-		/// Retrieves all channel messages since timestamp #
-		/// </summary>
-		/// <param name="TimeStamp"></param>
-		/// <returns></returns>
-		public List<String> GetChannelMessages(long TimeStamp)
-		{
-			return Util.GetListFromMethod<String>(this, "DoGetChannelMessages", "string", TimeStamp.ToString());
-		}
-
-		/// <summary>
-		/// Retrieves all messages from the given channel since timestamp #
-		/// </summary>
-		/// <param name="ChannelName"></param>
-		/// <param name="TimeStamp"></param>
-		/// <returns></returns>
-		public List<String> GetChannelMessages(string ChannelName, Int64 TimeStamp)
-		{
-			return Util.GetListFromMethod<String>(this, "DoGetChannelMessages", "string", ChannelName, TimeStamp.ToString());
+			get { return this.GetIntFromLSO("NumOpenChannels"); }
 		}
 
 		/// <summary>
 		/// 1.  NumAssetsAtStation[#] (int type) [Returns the number of items currently housed at the StationID# given.]
 		/// </summary>
-		public int NumAssetsAtStation(int StationID)
+		public int NumAssetsAtStation(int stationID)
 		{
-			return GetMember<int>("NumAssetsAtStation", StationID.ToString());
+			Tracing.SendCallback("EVE.NumAssetsAtStation", stationID);
+			return this.GetIntFromLSO("NumAssetsAtStation", stationID.ToString());
 		}
 
 		/// <summary>
 		/// 2.  GetLocationNameByID[#] (string type) [Useful for changing a StationID# to an actual name.]
 		/// </summary>
-		public string GetLocationNameByID(int StationID)
+		public string GetLocationNameByID(int stationID)
 		{
-			return GetMember<string>("GetLocationNameByID", StationID.ToString());
+			Tracing.SendCallback("EVE.GetLocationNameByID", stationID);
+			return this.GetStringFromLSO("GetLocationNameByID", stationID.ToString());
 		}
 
 		/// <summary>
-		/// 1. GetMarketOrders[index:marketorder,#]         (int type) {retrieves all buy/sell orders currently cached by your client for the given TypeID#}
-		///    GetMarketOrders[index:marketorder,#,"Buy"]   (int type) {retrieves all buy orders currently cached by your client for the given TypeID#}
-		///    GetMarketOrders[index:marketorder,#,"Sell"]  (int type) {retrieves all sell orders currently cached by your client for the given TypeID#}
+		/// Download market order information from EVE servers.
 		/// </summary>
-		/// <param name="typeID"></param>
-		/// <returns></returns>
-		public List<MarketOrder> GetMarketOrders(int typeID)
+		public bool FetchMarketOrders()
 		{
-			return Util.GetListFromMember<MarketOrder>(this, "GetMarketOrders", "marketorder", typeID.ToString());
+			Tracing.SendCallback("EVE.FetchMarketOrders");
+			return this.GetBoolFromLSO("FetchMarketOrders");
 		}
 
-		/// <summary>
-		/// Wrapper for the GetMarketOrders member of the eve type.
-		/// </summary>
-		/// <param name="typeID"></param>
-		/// <param name="buyOrSell"></param>
-		/// <returns></returns>
-		public List<MarketOrder> GetMarketOrders(int typeID, OrderType buyOrSell)
-		{
-			return Util.GetListFromMember<MarketOrder>(this, "GetMarketOrders", "marketorder", typeID.ToString(), buyOrSell.ToString());
-		}
-		#endregion
-
-		#region Methods
 		/// <summary>
 		/// Get entities matching query specified by queryID.
 		/// Note: ID from Lavishscript query system -- query will not be freed
@@ -378,8 +254,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public List<Entity> QueryEntities(int queryID)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("EVE.QueryEntities", queryID.ToString());
+			Tracing.SendCallback("EVE.QueryEntities", queryID.ToString());
 			return Util.GetListFromMethod<Entity>(this, "QueryEntities", "entity", queryID.ToString());
 		}
 
@@ -391,8 +266,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public List<Entity> QueryEntities(string queryString)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("EVE.QueryEntities", queryString);
+			Tracing.SendCallback("EVE.QueryEntities", queryString);
 			return Util.GetListFromMethod<Entity>(this, "QueryEntities", "entity", queryString);
 		}
 
@@ -403,8 +277,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public List<Entity> QueryEntities()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("EVE.QueryEntities", "");
+			Tracing.SendCallback("EVE.QueryEntities");
 			return Util.GetListFromMethod<Entity>(this, "QueryEntities", "entity");
 		}
 
@@ -415,29 +288,26 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool PopulateEntities(bool forceRepopulate)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("EVE.PopulateEntities", forceRepopulate.ToString());
+			Tracing.SendCallback("EVE.PopulateEntities", forceRepopulate.ToString());
 			return ExecuteMethod("PopulateEntities", forceRepopulate.ToString());
 		}
 
 		/// <summary>
 		/// This method creates a simple EVE popup window with the 'text' given.
 		/// </summary>
-		public bool InfoWindow(string Text)
+		public bool InfoWindow(string text)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("EVE.InfoWindow", Text);
-			return ExecuteMethod("InfoWindow", Text);
+			Tracing.SendCallback("EVE.InfoWindow", text);
+			return ExecuteMethod("InfoWindow", text);
 		}
 
 		/// <summary>
 		/// This method sets the status text that appears in space over your ship controls.
 		/// </summary>
-		public bool SetInSpaceStatus(string Title, string Text)
+		public bool SetInSpaceStatus(string title, string text)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("EVE.SetInSpaceStatus", string.Empty);
-			return ExecuteMethod("SetInSpaceStatus", Title, Text);
+			Tracing.SendCallback("EVE.SetInSpaceStatus");
+			return ExecuteMethod("SetInSpaceStatus", title, text);
 		}
 
 		/// <summary>
@@ -447,14 +317,13 @@ namespace EVE.ISXEVE
 		/// <returns>true if successful, else false</returns>
 		public bool DronesEngageMyTarget(List<Int64> drones)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("EVE.DronesEngageMyTarget", string.Empty);
-			LavishScriptObject LSIndex = LavishScript.Objects.NewObject("index:int64");
-			foreach (Int64 i in drones)
+			Tracing.SendCallback("EVE.DronesEngageMyTarget");
+			var lsIndex = LavishScript.Objects.NewObject("index:int64");
+			foreach (var droneID in drones)
 			{
-				LSIndex.ExecuteMethod("Insert", i.ToString());
+				lsIndex.ExecuteMethod("Insert", droneID.ToString());
 			}
-			return ExecuteMethod("DronesEngageMyTarget", LSIndex.GetLSReference());
+			return ExecuteMethod("DronesEngageMyTarget", lsIndex.GetLSReference());
 		}
 
 		/// <summary>
@@ -464,35 +333,32 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool DronesMineRepeatedly(List<Int64> drones)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("EVE.DronesMineRepeatedly", string.Empty);
+			Tracing.SendCallback("EVE.DronesMineRepeatedly", string.Empty);
 
-			LavishScriptObject LSIndex = LavishScript.Objects.NewObject("index:int64");
-			foreach (Int64 droneID in drones)
+			var lsIndex = LavishScript.Objects.NewObject("index:int64");
+			foreach (var droneID in drones)
 			{
-				LSIndex.ExecuteMethod("Insert", droneID.ToString());
+				lsIndex.ExecuteMethod("Insert", droneID.ToString());
 			}
-			return ExecuteMethod("DronesMineRepeatedly", LSIndex.GetLSReference());
+			return ExecuteMethod("DronesMineRepeatedly", lsIndex.GetLSReference());
 		}
 
 		/// <summary>
 		/// Execute an eve command.
 		/// </summary>
-		public bool Execute(ExecuteCommand Command)
+		public bool Execute(ExecuteCommand command)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("EVE.Execute", Command.ToString());
-			return ExecuteMethod("Execute", Command.ToString());
+			Tracing.SendCallback("EVE.Execute", command);
+			return ExecuteMethod("Execute", command.ToString());
 		}
 
 		/// <summary>
 		/// Execute an eve command.
 		/// </summary>
-		public bool Execute(string Command)
+		public bool Execute(string command)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("EVE.Execute", Command);
-			return ExecuteMethod("Execute", Command);
+			Tracing.SendCallback("EVE.Execute", command);
+			return ExecuteMethod("Execute", command);
 		}
 
 		/// <summary>
@@ -506,47 +372,40 @@ namespace EVE.ISXEVE
 		/// <summary>
 		/// Creates a bookmark.
 		/// </summary>
-		public bool CreateBookmark(string Label)
+		public bool CreateBookmark(string label)
 		{
-			return CreateBookmark(Label, null);
+			return CreateBookmark(label, null);
 		}
 
 		/// <summary>
 		/// Creates a bookmark.
 		/// </summary>
-		public bool CreateBookmark(string Label, string Notes)
+		public bool CreateBookmark(string label, string notes)
 		{
-			if (!string.IsNullOrEmpty(Label) &&
-				!string.IsNullOrEmpty(Notes))
+		    if (!string.IsNullOrEmpty(label) &&
+				!string.IsNullOrEmpty(notes))
 			{
-				if (Tracing.Callback != null)
-					Tracing.SendCallback("EVE.CreateBookmark", String.Format("{0},{1}", Label, Notes));
-				return ExecuteMethod("CreateBookmark", Label, Notes);
+				Tracing.SendCallback("EVE.CreateBookmark", label, notes);
+				return ExecuteMethod("CreateBookmark", label, notes);
 			}
-			else if (!string.IsNullOrEmpty(Label))
-			{
-				if (Tracing.Callback != null)
-					Tracing.SendCallback("EVE.CreateBookmark", Label);
-				return ExecuteMethod("CreateBookmark", Label);
-			}
-			else
-			{
-				if (Tracing.Callback != null)
-					Tracing.SendCallback("EVE.CreateBookmark", string.Empty);
-				return ExecuteMethod("CreateBookmark");
-			}
+		    if (!string.IsNullOrEmpty(label))
+		    {
+		        Tracing.SendCallback("EVE.CreateBookmark", label);
+		        return ExecuteMethod("CreateBookmark", label);
+		    }
+		    Tracing.SendCallback("EVE.CreateBookmark");
+		    return ExecuteMethod("CreateBookmark");
 		}
 
-		/// <summary>
+	    /// <summary>
 		/// Wrapper for the AddWaypoint method of the eve type.
 		/// </summary>
-		/// <param name="SolarSystemID"></param>
+		/// <param name="solarSystemID"></param>
 		/// <returns></returns>
-		public bool AddWaypoint(int SolarSystemID)
+		public bool AddWaypoint(int solarSystemID)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("EVE.AddWaypoint", SolarSystemID.ToString());
-			return ExecuteMethod("AddWaypoint", SolarSystemID.ToString());
+			Tracing.SendCallback("EVE.AddWaypoint", solarSystemID);
+			return ExecuteMethod("AddWaypoint", solarSystemID.ToString());
 		}
 
 		/// <summary>
@@ -554,8 +413,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool CloseAllMessageBoxes()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("EVE.CloseAllMessageBoxes", string.Empty);
+			Tracing.SendCallback("EVE.CloseAllMessageBoxes", string.Empty);
 			return ExecuteMethod("CloseAllMessageBoxes");
 		}
 
@@ -565,8 +423,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool CloseAllChatInvites()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("EVE.CloseAllChatInvites", string.Empty);
+			Tracing.SendCallback("EVE.CloseAllChatInvites", string.Empty);
 			return ExecuteMethod("CloseAllChatInvites");
 		}
 
@@ -577,100 +434,74 @@ namespace EVE.ISXEVE
 		///		DroneBay
 		///		Corporation Hangar
 		/// </summary>
-		/// <param name="Items"></param>
-		/// <param name="Destination"></param>
+		/// <param name="items"></param>
+		/// <param name="destination"></param>
 		/// <returns></returns>
-		public bool MoveItemsTo(List<Int64> Items, String Destination)
+		public bool MoveItemsTo(List<Int64> items, String destination)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("EVE.MoveItemsTo", Destination);
-			if (Items.Count == 0)
+			Tracing.SendCallback("EVE.MoveItemsTo", destination);
+			if (items.Count == 0)
 			{
 				return false;
 			}
-			LavishScriptObject LSIndex = LavishScript.Objects.NewObject("index:int64");
-			Int32 Count = Items.Count;
-			for (int i = 0; i < Count; i++)
+			var lsIndex = LavishScript.Objects.NewObject("index:int64");
+
+			for (var index = 0; index < items.Count; index++)
 			{
-				LSIndex.ExecuteMethod("Insert", Items[i].ToString());
+				lsIndex.ExecuteMethod("Insert", items[index].ToString());
 			}
 			//InnerSpace.Echo("*** " + LSIndex.GetMember<int>("Used"));
 			// TODO - Test this to make sure passing a populated index into ExecuteMethod works
 			// - CyberTech
-			return ExecuteMethod("MoveItemsTo", LSIndex.GetLSReference(), Destination.ToString());
+			return ExecuteMethod("MoveItemsTo", lsIndex.GetLSReference(), destination);
 		}
 
 		/// <summary>
 		/// Destination is an Entity ID
 		/// </summary>
-		/// <param name="Items"></param>
-		/// <param name="DestinationEntityID"></param>
+		/// <param name="items"></param>
+		/// <param name="destinationEntityID"></param>
 		/// <returns></returns>
-		public bool MoveItemsTo(List<Int64> Items, Int64 DestinationEntityID)
+		public bool MoveItemsTo(List<Int64> items, Int64 destinationEntityID)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("EVE.", DestinationEntityID.ToString());
-			if (Items.Count == 0)
+			Tracing.SendCallback("EVE.", destinationEntityID);
+			if (items.Count == 0)
 			{
 				return false;
 			}
-			LavishScriptObject LSIndex = LavishScript.Objects.NewObject("index:int64");
-			Int32 Count = Items.Count;
-			for (int i = 0; i < Count; i++)
+
+			var lsIndex = LavishScript.Objects.NewObject("index:int64");
+            for (var index = 0; index < items.Count; index++)
 			{
-				LSIndex.ExecuteMethod("Insert", Items[i].ToString());
+				lsIndex.ExecuteMethod("Insert", items[index].ToString());
 			}
 
-			return ExecuteMethod("MoveItemsTo", LSIndex.GetLSReference(), DestinationEntityID.ToString());
+			return ExecuteMethod("MoveItemsTo", lsIndex.GetLSReference(), destinationEntityID.ToString());
 		}
 
 		/// <summary>
 		/// Wrapper for the MoveItemsTo method of the eve type.
 		/// </summary>
-		/// <param name="Items"></param>
-		/// <param name="DestinationEntityID"></param>
-		/// <param name="CorporationHangarFolder"></param>
+		/// <param name="items"></param>
+		/// <param name="destinationEntityID"></param>
+		/// <param name="corporationHangarFolder"></param>
 		/// <returns></returns>
-		public bool MoveItemsTo(List<Int64> Items, Int64 DestinationEntityID, Int32 CorporationHangarFolder)
+		public bool MoveItemsTo(List<Int64> items, Int64 destinationEntityID, Int32 corporationHangarFolder)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("EVE.MoveItemsTo", String.Format("{0},{1}", DestinationEntityID, CorporationHangarFolder));
-			if (Items.Count == 0)
+			Tracing.SendCallback("EVE.MoveItemsTo", destinationEntityID, corporationHangarFolder);
+			if (items.Count == 0)
 			{
 				return false;
 			}
-			LavishScriptObject LSIndex = LavishScript.Objects.NewObject("index:int64");
-			Int32 Count = Items.Count;
-			for (int i = 0; i < Count; i++)
+
+			var lsIndex = LavishScript.Objects.NewObject("index:int64");
+			for (var index = 0; index < items.Count; index++)
 			{
-				LSIndex.ExecuteMethod("Insert", Items[i].ToString());
+				lsIndex.ExecuteMethod("Insert", items[index].ToString());
 			}
 
-			return ExecuteMethod("MoveItemsTo", LSIndex.GetLSReference(), DestinationEntityID.ToString(),
-				String.Format("Corporation Folder {0}", CorporationHangarFolder));
-		}
-
-		/// <summary>
-		/// Parameter is the interval, in seconds, that you wish for ISXEVE to check for new messages.  The default is 3 seconds.
-		/// Note: Works as a toggle
-		/// </summary>
-		/// <returns></returns>
-		public bool ActivateChannelMessageEvents()
-		{
-			return ActivateChannelMessageEvents(3);
-		}
-
-		/// <summary>
-		/// Parameter is the interval, in seconds, that you wish for ISXEVE to check for new messages.  The default is 3 seconds.
-		/// Note: Works as a toggle
-		/// </summary>
-		/// <param name="IntervalInSeconds"></param>
-		/// <returns></returns>
-		public bool ActivateChannelMessageEvents(Int32 IntervalInSeconds)
-		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("EVE.ActivateChannelMessageEvents", IntervalInSeconds.ToString());
-			return ExecuteMethod("ActivateChannelMessageEvents", IntervalInSeconds.ToString());
+			return ExecuteMethod("MoveItemsTo", lsIndex.GetLSReference(), destinationEntityID.ToString(),
+				String.Format("Corporation Folder {0}", corporationHangarFolder));
 		}
 
 		/// <summary>
@@ -683,9 +514,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool PlaceBuyOrder(int stationID, int typeID, double price, int quantity, string range, int minQuantity, int duration)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("EVE.PlaceBuyOrder", String.Format("{0},{1},{2},{3},{4},{5},{6}",
-					stationID, typeID, price, quantity, range, minQuantity, duration));
+			Tracing.SendCallback("EVE.PlaceBuyOrder", stationID, typeID, price, quantity, range, minQuantity, duration);
 			return ExecuteMethod("PlaceBuyOrder",
 				stationID.ToString(),
 				typeID.ToString(),
@@ -703,8 +532,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool ClearMarketOrderCache()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("EVE.ClearMarketOrderCache", string.Empty);
+			Tracing.SendCallback("EVE.ClearMarketOrderCache");
 			return ExecuteMethod("ClearMarketOrderCache");
 		}
 
@@ -715,11 +543,35 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool FetchMarketOrders(int typeID)
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("EVE.FetchMarketOrders", typeID.ToString());
+			Tracing.SendCallback("EVE.FetchMarketOrders", typeID);
 
 			return ExecuteMethod("FetchMarketOrders", typeID.ToString());
 		}
+
+        /// <summary>
+        /// Retrieve all market orders for the given typeID. Returns null if loading.
+        /// </summary>
+        /// <param name="typeID"></param>
+        /// <returns></returns>
+        public List<MarketOrder> GetMarketOrders(int typeID)
+        {
+            Tracing.SendCallback("GetMarketOrders", typeID);
+
+            return Util.GetListFromMethod<MarketOrder>(this, "GetMarketOrders", "marketorder", typeID.ToString());
+        }
+
+        /// <summary>
+        /// Retrieve all market orders for the given typeID and given order type. Returns null if loading.
+        /// </summary>
+        /// <param name="typeID"></param>
+        /// <param name="orderType"></param>
+        /// <returns></returns>
+        public List<MarketOrder> GetMarketOrders(int typeID, OrderType orderType)
+        {
+            Tracing.SendCallback("GetMarketOrders", typeID, orderType);
+
+            return Util.GetListFromMethod<MarketOrder>(this, "GetMarketOrders", "marketorder", typeID.ToString(), orderType.ToString());
+        }
 
 		/// <summary>
 		/// Wrapper for the Toggle3DDisplay method of the eve type.
@@ -727,8 +579,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool Toggle3DDisplay()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("EVE.Toggle3DDisplay", string.Empty);
+			Tracing.SendCallback("EVE.Toggle3DDisplay");
 			return ExecuteMethod("Toggle3DDisplay");
 		}
 
@@ -738,11 +589,15 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool ToggleUIDisplay()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("EVE.ToggleUIDisplay", string.Empty);
+			Tracing.SendCallback("EVE.ToggleUIDisplay");
 			return ExecuteMethod("ToggleUIDisplay");
 		}
-		#endregion
+
+        public bool ToggleTextureLoading()
+        {
+            Tracing.SendCallback("EVE.ToggleTextureLoading");
+            return ExecuteMethod("ToggleTextureLoading");
+        }
 
 		/// <summary>
 		/// Type of market order (buy or sell).
@@ -766,9 +621,46 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool RefreshStandings()
 		{
-            if (Tracing.Callback != null)
-			    Tracing.SendCallback("EVE.RefreshStandings", string.Empty);
+			Tracing.SendCallback("EVE.RefreshStandings");
 			return ExecuteMethod("RefreshStandings");
+		}
+	}
+
+	/// <summary>
+	/// Represents the arguments passed as part of an EVE_OnChannelMessage event, parsing
+	/// the text values in the LSEventArgs and producing something easily usible.
+	/// </summary>
+	public class EVE_OnChannelMessageEventArgs : EventArgs
+	{
+		public Int64 ChannelID = -1, CharID = -1, CorpID = -1, AllianceID = -1;
+		public string CharName = string.Empty, MessageText = string.Empty;
+
+		public EVE_OnChannelMessageEventArgs(LSEventArgs lsEventArgs)
+		{
+			ProcessLsEventArgs(lsEventArgs);
+		}
+
+		/// <summary>
+		/// Process all of the string args in the LSEventArgs and set the values of this EventArgs object
+		/// </summary>
+		/// <param name="lsEventArgs"></param>
+		private void ProcessLsEventArgs(LSEventArgs lsEventArgs)
+		{
+			ChannelID = StringToInt64(lsEventArgs.Args[0]);
+			CharID = StringToInt64(lsEventArgs.Args[1]);
+			CorpID = StringToInt64(lsEventArgs.Args[2]);
+			AllianceID = StringToInt64(lsEventArgs.Args[3]);
+			CharName = lsEventArgs.Args[4];
+			MessageText = lsEventArgs.Args[5];
+		}
+
+	    private static Int64 StringToInt64(string text)
+		{
+			Int64 retVal;
+
+			Int64.TryParse(text, out retVal);
+
+			return retVal;
 		}
 	}
 }

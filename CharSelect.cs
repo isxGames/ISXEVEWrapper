@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-
+using Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
 
@@ -17,7 +17,7 @@ namespace EVE.ISXEVE
 		/// CharSelect copy constructor.
 		/// </summary>
 		/// <param name="Obj"></param>
-    public CharSelect(LavishScriptObject Obj)
+		public CharSelect(LavishScriptObject Obj)
 			: base(Obj)
 		{
 		}
@@ -36,41 +36,52 @@ namespace EVE.ISXEVE
 		/// <summary>
 		/// True if the given character exists on the charselect screen
 		/// </summary>
-		public bool CharExists(int ID)
+		public bool CharExists(Int64 ID)
 		{
-			return GetMember<bool>("CharExists", ID.ToString());
+			return this.GetBoolFromLSO("CharExists", ID.ToString());
 		}
 
+        public bool CharExists(string name)
+        {
+        	return this.GetBoolFromLSO("CharExists", name);
+        }
+
 		/// <summary>
-		/// Returns the currently selected charid from the charselect screen
+		/// Returns the currently selected character from the charselect screen
 		/// </summary>
-		public int SelectedChar()
+		public string SelectedChar
 		{
-			return GetMember<int>("SelectedChar");
+			get { return this.GetStringFromLSO("SelectedChar"); }
 		}
+
+        /// <summary>
+        /// Returns the CharID of the currently selected character
+        /// </summary>
+	    public Int64 SelectedCharID
+	    {
+	        get { return this.GetInt64FromLSO("SelectedCharID"); }
+	    }
 		#endregion
 
 		#region Methods
-    /// <summary>
-    /// Wrapper for ClickCharacter method of charselect type.
-    /// </summary>
-    /// <returns></returns>
-		public bool ClickCharacter()
+		/// <summary>
+		/// Wrapper for ClickCharacter method of charselect type.
+		/// </summary>
+		/// <returns></returns>
+		public bool ClickCharacter(string name)
 		{
-            if (Tracing.Callback != null)
-                Tracing.SendCallback("CharSelect.ClickCharacter", string.Empty);
-			return ExecuteMethod("ClickCharacter");
+			Tracing.SendCallback("CharSelect.ClickCharacter", name);
+			return ExecuteMethod("ClickCharacter", name);
 		}
 
-    /// <summary>
-    /// Wrapper for ClickCharacter method of charselect type.
-    /// </summary>
-    /// <param name="CharID"></param>
-    /// <returns></returns>
+		/// <summary>
+		/// Wrapper for ClickCharacter method of charselect type.
+		/// </summary>
+		/// <param name="CharID"></param>
+		/// <returns></returns>
 		public bool ClickCharacter(int CharID)
 		{
-            if (Tracing.Callback != null)
-                Tracing.SendCallback("CharSelect.ClickCharacter", CharID.ToString());
+			Tracing.SendCallback("CharSelect.ClickCharacter", CharID.ToString());
 			return ExecuteMethod("ClickCharacter", CharID.ToString());
 		}
 		#endregion

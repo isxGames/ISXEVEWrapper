@@ -1,20 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Extensions;
 using LavishScriptAPI;
 
 namespace EVE.ISXEVE
 {
 	/// <summary>
-  /// Wrapper for the standing data type.
+	/// Wrapper for the standing data type.
 	/// </summary>
-  public class Standing : LavishScriptObject
+	public class Standing : LavishScriptObject
 	{
 		#region Constructors
-    /// <summary>
-    /// Standing object copy constructor.
-    /// </summary>
-    public Standing(LavishScriptObject obj) :
+		/// <summary>
+		/// Standing object copy constructor.
+		/// </summary>
+		public Standing(LavishScriptObject obj) :
 			base(obj)
 		{
 
@@ -27,10 +28,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int CorpToAlliance
 		{
-			get
-			{
-				return GetMember<int>("CorpToAlliance");
-			}
+			get { return this.GetIntFromLSO("CorpToAlliance"); }
 		}
 
 		/// <summary>
@@ -38,10 +36,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int CorpToCorp
 		{
-			get
-			{
-				return GetMember<int>("CorpToCorp");
-			}
+			get { return this.GetIntFromLSO("CorpToCorp"); }
 		}
 
 		/// <summary>
@@ -49,10 +44,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int CorpToPilot
 		{
-			get
-			{
-				return GetMember<int>("CorpToPilot");
-			}
+			get { return this.GetIntFromLSO("CorpToPilot"); }
 		}
 
 		/// <summary>
@@ -60,10 +52,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int MeToCorp
 		{
-			get
-			{
-				return GetMember<int>("MeToCorp");
-			}
+			get { return this.GetIntFromLSO("MeToCorp"); }
 		}
 
 		/// <summary>
@@ -71,10 +60,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int MeToPilot
 		{
-			get
-			{
-				return GetMember<int>("MeToPilot");
-			}
+			get { return this.GetIntFromLSO("MeToPilot"); }
 		}
 
 		/// <summary>
@@ -82,34 +68,22 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int AllianceToAlliance
 		{
-			get
-			{
-				return GetMember<int>("AllianceToAlliance");
-			}
+			get { return this.GetIntFromLSO("AllianceToAlliance"); }
 		}
 
         public int MeToAlliance
         {
-            get
-            {
-                return GetMember<int>("MeToAlliance");
-            }
+            get { return this.GetIntFromLSO("MeToAlliance"); }
         }
 
         public int AllianceToCorp
         {
-            get
-            {
-                return GetMember<int>("AllianceToCorp");
-            }
+            get { return this.GetIntFromLSO("AllianceToCorp"); }
         }
 
         public int AllianceToPilot
         {
-            get
-            {
-                return GetMember<int>("AllianceToPilot");
-            }
+            get { return this.GetIntFromLSO("AlliancetoPilot"); }
         }
 		#endregion
 	}

@@ -1,22 +1,22 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-
+using Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
 
 namespace EVE.ISXEVE
 {
 	/// <summary>
-  /// Wrapper for the login data type.
+	/// Wrapper for the login data type.
 	/// </summary>
-  public class Login : LavishScriptObject
+	public class Login : LavishScriptObject
 	{
 		#region Constructors
-    /// <summary>
-    /// Login copy constructor.
-    /// </summary>
-    /// <param name="Obj"></param>
+		/// <summary>
+		/// Login copy constructor.
+		/// </summary>
+		/// <param name="Obj"></param>
 		public Login(LavishScriptObject Obj)
 			: base(Obj)
 		{
@@ -33,81 +33,66 @@ namespace EVE.ISXEVE
 		#endregion
 
 		#region Members
-        /// <summary>
-        /// Wrapper for the IsConnecting member of the login type.
-        /// </summary>
+		/// <summary>
+		/// Wrapper for the IsConnecting member of the login type.
+		/// </summary>
 		public bool IsConnecting
 		{
-			get
-			{
-				return GetMember<bool>("IsConnecting");
-			}
+			get { return this.GetBoolFromLSO("IsConnecting"); }
 		}
 
-        /// <summary>
-        /// Wrapper for the ServerStatus member of the login type.
-        /// </summary>
+		/// <summary>
+		/// Wrapper for the ServerStatus member of the login type.
+		/// </summary>
 		public string ServerStatus
 		{
-			get
-			{
-				return GetMember<string>("ServerStatus");
-			}
+			get { return this.GetStringFromLSO("ServerStatus"); }
 		}
 
-        /// <summary>
-        /// Wrapper for the ServerPopulation member of the login type.
-        /// </summary>
+		/// <summary>
+		/// Wrapper for the ServerPopulation member of the login type.
+		/// </summary>
 		public int ServerPopulation
 		{
-			get
-			{
-				return GetMember<int>("ServerPopulation");
-			}
+			get { return this.GetIntFromLSO("ServerPopulation"); }
 		}
 
         public string ServerMOTD
         {
-            get
-            {
-                return GetMember<string>("ServerMOTD");
-            }
+            get { return this.GetStringFromLSO("ServerMOTD"); }
         }
 		#endregion
 
 		#region Methods
-    /// <summary>
-    /// Wrapper for the SetUsername method of the login type.
-    /// </summary>
-    /// <param name="username"></param>
-    /// <returns></returns>
+		/// <summary>
+		/// Wrapper for the SetUsername method of the login type.
+		/// </summary>
+		/// <param name="username"></param>
+		/// <returns></returns>
 		public bool SetUsername(string username)
 		{
-            if (Tracing.Callback != null)
-                Tracing.SendCallback("Login.SetUsername", string.Empty);
+			Tracing.SendCallback("Login.SetUsername", username);
 			return ExecuteMethod("SetUsername", username);
 		}
 
-    /// <summary>
-    /// Wrapper for the SetPassword method of the login type.
-    /// </summary>
-    /// <param name="password"></param>
-    /// <returns></returns>
+		/// <summary>
+		/// Wrapper for the SetPassword method of the login type.
+		/// </summary>
+		/// <param name="password"></param>
+		/// <returns></returns>
 		public bool SetPassword(string password)
 		{
-            if (Tracing.Callback != null)
-                Tracing.SendCallback("Login.SetPassword", string.Empty);
+			Tracing.SendCallback("Login.SetPassword", password);
 			return ExecuteMethod("SetPassword", password);
 		}
 
-    /// <summary>
-    /// Wrapper for the Connect method of the login type.
-    /// </summary>
-    /// <returns></returns>
+		/// <summary>
+		/// Wrapper for the Connect method of the login type.
+		/// </summary>
+		/// <returns></returns>
 		public bool Connect()
 		{
-            if (Tracing.Callback != null)
-                Tracing.SendCallback("Login.Connect", string.Empty);
+			Tracing.SendCallback("Login.Connect");
 			return ExecuteMethod("Connect");
 		}
 		#endregion

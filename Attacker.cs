@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Extensions;
 using LavishScriptAPI;
 using InnerSpaceAPI;
 
@@ -10,7 +11,7 @@ namespace EVE.ISXEVE
 	/// <summary>
 	/// Attacker class
 	/// </summary>
-	public class Attacker : LavishScriptObject
+	public class Attacker : Entity
 	{
 		#region Constructors
 		/// <summary>
@@ -21,34 +22,13 @@ namespace EVE.ISXEVE
 		#endregion
 
 		#region Members
-		/// <summary>
-		/// The EntityID of the Attacker.
-		/// </summary>
-		public Int64 ID
+		public new Int64 ID
 		{
 			get
 			{
-				LavishScriptObject id = GetMember("ID");
-				if (LavishScriptObject.IsNullOrInvalid(id))
-				{
-					return -1;
-				}
-				else
-				{
-					return id.GetValue<Int64>();
-				}
+				Tracing.SendCallback("Attacker.ID");
+			    return this.GetInt64FromLSO("ID");
 			}
-		}
-
-		/// <summary>
-		/// GetAttacks member
-		/// </summary>
-		public List<Attack> GetAttacks()
-		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("Attacker.GetAttacks");
-
-			return Util.GetListFromMember<Attack>(this, "GetAttacks", "attack");
 		}
 
 		/// <summary>
@@ -56,37 +36,28 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsCurrentlyAttacking
 		{
-			get
-			{
-				LavishScriptObject isCurrentlyAttacking = GetMember("IsCurrentlyAttacking");
-				if (LavishScriptObject.IsNullOrInvalid(isCurrentlyAttacking))
-				{
-					return false;
-				}
-				return isCurrentlyAttacking.GetValue<bool>();
-			}
+			get { return this.GetBoolFromLSO("IsCurrentlyAttacking"); }
 		}
 
-		/// <summary>
-		/// ToEntity member
-		/// </summary>
-		public Entity ToEntity
-		{
-			get
-			{
-				return new Entity(GetMember("ToEntity"));
-			}
-		}
-
-		/// <summary>
 		/// Get the Jammer member of the Attacker object
+        public new Jammer ToJammer
+        {
+            get
+            {
+                return new Jammer(GetMember("ToJammer"));
+            }
+        }
+		#endregion
+
+		#region Methods
+		/// <summary>
+		/// GetAttacks method
 		/// </summary>
-		public Jammer ToJammer
+		/// <returns></returns>
+		public List<Attack> GetAttacks()
 		{
-			get
-			{
-				return new Jammer(GetMember("ToJammer"));
-			}
+			Tracing.SendCallback("Attacker.GetAttacks");
+			return Util.GetListFromMethod<Attack>(this, "GetAttacks", "attack");
 		}
 		#endregion
 	}

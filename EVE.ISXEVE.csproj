@@ -16,9 +16,9 @@
     </UpgradeBackupLocation>
     <OldToolsVersion>3.5</OldToolsVersion>
     <IsWebBootstrapper>true</IsWebBootstrapper>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>EVE.ISXEVE.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>_Compiler Settings\EVE.ISXEVE.snk</AssemblyOriginatorKeyFile>
     <PublishUrl>http://localhost/EVE.ISXEVE/</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
@@ -33,6 +33,8 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -43,7 +45,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Debug\ISXEVEWrapper.XML</DocumentationFile>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -51,14 +54,20 @@
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>3</WarningLevel>
     <DocumentationFile>bin\Release\ISXEVEWrapper.XML</DocumentationFile>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Lavish.InnerSpace, Version=1.0.0.0, Culture=neutral, PublicKeyToken=9029a3ab4cbe108d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Lavish.InnerSpace.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\InnerSpace\Lavish.InnerSpace.dll</HintPath>
+    </Reference>
+    <Reference Include="Lavish.LavishVMRuntime, Version=1.0.0.0, Culture=neutral, PublicKeyToken=9029a3ab4cbe108d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\InnerSpace\Lavish.LavishVMRuntime.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -75,13 +84,17 @@
     <Compile Include="Attacker.cs" />
     <Compile Include="Being.cs" />
     <Compile Include="BookMark.cs" />
-    <Compile Include="CachedEntity.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="CharSelect.cs" />
+    <Compile Include="ChatChannel.cs" />
+    <Compile Include="Corporation.cs" />
+    <Compile Include="CorporationWallet.cs" />
     <Compile Include="DialogString.cs" />
     <Compile Include="EVETime.cs" />
     <Compile Include="Fleet.cs" />
+    <Compile Include="_Compiler Settings\GlobalSuppressions.cs" />
     <Compile Include="Jammer.cs" />
+    <Compile Include="LavishScriptObjectExtensions.cs" />
     <Compile Include="MarketOrder.cs" />
     <Compile Include="MyOrder.cs" />
     <Compile Include="Entity.cs" />
@@ -98,6 +111,7 @@
     <Compile Include="Module.cs" />
     <Compile Include="Pilot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scanner.cs" />
     <Compile Include="Ship.cs" />
     <Compile Include="Skill.cs" />
     <Compile Include="SlotType.cs" />
@@ -105,6 +119,7 @@
     <Compile Include="Station.cs" />
     <Compile Include="Universe.cs" />
     <Compile Include="Util.cs" />
+    <Compile Include="Wallet.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -134,11 +149,12 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
-    <None Include="EVE.ISXEVE.snk" />
-    <None Include="PostBuild.bat" />
-    <None Include="PreBuild.bat" />
+    <None Include="_Compiler Settings\app.config" />
+    <None Include="_Compiler Settings\EVE.ISXEVE.snk" />
+    <None Include="_Compiler Settings\PostBuild.bat" />
+    <None Include="_Compiler Settings\PreBuild.bat" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
@@ -148,7 +164,7 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>"$(ProjectDir)postbuild.bat" $(TargetFileName)</PostBuildEvent>
-    <PreBuildEvent>"$(ProjectDir)prebuild.bat"</PreBuildEvent>
+    <PostBuildEvent>"$(ProjectDir)_Compiler Settings\postbuild.bat" $(TargetFileName)</PostBuildEvent>
+    <PreBuildEvent>"$(ProjectDir)_Compiler Settings\prebuild.bat"</PreBuildEvent>
   </PropertyGroup>
 </Project>

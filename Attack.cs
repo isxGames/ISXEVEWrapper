@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Extensions;
 using LavishScriptAPI;
 using InnerSpaceAPI;
 
@@ -25,20 +26,9 @@ namespace EVE.ISXEVE
 		#endregion
 
 		#region Members
-		public Int64 ID
+		public string ID
 		{
-			get
-			{
-				LavishScriptObject id = GetMember("ID");
-				if (LavishScriptObject.IsNullOrInvalid(id))
-				{
-					return -1;
-				}
-				else
-				{
-					return id.GetValue<Int64>();
-				}
-			}
+			get { return this.GetStringFromLSO("ID"); }
 		}
 
 		/// <summary>
@@ -46,15 +36,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Name
 		{
-			get
-			{
-				LavishScriptObject name = GetMember("Name");
-				if (LavishScriptObject.IsNullOrInvalid(name))
-				{
-					return string.Empty;
-				}
-				return name.GetValue<string>();
-			}
+			get { return this.GetStringFromLSO("Name"); }
 		}
 
 		/// <summary>

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
 
@@ -22,7 +23,7 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
-		/// Default constructor for ISXEVE object.  Returns the LS object.
+		/// Default constructor for ISXEVE object.  Returns the  LS object.
 		/// </summary>
 		public ISXEVE()
 			: base(LavishScript.Objects.GetObject("ISXEVE"))
@@ -36,10 +37,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Version
 		{
-			get
-			{
-				return GetMember<string>("Version");
-			}
+			get { return this.GetStringFromLSO("Version"); }
 		}
 
 		/// <summary>
@@ -47,10 +45,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsReady
 		{
-			get
-			{
-				return GetMember<bool>("IsReady");
-			}
+			get { return this.GetBoolFromLSO("IsReady"); }
 		}
 
 		/// <summary>
@@ -58,10 +53,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsLoading
 		{
-			get
-			{
-				return GetMember<bool>("IsLoading");
-			}
+			get { return this.GetBoolFromLSO("IsLoading"); }
 		}
 
 		/// <summary>
@@ -72,7 +64,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string SecsToString(int seconds)
 		{
-			return GetMember<string>("SecsToString", seconds.ToString());
+			return this.GetStringFromLSO("SecsToString", seconds.ToString());
 		}
 
 		/// <summary>
@@ -81,15 +73,12 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsSafe
 		{
-			get
-			{
-				LavishScriptObject isSafe = GetMember("IsSafe");
-				if (LavishScriptObject.IsNullOrInvalid(isSafe))
-				{
-					return false;
-				}
-				return isSafe.GetValue<bool>();
-			}
+			get { return this.GetBoolFromLSO("IsSafe"); }
+		}
+
+		public bool IsBeta
+		{
+			get { return this.GetBoolFromLSO("IsBeta"); }
 		}
 		#endregion
 
@@ -99,40 +88,36 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public void Unload()
 		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("ISXEVE.Unload", string.Empty);
+			Tracing.SendCallback("ISXEVE.Unload");
 			ExecuteMethod("Unload");
 		}
 
-		/// <summary>
-		/// Reload the extension.
-		/// </summary>
-		public void Reload()
-		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("ISXEVE.Reload", string.Empty);
-			ExecuteMethod("Reload");
-		}
+        public void Debug_SetTypeValidation(bool enabled)
+        {
+            Tracing.SendCallback("ISXEVE.Debug_SetTypeValidation", enabled);
+            ExecuteMethod("Debug_SetTypeValidation", enabled.ToString());
+        }
 
-		/// <summary>
-		/// Alias for Reload
-		/// </summary>
-		public void Patch()
-		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("ISXEVE.Patch", string.Empty);
-			ExecuteMethod("Patch");
-		}
+        /// <summary>
+        /// Disables flushing/closing the ISXEVE logfile between logs, critical for intensive debug logging. Use only when requested by ISXEVE dev.
+        /// </summary>
+        /// <param name="enabled"></param>
+        public void Debug_SetHighPerfLogging(bool enabled)
+        {
+            Tracing.SendCallback("ISXEVE.Debug_SetHighPerfLogging", enabled);
+            ExecuteMethod("Debug_SetHighPerfLogging", enabled.ToString());
+        }
 
-		/// <summary>
-		/// Alias for Reload
-		/// </summary>
-		public void Update()
-		{
-			if (Tracing.Callback != null)
-				Tracing.SendCallback("ISXEVE.Update", string.Empty);
-			ExecuteMethod("Update");
-		}
+        /// <summary>
+        /// This will send a message to the ISXEVE logfile. Useful for marking script actions around ISXEVE output.
+        /// </summary>
+        /// <param name="scriptName"></param>
+        /// <param name="logMessage"></param>
+        public void Debug_LogMsg(string scriptName, string logMessage)
+        {
+            Tracing.SendCallback("ISXEVE.Debug_LogMsg", scriptName, logMessage);
+            ExecuteMethod("Debug_LogMsg", scriptName, logMessage);
+        }
 		#endregion
 	}
 }
