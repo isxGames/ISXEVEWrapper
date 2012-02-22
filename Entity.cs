@@ -146,6 +146,11 @@ namespace EVE.ISXEVE
 			}
 		}
 
+        public bool IsWreckViewed
+        {
+            get { return this.GetBoolFromLSO("IsWreckViewed"); }
+        }
+
 	    public bool IsAbandoned
 	    {
 	        get { return this.GetBoolFromLSO("IsAbandoned"); }

@@ -180,6 +180,11 @@ namespace EVE.ISXEVE
             get { return this.GetBoolFromLSO("IsTextureLoadingOn"); }
 	    }
 
+        public bool AbandonedDronesExist
+        {
+            get { return this.GetBoolFromLSO("AbandonedDronesExist"); }
+        }
+
 	    public bool IsProgressWindowOpen
 	    {
 	        get { return this.GetBoolFromLSO("IsProgressWindowOpen"); }
@@ -624,6 +629,18 @@ namespace EVE.ISXEVE
 			Tracing.SendCallback("EVE.RefreshStandings");
 			return ExecuteMethod("RefreshStandings");
 		}
+
+        public bool ReclaimDrones()
+        {
+            Tracing.SendCallback("EVE.ReclaimDrones");
+            return ExecuteMethod("ReclaimDrones");
+        }
+
+        public List<long> GetViewedWrecks()
+        {
+            Tracing.SendCallback("EVE.GetViewedWrecks");
+            return Util.GetListFromMethod<long>(this, "GetViewedWrecks", "int64");
+        }
 	}
 
 	/// <summary>
