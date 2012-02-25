@@ -64,6 +64,14 @@ namespace EVE.ISXEVE
 			get { return this.GetStringFromLSO("AllianceTicker"); }
 		}
 
+        /// <summary>
+        /// Wrapper for the Bounty member of the Entity datatype.
+        /// </summary>
+	    public double Bounty
+	    {
+            get { return this.GetDoubleFromLSO("Bounty"); }
+	    }
+
 		/// <summary>
 		/// Wrapper for the Category member of the entity type.
 		/// </summary>
