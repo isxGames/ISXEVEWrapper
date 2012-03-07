@@ -207,13 +207,22 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
-		/// the agents in your *addressbook*
+        /// Your "buddies"
 		/// </summary>
 		public List<Being> GetBuddies()
 		{
 			Tracing.SendCallback("EVE.GetBuddies");
 			return Util.GetListFromMethod<Being>(this, "GetBuddies", "being");
 		}
+
+        /// <summary>
+        /// the agents in your *addressbook* 
+        /// </summary>
+        public List<Being> GetAgents()
+        {
+            Tracing.SendCallback("EVE.GetAgents");
+            return Util.GetListFromMethod<Being>(this, "GetAgents", "being");
+        }
 
 		/// <summary>
 		/// Returns the number of chat channels currently open in your UI
