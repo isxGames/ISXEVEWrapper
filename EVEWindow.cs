@@ -48,7 +48,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public static EVEWindow GetWindowByName(string name)
 		{
-			return new EVEWindow(LavishScript.Objects.GetObject("EVEWindow", name));
+			return new EVEWindow(LavishScript.Objects.GetObject("EVEWindow", "ByName", name));
 		}
 		#endregion
 

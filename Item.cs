@@ -367,132 +367,6 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
-		/// Move the entire stack into your ship
-		/// </summary>
-		public bool MoveToMyShip()
-		{
-			Tracing.SendCallback("Item.MoveToMyShip");
-			return ExecuteMethod("MoveTo", "MyShip");
-		}
-
-		/// <summary>
-		/// Wrapper for the MoveToMyShip method of the item type.
-		/// </summary>
-		/// <param name="Quantity"></param>
-		/// <returns></returns>
-		public bool MoveToMyShip(int Quantity)
-		{
-			Tracing.SendCallback("Item.MoveToMyShip", Quantity.ToString());
-			return ExecuteMethod("MoveTo", "MyShip", Quantity.ToString());
-		}
-
-		/// <summary>
-		/// Move the entire stack into your hanger
-		/// </summary>
-		public bool MoveToHangar()
-		{
-			Tracing.SendCallback("Item.MoveToHangar");
-			return ExecuteMethod("MoveTo", "Hangar");
-		}
-
-		/// <summary>
-		/// Wrapper for the MoveToHangar method of the item type.
-		/// </summary>
-		/// <param name="Quantity"></param>
-		/// <returns></returns>
-		public bool MoveToHangar(int Quantity)
-		{
-			Tracing.SendCallback("Item.MoveToHangar", Quantity.ToString());
-			return ExecuteMethod("MoveTo", "Hangar", Quantity.ToString());
-		}
-
-		/// <summary>
-		/// Move the entire stack into your Drone Bay
-		/// </summary>
-		public bool MoveToDroneBay()
-		{
-			Tracing.SendCallback("Item.MoveToDroneBay");
-			return ExecuteMethod("MoveTo", "DroneBay");
-		}
-
-		/// <summary>
-		/// Wrapper for the MoveToDroneBay method of the item type.
-		/// </summary>
-		/// <param name="Quantity"></param>
-		/// <returns></returns>
-		public bool MoveToDroneBay(int Quantity)
-		{
-			Tracing.SendCallback("Item.MoveToDroneBay", Quantity.ToString());
-			return ExecuteMethod("MoveTo", "DroneBay", Quantity.ToString());
-		}
-
-		/// <summary>
-		/// Moves the whole stack into Corporate Folder 1
-		/// </summary>
-		public bool MoveToCorporationHanger()
-		{
-			Tracing.SendCallback("Item.MoveToCorpHangar");
-			return ExecuteMethod("MoveTo", "Corporation Hangar");
-		}
-
-		/// <summary>
-		/// Moves the specified quantity into Corporate Folder 1
-		/// </summary>
-		public bool MoveToCorporationHanger(int Quantity)
-		{
-			Tracing.SendCallback("Item.MoveToCorpHangar", Quantity.ToString());
-			return ExecuteMethod("MoveTo", "Corporation Hangar", Quantity.ToString());
-		}
-
-		/// <summary>
-		/// Moves the specified quantity into the specified corporate folder.
-		/// </summary>
-		/// <param name="Quantity"></param>
-		/// <param name="FolderID"></param>
-		/// <returns></returns>
-		public bool MoveToCorporationHanger(int Quantity, int FolderID)
-		{
-			Tracing.SendCallback("Item.MoveToCorpHangar", Quantity, FolderID);
-			return ExecuteMethod("MoveTo", "Corporation Hangar", Quantity.ToString(),
-				"Corporate Folder " + FolderID.ToString());
-		}
-
-		/// <summary>
-		/// Move the entire stack into whatever has the ID you specify
-		/// </summary>
-		public bool MoveTo(Int64 ID)
-		{
-			Tracing.SendCallback("Item.MoveTo", ID.ToString());
-			return ExecuteMethod("MoveTo", ID.ToString());
-		}
-
-		/// <summary>
-		/// Wrapper for the MoveTo method of the item type.
-		/// </summary>
-		/// <param name="ID"></param>
-		/// <param name="Quantity"></param>
-		/// <returns></returns>
-		public bool MoveTo(Int64 ID, int Quantity)
-		{
-			Tracing.SendCallback("Item.MoveTo", ID, Quantity);
-			return ExecuteMethod("MoveTo", ID.ToString(), Quantity.ToString());
-		}
-
-		/// <summary>
-		/// Wrapper for the MoveTo method of the item type.
-		/// </summary>
-		/// <param name="ID"></param>
-		/// <param name="Quantity"></param>
-		/// <param name="CorporateHangarFolder"></param>
-		/// <returns></returns>
-		public bool MoveTo(Int64 ID, int Quantity, int CorporateHangarFolder)
-		{
-			Tracing.SendCallback("Item.MoveTo", ID, Quantity, CorporateHangarFolder);
-			return ExecuteMethod("MoveTo", ID.ToString(), Quantity.ToString(),
-				String.Format("Corporation Folder {0}", CorporateHangarFolder));
-		}
-
-		/// <summary>
 		/// Drones only.
 		/// </summary>
 		/// <returns></returns>
@@ -590,6 +464,81 @@ namespace EVE.ISXEVE
 			Tracing.SendCallback("Item.Close");
 			return ExecuteMethod("Close");
 		}
+
+        /// <summary>
+        /// Wrapper for the MoveTo method of the item type.
+        /// </summary>
+        /// <param name="destinationEntityID"></param>
+        /// <param name="destinationName"></param>
+        /// <returns></returns>
+        public bool MoveTo(Int64 destinationEntityID, string destinationName)
+        {
+            Tracing.SendCallback("Item.MoveTo", destinationEntityID, destinationName);
+
+            return ExecuteMethod("MoveTo", destinationEntityID.ToString(), destinationName);
+        }
+
+        /// <summary>
+        /// Wrapper for the MoveTo method of the item type.
+        /// </summary>
+        /// <param name="destinationEntityID"></param>
+        /// <param name="destinationName"></param>
+        /// <param name="quantity"></param>
+        /// <returns></returns>
+        public bool MoveTo(Int64 destinationEntityID, string destinationName, int quantity)
+        {
+            Tracing.SendCallback("Item.MoveTo", destinationEntityID, destinationName, quantity);
+
+            return ExecuteMethod("MoveTo", destinationEntityID.ToString(), destinationName, quantity.ToString());
+        }
+
+        /// <summary>
+        /// Wrapper for the MoveTo method of the item type.
+        /// </summary>
+        /// <param name="destinationEntityID"></param>
+        /// <param name="destinationName"></param>
+        /// <param name="quantity"></param>
+        /// <param name="corporateFolderNumber"></param>
+        /// <returns></returns>
+        public bool MoveTo(Int64 destinationEntityID, string destinationName, int quantity, int corporateFolderNumber)
+        {
+            Tracing.SendCallback("Item.MoveTo", destinationEntityID, destinationName, quantity, corporateFolderNumber);
+
+            return ExecuteMethod("MoveTo", destinationEntityID.ToString(), destinationName,
+                quantity.ToString(), string.Format("Corporation Folder {0}", corporateFolderNumber));
+        }
 		#endregion
 	}
+
+    public enum ItemDestinations
+    {
+        /// <summary>
+        /// The traditional cargo hold
+        /// </summary>
+        CargoHold,
+        DroneBay,
+        /// <summary>
+        /// Will work on your ship as well as the coproration hangars of a capital ship or POS
+        /// </summary>
+        CorpHangars,
+        /// <summary>
+        /// Will work on your ship as well as the maintenance bay of a capital ship
+        /// </summary>
+        MaintenanceBay,
+        OreHold,
+        FuelBay,
+        GasHold,
+        MineralHold,
+        SalvageHold,
+        IndustrialShipHold,
+        AmmoHold,
+        /// <summary>
+        /// For this destination, you can enter any positive integer for the ID#
+        /// </summary>
+        StationCorporateHangar,
+        /// <summary>
+        /// for this destination, you can enter any positive integer for the ID#
+        /// </summary>
+        Hangar
+    }
 }

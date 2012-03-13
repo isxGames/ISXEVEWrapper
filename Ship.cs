@@ -31,6 +31,14 @@ namespace EVE.ISXEVE
 
 		#region Members
 		#region ShipStats
+        /// <summary>
+        /// Wrapper for the ID member of this ship type. This is the same as our Entity ID.
+        /// </summary>
+	    public Int64 ID
+	    {
+            get { return this.GetInt64FromLSO("ID"); }
+	    }
+
 		/// <summary>
 		/// Wrapper for the Name member of the ship type.
 		/// </summary>

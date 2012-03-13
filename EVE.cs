@@ -442,22 +442,19 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
-		/// Destination may be one of:
-		///		MyShip
-		///		Hangar
-		///		DroneBay
-		///		Corporation Hangar
+		/// Wrapper for the MoveItemsTo method fo the eve type.
 		/// </summary>
 		/// <param name="items"></param>
-		/// <param name="destination"></param>
+		/// <param name="destinationName"></param>
 		/// <returns></returns>
-		public bool MoveItemsTo(List<Int64> items, String destination)
+		public bool MoveItemsTo(List<Int64> items, Int64 destinationEntityID, string destinationName)
 		{
-			Tracing.SendCallback("EVE.MoveItemsTo", destination);
+			Tracing.SendCallback("EVE.MoveItemsTo", destinationEntityID, destinationName);
 			if (items.Count == 0)
 			{
 				return false;
 			}
+
 			var lsIndex = LavishScript.Objects.NewObject("index:int64");
 
 			for (var index = 0; index < items.Count; index++)
@@ -467,30 +464,7 @@ namespace EVE.ISXEVE
 			//InnerSpace.Echo("*** " + LSIndex.GetMember<int>("Used"));
 			// TODO - Test this to make sure passing a populated index into ExecuteMethod works
 			// - CyberTech
-			return ExecuteMethod("MoveItemsTo", lsIndex.GetLSReference(), destination);
-		}
-
-		/// <summary>
-		/// Destination is an Entity ID
-		/// </summary>
-		/// <param name="items"></param>
-		/// <param name="destinationEntityID"></param>
-		/// <returns></returns>
-		public bool MoveItemsTo(List<Int64> items, Int64 destinationEntityID)
-		{
-			Tracing.SendCallback("EVE.", destinationEntityID);
-			if (items.Count == 0)
-			{
-				return false;
-			}
-
-			var lsIndex = LavishScript.Objects.NewObject("index:int64");
-            for (var index = 0; index < items.Count; index++)
-			{
-				lsIndex.ExecuteMethod("Insert", items[index].ToString());
-			}
-
-			return ExecuteMethod("MoveItemsTo", lsIndex.GetLSReference(), destinationEntityID.ToString());
+			return ExecuteMethod("MoveItemsTo", lsIndex.GetLSReference(), destinationEntityID.ToString(), destinationName);
 		}
 
 		/// <summary>
@@ -500,9 +474,9 @@ namespace EVE.ISXEVE
 		/// <param name="destinationEntityID"></param>
 		/// <param name="corporationHangarFolder"></param>
 		/// <returns></returns>
-		public bool MoveItemsTo(List<Int64> items, Int64 destinationEntityID, Int32 corporationHangarFolder)
+		public bool MoveItemsTo(List<Int64> items, Int64 destinationEntityID, string destinationName, int corporationHangarFolder)
 		{
-			Tracing.SendCallback("EVE.MoveItemsTo", destinationEntityID, corporationHangarFolder);
+			Tracing.SendCallback("EVE.MoveItemsTo", destinationEntityID, destinationName, corporationHangarFolder);
 			if (items.Count == 0)
 			{
 				return false;
@@ -514,7 +488,7 @@ namespace EVE.ISXEVE
 				lsIndex.ExecuteMethod("Insert", items[index].ToString());
 			}
 
-			return ExecuteMethod("MoveItemsTo", lsIndex.GetLSReference(), destinationEntityID.ToString(),
+			return ExecuteMethod("MoveItemsTo", lsIndex.GetLSReference(), destinationEntityID.ToString(), destinationName,
 				String.Format("Corporation Folder {0}", corporationHangarFolder));
 		}
 
