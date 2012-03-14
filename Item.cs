@@ -491,93 +491,61 @@ namespace EVE.ISXEVE
         /// <summary>
         /// Wrapper for the MoveTo method of the item type.
         /// </summary>
-        /// <param name="destinationEntityID"></param>
+        /// <param name="ToLocationEntityID"></param>
         /// <param name="destinationName"></param>
         /// <param name="quantity"></param>
         /// <returns></returns>
-        public bool MoveTo(Int64 destinationEntityID, string destinationName, int quantity)
+        public bool MoveTo(Int64 ToLocationEntityID, string destinationName, int quantity)
         {
-            Tracing.SendCallback("Item.MoveTo", destinationEntityID, destinationName, quantity);
+            Tracing.SendCallback("Item.MoveTo", ToLocationEntityID, destinationName, quantity);
 
-            return ExecuteMethod("MoveTo", destinationEntityID.ToString(), destinationName, quantity.ToString());
+            return ExecuteMethod("MoveTo", ToLocationEntityID.ToString(), destinationName, quantity.ToString());
         }
 
         /// <summary>
         /// Wrapper for the MoveTo method of the item type.
         /// </summary>
-        /// <param name="destinationEntityID"></param>
+        /// <param name="ToLocationEntityID"></param>
         /// <param name="destinationName"></param>
         /// <param name="quantity"></param>
         /// <param name="corporateFolderNumber"></param>
         /// <returns></returns>
-        public bool MoveTo(Int64 destinationEntityID, string destinationName, int quantity, int corporateFolderNumber)
+        public bool MoveTo(Int64 ToLocationEntityID, string destinationName, int quantity, int corporateFolderNumber)
         {
-            Tracing.SendCallback("Item.MoveTo", destinationEntityID, destinationName, quantity, corporateFolderNumber);
+            Tracing.SendCallback("Item.MoveTo", ToLocationEntityID, destinationName, quantity, corporateFolderNumber);
 
-            return ExecuteMethod("MoveTo", destinationEntityID.ToString(), destinationName,
+            return ExecuteMethod("MoveTo", ToLocationEntityID.ToString(), destinationName,
                 quantity.ToString(), string.Format("Corporation Folder {0}", corporateFolderNumber));
         }
 
-        public bool MoveToMyShip(string destinationName, int quantity, int corporateFolderNumber)
+        /// <summary>
+        /// Wrapper for the MoveTo method of the item type.
+        /// </summary>
+        /// <param name="ToLocationName">'MyShip', 'MyDroneBay', 'MyStationHangar', or 'MyStationCorporateHangar'</param>
+        /// <param name="destinationName"></param>
+        /// <param name="quantity"></param>
+        /// <returns></returns>
+        public bool MoveTo(string ToLocationName, string destinationName, int quantity)
         {
-            Tracing.SendCallback("Item.MoveToMyShip", destinationName, quantity, corporateFolderNumber);
+            Tracing.SendCallback("Item.MoveTo", destinationName, destinationName, quantity);
 
-            Ship ship = new Ship();
-            return ExecuteMethod("MoveTo", ship.ID.ToString(), destinationName,
+            return ExecuteMethod("MoveTo", destinationName, destinationName, quantity.ToString());
+        }
+
+        /// <summary>
+        /// Wrapper for the MoveTo method of the item type.
+        /// </summary>
+        /// <param name="ToLocationName">'MyShip', 'MyDroneBay', 'MyStationHangar', or 'MyStationCorporateHangar'</param>
+        /// <param name="destinationName"></param>
+        /// <param name="quantity"></param>
+        /// <param name="corporateFolderNumber"></param>
+        /// <returns></returns>
+        public bool MoveTo(string ToLocationName, string destinationName, int quantity, int corporateFolderNumber)
+        {
+            Tracing.SendCallback("Item.MoveTo", destinationName, destinationName, quantity, corporateFolderNumber);
+
+            return ExecuteMethod("MoveTo", destinationName, destinationName,
                 quantity.ToString(), string.Format("Corporation Folder {0}", corporateFolderNumber));
-        }
-
-        public bool MoveToMyShip(string destinationName, int quantity)
-        {
-            Tracing.SendCallback("Item.MoveToMyShip", destinationName, quantity);
-
-            Ship ship = new Ship();
-            return ExecuteMethod("MoveTo", ship.ID.ToString(), destinationName,
-                quantity.ToString());
-        }
-
-        public bool MoveToMyShip(string destinationName)
-        {
-            Tracing.SendCallback("Item.MoveToMyShip", destinationName);
-
-            Ship ship = new Ship();
-            return ExecuteMethod("MoveTo", ship.ID.ToString(), destinationName);
-        }
-
-        public bool MoveToHangar(int quantity)
-        {
-            Tracing.SendCallback("Item.MoveToHangar", quantity);
-
-            return ExecuteMethod("MoveTo", "1", "Hangar", quantity.ToString());
-        }
-
-        public bool MoveToHangar()
-        {
-            Tracing.SendCallback("Item.MoveToHangar");
-
-            return ExecuteMethod("MoveTo", "1", "Hangar");
-        }
-
-        public bool MoveToStationCorporateHangar(int quantity, int corporateFolderNumber)
-        {
-            Tracing.SendCallback("Item.MoveToStationCorporateHangar", quantity, corporateFolderNumber);
-
-            return ExecuteMethod("MoveTo", "1", "StationCorporateHangar",
-                quantity.ToString(), string.Format("Corporation Folder {0}", corporateFolderNumber));
-        }
-
-        public bool MoveToStationCorporateHangar(int quantity)
-        {
-            Tracing.SendCallback("Item.MoveToStationCorporateHangar", quantity);
-
-            return ExecuteMethod("MoveTo", "1", "StationCorporateHangar", quantity.ToString());
-        }
-
-        public bool MoveToStationCorporateHangar()
-        {
-            Tracing.SendCallback("Item.MoveToStationCorporateHangar");
-
-            return ExecuteMethod("MoveTo", "1", "StationCorporateHangar");
         }
 
         public List<int> GetContrabandFactions()
