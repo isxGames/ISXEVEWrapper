@@ -160,7 +160,7 @@ namespace ISXEVEWrapperTest
                 }
 
                 InnerSpace.Echo("Moving " + itemIdxList.Count + " items in your hangar.");
-                Ext.EVE().MoveItemsTo(itemIdxList,"Hangar");
+                Ext.EVE().MoveItemsToHangar(itemIdxList);
             }
             InnerSpace.Echo("ISXEVEWrapperTest (MoveItemsTo): End");
         }

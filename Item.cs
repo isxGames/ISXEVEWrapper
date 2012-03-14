@@ -518,6 +518,68 @@ namespace EVE.ISXEVE
                 quantity.ToString(), string.Format("Corporation Folder {0}", corporateFolderNumber));
         }
 
+        public bool MoveToMyShip(string destinationName, int quantity, int corporateFolderNumber)
+        {
+            Tracing.SendCallback("Item.MoveToMyShip", destinationName, quantity, corporateFolderNumber);
+
+            Ship ship = new Ship();
+            return ExecuteMethod("MoveTo", ship.ID.ToString(), destinationName,
+                quantity.ToString(), string.Format("Corporation Folder {0}", corporateFolderNumber));
+        }
+
+        public bool MoveToMyShip(string destinationName, int quantity)
+        {
+            Tracing.SendCallback("Item.MoveToMyShip", destinationName, quantity);
+
+            Ship ship = new Ship();
+            return ExecuteMethod("MoveTo", ship.ID.ToString(), destinationName,
+                quantity.ToString());
+        }
+
+        public bool MoveToMyShip(string destinationName)
+        {
+            Tracing.SendCallback("Item.MoveToMyShip", destinationName);
+
+            Ship ship = new Ship();
+            return ExecuteMethod("MoveTo", ship.ID.ToString(), destinationName);
+        }
+
+        public bool MoveToHangar(int quantity)
+        {
+            Tracing.SendCallback("Item.MoveToHangar", quantity);
+
+            return ExecuteMethod("MoveTo", "1", "Hangar", quantity.ToString());
+        }
+
+        public bool MoveToHangar()
+        {
+            Tracing.SendCallback("Item.MoveToHangar");
+
+            return ExecuteMethod("MoveTo", "1", "Hangar");
+        }
+
+        public bool MoveToStationCorporateHangar(int quantity, int corporateFolderNumber)
+        {
+            Tracing.SendCallback("Item.MoveToStationCorporateHangar", quantity, corporateFolderNumber);
+
+            return ExecuteMethod("MoveTo", "1", "StationCorporateHangar",
+                quantity.ToString(), string.Format("Corporation Folder {0}", corporateFolderNumber));
+        }
+
+        public bool MoveToStationCorporateHangar(int quantity)
+        {
+            Tracing.SendCallback("Item.MoveToStationCorporateHangar", quantity);
+
+            return ExecuteMethod("MoveTo", "1", "StationCorporateHangar", quantity.ToString());
+        }
+
+        public bool MoveToStationCorporateHangar()
+        {
+            Tracing.SendCallback("Item.MoveToStationCorporateHangar");
+
+            return ExecuteMethod("MoveTo", "1", "StationCorporateHangar");
+        }
+
         public List<int> GetContrabandFactions()
         {
             return Util.GetListFromMethod<int>(this, "GetContrabandFactions", "int");

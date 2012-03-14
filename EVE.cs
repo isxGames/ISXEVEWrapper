@@ -492,6 +492,81 @@ namespace EVE.ISXEVE
 				String.Format("Corporation Folder {0}", corporationHangarFolder));
 		}
 
+        public bool MoveItemsToMyShip(List<Int64> items, string destinationName, int corporationHangarFolder)
+        {
+            Tracing.SendCallback("EVE.MoveItemsToMyShip", destinationName, corporationHangarFolder);
+            if (items.Count == 0)
+            {
+                return false;
+            }
+
+            var lsIndex = LavishScript.Objects.NewObject("index:int64");
+            for (var index = 0; index < items.Count; index++)
+            {
+                lsIndex.ExecuteMethod("Insert", items[index].ToString());
+            }
+
+            Ship ship = new Ship();
+            return ExecuteMethod("MoveItemsTo", lsIndex.GetLSReference(), ship.ID.ToString(), destinationName,
+                String.Format("Corporation Folder {0}", corporationHangarFolder));
+        }
+
+        public bool MoveItemsToMyShip(List<Int64> items, string destinationName)
+        {
+            Tracing.SendCallback("EVE.MoveItemsToMyShip", destinationName);
+            if (items.Count == 0)
+            {
+                return false;
+            }
+
+            var lsIndex = LavishScript.Objects.NewObject("index:int64");
+            for (var index = 0; index < items.Count; index++)
+            {
+                lsIndex.ExecuteMethod("Insert", items[index].ToString());
+            }
+
+            Ship ship = new Ship();
+            return ExecuteMethod("MoveItemsTo", lsIndex.GetLSReference(), ship.ID.ToString(), destinationName);
+        }
+
+        public bool MoveItemsToHangar(List<Int64> items)
+        {
+            Tracing.SendCallback("EVE.MoveItemsToHangar");
+            if (items.Count == 0)
+            {
+                return false;
+            }
+
+            var lsIndex = LavishScript.Objects.NewObject("index:int64");
+            for (var index = 0; index < items.Count; index++)
+            {
+                lsIndex.ExecuteMethod("Insert", items[index].ToString());
+            }
+
+            // From Patch Notes:
+            // 13. Hangar                   (For this destination, you can enter any positive integer for the ID#)
+            return ExecuteMethod("MoveItemsTo", lsIndex.GetLSReference(), "1", "Hangar");
+        }
+
+        public bool MoveItemsToStationCorporateHangar(List<Int64> items)
+        {
+            Tracing.SendCallback("EVE.MoveItemsToStationCorporateHangar");
+            if (items.Count == 0)
+            {
+                return false;
+            }
+
+            var lsIndex = LavishScript.Objects.NewObject("index:int64");
+            for (var index = 0; index < items.Count; index++)
+            {
+                lsIndex.ExecuteMethod("Insert", items[index].ToString());
+            }
+
+            // From Patch Notes:
+            // 13. Hangar                   (For this destination, you can enter any positive integer for the ID#)
+            return ExecuteMethod("MoveItemsTo", lsIndex.GetLSReference(), "1", "StationCorporateHangar");
+        }
+
 		/// <summary>
 		/// 2. PlaceBuyOrder[StationID#, TypeID#, Price#, Quantity#, &lt;Range&gt;, MinQuantity#, &lt;Duration&gt;]
 		///  ~ &lt;Range&gt; can be: "Station", "System", "Region", 1, 2, 3, 4, 5, 10, 20, 30, 40
