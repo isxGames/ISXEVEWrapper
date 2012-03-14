@@ -323,6 +323,16 @@ namespace EVE.ISXEVE
 			get { return this.GetStringFromLSO("GivenName"); }
 		}
 
+        public bool IsContraband
+        {
+            get { return this.GetBoolFromLSO("IsContraband"); }
+        }
+
+        public bool IsContrabandForFaction(int FactionID)
+        {
+            return this.GetBoolFromLSO("IsContraband", FactionID.ToString());
+        }
+
 		#endregion
 
 		#region Methods
@@ -506,6 +516,11 @@ namespace EVE.ISXEVE
 
             return ExecuteMethod("MoveTo", destinationEntityID.ToString(), destinationName,
                 quantity.ToString(), string.Format("Corporation Folder {0}", corporateFolderNumber));
+        }
+
+        public List<int> GetContrabandFactions()
+        {
+            return Util.GetListFromMethod<int>(this, "GetContrabandFactions", "int");
         }
 		#endregion
 	}

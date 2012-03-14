@@ -199,6 +199,16 @@ namespace EVE.ISXEVE
 		{
 			get { return this.GetStringFromLSO("Name"); }
 		}
+
+        public bool IsContraband
+        {
+            get { return this.GetBoolFromLSO("IsContraband"); }
+        }
+
+        public bool IsContrabandForFaction(int FactionID)
+        {
+            return this.GetBoolFromLSO("IsContraband", FactionID.ToString());
+        }
 		#endregion
 
 		#region Methods

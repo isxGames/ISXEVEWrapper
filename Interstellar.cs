@@ -102,18 +102,18 @@ namespace EVE.ISXEVE
 		#endregion
 
 		#region Methods
-		/// <summary>
-		/// Only works for "Solar System" type interstellar types. Adds a waypoint to the autopilot queue. 
-		/// </summary>
 		public bool AddWaypoint()
 		{
 			Tracing.SendCallback("Interstellar.AddWaypoint");
 			return ExecuteMethod("AddWaypoint");
 		}
 
-		/// <summary>
-		/// Only works for "Solar System" type interstellar types. Sets the autopilot destination. 
-		/// </summary>
+        public bool ClearWaypoint()
+        {
+            Tracing.SendCallback("Interstellar.ClearWaypoint");
+            return ExecuteMethod("ClearWaypoint");
+        }
+
 		public bool SetDestination()
 		{
 			Tracing.SendCallback("Interstellar.SetDestination");

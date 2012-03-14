@@ -151,6 +151,25 @@ namespace EVE.ISXEVE
 			Tracing.SendCallback("Station.OpenCorpHangar");
 			return ExecuteMethod("OpenCorpHangar");
 		}
+
+        public bool AddWaypoint()
+        {
+            Tracing.SendCallback("Station.AddWaypoint");
+            return ExecuteMethod("AddWaypoint");
+        }
+
+        public bool ClearWaypoint()
+        {
+            Tracing.SendCallback("Station.ClearWaypoint");
+            return ExecuteMethod("ClearWaypoint");
+        }
+
+        public bool SetDestination()
+        {
+            Tracing.SendCallback("Station.SetDestination");
+            return ExecuteMethod("SetDestination");
+        }
+
 		#endregion
 	}
 }
