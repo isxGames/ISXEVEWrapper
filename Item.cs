@@ -527,9 +527,9 @@ namespace EVE.ISXEVE
         /// <returns></returns>
         public bool MoveTo(string ToLocationName, string destinationName, int quantity)
         {
-            Tracing.SendCallback("Item.MoveTo", destinationName, destinationName, quantity);
+            Tracing.SendCallback("Item.MoveTo", ToLocationName, destinationName, quantity);
 
-            return ExecuteMethod("MoveTo", destinationName, destinationName, quantity.ToString());
+            return ExecuteMethod("MoveTo", ToLocationName, destinationName, quantity.ToString());
         }
 
         /// <summary>
@@ -542,9 +542,9 @@ namespace EVE.ISXEVE
         /// <returns></returns>
         public bool MoveTo(string ToLocationName, string destinationName, int quantity, int corporateFolderNumber)
         {
-            Tracing.SendCallback("Item.MoveTo", destinationName, destinationName, quantity, corporateFolderNumber);
+            Tracing.SendCallback("Item.MoveTo", ToLocationName, destinationName, quantity, corporateFolderNumber);
 
-            return ExecuteMethod("MoveTo", destinationName, destinationName,
+            return ExecuteMethod("MoveTo", ToLocationName, destinationName,
                 quantity.ToString(), string.Format("Corporation Folder {0}", corporateFolderNumber));
         }
 
