@@ -498,7 +498,7 @@ namespace EVE.ISXEVE
         /// Wrapper for the MoveItemsTo method fo the eve type.
         /// </summary>
         /// <param name="items"></param>
-        /// <param name="ToLocationName">'MyShip', 'MyDroneBay', 'MyStationHangar', or 'MyStationCorporateHangar'</param>
+        /// <param name="ToLocationName">'MyShip','MyStationHangar', or 'MyStationCorporateHangar'</param>
         /// <param name="destinationName"></param>
         /// <returns></returns>
         public bool MoveItemsTo(List<Int64> items, string ToLocationName, string destinationName)
@@ -525,7 +525,7 @@ namespace EVE.ISXEVE
         /// Wrapper for the MoveItemsTo method of the eve type.
         /// </summary>
         /// <param name="items"></param>
-        /// <param name="ToLocationName">'MyShip', 'MyDroneBay', 'MyStationHangar', or 'MyStationCorporateHangar'</param>
+        /// <param name="ToLocationName">'MyShip','MyStationHangar', or 'MyStationCorporateHangar'</param>
         /// <param name="corporationHangarFolder"></param>
         /// <returns></returns>
         public bool MoveItemsTo(List<Int64> items, string ToLocationName, string destinationName, int corporationHangarFolder)

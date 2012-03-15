@@ -521,7 +521,7 @@ namespace EVE.ISXEVE
         /// <summary>
         /// Wrapper for the MoveTo method of the item type.
         /// </summary>
-        /// <param name="ToLocationName">'MyShip', 'MyDroneBay', 'MyStationHangar', or 'MyStationCorporateHangar'</param>
+        /// <param name="ToLocationName">'MyShip', 'MyStationHangar', or 'MyStationCorporateHangar'</param>
         /// <param name="destinationName"></param>
         /// <param name="quantity"></param>
         /// <returns></returns>
@@ -535,7 +535,7 @@ namespace EVE.ISXEVE
         /// <summary>
         /// Wrapper for the MoveTo method of the item type.
         /// </summary>
-        /// <param name="ToLocationName">'MyShip', 'MyDroneBay', 'MyStationHangar', or 'MyStationCorporateHangar'</param>
+        /// <param name="ToLocationName">'MyShip', 'MyStationHangar', or 'MyStationCorporateHangar'</param>
         /// <param name="destinationName"></param>
         /// <param name="quantity"></param>
         /// <param name="corporateFolderNumber"></param>
