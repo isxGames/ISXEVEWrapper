@@ -151,6 +151,12 @@ namespace EVE.ISXEVE
             Tracing.SendCallback("EVEWindow.ClickButtonClose");
             return ExecuteMethod("ClickButtonClose");
         }
+
+        public bool StackAll()
+        {
+            Tracing.SendCallback("EVEWindow.StackAll");
+            return ExecuteMethod("StackAll");
+        }
 		#endregion
 	}
 }

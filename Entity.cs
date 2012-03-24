@@ -858,15 +858,6 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
-		/// Same as right click, Stack All -- consolidates stacks
-		/// </summary>
-		public bool StackAllCargo()
-		{
-			Tracing.SendCallback("Entity.StackAllCargo");
-			return ExecuteMethod("StackAllCargo");
-		}
-
-		/// <summary>
 		/// Sets the entity (container, probably) name.  Your code shouldn't name unnamable entities.
 		/// </summary>
 		public bool SetName(string Name)

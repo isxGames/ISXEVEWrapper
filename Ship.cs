@@ -538,16 +538,6 @@ namespace EVE.ISXEVE
 
 		#region Methods
 		/// <summary>
-		/// Wrapper for the StackAllCargo method of the ship type.
-		/// </summary>
-		/// <returns></returns>
-		public bool StackAllCargo()
-		{
-			Tracing.SendCallback("Ship.StackAllCargo");
-			return ExecuteMethod("StackAllCargo");
-		}
-
-		/// <summary>
 		/// To utilize the drone methods properly, your drones must be UNSTACKED in 
 		/// your drone bay. To do this, you can either SHIFT-DRAG the drones to your 
 		/// drone bay and select a quantity of 1, or you can go in space, launch all 
