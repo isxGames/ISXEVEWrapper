@@ -626,8 +626,10 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool StackAllHangarItems()
 		{
-			Tracing.SendCallback("Character.StackAllHangarItems");
-			return ExecuteMethod("StackAllHangarItems");
+            // TODO - Remove this when stealthbot is updated.
+            Tracing.SendCallback("Character.StackAllHangarItems - Redirecting to EVEWindow");
+            EVEWindow wnd = new EVEWindow(LavishScript.Objects.GetObject("EVEWindow", "ByName", "hangarFloor"));
+            return wnd.StackAll();
 		}
 
 		/// <summary>
