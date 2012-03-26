@@ -466,6 +466,21 @@ namespace EVE.ISXEVE
 		}
 
         /// <summary>
+        /// Wrapper for the GetCorpHangarItems member of the character type.
+        /// </summary>
+        /// <param name="corporationFolderNumber">The corporation folder number.</param>
+        /// <returns></returns>
+        public List<Item> GetCorpHangarItems(int corporationFolderNumber)
+        {
+            if (corporationFolderNumber < 1 || corporationFolderNumber > 7)
+                throw new ArgumentException("Corporation folder number must between 1 and 7, inclusive.", "corporationFolderNumber");
+
+            Tracing.SendCallback("Character.GetCorpHangarItems");
+            return Util.GetListFromMethod<Item>(this, "GetCorpHangarItems", "item",
+                                                string.Format("Corporation Folder {0}", corporationFolderNumber));
+        }
+
+        /// <summary>
         /// Wrapper for the GetCorpHangarShips member of the character type.
         /// </summary>
         /// <returns></returns>

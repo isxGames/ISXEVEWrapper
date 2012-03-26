@@ -7,9 +7,9 @@ using LavishScriptAPI;
 
 namespace EVE.ISXEVE
 {
-	/// <summary>
-	/// Wrapper for the item data type.
-	/// </summary>
+    /// <summary>
+    /// Wrapper for the item data type.
+    /// </summary>
 	public class Item : LavishScriptObject
 	{
 		#region Constructors
@@ -522,6 +522,19 @@ namespace EVE.ISXEVE
         /// Wrapper for the MoveTo method of the item type.
         /// </summary>
         /// <param name="ToLocationName">'MyShip', 'MyStationHangar', or 'MyStationCorporateHangar'</param>
+        /// <param name="ToDestinationName"></param>
+        /// <returns></returns>
+        public bool MoveTo(string ToLocationName, string ToDestinationName)
+        {
+            Tracing.SendCallback("Item.MoveTo", ToLocationName, ToDestinationName);
+
+            return ExecuteMethod("MoveTo", ToLocationName, ToDestinationName);
+        }
+
+        /// <summary>
+        /// Wrapper for the MoveTo method of the item type.
+        /// </summary>
+        /// <param name="ToLocationName">'MyShip', 'MyStationHangar', or 'MyStationCorporateHangar'</param>
         /// <param name="destinationName"></param>
         /// <param name="quantity"></param>
         /// <returns></returns>
@@ -555,7 +568,7 @@ namespace EVE.ISXEVE
 		#endregion
 	}
 
-    public enum ItemDestinations
+    public enum ToDestinationNames
     {
         /// <summary>
         /// The traditional cargo hold
@@ -577,13 +590,14 @@ namespace EVE.ISXEVE
         SalvageHold,
         IndustrialShipHold,
         AmmoHold,
-        /// <summary>
-        /// For this destination, you can enter any positive integer for the ID#
-        /// </summary>
         StationCorporateHangar,
-        /// <summary>
-        /// for this destination, you can enter any positive integer for the ID#
-        /// </summary>
         Hangar
+    }
+
+    public enum ToLocationNames
+    {
+        MyShip,
+        MyStationHangar,
+        MyStationCorporateHangar
     }
 }
