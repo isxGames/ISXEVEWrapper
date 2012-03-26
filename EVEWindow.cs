@@ -77,18 +77,18 @@ namespace EVE.ISXEVE
 			get { return this.GetStringFromLSO("HTML"); }
 		}
 
-	    public string Text
-	    {
+		public string Text
+		{
 			get { return this.GetStringFromLSO("Text"); }
-	    }
+		}
 
-        /// <summary>
-        /// The ID of the ship or other object that this window belongs to, i.e. EVEWindow[MyShipCargo].ItemID will be your ship ID
-        /// </summary>
-	    public Int64 ItemID
-	    {
-            get { return this.GetInt64FromLSO("ItemID"); }
-	    }
+		/// <summary>
+		/// The ID of the ship or other object that this window belongs to, i.e. EVEWindow[MyShipCargo].ItemID will be your ship ID
+		/// </summary>
+		public Int64 ItemID
+		{
+			get { return this.GetInt64FromLSO("ItemID"); }
+		}
 		#endregion
 
 		#region Methods
@@ -122,41 +122,41 @@ namespace EVE.ISXEVE
 			return ExecuteMethod("Minimize");
 		}
 
-        public bool ClickButtonYes()
-        {
-            Tracing.SendCallback("EVEWindow.ClickButtonYes");
-            return ExecuteMethod("ClickButtonYes");
-        }
+		public bool ClickButtonYes()
+		{
+			Tracing.SendCallback("EVEWindow.ClickButtonYes");
+			return ExecuteMethod("ClickButtonYes");
+		}
 
-        public bool ClickButtonNo()
-        {
-            Tracing.SendCallback("EVEWindow.ClickButtonNo");
-            return ExecuteMethod("ClickButtonNo");
-        }
+		public bool ClickButtonNo()
+		{
+			Tracing.SendCallback("EVEWindow.ClickButtonNo");
+			return ExecuteMethod("ClickButtonNo");
+		}
 
-        public bool ClickButtonOK()
-        {
-            Tracing.SendCallback("EVEWindow.ClickButtonOK");
-            return ExecuteMethod("ClickButtonOK");
-        }
+		public bool ClickButtonOK()
+		{
+			Tracing.SendCallback("EVEWindow.ClickButtonOK");
+			return ExecuteMethod("ClickButtonOK");
+		}
 
-        public bool ClickButtonCancel()
-        {
-            Tracing.SendCallback("EVEWindow.ClickButtonCancel");
-            return ExecuteMethod("ClickButtonCancel");
-        }
+		public bool ClickButtonCancel()
+		{
+			Tracing.SendCallback("EVEWindow.ClickButtonCancel");
+			return ExecuteMethod("ClickButtonCancel");
+		}
 
-        public bool ClickButtonClose()
-        {
-            Tracing.SendCallback("EVEWindow.ClickButtonClose");
-            return ExecuteMethod("ClickButtonClose");
-        }
+		public bool ClickButtonClose()
+		{
+			Tracing.SendCallback("EVEWindow.ClickButtonClose");
+			return ExecuteMethod("ClickButtonClose");
+		}
 
-        public bool StackAll()
-        {
-            Tracing.SendCallback("EVEWindow.StackAll");
-            return ExecuteMethod("StackAll");
-        }
+		public bool StackAll()
+		{
+			Tracing.SendCallback("EVEWindow.StackAll");
+			return ExecuteMethod("StackAll");
+		}
 		#endregion
 	}
 }

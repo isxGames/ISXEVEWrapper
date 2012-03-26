@@ -858,6 +858,17 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
+		/// Same as right click, Stack All -- consolidates stacks
+		/// </summary>
+		public bool StackAllCargo()
+		{
+			// TODO - Remove this when stealthbot is updated.
+			Tracing.SendCallback("Entity.StackAllCargo - Redirecting to EVEWindow");
+			EVEWindow wnd = new EVEWindow(LavishScript.Objects.GetObject("EVEWindow", "ByName", this.ID.ToString()));
+			return wnd.StackAll();
+		}
+
+		/// <summary>
 		/// Sets the entity (container, probably) name.  Your code shouldn't name unnamable entities.
 		/// </summary>
 		public bool SetName(string Name)

@@ -31,13 +31,13 @@ namespace EVE.ISXEVE
 
 		#region Members
 		#region ShipStats
-        /// <summary>
-        /// Wrapper for the ID member of this ship type. This is the same as our Entity ID.
-        /// </summary>
-	    public Int64 ID
-	    {
-            get { return this.GetInt64FromLSO("ID"); }
-	    }
+		/// <summary>
+		/// Wrapper for the ID member of this ship type. This is the same as our Entity ID.
+		/// </summary>
+		public Int64 ID
+		{
+			get { return this.GetInt64FromLSO("ID"); }
+		}
 
 		/// <summary>
 		/// Wrapper for the Name member of the ship type.
@@ -143,15 +143,15 @@ namespace EVE.ISXEVE
 			get { return this.GetDoubleFromLSO("StructurePct"); }
 		}
 
-	    public Item ToItem
-	    {
-	        get { return new Item(GetMember("ToItem")); }
-	    }
+		public Item ToItem
+		{
+			get { return new Item(GetMember("ToItem")); }
+		}
 
-	    public Scanner Scanner
-	    {
-	        get { return new Scanner(GetMember("Scanner")); }
-	    }
+		public Scanner Scanner
+		{
+			get { return new Scanner(GetMember("Scanner")); }
+		}
 
 		/// <summary>
 		/// Wrapper for the CPULoad member of the ship type.
@@ -537,6 +537,18 @@ namespace EVE.ISXEVE
 		#endregion
 
 		#region Methods
+		/// <summary>
+		/// Wrapper for the StackAllCargo method of the ship type.
+		/// </summary>
+		/// <returns></returns>
+		public bool StackAllCargo()
+		{
+			// TODO - Remove this when stealthbot is updated.
+			Tracing.SendCallback("Ship.StackAllCargo - Redirecting to EVEWindow");
+			EVEWindow wnd = new EVEWindow(LavishScript.Objects.GetObject("EVEWindow", "ByName", this.ID.ToString()));
+			return wnd.StackAll();
+		}
+
 		/// <summary>
 		/// To utilize the drone methods properly, your drones must be UNSTACKED in 
 		/// your drone bay. To do this, you can either SHIFT-DRAG the drones to your 
