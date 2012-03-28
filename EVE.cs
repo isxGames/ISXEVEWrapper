@@ -448,9 +448,9 @@ namespace EVE.ISXEVE
         /// <param name="ToLocationEntityID"></param>
 		/// <param name="destinationName"></param>
 		/// <returns></returns>
-		public bool MoveItemsTo(List<Int64> items, Int64 ToLocationEntityID, string destinationName)
+        public bool MoveItemsTo(List<Int64> items, Int64 ToLocationID, string destinationName)
 		{
-            Tracing.SendCallback("EVE.MoveItemsTo", ToLocationEntityID, destinationName);
+            Tracing.SendCallback("EVE.MoveItemsTo", ToLocationID, destinationName);
 			if (items.Count == 0)
 			{
 				return false;
@@ -465,7 +465,7 @@ namespace EVE.ISXEVE
 			//InnerSpace.Echo("*** " + LSIndex.GetMember<int>("Used"));
 			// TODO - Test this to make sure passing a populated index into ExecuteMethod works
 			// - CyberTech
-            return ExecuteMethod("MoveItemsTo", lsIndex.GetLSReference(), ToLocationEntityID.ToString(), destinationName);
+            return ExecuteMethod("MoveItemsTo", lsIndex.GetLSReference(), ToLocationID.ToString(), destinationName);
 		}
 
 		/// <summary>
@@ -475,9 +475,9 @@ namespace EVE.ISXEVE
         /// <param name="ToLocationEntityID"></param>
 		/// <param name="corporationHangarFolder"></param>
 		/// <returns></returns>
-        public bool MoveItemsTo(List<Int64> items, Int64 ToLocationEntityID, string destinationName, int corporationHangarFolder)
+        public bool MoveItemsTo(List<Int64> items, Int64 ToLocationID, string destinationName, int corporationHangarFolder)
 		{
-            Tracing.SendCallback("EVE.MoveItemsTo", ToLocationEntityID, destinationName, corporationHangarFolder);
+            Tracing.SendCallback("EVE.MoveItemsTo", ToLocationID, destinationName, corporationHangarFolder);
 			if (items.Count == 0)
 			{
 				return false;
@@ -489,7 +489,7 @@ namespace EVE.ISXEVE
 				lsIndex.ExecuteMethod("Insert", items[index].ToString());
 			}
 
-            return ExecuteMethod("MoveItemsTo", lsIndex.GetLSReference(), ToLocationEntityID.ToString(), destinationName,
+            return ExecuteMethod("MoveItemsTo", lsIndex.GetLSReference(), ToLocationID.ToString(), destinationName,
 				String.Format("Corporation Folder {0}", corporationHangarFolder));
 		}
 

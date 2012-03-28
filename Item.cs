@@ -481,11 +481,11 @@ namespace EVE.ISXEVE
         /// <param name="destinationEntityID"></param>
         /// <param name="destinationName"></param>
         /// <returns></returns>
-        public bool MoveTo(Int64 destinationEntityID, string destinationName)
+        public bool MoveTo(Int64 ToLocationID, string destinationName)
         {
-            Tracing.SendCallback("Item.MoveTo", destinationEntityID, destinationName);
+            Tracing.SendCallback("Item.MoveTo", ToLocationID, destinationName);
 
-            return ExecuteMethod("MoveTo", destinationEntityID.ToString(), destinationName);
+            return ExecuteMethod("MoveTo", ToLocationID.ToString(), destinationName);
         }
 
         /// <summary>
@@ -495,11 +495,11 @@ namespace EVE.ISXEVE
         /// <param name="destinationName"></param>
         /// <param name="quantity"></param>
         /// <returns></returns>
-        public bool MoveTo(Int64 ToLocationEntityID, string destinationName, int quantity)
+        public bool MoveTo(Int64 ToLocationID, string destinationName, int quantity)
         {
-            Tracing.SendCallback("Item.MoveTo", ToLocationEntityID, destinationName, quantity);
+            Tracing.SendCallback("Item.MoveTo", ToLocationID, destinationName, quantity);
 
-            return ExecuteMethod("MoveTo", ToLocationEntityID.ToString(), destinationName, quantity.ToString());
+            return ExecuteMethod("MoveTo", ToLocationID.ToString(), destinationName, quantity.ToString());
         }
 
         /// <summary>
@@ -510,11 +510,11 @@ namespace EVE.ISXEVE
         /// <param name="quantity"></param>
         /// <param name="corporateFolderNumber"></param>
         /// <returns></returns>
-        public bool MoveTo(Int64 ToLocationEntityID, string destinationName, int quantity, int corporateFolderNumber)
+        public bool MoveTo(Int64 ToLocationID, string destinationName, int quantity, int corporateFolderNumber)
         {
-            Tracing.SendCallback("Item.MoveTo", ToLocationEntityID, destinationName, quantity, corporateFolderNumber);
+            Tracing.SendCallback("Item.MoveTo", ToLocationID, destinationName, quantity, corporateFolderNumber);
 
-            return ExecuteMethod("MoveTo", ToLocationEntityID.ToString(), destinationName,
+            return ExecuteMethod("MoveTo", ToLocationID.ToString(), destinationName,
                 quantity.ToString(), string.Format("Corporation Folder {0}", corporateFolderNumber));
         }
 
