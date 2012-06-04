@@ -138,7 +138,7 @@ namespace EVE.ISXEVE
 			return list;
 		}
 
-		private static List<T> IndexToList<T>(LavishScriptObject index, string lsTypeName)
+		public static List<T> IndexToList<T>(LavishScriptObject index, string lsTypeName)
 		{
 			//Tracing.SendCallback("IndextoList", LSTypeName);
 			return typeof(T).IsSubclassOf(typeof(LavishScriptObject)) ? IndexToLavishScriptObjectList<T>(index, lsTypeName) : IndexToStructList<T>(index);

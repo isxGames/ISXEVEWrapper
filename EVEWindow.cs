@@ -50,6 +50,25 @@ namespace EVE.ISXEVE
 		{
 			return new EVEWindow(LavishScript.Objects.GetObject("EVEWindow", "ByName", name));
 		}
+
+		/// <summary>
+		/// Fetch an EVEWindow based on a given ItemID or EntityID.
+		/// </summary>
+		/// <param name="itemId"></param>
+		/// <returns></returns>
+		public static EVEWindow GetWindowByItemId(Int64 itemId)
+		{
+			return new EVEWindow(LavishScript.Objects.GetObject("EVEWindow", "ByItemID", itemId.ToString()));
+		}
+
+		/// <summary>
+		/// Fetch the EVE Inventory window
+		/// </summary>
+		/// <returns></returns>
+		public static EveInvWindow GetInventoryWindow()
+		{
+			return new EveInvWindow(LavishScript.Objects.GetObject("EVEWindow", "ByName", "Inventory"));
+		}
 		#endregion
 
 		#region Members
@@ -88,6 +107,22 @@ namespace EVE.ISXEVE
 		public Int64 ItemID
 		{
 			get { return this.GetInt64FromLSO("ItemID"); }
+		}
+
+		/// <summary>
+		/// The capacity of the container represented by this EVEWindow.
+		/// </summary>
+		public double Capacity
+		{
+			get { return this.GetDoubleFromLSO("Capacity"); }
+		}
+
+		/// <summary>
+		/// The used capacity of the container represented by this EVEWindow.
+		/// </summary>
+		public double UsedCapacity
+		{
+			get { return this.GetDoubleFromLSO("UsedCapacity"); }
 		}
 		#endregion
 

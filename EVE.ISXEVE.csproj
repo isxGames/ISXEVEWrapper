@@ -90,6 +90,7 @@
     <Compile Include="Corporation.cs" />
     <Compile Include="CorporationWallet.cs" />
     <Compile Include="DialogString.cs" />
+    <Compile Include="EveInvWindow.cs" />
     <Compile Include="EVETime.cs" />
     <Compile Include="Fleet.cs" />
     <Compile Include="_Compiler Settings\GlobalSuppressions.cs" />

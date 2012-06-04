@@ -620,38 +620,6 @@ namespace EVE.ISXEVE
 			Tracing.SendCallback("Entity.GetCargo");
 			return Util.GetListFromMethod<Item>(this, "GetCargo", "item");
 		}
-
-		/// <summary>
-		/// If you have used "OpenCargo" on this entity and a 'loot window' 
-		/// has appeared, then this member will return an evewindow datatype 
-		/// object representing that lootwindow. Otherwise, it will return NULL.
-		/// </summary>
-		public EVEWindow LootWindow
-		{
-			get
-			{
-				return new EVEWindow(GetMember("LootWindow"));
-			}
-		}
-
-		/// <summary>
-		/// Alias for 'LootWindow'
-		/// </summary>
-		public EVEWindow CargoWindow
-		{
-			get
-			{
-				return new EVEWindow(GetMember("CargoWindow"));
-			}
-		}
-
-        public EVEWindow StorageWindow
-        {
-            get
-            {
-                return new EVEWindow(GetMember("StorageWindow"));
-            }
-        }
 		#endregion
 
 		/// <summary>
@@ -826,35 +794,13 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
-		/// Open cargo hold of entity.
+		/// Open inventory of entity.
 		/// </summary>
 		/// <returns></returns>
-		public bool OpenCargo()
+		public bool Open()
 		{
-			Tracing.SendCallback("Entity.OpenCargo");
-			return ExecuteMethod("OpenCargo");
-		}
-
-        public bool OpenStorage()
-        {
-            Tracing.SendCallback("Entity.OpenStorage");
-            return ExecuteMethod("OpenStorage");
-        }
-
-        public bool CloseStorage()
-        {
-            Tracing.SendCallback("Entity.CloseStorage");
-            return ExecuteMethod("CloseStorage");
-        }
-
-		/// <summary>
-		/// Close cargo hold of entity.
-		/// </summary>
-		/// <returns></returns>
-		public bool CloseCargo()
-		{
-			Tracing.SendCallback("Entity.CloseCargo");
-			return ExecuteMethod("CloseCargo");
+			Tracing.SendCallback("Entity.Open");
+			return ExecuteMethod("Open");
 		}
 
 		/// <summary>

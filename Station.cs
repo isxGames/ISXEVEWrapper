@@ -144,16 +144,6 @@ namespace EVE.ISXEVE
             return wnd.StackAll();
 		}
 
-		/// <summary>
-		/// Open the corp hangar.
-		/// </summary>
-		/// <returns></returns>
-		public bool OpenCorpHangar()
-		{
-			Tracing.SendCallback("Station.OpenCorpHangar");
-			return ExecuteMethod("OpenCorpHangar");
-		}
-
         public bool AddWaypoint()
         {
             Tracing.SendCallback("Station.AddWaypoint");

@@ -563,13 +563,13 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
-		/// Wrapper for the OpenCargo method of the ship type.
+		/// Wrapper for the Open method of the ship type.
 		/// </summary>
 		/// <returns></returns>
-		public bool OpenCargo()
+		public bool Open()
 		{
-			Tracing.SendCallback("Ship.OpenCargo");
-			return ExecuteMethod("OpenCargo");
+			Tracing.SendCallback("Ship.Open");
+			return ExecuteMethod("Open");
 		}
 		#endregion
 	}

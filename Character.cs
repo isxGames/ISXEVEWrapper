@@ -626,16 +626,6 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
-		/// Wrapper for the OpenCorpHangar method of the character type.
-		/// </summary>
-		/// <returns></returns>
-		public bool OpenCorpHangar()
-		{
-			Tracing.SendCallback("Character.OpenCorpHangar");
-			return ExecuteMethod("OpenCorpHangar");
-		}
-
-		/// <summary>
 		/// Wrapper for the StackAllHangarItems method of the character type.
 		/// </summary>
 		/// <returns></returns>

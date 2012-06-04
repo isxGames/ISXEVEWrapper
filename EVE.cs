@@ -678,6 +678,12 @@ namespace EVE.ISXEVE
             Tracing.SendCallback("EVE.GetViewedWrecks");
             return Util.GetListFromMethod<long>(this, "GetViewedWrecks", "int64");
         }
+
+		public bool RefreshBookmarks()
+		{
+			Tracing.SendCallback("EVE.RefreshBookmarks");
+			return ExecuteMethod("RefreshBookmarks");
+		}
 	}
 
 	/// <summary>
