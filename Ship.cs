@@ -432,6 +432,23 @@ namespace EVE.ISXEVE
 			Tracing.SendCallback("Ship.GetCargo");
 			return Util.GetListFromMethod<Item>(this, "GetCargo", "item");
 		}
+
+		/// <summary>
+		/// Wrapper for the HasOreHold member of the ship type.
+		/// </summary>
+		public bool HasOreHold
+		{
+			get { return this.GetBoolFromLSO("HasOreHold"); }
+		}
+
+		/// <summary>
+		/// Wrapper for the GetOreHoldCargo method of the ship type
+		/// </summary>
+		/// <returns></returns>
+		public List<Item> GetOreHoldCargo()
+		{
+			return Util.GetListFromMethod<Item>(this, "GetOreHoldCargo", "item");
+		}
 		#endregion
 
 		#region Drone

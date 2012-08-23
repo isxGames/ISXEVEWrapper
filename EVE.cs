@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
 using Extensions;
 using LavishScriptAPI;
 
@@ -380,7 +381,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool CreateBookmark()
 		{
-			return CreateBookmark(null, null);
+			return CreateBookmark(null, null, null);
 		}
 
 		/// <summary>
@@ -388,30 +389,19 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool CreateBookmark(string label)
 		{
-			return CreateBookmark(label, null);
+			return CreateBookmark(label, null, null);
 		}
 
 		/// <summary>
 		/// Creates a bookmark.
 		/// </summary>
-		public bool CreateBookmark(string label, string notes)
+		public bool CreateBookmark(string label, string notes, string location)
 		{
-		    if (!string.IsNullOrEmpty(label) &&
-				!string.IsNullOrEmpty(notes))
-			{
-				Tracing.SendCallback("EVE.CreateBookmark", label, notes);
-				return ExecuteMethod("CreateBookmark", label, notes);
-			}
-		    if (!string.IsNullOrEmpty(label))
-		    {
-		        Tracing.SendCallback("EVE.CreateBookmark", label);
-		        return ExecuteMethod("CreateBookmark", label);
-		    }
-		    Tracing.SendCallback("EVE.CreateBookmark");
-		    return ExecuteMethod("CreateBookmark");
+			Tracing.SendCallback("EVE.CreateBookmark", label, notes, location);
+			return ExecuteMethod("CreateBookmark", label, notes, location);
 		}
 
-	    /// <summary>
+		/// <summary>
 		/// Wrapper for the AddWaypoint method of the eve type.
 		/// </summary>
 		/// <param name="solarSystemID"></param>

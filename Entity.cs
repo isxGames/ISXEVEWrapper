@@ -620,6 +620,14 @@ namespace EVE.ISXEVE
 			Tracing.SendCallback("Entity.GetCargo");
 			return Util.GetListFromMethod<Item>(this, "GetCargo", "item");
 		}
+
+		/// <summary>
+		/// Wrapper for the HasOreHold member of the entity type.
+		/// </summary>
+		public bool HasOreHold
+		{
+			get { return this.GetBoolFromLSO("HasOreHold"); }
+		}
 		#endregion
 
 		/// <summary>
