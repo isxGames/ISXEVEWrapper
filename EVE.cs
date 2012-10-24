@@ -208,6 +208,28 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
+		/// Wrapper for the GetOnlineCorpMembers method of the eve type.
+		/// </summary>
+		/// <param name="args"></param>
+		/// <returns></returns>
+		public List<Pilot> GetOnlineCorpMembersAsPilots(params string[] args)
+		{
+			Tracing.SendCallback("EVE.GetOnlineCorpMembers", args);
+			return Util.GetListFromMethod<Pilot>(this, "GetOnlineCorpMembers", "pilot", args);
+		}
+
+        /// <summary>
+        /// Wrapper for the GetOnlineCorpMembers method of the eve type.
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns></returns>
+        public List<Being> GetOnlineCorpMembersAsBeings(params string[] args)
+        {
+            Tracing.SendCallback("EVE.GetOnlineCorpMembers", args);
+            return Util.GetListFromMethod<Being>(this, "GetOnlineCorpMembers", "being", args);
+        }
+
+		/// <summary>
         /// Your "buddies"
 		/// </summary>
 		public List<Being> GetBuddies()
