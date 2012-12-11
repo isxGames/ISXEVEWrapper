@@ -31,376 +31,652 @@ namespace EVE.ISXEVE
 
 		#region Members
 		#region ShipStats
+
+		private Int64? _id;
 		/// <summary>
 		/// Wrapper for the ID member of this ship type. This is the same as our Entity ID.
 		/// </summary>
 		public Int64 ID
 		{
-			get { return this.GetInt64FromLSO("ID"); }
+			get
+			{
+				if (_id == null)
+					_id = this.GetInt64FromLSO("ID");
+				return _id.Value;
+			}
 		}
 
+		private string _name;
 		/// <summary>
 		/// Wrapper for the Name member of the ship type.
 		/// </summary>
 		public string Name
 		{
-			get { return this.GetStringFromLSO("Name"); }
+			get { return _name ?? (_name = this.GetStringFromLSO("Name")); }
 		}
 
+		private double? _capacitor;
 		/// <summary>
 		/// Wrapper for the Capacitor member of the ship type.
 		/// </summary>
 		public double Capacitor
 		{
-			get { return this.GetDoubleFromLSO("Capacitor"); }
+			get
+			{
+				if (_capacitor == null)
+					_capacitor = this.GetDoubleFromLSO("Capacitor");
+				return _capacitor.Value;
+			}
 		}
 
+		private double? _maxCapacitor;
 		/// one sec<summary>
 		/// Wrapper for the MaxCapacitor member of the ship type.
 		/// </summary>
 		public double MaxCapacitor
 		{
-			get { return this.GetDoubleFromLSO("MaxCapacitor"); }
+			get
+			{
+				if (_maxCapacitor == null)
+					_maxCapacitor = this.GetDoubleFromLSO("MaxCapacitor");
+				return _maxCapacitor.Value;
+			}
 		}
 
+		private double? _capacitorPct;
 		/// <summary>
 		/// Wrapper for the CapacitorPct member of the ship type.
 		/// </summary>
 		public double CapacitorPct
 		{
-			get { return this.GetDoubleFromLSO("CapacitorPct"); }
+			get
+			{
+				if (_capacitorPct == null)
+					_capacitorPct = this.GetDoubleFromLSO("CapacitorPct");
+				return _capacitorPct.Value;
+			}
 		}
 
+		private double? _shield;
 		/// <summary>
 		/// Wrapper for the Shield member of the ship type.
 		/// </summary>
 		public double Shield
 		{
-			get { return this.GetDoubleFromLSO("Shield"); }
+			get
+			{
+				if (_shield == null)
+					_shield = this.GetDoubleFromLSO("Shield");
+				return _shield.Value;
+			}
 		}
 
+		private double? _maxShield;
 		/// <summary>
 		/// Wrapper for the MaxShield member of the ship type.
 		/// </summary>
 		public double MaxShield
 		{
-			get { return this.GetDoubleFromLSO("MaxShield"); }
+			get
+			{
+				if (_maxShield == null)
+					_maxShield = this.GetDoubleFromLSO("MaxShield");
+				return _maxShield.Value;
+			}
 		}
 
+		private double? _shieldPct;
 		/// <summary>
 		/// Wrapper for the ShieldPct member of the ship type.
 		/// </summary>
 		public double ShieldPct
 		{
-			get { return this.GetDoubleFromLSO("ShieldPct"); }
+			get
+			{
+				if (_shieldPct == null)
+					_shieldPct = this.GetDoubleFromLSO("ShieldPct");
+				return _shieldPct.Value;
+			}
 		}
 
+		private double? _armor;
 		/// <summary>
 		/// Wrapper for the Armor member of the ship type.
 		/// </summary>
 		public double Armor
 		{
-			get { return this.GetDoubleFromLSO("Armor"); }
+			get
+			{
+				if (_armor == null)
+					_armor = this.GetDoubleFromLSO("Armor");
+				return _armor.Value;
+			}
 		}
 
+		private double? _maxArmor;
 		/// <summary>
 		/// Wrapper for the MaxArmor member of the ship type.
 		/// </summary>
 		public double MaxArmor
 		{
-			get { return this.GetDoubleFromLSO("MaxArmor"); }
+			get
+			{
+				if (_maxArmor == null)
+					_maxArmor = this.GetDoubleFromLSO("MaxArmor");
+				return _maxArmor.Value;
+			}
 		}
 
+		private double? _armorPct;
 		/// <summary>
 		/// Wrapper for the ArmorPct member of the ship type.
 		/// </summary>
 		public double ArmorPct
 		{
-			get { return this.GetDoubleFromLSO("ArmorPct"); }
+			get
+			{
+				if (_armorPct == null)
+					_armorPct = this.GetDoubleFromLSO("ArmorPct");
+
+				return _armorPct.Value;
+			}
 		}
 
+		private double? _structure;
 		/// <summary>
 		/// Wrapper for the Structure member of the ship type.
 		/// </summary>
 		public double Structure
 		{
-			get { return this.GetDoubleFromLSO("Structure"); }
+			get
+			{
+				if (_structure == null)
+					_structure = this.GetDoubleFromLSO("Structure");
+				return _structure.Value;
+			}
 		}
 
+		private double? _maxStructure;
 		/// <summary>
 		/// Wrapper for the MaxStructure member of the ship type.
 		/// </summary>
 		public double MaxStructure
 		{
-			get { return this.GetDoubleFromLSO("MaxStructure"); }
+			get
+			{
+				if (_maxStructure == null)
+					_maxStructure = this.GetDoubleFromLSO("MaxStructure");
+				return _maxStructure.Value;
+			}
 		}
 
+		private double? _structurePct;
 		/// <summary>
 		/// Wrapper for the StructurePct member of the ship type.
 		/// </summary>
 		public double StructurePct
 		{
-			get { return this.GetDoubleFromLSO("StructurePct"); }
+			get
+			{
+				if (_structurePct == null)
+					_structurePct = this.GetDoubleFromLSO("StructurePct");
+				return _structurePct.Value;
+			}
 		}
 
+		private Item _toItem;
+		/// <summary>
+		/// Wrapper for the Ship.ToItem member
+		/// </summary>
 		public Item ToItem
 		{
-			get { return new Item(GetMember("ToItem")); }
+			get { return _toItem ?? (_toItem = new Item(GetMember("ToItem"))); }
 		}
 
+		private Scanner _scanner;
+		/// <summary>
+		/// Wrapper for the Ship.Scanner member
+		/// </summary>
 		public Scanner Scanner
 		{
-			get { return new Scanner(GetMember("Scanner")); }
+			get { return _scanner ?? (_scanner = new Scanner(GetMember("Scanner"))); }
 		}
 
+		private double? _cpuLoad;
 		/// <summary>
 		/// Wrapper for the CPULoad member of the ship type.
 		/// </summary>
 		public double CPULoad
 		{
-			get { return this.GetDoubleFromLSO("CPULoad"); }
+			get
+			{
+				if (_cpuLoad == null)
+					_cpuLoad = this.GetDoubleFromLSO("CPULoad");
+				return _cpuLoad.Value;
+			}
 		}
 
+		private double? _cpuOutput;
 		/// <summary>
 		/// Wrapper for the CPUOutput member of the ship type.
 		/// </summary>
 		public double CPUOutput
 		{
-			get { return this.GetDoubleFromLSO("CPUOutput"); }
+			get
+			{
+				if (_cpuOutput == null)
+					_cpuOutput = this.GetDoubleFromLSO("CPUOutput");
+				return _cpuOutput.Value;
+			}
 		}
 
+		private double? _powerLoad;
 		/// <summary>
 		/// Wrapper for the PowerLoad member of the ship type.
 		/// </summary>
 		public double PowerLoad
 		{
-			get { return this.GetDoubleFromLSO("PowerLoad"); }
+			get
+			{
+				if (_powerLoad == null)
+					_powerLoad = this.GetDoubleFromLSO("PowerLoad");
+				return _powerLoad.Value;
+			}
 		}
 
+		private double? _powerOutput;
 		/// <summary>
 		/// Wrapper for the PowerOutput member of the ship type.
 		/// </summary>
 		public double PowerOutput
 		{
-			get { return this.GetDoubleFromLSO("PowerOutput"); }
+			get
+			{
+				if (_powerOutput == null)
+					_powerOutput = this.GetDoubleFromLSO("PowerOutput");
+				return _powerOutput.Value;
+			}
 		}
 
+		private double? _turretSlotsLeft;
 		/// <summary>
 		/// Wrapper for the TurretSlotsLeft member of the ship type.
 		/// </summary>
 		public double TurretSlotsLeft
 		{
-			get { return this.GetDoubleFromLSO("TurretSlotsLeft"); }
+			get
+			{
+				if (_turretSlotsLeft == null)
+					_turretSlotsLeft = this.GetDoubleFromLSO("TurretSlotsLeft");
+				return _turretSlotsLeft.Value;
+			}
 		}
 
+		private double? _heatCapacityHigh;
 		/// <summary>
 		/// Wrapper for the HeatCapacityHigh member of the ship type.
 		/// </summary>
 		public double HeatCapacityHigh
 		{
-			get { return this.GetDoubleFromLSO("HeatCapacityHigh"); }
+			get
+			{
+				if (_heatCapacityHigh == null)
+					_heatCapacityHigh = this.GetDoubleFromLSO("HeatCapacityHigh");
+				return _heatCapacityHigh.Value;
+			}
 		}
 
+		private double? _heatCapacityMedium;
 		/// <summary>
 		/// Wrapper for the HeatCapacityMedium member of the ship type.
 		/// </summary>
 		public double HeatCapacityMedium
 		{
-			get { return this.GetDoubleFromLSO("HeatCapacityMedium"); }
+			get
+			{
+				if (_heatCapacityMedium == null)
+					_heatCapacityMedium = this.GetDoubleFromLSO("HeatCapacityMedium");
+				return _heatCapacityMedium.Value;
+			}
 		}
 
+		private double? _heatCapacityLow;
 		/// <summary>
 		/// Wrapper for the HeatCapacityLow member of the ship type.
 		/// </summary>
 		public double HeatCapacityLow
 		{
-			get { return this.GetDoubleFromLSO("HeatCapacityLow"); }
+			get
+			{
+				if (_heatCapacityLow == null)
+					_heatCapacityLow = this.GetDoubleFromLSO("HeatCapacityLow");
+				return _heatCapacityLow.Value;
+			}
 		}
 
+		private double? _rigSlots;
 		/// <summary>
 		/// Wrapper for the RigSlots member of the ship type.
 		/// </summary>
 		public double RigSlots
 		{
-			get { return this.GetDoubleFromLSO("RigSlots"); }
+			get
+			{
+				if (_rigSlots == null)
+					_rigSlots = this.GetDoubleFromLSO("RigSlots");
+				return _rigSlots.Value;
+			}
 		}
 
+		private double? _rigSlotsLeft;
 		/// <summary>
 		/// Wrapper for the RigSlotsLeft member of the ship type.
 		/// </summary>
 		public double RigSlotsLeft
 		{
-			get { return this.GetDoubleFromLSO("RigSlotsLeft"); }
+			get
+			{
+				if (_rigSlotsLeft == null)
+					_rigSlotsLeft = this.GetDoubleFromLSO("RigSlotsLeft");
+				return _rigSlotsLeft.Value;
+			}
 		}
 
+		private double? _scanSpeed;
 		/// <summary>
 		/// Wrapper for the ScanSpeed member of the ship type.
 		/// </summary>
 		public double ScanSpeed
 		{
-			get { return this.GetDoubleFromLSO("ScanSpeed"); }
+			get
+			{
+				if (_scanSpeed == null)
+					_scanSpeed = this.GetDoubleFromLSO("ScanSpeed");
+				return _scanSpeed.Value;
+			}
 		}
 
+		private double? _maxTargetRange;
 		/// <summary>
 		/// Wrapper for the MaxTargetRange member of the ship type.
 		/// </summary>
 		public double MaxTargetRange
 		{
-			get { return this.GetDoubleFromLSO("MaxTargetRange"); }
+			get
+			{
+				if (_maxTargetRange == null)
+					_maxTargetRange = this.GetDoubleFromLSO("MaxTargetRange");
+				return _maxTargetRange.Value;
+			}
 		}
 
+		private double? _lowSlots;
 		/// <summary>
 		/// Wrapper for the LowSlots member of the ship type.
 		/// </summary>
 		public double LowSlots
 		{
-			get { return this.GetDoubleFromLSO("LowSlots"); }
+			get
+			{
+				if (_lowSlots == null)
+					_lowSlots = this.GetDoubleFromLSO("LowSlots");
+				return _lowSlots.Value;
+			}
 		}
 
+		private double? _mediumSlots;
 		/// <summary>
 		/// Wrapper for the MediumSlots member of the ship type.
 		/// </summary>
 		public double MediumSlots
 		{
-			get { return this.GetDoubleFromLSO("MediumSlots"); }
+			get
+			{
+				if (_mediumSlots == null)
+					_mediumSlots = this.GetDoubleFromLSO("MediumSlots");
+				return _mediumSlots.Value;
+			}
 		}
 
+		private double? _highSlots;
 		/// <summary>
 		/// Wrapper for the HighSlots member of the ship type.
 		/// </summary>
 		public double HighSlots
 		{
-			get { return this.GetDoubleFromLSO("HighSlots"); }
+			get
+			{
+				if (_highSlots == null)
+					_highSlots = this.GetDoubleFromLSO("HighSlots");
+				return _highSlots.Value;
+			}
 		}
 
+		private double? _radius;
 		/// <summary>
 		/// Wrapper for the Radius member of the ship type.
 		/// </summary>
 		public double Radius
 		{
-			get { return this.GetDoubleFromLSO("Radius"); }
+			get
+			{
+				if (_radius == null)
+					_radius = this.GetDoubleFromLSO("Radius");
+				return _radius.Value;
+			}
 		}
 
+		private double? _techLevel;
 		/// <summary>
 		/// Wrapper for the TechLevel member of the ship type.
 		/// </summary>
 		public double TechLevel
 		{
-			get { return this.GetDoubleFromLSO("TechLevel"); }
+			get
+			{
+				if (_techLevel == null)
+					_techLevel = this.GetDoubleFromLSO("TechLevel");
+				return _techLevel.Value;
+			}
 		}
 
+		private double? _heatLow;
 		/// <summary>
 		/// Wrapper for the HeatLow member of the ship type.
 		/// </summary>
 		public double HeatLow
 		{
-			get { return this.GetDoubleFromLSO("HeatLow"); }
+			get
+			{
+				if (_heatLow == null)
+					_heatLow = this.GetDoubleFromLSO("HeatLow");
+				return _heatLow.Value;
+			}
 		}
 
+		private double? _heatMedium;
 		/// <summary>
 		/// Wrapper for the HeatMedium member of the ship type.
 		/// </summary>
 		public double HeatMedium
 		{
-			get { return this.GetDoubleFromLSO("HeatMedium"); }
+			get
+			{
+				if (_heatMedium == null)
+					_heatMedium = this.GetDoubleFromLSO("HeatMedium");
+				return _heatMedium.Value;
+			}
 		}
 
+		private double? _heatHigh;
 		/// <summary>
 		/// Wrapper for the HeatHigh member of the ship type.
 		/// </summary>
 		public double HeatHigh
 		{
-			get { return this.GetDoubleFromLSO("HeatHigh"); }
+			get
+			{
+				if (_heatHigh == null)
+					_heatHigh = this.GetDoubleFromLSO("HeatHigh");
+				return _heatHigh.Value;
+			}
 		}
 
+		private double? _maxVelocity;
 		/// <summary>
 		/// Wrapper for the MaxVelocity member of the ship type.
 		/// </summary>
 		public double MaxVelocity
 		{
-			get { return this.GetDoubleFromLSO("MaxVelocity"); }
+			get
+			{
+				if (_maxVelocity == null)
+					_maxVelocity = this.GetDoubleFromLSO("MaxVelocity");
+				return _maxVelocity.Value;
+			}
 		}
 
+		private double? _scanResolution;
 		/// <summary>
 		/// Wrapper for the ScanResolution member of the ship type.
 		/// </summary>
 		public double ScanResolution
 		{
-			get { return this.GetDoubleFromLSO("ScanResolution"); }
+			get
+			{
+				if (_scanResolution == null)
+					_scanResolution = this.GetDoubleFromLSO("ScanResolution");
+				return _scanResolution.Value;
+			}
 		}
 
+		private double? _scanRadarStrength;
 		/// <summary>
 		/// Wrapper for the ScanRadarStrength member of the ship type.
 		/// </summary>
 		public double ScanRadarStrength
 		{
-			get { return this.GetDoubleFromLSO("ScanRadarStrength"); }
+			get
+			{
+				if (_scanRadarStrength == null)
+					_scanRadarStrength = this.GetDoubleFromLSO("ScanRadarStrength");
+				return _scanRadarStrength.Value;
+			}
 		}
 
+		private double? _agility;
 		/// <summary>
 		/// Wrapper for the Agility member of the ship type.
 		/// </summary>
 		public double Agility
 		{
-			get { return this.GetDoubleFromLSO("Agility"); }
+			get
+			{
+				if (_agility == null)
+					_agility = this.GetDoubleFromLSO("Agility");
+				return _agility.Value;
+			}
 		}
 
+		private double? _launcherSlotsLeft;
 		/// <summary>
 		/// Wrapper for the LauncherSlotsLeft member of the ship type.
 		/// </summary>
 		public double LauncherSlotsLeft
 		{
-			get { return this.GetDoubleFromLSO("LauncherSlotsLeft"); }
+			get
+			{
+				if (_launcherSlotsLeft == null)
+					_launcherSlotsLeft = this.GetDoubleFromLSO("LauncherSlotsLeft");
+				return _launcherSlotsLeft.Value;
+			}
 		}
 
+		private double? _capacitorRechargeRate;
 		/// <summary>
 		/// Wrapper for the CapacitorRechargeRate member of the ship type.
 		/// </summary>
 		public double CapacitorRechargeRate
 		{
-			get { return this.GetDoubleFromLSO("CapacitorRechargeRate"); }
+			get
+			{
+				if (_capacitorRechargeRate == null)
+					_capacitorRechargeRate = this.GetDoubleFromLSO("CapacitorRechargeRate");
+				return _capacitorRechargeRate.Value;
+			}
 		}
 
+		private double? _shieldRechargeRate;
 		/// <summary>
 		/// Wrapper for the ShieldRechargeRate member of the ship type.
 		/// </summary>
 		public double ShieldRechargeRate
 		{
-			get { return this.GetDoubleFromLSO("ShieldRechargeRate"); }
+			get
+			{
+				if (_shieldRechargeRate == null)
+					_shieldRechargeRate = this.GetDoubleFromLSO("ShieldRechargeRate");
+				return _shieldRechargeRate.Value;
+			}
 		}
 
+		private double? _signatureRadius;
 		/// <summary>
 		/// Wrapper for the SignatureRadius member of the ship type.
 		/// </summary>
 		public double SignatureRadius
 		{
-			get { return this.GetDoubleFromLSO("SignatureRadius"); }
+			get
+			{
+				if (_signatureRadius == null)
+					_signatureRadius = this.GetDoubleFromLSO("SignatureRadius");
+				return _signatureRadius.Value;
+			}
 		}
 
+		private double? _maxLockedTargets;
 		/// <summary>
 		/// See also the 'MaxLockedTargets' member of the character datatype for the character's restrictions on locked targets.
 		/// </summary>
 		public double MaxLockedTargets
 		{
-			get { return this.GetDoubleFromLSO("MaxLockedTargets"); }
+			get
+			{
+				if (_maxLockedTargets == null)
+					_maxLockedTargets = this.GetDoubleFromLSO("MaxLockedTargets");
+				return _maxLockedTargets.Value;
+			}
 		}
 		#endregion
 
 		#region Cargo
+
+		private double? _cargoCapacity;
 		/// <summary>
 		/// Wrapper for the CargoCapacity member of the ship type.
 		/// </summary>
 		public double CargoCapacity
 		{
-			get { return this.GetDoubleFromLSO("CargoCapacity"); }
+			get
+			{
+				if (_cargoCapacity == null)
+					_cargoCapacity = this.GetDoubleFromLSO("CargoCapacity");
+				return _cargoCapacity.Value;
+			}
 		}
 
+		private double? _usedCargoCapacity;
 		/// <summary>
 		/// Wrapper for the UsedCargoCapacity member of the ship type.
 		/// </summary>
 		public double UsedCargoCapacity
 		{
-			get { return this.GetDoubleFromLSO("UsedCargoCapacity"); }
+			get
+			{
+				if (_usedCargoCapacity == null)
+					_usedCargoCapacity = this.GetDoubleFromLSO("UsedCargoCapacity");
+				return _usedCargoCapacity.Value;
+			}
 		}
 
 		/// <summary>
@@ -423,6 +699,7 @@ namespace EVE.ISXEVE
 			return new Item(GetMember("Cargo", name));
 		}
 
+		private List<Item> _cargo;
 		/// <summary>
 		/// Wrapper for the GetCargo member of the ship type.
 		/// </summary>
@@ -430,42 +707,62 @@ namespace EVE.ISXEVE
 		public List<Item> GetCargo()
 		{
 			Tracing.SendCallback("Ship.GetCargo");
-			return Util.GetListFromMethod<Item>(this, "GetCargo", "item");
+			return _cargo ?? (_cargo = Util.GetListFromMethod<Item>(this, "GetCargo", "item"));
 		}
 
+		private bool? _hasOreHold;
 		/// <summary>
 		/// Wrapper for the HasOreHold member of the ship type.
 		/// </summary>
 		public bool HasOreHold
 		{
-			get { return this.GetBoolFromLSO("HasOreHold"); }
+			get
+			{
+				if (_hasOreHold == null)
+					_hasOreHold = this.GetBoolFromLSO("HasOreHold");
+				return _hasOreHold.Value;
+			}
 		}
 
+		private List<Item> _oreHoldCargo;
 		/// <summary>
 		/// Wrapper for the GetOreHoldCargo method of the ship type
 		/// </summary>
 		/// <returns></returns>
 		public List<Item> GetOreHoldCargo()
 		{
-			return Util.GetListFromMethod<Item>(this, "GetOreHoldCargo", "item");
+			return _oreHoldCargo ?? (_oreHoldCargo = Util.GetListFromMethod<Item>(this, "GetOreHoldCargo", "item"));
 		}
 		#endregion
 
 		#region Drone
+
+		private double? _droneBayCapacity;
 		/// <summary>
 		/// Wrapper for the DronebayCapacity member of the ship type.
 		/// </summary>
 		public double DronebayCapacity
 		{
-			get { return this.GetDoubleFromLSO("DronebayCapacity"); }
+			get
+			{
+				if (_droneBayCapacity == null)
+					_droneBayCapacity = this.GetDoubleFromLSO("DronebayCapacity");
+				return _droneBayCapacity.Value;
+			}
 		}
 
+		private double? _usedDroneBayCapacity;
 		/// <summary>
 		/// Wrapper for the UsedDronebayCapacity member of the ship type.
 		/// </summary>
 		public double UsedDronebayCapacity
 		{
-			get { return this.GetDoubleFromLSO("UsedDronebayCapacity"); }
+			get
+			{
+				if (_usedDroneBayCapacity == null)
+					_usedDroneBayCapacity = this.GetDoubleFromLSO("UsedDronebayCapacity");
+				return _usedDroneBayCapacity.Value;
+			}
 		}
 
 		/// <summary>
@@ -488,6 +785,7 @@ namespace EVE.ISXEVE
 			return new Item(GetMember("Drone", name));
 		}
 
+		private List<Item> _drones;
 		/// <summary>
 		/// Wrapper for the GetDrones member of the ship type.
 		/// </summary>
@@ -495,7 +793,7 @@ namespace EVE.ISXEVE
 		public List<Item> GetDrones()
 		{
 			Tracing.SendCallback("Ship.GetDrones", string.Empty);
-			return Util.GetListFromMethod<Item>(this, "GetDrones", "item");
+			return _drones ?? (_drones = Util.GetListFromMethod<Item>(this, "GetDrones", "item"));
 		}
 		#endregion
 
@@ -541,6 +839,7 @@ namespace EVE.ISXEVE
 			return Module(slotname).ToItem;
 		}
 
+		private List<Module> _modules;
 		/// <summary>
 		/// Modules fit to the ship
 		/// Note: Must be in space.
@@ -548,7 +847,7 @@ namespace EVE.ISXEVE
 		public List<Module> GetModules()
 		{
 			Tracing.SendCallback("Ship.GetModules");
-			return Util.GetListFromMethod<Module>(this, "GetModules", "module");
+			return _modules ?? (_modules = Util.GetListFromMethod<Module>(this, "GetModules", "module"));
 		}
 		#endregion
 		#endregion

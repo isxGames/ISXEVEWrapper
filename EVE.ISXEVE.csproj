@@ -90,9 +90,11 @@
     <Compile Include="Corporation.cs" />
     <Compile Include="CorporationWallet.cs" />
     <Compile Include="DialogString.cs" />
+    <Compile Include="EveInvChildWindow.cs" />
     <Compile Include="EveInvWindow.cs" />
     <Compile Include="EVETime.cs" />
     <Compile Include="Fleet.cs" />
+    <Compile Include="Interfaces\IActiveDrone.cs" />
     <Compile Include="_Compiler Settings\GlobalSuppressions.cs" />
     <Compile Include="Jammer.cs" />
     <Compile Include="LavishScriptObjectExtensions.cs" />

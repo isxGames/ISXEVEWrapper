@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using EVE.ISXEVE.Interfaces;
 using Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
@@ -10,7 +11,7 @@ namespace EVE.ISXEVE
 	/// <summary>
 	/// Wrapper for the activedrone data type.
 	/// </summary>
-	public class ActiveDrone : LavishScriptObject
+	public class ActiveDrone : LavishScriptObject, IActiveDrone
 	{
 		#region Constructors
 		/// <summary>
@@ -27,7 +28,7 @@ namespace EVE.ISXEVE
 		/// <summary>
 		/// Wrapper for the ID member of the activedrone type.
 		/// </summary>
-		public Int64 ID
+		public virtual Int64 ID
 		{
 			get
 			{
@@ -39,7 +40,7 @@ namespace EVE.ISXEVE
 		/// <summary>
 		/// Wrapper for the Owner member of the activedrone type.
 		/// </summary>
-		public Pilot Owner
+		public virtual Pilot Owner
 		{
 			get
 			{
@@ -50,7 +51,7 @@ namespace EVE.ISXEVE
 		/// <summary>
 		/// Wrapper for the Controller member of the activedrone type.
 		/// </summary>
-		public Entity Controller
+		public virtual Entity Controller
 		{
 			get
 			{
@@ -61,7 +62,7 @@ namespace EVE.ISXEVE
 		/// <summary>
 		/// Wrapper for the Type member of the activedrone type.
 		/// </summary>
-		public string Type
+		public virtual string Type
 		{
 			get { return this.GetStringFromLSO("Type"); }
 		}
@@ -69,7 +70,7 @@ namespace EVE.ISXEVE
 		/// <summary>
 		/// Wrapper for the TypeID member of the activedrone type.
 		/// </summary>
-		public int TypeID
+		public virtual int TypeID
 		{
 			get { return this.GetIntFromLSO("TypeID"); }
 		}
@@ -77,7 +78,7 @@ namespace EVE.ISXEVE
 		/// <summary>
 		/// ie 0 is 'idle', etc.
 		/// </summary>
-		public int State
+		public virtual int State
 		{
 			get { return this.GetIntFromLSO("State"); }
 		}
@@ -85,7 +86,7 @@ namespace EVE.ISXEVE
 		/// <summary>
 		/// Wrapper for the ToEntity member of the activedrone type.
 		/// </summary>
-		public Entity ToEntity
+		public virtual Entity ToEntity
 		{
 			get
 			{
@@ -96,7 +97,7 @@ namespace EVE.ISXEVE
 		/// <summary>
 		/// Wrapper for the Target member of the activedrone type.
 		/// </summary>
-		public Entity Target
+		public virtual Entity Target
 		{
 			get
 			{

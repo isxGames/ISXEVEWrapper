@@ -40,52 +40,74 @@ namespace EVE.ISXEVE
 		#endregion
 
 		#region Members
+
+		private string _alliance;
 		/// <summary>
 		/// Wrapper for the Alliance member of the entity type.
 		/// </summary>
 		public string Alliance
 		{
-			get { return this.GetStringFromLSO("Alliance"); }
+			get { return _alliance ?? (_alliance = this.GetStringFromLSO("Alliance")); }
 		}
 
+		private int? _allianceId;
 		/// <summary>
 		/// Wrapper for the AllianceID member of the entity type.
 		/// </summary>
 		public int AllianceID
 		{
-			get { return this.GetIntFromLSO("AllianceID"); }
+			get
+			{
+				if (_allianceId == null)
+					_allianceId = this.GetIntFromLSO("AllianceID");
+				return _allianceId.Value;
+			}
 		}
 
+		private string _allianceTicker;
 		/// <summary>
 		/// Wrapper for the AllianceTicker member of the entity type.
 		/// </summary>
 		public string AllianceTicker
 		{
-			get { return this.GetStringFromLSO("AllianceTicker"); }
+			get { return _allianceTicker ?? (_allianceTicker = this.GetStringFromLSO("AllianceTicker")); }
 		}
 
+		private double? _bounty;
         /// <summary>
         /// Wrapper for the Bounty member of the Entity datatype.
         /// </summary>
 	    public double Bounty
 	    {
-            get { return this.GetDoubleFromLSO("Bounty"); }
+            get
+            {
+				if (_bounty == null)
+					_bounty = this.GetDoubleFromLSO("Bounty");
+            	return _bounty.Value;
+            }
 	    }
 
+		private string _category;
 		/// <summary>
 		/// Wrapper for the Category member of the entity type.
 		/// </summary>
 		public string Category
 		{
-			get { return this.GetStringFromLSO("Category"); }
+			get {return _category ?? (_category = this.GetStringFromLSO("Category")); }
 		}
 
+		private int? _categoryId;
 		/// <summary>
 		/// Wrapper for the CategoryID member of the entity type.
 		/// </summary>
 		public int CategoryID
 		{
-			get { return this.GetIntFromLSO("CategoryID"); }
+			get
+			{
+				if (_categoryId == null)
+					_categoryId = this.GetIntFromLSO("CategoryID");
+				return _categoryId.Value;
+			}
 		}
 
 		/// <summary>
@@ -99,14 +121,21 @@ namespace EVE.ISXEVE
 			}
 		}
 
+		private Int64? _charId;
 		/// <summary>
 		/// Wrapper for the CharID member of the entity type.
 		/// </summary>
 		public Int64 CharID
 		{
-			get { return this.GetInt64FromLSO("CharID"); }
+			get
+			{
+				if (_charId == null)
+					_charId = this.GetInt64FromLSO("CharID");
+				return _charId.Value;
+			}
 		}
 
+		private Corporation _corp;
 	    /// <summary>
 	    /// Wrapper for the Corporation member of the entity type.
 	    /// </summary>
@@ -114,34 +143,48 @@ namespace EVE.ISXEVE
 	    {
 	        get
 	        {
-	            return new Corporation(GetMember("Corporation"));
+	            return _corp ?? (_corp = new Corporation(GetMember("Corporation")));
 	        }
 	    }
 
+		private int? _formationId;
 		/// <summary>
 		/// Wrapper for the FormationID member of the entity type.
 		/// </summary>
 		public int FormationID
 		{
-			get { return this.GetIntFromLSO("FormationID"); }
+			get
+			{
+				if (_formationId == null)
+					_formationId = this.GetIntFromLSO("FormationID");
+				return _formationId.Value;
+			}
 		}
 
+		private string _group;
 		/// <summary>
 		/// Wrapper for the Group member of the entity type.
 		/// </summary>
 		public string Group
 		{
-			get { return this.GetStringFromLSO("Group"); }
+			get { return _group ?? (_group = this.GetStringFromLSO("Group")); }
 		}
 
+		private int? _groupId;
 		/// <summary>
 		/// Wrapper for the GroupID member of the entity type.
 		/// </summary>
 		public int GroupID
 		{
-			get { return this.GetIntFromLSO("GroupID"); }
+			get
+			{
+				if (_groupId == null)
+					_groupId = this.GetIntFromLSO("GroupID");
+				return _groupId.Value;
+			}
 		}
 
+		private Int64? _id;
 		/// <summary>
 		/// Wrapper for the ID member of the entity type.
 		/// </summary>
@@ -150,104 +193,141 @@ namespace EVE.ISXEVE
 			get
 			{
 				Tracing.SendCallback("Entity.ID");
-				return this.GetInt64FromLSO("ID");
+				if (_id == null)
+					_id = this.GetInt64FromLSO("ID");
+				return _id.Value;
 			}
 		}
 
+		private bool? _isWreckViewed;
         public bool IsWreckViewed
         {
-            get { return this.GetBoolFromLSO("IsWreckViewed"); }
+            get
+            {
+				if (_isWreckViewed == null)
+					_isWreckViewed = this.GetBoolFromLSO("IsWreckViewed");
+            	return _isWreckViewed.Value;
+            }
         }
 
+		private bool? _isAbandoned;
 	    public bool IsAbandoned
 	    {
-	        get { return this.GetBoolFromLSO("IsAbandoned"); }
+	        get
+	        {
+				if (_isAbandoned == null)
+					_isAbandoned = this.GetBoolFromLSO("IsAbandoned");
+	        	return _isAbandoned.Value;
+	        }
 	    }
 
+		private double? _maxVelocity;
 		/// <summary>
 		/// Wrapper for the MaxVelocity member of the entity type.
 		/// </summary>
 		public double MaxVelocity
 		{
-			get { return this.GetDoubleFromLSO("MaxVelocity"); }
+			get
+			{
+				if (_maxVelocity == null)
+					_maxVelocity = this.GetDoubleFromLSO("MaxVelocity");
+				return _maxVelocity.Value;
+			}
 		}
 
+		private string _name;
 		/// <summary>
 		/// Wrapper for the Name member of the entity type.
 		/// </summary>
 		public string Name
 		{
-			get { return this.GetStringFromLSO("Name"); }
+			get { return _name ?? (_name = this.GetStringFromLSO("Name")); }
 		}
 
+		private Pilot _owner;
 		/// <summary>
 		/// Only valid if the owner is on the locals list.  Use OwnerID otherwise.
 		/// </summary>
 		public Pilot Owner
 		{
-			get
-			{
-				var owner = GetMember("Owner");
-
-				if (!IsNullOrInvalid(owner) && owner.LSType == "pilot")
-					return new Pilot(owner);
-
-				// invalid return
-				return new Pilot((LavishScriptObject)null);
-			}
+			get { return _owner ?? (_owner = new Pilot(GetMember("Owner"))); }
 		}
 
+		private Int64? _ownerId;
 		/// <summary>
 		/// Wrapper for the OwnerID member of the entity type.
 		/// </summary>
 		public Int64 OwnerID
 		{
-			get { return this.GetInt64FromLSO("OwnerID"); }
+			get
+			{
+				if (_ownerId == null)
+					_ownerId = this.GetInt64FromLSO("OwnerID");
+				return _ownerId.Value;
+			}
 		}
 
+		private double? _security;
 		/// <summary>
 		/// Wrapper for the Security member of the entity type.
 		/// </summary>
 		public double Security
 		{
-			get { return this.GetDoubleFromLSO("Security"); }
+			get
+			{
+				if (_security == null)
+					_security = this.GetDoubleFromLSO("Security");
+				return _security.Value;
+			}
 		}
 
+		private string _type;
 		/// <summary>
 		/// Wrapper for the Type member of the entity type.
 		/// </summary>
 		public string Type
 		{
-			get { return this.GetStringFromLSO("Type"); }
+			get { return _type ?? (_type = this.GetStringFromLSO("Type")); }
 		}
 
+		private int? _typeId;
 		/// <summary>
 		/// Wrapper for the TypeID member of the entity type.
 		/// </summary>
 		public int TypeID
 		{
-			get { return this.GetIntFromLSO("TypeID"); }
+			get
+			{
+				if (_typeId == null)
+					_typeId = this.GetIntFromLSO("TypeID");
+				return _typeId.Value;
+			}
 		}
 
+		private int? _wreckId;
 		/// <summary>
 		/// Wrapper for the WreckID member of the entity type.
 		/// </summary>
 		public int WreckID
 		{
-			get { return this.GetIntFromLSO("WreckID"); }
+			get
+			{
+				if (_wreckId == null)
+					_wreckId = this.GetIntFromLSO("WreckID");
+				return _wreckId.Value;
+			}
 		}
 
+		private ActiveDrone _toActiveDrone;
 		/// <summary>
 		/// Wrapper for the ToActiveDrone member of the entity type.
 		/// </summary>
 		public ActiveDrone ToActiveDrone
 		{
-			get
-			{
-				return new ActiveDrone(GetMember("ToActiveDrone"));
-			}
+			get { return _toActiveDrone ?? (_toActiveDrone = new ActiveDrone(GetMember("ToActiveDrone"))); }
 		}
 
+		private List<ActiveDrone> _activeDrones;
 		/// <summary>
 		/// Wrapper for the GetActiveDrones member of the entity type.
 		/// </summary>
@@ -255,9 +335,10 @@ namespace EVE.ISXEVE
 		public List<ActiveDrone> GetActiveDrones()
 		{
 			Tracing.SendCallback("Entity.GetActiveDrones");
-			return Util.GetListFromMethod<ActiveDrone>(this, "GetActiveDrones", "activedrone");
+			return _activeDrones ?? (_activeDrones = Util.GetListFromMethod<ActiveDrone>(this, "GetActiveDrones", "activedrone"));
 		}
 
+		private bool? _isWreckEmpty;
 		/// <summary>
 		/// Wrapper for the IsWreckEmpty member of the entity type.
 		/// </summary>
@@ -265,117 +346,195 @@ namespace EVE.ISXEVE
 		{
 			get
 			{
-				using (var isWreckEmpty = GetMember("IsWreckEmpty"))
-				{
-					//return true because a "negative" is empty, aka true
-					return IsNullOrInvalid(isWreckEmpty) || isWreckEmpty.GetValue<bool>();
-				}
+				if (_isWreckEmpty == null)
+					_isWreckEmpty = this.GetBoolFromLSO("IsWreckEmpty");
+				return _isWreckEmpty.Value;
 			}
 		}
 
+		private bool? _isOwnedByCorpMember;
 		/// <summary>
 		/// Wrapper for the IsOwnedByCorpMember member of the entity type.
 		/// </summary>
 		public bool IsOwnedByCorpMember
 		{
-			get { return this.GetBoolFromLSO("IsOwnedByCorpMember"); }
+			get
+			{
+				if (_isOwnedByCorpMember == null)
+					_isOwnedByCorpMember = this.GetBoolFromLSO("IsOwnedByCorpMember");
+				return _isOwnedByCorpMember.Value;
+			}
 		}
 
+		private bool? _isOwnedByAllianceMember;
 		/// <summary>
 		/// Wrapper for the IsOwnedByAllianceMember member of the entity type.
 		/// </summary>
 		public bool IsOwnedByAllianceMember
 		{
-			get { return this.GetBoolFromLSO("IsOwnedByAllianceMember"); }
+			get
+			{
+				if (_isOwnedByAllianceMember == null)
+					_isOwnedByAllianceMember = this.GetBoolFromLSO("IsOwnedByAllianceMember");
+				return _isOwnedByAllianceMember.Value;
+			}
 		}
 
 		#region Location
+
+		private double? _x;
 		/// <summary>
 		/// Wrapper for the X member of the entity type.
 		/// </summary>
 		public double X
 		{
-			get { return this.GetDoubleFromLSO("X"); }
+			get
+			{
+				if (_x == null)
+					_x = this.GetDoubleFromLSO("X");
+				return _x.Value;
+			}
 		}
 
+		private double? _y;
 		/// <summary>
 		/// Wrapper for the Y member of the entity type.
 		/// </summary>
 		public double Y
 		{
-			get { return this.GetDoubleFromLSO("Y"); }
+			get
+			{
+				if (_y == null)
+					_y = this.GetDoubleFromLSO("Y");
+				return _y.Value;
+			}
 		}
 
+		private double? _z;
 		/// <summary>
 		/// Wrapper for the Z member of the entity type.
 		/// </summary>
 		public double Z
 		{
-			get { return this.GetDoubleFromLSO("Z"); }
+			get
+			{
+				if (_z == null)
+					_z = this.GetDoubleFromLSO("Z");
+				return _z.Value;
+			}
 		}
 
+		private double? _vx;
 		/// <summary>
 		/// Wrapper for the vX member of the entity type.
 		/// </summary>
 		public double vX
 		{
-			get { return this.GetDoubleFromLSO("vX"); }
+			get
+			{
+				if (_vx == null)
+					_vx = this.GetDoubleFromLSO("vX");
+				return _vx.Value;
+			}
 		}
 
+		private double? _vy;
 		/// <summary>
 		/// Wrapper for the vY member of the entity type.
 		/// </summary>
 		public double vY
 		{
-			get { return this.GetDoubleFromLSO("vY"); }
+			get
+			{
+				if (_vy == null)
+					_vy = this.GetDoubleFromLSO("vY");
+				return _vy.Value;
+			}
 		}
 
+		private double? _vz;
 		/// <summary>
 		/// Wrapper for the vZ member of the entity type.
 		/// </summary>
 		public double vZ
 		{
-			get { return this.GetDoubleFromLSO("vZ"); }
+			get
+			{
+				if (_vz == null)
+					_vz = this.GetDoubleFromLSO("vZ");
+				return _vz.Value;
+			}
 		}
 
+		private double? _pitch;
 		/// <summary>
 		/// Wrapper for the Pitch member of the entity type.
 		/// </summary>
 		public double Pitch
 		{
-			get { return this.GetDoubleFromLSO("Pitch"); }
+			get
+			{
+				if (_pitch == null)
+					_pitch = this.GetDoubleFromLSO("Pitch");
+				return _pitch.Value;
+			}
 		}
 
+
+		private double? _roll;
 		/// <summary>
 		/// Wrapper for the Roll member of the entity type.
 		/// </summary>
 		public double Roll
 		{
-			get { return this.GetDoubleFromLSO("Roll"); }
+			get
+			{
+				if (_roll == null)
+					_roll = this.GetDoubleFromLSO("Roll");
+				return _roll.Value;
+			}
 		}
 
+		private double? _yaw;
 		/// <summary>
 		/// Wrapper for the Yaw member of the entity type.
 		/// </summary>
 		public double Yaw
 		{
-			get { return this.GetDoubleFromLSO("Yaw"); }
+			get
+			{
+				if (_yaw == null)
+					_yaw = this.GetDoubleFromLSO("Yaw");
+				return _yaw.Value;
+			}
 		}
 
+		private double? _velocity;
 		/// <summary>
 		/// Wrapper for the Velocity member of the entity type.
 		/// </summary>
 		public double Velocity
 		{
-			get { return this.GetDoubleFromLSO("Velocity"); }
+			get
+			{
+				if (_velocity == null)
+					_velocity = this.GetDoubleFromLSO("Velocity");
+				return _velocity.Value;
+			}
 		}
 
+		private double? _distance;
 		/// <summary>
 		/// Wrapper for the Distance member of the entity type.
 		/// </summary>
 		public double Distance
 		{
-			get { return this.GetDoubleFromLSO("Distance"); }
+			get
+			{
+				if (_distance == null)
+					_distance = this.GetDoubleFromLSO("Distance");
+				return _distance.Value;
+			}
 		}
 
 		/// <summary>
@@ -388,146 +547,251 @@ namespace EVE.ISXEVE
 			return this.GetDoubleFromLSO("DistanceTo", entityId.ToString());
 		}
 
+		private double? _followRange;
 		/// <summary>
 		/// Wrapper for the FollowRange member of the entity type.
 		/// </summary>
 		public double FollowRange
 		{
-			get { return this.GetDoubleFromLSO("FollowRange"); }
+			get
+			{
+				if (_followRange == null)
+					_followRange = this.GetDoubleFromLSO("FollowRange");
+				return _followRange.Value;
+			}
 		}
 		#endregion
 
 		#region Physical
+
+		private double? _mass;
 		/// <summary>
 		/// Wrapper for the Mass member of the entity type.
 		/// </summary>
 		public double Mass
 		{
-			get { return this.GetDoubleFromLSO("Mass"); }
+			get
+			{
+				if (_mass == null)
+					_mass = this.GetDoubleFromLSO("Mass");
+				return _mass.Value;
+			}
 		}
 
+		private double? _radius;
 		/// <summary>
 		/// Wrapper for the Radius member of the entity type.
 		/// </summary>
 		public double Radius
 		{
-			get { return this.GetDoubleFromLSO("Radius"); }
+			get
+			{
+				if (_radius == null)
+					_radius = this.GetDoubleFromLSO("Radius");
+				return _radius.Value;
+			}
 		}
 
+		private double? _shieldPct;
 		/// <summary>
 		/// Wrapper for the ShieldPct member of the entity type.
 		/// </summary>
 		public double ShieldPct
 		{
-			get { return this.GetDoubleFromLSO("ShieldPct"); }
+			get
+			{
+				if (_shieldPct == null)
+					_shieldPct = this.GetDoubleFromLSO("ShieldPct");
+				return _shieldPct.Value;
+			}
 		}
 
+		private double? _armorPct;
 		/// <summary>
 		/// Wrapper for the ArmorPct member of the entity type.
 		/// </summary>
 		public double ArmorPct
 		{
-			get { return this.GetDoubleFromLSO("ArmorPct"); }
+			get
+			{
+				if (_armorPct == null)
+					_armorPct = this.GetDoubleFromLSO("ArmorPct");
+				return _armorPct.Value;
+			}
 		}
 
+		private double? _structurePct;
 		/// <summary>
 		/// Wrapper for the StructurePct member of the entity type.
 		/// </summary>
 		public double StructurePct
 		{
-			get { return this.GetDoubleFromLSO("StructurePct"); }
+			get
+			{
+				if (_structurePct == null)
+					_structurePct = this.GetDoubleFromLSO("StructurePct");
+				return _structurePct.Value;
+			}
 		}
 		#endregion
 
 		#region Logical
+
+		private bool? _isCloaked;
 		/// <summary>
 		/// Wrapper for the IsCloaked member of the entity type.
 		/// </summary>
 		public bool IsCloaked
 		{
-			get { return this.GetBoolFromLSO("IsCloaked"); }
+			get
+			{
+				if (_isCloaked == null)
+					_isCloaked = this.GetBoolFromLSO("IsCloaked");
+				return _isCloaked.Value;
+			}
 		}
 
+		private bool? _isInteractive;
 		/// <summary>
 		/// Wrapper for the IsInteractive member of the entity type.
 		/// </summary>
 		public bool IsInteractive
 		{
-			get { return this.GetBoolFromLSO("IsInteractive"); }
+			get
+			{
+				if (_isInteractive == null)
+					_isInteractive = this.GetBoolFromLSO("IsInteractive");
+				return _isInteractive.Value;
+			}
 		}
 
+		private bool? _isMassive;
 		/// <summary>
 		/// Wrapper for the IsMassive member of the entity type.
 		/// </summary>
 		public bool IsMassive
 		{
-			get { return this.GetBoolFromLSO("IsMassive"); }
+			get
+			{
+				if (_isMassive == null)
+					_isMassive = this.GetBoolFromLSO("IsMassive");
+				return _isMassive.Value;
+			}
 		}
 
+		private bool? _isGlobal;
 		/// <summary>
 		/// Wrapper for the IsGlobal member of the entity type.
 		/// </summary>
 		public bool IsGlobal
 		{
-			get { return this.GetBoolFromLSO("IsGlobal"); }
+			get
+			{
+				if (_isGlobal == null)
+					_isGlobal = this.GetBoolFromLSO("IsGlobal");
+				return _isGlobal.Value;
+			}
 		}
 
+		private bool? _isMoribund;
 		/// <summary>
 		/// Wrapper for the IsMoribund member of the entity type.
 		/// </summary>
 		public bool IsMoribund
 		{
-			get { return this.GetBoolFromLSO("IsMoribund"); }
+			get
+			{
+				if (_isMoribund == null)
+					_isMoribund = this.GetBoolFromLSO("IsMoribund");
+				return _isMoribund.Value;
+			}
 		}
 
+		private bool? _isWarpScrambled;
 		/// <summary>
 		/// Wrapper for the IsWarpScrambled member of the entity type.
 		/// </summary>
 		public bool IsWarpScrambled
 		{
-			get { return this.GetBoolFromLSO("IsWarpScrambled"); }
+			get
+			{
+				if (_isWarpScrambled == null)
+					_isWarpScrambled = this.GetBoolFromLSO("IsWarpScrambled");
+				return _isWarpScrambled.Value;
+			}
 		}
 
+		private bool? _isActiveTarget;
 		/// <summary>
 		/// Wrapper for the IsActiveTarget member of the entity type.
 		/// </summary>
 		public bool IsActiveTarget
 		{
-			get { return this.GetBoolFromLSO("IsActiveTarget"); }
+			get
+			{
+				if (_isActiveTarget == null)
+					_isActiveTarget = this.GetBoolFromLSO("IsActiveTarget");
+				return _isActiveTarget.Value;
+			}
 		}
 
+		private bool? _isLockedTarget;
 		/// <summary>
 		/// Wrapper for the IsLockedTarget member of the entity type.
 		/// </summary>
 		public bool IsLockedTarget
 		{
-			get { return this.GetBoolFromLSO("IsLockedTarget"); }
+			get
+			{
+				if (_isLockedTarget == null)
+					_isLockedTarget = this.GetBoolFromLSO("IsLockedTarget");
+				return _isLockedTarget.Value;
+			}
 		}
 
+		private bool? _isNpc;
 		/// <summary>
 		/// Wrapper for the IsNPC member of the entity type.
 		/// </summary>
 		public bool IsNPC
 		{
-			get { return this.GetBoolFromLSO("IsNPC"); }
+			get
+			{
+				if (_isNpc == null)
+					_isNpc = this.GetBoolFromLSO("IsNPC");
+				return _isNpc.Value;
+			}
 		}
 
+		private bool? _isPc;
 		/// <summary>
 		/// Wrapper for the IsPC member of the entity type.
 		/// </summary>
 		public bool IsPC
 		{
-			get { return this.GetBoolFromLSO("IsPC"); }
+			get
+			{
+				if (_isPc == null)
+					_isPc = this.GetBoolFromLSO("IsPC");
+				return _isPc.Value;
+			}
 		}
 
+		private bool? _haveLootRights;
 		/// <summary>
 		/// Wrapper for the HaveLootRights member of the entity type.
 		/// </summary>
 		public bool HaveLootRights
 		{
-			get { return this.GetBoolFromLSO("HaveLootRights"); }
+			get
+			{
+				if (_haveLootRights == null)
+					_haveLootRights = this.GetBoolFromLSO("HaveLootRights");
+				return _haveLootRights.Value;
+			}
 		}
 
+		public int? _mode;
 		/// <summary>
 		/// Known Modes
 		/// 2 - Stopped 
@@ -535,41 +799,71 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int Mode
 		{
-			get { return this.GetIntFromLSO("Mode"); }
+			get
+			{
+				if (_mode == null)
+					_mode = this.GetIntFromLSO("Mode");
+				return _mode.Value;
+			}
 		}
 
+		private bool? _isTargetingMe;
 		/// <summary>
 		/// Wrapper for the IsTargetingMe member of the entity type.
 		/// </summary>
 		public bool IsTargetingMe
 		{
-			get { return this.GetBoolFromLSO("IsTargetingMe"); }
+			get
+			{
+				if (_isTargetingMe == null)
+					_isTargetingMe = this.GetBoolFromLSO("IsTargetingMe");
+				return _isTargetingMe.Value;
+			}
 		}
 
+		private bool? _isWarpScramblingMe;
 		/// <summary>
 		/// Wrapper for the IsWarpScramblingMe member of the entity type.
 		/// </summary>
 		public bool IsWarpScramblingMe
 		{
-			get { return this.GetBoolFromLSO("IsWarpScramblingMe"); }
+			get
+			{
+				if (_isWarpScramblingMe == null)
+					_isWarpScramblingMe = this.GetBoolFromLSO("IsWarpScramblingMe");
+				return _isWarpScramblingMe.Value;
+			}
 		}
 
+		private bool? _isTargetJammingMe;
 		/// <summary>
 		/// Wrapper for the IsTargetJammingMe member of the entity type.
 		/// </summary>
 		public bool IsTargetJammingMe
 		{
-			get { return this.GetBoolFromLSO("IsTargetJammingMe"); }
+			get
+			{
+				if (_isTargetJammingMe == null)
+					_isTargetJammingMe = this.GetBoolFromLSO("IsTargetJammingMe");
+				return _isTargetJammingMe.Value;
+			}
 		}
 
+		private bool? _beingTargeted;
 		/// <summary>
 		/// Wrapper for the BeingTargeted member of the entity type.
 		/// </summary>
 		public bool BeingTargeted
 		{
-			get { return this.GetBoolFromLSO("BeingTargeted"); }
+			get
+			{
+				if (_beingTargeted == null)
+					_beingTargeted = this.GetBoolFromLSO("BeingTargeted");
+				return _beingTargeted.Value;
+			}
 		}
 
+		private Entity _approaching;
 		/// <summary>
 		/// Wrapper for the Approaching member of the entity type.
 		/// </summary>
@@ -577,10 +871,11 @@ namespace EVE.ISXEVE
 		{
 			get
 			{
-				return new Entity(GetMember("Approaching"));
+				return _approaching ?? (_approaching = new Entity(GetMember("Approaching")));
 			}
 		}
 
+		private Entity _following;
 		/// <summary>
 		/// Wrapper for the Following member of the entity type.
 		/// </summary>
@@ -588,28 +883,42 @@ namespace EVE.ISXEVE
 		{
 			get
 			{
-				return new Entity(GetMember("Following"));
+				return _following ?? (_following = new Entity(GetMember("Following")));
 			}
 		}
 		#endregion
 
 		#region Cargo
+
+		private double? _cargoCapacity;
 		/// <summary>
 		/// Wrapper for the CargoCapacity member of the entity type.
 		/// </summary>
 		public double CargoCapacity
 		{
-			get { return this.GetDoubleFromLSO("CargoCapacity"); }
+			get
+			{
+				if (_cargoCapacity == null)
+					_cargoCapacity = this.GetDoubleFromLSO("CargoCapacity");
+				return _cargoCapacity.Value;
+			}
 		}
 
+		private double? _usedCargoCapacity;
 		/// <summary>
 		/// Wrapper for the UsedCargoCapacity member of the entity type.
 		/// </summary>
 		public double UsedCargoCapacity
 		{
-			get { return this.GetDoubleFromLSO("UsedCargoCapacity"); }
+			get
+			{
+				if (_usedCargoCapacity == null)
+					_usedCargoCapacity = this.GetDoubleFromLSO("UsedCargoCapacity");
+				return _usedCargoCapacity.Value;
+			}
 		}
 
+		private List<Item> _cargo;
 		/// <summary>
 		/// List of all cargo items.  Keep in mind this might
 		/// be empty or invalid if the cargo hold isn't open
@@ -618,18 +927,25 @@ namespace EVE.ISXEVE
 		public List<Item> GetCargo()
 		{
 			Tracing.SendCallback("Entity.GetCargo");
-			return Util.GetListFromMethod<Item>(this, "GetCargo", "item");
+			return _cargo ?? (_cargo = Util.GetListFromMethod<Item>(this, "GetCargo", "item"));
 		}
 
+		private bool? _hasOreHold;
 		/// <summary>
 		/// Wrapper for the HasOreHold member of the entity type.
 		/// </summary>
 		public bool HasOreHold
 		{
-			get { return this.GetBoolFromLSO("HasOreHold"); }
+			get
+			{
+				if (_hasOreHold == null)
+					_hasOreHold = this.GetBoolFromLSO("HasOreHold");
+				return _hasOreHold.Value;
+			}
 		}
 		#endregion
 
+		private Attacker _attacker;
 		/// <summary>
 		/// Wrapper for the ToAttacker member of the Entity datatype.
 		/// </summary>
@@ -637,10 +953,11 @@ namespace EVE.ISXEVE
 		{
 			get
 			{
-				return new Attacker(GetMember("ToAttacker"));
+				return _attacker ?? (_attacker = new Attacker(GetMember("ToAttacker")));
 			}
 		}
 
+		private Jammer _jammer;
         /// <summary>
         /// Get the Jammer member of the Entity object
         /// </summary>
@@ -648,7 +965,7 @@ namespace EVE.ISXEVE
         {
             get
             {
-                return new Jammer(GetMember("ToJammer"));
+                return _jammer ?? (_jammer = new Jammer(GetMember("ToJammer")));
             }
         }
 		#endregion

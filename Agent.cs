@@ -52,78 +52,124 @@ namespace EVE.ISXEVE
 		#endregion
 
 		#region Members
+
+		private int? _id;
 		/// <summary>
 		/// Wrapper for the ID member of the agent type.
 		/// </summary>
 		public int ID
 		{
-			get { return this.GetIntFromLSO("ID"); }
+			get
+			{
+				if (_id == null)
+					_id = this.GetIntFromLSO("ID");
+				return _id.Value;
+			}
 		}
 
+		private string _name;
 		/// <summary>
 		/// Wrapper for the Name member of the agent type.
 		/// </summary>
 		public string Name
 		{
-			get { return this.GetStringFromLSO("Name"); }
+			get { return _name ?? (_name = this.GetStringFromLSO("Name")); }
 		}
 
+		private int? _typeId;
 		/// <summary>
 		/// Wrapper for the TypeID member of the agent type.
 		/// </summary>
 		public int TypeID
 		{
-			get { return this.GetIntFromLSO("TypeID"); }
+			get
+			{
+				if (_typeId == null)
+					_typeId = this.GetIntFromLSO("TypeID");
+				return _typeId.Value;
+			}
 		}
 
+		private string _division;
 		/// <summary>
 		/// Wrapper for the Division member of the agent type.
 		/// </summary>
 		public string Division
 		{
-			get { return this.GetStringFromLSO("Division"); }
+			get { return _division ?? (_division = this.GetStringFromLSO("Division")); }
 		}
 
+		private int? _divisionId;
 		/// <summary>
 		/// Wrapper for the DivisionID member of the agent type.
 		/// </summary>
 		public int DivisionID
 		{
-			get { return this.GetIntFromLSO("DivisionID"); }
+			get
+			{
+				if (_divisionId == null)
+					_divisionId = this.GetIntFromLSO("DivisionID");
+				return _divisionId.Value;
+			}
 		}
 
+		private int? _level;
 		/// <summary>
 		/// Wrapper for the Level member of the agent type.
 		/// </summary>
 		public int Level
 		{
-			get { return this.GetIntFromLSO("Level"); }
+			get
+			{
+				if (_level == null)
+					_level = this.GetIntFromLSO("Level");
+				return _level.Value;
+			}
 		}
 
+		private int? _corporationId;
 		/// <summary>
 		/// Wrapper for the CorporationID member of the agent type.
 		/// </summary>
 		public int CorporationID
 		{
-			get { return this.GetIntFromLSO("CorporationID"); }
+			get
+			{
+				if (_corporationId == null)
+					_corporationId = this.GetIntFromLSO("CorporationID");
+				return _corporationId.Value;
+			}
 		}
 
+		private int? _factionId;
 		/// <summary>
 		/// Wrapper for the FactionID member of the agent type.
 		/// </summary>
 		public int FactionID
 		{
-			get { return this.GetIntFromLSO("FactionID"); }
+			get
+			{
+				if (_factionId == null)
+					_factionId = this.GetIntFromLSO("FactionID");
+				return _factionId.Value;
+			}
 		}
 
+		private float? _standingTo;
 		/// <summary>
 		/// Wrapper for the StandingTo member of the agent type.
 		/// </summary>
 		public float StandingTo
 		{
-			get { return this.GetFloatFromLSO("StandingTo"); }
+			get
+			{
+				if (_standingTo == null)
+					_standingTo = this.GetFloatFromLSO("StandingTo");
+				return _standingTo.Value;
+			}
 		}
 
+		private Interstellar _solarsystem;
 		/// <summary>
 		/// Wrapper for the Solarsystem member of the agent type.
 		/// </summary>
@@ -131,42 +177,57 @@ namespace EVE.ISXEVE
 		{
 			get
 			{
-				return new Interstellar(GetMember("Solarsystem"));
+				return _solarsystem ?? (_solarsystem = new Interstellar(GetMember("Solarsystem")));
 			}
 		}
 
+		private string _station;
 		/// <summary>
 		/// Wrapper for the Station member of the agent type.
 		/// </summary>
 		public string Station
 		{
-			get { return this.GetStringFromLSO("Station"); }
+			get { return _station ?? (_station = this.GetStringFromLSO("Station")); }
 		}
 
+		private int? _stationId;
 		/// <summary>
 		/// Wrapper for the StationID member of the agent type.
 		/// </summary>
 		public int StationID
 		{
-			get { return this.GetIntFromLSO("StationID"); }
+			get
+			{
+				if (_stationId == null)
+					_stationId = this.GetIntFromLSO("StationID");
+				return _stationId.Value;
+			}
 		}
 
+		private int? _index;
 		/// <summary>
 		/// Wrapper for the Index member of the agent type.
 		/// </summary>
 		public int Index
 		{
-			get { return this.GetIntFromLSO("Index"); }
+			get
+			{
+				if (_index == null)
+					_index = this.GetIntFromLSO("Index");
+				return _index.Value;
+			}
 		}
 
+		private string _dialog;
 		/// <summary>
 		/// Wrapper for the Dialog member of the agent type.
 		/// </summary>
 		public string Dialog
 		{
-			get { return this.GetStringFromLSO("Dialog"); }
+			get { return _dialog ?? (_dialog = this.GetStringFromLSO("Dialog")); }
 		}
 
+		private List<DialogString> _dialogResponses;
 		/// <summary>
 		/// Wrapper for the GetDialogResponses member of the agent type.
 		/// </summary>
@@ -174,7 +235,7 @@ namespace EVE.ISXEVE
 		public List<DialogString> GetDialogResponses()
 		{
 			Tracing.SendCallback("Agent:GetDialogResponses");
-			return Util.GetListFromMethod<DialogString>(this, "GetDialogResponses", "dialogstring");
+			return _dialogResponses ?? (_dialogResponses = Util.GetListFromMethod<DialogString>(this, "GetDialogResponses", "dialogstring"));
 		}
 		#endregion
 

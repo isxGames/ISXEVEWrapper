@@ -18,6 +18,7 @@
 /EVETime.cs -text
 /EVEWindow.cs -text
 /Entity.cs -text
+/EveInvChildWindow.cs -text
 /EveInvWindow.cs -text
 /Event.cs -text
 /ExecuteCommand.cs -text

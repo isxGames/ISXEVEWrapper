@@ -21,9 +21,11 @@ namespace EVE.ISXEVE
 		#endregion
 
         #region Methods
+
+		private List<string> _jams;
         public List<string> GetJams()
         {
-            return Util.GetListFromMethod<string>(this, "GetJams", "string");
+            return _jams ?? (_jams = Util.GetListFromMethod<string>(this, "GetJams", "string"));
         }
         #endregion
     }

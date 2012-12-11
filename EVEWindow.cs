@@ -67,7 +67,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public static EveInvWindow GetInventoryWindow()
 		{
-			return new EveInvWindow(LavishScript.Objects.GetObject("EVEWindow", "ByName", "Inventory"));
+			return new EveInvWindow(LavishScript.Objects.GetObject("EVEWindow", "Inventory"));
 		}
 		#endregion
 

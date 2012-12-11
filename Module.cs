@@ -32,11 +32,19 @@ namespace EVE.ISXEVE
 		#endregion
 
 		#region Members
+
+		private Int64? _id;
 		public Int64 ID
 		{
-			get { return this.GetInt64FromLSO("ID"); }
+			get
+			{
+				if (_id == null)
+					_id = this.GetInt64FromLSO("ID");
+				return _id.Value;
+			}
 		}
 
+		private Item _toItem;
 		/// <summary>
 		/// Access the module as an item type.
 		/// </summary>
@@ -44,145 +52,214 @@ namespace EVE.ISXEVE
 		{
 			get
 			{
-				return new Item(GetMember("ToItem"));
+				return _toItem ?? (_toItem = new Item(GetMember("ToItem")));
 			}
 		}
 
+		private double? _shieldTransferRange;
 		/// <summary>
 		/// Returns the ShieldTransferRange member of a module object.
 		/// </summary>
 		public double ShieldTransferRange
 		{
-			get { return this.GetDoubleFromLSO("ShieldTransferRange"); }
+			get
+			{
+				if (_shieldTransferRange == null)
+					_shieldTransferRange = this.GetDoubleFromLSO("ShieldTransferRange");
+				return _shieldTransferRange.Value;
+			}
 		}
 
+		private bool? _usesFrequencyCrystals;
 		/// <summary>
 		/// Returns the UsesFrequencyCrystals member of a module object.
 		/// </summary>
 		public bool UsesFrequencyCrystals
 		{
-			get { return this.GetBoolFromLSO("UsesFrequencyCrystals"); }
+			get
+			{
+				if (_usesFrequencyCrystals == null)
+					_usesFrequencyCrystals = this.GetBoolFromLSO("UsesFrequencyCrystals");
+				return _usesFrequencyCrystals.Value;
+			}
 		}
 
+		private bool? _isGoingOnline;
 		/// <summary>
 		/// Returns the IsGoingOnline member of a module object.
 		/// </summary>
 		public bool IsGoingOnline
 		{
-			get { return this.GetBoolFromLSO("IsGoingOnline"); }
+			get
+			{
+				if (_isGoingOnline == null)
+					_isGoingOnline = this.GetBoolFromLSO("IsGoingOnline");
+				return _isGoingOnline.Value;
+			}
 		}
 
+		private bool? _isWaitingForActiveTarget;
 		/// <summary>
 		/// Returns the IsWaitingForActiveTarget member of a module object.
 		/// </summary>
 		public bool IsWaitingForActiveTarget
 		{
-			get { return this.GetBoolFromLSO("IsWaitingForActiveTarget"); }
+			get
+			{
+				if (_isWaitingForActiveTarget == null)
+					_isWaitingForActiveTarget = this.GetBoolFromLSO("IsWaitingForActiveTarget");
+				return _isWaitingForActiveTarget.Value;
+			}
 		}
 
+		private bool? _isChangingAmmo;
 		/// <summary>
 		/// Wrapper for the IsWaitingForActiveTarget member of a module object.
 		/// </summary>
 		public bool IsChangingAmmo
 		{
-			get { return this.GetBoolFromLSO("IsChangingAmmo"); }
+			get
+			{
+				if (_isChangingAmmo == null)
+					_isChangingAmmo = this.GetBoolFromLSO("IsChangingAmmo");
+				return _isChangingAmmo.Value;
+			}
 		}
 
+		private bool? _isReloadingAmmo;
 		/// <summary>
 		/// Wrapper for the IsReloadingAmmo member of a module object.
 		/// </summary>
 		public bool IsReloadingAmmo
 		{
-			get { return this.GetBoolFromLSO("IsReloadingAmmo"); }
+			get
+			{
+				if (_isReloadingAmmo == null)
+					_isReloadingAmmo = this.GetBoolFromLSO("IsReloadingAmmo");
+				return _isReloadingAmmo.Value;
+			}
 		}
 
+		private bool? _isOnline;
 		/// <summary>
 		/// Is module online (as opposed to active)
 		/// </summary>
 		public bool IsOnline
 		{
-			get { return this.GetBoolFromLSO("IsOnline"); }
+			get
+			{
+				if (_isOnline == null)
+					_isOnline = this.GetBoolFromLSO("IsOnline");
+				return _isOnline.Value;
+			}
 		}
 
+		private bool? _isDeactivating;
 		/// <summary>
 		/// Wrapper for the IsDeactivating member of a module object.
 		/// </summary>
 		public bool IsDeactivating
 		{
-			get { return this.GetBoolFromLSO("IsDeactivating"); }
+			get
+			{
+				if (_isDeactivating == null)
+					_isDeactivating = this.GetBoolFromLSO("IsDeactivating");
+				return _isDeactivating.Value;
+			}
 		}
 
+		private bool? _isActivatable;
 		/// <summary>
 		/// Wrapper for the IsActivatable member of a module object.
 		/// </summary>
 		public bool IsActivatable
 		{
-			get { return this.GetBoolFromLSO("IsActivatabe"); }
+			get
+			{
+				if (_isActivatable == null)
+					_isActivatable = this.GetBoolFromLSO("IsActivatabe");
+				return _isActivatable.Value;
+			}
 		}
 
+		private bool? _isAutoReloadOn;
 		/// <summary>
 		/// Wrapper for the IsAutoReloadOn member of a module object.
 		/// </summary>
 		public bool IsAutoReloadOn
 		{
-			get { return this.GetBoolFromLSO("IsAutoReloadOn"); }
+			get
+			{
+				if (_isAutoReloadOn == null)
+					_isAutoReloadOn = this.GetBoolFromLSO("IsAutoReloadOn");
+				return _isAutoReloadOn.Value;
+			}
 		}
 
+		private List<Item> _availableAmmo;
 		/// <summary>
 		/// Wrapper for the GetAvailableAmmo member of a module object.
 		/// </summary>
 		public List<Item> GetAvailableAmmo()
 		{
 			Tracing.SendCallback("Module.GetAvailableAmmo");
-			return Util.GetListFromMethod<Item>(this, "GetAvailableAmmo", "item");
+			return _availableAmmo ?? (_availableAmmo = Util.GetListFromMethod<Item>(this, "GetAvailableAmmo", "item"));
 		}
 
+		private double? _specialtyCrystalMiningAmount;
 		/// <summary>
 		/// Wrapper for the SpecialtyCrystalMiningAmount member of a module object.
 		/// </summary>
 		public double SpecialtyCrystalMiningAmount
 		{
-			get { return this.GetDoubleFromLSO("SpecialtyCrystalMiningAmount"); }
+			get
+			{
+				if (_specialtyCrystalMiningAmount == null)
+					_specialtyCrystalMiningAmount = this.GetDoubleFromLSO("SpecialtyCrystalMiningAmount");
+				return _specialtyCrystalMiningAmount.Value;
+			}
 		}
 
+		private string _defaultEffectName;
 		/// <summary>
 		/// Wrapper for the DefaultEffectName member of a module object.
 		/// </summary>
 		public string DefaultEffectName
 		{
-			get { return this.GetStringFromLSO("DefaultEffectiveName"); }
+			get
+			{
+				return _defaultEffectName ?? (_defaultEffectName = this.GetStringFromLSO("DefaultEffectiveName"));
+			}
 		}
 
+		private string _defaultEffectDescription;
 		/// <summary>
 		/// Wrapper for the DefaultEffectDescription member of a module object.
 		/// </summary>
 		public string DefaultEffectDescription
 		{
-			get { return this.GetStringFromLSO("DefaultEffectiveDescription"); }
+			get { return _defaultEffectDescription ?? (_defaultEffectDescription = this.GetStringFromLSO("DefaultEffectiveDescription")); }
 		}
 
+		private Entity _lastTarget;
 		/// <summary>
 		/// This member returns the last target upon which the module was activated.
 		/// </summary>
 		public Entity LastTarget
 		{
-			get
-			{
-				return new Entity(GetMember("LastTarget"));
-			}
+			get { return _lastTarget ?? (_lastTarget = new Entity(GetMember("LastTarget"))); }
 		}
 
+		private Entity _target;
 		/// <summary>
 		/// This member returns the last target upon which the module was activated.
 		/// </summary>
 		public Entity Target
 		{
-			get
-			{
-				return new Entity(GetMember("Target"));
-			}
+			get { return _target ?? (_target = new Entity(GetMember("Target"))); }
 		}
 
+		private Int64? _targetId;
 		/// <summary>
 		/// Wrapper for the TargetID member of a module object.
 		/// </summary>
@@ -191,10 +268,15 @@ namespace EVE.ISXEVE
 			get
 			{
 				Tracing.SendCallback("TargetID");
-				return this.GetInt64FromLSO("TargetID");
+				if (_targetId == null)
+					_targetId = this.GetInt64FromLSO("TargetID");
+				return _targetId.Value;
 			}
 		}
+
 		#region Activatable
+
+		private bool? _isActive;
 		/// <summary>
 		/// TRUE when the module is active, including when the module is 
 		/// flashing red in cooldown mode after being deactivated.
@@ -202,64 +284,99 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsActive
 		{
-			get { return this.GetBoolFromLSO("IsActive"); }
+			get
+			{
+				if (_isActive == null)
+					_isActive = this.GetBoolFromLSO("IsActive");
+				return _isActive.Value;
+			}
 		}
 
+		private bool? _isOffensive;
 		/// <summary>
 		/// Note: Require Module.IsActivatable == TRUE
 		/// </summary>
 		public bool IsOffensive
 		{
-			get { return this.GetBoolFromLSO("IsOffensive"); }
+			get
+			{
+				if (_isOffensive == null)
+					_isOffensive = this.GetBoolFromLSO("IsOffensive");
+				return _isOffensive.Value;
+			}
 		}
 
+		private bool? _isAssistance;
 		/// <summary>
 		/// Note: Require Module.IsActivatable == TRUE
 		/// </summary>
 		public bool IsAssistance
 		{
-			get { return this.GetBoolFromLSO("IsAssistance"); }
+			get
+			{
+				if (_isAssistance == null)
+					_isAssistance = this.GetBoolFromLSO("IsAssistance");
+				return _isAssistance.Value;
+			}
 		}
 
+		private int? _effectCategory;
 		/// <summary>
 		/// Note: Require Module.IsActivatable == TRUE
 		/// </summary>
 		public int EffectCategory
 		{
-			get { return this.GetIntFromLSO("EffectCategory"); }
+			get
+			{
+				if (_effectCategory == null)
+					_effectCategory = this.GetIntFromLSO("EffectCategory");
+				return _effectCategory.Value;
+			}
 		}
 		#endregion
 
 		#region Charges
+
+		private Item _charge;
 		/// <summary>
 		/// The charge type loaded into this module.
 		/// </summary>
 		public Item Charge
 		{
-			get
-			{
-				return new Item(GetMember("Charge"));
-			}
+			get { return _charge ?? (_charge = new Item(GetMember("Charge"))); }
 		}
 
+		private int? _currentCharges;
 		/// <summary>
 		/// Requires this.Charge.IsValid == true
 		/// </summary>
 		public int CurrentCharges
 		{
-			get { return this.GetIntFromLSO("CurrentCharges"); }
+			get
+			{
+				if (_currentCharges == null)
+					_currentCharges = this.GetIntFromLSO("CurrentCharges");
+				return _currentCharges.Value;
+			}
 		}
 
+		private int? _maxCharges;
 		/// <summary>
 		/// Requires this.Charge.IsValid == true
 		/// </summary>
 		public int MaxCharges
 		{
-			get { return this.GetIntFromLSO("MaxCharges"); }
+			get
+			{
+				if (_maxCharges == null)
+					_maxCharges = this.GetIntFromLSO("MaxCharges");
+				return _maxCharges.Value;
+			}
 		}
 		#endregion
 
 		#region Properties
+
 		/// <summary>
 		/// Wrapper for the PowergridUsage member of a module object.
 		/// </summary>
@@ -817,17 +934,6 @@ namespace EVE.ISXEVE
 			Tracing.SendCallback("Module.Deactivate", string.Empty);
 			return ExecuteMethod("Deactivate");
 		}
-
-        /// <summary>
-        /// Reload the module with the currently loaded charge type.
-        /// NOTE: Does not work on empty modules.
-        /// </summary>
-        /// <returns></returns>
-        public bool ChangeAmmo()
-        {
-             Tracing.SendCallback("Module.ChangeAmmo");
-            return ExecuteMethod("ChangeAmmo");
-        }
 
 		/// <summary>
 		/// Parameter is the Item.ID of an ammunition from your ship's cargo

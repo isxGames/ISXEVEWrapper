@@ -26,19 +26,23 @@ namespace EVE.ISXEVE
 		#endregion
 
 		#region Members
+
+		private string _id;
 		public string ID
 		{
-			get { return this.GetStringFromLSO("ID"); }
+			get { return _id ?? (_id = this.GetStringFromLSO("ID")); }
 		}
 
+		private string _name;
 		/// <summary>
 		/// Name member
 		/// </summary>
 		public string Name
 		{
-			get { return this.GetStringFromLSO("Name"); }
+			get { return _name ?? (_name = this.GetStringFromLSO("Name")); }
 		}
 
+		private EVETime _timeStarted;
 		/// <summary>
 		/// TimeStarted member
 		/// </summary>
@@ -46,7 +50,7 @@ namespace EVE.ISXEVE
 		{
 			get
 			{
-				return new EVETime(GetMember("TimeStarted"));
+				return _timeStarted ?? (_timeStarted = new EVETime(GetMember("TimeStarted")));
 			}
 		}
 		#endregion

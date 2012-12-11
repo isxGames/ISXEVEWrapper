@@ -22,29 +22,42 @@ namespace EVE.ISXEVE
 		#endregion
 
 		#region Members
+
+		private Int64? _id;
 		public new Int64 ID
 		{
 			get
 			{
 				Tracing.SendCallback("Attacker.ID");
-			    return this.GetInt64FromLSO("ID");
+
+				if (_id == null)
+					_id = this.GetInt64FromLSO("ID");
+
+				return _id.Value;
 			}
 		}
 
+		private bool? _isCurrentlyAttacking;
 		/// <summary>
 		/// IsCurrentlyAttacking member
 		/// </summary>
 		public bool IsCurrentlyAttacking
 		{
-			get { return this.GetBoolFromLSO("IsCurrentlyAttacking"); }
+			get
+			{
+				if (_isCurrentlyAttacking == null)
+					_isCurrentlyAttacking = this.GetBoolFromLSO("IsCurrentlyAttacking");
+				return _isCurrentlyAttacking.Value;
+			}
 		}
 
+		private Jammer _toJammer;
 		/// Get the Jammer member of the Attacker object
         public new Jammer ToJammer
         {
             get
             {
-                return new Jammer(GetMember("ToJammer"));
+                return _toJammer ?? (_toJammer = new Jammer(GetMember("ToJammer")));
             }
         }
 		#endregion
