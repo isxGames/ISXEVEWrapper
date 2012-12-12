@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using EVE.ISXEVE.Interfaces;
 using Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
@@ -11,7 +10,7 @@ namespace EVE.ISXEVE
 	/// <summary>
 	/// Wrapper for the activedrone data type.
 	/// </summary>
-	public class ActiveDrone : LavishScriptObject, IActiveDrone
+	public class ActiveDrone : LavishScriptObject
 	{
 		#region Constructors
 		/// <summary>

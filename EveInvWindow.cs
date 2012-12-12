@@ -38,14 +38,47 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
-		/// Get a child window by ID and location.
+		/// Get a child window by name.
 		/// </summary>
-		/// <param name="id"></param>
+		/// <param name="name"></param>
+		/// <returns></returns>
+		public EveInvChildWindow GetChildWindow(string name)
+		{
+			return new EveInvChildWindow(GetMember("ChildWindow", name));
+		}
+
+		/// <summary>
+		/// Get a child window by name and location.
+		/// </summary>
+		/// <param name="name"></param>
 		/// <param name="location"></param>
 		/// <returns></returns>
-		public EveInvChildWindow GetChildWindow(Int64 id, string location)
+		public EveInvChildWindow GetChildWindow(string name, string location)
 		{
-			return new EveInvChildWindow(GetMember("ChildWindow", id.ToString(), location));
+			return new EveInvChildWindow(GetMember("ChildWindow", name, location));
+		}
+
+		/// <summary>
+		/// Get a child window by ID and Name.
+		/// </summary>
+		/// <param name="id"></param>
+		/// <param name="name"></param>
+		/// <returns></returns>
+		public EveInvChildWindow GetChildWindow(Int64 id, string name)
+		{
+			return new EveInvChildWindow(GetMember("ChildWindow", id.ToString(), name));
+		}
+
+		/// <summary>
+		/// Get a child window by ID, Name, and Location.
+		/// </summary>
+		/// <param name="id"></param>
+		/// <param name="name"></param>
+		/// <param name="location"></param>
+		/// <returns></returns>
+		public EveInvChildWindow GetChildWindow(Int64 id, string name, string location)
+		{
+			return new EveInvChildWindow(GetMember("ChildWindow", id.ToString(), name, location));
 		}
 
 		private List<EveInvChildWindow> _children;
