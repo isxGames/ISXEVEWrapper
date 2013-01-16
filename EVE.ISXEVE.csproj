@@ -94,6 +94,7 @@
     <Compile Include="EveInvWindow.cs" />
     <Compile Include="EVETime.cs" />
     <Compile Include="Fleet.cs" />
+    <Compile Include="ModuleCharge.cs" />
     <Compile Include="_Compiler Settings\GlobalSuppressions.cs" />
     <Compile Include="Jammer.cs" />
     <Compile Include="LavishScriptObjectExtensions.cs" />

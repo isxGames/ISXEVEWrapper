@@ -337,13 +337,13 @@ namespace EVE.ISXEVE
 
 		#region Charges
 
-		private Item _charge;
+		private ModuleCharge _charge;
 		/// <summary>
 		/// The charge type loaded into this module.
 		/// </summary>
-		public Item Charge
+		public ModuleCharge Charge
 		{
-			get { return _charge ?? (_charge = new Item(GetMember("Charge"))); }
+			get { return _charge ?? (_charge = new ModuleCharge(GetMember("Charge"))); }
 		}
 
 		private int? _currentCharges;
