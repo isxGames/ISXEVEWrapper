@@ -51,6 +51,7 @@ ISXEVEWrapperTest/wraptest.iss -text
 /Login.cs -text
 /MarketOrder.cs -text
 /Module.cs -text
+/ModuleCharge.cs -text
 /MyOrder.cs -text
 /Pilot.cs -text
 Properties/AssemblyInfo.cs -text
