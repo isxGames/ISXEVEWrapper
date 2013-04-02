@@ -453,6 +453,32 @@ namespace EVE.ISXEVE
 			return ExecuteMethod("CloseAllChatInvites");
 		}
 
+        /// <summary>
+        /// Wrapper for the LaunchDrones method of the eve type.
+        /// </summary>
+        /// <param name="DroneIDs"></param>
+        /// <returns></returns>
+        public bool LaunchDrones(List<Int64> DroneIDs)
+        {
+            Tracing.SendCallback("EVE.LaunchDrones", DroneIDs);
+            if (DroneIDs.Count == 0)
+            {
+                return false;
+            }
+
+            var lsIndex = LavishScript.Objects.NewObject("index:int64");
+
+            for (var index = 0; index < DroneIDs.Count; index++)
+            {
+                lsIndex.ExecuteMethod("Insert", DroneIDs[index].ToString());
+            }
+            //InnerSpace.Echo("*** " + LSIndex.GetMember<int>("Used"));
+            // TODO - Test this to make sure passing a populated index into ExecuteMethod works
+            // - CyberTech
+            return ExecuteMethod("LaunchDrones", lsIndex.GetLSReference());
+        }
+
+
 		/// <summary>
 		/// Wrapper for the MoveItemsTo method fo the eve type.
 		/// </summary>
