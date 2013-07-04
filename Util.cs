@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using System.Text;
 using Extensions;
 using LavishScriptAPI;
@@ -65,6 +67,9 @@ namespace EVE.ISXEVE
 
 	internal class Util
 	{
+	    private static readonly Dictionary<Type, Type> _implementingTypesByInterfaceType = new Dictionary<Type, Type>();
+	    private static readonly Dictionary<Type, ConstructorInfo> _constructorInfoByType = new Dictionary<Type, ConstructorInfo>(); 
+
 		private static T[] PrefixArray<T>(T first, T[] rest)
 		{
 			var newArray = new T[rest.Length + 1];
@@ -76,6 +81,49 @@ namespace EVE.ISXEVE
 
 			return newArray;
 		}
+
+        private static Type GetImplementingTypeForInterfaceType(Type interfaceType)
+        {
+            if (!_implementingTypesByInterfaceType.ContainsKey(interfaceType))
+            {
+                var implementingType = interfaceType.Assembly.GetTypes()
+                    .Where(t => t.IsClass)
+                    .FirstOrDefault(interfaceType.IsAssignableFrom);
+
+                if (implementingType == null)
+                {
+                    throw new InvalidOperationException(string.Format("Could not find implementing type for interface type {0}.", interfaceType.Name));
+                }
+
+                _implementingTypesByInterfaceType.Add(interfaceType, implementingType);
+            }
+
+            return _implementingTypesByInterfaceType[interfaceType];
+        }
+
+        private static ConstructorInfo GetConstructorInfoForType(Type type)
+        {
+            if (!_constructorInfoByType.ContainsKey(type))
+            {
+                ConstructorInfo constructorInfo;
+                if (type.IsInterface)
+                {
+                    var implementingType = GetImplementingTypeForInterfaceType(type);
+                    constructorInfo = implementingType.GetConstructor(new[] {typeof (LavishScriptObject)});
+                }
+                else
+                {
+                    constructorInfo = type.GetConstructor(new[] {typeof (LavishScriptObject)});
+                }
+
+                if (constructorInfo == null)
+                    throw new InvalidOperationException(string.Format("Could not find a constructor for type {0}.", type.Name));
+
+                _constructorInfoByType.Add(type, constructorInfo);
+            }
+
+            return _constructorInfoByType[type];
+        }
 
 		private static List<T> IndexToLavishScriptObjectList<T>(LavishScriptObject index, string lsTypeName)
 		{
@@ -92,7 +140,7 @@ namespace EVE.ISXEVE
 			}
 
 			//Tracing.SendCallback(methodName, "get constructor info");
-			var constructor = typeof(T).GetConstructor(new[] { typeof(LavishScriptObject) });
+		    var constructorInfo = GetConstructorInfoForType(typeof(T));
 
 			//Tracing.SendCallback(methodName, "loop add items");
 			for (var i = 1; i <= count; i++)
@@ -120,7 +168,7 @@ namespace EVE.ISXEVE
 				}
 
 				var lsObject = LavishScript.Objects.NewObject(lsTypeName, objectId);
-				var item = (T) constructor.Invoke(new object[] {lsObject});
+                var item = (T)constructorInfo.Invoke(new object[] { lsObject });
 				list.Add(item);
 			}
 
@@ -141,7 +189,8 @@ namespace EVE.ISXEVE
 		public static List<T> IndexToList<T>(LavishScriptObject index, string lsTypeName)
 		{
 			//Tracing.SendCallback("IndextoList", LSTypeName);
-			return typeof(T).IsSubclassOf(typeof(LavishScriptObject)) ? IndexToLavishScriptObjectList<T>(index, lsTypeName) : IndexToStructList<T>(index);
+			//return typeof(T).Is(typeof(ILSObject)) ? IndexToLavishScriptObjectList<T>(index, lsTypeName) : IndexToStructList<T>(index);
+            return (typeof(ILSObject)).IsAssignableFrom(typeof(T)) ? IndexToLavishScriptObjectList<T>(index, lsTypeName) : IndexToStructList<T>(index);
 		}
 
 		private static T IndexToLavishScriptObject<T>(LavishScriptObject index, int number)

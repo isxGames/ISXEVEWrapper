@@ -1,14 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using EVE.ISXEVE.Interfaces;
 using LavishScriptAPI;
 using Extensions;
 
 namespace EVE.ISXEVE
 {
-	public class EveInvChildWindow : LavishScriptObject
-	{
+    /// <summary>
+	/// Wrapper for the EveInvChildWindow datatype.
+	/// </summary>
+	public class EveInvChildWindow : LavishScriptObject, IEveInvChildWindow
+    {
 		public EveInvChildWindow(LavishScriptObject copy)
 			: base(copy)
 		{

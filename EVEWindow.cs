@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using EVE.ISXEVE.Interfaces;
 using Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
@@ -65,7 +66,7 @@ namespace EVE.ISXEVE
 		/// Fetch the EVE Inventory window
 		/// </summary>
 		/// <returns></returns>
-		public static EveInvWindow GetInventoryWindow()
+		public static IEveInvWindow GetInventoryWindow()
 		{
 			return new EveInvWindow(LavishScript.Objects.GetObject("EVEWindow", "Inventory"));
 		}

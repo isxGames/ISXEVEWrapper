@@ -1,16 +1,17 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using EVE.ISXEVE.Interfaces;
 using Extensions;
 using LavishScriptAPI;
 
 namespace EVE.ISXEVE
 {
-	/// <summary>
+    /// <summary>
 	/// Wrapper for the eve data type.
 	/// </summary>
-	public class EVE : LavishScriptObject
-	{
+	public class EVE : LavishScriptObject, IEve
+    {
 		#region Constants
 		public readonly string EVENT_ON_CHANNEL_MESSAGE = "EVE_OnChannelMessage";
 		#endregion

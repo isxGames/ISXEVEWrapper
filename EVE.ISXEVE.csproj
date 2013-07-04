@@ -94,6 +94,12 @@
     <Compile Include="EveInvWindow.cs" />
     <Compile Include="EVETime.cs" />
     <Compile Include="Fleet.cs" />
+    <Compile Include="Interfaces\IEve.cs" />
+    <Compile Include="Interfaces\IEveInvChildWindow.cs" />
+    <Compile Include="Interfaces\IEveInvWindow.cs" />
+    <Compile Include="Interfaces\IItem.cs" />
+    <Compile Include="Interfaces\IModule.cs" />
+    <Compile Include="Interfaces\IShip.cs" />
     <Compile Include="ModuleCharge.cs" />
     <Compile Include="_Compiler Settings\GlobalSuppressions.cs" />
     <Compile Include="Jammer.cs" />

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using EVE.ISXEVE.Interfaces;
 using Extensions;
 using LavishScriptAPI;
 
@@ -8,7 +9,7 @@ namespace EVE.ISXEVE
 	/// <summary>
 	/// Wrapper for the ship data type.
 	/// </summary>
-	public class Ship : LavishScriptObject
+	public class Ship : LavishScriptObject, IShip
 	{
 		#region Constructors
 		/// <summary>
@@ -224,11 +225,11 @@ namespace EVE.ISXEVE
 			}
 		}
 
-		private Item _toItem;
+		private IItem _toItem;
 		/// <summary>
 		/// Wrapper for the Ship.ToItem member
 		/// </summary>
-		public Item ToItem
+		public IItem ToItem
 		{
 			get { return _toItem ?? (_toItem = new Item(GetMember("ToItem"))); }
 		}
@@ -679,35 +680,36 @@ namespace EVE.ISXEVE
 			}
 		}
 
-		/// <summary>
-		/// Wrapper for the Cargo member of the ship type.
-		/// </summary>
-		/// <param name="i"></param>
-		/// <returns></returns>
-		public Item Cargo(int i)
+	    /// <summary>
+	    /// Wrapper for the Cargo member of the ship type.
+	    /// </summary>
+	    /// <param name="i"></param>
+	    /// <returns></returns>
+	    public IItem Cargo(int i)
 		{
 			return new Item(GetMember("Cargo", i.ToString()));
 		}
 
-		/// <summary>
-		/// Wrapper for the Cargo member of the ship type.
-		/// </summary>
-		/// <param name="name"></param>
-		/// <returns></returns>
-		public Item Cargo(string name)
+	    /// <summary>
+	    /// Wrapper for the Cargo member of the ship type.
+	    /// </summary>
+	    /// <param name="name"></param>
+	    /// <returns></returns>
+	    public IItem Cargo(string name)
 		{
 			return new Item(GetMember("Cargo", name));
 		}
 
-		private List<Item> _cargo;
-		/// <summary>
-		/// Wrapper for the GetCargo member of the ship type.
-		/// </summary>
-		/// <returns></returns>
-		public List<Item> GetCargo()
+		private List<IItem> _cargo;
+
+	    /// <summary>
+	    /// Wrapper for the GetCargo member of the ship type.
+	    /// </summary>
+	    /// <returns></returns>
+	    public List<IItem> GetCargo()
 		{
 			Tracing.SendCallback("Ship.GetCargo");
-			return _cargo ?? (_cargo = Util.GetListFromMethod<Item>(this, "GetCargo", "item"));
+			return _cargo ?? (_cargo = Util.GetListFromMethod<IItem>(this, "GetCargo", "item"));
 		}
 
 		private bool? _hasOreHold;
@@ -724,14 +726,15 @@ namespace EVE.ISXEVE
 			}
 		}
 
-		private List<Item> _oreHoldCargo;
-		/// <summary>
-		/// Wrapper for the GetOreHoldCargo method of the ship type
-		/// </summary>
-		/// <returns></returns>
-		public List<Item> GetOreHoldCargo()
+		private List<IItem> _oreHoldCargo;
+
+	    /// <summary>
+	    /// Wrapper for the GetOreHoldCargo method of the ship type
+	    /// </summary>
+	    /// <returns></returns>
+	    public List<IItem> GetOreHoldCargo()
 		{
-			return _oreHoldCargo ?? (_oreHoldCargo = Util.GetListFromMethod<Item>(this, "GetOreHoldCargo", "item"));
+			return _oreHoldCargo ?? (_oreHoldCargo = Util.GetListFromMethod<IItem>(this, "GetOreHoldCargo", "item"));
 		}
 		#endregion
 
@@ -765,35 +768,36 @@ namespace EVE.ISXEVE
 			}
 		}
 
-		/// <summary>
-		/// Wrapper for the Drone member of the ship type.
-		/// </summary>
-		/// <param name="i"></param>
-		/// <returns></returns>
-		public Item Drone(int i)
+	    /// <summary>
+	    /// Wrapper for the Drone member of the ship type.
+	    /// </summary>
+	    /// <param name="i"></param>
+	    /// <returns></returns>
+	    public IItem Drone(int i)
 		{
 			return new Item(GetMember("Drone", i.ToString()));
 		}
 
-		/// <summary>
-		/// Wrapper for the Drone member of the ship type.
-		/// </summary>
-		/// <param name="name"></param>
-		/// <returns></returns>
-		public Item Drone(string name)
+	    /// <summary>
+	    /// Wrapper for the Drone member of the ship type.
+	    /// </summary>
+	    /// <param name="name"></param>
+	    /// <returns></returns>
+	    public IItem Drone(string name)
 		{
 			return new Item(GetMember("Drone", name));
 		}
 
-		private List<Item> _drones;
-		/// <summary>
-		/// Wrapper for the GetDrones member of the ship type.
-		/// </summary>
-		/// <returns></returns>
-		public List<Item> GetDrones()
+		private List<IItem> _drones;
+
+	    /// <summary>
+	    /// Wrapper for the GetDrones member of the ship type.
+	    /// </summary>
+	    /// <returns></returns>
+	    public List<IItem> GetDrones()
 		{
 			Tracing.SendCallback("Ship.GetDrones", string.Empty);
-			return _drones ?? (_drones = Util.GetListFromMethod<Item>(this, "GetDrones", "item"));
+			return _drones ?? (_drones = Util.GetListFromMethod<IItem>(this, "GetDrones", "item"));
 		}
 		#endregion
 
@@ -802,7 +806,7 @@ namespace EVE.ISXEVE
 		/// Retrieve a module based on its slot
 		/// Note: Must be in space.
 		/// </summary>
-		public Module Module(SlotType slottype, int number)
+		public IModule Module(SlotType slottype, int number)
 		{
 			if (number < 0 || number > 7)
 				throw new Exception("Slot number must be between 0 and 7, inclusive");
@@ -810,12 +814,12 @@ namespace EVE.ISXEVE
 			return new Module(GetMember("Module", slottype.ToString() + number.ToString()));
 		}
 
-		/// <summary>
-		/// Wrapper for the Module member of the ship type.
-		/// </summary>
-		/// <param name="slotname"></param>
-		/// <returns></returns>
-		public Module Module(string slotname)
+	    /// <summary>
+	    /// Wrapper for the Module member of the ship type.
+	    /// </summary>
+	    /// <param name="slotname"></param>
+	    /// <returns></returns>
+	    public IModule Module(string slotname)
 		{
 			return new Module(GetMember("Module", slotname));
 		}
@@ -824,30 +828,31 @@ namespace EVE.ISXEVE
 		/// Retreive a module item based on its slot.  Usable both
 		/// in station and in space.
 		/// </summary>
-		public Item ModuleItem(SlotType slottype, int number)
+		public IItem ModuleItem(SlotType slottype, int number)
 		{
 			return Module(slottype, number).ToItem;
 		}
 
-		/// <summary>
-		/// Wrapper for the ModuleItem member of the ship type.
-		/// </summary>
-		/// <param name="slotname"></param>
-		/// <returns></returns>
-		public Item ModuleItem(string slotname)
+	    /// <summary>
+	    /// Wrapper for the ModuleItem member of the ship type.
+	    /// </summary>
+	    /// <param name="slotname"></param>
+	    /// <returns></returns>
+	    public IItem ModuleItem(string slotname)
 		{
 			return Module(slotname).ToItem;
 		}
 
-		private List<Module> _modules;
-		/// <summary>
-		/// Modules fit to the ship
-		/// Note: Must be in space.
-		/// </summary>
-		public List<Module> GetModules()
+		private List<IModule> _modules;
+
+	    /// <summary>
+	    /// Modules fit to the ship
+	    /// Note: Must be in space.
+	    /// </summary>
+	    public List<IModule> GetModules()
 		{
 			Tracing.SendCallback("Ship.GetModules");
-			return _modules ?? (_modules = Util.GetListFromMethod<Module>(this, "GetModules", "module"));
+			return _modules ?? (_modules = Util.GetListFromMethod<IModule>(this, "GetModules", "module"));
 		}
 		#endregion
 		#endregion
@@ -861,7 +866,7 @@ namespace EVE.ISXEVE
 		{
 			// TODO - Remove this when stealthbot is updated.
 			Tracing.SendCallback("Ship.StackAllCargo - Redirecting to EVEWindow");
-			EVEWindow wnd = new EVEWindow(LavishScript.Objects.GetObject("EVEWindow", "ByName", this.ID.ToString()));
+			var wnd = new EVEWindow(LavishScript.Objects.GetObject("EVEWindow", "ByName", ID.ToString()));
 			return wnd.StackAll();
 		}
 

@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
+using EVE.ISXEVE.Interfaces;
 using Extensions;
-using InnerSpaceAPI;
 using LavishScriptAPI;
 
 namespace EVE.ISXEVE
@@ -10,8 +9,8 @@ namespace EVE.ISXEVE
     /// <summary>
     /// Wrapper for the item data type.
     /// </summary>
-	public class Item : LavishScriptObject
-	{
+	public class Item : LavishScriptObject, IItem
+    {
 		#region Constructors
 		/// <summary>
 		/// Item copy constructor.
@@ -333,7 +332,48 @@ namespace EVE.ISXEVE
             return this.GetBoolFromLSO("IsContraband", FactionID.ToString());
         }
 
-		#endregion
+        /// <summary>
+        /// Gets the EM damage.
+        /// </summary>
+        public double EMDamage
+        {
+            get { return this.GetDoubleFromLSO("EMDamage"); }
+        }
+
+        /// <summary>
+        /// Gets the explosive damage.
+        /// </summary>
+        public double ExplosiveDamage
+        {
+            get { return this.GetDoubleFromLSO("ExplosiveDamage"); }
+        }
+
+        /// <summary>
+        /// Gets the kinetic damage.
+        /// </summary>
+        public double KineticDamage
+        {
+            get { return this.GetDoubleFromLSO("KineticDamage"); }
+        }
+
+        /// <summary>
+        /// Gets the thermal damage.
+        /// </summary>
+        public double ThermalDamage
+        {
+            get { return this.GetDoubleFromLSO("ThermalDamage"); }
+        }
+
+        public double ExplosionVelocity
+        {
+            get { return this.GetDoubleFromLSO("ExplosionVelocity"); }
+        }
+
+        public double ExplosionRadius
+        {
+            get { return this.GetDoubleFromLSO("ExplosionRadius"); }
+        }
+        #endregion
 
 		#region Methods
         public void ApplyPilotLicense()

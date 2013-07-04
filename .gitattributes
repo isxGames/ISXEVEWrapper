@@ -44,6 +44,12 @@ ISXEVEWrapperTest/Properties/Settings.settings -text
 ISXEVEWrapperTest/app.config -text
 ISXEVEWrapperTest/rundotnet.iss -text
 ISXEVEWrapperTest/wraptest.iss -text
+Interfaces/IEve.cs -text
+Interfaces/IEveInvChildWindow.cs -text
+Interfaces/IEveInvWindow.cs -text
+Interfaces/IItem.cs -text
+Interfaces/IModule.cs -text
+Interfaces/IShip.cs -text
 /Interstellar.cs -text
 /Item.cs -text
 /Jammer.cs -text

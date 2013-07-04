@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using EVE.ISXEVE.Interfaces;
 using LavishScriptAPI;
 using Extensions;
 
@@ -918,16 +919,16 @@ namespace EVE.ISXEVE
 			}
 		}
 
-		private List<Item> _cargo;
+		private List<IItem> _cargo;
 		/// <summary>
 		/// List of all cargo items.  Keep in mind this might
 		/// be empty or invalid if the cargo hold isn't open
 		/// </summary>
 		/// <returns></returns>
-		public List<Item> GetCargo()
+		public List<IItem> GetCargo()
 		{
 			Tracing.SendCallback("Entity.GetCargo");
-			return _cargo ?? (_cargo = Util.GetListFromMethod<Item>(this, "GetCargo", "item"));
+			return _cargo ?? (_cargo = Util.GetListFromMethod<IItem>(this, "GetCargo", "item"));
 		}
 
 		private bool? _hasOreHold;

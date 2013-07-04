@@ -1,6 +1,6 @@
 using System;
+using EVE.ISXEVE.Interfaces;
 using Extensions;
-using InnerSpaceAPI;
 using LavishScriptAPI;
 using System.Collections.Generic;
 
@@ -9,7 +9,7 @@ namespace EVE.ISXEVE
 	/// <summary>
 	/// Wrapper for the module data type.
 	/// </summary>
-	public class Module : LavishScriptObject
+	public class Module : LavishScriptObject, IModule
 	{
 		#region Constructors
 		/// <summary>
@@ -24,9 +24,9 @@ namespace EVE.ISXEVE
 		/// <summary>
 		/// Module object copy constructor.
 		/// </summary>
-		/// <param name="Copy"></param>
-		public Module(LavishScriptObject Copy)
-			: base(Copy)
+		/// <param name="copy"></param>
+		public Module(LavishScriptObject copy)
+			: base(copy)
 		{
 		}
 		#endregion
