@@ -9,7 +9,7 @@ namespace EVE.ISXEVE
     /// <summary>
     /// Wrapper for the item data type.
     /// </summary>
-	public class Item : LavishScriptObject, IItem
+	public class Item : ItemInfo, IItem
     {
 		#region Constructors
 		/// <summary>
@@ -23,23 +23,8 @@ namespace EVE.ISXEVE
 		#endregion
 
 		#region Members
-		/// <summary>
-		/// Wrapper for the BasePrice member of the item type.
-		/// </summary>
-		public double BasePrice
-		{
-			get { return this.GetDoubleFromLSO("BasePrice"); }
-		}
 
-		/// <summary>
-		/// Wrapper for the Capacity member of the item type.
-		/// </summary>
-		public double Capacity
-		{
-			get { return this.GetDoubleFromLSO("Capacity"); }
-		}
-
-		/// <summary>
+        /// <summary>
 		/// Wrapper for the CargoCapacity member of the item type.
 		/// </summary>
 		public double CargoCapacity
@@ -64,28 +49,7 @@ namespace EVE.ISXEVE
 			get { return this.GetDoubleFromLSO("UsedCargoCapacity"); }
 		}
 
-		/// <summary>
-		/// Wrapper for the Category member of the item type.
-		/// </summary>
-		public string Category
-		{
-			get { return this.GetStringFromLSO("Category"); }
-		}
-
-		/// <summary>
-		/// Wrapper for the CategoryID member of the item type.
-		/// </summary>
-		public int CategoryID
-		{
-			get { return this.GetIntFromLSO("CategoryID"); }
-		}
-
-	    public int ChargeSize
-	    {
-            get { return this.GetIntFromLSO("ChargeSize"); }
-	    }
-
-		/// <summary>
+        /// <summary>
 		/// Wrapper for the CategoryType member of the item type.
 		/// </summary>
 		public CategoryType CategoryType
@@ -93,50 +57,6 @@ namespace EVE.ISXEVE
 			get
 			{
 				return (CategoryType)CategoryID;
-			}
-		}
-
-		/// <summary>
-		/// Wrapper for the Description member of the item type.
-		/// </summary>
-		public string Description
-		{
-			get { return this.GetStringFromLSO("Description"); }
-		}
-
-		/// <summary>
-		/// Wrapper for the GraphicID member of the item type.
-		/// </summary>
-		public int GraphicID
-		{
-			get { return this.GetIntFromLSO("GraphicID"); }
-		}
-
-		/// <summary>
-		/// Wrapper for the Group member of the item type.
-		/// </summary>
-		public string Group
-		{
-			get { return this.GetStringFromLSO("Group"); }
-		}
-
-		/// <summary>
-		/// Wrapper for the GroupID member of the item type.
-		/// </summary>
-		public int GroupID
-		{
-			get { return this.GetIntFromLSO("GroupID"); }
-		}
-
-		/// <summary>
-		/// Wrapper for the ID member of the item type.
-		/// </summary>
-		public Int64 ID
-		{
-			get
-			{
-				Tracing.SendCallback("Item.ID");
-				return this.GetInt64FromLSO("ID");
 			}
 		}
 
@@ -202,15 +122,7 @@ namespace EVE.ISXEVE
 			get { return this.GetIntFromLSO("MacroLocationID"); }
 		}
 
-		/// <summary>
-		/// Wrapper for the MarketGroupID member of the item type.
-		/// </summary>
-		public int MarketGroupID
-		{
-			get { return this.GetIntFromLSO("MarketGroupID"); }
-		}
-
-		/// <summary>
+        /// <summary>
 		/// Wrapper for the MaxFlightTime member of the item type.
 		/// </summary>
 		public double MaxFlightTime
@@ -242,15 +154,7 @@ namespace EVE.ISXEVE
 			get { return this.GetIntFromLSO("OwnerID"); }
 		}
 
-		/// <summary>
-		/// ie, "Units to Refine"
-		/// </summary>
-		public int PortionSize
-		{
-			get { return this.GetIntFromLSO("PortionSize"); }
-		}
-
-		/// <summary>
+        /// <summary>
 		/// Wrapper for the Quantity member of the item type.
 		/// </summary>
 		public int Quantity
@@ -258,23 +162,7 @@ namespace EVE.ISXEVE
 			get { return this.GetIntFromLSO("Quantity"); }
 		}
 
-		/// <summary>
-		/// Wrapper for the RaceID member of the item type.
-		/// </summary>
-		public int RaceID
-		{
-			get { return this.GetIntFromLSO("RaceID"); }
-		}
-
-		/// <summary>
-		/// Wrapper for the Radius member of the item type.
-		/// </summary>
-		public double Radius
-		{
-			get { return this.GetDoubleFromLSO("Radius"); }
-		}
-
-		/// <summary>
+        /// <summary>
 		/// Wrapper for the Slot member of the item type.
 		/// </summary>
 		public string Slot
@@ -290,42 +178,13 @@ namespace EVE.ISXEVE
 			get { return this.GetIntFromLSO("SlotID"); }
 		}
 
-		/// <summary>
-		/// Wrapper for the Type member of the item type.
-		/// </summary>
-		public string Type
-		{
-			get { return this.GetStringFromLSO("Type"); }
-		}
-
-		/// <summary>
-		/// Wrapper for the TypeID member of the item type.
-		/// </summary>
-		public int TypeID
-		{
-			get { return this.GetIntFromLSO("TypeID"); }
-		}
-
-		/// <summary>
-		/// Wrapper for the Volume member of the item type.
-		/// </summary>
-		public double Volume
-		{
-			get { return this.GetDoubleFromLSO("Volume"); }
-		}
-
-		/// <summary>
+        /// <summary>
 		/// Wrapper for the GivenName member of the item type.
 		/// </summary>
 		public string GivenName
 		{
 			get { return this.GetStringFromLSO("GivenName"); }
 		}
-
-        public bool IsContraband
-        {
-            get { return this.GetBoolFromLSO("IsContraband"); }
-        }
 
         public bool IsContrabandForFaction(int FactionID)
         {

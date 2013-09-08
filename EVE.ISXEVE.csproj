@@ -87,6 +87,8 @@
     <Compile Include="Character.cs" />
     <Compile Include="CharSelect.cs" />
     <Compile Include="ChatChannel.cs" />
+    <Compile Include="Interfaces\IItemInfo.cs" />
+    <Compile Include="ItemInfo.cs" />
     <Compile Include="Corporation.cs" />
     <Compile Include="CorporationWallet.cs" />
     <Compile Include="DialogString.cs" />
@@ -101,6 +103,15 @@
     <Compile Include="Interfaces\IModule.cs" />
     <Compile Include="Interfaces\IShip.cs" />
     <Compile Include="ModuleCharge.cs" />
+    <Compile Include="ScannerCargo.cs" />
+    <Compile Include="ScannerDirectional.cs" />
+    <Compile Include="ScannerDirectionalResult.cs" />
+    <Compile Include="Scanners.cs" />
+    <Compile Include="ScannerShip.cs" />
+    <Compile Include="ScannerSurvey.cs" />
+    <Compile Include="ScannerSystem.cs" />
+    <Compile Include="SystemAnomaly.cs" />
+    <Compile Include="SystemSignature.cs" />
     <Compile Include="_Compiler Settings\GlobalSuppressions.cs" />
     <Compile Include="Jammer.cs" />
     <Compile Include="LavishScriptObjectExtensions.cs" />

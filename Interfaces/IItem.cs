@@ -10,16 +10,6 @@ namespace EVE.ISXEVE.Interfaces
     public interface IItem : ILSObject
     {
         /// <summary>
-        /// Wrapper for the BasePrice member of the item type.
-        /// </summary>
-        double BasePrice { get; }
-
-        /// <summary>
-        /// Wrapper for the Capacity member of the item type.
-        /// </summary>
-        double Capacity { get; }
-
-        /// <summary>
         /// Wrapper for the CargoCapacity member of the item type.
         /// </summary>
         double CargoCapacity { get; }
@@ -30,46 +20,9 @@ namespace EVE.ISXEVE.Interfaces
         double UsedCargoCapacity { get; }
 
         /// <summary>
-        /// Wrapper for the Category member of the item type.
-        /// </summary>
-        string Category { get; }
-
-        /// <summary>
-        /// Wrapper for the CategoryID member of the item type.
-        /// </summary>
-        int CategoryID { get; }
-
-        int ChargeSize { get; }
-
-        /// <summary>
         /// Wrapper for the CategoryType member of the item type.
         /// </summary>
         CategoryType CategoryType { get; }
-
-        /// <summary>
-        /// Wrapper for the Description member of the item type.
-        /// </summary>
-        string Description { get; }
-
-        /// <summary>
-        /// Wrapper for the GraphicID member of the item type.
-        /// </summary>
-        int GraphicID { get; }
-
-        /// <summary>
-        /// Wrapper for the Group member of the item type.
-        /// </summary>
-        string Group { get; }
-
-        /// <summary>
-        /// Wrapper for the GroupID member of the item type.
-        /// </summary>
-        int GroupID { get; }
-
-        /// <summary>
-        /// Wrapper for the ID member of the item type.
-        /// </summary>
-        Int64 ID { get; }
 
         /// <summary>
         /// Basic, STandard, Bronze, Platinum, etc. When opening the insurance window, call IsInsured != null to verify
@@ -110,11 +63,6 @@ namespace EVE.ISXEVE.Interfaces
         int MacroLocationID { get; }
 
         /// <summary>
-        /// Wrapper for the MarketGroupID member of the item type.
-        /// </summary>
-        int MarketGroupID { get; }
-
-        /// <summary>
         /// Wrapper for the MaxFlightTime member of the item type.
         /// </summary>
         double MaxFlightTime { get; }
@@ -135,24 +83,9 @@ namespace EVE.ISXEVE.Interfaces
         int OwnerID { get; }
 
         /// <summary>
-        /// ie, "Units to Refine"
-        /// </summary>
-        int PortionSize { get; }
-
-        /// <summary>
         /// Wrapper for the Quantity member of the item type.
         /// </summary>
         int Quantity { get; }
-
-        /// <summary>
-        /// Wrapper for the RaceID member of the item type.
-        /// </summary>
-        int RaceID { get; }
-
-        /// <summary>
-        /// Wrapper for the Radius member of the item type.
-        /// </summary>
-        double Radius { get; }
 
         /// <summary>
         /// Wrapper for the Slot member of the item type.
@@ -165,26 +98,9 @@ namespace EVE.ISXEVE.Interfaces
         int SlotID { get; }
 
         /// <summary>
-        /// Wrapper for the Type member of the item type.
-        /// </summary>
-        string Type { get; }
-
-        /// <summary>
-        /// Wrapper for the TypeID member of the item type.
-        /// </summary>
-        int TypeID { get; }
-
-        /// <summary>
-        /// Wrapper for the Volume member of the item type.
-        /// </summary>
-        double Volume { get; }
-
-        /// <summary>
         /// Wrapper for the GivenName member of the item type.
         /// </summary>
         string GivenName { get; }
-
-        bool IsContraband { get; }
 
         /// <summary>
         /// Gets the EM damage.

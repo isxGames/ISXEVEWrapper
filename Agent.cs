@@ -201,6 +201,15 @@ namespace EVE.ISXEVE
 			}
 		}
 
+	    private string _gender;
+        /// <summary>
+        /// Wrapper for the Gender member of the agent datatype.
+        /// </summary>
+	    public string Gender
+	    {
+            get { return _gender ?? (_gender = this.GetStringFromLSO("Gender")); }
+	    }
+
 		private float? _standingTo;
 		/// <summary>
 		/// Wrapper for the StandingTo member of the agent type.
@@ -283,6 +292,30 @@ namespace EVE.ISXEVE
 			Tracing.SendCallback("Agent:GetDialogResponses");
 			return _dialogResponses ?? (_dialogResponses = Util.GetListFromMethod<DialogString>(this, "GetDialogResponses", "dialogstring"));
 		}
+
+	    private bool? _isLocatorAgent;
+        /// <summary>
+        /// Wrapper for the IsLocatorAgent member of the agent datatype.
+        /// </summary>
+	    public bool IsLocatorAgent
+	    {
+	        get
+	        {
+	            if (_isLocatorAgent == null)
+	                _isLocatorAgent = this.GetBoolFromLSO("IsLocatorAgent");
+
+	            return _isLocatorAgent.Value;
+	        }
+	    }
+
+	    private string _agentTypeName;
+        /// <summary>
+        /// Wrapper for the AgentTypeName member of the agent datatype.
+        /// </summary>
+	    public string AgentTypeName
+	    {
+            get { return _agentTypeName ?? (_agentTypeName = this.GetStringFromLSO("AgentTypeName")); }
+	    }
 		#endregion
 
 		#region Methods

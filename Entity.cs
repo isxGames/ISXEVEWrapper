@@ -969,6 +969,81 @@ namespace EVE.ISXEVE
                 return _jammer ?? (_jammer = new Jammer(GetMember("ToJammer")));
             }
         }
+
+	    private Int64? _surveyScannerOreQuantity;
+        /// <summary>
+        /// Wrapper for the SurveyScannerOreQuantity member of the Entity datatype.
+        /// </summary>
+	    public Int64 SurveyScannerOreQuantity
+	    {
+	        get
+	        {
+	            if (_surveyScannerOreQuantity == null)
+	                _surveyScannerOreQuantity = this.GetInt64FromLSO("SurveyScannerOreQuantity");
+
+	            return _surveyScannerOreQuantity.Value;
+	        }
+	    }
+
+	    private bool? _hasShipScannerResults;
+        /// <summary>
+        /// Wrapper for the HasShipScannerResults member of the Entity datatype.
+        /// </summary>
+	    public bool HasShipScannerResults
+	    {
+	        get
+	        {
+	            if (_hasShipScannerResults == null)
+	                _hasShipScannerResults = this.GetBoolFromLSO("HasShipScannerResults");
+
+	            return _hasShipScannerResults.Value;
+	        }
+	    }
+
+	    private bool? _hasCargoScannerResults;
+        /// <summary>
+        /// Wrapper for the HasCargoScannerResults member of the Entity datatype.
+        /// </summary>
+	    public bool HasCargoScannerResults
+	    {
+	        get
+	        {
+	            if (_hasCargoScannerResults == null)
+	                _hasCargoScannerResults = this.GetBoolFromLSO("HasCargoScannerResults");
+
+	            return _hasCargoScannerResults.Value;
+	        }
+	    }
+
+	    private double? _shipScannerCapacitorCharge;
+        /// <summary>
+        /// Wrapper for the ShipScannerCapacitorCharge member of the Entity datatype.
+        /// </summary>
+	    public double ShipScannerCapacitorCharge
+	    {
+	        get
+	        {
+	            if (_shipScannerCapacitorCharge == null)
+	                _shipScannerCapacitorCharge = this.GetDoubleFromLSO("ShipScannerCapacitorCharge");
+
+	            return _shipScannerCapacitorCharge.Value;
+	        }
+	    }
+
+	    private double? _shipScannerCapacitorCapacity;
+        /// <summary>
+        /// Wrapper for the ShipScannerCapacitorCapacity member of the Entity datatype.
+        /// </summary>
+	    public double ShipScannerCapacitorCapacity
+	    {
+	        get
+	        {
+	            if (_shipScannerCapacitorCapacity == null)
+	                _shipScannerCapacitorCapacity = this.GetDoubleFromLSO("ShipScannerCapacitorCapacity");
+
+	            return _shipScannerCapacitorCapacity.Value;
+	        }
+	    }
 		#endregion
 
 		#region Methods

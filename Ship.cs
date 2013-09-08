@@ -855,6 +855,15 @@ namespace EVE.ISXEVE
 			return _modules ?? (_modules = Util.GetListFromMethod<IModule>(this, "GetModules", "module"));
 		}
 		#endregion
+
+	    private Scanners _scanners;
+        /// <summary>
+        /// Wraps the Scanners member of the Ship datatype.
+        /// </summary>
+	    public Scanners Scanners
+	    {
+            get { return _scanners ?? (_scanners = new Scanners(GetMember("Scanners"))); }
+	    }
 		#endregion
 
 		#region Methods

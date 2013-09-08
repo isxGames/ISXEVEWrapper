@@ -65,7 +65,7 @@ namespace EVE.ISXEVE
         }
     }
 
-	internal class Util
+	public static class Util
 	{
 	    private static readonly Dictionary<Type, Type> _implementingTypesByInterfaceType = new Dictionary<Type, Type>();
 	    private static readonly Dictionary<Type, ConstructorInfo> _constructorInfoByType = new Dictionary<Type, ConstructorInfo>(); 
@@ -193,21 +193,23 @@ namespace EVE.ISXEVE
             return (typeof(ILSObject)).IsAssignableFrom(typeof(T)) ? IndexToLavishScriptObjectList<T>(index, lsTypeName) : IndexToStructList<T>(index);
 		}
 
-		private static T IndexToLavishScriptObject<T>(LavishScriptObject index, int number)
-		{
-			var constructor = typeof(T).GetConstructor(new[] { typeof(LavishScriptObject) });
-
-			return (T)constructor.Invoke(new object[] { index.GetIndex(number.ToString()) });
-		}
-
-		public static T GetIndexMember<T>(LavishScriptObject index, int number)
+	    public static T GetIndexMember<T>(LavishScriptObject index, int number)
 		{
 			if (typeof(T).IsSubclassOf(typeof(LavishScriptObject)))
 				return (T)typeof(T).GetConstructor(new[] { typeof(LavishScriptObject) }).Invoke(new object[] { index.GetIndex(number.ToString()) });
 			return index.GetIndex<T>(number.ToString());
 		}
 
-		internal static List<T> GetListFromMethod<T>(ILSObject obj, string methodName, string lsTypeName, params string[] args)
+		/// <summary>
+		/// Translate an index of a given LavishScript type returned from the given method on the given object to a List of a .NET datatype equivalent.
+		/// </summary>
+		/// <param name="obj"></param>
+		/// <param name="methodName"></param>
+		/// <param name="lsTypeName"></param>
+		/// <param name="args"></param>
+		/// <typeparam name="T"></typeparam>
+		/// <returns></returns>
+		public static List<T> GetListFromMethod<T>(this ILSObject obj, string methodName, string lsTypeName, params string[] args)
 		{
 			//string methodName = "GetListFromMethod";
 			//Tracing.SendCallback(methodName, MethodName, LSTypeName);
@@ -278,7 +280,16 @@ namespace EVE.ISXEVE
 			}
 		}
 
-		internal static List<T> GetListFromMember<T>(ILSObject obj, string memberName, string lsTypeName, params string[] args)
+        /// <summary>
+        /// Translate an index of a given LavishScript type returned from the given member on the given object to a List of a .NET datatype equivalent.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <param name="memberName"></param>
+        /// <param name="lsTypeName"></param>
+        /// <param name="args"></param>
+        /// <returns></returns>
+		public static List<T> GetListFromMember<T>(this ILSObject obj, string memberName, string lsTypeName, params string[] args)
 		{
 			//var methodName = "GetListFromMember";
 			//Tracing.SendCallback(methodName, MemberName, LSTypeName);
