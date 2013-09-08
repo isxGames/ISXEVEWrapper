@@ -1,4 +1,5 @@
-﻿using EVE.ISXEVE.Interfaces;
+﻿using System;
+using EVE.ISXEVE.Interfaces;
 using Extensions;
 using LavishScriptAPI;
 
@@ -17,16 +18,16 @@ namespace EVE.ISXEVE
         {
         }
 
-        private int? _id;
+        private Int64? _id;
         /// <summary>
         /// Wrapper for the ID member of the ItemInfo datatype.
         /// </summary>
-        public int ID
+        public Int64 ID
         {
             get
             {
                 if (_id == null)
-                    _id = this.GetIntFromLSO("ID");
+                    _id = this.GetInt64FromLSO("ID");
 
                 return _id.Value;
             }

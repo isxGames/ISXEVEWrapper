@@ -1,11 +1,13 @@
-﻿namespace EVE.ISXEVE.Interfaces
+﻿using System;
+
+namespace EVE.ISXEVE.Interfaces
 {
     public interface IItemInfo
     {
         /// <summary>
         /// Wrapper for the ID member of the ItemInfo datatype.
         /// </summary>
-        int ID { get; }
+        Int64 ID { get; }
 
         /// <summary>
         /// Wrapper for the Type member of the ItemInfo datatype.

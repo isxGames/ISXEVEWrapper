@@ -234,15 +234,6 @@ namespace EVE.ISXEVE
 			get { return _toItem ?? (_toItem = new Item(GetMember("ToItem"))); }
 		}
 
-		private Scanner _scanner;
-		/// <summary>
-		/// Wrapper for the Ship.Scanner member
-		/// </summary>
-		public Scanner Scanner
-		{
-			get { return _scanner ?? (_scanner = new Scanner(GetMember("Scanner"))); }
-		}
-
 		private double? _cpuLoad;
 		/// <summary>
 		/// Wrapper for the CPULoad member of the ship type.

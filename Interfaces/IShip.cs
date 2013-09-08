@@ -85,11 +85,6 @@ namespace EVE.ISXEVE.Interfaces
         IItem ToItem { get; }
 
         /// <summary>
-        /// Wrapper for the Ship.Scanner member
-        /// </summary>
-        Scanner Scanner { get; }
-
-        /// <summary>
         /// Wrapper for the CPULoad member of the ship type.
         /// </summary>
         double CPULoad { get; }

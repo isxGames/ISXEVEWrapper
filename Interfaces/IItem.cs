@@ -7,7 +7,7 @@ namespace EVE.ISXEVE.Interfaces
     /// <summary>
     /// Wrapper for the Item datatype.
     /// </summary>
-    public interface IItem : ILSObject
+    public interface IItem : ILSObject, IItemInfo
     {
         /// <summary>
         /// Wrapper for the CargoCapacity member of the item type.
