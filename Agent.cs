@@ -12,6 +12,36 @@ namespace EVE.ISXEVE
 	/// </summary>
 	public class Agent : LavishScriptObject
 	{
+        /// <summary>
+        /// Factory method for fetching an agent by index.
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public static Agent ByIndex(int index)
+        {
+            return new Agent(index);
+        }
+
+        /// <summary>
+        /// Factory method for fetching an agent by ID.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static Agent ById(int id)
+        {
+            return new Agent("", id);
+        }
+
+        /// <summary>
+        /// Factory method for fetching an agent by name.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static Agent ByName(string name)
+        {
+            return new Agent(name);
+        }
+
 		#region Constructors
 		/// <summary>
 		/// Agent copy constructor.
@@ -80,6 +110,7 @@ namespace EVE.ISXEVE
 		/// <summary>
 		/// Wrapper for the TypeID member of the agent type.
 		/// </summary>
+		[Obsolete]
 		public int TypeID
 		{
 			get
@@ -89,6 +120,21 @@ namespace EVE.ISXEVE
 				return _typeId.Value;
 			}
 		}
+
+	    private int? _agentTypeId;
+        /// <summary>
+        /// Wrapper for the AgentTypeID member of the agent type.
+        /// </summary>
+	    public int AgentTypeID
+	    {
+	        get
+	        {
+	            if (_agentTypeId == null)
+	                _agentTypeId = this.GetIntFromLSO("AgentTypeID");
+
+	            return _agentTypeId.Value;
+	        }
+	    }
 
 		private string _division;
 		/// <summary>
