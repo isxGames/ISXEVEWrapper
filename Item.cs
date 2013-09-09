@@ -101,9 +101,9 @@ namespace EVE.ISXEVE
 		/// <summary>
 		/// Wrapper for the LocationID member of the item type.
 		/// </summary>
-		public int LocationID
+		public long LocationID
 		{
-			get { return this.GetIntFromLSO("LocationID"); }
+			get { return this.GetInt64FromLSO("LocationID"); }
 		}
 
 		/// <summary>

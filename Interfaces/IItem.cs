@@ -50,7 +50,7 @@ namespace EVE.ISXEVE.Interfaces
         /// <summary>
         /// Wrapper for the LocationID member of the item type.
         /// </summary>
-        int LocationID { get; }
+        long LocationID { get; }
 
         /// <summary>
         /// Example: "Amadeus' Harbinger"
