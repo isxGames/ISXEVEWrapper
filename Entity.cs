@@ -1000,6 +1000,16 @@ namespace EVE.ISXEVE
 	        }
 	    }
 
+        private List<ItemInfoList> _shipScannerResults;
+        /// <summary>
+        /// Wrapper for the GetShipScannerResults method of the entity datatype.
+        /// </summary>
+        /// <returns></returns>
+        public List<ItemInfoList> GetShipScannerResults()
+        {
+            return _shipScannerResults ?? (_shipScannerResults = this.GetListFromMethod<ItemInfoList>("GetShipScannerResults", "iteminfolist"));
+        }
+
 	    private bool? _hasCargoScannerResults;
         /// <summary>
         /// Wrapper for the HasCargoScannerResults member of the Entity datatype.
@@ -1014,6 +1024,16 @@ namespace EVE.ISXEVE
 	            return _hasCargoScannerResults.Value;
 	        }
 	    }
+
+        private List<ItemInfoList> _cargoScannerResults;
+        /// <summary>
+        /// Wrapper for the GetCargoScannerResults method of the entity datatype.
+        /// </summary>
+        /// <returns></returns>
+        public List<ItemInfoList> GetCargoScannerResults()
+        {
+            return _cargoScannerResults ?? (_cargoScannerResults = this.GetListFromMethod<ItemInfoList>("GetCargoScannerResults", "iteminfolist"));
+        }
 
 	    private double? _shipScannerCapacitorCharge;
         /// <summary>

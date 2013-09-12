@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using LavishScriptAPI;
 
 namespace EVE.ISXEVE
 {
     /// <summary>
-    /// Wrapper for the ScannerDirectional datatype
+    /// Wrapper for the directionalscanner datatype
     /// </summary>
-    // God damn CyberTech, someone needs to teach you to name datatypes.
-    // "ScannerDirectional" reads like someone who natively speaks in clicks and clacks named it. DirectionalScanner!
-    public class ScannerDirectional : LavishScriptObject
+    public class DirectionalScanner : LavishScriptObject
     {
-        public ScannerDirectional(LavishScriptObject Copy) : base(Copy)
+        public DirectionalScanner(LavishScriptObject Copy) : base(Copy)
         {
         }
 
@@ -34,9 +29,9 @@ namespace EVE.ISXEVE
         /// <param name="angle"></param>
         /// <param name="range"></param>
         /// <returns></returns>
-        public List<ScannerDirectionalResult> GetScanResults(int angle, int range)
+        public List<DirectionalScannerResult> GetScanResults(int angle, int range)
         {
-            return this.GetListFromMethod<ScannerDirectionalResult>("GetScanResults", "scannerdirectionalresult", angle.ToString(), range.ToString());
+            return this.GetListFromMethod<DirectionalScannerResult>("GetScanResults", "DirectionalScannerresult", angle.ToString(), range.ToString());
         }
     }
 }

@@ -5,17 +5,18 @@ using LavishScriptAPI;
 namespace EVE.ISXEVE
 {
     /// <summary>
-    /// Wrapper for the ScannerDirectionalResult datatype.
+    /// Wrapper for the DirectionalScannerresult datatype.
+    /// DirectionalScannerresult is not a typo.
     /// </summary>
-    public class ScannerDirectionalResult : LavishScriptObject
+    public class DirectionalScannerResult : LavishScriptObject
     {
-        public ScannerDirectionalResult(LavishScriptObject Copy) : base(Copy)
+        public DirectionalScannerResult(LavishScriptObject Copy) : base(Copy)
         {
         }
 
         private Int64? _id;
         /// <summary>
-        /// Wrapper for the ID member of the ScannerDirectionalResult datatype.
+        /// Wrapper for the ID member of the DirectionalScannerresult datatype.
         /// </summary>
         public Int64 ID
         {
@@ -30,7 +31,7 @@ namespace EVE.ISXEVE
 
         private string _name;
         /// <summary>
-        /// Wrapper for the Name member of the ScannerDirectionalResult datatype.
+        /// Wrapper for the Name member of the DirectionalScannerresult datatype.
         /// </summary>
         public string Name
         {
@@ -39,7 +40,7 @@ namespace EVE.ISXEVE
 
         private int? _groupId;
         /// <summary>
-        /// Wrapper for the GroupID member of the ScannerDirectionalResult datatype.
+        /// Wrapper for the GroupID member of the DirectionalScannerresult datatype.
         /// </summary>
         public int GroupID
         {
@@ -54,7 +55,7 @@ namespace EVE.ISXEVE
 
         private int? _typeId;
         /// <summary>
-        /// Wrapper for the TypeID member of the ScannerDirectionalResult datatype.
+        /// Wrapper for the TypeID member of the DirectionalScannerresult datatype.
         /// </summary>
         public int TypeID
         {
@@ -69,7 +70,7 @@ namespace EVE.ISXEVE
 
         private Entity _toEntity;
         /// <summary>
-        /// Wrapper for the ToEntity member of the ScannerDirectionalResult datatype.
+        /// Wrapper for the ToEntity member of the DirectionalScannerresult datatype.
         /// </summary>
         public Entity ToEntity
         {

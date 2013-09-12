@@ -69,7 +69,7 @@ namespace EVE.ISXEVE
         /// <returns></returns>
         public ChatChannel ChatChannel(Int64 channelID)
         {
-            return new ChatChannel(GetMember("ChatChannel", channelID.ToString()));
+            return new ChatChannel(GetMember("chatchannel", channelID.ToString()));
         }
 
 		/// <summary>

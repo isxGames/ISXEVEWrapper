@@ -3,12 +3,11 @@
 namespace EVE.ISXEVE
 {
     /// <summary>
-    /// Wrapper for the ScannerSurvey datatype.
+    /// Wrapper for the SurveyScanner datatype.
     /// </summary>
-    // SurveyScanner dude, SurveyScanner!
-    public class ScannerSurvey : LavishScriptObject
+    public class SurveyScanner : LavishScriptObject
     {
-        public ScannerSurvey(LavishScriptObject Copy) : base(Copy)
+        public SurveyScanner(LavishScriptObject Copy) : base(Copy)
         {
         }
 

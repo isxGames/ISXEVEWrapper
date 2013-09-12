@@ -1,21 +1,20 @@
 ﻿using System;
+using System.Collections.Generic;
 using LavishScriptAPI;
 
 namespace EVE.ISXEVE
 {
     /// <summary>
-    /// Wrapper for the ScannerShip datatype.
+    /// Wrapper for the CargoScanner datatype.
     /// </summary>
-    // ShipScanner, dude. ShipScanner!
-    public class ScannerShip : LavishScriptObject
+    public class CargoScanner : LavishScriptObject
     {
-        public ScannerShip(LavishScriptObject Copy) : base(Copy)
+        public CargoScanner(LavishScriptObject Copy) : base(Copy)
         {
-
         }
 
         /// <summary>
-        /// If ClearPreviousResults is false, then new results are appended to previous. Results will be available in Entity.GetShipScannerResults().
+        /// If ClearPreviousResults is false, then new results are appended to previous. Results will be available in Entity.GetCargoScannerResults()
         /// </summary>
         /// <param name="entityId"></param>
         /// <param name="clearPreviousResults"></param>

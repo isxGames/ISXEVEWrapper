@@ -8,18 +8,17 @@ using LavishScriptAPI;
 namespace EVE.ISXEVE
 {
     /// <summary>
-    /// Wrapper for the ScannerSystem datatype.
+    /// Wrapper for the SystemScanner datatype.
     /// </summary>
-    // God, this naming convention is awful.
-    public class ScannerSystem : LavishScriptObject
+    public class SystemScanner : LavishScriptObject
     {
-        public ScannerSystem(LavishScriptObject Copy) : base(Copy)
+        public SystemScanner(LavishScriptObject Copy) : base(Copy)
         {
         }
 
         private bool? _isSensorOverlayActive;
         /// <summary>
-        /// Wrapper for the IsSensorOverlayActive member of the ScannerSystem datatype.
+        /// Wrapper for the IsSensorOverlayActive member of the SystemScanner datatype.
         /// </summary>
         public bool IsSensorOverlayActive
         {
@@ -33,7 +32,7 @@ namespace EVE.ISXEVE
         }
 
         /// <summary>
-        /// Wrapper for the EnableSensorOverlay method of the ScannerSystem datatype.
+        /// Wrapper for the EnableSensorOverlay method of the SystemScanner datatype.
         /// </summary>
         /// <returns></returns>
         public bool EnableSensorOverlay()
@@ -42,7 +41,7 @@ namespace EVE.ISXEVE
         }
 
         /// <summary>
-        /// Wrapper for the DisableSensorOverlay method of the ScannerSystem datatype.
+        /// Wrapper for the DisableSensorOverlay method of the SystemScanner datatype.
         /// </summary>
         /// <returns></returns>
         public bool DisableSensorOverlay()
@@ -52,7 +51,7 @@ namespace EVE.ISXEVE
 
         private List<SystemAnomaly> _systemAnomalies; 
         /// <summary>
-        /// Wrapper for the GetAnomalies method of the ScannerSystem datatype.
+        /// Wrapper for the GetAnomalies method of the SystemScanner datatype.
         /// </summary>
         /// <returns></returns>
         public List<SystemAnomaly> GetAnomalies()
@@ -62,7 +61,7 @@ namespace EVE.ISXEVE
 
         private List<SystemSignature> _systemSignatures;
         /// <summary>
-        /// Wrapper for the GetSigantures method of the ScannerSystem datatype.
+        /// Wrapper for the GetSigantures method of the SystemScanner datatype.
         /// </summary>
         /// <returns></returns>
         public List<SystemSignature> GetSignatures()

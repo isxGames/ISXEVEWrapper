@@ -12,22 +12,22 @@ namespace EVE.ISXEVE
         {
         }
 
-        private ScannerDirectional _directional;
+        private DirectionalScanner _directional;
         /// <summary>
         /// Wraps the Directional member of the Scanners datatype.
         /// </summary>
-        public ScannerDirectional Directional
+        public DirectionalScanner Directional
         {
-            get { return _directional ?? (_directional = new ScannerDirectional(GetMember("Directional"))); }
+            get { return _directional ?? (_directional = new DirectionalScanner(GetMember("Directional"))); }
         }
 
-        private ScannerSystem _system;
+        private SystemScanner _system;
         /// <summary>
         /// Wraps the System member of the Scanners datatype.
         /// </summary>
-        public ScannerSystem System
+        public SystemScanner System
         {
-            get { return _system ?? (_system = new ScannerSystem(GetMember("System"))); }
+            get { return _system ?? (_system = new SystemScanner(GetMember("System"))); }
         }
 
         /// <summary>
@@ -35,9 +35,9 @@ namespace EVE.ISXEVE
         /// </summary>
         /// <param name="moduleId">ID of the module to use for survey scanning.</param>
         /// <returns></returns>
-        public ScannerSurvey Survey(Int64 moduleId)
+        public SurveyScanner Survey(Int64 moduleId)
         {
-            return new ScannerSurvey(GetMember("Survey", moduleId.ToString()));
+            return new SurveyScanner(GetMember("Survey", moduleId.ToString()));
         }
 
         /// <summary>
@@ -45,9 +45,9 @@ namespace EVE.ISXEVE
         /// </summary>
         /// <param name="moduleId">ID of the module to use for ship scanning.</param>
         /// <returns></returns>
-        public ScannerShip Ship(Int64 moduleId)
+        public ShipScanner Ship(Int64 moduleId)
         {
-            return new ScannerShip(GetMember("Ship", moduleId.ToString()));
+            return new ShipScanner(GetMember("Ship", moduleId.ToString()));
         }
 
         /// <summary>
@@ -55,9 +55,9 @@ namespace EVE.ISXEVE
         /// </summary>
         /// <param name="moduleId">ID of the module to use for ship scanning.</param>
         /// <returns></returns>
-        public ScannerCargo Cargo(Int64 moduleId)
+        public CargoScanner Cargo(Int64 moduleId)
         {
-            return new ScannerCargo(GetMember("Cargo", moduleId.ToString()));
+            return new CargoScanner(GetMember("Cargo", moduleId.ToString()));
         }
     }
 }
