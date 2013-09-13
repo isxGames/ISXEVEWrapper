@@ -148,7 +148,7 @@ namespace ISXEVEWrapperTest
                 // move all the items from your ship to the hangar
                 List<Item> itemList;
                 List<long> itemIdxList;
-
+/*
                 itemList = Ext.Me.Ship.GetCargo();
 
                 InnerSpace.Echo("You have " + itemList.Count + " items in your ship's cargo bay.");
@@ -161,6 +161,7 @@ namespace ISXEVEWrapperTest
 
                 InnerSpace.Echo("Moving " + itemIdxList.Count + " items in your hangar.");
                 Ext.EVE().MoveItemsTo(itemIdxList, "MyStationHangar", "Hangar");
+*/
             }
             InnerSpace.Echo("ISXEVEWrapperTest (MoveItemsTo): End");
         }
