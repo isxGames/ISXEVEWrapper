@@ -45,8 +45,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Debug\ISXEVEWrapper.XML</DocumentationFile>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>ExtendedCorrectnessRules.ruleset</CodeAnalysisRuleSet>
     <RunCodeAnalysis>true</RunCodeAnalysis>
+    <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -59,6 +60,7 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
+    <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Lavish.InnerSpace, Version=1.0.0.0, Culture=neutral, PublicKeyToken=9029a3ab4cbe108d, processorArchitecture=MSIL">
@@ -114,7 +116,8 @@
     <Compile Include="SystemScanner.cs" />
     <Compile Include="SystemAnomaly.cs" />
     <Compile Include="SystemSignature.cs" />
-    <Compile Include="_Compiler Settings\GlobalSuppressions.cs" />
+    <Compile Include="Properties\VersionInfo.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Jammer.cs" />
     <Compile Include="LavishScriptObjectExtensions.cs" />
     <Compile Include="MarketOrder.cs" />
@@ -177,13 +180,17 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
+  <PropertyGroup>
+    <Year>$([System.DateTime]::Now.ToString("yyyy"))</Year>
+    <Month>$([System.DateTime]::Now.ToString("MM"))</Month>
+    <Date>$([System.DateTime]::Now.ToString("dd"))</Date>
+    <Time>$([System.DateTime]::Now.ToString("HHmm"))</Time>
+    <AssemblyFileVersionAttribute>[assembly:System.Reflection.AssemblyFileVersion("$(Year).$(Month).$(Date).$(Time)")]</AssemblyFileVersionAttribute>
+  </PropertyGroup>
   <Target Name="BeforeBuild">
+    <WriteLinesToFile File="Properties\VersionInfo.cs" Lines="$(AssemblyFileVersionAttribute)" Overwrite="true">
+    </WriteLinesToFile>
   </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
   <PropertyGroup>
     <PostBuildEvent>"$(ProjectDir)_Compiler Settings\postbuild.bat" $(TargetFileName)</PostBuildEvent>
     <PreBuildEvent>"$(ProjectDir)_Compiler Settings\prebuild.bat"</PreBuildEvent>
