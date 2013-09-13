@@ -270,6 +270,7 @@ namespace EVE.ISXEVE.Interfaces
         /// </summary>
         /// <param name="items"></param>
         /// <param name="ToLocationEntityID"></param>
+        /// <param name="destinationName"></param>
         /// <param name="corporationHangarFolder"></param>
         /// <returns></returns>
         bool MoveItemsTo(List<Int64> items, Int64 ToLocationID, string destinationName, int corporationHangarFolder);
