@@ -45,22 +45,6 @@ namespace EVE.ISXEVE
         {
         	return this.GetBoolFromLSO("CharExists", name);
         }
-
-		/// <summary>
-		/// Returns the currently selected character from the charselect screen
-		/// </summary>
-		public string SelectedChar
-		{
-			get { return this.GetStringFromLSO("SelectedChar"); }
-		}
-
-        /// <summary>
-        /// Returns the CharID of the currently selected character
-        /// </summary>
-	    public Int64 SelectedCharID
-	    {
-	        get { return this.GetInt64FromLSO("SelectedCharID"); }
-	    }
 		#endregion
 
 		#region Methods
