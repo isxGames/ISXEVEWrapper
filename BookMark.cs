@@ -1,6 +1,6 @@
 using System;
+using EVE.ISXEVE.Interfaces;
 using Extensions;
-using InnerSpaceAPI;
 using LavishScriptAPI;
 
 namespace EVE.ISXEVE
@@ -8,7 +8,7 @@ namespace EVE.ISXEVE
 	/// <summary>
 	/// Wrapper for the bookmark data type.
 	/// </summary>
-	public class BookMark : LavishScriptObject
+	public class BookMark : LavishScriptObject, IBookMark
 	{
 		#region Constructors
 		/// <summary>

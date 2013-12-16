@@ -89,6 +89,7 @@
     <Compile Include="Character.cs" />
     <Compile Include="CharSelect.cs" />
     <Compile Include="ChatChannel.cs" />
+    <Compile Include="Interfaces\IBookMark.cs" />
     <Compile Include="Interfaces\IItemInfoList.cs" />
     <Compile Include="Interfaces\IItemInfo.cs" />
     <Compile Include="ItemInfo.cs" />
