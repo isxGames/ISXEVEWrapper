@@ -479,6 +479,17 @@ namespace EVE.ISXEVE
             return ExecuteMethod("LaunchDrones", lsIndex.GetLSReference());
         }
 
+        /// <summary>
+        /// Wrapper for the ItemInfo member of the EVE datatype.
+        /// </summary>
+        /// <param name="typeId"></param>
+        /// <returns></returns>
+        public ItemInfo ItemInfo(int typeId)
+        {
+            Tracing.SendCallback("EVE.ItemInfo", typeId);
+
+            return new ItemInfo(GetMember("ItemInfo", typeId.ToString()));
+        }
 
 		/// <summary>
 		/// Wrapper for the MoveItemsTo method fo the eve type.

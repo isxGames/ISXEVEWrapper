@@ -1,8 +1,9 @@
 using System;
+using LavishScriptAPI.Interfaces;
 
 namespace EVE.ISXEVE.Interfaces
 {
-    public interface IBookMark
+    public interface IBookMark : ILSObject
     {
         /// <summary>
         /// Wrapper for the ID member of a bookmark object
