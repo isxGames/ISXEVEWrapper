@@ -17,7 +17,7 @@ namespace EVE.ISXEVE.Interfaces
         /// <summary>
         /// Access the module as an item type.
         /// </summary>
-        Item ToItem { get; }
+        IItem ToItem { get; }
 
         /// <summary>
         /// Returns the ShieldTransferRange member of a module object.

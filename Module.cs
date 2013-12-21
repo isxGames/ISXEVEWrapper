@@ -44,11 +44,11 @@ namespace EVE.ISXEVE
 			}
 		}
 
-		private Item _toItem;
+		private IItem _toItem;
 		/// <summary>
 		/// Access the module as an item type.
 		/// </summary>
-		public Item ToItem
+		public IItem ToItem
 		{
 			get
 			{

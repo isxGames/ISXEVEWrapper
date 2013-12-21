@@ -355,5 +355,12 @@ namespace EVE.ISXEVE.Interfaces
         bool ReclaimDrones();
         List<long> GetViewedWrecks();
         bool RefreshBookmarks();
+
+        /// <summary>
+        /// Wrapper for the ItemInfo member of the EVE datatype.
+        /// </summary>
+        /// <param name="typeId"></param>
+        /// <returns></returns>
+        IItemInfo ItemInfo(int typeId);
     }
 }

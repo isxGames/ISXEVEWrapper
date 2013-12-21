@@ -1,8 +1,9 @@
 ﻿using System;
+using LavishScriptAPI.Interfaces;
 
 namespace EVE.ISXEVE.Interfaces
 {
-    public interface IItemInfo
+    public interface IItemInfo : ILSObject
     {
         /// <summary>
         /// Wrapper for the ID member of the ItemInfo datatype.
@@ -98,5 +99,10 @@ namespace EVE.ISXEVE.Interfaces
         /// Wrapper for the RangeBonus member of the ItemInfo datatype.
         /// </summary>
         float RangeBonus { get; }
+
+        /// <summary>
+        /// Wrapper for the ShieldRadius member of the ItemInfo datatype.
+        /// </summary>
+        int ShieldRadius { get; }
     }
 }

@@ -13,7 +13,7 @@ namespace EVE.ISXEVE
 	public class EVE : LavishScriptObject, IEve
     {
 		#region Constants
-		public readonly string EVENT_ON_CHANNEL_MESSAGE = "EVE_OnChannelMessage";
+		public const string OnChannelMessageEvent = "EVE_OnChannelMessage";
 		#endregion
 
 		#region Constructors
@@ -484,7 +484,7 @@ namespace EVE.ISXEVE
         /// </summary>
         /// <param name="typeId"></param>
         /// <returns></returns>
-        public ItemInfo ItemInfo(int typeId)
+        public IItemInfo ItemInfo(int typeId)
         {
             Tracing.SendCallback("EVE.ItemInfo", typeId);
 

@@ -278,5 +278,20 @@ namespace EVE.ISXEVE
                 return _rangeBonus.Value;
             }
         }
+
+        private int? _shieldRadius;
+        /// <summary>
+        /// Wrapper for the ShieldRadius member of the ItemInfo datatype.
+        /// </summary>
+        public int ShieldRadius
+        {
+            get
+            {
+                if (_shieldRadius == null)
+                    _shieldRadius = this.GetIntFromLSO("ShieldRadius");
+
+                return _shieldRadius.Value;
+            }
+        }
     }
 }
