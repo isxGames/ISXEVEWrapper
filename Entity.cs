@@ -1025,7 +1025,7 @@ namespace EVE.ISXEVE
 	        }
 	    }
 
-		private string _FleetTag;
+		private string _fleetTag;
 		/// <summary>
 		/// Wrapper for the FleetTag member of the Entity datatype.
 		/// </summary>
@@ -1033,10 +1033,10 @@ namespace EVE.ISXEVE
 		{
 			get
 			{
-				if (_FleetTag.Length == 0)
-					_FleetTag = this.GetStringFromLSO("FleetTag");
+				if (_fleetTag == null)
+					_fleetTag = this.GetStringFromLSO("FleetTag");
 
-				return _FleetTag;
+				return _fleetTag;
 			}
 		}
 
