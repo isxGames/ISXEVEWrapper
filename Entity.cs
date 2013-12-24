@@ -1025,7 +1025,22 @@ namespace EVE.ISXEVE
 	        }
 	    }
 
-        private List<ItemInfoList> _cargoScannerResults;
+		private string _FleetTag;
+		/// <summary>
+		/// Wrapper for the FleetTag member of the Entity datatype.
+		/// </summary>
+		public string FleetTag
+		{
+			get
+			{
+				if (_FleetTag.Length == 0)
+					_FleetTag = this.GetStringFromLSO("FleetTag");
+
+				return _FleetTag;
+			}
+		}
+
+		private List<ItemInfoList> _cargoScannerResults;
         /// <summary>
         /// Wrapper for the GetCargoScannerResults method of the entity datatype.
         /// </summary>
