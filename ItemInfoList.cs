@@ -18,7 +18,7 @@ namespace EVE.ISXEVE
         /// <summary>
         /// Wrapper for the ID member of the ItemInfoList datatype.
         /// </summary>
-        public int ID
+        new public int ID
         {
             get
             {
@@ -33,7 +33,7 @@ namespace EVE.ISXEVE
         /// <summary>
         /// Wrapper for the TypeID member of the ItemInfoList datatype.
         /// </summary>
-        public int TypeID
+        new public int TypeID
         {
             get
             {

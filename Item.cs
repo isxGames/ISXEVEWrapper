@@ -377,8 +377,8 @@ namespace EVE.ISXEVE
         /// <summary>
         /// Wrapper for the MoveTo method of the item type.
         /// </summary>
-        /// <param name="destinationEntityID"></param>
-        /// <param name="destinationName"></param>
+		/// <param name="ToLocationID"></param>
+		/// <param name="destinationName"></param>
         /// <returns></returns>
         public bool MoveTo(Int64 ToLocationID, string destinationName)
         {
@@ -390,7 +390,7 @@ namespace EVE.ISXEVE
         /// <summary>
         /// Wrapper for the MoveTo method of the item type.
         /// </summary>
-        /// <param name="ToLocationEntityID"></param>
+		/// <param name="ToLocationID"></param>
         /// <param name="destinationName"></param>
         /// <param name="quantity"></param>
         /// <returns></returns>
@@ -404,7 +404,7 @@ namespace EVE.ISXEVE
         /// <summary>
         /// Wrapper for the MoveTo method of the item type.
         /// </summary>
-        /// <param name="ToLocationEntityID"></param>
+		/// <param name="ToLocationID"></param>
         /// <param name="destinationName"></param>
         /// <param name="quantity"></param>
         /// <param name="corporateFolderNumber"></param>
