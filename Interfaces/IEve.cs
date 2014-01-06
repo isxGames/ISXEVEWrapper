@@ -362,5 +362,7 @@ namespace EVE.ISXEVE.Interfaces
         /// <param name="typeId"></param>
         /// <returns></returns>
         IItemInfo ItemInfo(int typeId);
+
+        List<EVEWindow> GetEveWindows();
     }
 }

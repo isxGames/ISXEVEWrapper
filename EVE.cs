@@ -491,7 +491,12 @@ namespace EVE.ISXEVE
             return new ItemInfo(GetMember("ItemInfo", typeId.ToString()));
         }
 
-		/// <summary>
+        public List<EVEWindow> GetEveWindows()
+        {
+            return this.GetListFromMethod<EVEWindow>("GetEVEWindows", "evewindow");
+        }
+
+        /// <summary>
 		/// Wrapper for the MoveItemsTo method fo the eve type.
 		/// </summary>
 		/// <param name="items"></param>
