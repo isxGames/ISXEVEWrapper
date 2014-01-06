@@ -103,6 +103,11 @@ namespace EVE.ISXEVE.Interfaces
         bool DeadSpace { get; }
 
         /// <summary>
+        /// Wrapper for the OwnerID member of the 'bookmark' type.
+        /// </summary>
+        long OwnerID { get; }
+
+        /// <summary>
         /// This will only work with bookmarks for which there is an "AlignTo To" option available via the in-game UI.
         /// </summary>
         /// <returns></returns>

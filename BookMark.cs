@@ -194,6 +194,18 @@ namespace EVE.ISXEVE
         {
             get { return this.GetBoolFromLSO("DeadSpace"); }
         }
+
+        /// <summary>
+        /// Wrapper for the OwnerID member of the 'bookmark' type.
+        /// </summary>
+	    public long OwnerID
+	    {
+	        get
+	        {
+	            Tracing.SendCallback("BookMark.OwnerID");
+	            return this.GetInt64FromLSO("OwnerID");
+	        }
+	    }
 		#endregion
 
 		#region Methods
