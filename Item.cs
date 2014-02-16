@@ -164,6 +164,8 @@ namespace EVE.ISXEVE
 
         /// <summary>
 		/// Wrapper for the Slot member of the item type.
+		/// For corporate hangar divisions 2-7, this is 'CorpSAG#', where # is 2-7.
+		/// For corporate hangar division 1, this is 'Hangar'.
 		/// </summary>
 		public string Slot
 		{
@@ -172,6 +174,8 @@ namespace EVE.ISXEVE
 
 		/// <summary>
 		/// Wrapper for the SlotID member of the item type.
+		/// For corporate hangar divisions 2-7, this is 116-121, respectively.
+		/// For corporate hangar division 1, this is 4.
 		/// </summary>
 		public int SlotID
 		{
