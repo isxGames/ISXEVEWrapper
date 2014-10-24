@@ -907,6 +907,11 @@ namespace EVE.ISXEVE
 	    {
 	        return ExecuteMethod("SelfDestruct");
 	    }
+
+	    public bool SetStarbaseForcefieldPassword(string password)
+	    {
+	        return ExecuteMethod("SetStarbaseForcefieldPassword", password);
+	    }
 		#endregion
 	}
 }

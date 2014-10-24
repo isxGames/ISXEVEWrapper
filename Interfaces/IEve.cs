@@ -63,13 +63,6 @@ namespace EVE.ISXEVE.Interfaces
         Int32 NumOpenChannels { get; }
 
         /// <summary>
-        /// Wrapper for the EVE member ChatChannel[ID]
-        /// </summary>
-        /// <param name="channelID"></param>
-        /// <returns></returns>
-        ChatChannel ChatChannel(Int64 channelID);
-
-        /// <summary>
         /// Returns a list of the "SystemIDs" of the systems along your current destination (autopilot) route.
         /// Returns a single -1 if you currently have no destinations.
         /// </summary>

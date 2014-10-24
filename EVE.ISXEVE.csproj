@@ -88,9 +88,12 @@
     <Compile Include="BookMark.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="CharSelect.cs" />
+    <Compile Include="Chat.cs" />
     <Compile Include="ChatChannel.cs" />
+    <Compile Include="ChatChannelMessage.cs" />
     <Compile Include="Constellation.cs" />
     <Compile Include="EntityWormhole.cs" />
+    <Compile Include="EveChat.cs" />
     <Compile Include="EveFittingWindow.cs" />
     <Compile Include="EveRepairShopWindow.cs" />
     <Compile Include="Extensions\LavishScriptObjectExtensions.cs" />

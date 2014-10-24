@@ -62,16 +62,6 @@ namespace EVE.ISXEVE
 			get { return this.GetInt("NextSessionChange"); }
 	    }
 
-        /// <summary>
-        /// Wrapper for the EVE member ChatChannel[ID]
-        /// </summary>
-        /// <param name="channelID"></param>
-        /// <returns></returns>
-        public ChatChannel ChatChannel(Int64 channelID)
-        {
-            return new ChatChannel(GetMember("chatchannel", channelID.ToString()));
-        }
-
 		/// <summary>
 		/// Returns a list of the "SystemIDs" of the systems along your current destination (autopilot) route.
 		/// Returns a single -1 if you currently have no destinations.
