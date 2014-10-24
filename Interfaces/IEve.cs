@@ -365,5 +365,12 @@ namespace EVE.ISXEVE.Interfaces
         /// <param name="secondSolarSystemId"></param>
         /// <returns></returns>
         int GetJumpsBetween(int firstSolarSystem, int secondSolarSystemId);
+
+        /// <summary>
+        /// ISXEVE-20141001.0009 on October 4, 2014:
+        /// This does EXACTLY the same thing as "GetBuddies" does currently.  "GetBuddies" is now deprecated and should be removed. 
+        /// </summary>
+        /// <returns></returns>
+        IList<Being> GetContacts();
     }
 }
