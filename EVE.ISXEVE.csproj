@@ -117,6 +117,7 @@
     <Compile Include="CargoScanner.cs" />
     <Compile Include="DirectionalScanner.cs" />
     <Compile Include="DirectionalScannerResult.cs" />
+    <Compile Include="Overview.cs" />
     <Compile Include="Region.cs" />
     <Compile Include="Scanners.cs" />
     <Compile Include="ShipScanner.cs" />

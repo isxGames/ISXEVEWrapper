@@ -1413,6 +1413,11 @@ namespace EVE.ISXEVE
 			return ExecuteMethod("EngageMyTarget");
 		}
 		#endregion
+
+	    public bool SetAsSelectedItem()
+	    {
+	        return ExecuteMethod("SetAsSelectedItem");
+	    }
 		#endregion
 	}
 
