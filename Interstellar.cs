@@ -1,5 +1,5 @@
 using System;
-using Extensions;
+using EVE.ISXEVE.Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
 
@@ -27,7 +27,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int ID
 		{
-			get { return this.GetIntFromLSO("ID"); }
+			get { return this.GetInt("ID"); }
 		}
 
 		/// <summary>
@@ -35,89 +35,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Name
 		{
-			get { return this.GetStringFromLSO("Name"); }
-		}
-
-		/// <summary>
-		/// Wrapper for Type member of interstellar type.
-		/// </summary>
-		public string Type
-		{
-			get { return this.GetStringFromLSO("Type"); }
-		}
-
-		/// <summary>
-		/// Wrapper for TypeID member of interstellar type.
-		/// </summary>
-		public int TypeID
-		{
-			get { return this.GetIntFromLSO("TypeID"); }
-		}
-
-		/// <summary>
-		/// Wrapper for Region member of interstellar type.
-		/// </summary>
-		public Interstellar Region
-		{
-			get
-			{
-				return new Interstellar(GetMember("Region"));
-			}
-		}
-
-		/// <summary>
-		/// applicable for systems and constellations only
-		/// </summary>
-		public Interstellar Constellation
-		{
-			get
-			{
-				return new Interstellar(GetMember("Constellation"));
-			}
-		}
-
-		/// <summary>
-		/// Wrapper for Security member of interstellar type.
-		/// </summary>
-		public float Security
-		{
-			get { return this.GetFloatFromLSO("Security"); }
-		}
-
-        /// <summary>
-        /// Only works for solar systems
-        /// </summary>
-        public int FactionID
-        {
-            get { return this.GetIntFromLSO("FactionID"); }
-        }
-
-        /// <summary>
-        /// Only works for solar systems
-        /// </summary>
-        public string Faction
-        {
-            get { return this.GetStringFromLSO("Faction"); }
-        }
-		#endregion
-
-		#region Methods
-		public bool AddWaypoint()
-		{
-			Tracing.SendCallback("Interstellar.AddWaypoint");
-			return ExecuteMethod("AddWaypoint");
-		}
-
-        public bool ClearWaypoint()
-        {
-            Tracing.SendCallback("Interstellar.ClearWaypoint");
-            return ExecuteMethod("ClearWaypoint");
-        }
-
-		public bool SetDestination()
-		{
-			Tracing.SendCallback("Interstellar.SetDestination");
-			return ExecuteMethod("SetDestination");
+			get { return this.GetString("Name"); }
 		}
 		#endregion
 	}

@@ -99,7 +99,7 @@ namespace EVE.ISXEVE.Interfaces
         /// <summary>
         /// Returns number of jump to a station. Returns -1 if you're currently in the station.
         /// </summary>
-        int JumpsToStation(int stationID);
+        int GetJumpsTo(int solarSystemOrStationId);
 
         /// <summary>
         /// Returns the distance between two entities.
@@ -297,7 +297,7 @@ namespace EVE.ISXEVE.Interfaces
         /// 2. PlaceBuyOrder[StationID#, TypeID#, Price#, Quantity#, &lt;Range&gt;, MinQuantity#, &lt;Duration&gt;]
         ///  ~ &lt;Range&gt; can be: "Station", "System", "Region", 1, 2, 3, 4, 5, 10, 20, 30, 40
         ///  ~ Duration is in DAYS
-        ///  ~ To get your current stationID# use ${Me.StationID}
+        ///  ~ To get your current solarSystemOrStationId# use ${Me.StationID}
         ///  ~ Quantity# is the MAX quantity you will buy overall, while MinQuantity# is the minimum that you will buy in a single transaction
         ///  ~ NOTE: If you place a buy order that already matches a sell order that's on market, it will act as an 'instant' buy order.
         /// </summary>
@@ -364,5 +364,13 @@ namespace EVE.ISXEVE.Interfaces
         IItemInfo ItemInfo(int typeId);
 
         List<EVEWindow> GetEveWindows();
+
+        /// <summary>
+        /// Get the # of jumps between the given two solar systems.
+        /// </summary>
+        /// <param name="firstSolarSystem"></param>
+        /// <param name="secondSolarSystemId"></param>
+        /// <returns></returns>
+        int GetJumpsBetween(int firstSolarSystem, int secondSolarSystemId);
     }
 }

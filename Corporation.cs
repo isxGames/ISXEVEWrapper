@@ -1,5 +1,5 @@
 ﻿using System;
-using Extensions;
+using EVE.ISXEVE.Extensions;
 using LavishScriptAPI;
 
 namespace EVE.ISXEVE
@@ -13,17 +13,17 @@ namespace EVE.ISXEVE
 
         public Int64 ID
         {
-            get { return this.GetInt64FromLSO("ID"); }
+            get { return this.GetInt64("ID"); }
         }
 
         public string Name
         {
-            get { return this.GetStringFromLSO("Name"); }
+            get { return this.GetString("Name"); }
         }
 
         public string Ticker
         {
-            get { return this.GetStringFromLSO("Ticker"); }
+            get { return this.GetString("Ticker"); }
         }
 
         public CorporationWallet Wallet

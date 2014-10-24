@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Extensions;
+using EVE.ISXEVE.Extensions;
 using LavishScriptAPI;
 
 namespace EVE.ISXEVE
@@ -16,12 +16,12 @@ namespace EVE.ISXEVE
 
         public double Balance
         {
-            get { return this.GetDoubleFromLSO("Balance"); }
+            get { return this.GetDouble("Balance"); }
         }
 
         public double BalanceAUR
         {
-            get { return this.GetDoubleFromLSO("BalanceAUR"); }
+            get { return this.GetDouble("BalanceAUR"); }
         }
     }
 }

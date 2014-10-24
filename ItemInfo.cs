@@ -1,6 +1,6 @@
 ﻿using System;
+using EVE.ISXEVE.Extensions;
 using EVE.ISXEVE.Interfaces;
-using Extensions;
 using LavishScriptAPI;
 
 namespace EVE.ISXEVE
@@ -27,7 +27,7 @@ namespace EVE.ISXEVE
             get
             {
                 if (_id == null)
-                    _id = this.GetInt64FromLSO("ID");
+                    _id = this.GetInt64("ID");
 
                 return _id.Value;
             }
@@ -39,7 +39,7 @@ namespace EVE.ISXEVE
         /// </summary>
         public string Type
         {
-            get { return _type ?? (_type = this.GetStringFromLSO("Type")); }
+            get { return _type ?? (_type = this.GetString("Type")); }
         }
 
         private int? _typeId;
@@ -51,7 +51,7 @@ namespace EVE.ISXEVE
             get
             {
                 if (_typeId == null)
-                    _typeId = this.GetIntFromLSO("TypeID");
+                    _typeId = this.GetInt("TypeID");
 
                 return _typeId.Value;
             }
@@ -63,7 +63,7 @@ namespace EVE.ISXEVE
         /// </summary>
         public string Group
         {
-            get { return _group ?? (_group = this.GetStringFromLSO("Group")); }
+            get { return _group ?? (_group = this.GetString("Group")); }
         }
 
         private int? _groupId;
@@ -75,7 +75,7 @@ namespace EVE.ISXEVE
             get
             {
                 if (_groupId == null)
-                    _groupId = this.GetIntFromLSO("GroupID");
+                    _groupId = this.GetInt("GroupID");
 
                 return _groupId.Value;
             }
@@ -87,7 +87,7 @@ namespace EVE.ISXEVE
         /// </summary>
         public string Category
         {
-            get { return _category ?? (_category = this.GetStringFromLSO("Category")); }
+            get { return _category ?? (_category = this.GetString("Category")); }
         }
 
         private int? _categoryId;
@@ -99,7 +99,7 @@ namespace EVE.ISXEVE
             get
             {
                 if (_categoryId == null)
-                    _categoryId = this.GetIntFromLSO("CategoryID");
+                    _categoryId = this.GetInt("CategoryID");
 
                 return _categoryId.Value;
             }
@@ -114,7 +114,7 @@ namespace EVE.ISXEVE
             get
             {
                 if (_isContraband == null)
-                    _isContraband = this.GetBoolFromLSO("IsContraband");
+                    _isContraband = this.GetBool("IsContraband");
 
                 return _isContraband.Value;
             }
@@ -129,7 +129,7 @@ namespace EVE.ISXEVE
             get
             {
                 if (_graphicId == null)
-                    _graphicId = this.GetIntFromLSO("GraphicID");
+                    _graphicId = this.GetInt("GraphicID");
 
                 return _graphicId.Value;
             }
@@ -144,7 +144,7 @@ namespace EVE.ISXEVE
             get
             {
                 if (_capacity == null)
-                    _capacity = this.GetDoubleFromLSO("Capacity");
+                    _capacity = this.GetDouble("Capacity");
 
                 return _capacity.Value;
             }
@@ -159,7 +159,7 @@ namespace EVE.ISXEVE
             get
             {
                 if (_radius == null)
-                    _radius = this.GetDoubleFromLSO("Radius");
+                    _radius = this.GetDouble("Radius");
 
                 return _radius.Value;
             }
@@ -174,7 +174,7 @@ namespace EVE.ISXEVE
             get
             {
                 if (_raceId == null)
-                    _raceId = this.GetIntFromLSO("RaceID");
+                    _raceId = this.GetInt("RaceID");
 
                 return _raceId.Value;
             }
@@ -189,7 +189,7 @@ namespace EVE.ISXEVE
             get
             {
                 if (_volume == null)
-                    _volume = this.GetDoubleFromLSO("Volume");
+                    _volume = this.GetDouble("Volume");
 
                 return _volume.Value;
             }
@@ -204,7 +204,7 @@ namespace EVE.ISXEVE
             get
             {
                 if (_basePrice == null)
-                    _basePrice = this.GetDoubleFromLSO("BasePrice");
+                    _basePrice = this.GetDouble("BasePrice");
 
                 return _basePrice.Value;
             }
@@ -219,7 +219,7 @@ namespace EVE.ISXEVE
             get
             {
                 if (_portionSize == null)
-                    _portionSize = this.GetIntFromLSO("PortionSize");
+                    _portionSize = this.GetInt("PortionSize");
 
                 return _portionSize.Value;
             }
@@ -234,7 +234,7 @@ namespace EVE.ISXEVE
             get
             {
                 if (_marketGroupId == null)
-                    _marketGroupId = this.GetIntFromLSO("MarketGroupID");
+                    _marketGroupId = this.GetInt("MarketGroupID");
 
                 return _marketGroupId.Value;
             }
@@ -246,7 +246,7 @@ namespace EVE.ISXEVE
         /// </summary>
         public string Description
         {
-            get { return _description ?? (_description = this.GetStringFromLSO("Description")); }
+            get { return _description ?? (_description = this.GetString("Description")); }
         }
 
         private int? _chargeSize;
@@ -258,7 +258,7 @@ namespace EVE.ISXEVE
             get
             {
                 if (_chargeSize == null)
-                    _chargeSize = this.GetIntFromLSO("ChargeSize");
+                    _chargeSize = this.GetInt("ChargeSize");
 
                 return _chargeSize.Value;
             }
@@ -273,7 +273,7 @@ namespace EVE.ISXEVE
             get
             {
                 if (_rangeBonus == null)
-                    _rangeBonus = this.GetFloatFromLSO("RangeBonus");
+                    _rangeBonus = this.GetFloat("RangeBonus");
 
                 return _rangeBonus.Value;
             }
@@ -288,7 +288,7 @@ namespace EVE.ISXEVE
             get
             {
                 if (_shieldRadius == null)
-                    _shieldRadius = this.GetIntFromLSO("ShieldRadius");
+                    _shieldRadius = this.GetInt("ShieldRadius");
 
                 return _shieldRadius.Value;
             }

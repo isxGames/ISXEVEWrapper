@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
+using EVE.ISXEVE.Extensions;
 using EVE.ISXEVE.Interfaces;
-using Extensions;
 using LavishScriptAPI;
 
 namespace EVE.ISXEVE
@@ -42,7 +42,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_id == null)
-					_id = this.GetInt64FromLSO("ID");
+					_id = this.GetInt64("ID");
 				return _id.Value;
 			}
 		}
@@ -53,7 +53,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Name
 		{
-			get { return _name ?? (_name = this.GetStringFromLSO("Name")); }
+			get { return _name ?? (_name = this.GetString("Name")); }
 		}
 
 		private double? _capacitor;
@@ -65,7 +65,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_capacitor == null)
-					_capacitor = this.GetDoubleFromLSO("Capacitor");
+					_capacitor = this.GetDouble("Capacitor");
 				return _capacitor.Value;
 			}
 		}
@@ -79,7 +79,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_maxCapacitor == null)
-					_maxCapacitor = this.GetDoubleFromLSO("MaxCapacitor");
+					_maxCapacitor = this.GetDouble("MaxCapacitor");
 				return _maxCapacitor.Value;
 			}
 		}
@@ -93,7 +93,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_capacitorPct == null)
-					_capacitorPct = this.GetDoubleFromLSO("CapacitorPct");
+					_capacitorPct = this.GetDouble("CapacitorPct");
 				return _capacitorPct.Value;
 			}
 		}
@@ -107,7 +107,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_shield == null)
-					_shield = this.GetDoubleFromLSO("Shield");
+					_shield = this.GetDouble("Shield");
 				return _shield.Value;
 			}
 		}
@@ -121,7 +121,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_maxShield == null)
-					_maxShield = this.GetDoubleFromLSO("MaxShield");
+					_maxShield = this.GetDouble("MaxShield");
 				return _maxShield.Value;
 			}
 		}
@@ -135,7 +135,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_shieldPct == null)
-					_shieldPct = this.GetDoubleFromLSO("ShieldPct");
+					_shieldPct = this.GetDouble("ShieldPct");
 				return _shieldPct.Value;
 			}
 		}
@@ -149,7 +149,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_armor == null)
-					_armor = this.GetDoubleFromLSO("Armor");
+					_armor = this.GetDouble("Armor");
 				return _armor.Value;
 			}
 		}
@@ -163,7 +163,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_maxArmor == null)
-					_maxArmor = this.GetDoubleFromLSO("MaxArmor");
+					_maxArmor = this.GetDouble("MaxArmor");
 				return _maxArmor.Value;
 			}
 		}
@@ -177,7 +177,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_armorPct == null)
-					_armorPct = this.GetDoubleFromLSO("ArmorPct");
+					_armorPct = this.GetDouble("ArmorPct");
 
 				return _armorPct.Value;
 			}
@@ -192,7 +192,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_structure == null)
-					_structure = this.GetDoubleFromLSO("Structure");
+					_structure = this.GetDouble("Structure");
 				return _structure.Value;
 			}
 		}
@@ -206,7 +206,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_maxStructure == null)
-					_maxStructure = this.GetDoubleFromLSO("MaxStructure");
+					_maxStructure = this.GetDouble("MaxStructure");
 				return _maxStructure.Value;
 			}
 		}
@@ -220,7 +220,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_structurePct == null)
-					_structurePct = this.GetDoubleFromLSO("StructurePct");
+					_structurePct = this.GetDouble("StructurePct");
 				return _structurePct.Value;
 			}
 		}
@@ -243,7 +243,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_cpuLoad == null)
-					_cpuLoad = this.GetDoubleFromLSO("CPULoad");
+					_cpuLoad = this.GetDouble("CPULoad");
 				return _cpuLoad.Value;
 			}
 		}
@@ -257,7 +257,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_cpuOutput == null)
-					_cpuOutput = this.GetDoubleFromLSO("CPUOutput");
+					_cpuOutput = this.GetDouble("CPUOutput");
 				return _cpuOutput.Value;
 			}
 		}
@@ -271,7 +271,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_powerLoad == null)
-					_powerLoad = this.GetDoubleFromLSO("PowerLoad");
+					_powerLoad = this.GetDouble("PowerLoad");
 				return _powerLoad.Value;
 			}
 		}
@@ -285,7 +285,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_powerOutput == null)
-					_powerOutput = this.GetDoubleFromLSO("PowerOutput");
+					_powerOutput = this.GetDouble("PowerOutput");
 				return _powerOutput.Value;
 			}
 		}
@@ -299,7 +299,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_turretSlotsLeft == null)
-					_turretSlotsLeft = this.GetDoubleFromLSO("TurretSlotsLeft");
+					_turretSlotsLeft = this.GetDouble("TurretSlotsLeft");
 				return _turretSlotsLeft.Value;
 			}
 		}
@@ -313,7 +313,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_heatCapacityHigh == null)
-					_heatCapacityHigh = this.GetDoubleFromLSO("HeatCapacityHigh");
+					_heatCapacityHigh = this.GetDouble("HeatCapacityHigh");
 				return _heatCapacityHigh.Value;
 			}
 		}
@@ -327,7 +327,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_heatCapacityMedium == null)
-					_heatCapacityMedium = this.GetDoubleFromLSO("HeatCapacityMedium");
+					_heatCapacityMedium = this.GetDouble("HeatCapacityMedium");
 				return _heatCapacityMedium.Value;
 			}
 		}
@@ -341,7 +341,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_heatCapacityLow == null)
-					_heatCapacityLow = this.GetDoubleFromLSO("HeatCapacityLow");
+					_heatCapacityLow = this.GetDouble("HeatCapacityLow");
 				return _heatCapacityLow.Value;
 			}
 		}
@@ -355,7 +355,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_rigSlots == null)
-					_rigSlots = this.GetDoubleFromLSO("RigSlots");
+					_rigSlots = this.GetDouble("RigSlots");
 				return _rigSlots.Value;
 			}
 		}
@@ -369,7 +369,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_rigSlotsLeft == null)
-					_rigSlotsLeft = this.GetDoubleFromLSO("RigSlotsLeft");
+					_rigSlotsLeft = this.GetDouble("RigSlotsLeft");
 				return _rigSlotsLeft.Value;
 			}
 		}
@@ -383,7 +383,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_scanSpeed == null)
-					_scanSpeed = this.GetDoubleFromLSO("ScanSpeed");
+					_scanSpeed = this.GetDouble("ScanSpeed");
 				return _scanSpeed.Value;
 			}
 		}
@@ -397,7 +397,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_maxTargetRange == null)
-					_maxTargetRange = this.GetDoubleFromLSO("MaxTargetRange");
+					_maxTargetRange = this.GetDouble("MaxTargetRange");
 				return _maxTargetRange.Value;
 			}
 		}
@@ -411,7 +411,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_lowSlots == null)
-					_lowSlots = this.GetDoubleFromLSO("LowSlots");
+					_lowSlots = this.GetDouble("LowSlots");
 				return _lowSlots.Value;
 			}
 		}
@@ -425,7 +425,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_mediumSlots == null)
-					_mediumSlots = this.GetDoubleFromLSO("MediumSlots");
+					_mediumSlots = this.GetDouble("MediumSlots");
 				return _mediumSlots.Value;
 			}
 		}
@@ -439,7 +439,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_highSlots == null)
-					_highSlots = this.GetDoubleFromLSO("HighSlots");
+					_highSlots = this.GetDouble("HighSlots");
 				return _highSlots.Value;
 			}
 		}
@@ -453,7 +453,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_radius == null)
-					_radius = this.GetDoubleFromLSO("Radius");
+					_radius = this.GetDouble("Radius");
 				return _radius.Value;
 			}
 		}
@@ -467,7 +467,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_techLevel == null)
-					_techLevel = this.GetDoubleFromLSO("TechLevel");
+					_techLevel = this.GetDouble("TechLevel");
 				return _techLevel.Value;
 			}
 		}
@@ -481,7 +481,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_heatLow == null)
-					_heatLow = this.GetDoubleFromLSO("HeatLow");
+					_heatLow = this.GetDouble("HeatLow");
 				return _heatLow.Value;
 			}
 		}
@@ -495,7 +495,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_heatMedium == null)
-					_heatMedium = this.GetDoubleFromLSO("HeatMedium");
+					_heatMedium = this.GetDouble("HeatMedium");
 				return _heatMedium.Value;
 			}
 		}
@@ -509,7 +509,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_heatHigh == null)
-					_heatHigh = this.GetDoubleFromLSO("HeatHigh");
+					_heatHigh = this.GetDouble("HeatHigh");
 				return _heatHigh.Value;
 			}
 		}
@@ -523,7 +523,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_maxVelocity == null)
-					_maxVelocity = this.GetDoubleFromLSO("MaxVelocity");
+					_maxVelocity = this.GetDouble("MaxVelocity");
 				return _maxVelocity.Value;
 			}
 		}
@@ -537,7 +537,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_scanResolution == null)
-					_scanResolution = this.GetDoubleFromLSO("ScanResolution");
+					_scanResolution = this.GetDouble("ScanResolution");
 				return _scanResolution.Value;
 			}
 		}
@@ -551,7 +551,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_scanRadarStrength == null)
-					_scanRadarStrength = this.GetDoubleFromLSO("ScanRadarStrength");
+					_scanRadarStrength = this.GetDouble("ScanRadarStrength");
 				return _scanRadarStrength.Value;
 			}
 		}
@@ -565,7 +565,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_agility == null)
-					_agility = this.GetDoubleFromLSO("Agility");
+					_agility = this.GetDouble("Agility");
 				return _agility.Value;
 			}
 		}
@@ -579,7 +579,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_launcherSlotsLeft == null)
-					_launcherSlotsLeft = this.GetDoubleFromLSO("LauncherSlotsLeft");
+					_launcherSlotsLeft = this.GetDouble("LauncherSlotsLeft");
 				return _launcherSlotsLeft.Value;
 			}
 		}
@@ -593,7 +593,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_capacitorRechargeRate == null)
-					_capacitorRechargeRate = this.GetDoubleFromLSO("CapacitorRechargeRate");
+					_capacitorRechargeRate = this.GetDouble("CapacitorRechargeRate");
 				return _capacitorRechargeRate.Value;
 			}
 		}
@@ -607,7 +607,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_shieldRechargeRate == null)
-					_shieldRechargeRate = this.GetDoubleFromLSO("ShieldRechargeRate");
+					_shieldRechargeRate = this.GetDouble("ShieldRechargeRate");
 				return _shieldRechargeRate.Value;
 			}
 		}
@@ -621,7 +621,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_signatureRadius == null)
-					_signatureRadius = this.GetDoubleFromLSO("SignatureRadius");
+					_signatureRadius = this.GetDouble("SignatureRadius");
 				return _signatureRadius.Value;
 			}
 		}
@@ -635,7 +635,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_maxLockedTargets == null)
-					_maxLockedTargets = this.GetDoubleFromLSO("MaxLockedTargets");
+					_maxLockedTargets = this.GetDouble("MaxLockedTargets");
 				return _maxLockedTargets.Value;
 			}
 		}
@@ -652,7 +652,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_cargoCapacity == null)
-					_cargoCapacity = this.GetDoubleFromLSO("CargoCapacity");
+					_cargoCapacity = this.GetDouble("CargoCapacity");
 				return _cargoCapacity.Value;
 			}
 		}
@@ -666,7 +666,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_usedCargoCapacity == null)
-					_usedCargoCapacity = this.GetDoubleFromLSO("UsedCargoCapacity");
+					_usedCargoCapacity = this.GetDouble("UsedCargoCapacity");
 				return _usedCargoCapacity.Value;
 			}
 		}
@@ -712,7 +712,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_hasOreHold == null)
-					_hasOreHold = this.GetBoolFromLSO("HasOreHold");
+					_hasOreHold = this.GetBool("HasOreHold");
 				return _hasOreHold.Value;
 			}
 		}
@@ -740,7 +740,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_droneBayCapacity == null)
-					_droneBayCapacity = this.GetDoubleFromLSO("DronebayCapacity");
+					_droneBayCapacity = this.GetDouble("DronebayCapacity");
 				return _droneBayCapacity.Value;
 			}
 		}
@@ -754,7 +754,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_usedDroneBayCapacity == null)
-					_usedDroneBayCapacity = this.GetDoubleFromLSO("UsedDronebayCapacity");
+					_usedDroneBayCapacity = this.GetDouble("UsedDronebayCapacity");
 				return _usedDroneBayCapacity.Value;
 			}
 		}

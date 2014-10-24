@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Extensions;
+using EVE.ISXEVE.Extensions;
 using LavishScriptAPI;
 
 namespace EVE.ISXEVE
@@ -25,7 +25,7 @@ namespace EVE.ISXEVE
             get
             {
                 if (_id == null)
-                    _id = this.GetInt64FromLSO("ID");
+                    _id = this.GetInt64("ID");
 
                 return _id.Value;
             }
@@ -37,7 +37,7 @@ namespace EVE.ISXEVE
         /// </summary>
         public string Name
         {
-            get { return _name ?? (_name = this.GetStringFromLSO("Name")); }
+            get { return _name ?? (_name = this.GetString("Name")); }
         }
 
         private int? _difficulty;
@@ -49,7 +49,7 @@ namespace EVE.ISXEVE
             get
             {
                 if (_difficulty == null)
-                    _difficulty = this.GetIntFromLSO("Difficulty");
+                    _difficulty = this.GetInt("Difficulty");
 
                 return _difficulty.Value;
             }
@@ -64,7 +64,7 @@ namespace EVE.ISXEVE
             get
             {
                 if (_dungeonId == null)
-                    _dungeonId = this.GetIntFromLSO("DungeonID");
+                    _dungeonId = this.GetInt("DungeonID");
 
                 return _dungeonId.Value;
             }
@@ -76,7 +76,7 @@ namespace EVE.ISXEVE
         /// </summary>
         public string DungeonName
         {
-            get { return _dungeonName ?? (_dungeonName = this.GetStringFromLSO("DungeonName")); }
+            get { return _dungeonName ?? (_dungeonName = this.GetString("DungeonName")); }
         }
 
         private string _faction;
@@ -85,7 +85,7 @@ namespace EVE.ISXEVE
         /// </summary>
         public string Faction
         {
-            get { return _faction ?? (_faction = this.GetStringFromLSO("Faction")); }
+            get { return _faction ?? (_faction = this.GetString("Faction")); }
         }
 
         private int? _factionId;
@@ -97,7 +97,7 @@ namespace EVE.ISXEVE
             get
             {
                 if (_factionId == null)
-                    _factionId = this.GetIntFromLSO("FactionID");
+                    _factionId = this.GetInt("FactionID");
 
                 return _factionId.Value;
             }
@@ -109,7 +109,7 @@ namespace EVE.ISXEVE
         /// </summary>
         public string Group
         {
-            get { return _group ?? (_group = this.GetStringFromLSO("Group")); }
+            get { return _group ?? (_group = this.GetString("Group")); }
         }
 
         private int? _groupId;
@@ -121,7 +121,7 @@ namespace EVE.ISXEVE
             get
             {
                 if (_groupId == null)
-                    _groupId = this.GetIntFromLSO("GroupID");
+                    _groupId = this.GetInt("GroupID");
 
                 return _groupId.Value;
             }
@@ -136,7 +136,7 @@ namespace EVE.ISXEVE
             get
             {
                 if (_isWarpable == null)
-                    _isWarpable = this.GetBoolFromLSO("IsWarpable");
+                    _isWarpable = this.GetBool("IsWarpable");
 
                 return _isWarpable.Value;
             }
@@ -151,7 +151,7 @@ namespace EVE.ISXEVE
             get
             {
                 if (_scanStrength == null)
-                    _scanStrength = this.GetIntFromLSO("ScanStrength");
+                    _scanStrength = this.GetInt("ScanStrength");
 
                 return _scanStrength.Value;
             }
@@ -166,7 +166,7 @@ namespace EVE.ISXEVE
             get
             {
                 if (_signalStrength == null)
-                    _signalStrength = this.GetDoubleFromLSO("SignalStrength");
+                    _signalStrength = this.GetDouble("SignalStrength");
 
                 return _signalStrength.Value;
             }
@@ -199,7 +199,7 @@ namespace EVE.ISXEVE
             get
             {
                 if (_x == null)
-                    _x = this.GetDoubleFromLSO("X");
+                    _x = this.GetDouble("X");
 
                 return _x.Value;
             }
@@ -214,7 +214,7 @@ namespace EVE.ISXEVE
             get
             {
                 if (_y == null)
-                    _y = this.GetDoubleFromLSO("Y");
+                    _y = this.GetDouble("Y");
 
                 return _y.Value;
             }
@@ -229,7 +229,7 @@ namespace EVE.ISXEVE
             get
             {
                 if (_z == null)
-                    _z = this.GetDoubleFromLSO("Z");
+                    _z = this.GetDouble("Z");
 
                 return _z.Value;
             }

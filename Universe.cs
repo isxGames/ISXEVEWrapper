@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-using InnerSpaceAPI;
 using LavishScriptAPI;
 
 namespace EVE.ISXEVE
@@ -16,17 +11,17 @@ namespace EVE.ISXEVE
 		/// <summary>
 		/// can refer to any solarsystem, region, or constellation
 		/// </summary>
-		public static Interstellar ByName(string name)
+        public static SolarSystem ByName(string name)
 		{
-			return new Interstellar(LavishScript.Objects.GetObject("Universe", name));
+            return new SolarSystem(LavishScript.Objects.GetObject("Universe", name));
 		}
 
 		/// <summary>
 		/// can refer to any solarsystem, region, or constellation
 		/// </summary>
-		public static Interstellar ByID(int ID)
+		public static SolarSystem ByID(int ID)
 		{
-			return new Interstellar(LavishScript.Objects.GetObject("Universe", ID.ToString()));
+            return new SolarSystem(LavishScript.Objects.GetObject("Universe", ID.ToString()));
 		}
 		#endregion
 	}

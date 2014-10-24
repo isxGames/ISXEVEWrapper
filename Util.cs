@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using Extensions;
+using EVE.ISXEVE.Extensions;
 using LavishScriptAPI;
 using LavishScriptAPI.Interfaces;
 
@@ -153,7 +153,7 @@ namespace EVE.ISXEVE
 					return list;
 				}
 
-				var objectId = objectLso.GetStringFromLSO("ID");
+				var objectId = objectLso.GetString("ID");
 
 				if (objectId == null)
 				{

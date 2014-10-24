@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Extensions;
+using EVE.ISXEVE.Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
 
@@ -83,7 +83,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Name
 		{
-			get { return this.GetStringFromLSO("Name"); }
+			get { return this.GetString("Name"); }
 		}
 
 		/// <summary>
@@ -91,7 +91,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int ID
 		{
-			get { return this.GetIntFromLSO("ID"); }
+			get { return this.GetInt("ID"); }
 		}
 
 		/// <summary>
@@ -99,7 +99,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Group
 		{
-			get { return this.GetStringFromLSO("Group"); }
+			get { return this.GetString("Group"); }
 		}
 
 		/// <summary>
@@ -107,7 +107,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int GroupID
 		{
-			get { return this.GetIntFromLSO("GroupID"); }
+			get { return this.GetInt("GroupID"); }
 		}
 
 		/// <summary>
@@ -115,7 +115,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsTraining
 		{
-			get { return this.GetBoolFromLSO("IsTraining"); }
+			get { return this.GetBool("IsTraining"); }
 		}
 
 		/// <summary>
@@ -128,7 +128,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double TimeToTrain
 		{
-			get { return this.GetDoubleFromLSO("TimeToTrain"); }
+			get { return this.GetDouble("TimeToTrain"); }
 		}
 
 		/// <summary>
@@ -136,7 +136,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double TrainingTimeMultiplier
 		{
-			get { return this.GetDoubleFromLSO("TrainingTimeMultiplier"); }
+			get { return this.GetDouble("TrainingTimeMultiplier"); }
 		}
 
 		/// <summary>
@@ -144,7 +144,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int SkillPoints
 		{
-			get { return this.GetIntFromLSO("SkillPoints"); }
+			get { return this.GetInt("SkillPoints"); }
 		}
 
 		/// <summary>
@@ -152,7 +152,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int Level
 		{
-			get { return this.GetIntFromLSO("Level"); }
+			get { return this.GetInt("Level"); }
 		}
 		#endregion
 

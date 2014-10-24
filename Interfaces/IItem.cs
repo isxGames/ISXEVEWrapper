@@ -259,5 +259,6 @@ namespace EVE.ISXEVE.Interfaces
         bool MoveTo(string ToLocationName, string destinationName, int quantity, int corporateFolderNumber);
 
         List<int> GetContrabandFactions();
+        bool GetRepairQuote();
     }
 }

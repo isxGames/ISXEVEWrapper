@@ -1,5 +1,5 @@
 using System;
-using Extensions;
+using EVE.ISXEVE.Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
 
@@ -29,7 +29,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_id == null)
-					_id = this.GetIntFromLSO("ID");
+					_id = this.GetInt("ID");
 				return _id.Value;
 			}
 		}
@@ -43,7 +43,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_charId == null)
-					_charId = this.GetInt64FromLSO("CharID");
+					_charId = this.GetInt64("CharID");
 				return _charId.Value;
 			}
 		}
@@ -54,7 +54,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Name
 		{
-			get { return _name ?? (_name = this.GetStringFromLSO("Name")); }
+			get { return _name ?? (_name = this.GetString("Name")); }
 		}
 
 		private bool? _isOnline;
@@ -66,7 +66,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_isOnline == null)
-					_isOnline = this.GetBoolFromLSO("IsOnline");
+					_isOnline = this.GetBool("IsOnline");
 				return _isOnline.Value;
 			}
 		}
@@ -80,7 +80,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_isNpc == null)
-					_isNpc = this.GetBoolFromLSO("IsNPC");
+					_isNpc = this.GetBool("IsNPC");
 				return _isNpc.Value;
 			}
 		}
@@ -94,7 +94,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_isPc == null)
-					_isPc = this.GetBoolFromLSO("IsPC");
+					_isPc = this.GetBool("IsPC");
 				return _isPc.Value;
 			}
 		}

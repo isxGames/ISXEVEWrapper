@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
+using EVE.ISXEVE.Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
-using Extensions;
 
 namespace EVE.ISXEVE
 {
@@ -89,7 +89,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_autoPilotOn == null)
-					_autoPilotOn = this.GetBoolFromLSO("AutoPilotOn");
+					_autoPilotOn = this.GetBool("AutoPilotOn");
 				return _autoPilotOn.Value;
 			}
 		}
@@ -126,7 +126,7 @@ namespace EVE.ISXEVE
 		{
 			get
 			{
-				return _name ?? (_name = this.GetStringFromLSO("Name"));
+				return _name ?? (_name = this.GetString("Name"));
 			}
 		}
 
@@ -148,7 +148,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Alliance
 		{
-			get { return _alliance ?? (_alliance = this.GetStringFromLSO("Alliance")); }
+			get { return _alliance ?? (_alliance = this.GetString("Alliance")); }
 		}
 
 		private int? _allianceId;
@@ -160,7 +160,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_allianceId == null)
-					_allianceId = this.GetIntFromLSO("AllianceID");
+					_allianceId = this.GetInt("AllianceID");
 				return _allianceId.Value;
 			}
 		}
@@ -171,7 +171,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string AllianceTicker
 		{
-			get { return _allianceTicker ?? (_allianceTicker = this.GetStringFromLSO("AllianceTicker")); }
+			get { return _allianceTicker ?? (_allianceTicker = this.GetString("AllianceTicker")); }
 		}
 
 		private int? _regionId;
@@ -183,7 +183,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_regionId == null)
-					_regionId = this.GetIntFromLSO("RegionID");
+					_regionId = this.GetInt("RegionID");
 				return _regionId.Value;
 			}
 		}
@@ -197,7 +197,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_constellationId == null)
-					_constellationId = this.GetIntFromLSO("ConstellationID");
+					_constellationId = this.GetInt("ConstellationID");
 				return _constellationId.Value;
 			}
 		}
@@ -211,7 +211,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_solarSystemId == null)
-					_solarSystemId = this.GetIntFromLSO("SolarSystemID");
+					_solarSystemId = this.GetInt("SolarSystemID");
 				return _solarSystemId.Value;
 			}
 		}
@@ -234,7 +234,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_shipId == null)
-					_shipId = this.GetInt64FromLSO("ShipID");
+					_shipId = this.GetInt64("ShipID");
 				return _shipId.Value;
 			}
 		}
@@ -248,7 +248,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_charId == null)
-					_charId = this.GetInt64FromLSO("CharID");
+					_charId = this.GetInt64("CharID");
 				return _charId.Value;
 			}
 		}
@@ -263,7 +263,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_inStation == null)
-					_inStation = this.GetBoolFromLSO("InStation");
+					_inStation = this.GetBool("InStation");
 				return _inStation.Value;
 			}
 		}
@@ -277,7 +277,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_inSpace == null)
-					_inSpace = this.GetBoolFromLSO("InSpace");
+					_inSpace = this.GetBool("InSpace");
 				return _inSpace.Value;
 			}
 		}
@@ -291,7 +291,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_stationId == null)
-					_stationId = this.GetIntFromLSO("StationID");
+					_stationId = this.GetInt("StationID");
 				return _stationId.Value;
 			}
 		}
@@ -301,7 +301,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Intelligence
 		{
-			get { return this.GetDoubleFromLSO("Intelligence"); }
+			get { return this.GetDouble("Intelligence"); }
 		}
 
 		/// <summary>
@@ -309,7 +309,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Perception
 		{
-			get { return this.GetDoubleFromLSO("Perception"); }
+			get { return this.GetDouble("Perception"); }
 		}
 
 		/// <summary>
@@ -317,7 +317,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Charisma
 		{
-			get { return this.GetDoubleFromLSO("Charisma"); }
+			get { return this.GetDouble("Charisma"); }
 		}
 
 		private Wallet _wallet;
@@ -331,7 +331,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Willpower
 		{
-			get { return this.GetDoubleFromLSO("Willpower"); }
+			get { return this.GetDouble("Willpower"); }
 		}
 
 		/// <summary>
@@ -339,7 +339,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Memory
 		{
-			get { return this.GetDoubleFromLSO("Memory"); }
+			get { return this.GetDouble("Memory"); }
 		}
 
 		private double? _maxLockedTargets;
@@ -352,7 +352,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_maxLockedTargets == null)
-					_maxLockedTargets = this.GetDoubleFromLSO("MaxLockedTargets");
+					_maxLockedTargets = this.GetDouble("MaxLockedTargets");
 				return _maxLockedTargets.Value;
 			}
 		}
@@ -362,7 +362,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double MiningDroneAmountBonus
 		{
-			get { return this.GetDoubleFromLSO("MiningDroneAmountBonus"); }
+			get { return this.GetDouble("MiningDroneAmountBonus"); }
 		}
 
 		private double? _maxActiveDrones;
@@ -374,7 +374,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_maxActiveDrones == null)
-					_maxActiveDrones = this.GetDoubleFromLSO("MaxActiveDrones");
+					_maxActiveDrones = this.GetDouble("MaxActiveDrones");
 				return _maxActiveDrones.Value;
 			}
 		}
@@ -388,7 +388,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_droneControlDistance == null)
-					_droneControlDistance = this.GetDoubleFromLSO("DroneControlDistance");
+					_droneControlDistance = this.GetDouble("DroneControlDistance");
 				return _droneControlDistance.Value;
 			}
 		}
@@ -400,7 +400,7 @@ namespace EVE.ISXEVE
 		{
 			get
 			{
-				return this.GetDoubleFromLSO("MaxJumpClones");
+				return this.GetDouble("MaxJumpClones");
 			}
 		}
 		#endregion
@@ -464,7 +464,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_skillPoints == null)
-					_skillPoints = this.GetDoubleFromLSO("SkillPoints");
+					_skillPoints = this.GetDouble("SkillPoints");
 				return _skillPoints.Value;
 			}
 		}
@@ -481,7 +481,7 @@ namespace EVE.ISXEVE
             get
             {
 				if (_skillQueueLength == null)
-					_skillQueueLength = this.GetDoubleFromLSO("SkillQueueLength");
+					_skillQueueLength = this.GetDouble("SkillQueueLength");
             	return _skillQueueLength.Value;
             }
         }
@@ -684,7 +684,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_targetCount == null)
-					_targetCount = this.GetIntFromLSO("TargetCount");
+					_targetCount = this.GetInt("TargetCount");
 				return _targetCount.Value;
 			}
 		}
@@ -698,7 +698,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_targetingCount == null)
-					_targetingCount = this.GetIntFromLSO("TargetingCount");
+					_targetingCount = this.GetInt("TargetingCount");
 				return _targetingCount.Value;
 			}
 		}
@@ -712,7 +712,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_targetedByCount == null)
-					_targetedByCount = this.GetIntFromLSO("TargetedByCount");
+					_targetedByCount = this.GetInt("TargetedByCount");
 				return _targetedByCount.Value;
 			}
 		}

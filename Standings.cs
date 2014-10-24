@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Extensions;
+using EVE.ISXEVE.Extensions;
 using LavishScriptAPI;
 
 namespace EVE.ISXEVE
@@ -28,7 +28,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int CorpToAlliance
 		{
-			get { return this.GetIntFromLSO("CorpToAlliance"); }
+			get { return this.GetInt("CorpToAlliance"); }
 		}
 
 		/// <summary>
@@ -36,7 +36,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int CorpToCorp
 		{
-			get { return this.GetIntFromLSO("CorpToCorp"); }
+			get { return this.GetInt("CorpToCorp"); }
 		}
 
 		/// <summary>
@@ -44,7 +44,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int CorpToPilot
 		{
-			get { return this.GetIntFromLSO("CorpToPilot"); }
+			get { return this.GetInt("CorpToPilot"); }
 		}
 
 		/// <summary>
@@ -52,7 +52,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int MeToCorp
 		{
-			get { return this.GetIntFromLSO("MeToCorp"); }
+			get { return this.GetInt("MeToCorp"); }
 		}
 
 		/// <summary>
@@ -60,7 +60,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int MeToPilot
 		{
-			get { return this.GetIntFromLSO("MeToPilot"); }
+			get { return this.GetInt("MeToPilot"); }
 		}
 
 		/// <summary>
@@ -68,22 +68,22 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int AllianceToAlliance
 		{
-			get { return this.GetIntFromLSO("AllianceToAlliance"); }
+			get { return this.GetInt("AllianceToAlliance"); }
 		}
 
         public int MeToAlliance
         {
-            get { return this.GetIntFromLSO("MeToAlliance"); }
+            get { return this.GetInt("MeToAlliance"); }
         }
 
         public int AllianceToCorp
         {
-            get { return this.GetIntFromLSO("AllianceToCorp"); }
+            get { return this.GetInt("AllianceToCorp"); }
         }
 
         public int AllianceToPilot
         {
-            get { return this.GetIntFromLSO("AlliancetoPilot"); }
+            get { return this.GetInt("AlliancetoPilot"); }
         }
 		#endregion
 	}

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Extensions;
+using EVE.ISXEVE.Extensions;
 using LavishScriptAPI;
 
 namespace EVE.ISXEVE
@@ -23,7 +23,7 @@ namespace EVE.ISXEVE
 			get 
 			{
 				if (_id == null)
-					_id = this.GetInt64FromLSO("ID");
+					_id = this.GetInt64("ID");
 
 				return _id.Value;
 			}
@@ -35,7 +35,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Type
 		{
-			get { return _type ?? (_type = this.GetStringFromLSO("Type")); }
+			get { return _type ?? (_type = this.GetString("Type")); }
 		}
 
 		private int? _typeId;
@@ -47,7 +47,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_typeId == null)
-					_typeId = this.GetIntFromLSO("TypeID");
+					_typeId = this.GetInt("TypeID");
 
 				return _typeId.Value;
 			}
@@ -59,7 +59,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Group
 		{
-			get { return _group ?? (_group = this.GetStringFromLSO("Group")); }
+			get { return _group ?? (_group = this.GetString("Group")); }
 		}
 
 		private int? _groupId;
@@ -71,7 +71,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_groupId == null)
-					_groupId = this.GetIntFromLSO("GroupID");
+					_groupId = this.GetInt("GroupID");
 
 				return _groupId.Value;
 			}
@@ -83,7 +83,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Category
 		{
-			get { return _category ?? (_category = this.GetStringFromLSO("Categroy")); }
+			get { return _category ?? (_category = this.GetString("Categroy")); }
 		}
 
 		private int? _categoryId;
@@ -95,7 +95,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_categoryId == null)
-					_categoryId = this.GetIntFromLSO("CategoryID");
+					_categoryId = this.GetInt("CategoryID");
 
 				return _categoryId.Value;
 			}
@@ -107,7 +107,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Location
 		{
-			get { return _location ?? (_location = this.GetStringFromLSO("Location")); }
+			get { return _location ?? (_location = this.GetString("Location")); }
 		}
 
 		private Int64? _locationId;
@@ -119,7 +119,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_locationId == null)
-					_locationId = this.GetInt64FromLSO("LocationID");
+					_locationId = this.GetInt64("LocationID");
 
 				return _locationId.Value;
 			}
@@ -131,7 +131,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Slot
 		{
-			get { return _slot ?? (_slot = this.GetStringFromLSO("Slot")); }
+			get { return _slot ?? (_slot = this.GetString("Slot")); }
 		}
 
 		private int? _slotId;
@@ -143,7 +143,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_slotId == null)
-					_slotId = this.GetIntFromLSO("SlotID");
+					_slotId = this.GetInt("SlotID");
 
 				return _slotId.Value;
 			}
@@ -158,7 +158,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_quantity == null)
-					_quantity = this.GetIntFromLSO("Quantity");
+					_quantity = this.GetInt("Quantity");
 
 				return _quantity.Value;
 			}
@@ -173,7 +173,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_maxFlightTime == null)
-					_maxFlightTime = this.GetDoubleFromLSO("MaxFlightTime");
+					_maxFlightTime = this.GetDouble("MaxFlightTime");
 
 				return _maxFlightTime.Value;
 			}
@@ -188,7 +188,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_maxVelocity == null)
-					_maxVelocity = this.GetDoubleFromLSO("MaxVelocity");
+					_maxVelocity = this.GetDouble("MaxVelocity");
 
 				return _maxVelocity.Value;
 			}
@@ -203,7 +203,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_chargeSize == null)
-					_chargeSize = this.GetIntFromLSO("ChargeSize");
+					_chargeSize = this.GetInt("ChargeSize");
 
 				return _chargeSize.Value;
 			}
@@ -218,7 +218,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_volume == null)
-					_volume = this.GetDoubleFromLSO("Volume");
+					_volume = this.GetDouble("Volume");
 
 				return _volume.Value;
 			}

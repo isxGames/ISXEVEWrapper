@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Extensions;
+using EVE.ISXEVE.Extensions;
 using LavishScriptAPI;
 using InnerSpaceAPI;
 
@@ -31,7 +31,7 @@ namespace EVE.ISXEVE
 				Tracing.SendCallback("Attacker.ID");
 
 				if (_id == null)
-					_id = this.GetInt64FromLSO("ID");
+					_id = this.GetInt64("ID");
 
 				return _id.Value;
 			}
@@ -46,7 +46,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_isCurrentlyAttacking == null)
-					_isCurrentlyAttacking = this.GetBoolFromLSO("IsCurrentlyAttacking");
+					_isCurrentlyAttacking = this.GetBool("IsCurrentlyAttacking");
 				return _isCurrentlyAttacking.Value;
 			}
 		}

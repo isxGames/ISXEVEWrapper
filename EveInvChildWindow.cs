@@ -1,7 +1,7 @@
 ﻿using System;
+using EVE.ISXEVE.Extensions;
 using EVE.ISXEVE.Interfaces;
 using LavishScriptAPI;
-using Extensions;
 
 namespace EVE.ISXEVE
 {
@@ -27,7 +27,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_capacity == null)
-					_capacity = this.GetDoubleFromLSO("Capacity");
+					_capacity = this.GetDouble("Capacity");
 
 				return _capacity.Value;
 			}
@@ -42,7 +42,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_usedCapacity == null)
-					_usedCapacity = this.GetDoubleFromLSO("UsedCapacity");
+					_usedCapacity = this.GetDouble("UsedCapacity");
 
 				return _usedCapacity.Value;
 			}
@@ -54,7 +54,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string LocationFlag
 		{
-			get { return _locationFlag ?? (_locationFlag = this.GetStringFromLSO("LocationFlag")); }
+			get { return _locationFlag ?? (_locationFlag = this.GetString("LocationFlag")); }
 		}
 
 		private int? _locationFlagId;
@@ -66,7 +66,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_locationFlagId == null)
-					_locationFlagId = this.GetIntFromLSO("LocationFlagID");
+					_locationFlagId = this.GetInt("LocationFlagID");
 
 				return _locationFlagId.Value;
 			}
@@ -81,7 +81,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_isInRange == null)
-					_isInRange = this.GetBoolFromLSO("IsInRange");
+					_isInRange = this.GetBool("IsInRange");
 
 				return _isInRange.Value;
 			}
@@ -96,7 +96,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_itemId == null)
-					_itemId = this.GetInt64FromLSO("ItemID");
+					_itemId = this.GetInt64("ItemID");
 
 				return _itemId.Value;
 			}
@@ -111,7 +111,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_hasCapacity == null)
-					_hasCapacity = this.GetBoolFromLSO("HasCapacity");
+					_hasCapacity = this.GetBool("HasCapacity");
 
 				return _hasCapacity.Value;
 			}
@@ -123,7 +123,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Name
 		{
-			get { return _name ?? (_name = this.GetStringFromLSO("Name")); }
+			get { return _name ?? (_name = this.GetString("Name")); }
 		}
 		#endregion
 

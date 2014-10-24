@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Extensions;
+using EVE.ISXEVE.Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
 
@@ -29,7 +29,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int State
 		{
-			get { return this.GetIntFromLSO("State"); }
+			get { return this.GetInt("State"); }
 		}
 
 		/// <summary>
@@ -37,7 +37,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Type
 		{
-			get { return this.GetStringFromLSO("Type"); }
+			get { return this.GetString("Type"); }
 		}
 
 		/// <summary>
@@ -45,7 +45,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Name
 		{
-			get { return this.GetStringFromLSO("Name"); }
+			get { return this.GetString("Name"); }
 		}
 
 		/// <summary>
@@ -53,7 +53,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int AgentID
 		{
-			get { return this.GetIntFromLSO("AgentID"); }
+			get { return this.GetInt("AgentID"); }
 		}
 
 		/// <summary>
@@ -70,7 +70,7 @@ namespace EVE.ISXEVE
 
 		public bool Expires
 		{
-			get { return this.GetBoolFromLSO("Expires"); }
+			get { return this.GetBool("Expires"); }
 		}
 
 		/// <summary>
@@ -85,12 +85,12 @@ namespace EVE.ISXEVE
 
         public bool RemoteOfferable
         {
-            get { return this.GetBoolFromLSO("RemoteOfferable"); }
+            get { return this.GetBool("RemoteOfferable"); }
         }
 
         public bool RemoteCompletable
         {
-            get { return this.GetBoolFromLSO("RemoteCompletable"); }
+            get { return this.GetBool("RemoteCompletable"); }
         }
 		#endregion
 

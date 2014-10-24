@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Extensions;
+using EVE.ISXEVE.Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
 
@@ -92,7 +92,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_id == null)
-					_id = this.GetIntFromLSO("ID");
+					_id = this.GetInt("ID");
 				return _id.Value;
 			}
 		}
@@ -103,7 +103,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Name
 		{
-			get { return _name ?? (_name = this.GetStringFromLSO("Name")); }
+			get { return _name ?? (_name = this.GetString("Name")); }
 		}
 
 		private int? _typeId;
@@ -116,7 +116,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_typeId == null)
-					_typeId = this.GetIntFromLSO("TypeID");
+					_typeId = this.GetInt("TypeID");
 				return _typeId.Value;
 			}
 		}
@@ -130,7 +130,7 @@ namespace EVE.ISXEVE
 	        get
 	        {
 	            if (_agentTypeId == null)
-	                _agentTypeId = this.GetIntFromLSO("AgentTypeID");
+	                _agentTypeId = this.GetInt("AgentTypeID");
 
 	            return _agentTypeId.Value;
 	        }
@@ -142,7 +142,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Division
 		{
-			get { return _division ?? (_division = this.GetStringFromLSO("Division")); }
+			get { return _division ?? (_division = this.GetString("Division")); }
 		}
 
 		private int? _divisionId;
@@ -154,7 +154,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_divisionId == null)
-					_divisionId = this.GetIntFromLSO("DivisionID");
+					_divisionId = this.GetInt("DivisionID");
 				return _divisionId.Value;
 			}
 		}
@@ -168,7 +168,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_level == null)
-					_level = this.GetIntFromLSO("Level");
+					_level = this.GetInt("Level");
 				return _level.Value;
 			}
 		}
@@ -182,7 +182,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_corporationId == null)
-					_corporationId = this.GetIntFromLSO("CorporationID");
+					_corporationId = this.GetInt("CorporationID");
 				return _corporationId.Value;
 			}
 		}
@@ -196,7 +196,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_factionId == null)
-					_factionId = this.GetIntFromLSO("FactionID");
+					_factionId = this.GetInt("FactionID");
 				return _factionId.Value;
 			}
 		}
@@ -207,7 +207,7 @@ namespace EVE.ISXEVE
         /// </summary>
 	    public string Gender
 	    {
-            get { return _gender ?? (_gender = this.GetStringFromLSO("Gender")); }
+            get { return _gender ?? (_gender = this.GetString("Gender")); }
 	    }
 
 		private float? _standingTo;
@@ -219,20 +219,20 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_standingTo == null)
-					_standingTo = this.GetFloatFromLSO("StandingTo");
+					_standingTo = this.GetFloat("StandingTo");
 				return _standingTo.Value;
 			}
 		}
 
-		private Interstellar _solarsystem;
+		private SolarSystem _solarsystem;
 		/// <summary>
 		/// Wrapper for the Solarsystem member of the agent type.
 		/// </summary>
-		public Interstellar Solarsystem
+        public SolarSystem Solarsystem
 		{
 			get
 			{
-				return _solarsystem ?? (_solarsystem = new Interstellar(GetMember("Solarsystem")));
+                return _solarsystem ?? (_solarsystem = new SolarSystem(GetMember("Solarsystem")));
 			}
 		}
 
@@ -242,7 +242,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Station
 		{
-			get { return _station ?? (_station = this.GetStringFromLSO("Station")); }
+			get { return _station ?? (_station = this.GetString("Station")); }
 		}
 
 		private int? _stationId;
@@ -254,7 +254,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_stationId == null)
-					_stationId = this.GetIntFromLSO("StationID");
+					_stationId = this.GetInt("StationID");
 				return _stationId.Value;
 			}
 		}
@@ -268,7 +268,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_index == null)
-					_index = this.GetIntFromLSO("Index");
+					_index = this.GetInt("Index");
 				return _index.Value;
 			}
 		}
@@ -279,7 +279,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Dialog
 		{
-			get { return _dialog ?? (_dialog = this.GetStringFromLSO("Dialog")); }
+			get { return _dialog ?? (_dialog = this.GetString("Dialog")); }
 		}
 
 		private List<DialogString> _dialogResponses;
@@ -302,7 +302,7 @@ namespace EVE.ISXEVE
 	        get
 	        {
 	            if (_isLocatorAgent == null)
-	                _isLocatorAgent = this.GetBoolFromLSO("IsLocatorAgent");
+	                _isLocatorAgent = this.GetBool("IsLocatorAgent");
 
 	            return _isLocatorAgent.Value;
 	        }
@@ -314,7 +314,7 @@ namespace EVE.ISXEVE
         /// </summary>
 	    public string AgentTypeName
 	    {
-            get { return _agentTypeName ?? (_agentTypeName = this.GetStringFromLSO("AgentTypeName")); }
+            get { return _agentTypeName ?? (_agentTypeName = this.GetString("AgentTypeName")); }
 	    }
 		#endregion
 

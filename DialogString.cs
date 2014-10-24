@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Extensions;
+using EVE.ISXEVE.Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
 
@@ -26,7 +26,7 @@ namespace EVE.ISXEVE
 		#region Members
 		public Int32 ID
 		{
-			get { return this.GetIntFromLSO("ID"); }
+			get { return this.GetInt("ID"); }
 		}
 
 		/// <summary>
@@ -34,7 +34,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Text
 		{
-			get { return this.GetStringFromLSO("Text"); }
+			get { return this.GetString("Text"); }
 		}
 		#endregion
 

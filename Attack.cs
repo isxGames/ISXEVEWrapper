@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Extensions;
+using EVE.ISXEVE.Extensions;
 using LavishScriptAPI;
 using InnerSpaceAPI;
 
@@ -30,7 +30,7 @@ namespace EVE.ISXEVE
 		private string _id;
 		public string ID
 		{
-			get { return _id ?? (_id = this.GetStringFromLSO("ID")); }
+			get { return _id ?? (_id = this.GetString("ID")); }
 		}
 
 		private string _name;
@@ -39,7 +39,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Name
 		{
-			get { return _name ?? (_name = this.GetStringFromLSO("Name")); }
+			get { return _name ?? (_name = this.GetString("Name")); }
 		}
 
 		private EVETime _timeStarted;

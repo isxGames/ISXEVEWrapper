@@ -1,5 +1,5 @@
 using System;
-using Extensions;
+using EVE.ISXEVE.Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
 
@@ -24,7 +24,7 @@ namespace EVE.ISXEVE
 		#region Members
 		public Int64 ID
 		{
-			get { return this.GetInt64FromLSO("ID"); }
+			get { return this.GetInt64("ID"); }
 		}
 
 		/// <summary>
@@ -43,7 +43,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public Int64 CharID
 		{
-			get { return this.GetInt64FromLSO("CharID"); }
+			get { return this.GetInt64("CharID"); }
 		}
 
 		/// <summary>
@@ -51,7 +51,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Job
 		{
-			get { return this.GetStringFromLSO("Job"); }
+			get { return this.GetString("Job"); }
 		}
 
 		/// <summary>
@@ -59,7 +59,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int JobID
 		{
-			get { return this.GetIntFromLSO("JobID"); }
+			get { return this.GetInt("JobID"); }
 		}
 
 		/// <summary>
@@ -67,7 +67,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Role
 		{
-			get { return this.GetStringFromLSO("Role"); }
+			get { return this.GetString("Role"); }
 		}
 
 		/// <summary>
@@ -75,7 +75,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int RoleID
 		{
-			get { return this.GetIntFromLSO("RoleID"); }
+			get { return this.GetInt("RoleID"); }
 		}
 
 		/// <summary>
@@ -83,7 +83,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int Boosting
 		{
-			get { return this.GetIntFromLSO("Boosting"); }
+			get { return this.GetInt("Boosting"); }
 		}
 
 		/// <summary>
@@ -91,7 +91,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public Int64 SquadID
 		{
-			get { return this.GetInt64FromLSO("SquadID"); }
+			get { return this.GetInt64("SquadID"); }
 		}
 
 		/// <summary>
@@ -99,7 +99,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public Int64 WingID
 		{
-			get { return this.GetInt64FromLSO("WingID"); }
+			get { return this.GetInt64("WingID"); }
 		}
 		#endregion
 

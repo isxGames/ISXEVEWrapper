@@ -1,6 +1,6 @@
 ﻿using System;
+using EVE.ISXEVE.Extensions;
 using EVE.ISXEVE.Interfaces;
-using Extensions;
 using LavishScriptAPI;
 
 namespace EVE.ISXEVE
@@ -23,7 +23,7 @@ namespace EVE.ISXEVE
             get
             {
                 if (_id == null)
-                    _id = this.GetIntFromLSO("ID");
+                    _id = this.GetInt("ID");
 
                 return _id.Value;
             }
@@ -38,7 +38,7 @@ namespace EVE.ISXEVE
             get
             {
                 if (_typeId == null)
-                    _typeId = this.GetIntFromLSO("TypeID");
+                    _typeId = this.GetInt("TypeID");
 
                 return _typeId.Value;
             }
@@ -53,7 +53,7 @@ namespace EVE.ISXEVE
             get
             {
                 if (_quantity == null)
-                    _quantity = this.GetInt64FromLSO("Quantity");
+                    _quantity = this.GetInt64("Quantity");
 
                 return _quantity.Value;
             }

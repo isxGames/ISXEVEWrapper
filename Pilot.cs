@@ -1,5 +1,5 @@
 using System;
-using Extensions;
+using EVE.ISXEVE.Extensions;
 using LavishScriptAPI;
 
 namespace EVE.ISXEVE
@@ -44,7 +44,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_id == null)
-					_id = this.GetInt64FromLSO("ID");
+					_id = this.GetInt64("ID");
 				return _id.Value;
 			}
 		}
@@ -55,7 +55,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Name
 		{
-			get { return _name ?? (_name = this.GetStringFromLSO("Name")); }
+			get { return _name ?? (_name = this.GetString("Name")); }
 		}
 
 		private Int64? _charId;
@@ -67,7 +67,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_charId == null)
-					_charId = this.GetInt64FromLSO("CharID");
+					_charId = this.GetInt64("CharID");
 				return _charId.Value;
 			}
 		}
@@ -78,7 +78,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Type
 		{
-			get { return _type ?? (_type = this.GetStringFromLSO("Type")); }
+			get { return _type ?? (_type = this.GetString("Type")); }
 		}
 
 		private int? _typeId;
@@ -90,7 +90,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_typeId == null)
-					_typeId = this.GetIntFromLSO("TypeID");
+					_typeId = this.GetInt("TypeID");
 				return _typeId.Value;
 			}
 		}
@@ -110,7 +110,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Alliance
 		{
-			get { return _alliance ?? (_alliance = this.GetStringFromLSO("Alliance")); }
+			get { return _alliance ?? (_alliance = this.GetString("Alliance")); }
 		}
 
 		private int? _allianceId;
@@ -122,7 +122,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_allianceId == null)
-					_allianceId = this.GetIntFromLSO("AllianceID");
+					_allianceId = this.GetInt("AllianceID");
 				return _allianceId.Value;
 			}
 		}
@@ -133,7 +133,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string AllianceTicker
 		{
-			get { return _allianceTicker ?? (_allianceTicker = this.GetStringFromLSO("AllianceTicker")); }
+			get { return _allianceTicker ?? (_allianceTicker = this.GetString("AllianceTicker")); }
 		}
 
 		private Entity _toEntity;
@@ -172,7 +172,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double StandingTo(int ID)
 		{
-			return this.GetDoubleFromLSO("StandingTo", ID.ToString());
+			return this.GetDouble("StandingTo", ID.ToString());
 		}
 		#endregion
 

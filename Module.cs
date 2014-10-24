@@ -1,6 +1,6 @@
 using System;
+using EVE.ISXEVE.Extensions;
 using EVE.ISXEVE.Interfaces;
-using Extensions;
 using LavishScriptAPI;
 using System.Collections.Generic;
 
@@ -39,7 +39,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_id == null)
-					_id = this.GetInt64FromLSO("ID");
+					_id = this.GetInt64("ID");
 				return _id.Value;
 			}
 		}
@@ -65,7 +65,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_shieldTransferRange == null)
-					_shieldTransferRange = this.GetDoubleFromLSO("ShieldTransferRange");
+					_shieldTransferRange = this.GetDouble("ShieldTransferRange");
 				return _shieldTransferRange.Value;
 			}
 		}
@@ -79,7 +79,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_usesFrequencyCrystals == null)
-					_usesFrequencyCrystals = this.GetBoolFromLSO("UsesFrequencyCrystals");
+					_usesFrequencyCrystals = this.GetBool("UsesFrequencyCrystals");
 				return _usesFrequencyCrystals.Value;
 			}
 		}
@@ -93,7 +93,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_isGoingOnline == null)
-					_isGoingOnline = this.GetBoolFromLSO("IsGoingOnline");
+					_isGoingOnline = this.GetBool("IsGoingOnline");
 				return _isGoingOnline.Value;
 			}
 		}
@@ -107,7 +107,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_isWaitingForActiveTarget == null)
-					_isWaitingForActiveTarget = this.GetBoolFromLSO("IsWaitingForActiveTarget");
+					_isWaitingForActiveTarget = this.GetBool("IsWaitingForActiveTarget");
 				return _isWaitingForActiveTarget.Value;
 			}
 		}
@@ -121,7 +121,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_isChangingAmmo == null)
-					_isChangingAmmo = this.GetBoolFromLSO("IsChangingAmmo");
+					_isChangingAmmo = this.GetBool("IsChangingAmmo");
 				return _isChangingAmmo.Value;
 			}
 		}
@@ -135,7 +135,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_isReloadingAmmo == null)
-					_isReloadingAmmo = this.GetBoolFromLSO("IsReloadingAmmo");
+					_isReloadingAmmo = this.GetBool("IsReloadingAmmo");
 				return _isReloadingAmmo.Value;
 			}
 		}
@@ -149,7 +149,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_isOnline == null)
-					_isOnline = this.GetBoolFromLSO("IsOnline");
+					_isOnline = this.GetBool("IsOnline");
 				return _isOnline.Value;
 			}
 		}
@@ -163,7 +163,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_isDeactivating == null)
-					_isDeactivating = this.GetBoolFromLSO("IsDeactivating");
+					_isDeactivating = this.GetBool("IsDeactivating");
 				return _isDeactivating.Value;
 			}
 		}
@@ -177,7 +177,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_isActivatable == null)
-					_isActivatable = this.GetBoolFromLSO("IsActivatabe");
+					_isActivatable = this.GetBool("IsActivatabe");
 				return _isActivatable.Value;
 			}
 		}
@@ -191,7 +191,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_isAutoReloadOn == null)
-					_isAutoReloadOn = this.GetBoolFromLSO("IsAutoReloadOn");
+					_isAutoReloadOn = this.GetBool("IsAutoReloadOn");
 				return _isAutoReloadOn.Value;
 			}
 		}
@@ -215,7 +215,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_specialtyCrystalMiningAmount == null)
-					_specialtyCrystalMiningAmount = this.GetDoubleFromLSO("SpecialtyCrystalMiningAmount");
+					_specialtyCrystalMiningAmount = this.GetDouble("SpecialtyCrystalMiningAmount");
 				return _specialtyCrystalMiningAmount.Value;
 			}
 		}
@@ -228,7 +228,7 @@ namespace EVE.ISXEVE
 		{
 			get
 			{
-				return _defaultEffectName ?? (_defaultEffectName = this.GetStringFromLSO("DefaultEffectiveName"));
+				return _defaultEffectName ?? (_defaultEffectName = this.GetString("DefaultEffectiveName"));
 			}
 		}
 
@@ -238,7 +238,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string DefaultEffectDescription
 		{
-			get { return _defaultEffectDescription ?? (_defaultEffectDescription = this.GetStringFromLSO("DefaultEffectiveDescription")); }
+			get { return _defaultEffectDescription ?? (_defaultEffectDescription = this.GetString("DefaultEffectiveDescription")); }
 		}
 
 		private Entity _lastTarget;
@@ -269,7 +269,7 @@ namespace EVE.ISXEVE
 			{
 				Tracing.SendCallback("TargetID");
 				if (_targetId == null)
-					_targetId = this.GetInt64FromLSO("TargetID");
+					_targetId = this.GetInt64("TargetID");
 				return _targetId.Value;
 			}
 		}
@@ -287,7 +287,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_isActive == null)
-					_isActive = this.GetBoolFromLSO("IsActive");
+					_isActive = this.GetBool("IsActive");
 				return _isActive.Value;
 			}
 		}
@@ -301,7 +301,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_isOffensive == null)
-					_isOffensive = this.GetBoolFromLSO("IsOffensive");
+					_isOffensive = this.GetBool("IsOffensive");
 				return _isOffensive.Value;
 			}
 		}
@@ -315,7 +315,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_isAssistance == null)
-					_isAssistance = this.GetBoolFromLSO("IsAssistance");
+					_isAssistance = this.GetBool("IsAssistance");
 				return _isAssistance.Value;
 			}
 		}
@@ -329,7 +329,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_effectCategory == null)
-					_effectCategory = this.GetIntFromLSO("EffectCategory");
+					_effectCategory = this.GetInt("EffectCategory");
 				return _effectCategory.Value;
 			}
 		}
@@ -355,7 +355,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_currentCharges == null)
-					_currentCharges = this.GetIntFromLSO("CurrentCharges");
+					_currentCharges = this.GetInt("CurrentCharges");
 				return _currentCharges.Value;
 			}
 		}
@@ -369,7 +369,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_maxCharges == null)
-					_maxCharges = this.GetIntFromLSO("MaxCharges");
+					_maxCharges = this.GetInt("MaxCharges");
 				return _maxCharges.Value;
 			}
 		}
@@ -382,7 +382,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? PowergridUsage
 		{
-			get { return this.GetNullableDoubleFromLSO("PowergridUsage"); }
+			get { return this.GetNullableDouble("PowergridUsage"); }
 		}
 
 		/// <summary>
@@ -390,7 +390,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? OptimalRange
 		{
-			get { return this.GetNullableDoubleFromLSO("OptimalRange"); }
+			get { return this.GetNullableDouble("OptimalRange"); }
 		}
 
 		/// <summary>
@@ -398,7 +398,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? TechLevel
 		{
-			get { return this.GetNullableDoubleFromLSO("TechLevel"); }
+			get { return this.GetNullableDouble("TechLevel"); }
 		}
 
 		/// <summary>
@@ -406,7 +406,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? ActivationCost
 		{
-			get { return this.GetNullableDoubleFromLSO("ActivationCost"); }
+			get { return this.GetNullableDouble("ActivationCost"); }
 		}
 
 		/// <summary>
@@ -414,7 +414,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? HP
 		{
-			get { return this.GetNullableDoubleFromLSO("HP"); }
+			get { return this.GetNullableDouble("HP"); }
 		}
 
 		/// <summary>
@@ -422,7 +422,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? Damage
 		{
-			get { return this.GetNullableDoubleFromLSO("Damage"); }
+			get { return this.GetNullableDouble("Damage"); }
 		}
 
 		/// <summary>
@@ -430,7 +430,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? ActivationTime
 		{
-			get { return this.GetNullableDoubleFromLSO("ActivationTime"); }
+			get { return this.GetNullableDouble("ActivationTime"); }
 		}
 
 		/// <summary>
@@ -438,7 +438,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? Duration
 		{
-			get { return this.GetNullableDoubleFromLSO("Duration"); }
+			get { return this.GetNullableDouble("Duration"); }
 		}
 
 		/// <summary>
@@ -446,7 +446,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? Volume
 		{
-			get { return this.GetNullableDoubleFromLSO("Volume"); }
+			get { return this.GetNullableDouble("Volume"); }
 		}
 
 		/// <summary>
@@ -454,7 +454,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? AccessDifficultyBonus
 		{
-			get { return this.GetNullableDoubleFromLSO("AccessDifficultyBonus"); }
+			get { return this.GetNullableDouble("AccessDifficultyBonus"); }
 		}
 
 		/// <summary>
@@ -462,7 +462,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? CPUUsage
 		{
-			get { return this.GetNullableDoubleFromLSO("CPUUsage"); }
+			get { return this.GetNullableDouble("CPUUsage"); }
 		}
 
 		/// <summary>
@@ -470,7 +470,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? Capacity
 		{
-			get { return this.GetNullableDoubleFromLSO("Capacity"); }
+			get { return this.GetNullableDouble("Capacity"); }
 		}
 
 		/// <summary>
@@ -478,7 +478,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? MaxTractorVelocity
 		{
-			get { return this.GetNullableDoubleFromLSO("MaxTractorVelocity"); }
+			get { return this.GetNullableDouble("MaxTractorVelocity"); }
 		}
 
 		/// <summary>
@@ -486,7 +486,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? Mass
 		{
-			get { return this.GetNullableDoubleFromLSO("Mass"); }
+			get { return this.GetNullableDouble("Mass"); }
 		}
 
 		/// <summary>
@@ -494,7 +494,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? OverloadSpeedFactorBonus
 		{
-			get { return this.GetNullableDoubleFromLSO("OverloadSpeedFactorBonus"); }
+			get { return this.GetNullableDouble("OverloadSpeedFactorBonus"); }
 		}
 
 		/// <summary>
@@ -504,7 +504,7 @@ namespace EVE.ISXEVE
 		{
 			get
 			{
-				return this.GetNullableDoubleFromLSO("MassAddition");
+				return this.GetNullableDouble("MassAddition");
 			}
 		}
 
@@ -513,7 +513,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? HeatDamage
 		{
-			get { return this.GetNullableDoubleFromLSO("HeatDamage"); }
+			get { return this.GetNullableDouble("HeatDamage"); }
 		}
 
 		/// <summary>
@@ -521,7 +521,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? Thrust
 		{
-			get { return this.GetNullableDoubleFromLSO("Thrust"); }
+			get { return this.GetNullableDouble("Thrust"); }
 		}
 
 		/// <summary>
@@ -529,7 +529,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? MaxVelocityBonus
 		{
-			get { return this.GetNullableDoubleFromLSO("MaxVelocityBonus"); }
+			get { return this.GetNullableDouble("MaxVelocityBonus"); }
 		}
 
 		/// <summary>
@@ -537,7 +537,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? MaxVelocityPenalty
 		{
-			get { return this.GetNullableDoubleFromLSO("MaxVelocityPenalty"); }
+			get { return this.GetNullableDouble("MaxVelocityPenalty"); }
 		}
 
 		/// <summary>
@@ -545,7 +545,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? StructureHPBonus
 		{
-			get { return this.GetNullableDoubleFromLSO("StructureHPBonus"); }
+			get { return this.GetNullableDouble("StructureHPBonus"); }
 		}
 
 		/// <summary>
@@ -553,7 +553,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? CargoCapacityBonus
 		{
-			get { return this.GetNullableDoubleFromLSO("CargoCapacityBonus"); }
+			get { return this.GetNullableDouble("CargoCapacityBonus"); }
 		}
 
 		/// <summary>
@@ -561,7 +561,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? ShieldBonus
 		{
-			get { return this.GetNullableDoubleFromLSO("ShieldBonus"); }
+			get { return this.GetNullableDouble("ShieldBonus"); }
 		}
 
 		/// <summary>
@@ -569,7 +569,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? ShieldBoostBonus
 		{
-			get { return this.GetNullableDoubleFromLSO("ShieldBoostBonus"); }
+			get { return this.GetNullableDouble("ShieldBoostBonus"); }
 		}
 
 		/// <summary>
@@ -577,7 +577,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? CapacitorRechargeRateBonus
 		{
-			get { return this.GetNullableDoubleFromLSO("CapacitorRechargeRateBonus"); }
+			get { return this.GetNullableDouble("CapacitorRechargeRateBonus"); }
 		}
 
 		/// <summary>
@@ -585,7 +585,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? ShieldRechargeRateBonus
 		{
-			get { return this.GetNullableDoubleFromLSO("ShieldRechargeRateBonus"); }
+			get { return this.GetNullableDouble("ShieldRechargeRateBonus"); }
 		}
 
 		/// <summary>
@@ -593,7 +593,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? CapacitorBonus
 		{
-			get { return this.GetNullableDoubleFromLSO("CapacitorBonus"); }
+			get { return this.GetNullableDouble("CapacitorBonus"); }
 		}
 
 		/// <summary>
@@ -601,7 +601,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? PowergridBonus
 		{
-			get { return this.GetNullableDoubleFromLSO("PowergridBonus"); }
+			get { return this.GetNullableDouble("PowergridBonus"); }
 		}
 
 		/// <summary>
@@ -609,7 +609,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? ShieldHPBonus
 		{
-			get { return this.GetNullableDoubleFromLSO("ShieldHPBonus"); }
+			get { return this.GetNullableDouble("ShieldHPBonus"); }
 		}
 
 		/// <summary>
@@ -617,7 +617,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? VelocityModifier
 		{
-			get { return this.GetNullableDoubleFromLSO("VelocityModifier"); }
+			get { return this.GetNullableDouble("VelocityModifier"); }
 		}
 
 		/// <summary>
@@ -625,7 +625,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? ChargeRate
 		{
-			get { return this.GetNullableDoubleFromLSO("ChargeRate"); }
+			get { return this.GetNullableDouble("ChargeRate"); }
 		}
 
 		/// <summary>
@@ -633,7 +633,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? RateOfFire
 		{
-			get { return this.GetNullableDoubleFromLSO("RateOfFire"); }
+			get { return this.GetNullableDouble("RateOfFire"); }
 		}
 
 		/// <summary>
@@ -641,7 +641,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? OverloadRateOfFireBonus
 		{
-			get { return this.GetNullableDoubleFromLSO("OverloadRateOfFireBonus"); }
+			get { return this.GetNullableDouble("OverloadRateOfFireBonus"); }
 		}
 
 		/// <summary>
@@ -649,7 +649,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? MiningAmount
 		{
-			get { return this.GetNullableDoubleFromLSO("MiningAmount"); }
+			get { return this.GetNullableDouble("MiningAmount"); }
 		}
 
 		/// <summary>
@@ -657,7 +657,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? CrystalsDamage
 		{
-			get { return this.GetNullableDoubleFromLSO("CrystalsDamage"); }
+			get { return this.GetNullableDouble("CrystalsDamage"); }
 		}
 
 		/// <summary>
@@ -665,7 +665,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int? TargetGroup
 		{
-			get { return this.GetNullableIntFromLSO("TargetGroup"); }
+			get { return this.GetNullableInt("TargetGroup"); }
 		}
 
 		/// <summary>
@@ -673,7 +673,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? SurveyScanRange
 		{
-			get { return this.GetNullableDoubleFromLSO("SurveyScanRange"); }
+			get { return this.GetNullableDouble("SurveyScanRange"); }
 		}
 
 		/// <summary>
@@ -681,7 +681,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? CPUOutputBonus
 		{
-			get { return this.GetNullableDoubleFromLSO("CPUOutputBonus"); }
+			get { return this.GetNullableDouble("CPUOutputBonus"); }
 		}
 
 		/// <summary>
@@ -689,7 +689,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? TrackingSpeed
 		{
-			get { return this.GetNullableDoubleFromLSO("TrackingSpeed"); }
+			get { return this.GetNullableDouble("TrackingSpeed"); }
 		}
 
 		/// <summary>
@@ -697,7 +697,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? DamageModifier
 		{
-			get { return this.GetNullableDoubleFromLSO("DamageModifier"); }
+			get { return this.GetNullableDouble("DamageModifier"); }
 		}
 
 		/// <summary>
@@ -705,7 +705,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? EMDamage
 		{
-			get { return this.GetNullableDoubleFromLSO("EMDamage"); }
+			get { return this.GetNullableDouble("EMDamage"); }
 		}
 
 		/// <summary>
@@ -713,7 +713,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? KineticDamage
 		{
-			get { return this.GetNullableDoubleFromLSO("KineticDamage"); }
+			get { return this.GetNullableDouble("KineticDamage"); }
 		}
 
 		/// <summary>
@@ -721,7 +721,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? ThermalDamage
 		{
-			get { return this.GetNullableDoubleFromLSO("ThermalDamage"); }
+			get { return this.GetNullableDouble("ThermalDamage"); }
 		}
 
 		/// <summary>
@@ -729,7 +729,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? ExplosiveDamage
 		{
-			get { return this.GetNullableDoubleFromLSO("ExplosiveDamage"); }
+			get { return this.GetNullableDouble("ExplosiveDamage"); }
 		}
 
 		/// <summary>
@@ -737,7 +737,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? ChargeSize
 		{
-			get { return this.GetNullableDoubleFromLSO("ChargeSize"); }
+			get { return this.GetNullableDouble("ChargeSize"); }
 		}
 
 		/// <summary>
@@ -745,7 +745,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? AccuracyFalloff
 		{
-			get { return this.GetNullableDoubleFromLSO("AccuracyFalloff"); }
+			get { return this.GetNullableDouble("AccuracyFalloff"); }
 		}
 
 		/// <summary>
@@ -753,7 +753,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? SignatureResolution
 		{
-			get { return this.GetNullableDoubleFromLSO("SignatureResolution"); }
+			get { return this.GetNullableDouble("SignatureResolution"); }
 		}
 
 		/// <summary>
@@ -761,7 +761,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? OverloadOptimalRangeBonus
 		{
-			get { return this.GetNullableDoubleFromLSO("OverloadOptimalRangeBonus"); }
+			get { return this.GetNullableDouble("OverloadOptimalRangeBonus"); }
 		}
 
 		/// <summary>
@@ -769,7 +769,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? OverloadRepairBonus
 		{
-			get { return this.GetDoubleFromLSO("OverloadRepairBonus"); }
+			get { return this.GetDouble("OverloadRepairBonus"); }
 		}
 
 		/// <summary>
@@ -777,7 +777,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? OverloadDurationBonus
 		{
-			get { return this.GetDoubleFromLSO("OverloadDurationBonus"); }
+			get { return this.GetDouble("OverloadDurationBonus"); }
 		}
 
 		/// <summary>
@@ -785,7 +785,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? ArmorHPRepaired
 		{
-			get { return this.GetNullableDoubleFromLSO("ArmorHPRepaired"); }
+			get { return this.GetNullableDouble("ArmorHPRepaired"); }
 		}
 
 		/// <summary>
@@ -793,7 +793,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? ExplosiveDmgResistanceBonus
 		{
-			get { return this.GetNullableDoubleFromLSO("ExplosiveDmgResistanceBonus"); }
+			get { return this.GetNullableDouble("ExplosiveDmgResistanceBonus"); }
 		}
 
 		/// <summary>
@@ -801,7 +801,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? KineticDmgResistanceBonus
 		{
-			get { return this.GetNullableDoubleFromLSO("KineticDmgResistanceBonus"); }
+			get { return this.GetNullableDouble("KineticDmgResistanceBonus"); }
 		}
 
 		/// <summary>
@@ -809,7 +809,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? ThermalDmgResistanceBonus
 		{
-			get { return this.GetNullableDoubleFromLSO("ThermalDmgResistanceBonus"); }
+			get { return this.GetNullableDouble("ThermalDmgResistanceBonus"); }
 		}
 
 		/// <summary>
@@ -817,7 +817,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? EMDmgResistanceBonus
 		{
-			get { return this.GetNullableDoubleFromLSO("EMDmgResistanceBonus"); }
+			get { return this.GetNullableDouble("EMDmgResistanceBonus"); }
 		}
 
 		/// <summary>
@@ -825,7 +825,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? ArmorHPBonus
 		{
-			get { return this.GetNullableDoubleFromLSO("ArmorHPBonus"); }
+			get { return this.GetNullableDouble("ArmorHPBonus"); }
 		}
 
 		/// <summary>
@@ -833,7 +833,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? RateOfFireBonus
 		{
-			get { return this.GetNullableDoubleFromLSO("RateOfFireBonus"); }
+			get { return this.GetNullableDouble("RateOfFireBonus"); }
 		}
 
 		/// <summary>
@@ -841,7 +841,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? MiningAmountBonus
 		{
-			get { return this.GetNullableDoubleFromLSO("MiningAmountBonus"); }
+			get { return this.GetNullableDouble("MiningAmountBonus"); }
 		}
 
 		/// <summary>
@@ -849,7 +849,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? CPUPenaltyPercent
 		{
-			get { return this.GetNullableDoubleFromLSO("CPUPenaltyPercent"); }
+			get { return this.GetNullableDouble("CPUPenaltyPercent"); }
 		}
 
 		/// <summary>
@@ -857,7 +857,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? WarpScrambleStrength
 		{
-			get { return this.GetNullableDoubleFromLSO("WarpScrambleStrength"); }
+			get { return this.GetNullableDouble("WarpScrambleStrength"); }
 		}
 
 		/// <summary>
@@ -865,7 +865,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? EnergyTransferAmount
 		{
-			get { return this.GetNullableDoubleFromLSO("EnergyTransferAmount"); }
+			get { return this.GetNullableDouble("EnergyTransferAmount"); }
 		}
 
 		/// <summary>
@@ -873,7 +873,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? TransferRange
 		{
-			get { return this.GetNullableDoubleFromLSO("TransferRange"); }
+			get { return this.GetNullableDouble("TransferRange"); }
 		}
 
 		/// <summary>
@@ -881,7 +881,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? MaxNeutralizationRange
 		{
-			get { return this.GetNullableDoubleFromLSO("MaxNeutralizationRange"); }
+			get { return this.GetNullableDouble("MaxNeutralizationRange"); }
 		}
 
 		/// <summary>
@@ -889,7 +889,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? EnergyNeutralized
 		{
-			get { return this.GetNullableDoubleFromLSO("EnergyNeutralized"); }
+			get { return this.GetNullableDouble("EnergyNeutralized"); }
 		}
 		#endregion
 		#endregion

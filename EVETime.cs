@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Extensions;
+using EVE.ISXEVE.Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
 
@@ -37,7 +37,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string DateAndTime
 		{
-			get { return this.GetStringFromLSO("DateAndTime"); }
+			get { return this.GetString("DateAndTime"); }
 		}
 
 		/// <summary>
@@ -45,7 +45,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Date
 		{
-			get { return this.GetStringFromLSO("Date"); }
+			get { return this.GetString("Date"); }
 		}
 
 		/// <summary>
@@ -53,7 +53,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Time
 		{
-			get { return this.GetStringFromLSO("Time"); }
+			get { return this.GetString("Time"); }
 		}
 
 		/// <summary>
@@ -64,7 +64,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				Tracing.SendCallback("EVETime.AsInt64");
-				return this.GetInt64FromLSO("AsInt64");
+				return this.GetInt64("AsInt64");
 			}
 		}
 		#endregion

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Extensions;
+using EVE.ISXEVE.Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
 
@@ -56,112 +56,112 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Price
 		{
-			get { return this.GetDoubleFromLSO("Price"); }
+			get { return this.GetDouble("Price"); }
 		}
 		/// <summary>
 		///  2.  InitialQuantity                                   (int type) 
 		/// </summary>
 		public int InitialQuantity
 		{
-			get { return this.GetIntFromLSO("InitialQuantity"); }
+			get { return this.GetInt("InitialQuantity"); }
 		}
 		/// <summary>
 		///  3.  QuantityRemaining                                 (double type)
 		/// </summary>
 		public double QuantityRemaining
 		{
-			get { return this.GetDoubleFromLSO("QuantityRemaining"); }
+			get { return this.GetDouble("QuantityRemaining"); }
 		}
 		/// <summary>
 		///  4.  MinQuantityToBuy                                  (int type)
 		/// </summary>
 		public int MinQuantityToBuy
 		{
-			get { return this.GetIntFromLSO("MinQuantityToBuy"); }
+			get { return this.GetInt("MinQuantityToBuy"); }
 		}
 		/// <summary>
 		///  5.  ID                                                (int type)
 		/// </summary>
 		public Int64 ID
 		{
-			get { return this.GetInt64FromLSO("ID"); }
+			get { return this.GetInt64("ID"); }
 		}
 		/// <summary>
 		///  6.  TimeStampWhenIssued                               (uint64 type)
 		/// </summary>
 		public UInt64 TimeStampWhenIssued
 		{
-			get { return this.GetUInt64FromLSO("TimeStampWhenIssued"); }
+			get { return this.GetUInt64("TimeStampWhenIssued"); }
 		}
 		/// <summary>
 		///  7.  DateWhenIssued                                    (string type)
 		/// </summary>
 		public string DateWhenIssued
 		{
-			get { return this.GetStringFromLSO("DateWhenIssued"); }
+			get { return this.GetString("DateWhenIssued"); }
 		}
 		/// <summary>
 		///  8.  TimeWhenIssued                                    (string type)
 		/// </summary>
 		public string TimeWhenIssued
 		{
-			get { return this.GetStringFromLSO("TimeWhenIssued"); }
+			get { return this.GetString("TimeWhenIssued"); }
 		}
 		/// <summary>
 		///  9.  Duration                                          (int type)     [The max length of the order, in days]
 		/// </summary>
 		public int Duration
 		{
-			get { return this.GetIntFromLSO("Duration"); }
+			get { return this.GetInt("Duration"); }
 		}
 		/// <summary>
 		///  10. StationID                                         (int type)     [Station where the order is located]
 		/// </summary>
 		public int StationID
 		{
-			get { return this.GetIntFromLSO("StationID"); }
+			get { return this.GetInt("StationID"); }
 		}
 		/// <summary>
 		///  11. Station                                           (string type)
 		/// </summary>
 		public string Station
 		{
-			get { return this.GetStringFromLSO("Station"); }
+			get { return this.GetString("Station"); }
 		}
 		/// <summary>
 		///  12. RegionID                                          (int type)     [Region where the order is located]
 		/// </summary>
 		public int RegionID
 		{
-			get { return this.GetIntFromLSO("RegionID"); }
+			get { return this.GetInt("RegionID"); }
 		}
 		/// <summary>
 		///  13. Region                                            (string type)
 		/// </summary>
 		public string Region
 		{
-			get { return this.GetStringFromLSO("Region"); }
+			get { return this.GetString("Region"); }
 		}
 		/// <summary>
 		///  14. SolarSystemID                                     (int type)     [Solar System where the order is located]
 		/// </summary>
 		public int SolarSystemID
 		{
-			get { return this.GetIntFromLSO("SolarSystemID"); }
+			get { return this.GetInt("SolarSystemID"); }
 		}
 		/// <summary>
 		///  15. SolarSystem                                       (string type)
 		/// </summary>
 		public string SolarSystem
 		{
-			get { return this.GetStringFromLSO("SolarSystem"); }
+			get { return this.GetString("SolarSystem"); }
 		}
 		/// <summary>
 		///  16. Range                                             (int type)    
 		/// </summary>
 		public int Range
 		{
-			get { return this.GetIntFromLSO("Range"); }
+			get { return this.GetInt("Range"); }
 		}
 		/// <summary>
 		///  17. Jumps                                             (int type)     [Jumps to the station where the order is located]
@@ -169,45 +169,45 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int Jumps
 		{
-			get { return this.GetIntFromLSO("Jumps"); }
+			get { return this.GetInt("Jumps"); }
 		}
 		/// <summary>
 		///  18. IsSellOrder                                       (bool type)
 		/// </summary>
 		public bool IsSellOrder
 		{
-			get { return this.GetBoolFromLSO("IsSellOrder"); }
+			get { return this.GetBool("IsSellOrder"); }
 		}
 		/// <summary>
 		///  19. IsBuyOrder                                        (bool type)  
 		/// </summary>
 		public bool IsBuyOrder
 		{
-			get { return this.GetBoolFromLSO("IsBuyOrder"); }
+			get { return this.GetBool("IsBuyOrder"); }
 		}
 		/// <summary>
 		///  20. TypeID                                            (int type)
 		/// </summary>
 		public int TypeID
 		{
-			get { return this.GetIntFromLSO("TypeID"); }
+			get { return this.GetInt("TypeID"); }
 		}
 		/// <summary>
 		///  21. Name                                              (string type)
 		/// </summary>
 		public string Name
 		{
-			get { return this.GetStringFromLSO("Name"); }
+			get { return this.GetString("Name"); }
 		}
 
         public bool IsContraband
         {
-            get { return this.GetBoolFromLSO("IsContraband"); }
+            get { return this.GetBool("IsContraband"); }
         }
 
         public bool IsContrabandForFaction(int FactionID)
         {
-            return this.GetBoolFromLSO("IsContraband", FactionID.ToString());
+            return this.GetBool("IsContraband", FactionID.ToString());
         }
 		#endregion
 

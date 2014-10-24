@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using EVE.ISXEVE.Extensions;
 using EVE.ISXEVE.Interfaces;
-using Extensions;
 using LavishScriptAPI;
 
 namespace EVE.ISXEVE
@@ -51,7 +51,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int EntitiesCount
 		{
-			get { return this.GetIntFromLSO("EntitiesCount"); }
+			get { return this.GetInt("EntitiesCount"); }
 		}
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace EVE.ISXEVE
         /// </summary>
 	    public int NextSessionChange
 	    {
-			get { return this.GetIntFromLSO("NextSessionChange"); }
+			get { return this.GetInt("NextSessionChange"); }
 	    }
 
         /// <summary>
@@ -120,13 +120,24 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
-		/// Returns number of jump to a station. Returns -1 if you're currently in the station.
+		/// Returns number of jumps to the given solarsystem or station.
 		/// </summary>
-		public int JumpsToStation(int stationID)
+		public int GetJumpsTo(int solarSystemOrStationId)
 		{
-			Tracing.SendCallback("EVE.JumpsToStation", stationID.ToString());
-			return this.GetIntFromLSO("JumpsToStation");
+			Tracing.SendCallback("EVE.GetJumpsTo", solarSystemOrStationId.ToString());
+		    return this.GetInt("JumpsTo", solarSystemOrStationId.ToString());
 		}
+
+        /// <summary>
+        /// Get the # of jumps between the given two solar systems.
+        /// </summary>
+        /// <param name="firstSolarSystem"></param>
+        /// <param name="secondSolarSystemId"></param>
+        /// <returns></returns>
+        public int GetJumpsBetween(int firstSolarSystem, int secondSolarSystemId)
+        {
+            return this.GetInt("JumpsBetween", firstSolarSystem.ToString(), secondSolarSystemId.ToString());
+        }
 
 		/// <summary>
 		/// Returns the distance between two entities.
@@ -134,7 +145,7 @@ namespace EVE.ISXEVE
 		public double DistanceBetween(Int64 firstEntityID, Int64 secondEntityID)
 		{
 			Tracing.SendCallback("EVE.DistanceBetween", firstEntityID, secondEntityID);
-			return this.GetDoubleFromLSO("DistanceBetween", firstEntityID.ToString(), secondEntityID.ToString());
+			return this.GetDouble("DistanceBetween", firstEntityID.ToString(), secondEntityID.ToString());
 		}
 
 		/// <summary>
@@ -142,7 +153,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Time
 		{
-			get { return this.GetStringFromLSO("Time"); }
+			get { return this.GetString("Time"); }
 		}
 
 		/// <summary>
@@ -150,7 +161,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string TimeShort
 		{
-			get { return this.GetStringFromLSO("Time", "short"); }
+			get { return this.GetString("Time", "short"); }
 		}
 
 		/// <summary>
@@ -158,7 +169,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Date
 		{
-			get { return this.GetStringFromLSO("Date"); }
+			get { return this.GetString("Date"); }
 		}
 
 		/// <summary>
@@ -166,7 +177,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool Is3DDisplayOn
 		{
-			get { return this.GetBoolFromLSO("Is3DDisplayOn"); }
+			get { return this.GetBool("Is3DDisplayOn"); }
 		}
 
 		/// <summary>
@@ -174,27 +185,27 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsUIDisplayOn
 		{
-			get { return this.GetBoolFromLSO("IsUIDisplayOn"); }
+			get { return this.GetBool("IsUIDisplayOn"); }
 		}
 
 	    public bool IsTextureLoadingOn
 	    {
-            get { return this.GetBoolFromLSO("IsTextureLoadingOn"); }
+            get { return this.GetBool("IsTextureLoadingOn"); }
 	    }
 
         public bool AbandonedDronesExist
         {
-            get { return this.GetBoolFromLSO("AbandonedDronesExist"); }
+            get { return this.GetBool("AbandonedDronesExist"); }
         }
 
 	    public bool IsProgressWindowOpen
 	    {
-	        get { return this.GetBoolFromLSO("IsProgressWindowOpen"); }
+	        get { return this.GetBool("IsProgressWindowOpen"); }
 	    }
 
 	    public string ProgressWindowTitle
 	    {
-            get { return this.GetStringFromLSO("ProgressWindowTitle"); }
+            get { return this.GetString("ProgressWindowTitle"); }
 	    }
 
 		/// <summary>
@@ -233,11 +244,23 @@ namespace EVE.ISXEVE
 		/// <summary>
         /// Your "buddies"
 		/// </summary>
+		[Obsolete("Use GetContacts().", false)]
 		public List<Being> GetBuddies()
 		{
 			Tracing.SendCallback("EVE.GetBuddies");
 			return Util.GetListFromMethod<Being>(this, "GetBuddies", "being");
 		}
+
+        /// <summary>
+        /// ISXEVE-20141001.0009 on October 4, 2014:
+        /// This does EXACTLY the same thing as "GetBuddies" does currently.  "GetBuddies" is now deprecated and should be removed. 
+        /// </summary>
+        /// <returns></returns>
+        public IList<Being> GetContacts()
+        {
+            Tracing.SendCallback("EVE.GetContacts");
+            return this.GetListFromMethod<Being>("GetContacts", "being");
+        }
 
         /// <summary>
         /// the agents in your *addressbook* 
@@ -254,7 +277,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public Int32 NumOpenChannels
 		{
-			get { return this.GetIntFromLSO("NumOpenChannels"); }
+			get { return this.GetInt("NumOpenChannels"); }
 		}
 
 		/// <summary>
@@ -263,7 +286,7 @@ namespace EVE.ISXEVE
 		public int NumAssetsAtStation(int stationID)
 		{
 			Tracing.SendCallback("EVE.NumAssetsAtStation", stationID);
-			return this.GetIntFromLSO("NumAssetsAtStation", stationID.ToString());
+			return this.GetInt("NumAssetsAtStation", stationID.ToString());
 		}
 
 		/// <summary>
@@ -272,7 +295,7 @@ namespace EVE.ISXEVE
 		public string GetLocationNameByID(int stationID)
 		{
 			Tracing.SendCallback("EVE.GetLocationNameByID", stationID);
-			return this.GetStringFromLSO("GetLocationNameByID", stationID.ToString());
+			return this.GetString("GetLocationNameByID", stationID.ToString());
 		}
 
 		/// <summary>
@@ -281,7 +304,7 @@ namespace EVE.ISXEVE
 		public bool FetchMarketOrders()
 		{
 			Tracing.SendCallback("EVE.FetchMarketOrders");
-			return this.GetBoolFromLSO("FetchMarketOrders");
+			return this.GetBool("FetchMarketOrders");
 		}
 
 		/// <summary>

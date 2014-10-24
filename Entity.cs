@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
+using EVE.ISXEVE.Extensions;
 using EVE.ISXEVE.Interfaces;
 using LavishScriptAPI;
-using Extensions;
 
 namespace EVE.ISXEVE
 {
@@ -48,7 +48,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Alliance
 		{
-			get { return _alliance ?? (_alliance = this.GetStringFromLSO("Alliance")); }
+			get { return _alliance ?? (_alliance = this.GetString("Alliance")); }
 		}
 
 		private int? _allianceId;
@@ -60,7 +60,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_allianceId == null)
-					_allianceId = this.GetIntFromLSO("AllianceID");
+					_allianceId = this.GetInt("AllianceID");
 				return _allianceId.Value;
 			}
 		}
@@ -71,7 +71,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string AllianceTicker
 		{
-			get { return _allianceTicker ?? (_allianceTicker = this.GetStringFromLSO("AllianceTicker")); }
+			get { return _allianceTicker ?? (_allianceTicker = this.GetString("AllianceTicker")); }
 		}
 
 		private double? _bounty;
@@ -83,7 +83,7 @@ namespace EVE.ISXEVE
             get
             {
 				if (_bounty == null)
-					_bounty = this.GetDoubleFromLSO("Bounty");
+					_bounty = this.GetDouble("Bounty");
             	return _bounty.Value;
             }
 	    }
@@ -94,7 +94,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Category
 		{
-			get {return _category ?? (_category = this.GetStringFromLSO("Category")); }
+			get {return _category ?? (_category = this.GetString("Category")); }
 		}
 
 		private int? _categoryId;
@@ -106,7 +106,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_categoryId == null)
-					_categoryId = this.GetIntFromLSO("CategoryID");
+					_categoryId = this.GetInt("CategoryID");
 				return _categoryId.Value;
 			}
 		}
@@ -131,7 +131,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_charId == null)
-					_charId = this.GetInt64FromLSO("CharID");
+					_charId = this.GetInt64("CharID");
 				return _charId.Value;
 			}
 		}
@@ -157,7 +157,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_formationId == null)
-					_formationId = this.GetIntFromLSO("FormationID");
+					_formationId = this.GetInt("FormationID");
 				return _formationId.Value;
 			}
 		}
@@ -168,7 +168,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Group
 		{
-			get { return _group ?? (_group = this.GetStringFromLSO("Group")); }
+			get { return _group ?? (_group = this.GetString("Group")); }
 		}
 
 		private int? _groupId;
@@ -180,7 +180,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_groupId == null)
-					_groupId = this.GetIntFromLSO("GroupID");
+					_groupId = this.GetInt("GroupID");
 				return _groupId.Value;
 			}
 		}
@@ -195,7 +195,7 @@ namespace EVE.ISXEVE
 			{
 				Tracing.SendCallback("Entity.ID");
 				if (_id == null)
-					_id = this.GetInt64FromLSO("ID");
+					_id = this.GetInt64("ID");
 				return _id.Value;
 			}
 		}
@@ -206,7 +206,7 @@ namespace EVE.ISXEVE
             get
             {
 				if (_isWreckViewed == null)
-					_isWreckViewed = this.GetBoolFromLSO("IsWreckViewed");
+					_isWreckViewed = this.GetBool("IsWreckViewed");
             	return _isWreckViewed.Value;
             }
         }
@@ -217,7 +217,7 @@ namespace EVE.ISXEVE
 	        get
 	        {
 				if (_isAbandoned == null)
-					_isAbandoned = this.GetBoolFromLSO("IsAbandoned");
+					_isAbandoned = this.GetBool("IsAbandoned");
 	        	return _isAbandoned.Value;
 	        }
 	    }
@@ -231,7 +231,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_maxVelocity == null)
-					_maxVelocity = this.GetDoubleFromLSO("MaxVelocity");
+					_maxVelocity = this.GetDouble("MaxVelocity");
 				return _maxVelocity.Value;
 			}
 		}
@@ -242,7 +242,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Name
 		{
-			get { return _name ?? (_name = this.GetStringFromLSO("Name")); }
+			get { return _name ?? (_name = this.GetString("Name")); }
 		}
 
 		private Pilot _owner;
@@ -263,7 +263,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_ownerId == null)
-					_ownerId = this.GetInt64FromLSO("OwnerID");
+					_ownerId = this.GetInt64("OwnerID");
 				return _ownerId.Value;
 			}
 		}
@@ -277,7 +277,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_security == null)
-					_security = this.GetDoubleFromLSO("Security");
+					_security = this.GetDouble("Security");
 				return _security.Value;
 			}
 		}
@@ -288,7 +288,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Type
 		{
-			get { return _type ?? (_type = this.GetStringFromLSO("Type")); }
+			get { return _type ?? (_type = this.GetString("Type")); }
 		}
 
 		private int? _typeId;
@@ -300,7 +300,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_typeId == null)
-					_typeId = this.GetIntFromLSO("TypeID");
+					_typeId = this.GetInt("TypeID");
 				return _typeId.Value;
 			}
 		}
@@ -314,7 +314,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_wreckId == null)
-					_wreckId = this.GetIntFromLSO("WreckID");
+					_wreckId = this.GetInt("WreckID");
 				return _wreckId.Value;
 			}
 		}
@@ -348,7 +348,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_isWreckEmpty == null)
-					_isWreckEmpty = this.GetBoolFromLSO("IsWreckEmpty");
+					_isWreckEmpty = this.GetBool("IsWreckEmpty");
 				return _isWreckEmpty.Value;
 			}
 		}
@@ -362,7 +362,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_isOwnedByCorpMember == null)
-					_isOwnedByCorpMember = this.GetBoolFromLSO("IsOwnedByCorpMember");
+					_isOwnedByCorpMember = this.GetBool("IsOwnedByCorpMember");
 				return _isOwnedByCorpMember.Value;
 			}
 		}
@@ -376,7 +376,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_isOwnedByAllianceMember == null)
-					_isOwnedByAllianceMember = this.GetBoolFromLSO("IsOwnedByAllianceMember");
+					_isOwnedByAllianceMember = this.GetBool("IsOwnedByAllianceMember");
 				return _isOwnedByAllianceMember.Value;
 			}
 		}
@@ -392,7 +392,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_x == null)
-					_x = this.GetDoubleFromLSO("X");
+					_x = this.GetDouble("X");
 				return _x.Value;
 			}
 		}
@@ -406,7 +406,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_y == null)
-					_y = this.GetDoubleFromLSO("Y");
+					_y = this.GetDouble("Y");
 				return _y.Value;
 			}
 		}
@@ -420,7 +420,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_z == null)
-					_z = this.GetDoubleFromLSO("Z");
+					_z = this.GetDouble("Z");
 				return _z.Value;
 			}
 		}
@@ -434,7 +434,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_vx == null)
-					_vx = this.GetDoubleFromLSO("vX");
+					_vx = this.GetDouble("vX");
 				return _vx.Value;
 			}
 		}
@@ -448,7 +448,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_vy == null)
-					_vy = this.GetDoubleFromLSO("vY");
+					_vy = this.GetDouble("vY");
 				return _vy.Value;
 			}
 		}
@@ -462,7 +462,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_vz == null)
-					_vz = this.GetDoubleFromLSO("vZ");
+					_vz = this.GetDouble("vZ");
 				return _vz.Value;
 			}
 		}
@@ -476,7 +476,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_pitch == null)
-					_pitch = this.GetDoubleFromLSO("Pitch");
+					_pitch = this.GetDouble("Pitch");
 				return _pitch.Value;
 			}
 		}
@@ -491,7 +491,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_roll == null)
-					_roll = this.GetDoubleFromLSO("Roll");
+					_roll = this.GetDouble("Roll");
 				return _roll.Value;
 			}
 		}
@@ -505,7 +505,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_yaw == null)
-					_yaw = this.GetDoubleFromLSO("Yaw");
+					_yaw = this.GetDouble("Yaw");
 				return _yaw.Value;
 			}
 		}
@@ -519,7 +519,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_velocity == null)
-					_velocity = this.GetDoubleFromLSO("Velocity");
+					_velocity = this.GetDouble("Velocity");
 				return _velocity.Value;
 			}
 		}
@@ -533,7 +533,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_distance == null)
-					_distance = this.GetDoubleFromLSO("Distance");
+					_distance = this.GetDouble("Distance");
 				return _distance.Value;
 			}
 		}
@@ -545,7 +545,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public double DistanceTo(long entityId)
 		{
-			return this.GetDoubleFromLSO("DistanceTo", entityId.ToString());
+			return this.GetDouble("DistanceTo", entityId.ToString());
 		}
 
 		private double? _followRange;
@@ -557,7 +557,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_followRange == null)
-					_followRange = this.GetDoubleFromLSO("FollowRange");
+					_followRange = this.GetDouble("FollowRange");
 				return _followRange.Value;
 			}
 		}
@@ -574,7 +574,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_mass == null)
-					_mass = this.GetDoubleFromLSO("Mass");
+					_mass = this.GetDouble("Mass");
 				return _mass.Value;
 			}
 		}
@@ -588,7 +588,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_radius == null)
-					_radius = this.GetDoubleFromLSO("Radius");
+					_radius = this.GetDouble("Radius");
 				return _radius.Value;
 			}
 		}
@@ -602,7 +602,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_shieldPct == null)
-					_shieldPct = this.GetDoubleFromLSO("ShieldPct");
+					_shieldPct = this.GetDouble("ShieldPct");
 				return _shieldPct.Value;
 			}
 		}
@@ -616,7 +616,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_armorPct == null)
-					_armorPct = this.GetDoubleFromLSO("ArmorPct");
+					_armorPct = this.GetDouble("ArmorPct");
 				return _armorPct.Value;
 			}
 		}
@@ -630,7 +630,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_structurePct == null)
-					_structurePct = this.GetDoubleFromLSO("StructurePct");
+					_structurePct = this.GetDouble("StructurePct");
 				return _structurePct.Value;
 			}
 		}
@@ -647,7 +647,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_isCloaked == null)
-					_isCloaked = this.GetBoolFromLSO("IsCloaked");
+					_isCloaked = this.GetBool("IsCloaked");
 				return _isCloaked.Value;
 			}
 		}
@@ -661,7 +661,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_isInteractive == null)
-					_isInteractive = this.GetBoolFromLSO("IsInteractive");
+					_isInteractive = this.GetBool("IsInteractive");
 				return _isInteractive.Value;
 			}
 		}
@@ -675,7 +675,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_isMassive == null)
-					_isMassive = this.GetBoolFromLSO("IsMassive");
+					_isMassive = this.GetBool("IsMassive");
 				return _isMassive.Value;
 			}
 		}
@@ -689,7 +689,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_isGlobal == null)
-					_isGlobal = this.GetBoolFromLSO("IsGlobal");
+					_isGlobal = this.GetBool("IsGlobal");
 				return _isGlobal.Value;
 			}
 		}
@@ -703,7 +703,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_isMoribund == null)
-					_isMoribund = this.GetBoolFromLSO("IsMoribund");
+					_isMoribund = this.GetBool("IsMoribund");
 				return _isMoribund.Value;
 			}
 		}
@@ -717,7 +717,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_isWarpScrambled == null)
-					_isWarpScrambled = this.GetBoolFromLSO("IsWarpScrambled");
+					_isWarpScrambled = this.GetBool("IsWarpScrambled");
 				return _isWarpScrambled.Value;
 			}
 		}
@@ -731,7 +731,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_isActiveTarget == null)
-					_isActiveTarget = this.GetBoolFromLSO("IsActiveTarget");
+					_isActiveTarget = this.GetBool("IsActiveTarget");
 				return _isActiveTarget.Value;
 			}
 		}
@@ -745,7 +745,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_isLockedTarget == null)
-					_isLockedTarget = this.GetBoolFromLSO("IsLockedTarget");
+					_isLockedTarget = this.GetBool("IsLockedTarget");
 				return _isLockedTarget.Value;
 			}
 		}
@@ -759,7 +759,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_isNpc == null)
-					_isNpc = this.GetBoolFromLSO("IsNPC");
+					_isNpc = this.GetBool("IsNPC");
 				return _isNpc.Value;
 			}
 		}
@@ -773,7 +773,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_isPc == null)
-					_isPc = this.GetBoolFromLSO("IsPC");
+					_isPc = this.GetBool("IsPC");
 				return _isPc.Value;
 			}
 		}
@@ -787,7 +787,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_haveLootRights == null)
-					_haveLootRights = this.GetBoolFromLSO("HaveLootRights");
+					_haveLootRights = this.GetBool("HaveLootRights");
 				return _haveLootRights.Value;
 			}
 		}
@@ -803,7 +803,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_mode == null)
-					_mode = this.GetIntFromLSO("Mode");
+					_mode = this.GetInt("Mode");
 				return _mode.Value;
 			}
 		}
@@ -817,7 +817,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_isTargetingMe == null)
-					_isTargetingMe = this.GetBoolFromLSO("IsTargetingMe");
+					_isTargetingMe = this.GetBool("IsTargetingMe");
 				return _isTargetingMe.Value;
 			}
 		}
@@ -831,7 +831,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_isWarpScramblingMe == null)
-					_isWarpScramblingMe = this.GetBoolFromLSO("IsWarpScramblingMe");
+					_isWarpScramblingMe = this.GetBool("IsWarpScramblingMe");
 				return _isWarpScramblingMe.Value;
 			}
 		}
@@ -845,7 +845,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_isTargetJammingMe == null)
-					_isTargetJammingMe = this.GetBoolFromLSO("IsTargetJammingMe");
+					_isTargetJammingMe = this.GetBool("IsTargetJammingMe");
 				return _isTargetJammingMe.Value;
 			}
 		}
@@ -859,7 +859,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_beingTargeted == null)
-					_beingTargeted = this.GetBoolFromLSO("BeingTargeted");
+					_beingTargeted = this.GetBool("BeingTargeted");
 				return _beingTargeted.Value;
 			}
 		}
@@ -900,7 +900,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_cargoCapacity == null)
-					_cargoCapacity = this.GetDoubleFromLSO("CargoCapacity");
+					_cargoCapacity = this.GetDouble("CargoCapacity");
 				return _cargoCapacity.Value;
 			}
 		}
@@ -914,7 +914,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_usedCargoCapacity == null)
-					_usedCargoCapacity = this.GetDoubleFromLSO("UsedCargoCapacity");
+					_usedCargoCapacity = this.GetDouble("UsedCargoCapacity");
 				return _usedCargoCapacity.Value;
 			}
 		}
@@ -940,7 +940,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_hasOreHold == null)
-					_hasOreHold = this.GetBoolFromLSO("HasOreHold");
+					_hasOreHold = this.GetBool("HasOreHold");
 				return _hasOreHold.Value;
 			}
 		}
@@ -970,6 +970,13 @@ namespace EVE.ISXEVE
             }
         }
 
+	    private EntityWormhole _entityWormhole;
+
+	    public EntityWormhole ToEntityWormhole
+	    {
+	        get { return _entityWormhole ?? (_entityWormhole = new EntityWormhole(GetMember("ToWormhole"))); }
+	    }
+
 	    private Int64? _surveyScannerOreQuantity;
         /// <summary>
         /// Wrapper for the SurveyScannerOreQuantity member of the Entity datatype.
@@ -979,7 +986,7 @@ namespace EVE.ISXEVE
 	        get
 	        {
 	            if (_surveyScannerOreQuantity == null)
-	                _surveyScannerOreQuantity = this.GetInt64FromLSO("SurveyScannerOreQuantity");
+	                _surveyScannerOreQuantity = this.GetInt64("SurveyScannerOreQuantity");
 
 	            return _surveyScannerOreQuantity.Value;
 	        }
@@ -994,7 +1001,7 @@ namespace EVE.ISXEVE
 	        get
 	        {
 	            if (_hasShipScannerResults == null)
-	                _hasShipScannerResults = this.GetBoolFromLSO("HasShipScannerResults");
+	                _hasShipScannerResults = this.GetBool("HasShipScannerResults");
 
 	            return _hasShipScannerResults.Value;
 	        }
@@ -1019,7 +1026,7 @@ namespace EVE.ISXEVE
 	        get
 	        {
 	            if (_hasCargoScannerResults == null)
-	                _hasCargoScannerResults = this.GetBoolFromLSO("HasCargoScannerResults");
+	                _hasCargoScannerResults = this.GetBool("HasCargoScannerResults");
 
 	            return _hasCargoScannerResults.Value;
 	        }
@@ -1034,7 +1041,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_fleetTag == null)
-					_fleetTag = this.GetStringFromLSO("FleetTag");
+					_fleetTag = this.GetString("FleetTag");
 
 				return _fleetTag;
 			}
@@ -1059,7 +1066,7 @@ namespace EVE.ISXEVE
 	        get
 	        {
 	            if (_shipScannerCapacitorCharge == null)
-	                _shipScannerCapacitorCharge = this.GetDoubleFromLSO("ShipScannerCapacitorCharge");
+	                _shipScannerCapacitorCharge = this.GetDouble("ShipScannerCapacitorCharge");
 
 	            return _shipScannerCapacitorCharge.Value;
 	        }
@@ -1074,7 +1081,7 @@ namespace EVE.ISXEVE
 	        get
 	        {
 	            if (_shipScannerCapacitorCapacity == null)
-	                _shipScannerCapacitorCapacity = this.GetDoubleFromLSO("ShipScannerCapacitorCapacity");
+	                _shipScannerCapacitorCapacity = this.GetDouble("ShipScannerCapacitorCapacity");
 
 	            return _shipScannerCapacitorCapacity.Value;
 	        }

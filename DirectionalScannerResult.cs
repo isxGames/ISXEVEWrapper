@@ -1,5 +1,5 @@
 ﻿using System;
-using Extensions;
+using EVE.ISXEVE.Extensions;
 using LavishScriptAPI;
 
 namespace EVE.ISXEVE
@@ -23,7 +23,7 @@ namespace EVE.ISXEVE
             get
             {
                 if (_id == null)
-                    _id = this.GetInt64FromLSO("ID");
+                    _id = this.GetInt64("ID");
 
                 return _id.Value;
             }
@@ -35,7 +35,7 @@ namespace EVE.ISXEVE
         /// </summary>
         public string Name
         {
-            get { return _name ?? (_name = this.GetStringFromLSO("Name")); }
+            get { return _name ?? (_name = this.GetString("Name")); }
         }
 
         private int? _groupId;
@@ -47,7 +47,7 @@ namespace EVE.ISXEVE
             get
             {
                 if (_groupId == null)
-                    _groupId = this.GetIntFromLSO("GroupID");
+                    _groupId = this.GetInt("GroupID");
 
                 return _groupId.Value;
             }
@@ -62,7 +62,7 @@ namespace EVE.ISXEVE
             get
             {
                 if (_typeId == null)
-                    _typeId = this.GetIntFromLSO("TypeID");
+                    _typeId = this.GetInt("TypeID");
 
                 return _typeId.Value;
             }

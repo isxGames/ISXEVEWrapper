@@ -1,8 +1,8 @@
+using EVE.ISXEVE.Extensions;
 #pragma warning disable 1591
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
 
@@ -38,7 +38,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Version
 		{
-			get { return this.GetStringFromLSO("Version"); }
+			get { return this.GetString("Version"); }
 		}
 
 		/// <summary>
@@ -46,7 +46,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsReady
 		{
-			get { return this.GetBoolFromLSO("IsReady"); }
+			get { return this.GetBool("IsReady"); }
 		}
 
 		/// <summary>
@@ -54,7 +54,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsLoading
 		{
-			get { return this.GetBoolFromLSO("IsLoading"); }
+			get { return this.GetBool("IsLoading"); }
 		}
 
 		/// <summary>
@@ -65,7 +65,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string SecsToString(int seconds)
 		{
-			return this.GetStringFromLSO("SecsToString", seconds.ToString());
+			return this.GetString("SecsToString", seconds.ToString());
 		}
 
 		/// <summary>
@@ -74,12 +74,12 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsSafe
 		{
-			get { return this.GetBoolFromLSO("IsSafe"); }
+			get { return this.GetBool("IsSafe"); }
 		}
 
 		public bool IsBeta
 		{
-			get { return this.GetBoolFromLSO("IsBeta"); }
+			get { return this.GetBool("IsBeta"); }
 		}
 		#endregion
 

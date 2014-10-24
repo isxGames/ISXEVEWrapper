@@ -89,6 +89,10 @@
     <Compile Include="Character.cs" />
     <Compile Include="CharSelect.cs" />
     <Compile Include="ChatChannel.cs" />
+    <Compile Include="Constellation.cs" />
+    <Compile Include="EntityWormhole.cs" />
+    <Compile Include="EveRepairShopWindow.cs" />
+    <Compile Include="Extensions\LavishScriptObjectExtensions.cs" />
     <Compile Include="Interfaces\IBookMark.cs" />
     <Compile Include="Interfaces\IItemInfoList.cs" />
     <Compile Include="Interfaces\IItemInfo.cs" />
@@ -111,8 +115,10 @@
     <Compile Include="CargoScanner.cs" />
     <Compile Include="DirectionalScanner.cs" />
     <Compile Include="DirectionalScannerResult.cs" />
+    <Compile Include="Region.cs" />
     <Compile Include="Scanners.cs" />
     <Compile Include="ShipScanner.cs" />
+    <Compile Include="SolarSystem.cs" />
     <Compile Include="SurveyScanner.cs" />
     <Compile Include="SystemScanner.cs" />
     <Compile Include="SystemAnomaly.cs" />
@@ -120,7 +126,6 @@
     <Compile Include="Properties\VersionInfo.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Jammer.cs" />
-    <Compile Include="LavishScriptObjectExtensions.cs" />
     <Compile Include="MarketOrder.cs" />
     <Compile Include="MyOrder.cs" />
     <Compile Include="Entity.cs" />

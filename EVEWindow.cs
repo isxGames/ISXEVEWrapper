@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using EVE.ISXEVE.Extensions;
 using EVE.ISXEVE.Interfaces;
-using Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
 
@@ -70,6 +71,13 @@ namespace EVE.ISXEVE
 		{
 			return new EveInvWindow(LavishScript.Objects.GetObject("EVEWindow", "Inventory"));
 		}
+
+	    public static EveRepairShopWindow GetRepairShopWindow()
+	    {
+	        return new EveRepairShopWindow(LavishScript.Objects.GetObject("EVEWindow","RepairShop"));
+	    }
+
+
 		#endregion
 
 		#region Members
@@ -78,7 +86,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Caption
 		{
-			get { return this.GetStringFromLSO("Caption"); }
+			get { return this.GetString("Caption"); }
 		}
 
 		/// <summary>
@@ -86,7 +94,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool Minimized
 		{
-			get { return this.GetBoolFromLSO("Minimized"); }
+			get { return this.GetBool("Minimized"); }
 		}
 
 		/// <summary>
@@ -94,12 +102,12 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string HTML
 		{
-			get { return this.GetStringFromLSO("HTML"); }
+			get { return this.GetString("HTML"); }
 		}
 
 		public string Text
 		{
-			get { return this.GetStringFromLSO("Text"); }
+			get { return this.GetString("Text"); }
 		}
 
 		/// <summary>
@@ -107,7 +115,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public Int64 ItemID
 		{
-			get { return this.GetInt64FromLSO("ItemID"); }
+			get { return this.GetInt64("ItemID"); }
 		}
 
 		/// <summary>
@@ -115,7 +123,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Capacity
 		{
-			get { return this.GetDoubleFromLSO("Capacity"); }
+			get { return this.GetDouble("Capacity"); }
 		}
 
 		/// <summary>
@@ -123,7 +131,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double UsedCapacity
 		{
-			get { return this.GetDoubleFromLSO("UsedCapacity"); }
+			get { return this.GetDouble("UsedCapacity"); }
 		}
 		#endregion
 

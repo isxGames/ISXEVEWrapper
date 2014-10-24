@@ -1,6 +1,6 @@
 using System;
+using EVE.ISXEVE.Extensions;
 using EVE.ISXEVE.Interfaces;
-using Extensions;
 using LavishScriptAPI;
 
 namespace EVE.ISXEVE
@@ -30,7 +30,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				//Tracing.SendCallback("Bookmark.ID");
-				return this.GetInt64FromLSO("ID");
+				return this.GetInt64("ID");
 			}
 		}
 
@@ -39,7 +39,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Type
 		{
-			get { return this.GetStringFromLSO("Type"); }
+			get { return this.GetString("Type"); }
 		}
 
 		/// <summary>
@@ -47,7 +47,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int TypeID
 		{
-			get { return this.GetIntFromLSO("TypeID"); }
+			get { return this.GetInt("TypeID"); }
 		}
 
 		/// <summary>
@@ -68,7 +68,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int SolarSystemID
 		{
-			get { return this.GetIntFromLSO("SolarSystemID"); }
+			get { return this.GetInt("SolarSystemID"); }
 		}
 
 		/// <summary>
@@ -76,7 +76,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double X
 		{
-			get { return this.GetDoubleFromLSO("X"); }
+			get { return this.GetDouble("X"); }
 		}
 
 		/// <summary>
@@ -84,7 +84,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Y
 		{
-			get { return this.GetDoubleFromLSO("Y"); }
+			get { return this.GetDouble("Y"); }
 		}
 
 		/// <summary>
@@ -92,7 +92,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double Z
 		{
-			get { return this.GetDoubleFromLSO("Z"); }
+			get { return this.GetDouble("Z"); }
 		}
 
 		/// <summary>
@@ -100,7 +100,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Label
 		{
-			get { return this.GetStringFromLSO("Label"); }
+			get { return this.GetString("Label"); }
 		}
 
 		/// <summary>
@@ -108,7 +108,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Note
 		{
-			get { return this.GetStringFromLSO("Note"); }
+			get { return this.GetString("Note"); }
 		}
 
 		/// <summary>
@@ -116,7 +116,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string DateCreated
 		{
-			get { return this.GetStringFromLSO("DateCreated"); }
+			get { return this.GetString("DateCreated"); }
 		}
 
 		/// <summary>
@@ -124,7 +124,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string TimeCreated
 		{
-			get { return this.GetStringFromLSO("TimeCreated"); }
+			get { return this.GetString("TimeCreated"); }
 		}
 
 		/// <summary>
@@ -132,7 +132,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int AgentID
 		{
-			get { return this.GetIntFromLSO("AgentID"); }
+			get { return this.GetInt("AgentID"); }
 		}
 
 		/// <summary>
@@ -143,7 +143,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				Tracing.SendCallback("Bookmark.LocationID");
-				return this.GetInt64FromLSO("LocationID");
+				return this.GetInt64("LocationID");
 			}
 		}
 
@@ -152,7 +152,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int LocationNumber
 		{
-			get { return this.GetIntFromLSO("LocationNumber"); }
+			get { return this.GetInt("LocationNumber"); }
 		}
 
 		/// <summary>
@@ -160,7 +160,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string LocationType
 		{
-			get { return this.GetStringFromLSO("LocationType"); }
+			get { return this.GetString("LocationType"); }
 		}
 
 		/// <summary>
@@ -171,7 +171,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				Tracing.SendCallback("Bookmark.ItemID");
-				return this.GetInt64FromLSO("ItemID");
+				return this.GetInt64("ItemID");
 			}
 		}
 
@@ -183,7 +183,7 @@ namespace EVE.ISXEVE
             get
             {
                 Tracing.SendCallback("Bookmark.CreatorID");
-                return this.GetInt64FromLSO("CreatorID");
+                return this.GetInt64("CreatorID");
             }
         }
 
@@ -192,7 +192,7 @@ namespace EVE.ISXEVE
         /// </summary>
         public bool DeadSpace
         {
-            get { return this.GetBoolFromLSO("DeadSpace"); }
+            get { return this.GetBool("DeadSpace"); }
         }
 
         /// <summary>
@@ -203,7 +203,18 @@ namespace EVE.ISXEVE
 	        get
 	        {
 	            Tracing.SendCallback("BookMark.OwnerID");
-	            return this.GetInt64FromLSO("OwnerID");
+	            return this.GetInt64("OwnerID");
+	        }
+	    }
+
+	    private int? _jumpsTo;
+	    public int JumpsTo
+	    {
+	        get
+	        {
+	            if (_jumpsTo == null)
+	                _jumpsTo = this.GetInt("JumpsTo");
+	            return _jumpsTo.Value;
 	        }
 	    }
 		#endregion
@@ -263,6 +274,16 @@ namespace EVE.ISXEVE
 			Tracing.SendCallback("BM.AddWaypoint");
 			return ExecuteMethod("AddWaypoint");
 		}
+
+        /// <summary>
+        /// Determine the # of jumps to the given solarsystem or station ID
+        /// </summary>
+        /// <param name="solarSystemOrStationId"></param>
+        /// <returns></returns>
+	    public int GetJumpsTo(int solarSystemOrStationId)
+        {
+            return this.GetInt("JumpsTo", solarSystemOrStationId.ToString());
+        }
 		#endregion
 	}
 }

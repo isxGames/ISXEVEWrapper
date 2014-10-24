@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
+using EVE.ISXEVE.Extensions;
 using EVE.ISXEVE.Interfaces;
-using Extensions;
 using LavishScriptAPI;
 
 namespace EVE.ISXEVE
@@ -29,7 +29,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double CargoCapacity
 		{
-			get { return this.GetDoubleFromLSO("CargoCapacity"); }
+			get { return this.GetDouble("CargoCapacity"); }
 		}
 
 		/// <summary>
@@ -46,7 +46,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double UsedCargoCapacity
 		{
-			get { return this.GetDoubleFromLSO("UsedCargoCapacity"); }
+			get { return this.GetDouble("UsedCargoCapacity"); }
 		}
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace EVE.ISXEVE
         /// </summary>
 	    public string InsuranceLevel
 	    {
-	        get { return this.GetStringFromLSO("InsuranceLevel"); }
+	        get { return this.GetString("InsuranceLevel"); }
 	    }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace EVE.ISXEVE
 	    {
             get 
             {
-            	return this.GetNullableBoolFromLSO("IsInsured");
+            	return this.GetNullableBool("IsInsured");
             }
 	    }
 
@@ -87,7 +87,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsRepackable
 		{
-			get { return this.GetBoolFromLSO("IsRepackable"); }
+			get { return this.GetBool("IsRepackable"); }
 		}
 
 		/// <summary>
@@ -95,7 +95,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Location
 		{
-			get { return this.GetStringFromLSO("Location"); }
+			get { return this.GetString("Location"); }
 		}
 
 		/// <summary>
@@ -103,7 +103,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public long LocationID
 		{
-			get { return this.GetInt64FromLSO("LocationID"); }
+			get { return this.GetInt64("LocationID"); }
 		}
 
 		/// <summary>
@@ -111,7 +111,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string MacroLocation
 		{
-			get { return this.GetStringFromLSO("MacroLocation"); }
+			get { return this.GetString("MacroLocation"); }
 		}
 
 		/// <summary>
@@ -119,7 +119,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int MacroLocationID
 		{
-			get { return this.GetIntFromLSO("MacroLocationID"); }
+			get { return this.GetInt("MacroLocationID"); }
 		}
 
         /// <summary>
@@ -127,7 +127,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double MaxFlightTime
 		{
-			get { return this.GetDoubleFromLSO("MaxFlightTime"); }
+			get { return this.GetDouble("MaxFlightTime"); }
 		}
 
 		/// <summary>
@@ -135,7 +135,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double MaxVelocity
 		{
-			get { return this.GetDoubleFromLSO("MaxVelocity"); }
+			get { return this.GetDouble("MaxVelocity"); }
 		}
 
 		/// <summary>
@@ -143,7 +143,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Name
 		{
-			get { return this.GetStringFromLSO("Name"); }
+			get { return this.GetString("Name"); }
 		}
 
 		/// <summary>
@@ -151,7 +151,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int OwnerID
 		{
-			get { return this.GetIntFromLSO("OwnerID"); }
+			get { return this.GetInt("OwnerID"); }
 		}
 
         /// <summary>
@@ -159,7 +159,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int Quantity
 		{
-			get { return this.GetIntFromLSO("Quantity"); }
+			get { return this.GetInt("Quantity"); }
 		}
 
         /// <summary>
@@ -169,7 +169,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Slot
 		{
-			get { return this.GetStringFromLSO("Slot"); }
+			get { return this.GetString("Slot"); }
 		}
 
 		/// <summary>
@@ -179,7 +179,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int SlotID
 		{
-			get { return this.GetIntFromLSO("SlotID"); }
+			get { return this.GetInt("SlotID"); }
 		}
 
         /// <summary>
@@ -187,12 +187,12 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string GivenName
 		{
-			get { return this.GetStringFromLSO("GivenName"); }
+			get { return this.GetString("GivenName"); }
 		}
 
         public bool IsContrabandForFaction(int FactionID)
         {
-            return this.GetBoolFromLSO("IsContraband", FactionID.ToString());
+            return this.GetBool("IsContraband", FactionID.ToString());
         }
 
         /// <summary>
@@ -200,7 +200,7 @@ namespace EVE.ISXEVE
         /// </summary>
         public double EMDamage
         {
-            get { return this.GetDoubleFromLSO("EMDamage"); }
+            get { return this.GetDouble("EMDamage"); }
         }
 
         /// <summary>
@@ -208,7 +208,7 @@ namespace EVE.ISXEVE
         /// </summary>
         public double ExplosiveDamage
         {
-            get { return this.GetDoubleFromLSO("ExplosiveDamage"); }
+            get { return this.GetDouble("ExplosiveDamage"); }
         }
 
         /// <summary>
@@ -216,7 +216,7 @@ namespace EVE.ISXEVE
         /// </summary>
         public double KineticDamage
         {
-            get { return this.GetDoubleFromLSO("KineticDamage"); }
+            get { return this.GetDouble("KineticDamage"); }
         }
 
         /// <summary>
@@ -224,17 +224,17 @@ namespace EVE.ISXEVE
         /// </summary>
         public double ThermalDamage
         {
-            get { return this.GetDoubleFromLSO("ThermalDamage"); }
+            get { return this.GetDouble("ThermalDamage"); }
         }
 
         public double ExplosionVelocity
         {
-            get { return this.GetDoubleFromLSO("ExplosionVelocity"); }
+            get { return this.GetDouble("ExplosionVelocity"); }
         }
 
         public double ExplosionRadius
         {
-            get { return this.GetDoubleFromLSO("ExplosionRadius"); }
+            get { return this.GetDouble("ExplosionRadius"); }
         }
         #endregion
 
@@ -468,6 +468,13 @@ namespace EVE.ISXEVE
         {
             return Util.GetListFromMethod<int>(this, "GetContrabandFactions", "int");
         }
+
+        //Opens the repair window 
+        public bool GetRepairQuote()
+        {
+            return ExecuteMethod("GetRepairQuote");
+        }
+
 		#endregion
 	}
 

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Extensions;
+using EVE.ISXEVE.Extensions;
 using LavishScriptAPI;
 
 namespace EVE.ISXEVE
@@ -32,7 +32,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				Tracing.SendCallback("Fleet.ID");
-				return this.GetInt64FromLSO("ID");
+				return this.GetInt64("ID");
 			}
 		}
 
@@ -41,7 +41,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string InvitationText
 		{
-			get { return this.GetStringFromLSO("InvitationText"); }
+			get { return this.GetString("InvitationText"); }
 		}
 
 		/// <summary>
@@ -49,7 +49,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool Invited
 		{
-			get { return this.GetBoolFromLSO("Invited"); }
+			get { return this.GetBool("Invited"); }
 		}
 
 		/// <summary>
@@ -57,7 +57,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool IsFleetCommander
 		{
-			get { return this.GetBoolFromLSO("IsFleetCommander"); }
+			get { return this.GetBool("IsFleetCommander"); }
 		}
 
 		/// <summary>
@@ -75,7 +75,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int Size
 		{
-			get { return this.GetIntFromLSO("Size"); }
+			get { return this.GetInt("Size"); }
 		}
 
 		/// <summary>
@@ -85,7 +85,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool IsMember(Int64 charID)
 		{
-			return this.GetBoolFromLSO("IsMember", charID.ToString());
+			return this.GetBool("IsMember", charID.ToString());
 		}
 
 		/// <summary>
@@ -95,7 +95,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public string WingName(Int64 wingID)
 		{
-			return this.GetStringFromLSO("WingName", wingID.ToString());
+			return this.GetString("WingName", wingID.ToString());
 		}
 
 		/// <summary>
@@ -105,7 +105,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public Int64 WingNameToID(string wingName)
 		{
-			return this.GetInt64FromLSO("WingNameToID", wingName);
+			return this.GetInt64("WingNameToID", wingName);
 		}
 
 		/// <summary>
@@ -115,7 +115,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public string SquadName(Int64 squadID)
 		{
-			return this.GetStringFromLSO("SquadName", squadID.ToString());
+			return this.GetString("SquadName", squadID.ToString());
 		}
 
 		/// <summary>
@@ -125,7 +125,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public Int64 SquadNameToID(string squadName)
 		{
-			return this.GetInt64FromLSO("SquadNameToID", squadName);
+			return this.GetInt64("SquadNameToID", squadName);
 		}
 		#endregion
 

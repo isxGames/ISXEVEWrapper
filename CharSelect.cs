@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Extensions;
+using EVE.ISXEVE.Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
 
@@ -38,12 +38,12 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool CharExists(Int64 ID)
 		{
-			return this.GetBoolFromLSO("CharExists", ID.ToString());
+			return this.GetBool("CharExists", ID.ToString());
 		}
 
         public bool CharExists(string name)
         {
-        	return this.GetBoolFromLSO("CharExists", name);
+        	return this.GetBool("CharExists", name);
         }
 		#endregion
 

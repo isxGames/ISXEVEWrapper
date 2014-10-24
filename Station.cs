@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Extensions;
+using EVE.ISXEVE.Extensions;
 using LavishScriptAPI;
 
 namespace EVE.ISXEVE
@@ -72,7 +72,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Name
 		{
-			get { return this.GetStringFromLSO("Name"); }
+			get { return this.GetString("Name"); }
 		}
 
 		/// <summary>
@@ -80,7 +80,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int ID
 		{
-			get { return this.GetIntFromLSO("ID"); }
+			get { return this.GetInt("ID"); }
 		}
 
 		/// <summary>
@@ -88,7 +88,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int TypeID
 		{
-			get { return this.GetIntFromLSO("TypeID"); }
+			get { return this.GetInt("TypeID"); }
 		}
 
 		/// <summary>
@@ -96,7 +96,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Type
 		{
-			get { return this.GetStringFromLSO("Type"); }
+			get { return this.GetString("Type"); }
 		}
 
 		/// <summary>
@@ -104,7 +104,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int OwnerID
 		{
-			get { return this.GetIntFromLSO("OwnerID"); }
+			get { return this.GetInt("OwnerID"); }
 		}
 
 		/// <summary>
@@ -112,7 +112,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Owner
 		{
-			get { return this.GetStringFromLSO("Owner"); }
+			get { return this.GetString("Owner"); }
 		}
 
 		/// <summary>
@@ -120,7 +120,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int OwnerTypeID
 		{
-			get { return this.GetIntFromLSO("OwnerTypeID"); }
+			get { return this.GetInt("OwnerTypeID"); }
 		}
 
 		/// <summary>
@@ -128,8 +128,15 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string OwnerType
 		{
-			get { return this.GetStringFromLSO("OwnerType"); }
+			get { return this.GetString("OwnerType"); }
 		}
+
+	    private SolarSystem _solarSystem;
+
+	    public SolarSystem SolarSystem
+	    {
+	        get { return _solarSystem ?? (_solarSystem = new SolarSystem(GetMember("SolarSystem"))); }
+	    }
 		#endregion
 
 		#region Methods
@@ -162,6 +169,13 @@ namespace EVE.ISXEVE
             return ExecuteMethod("SetDestination");
         }
 
-		#endregion
-	}
+	    public List<Item> GetRepairableItems()
+	    {
+	        var repairableItems = this.GetListFromMethod<Item>("GetRepairableItems", "item");
+	        return repairableItems;
+	    }
+
+        
+        #endregion
+    }
 }

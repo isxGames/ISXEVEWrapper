@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Extensions;
+using EVE.ISXEVE.Extensions;
 using LavishScriptAPI;
 
 namespace EVE.ISXEVE
@@ -25,7 +25,7 @@ namespace EVE.ISXEVE
             get
             {
                 if (_isSensorOverlayActive == null)
-                    _isSensorOverlayActive = this.GetBoolFromLSO("IsSensorOverlayActive");
+                    _isSensorOverlayActive = this.GetBool("IsSensorOverlayActive");
 
                 return _isSensorOverlayActive.Value;
             }
