@@ -98,6 +98,11 @@ namespace EVE.ISXEVE
         {
             return ExecuteMethod("UnfitCharge");
         }
+
+        public bool FitItem(Int64 itemId)
+        {
+            return ExecuteMethod("FitItem", itemId.ToString());
+        }
         #endregion
     }
 }
