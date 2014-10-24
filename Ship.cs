@@ -857,7 +857,7 @@ namespace EVE.ISXEVE
 	    }
 		#endregion
 
-		#region Methods
+		#region LavishScript Methods
 		/// <summary>
 		/// Wrapper for the StackAllCargo method of the ship type.
 		/// </summary>
@@ -896,6 +896,16 @@ namespace EVE.ISXEVE
 	    public bool StripFitting()
 	    {
 	        return ExecuteMethod("StripFitting");
+	    }
+
+        /// <summary>
+        /// Initiate the self-destruct process.
+        /// Note: This spawns a modal window you will need to confirm.
+        /// </summary>
+        /// <returns></returns>
+	    public bool SelfDestruct()
+	    {
+	        return ExecuteMethod("SelfDestruct");
 	    }
 		#endregion
 	}

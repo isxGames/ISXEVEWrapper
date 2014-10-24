@@ -8,7 +8,7 @@ namespace EVE.ISXEVE
 	/// <summary>
 	/// Wrapper for the fleetmember data type.
 	/// </summary>
-	public class FleetMember : LavishScriptObject
+	public class FleetMember : Pilot
 	{
 		#region Constructors
 		/// <summary>
@@ -25,17 +25,6 @@ namespace EVE.ISXEVE
 		public Int64 ID
 		{
 			get { return this.GetInt64("ID"); }
-		}
-
-		/// <summary>
-		/// Wrapper for ToPilot member of fleetmember type.
-		/// </summary>
-		public Pilot ToPilot
-		{
-			get
-			{
-				return new Pilot(GetMember("ToPilot"));
-			}
 		}
 
 		/// <summary>

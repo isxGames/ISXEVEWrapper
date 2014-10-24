@@ -100,7 +100,7 @@ namespace EVE.ISXEVE
 		}
 		#endregion
 
-		#region Methods
+		#region LavishScript Methods
 		/// <summary>
 		/// Invite a beign to your fleet.
 		/// </summary>
@@ -110,6 +110,11 @@ namespace EVE.ISXEVE
 			Tracing.SendCallback("Being.InviteToFleet");
 			return ExecuteMethod("InviteToFleet");
 		}
+
+	    public bool GiveMoney(Int64 amount, string reason)
+	    {
+	        return ExecuteMethod("GiveMoney", amount.ToString(), reason);
+	    }
 		#endregion
 	}
 }

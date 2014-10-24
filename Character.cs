@@ -9,7 +9,7 @@ namespace EVE.ISXEVE
 	/// <summary>
 	/// Wrapper for the character type.
 	/// </summary>
-	public class Character : LavishScriptObject
+	public class Character : Pilot
 	{
 		#region Constructors
 		/// <summary>
@@ -30,7 +30,7 @@ namespace EVE.ISXEVE
 		}
 		#endregion
 
-		#region Members
+		#region LavishScript Members
 
 		private Entity _toEntity;
 		/// <summary>
@@ -41,18 +41,6 @@ namespace EVE.ISXEVE
 			get
 			{
 				return _toEntity ?? (_toEntity = new Entity(GetMember("ToEntity")));
-			}
-		}
-
-		private Pilot _toPilot;
-		/// <summary>
-		/// Wrapper for the ToPilot member of the character type.
-		/// </summary>
-		public Pilot ToPilot
-		{
-			get
-			{
-				return _toPilot ?? (_toPilot = new Pilot(GetMember("ToPilot")));
 			}
 		}
 
@@ -716,6 +704,26 @@ namespace EVE.ISXEVE
 				return _targetedByCount.Value;
 			}
 		}
+
+        /// <summary>
+        /// Index starts at 1.
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+	    public Being ContactByIndex(int index)
+        {
+            return new Being(GetMember("Contact", index.ToString()));
+        }
+
+	    public Being ContactById(int id)
+	    {
+	        return new Being(GetMember("Contact", "id", id.ToString()));
+	    }
+
+	    public Being ContactByName(string name)
+	    {
+	        return new Being(GetMember("Contact", name));
+	    }
 		#endregion
 
         #region Methods

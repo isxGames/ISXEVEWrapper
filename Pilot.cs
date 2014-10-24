@@ -7,7 +7,7 @@ namespace EVE.ISXEVE
 	/// <summary>
 	/// This is the Local TLO -- it is named LocalPilots to avoid reserved word conflict.
 	/// </summary>
-	public class Pilot : LavishScriptObject
+	public class Pilot : Being
 	{
 		#region Constructors
 		/// <summary>
