@@ -352,5 +352,7 @@ namespace EVE.ISXEVE.Interfaces
         /// </summary>
         /// <returns></returns>
         bool Open();
+
+        bool StripFitting();
     }
 }

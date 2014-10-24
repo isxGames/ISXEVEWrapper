@@ -892,6 +892,11 @@ namespace EVE.ISXEVE
 			Tracing.SendCallback("Ship.Open");
 			return ExecuteMethod("Open");
 		}
+
+	    public bool StripFitting()
+	    {
+	        return ExecuteMethod("StripFitting");
+	    }
 		#endregion
 	}
 }

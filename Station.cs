@@ -175,7 +175,11 @@ namespace EVE.ISXEVE
 	        return repairableItems;
 	    }
 
-        
+	    public bool OpenFitting()
+	    {
+	        return ExecuteMethod("OpenFitting");
+	    }
+
         #endregion
     }
 }
