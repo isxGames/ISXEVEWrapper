@@ -40,7 +40,7 @@ namespace EVE.ISXEVE
 		}
 		#endregion
 
-		#region Members
+		#region LavishScript Members
 
 		private string _alliance;
 		/// <summary>
@@ -1085,6 +1085,31 @@ namespace EVE.ISXEVE
 
 	            return _shipScannerCapacitorCapacity.Value;
 	        }
+	    }
+
+	    public bool? _isPos;
+
+	    public bool IsPos
+	    {
+	        get
+	        {
+	            if (_isPos == null)
+	                _isPos = this.GetBool("IsPOS");
+	            return _isPos.Value;
+	        }
+	    }
+
+	    private string _posState;
+
+        /// <summary>
+        /// The following return values (with the exception of "N/A") may be 
+        /// localized: N/A, anchored, anchoring, online, onlining, unanchored, 
+        /// unanchoring, vulnerable, invulnerable, reinforced, operating, 
+        /// incapacitated
+        /// </summary>
+	    public string PosState
+	    {
+            get { return _posState ?? (_posState = this.GetString("POSState")); }
 	    }
 		#endregion
 

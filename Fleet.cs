@@ -435,6 +435,16 @@ namespace EVE.ISXEVE
 			Tracing.SendCallback("Fleet.WarpToFleetMember", fleetMemberCharID, distance);
 			return ExecuteMethod("WarpToFleetMember", fleetMemberCharID.ToString(), distance.ToString());
 		}
+
+	    public bool SetIgnoreFleetWarp()
+	    {
+	        return ExecuteMethod("SetIgnoreFleetWarp");
+	    }
+
+	    public bool SetTakesFleetWarp()
+	    {
+	        return ExecuteMethod("SetTakesFleetWarp");
+	    }
 		#endregion
 	}
 }
