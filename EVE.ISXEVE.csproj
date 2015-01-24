@@ -94,9 +94,11 @@
     <Compile Include="Constellation.cs" />
     <Compile Include="EntityWormhole.cs" />
     <Compile Include="EveChat.cs" />
+    <Compile Include="EveSellItemsWindow.cs" />
     <Compile Include="EveFittingWindow.cs" />
     <Compile Include="EveRepairShopWindow.cs" />
     <Compile Include="Extensions\LavishScriptObjectExtensions.cs" />
+    <Compile Include="SellItem.cs" />
     <Compile Include="FittingSlot.cs" />
     <Compile Include="Interfaces\IBookMark.cs" />
     <Compile Include="Interfaces\IItemInfoList.cs" />

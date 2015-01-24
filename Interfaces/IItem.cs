@@ -179,18 +179,25 @@ namespace EVE.ISXEVE.Interfaces
         /// <returns></returns>
         bool TrainSkill();
 
-        /// <summary>
-        ///  1. PlaceSellOrder[Price#, Quantity#, Duration]
-        ///     ~ Duration is in DAYS
-        ///     ~ NOTE: If you place a sell order that already matches a buy order that's on the market, it will act as an 'instant' sell order'
-        ///     ~ NOTE: As of now, you may only sell items within a station (and they will sell from THAT station) with ISXEVE.
-        ///     ~ NOTE: As of now, ISXEVE does not take into account your current/maximum number of sell orders.  Your script must handle that.
-        /// </summary>
-        /// <param name="price">The sell price</param>
-        /// <param name="quantity">The ammount to sell</param>
-        /// <param name="duration">The duration in days</param>
-        /// <returns></returns>
-        bool PlaceSellOrder(double price, int quantity, int duration);
+		///// REMOVED:: January 22, 2015
+		///// <summary>
+		/////  1. PlaceSellOrder[Price#, Quantity#, Duration]
+		/////     ~ Duration is in DAYS
+		/////     ~ NOTE: If you place a sell order that already matches a buy order that's on the market, it will act as an 'instant' sell order'
+		/////     ~ NOTE: As of now, you may only sell items within a station (and they will sell from THAT station) with ISXEVE.
+		/////     ~ NOTE: As of now, ISXEVE does not take into account your current/maximum number of sell orders.  Your script must handle that.
+		///// </summary>
+		///// <param name="price">The sell price</param>
+		///// <param name="quantity">The ammount to sell</param>
+		///// <param name="duration">The duration in days</param>
+		///// <returns></returns>
+		//bool PlaceSellOrder(double price, int quantity, int duration);
+
+		/// <summary>
+		/// Wrapper for the AddToSellOrder method of the item type.
+		/// </summary>
+		/// <returns></returns>
+		bool AddToSellOrder();
 
         /// <summary>
         /// Wrapper for the Open method of the item type.

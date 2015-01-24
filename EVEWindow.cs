@@ -82,6 +82,11 @@ namespace EVE.ISXEVE
 	        return new EveFittingWindow(LavishScript.Objects.GetObject("EVEWindow", "Fitting"));
 	    }
 
+		public static EveSellItemsWindow GetSellItemsWindow()
+		{
+			return new EveSellItemsWindow(LavishScript.Objects.GetObject("EVEWindow", "SellItems"));
+		}
+
 		#endregion
 
 		#region Members
