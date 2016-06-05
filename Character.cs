@@ -32,18 +32,6 @@ namespace EVE.ISXEVE
 
 		#region LavishScript Members
 
-		private Entity _toEntity;
-		/// <summary>
-		/// Wrapper for the ToEntity member of the character type.
-		/// </summary>
-		public Entity ToEntity
-		{
-			get
-			{
-				return _toEntity ?? (_toEntity = new Entity(GetMember("ToEntity")));
-			}
-		}
-
 		private Ship _ship;
 		/// <summary>
 		/// Wrapper for the Ship member of the character type.
@@ -105,62 +93,6 @@ namespace EVE.ISXEVE
 		}
 
 		#region SelfCorpLocation
-
-		private string _name;
-		/// <summary>
-		/// Wrapper for the Name member of the character type.
-		/// </summary>
-		public string Name
-		{
-			get
-			{
-				return _name ?? (_name = this.GetString("Name"));
-			}
-		}
-
-		private Corporation _corp;
-        /// <summary>
-        /// Wrapper for the Character Corp member.
-        /// </summary>
-	    public Corporation Corp
-	    {
-	        get
-	        {
-	            return _corp ?? (_corp = new Corporation(GetMember("Corp")));
-	        }
-	    }
-
-		private string _alliance;
-		/// <summary>
-		/// Wrapper for the Alliance member of the character type.
-		/// </summary>
-		public string Alliance
-		{
-			get { return _alliance ?? (_alliance = this.GetString("Alliance")); }
-		}
-
-		private int? _allianceId;
-		/// <summary>
-		/// Wrapper for the AllianceID member of the character type.
-		/// </summary>
-		public int AllianceID
-		{
-			get
-			{
-				if (_allianceId == null)
-					_allianceId = this.GetInt("AllianceID");
-				return _allianceId.Value;
-			}
-		}
-
-		private string _allianceTicker;
-		/// <summary>
-		/// Wrapper for the AllianceTicker member of the character type.
-		/// </summary>
-		public string AllianceTicker
-		{
-			get { return _allianceTicker ?? (_allianceTicker = this.GetString("AllianceTicker")); }
-		}
 
 		private int? _regionId;
 		/// <summary>
@@ -224,20 +156,6 @@ namespace EVE.ISXEVE
 				if (_shipId == null)
 					_shipId = this.GetInt64("ShipID");
 				return _shipId.Value;
-			}
-		}
-
-		private Int64? _charId;
-		/// <summary>
-		/// Wrapper for the CharID member of the character type.
-		/// </summary>
-		public Int64 CharID
-		{
-			get
-			{
-				if (_charId == null)
-					_charId = this.GetInt64("CharID");
-				return _charId.Value;
 			}
 		}
 
@@ -309,10 +227,10 @@ namespace EVE.ISXEVE
 		}
 
 		private Wallet _wallet;
-	    public Wallet Wallet
-	    {
-	        get { return _wallet ?? (_wallet = new Wallet(GetMember("Wallet"))); }
-	    }
+		public Wallet Wallet
+		{
+			get { return _wallet ?? (_wallet = new Wallet(GetMember("Wallet"))); }
+		}
 
 		/// <summary>
 		/// Wrapper for the Willpower member of the character type.
@@ -458,21 +376,21 @@ namespace EVE.ISXEVE
 		}
 
 		private double? _skillQueueLength;
-        /// <summary>
-        /// *** Note:  The return value from this datatype member does not correlate, in any way, with the way that humans typically
-        /// ***        tell time.   However, it is useful in the following contexts:
-        /// ***        1.  If it's >0, then you are still training.  If it's 0 or NULL, then you're not training.  Etc...
-        /// ***        2.  echo "My training queue will end at {$EVETime[${Math.Calc64[${Me.SkillQueueLength}+${EVETime.AsInt64}]}]}"
-        /// </summary>
-        public double SkillQueueLength
-        {
-            get
-            {
+		/// <summary>
+		/// *** Note:  The return value from this datatype member does not correlate, in any way, with the way that humans typically
+		/// ***        tell time.   However, it is useful in the following contexts:
+		/// ***        1.  If it's >0, then you are still training.  If it's 0 or NULL, then you're not training.  Etc...
+		/// ***        2.  echo "My training queue will end at {$EVETime[${Math.Calc64[${Me.SkillQueueLength}+${EVETime.AsInt64}]}]}"
+		/// </summary>
+		public double SkillQueueLength
+		{
+			get
+			{
 				if (_skillQueueLength == null)
 					_skillQueueLength = this.GetDouble("SkillQueueLength");
-            	return _skillQueueLength.Value;
-            }
-        }
+				return _skillQueueLength.Value;
+			}
+		}
 		#endregion
 
 		#region Targeting
@@ -560,34 +478,34 @@ namespace EVE.ISXEVE
 			return _corpHangarItems ?? (_corpHangarItems = Util.GetListFromMethod<Item>(this, "GetCorpHangarItems", "item"));
 		}
 
-        /// <summary>
-        /// Wrapper for the GetCorpHangarItems member of the character type.
-        /// </summary>
-        /// <param name="corporationFolderNumber">The corporation folder number.</param>
-        /// <returns></returns>
-        public List<Item> GetCorpHangarItems(int corporationFolderNumber)
-        {
-            if (corporationFolderNumber < 1 || corporationFolderNumber > 7)
-                throw new ArgumentException("Corporation folder number must between 1 and 7, inclusive.", "corporationFolderNumber");
+		/// <summary>
+		/// Wrapper for the GetCorpHangarItems member of the character type.
+		/// </summary>
+		/// <param name="corporationFolderNumber">The corporation folder number.</param>
+		/// <returns></returns>
+		public List<Item> GetCorpHangarItems(int corporationFolderNumber)
+		{
+			if (corporationFolderNumber < 1 || corporationFolderNumber > 7)
+				throw new ArgumentException("Corporation folder number must between 1 and 7, inclusive.", "corporationFolderNumber");
 
-            Tracing.SendCallback("Character.GetCorpHangarItems");
-            return Util.GetListFromMethod<Item>(this, "GetCorpHangarItems", "item",
-                                                string.Format("Corporation Folder {0}", corporationFolderNumber));
-        }
+			Tracing.SendCallback("Character.GetCorpHangarItems");
+			return Util.GetListFromMethod<Item>(this, "GetCorpHangarItems", "item",
+												string.Format("Corporation Folder {0}", corporationFolderNumber));
+		}
 
 		private List<Item> _corpHangarShips;
-        /// <summary>
-        /// Wrapper for the GetCorpHangarShips member of the character type.
-        /// </summary>
-        /// <returns></returns>
-        public List<Item> GetCorpHangarShips()
-        {
-            return _corpHangarShips ?? (_corpHangarShips = Util.GetListFromMethod<Item>(this, "GetCorpHangarShips", "item"));
-        }
+		/// <summary>
+		/// Wrapper for the GetCorpHangarShips member of the character type.
+		/// </summary>
+		/// <returns></returns>
+		public List<Item> GetCorpHangarShips()
+		{
+			return _corpHangarShips ?? (_corpHangarShips = Util.GetListFromMethod<Item>(this, "GetCorpHangarShips", "item"));
+		}
 
 		private List<Item> _assets;
 		/// <summary>
-        /// 1. GetAssets[index:item] (int type) [Retrieves all items that are in your assets window]
+		/// 1. GetAssets[index:item] (int type) [Retrieves all items that are in your assets window]
 		/// </summary>
 		public List<Item> GetAssets()
 		{
@@ -596,12 +514,12 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
-        /// GetAssets[index:item,#] (int type) [Retrieves all items that match the StationID# given]
+		/// GetAssets[index:item,#] (int type) [Retrieves all items that match the StationID# given]
 		/// </summary>
-        public List<Item> GetAssets(Int64 StationID)
+		public List<Item> GetAssets(Int64 StationID)
 		{
 			Tracing.SendCallback("Character.GetAssets", StationID);
-            return Util.GetListFromMethod<Item>(this, "GetAssets", "item", StationID.ToString());
+			return Util.GetListFromMethod<Item>(this, "GetAssets", "item", StationID.ToString());
 		}
 
 		private List<Int64> _stationsWithAssets;
@@ -705,28 +623,28 @@ namespace EVE.ISXEVE
 			}
 		}
 
-        /// <summary>
-        /// Index starts at 1.
-        /// </summary>
-        /// <param name="index"></param>
-        /// <returns></returns>
-	    public Being ContactByIndex(int index)
-        {
-            return new Being(GetMember("Contact", index.ToString()));
-        }
+		/// <summary>
+		/// Index starts at 1.
+		/// </summary>
+		/// <param name="index"></param>
+		/// <returns></returns>
+		public Being ContactByIndex(int index)
+		{
+			return new Being(GetMember("Contact", index.ToString()));
+		}
 
-	    public Being ContactById(int id)
-	    {
-	        return new Being(GetMember("Contact", "id", id.ToString()));
-	    }
+		public Being ContactById(int id)
+		{
+			return new Being(GetMember("Contact", "id", id.ToString()));
+		}
 
-	    public Being ContactByName(string name)
-	    {
-	        return new Being(GetMember("Contact", name));
-	    }
+		public Being ContactByName(string name)
+		{
+			return new Being(GetMember("Contact", name));
+		}
 		#endregion
 
-        #region Methods
+		#region Methods
 		/// <summary>
 		/// Argument is a PERCENTAGE of your max velocity.
 		/// </summary>
@@ -768,10 +686,10 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool StackAllHangarItems()
 		{
-            // TODO - Remove this when stealthbot is updated.
-            Tracing.SendCallback("Character.StackAllHangarItems - Redirecting to EVEWindow");
-            EVEWindow wnd = new EVEWindow(LavishScript.Objects.GetObject("EVEWindow", "ByName", "hangarFloor"));
-            return wnd.StackAll();
+			// TODO - Remove this when stealthbot is updated.
+			Tracing.SendCallback("Character.StackAllHangarItems - Redirecting to EVEWindow");
+			EVEWindow wnd = new EVEWindow(LavishScript.Objects.GetObject("EVEWindow", "ByName", "hangarFloor"));
+			return wnd.StackAll();
 		}
 
 		/// <summary>
@@ -785,44 +703,44 @@ namespace EVE.ISXEVE
 		}
 
 		private List<Attacker> _attackers;
-        /// <summary>
-        /// Get a list of Attackers.
-        /// Note: This will return a null list if there are no attackers.
-        /// </summary>
-        /// <returns></returns>
-        public List<Attacker> GetAttackers()
-        {
-            if (Tracing.Callback != null)
-                Tracing.SendCallback("Character.GetAttackers");
+		/// <summary>
+		/// Get a list of Attackers.
+		/// Note: This will return a null list if there are no attackers.
+		/// </summary>
+		/// <returns></returns>
+		public List<Attacker> GetAttackers()
+		{
+			if (Tracing.Callback != null)
+				Tracing.SendCallback("Character.GetAttackers");
 
-            return _attackers ?? (_attackers = Util.GetListFromMethod<Attacker>(this, "GetAttackers", "attacker"));
-        }
+			return _attackers ?? (_attackers = Util.GetListFromMethod<Attacker>(this, "GetAttackers", "attacker"));
+		}
 
 		private List<Entity> _attackersAsEntities;
-        /// <summary>
-        /// Get a list of Attackers as entities.
-        /// </summary>
-        /// <returns></returns>
-        public List<Entity> GetAttackersAsEntities()
-        {
-            if (Tracing.Callback != null)
-                Tracing.SendCallback("Character.GetAttackersAsEntities");
+		/// <summary>
+		/// Get a list of Attackers as entities.
+		/// </summary>
+		/// <returns></returns>
+		public List<Entity> GetAttackersAsEntities()
+		{
+			if (Tracing.Callback != null)
+				Tracing.SendCallback("Character.GetAttackersAsEntities");
 
-            return _attackersAsEntities ?? (_attackersAsEntities = Util.GetListFromMethod<Entity>(this, "GetAttackers", "entity"));
-        }
+			return _attackersAsEntities ?? (_attackersAsEntities = Util.GetListFromMethod<Entity>(this, "GetAttackers", "entity"));
+		}
 
 		private List<Jammer> _jammers;
-        /// <summary>
-        /// Get a list of Jammers on us.
-        /// </summary>
-        /// <returns></returns>
-        public List<Jammer> GetJammers()
-        {
-            if (Tracing.Callback != null)
-                Tracing.SendCallback("Character.GetAttackers");
+		/// <summary>
+		/// Get a list of Jammers on us.
+		/// </summary>
+		/// <returns></returns>
+		public List<Jammer> GetJammers()
+		{
+			if (Tracing.Callback != null)
+				Tracing.SendCallback("Character.GetAttackers");
 
-            return _jammers ?? (_jammers = Util.GetListFromMethod<Jammer>(this, "GetJammers", "jammer"));
-        }
+			return _jammers ?? (_jammers = Util.GetListFromMethod<Jammer>(this, "GetJammers", "jammer"));
+		}
 		#endregion
 
 		/// <summary>
@@ -830,6 +748,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public enum OrderType
 		{
+			None = 0,
 			/// <summary>
 			/// A buy order.
 			/// </summary>

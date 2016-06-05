@@ -29,7 +29,8 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public enum MissionState
 		{
-			Offered = 1,
+			None = 0,
+			Offered,
 			Accepted
 		}
 
@@ -38,7 +39,8 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public enum MissionType
 		{
-			Courier = 1,
+			None = 0,
+			Courier,
 			Encounter,
 			Mining,
 			Unknown

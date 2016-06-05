@@ -38,40 +38,6 @@ namespace EVE.ISXEVE
 
 		#region Members
 
-		private Int64? _id;
-		public Int64 ID
-		{
-			get
-			{
-				if (_id == null)
-					_id = this.GetInt64("ID");
-				return _id.Value;
-			}
-		}
-
-		private string _name;
-		/// <summary>
-		/// Wrapper for the Name member of a localpilots type.
-		/// </summary>
-		public string Name
-		{
-			get { return _name ?? (_name = this.GetString("Name")); }
-		}
-
-		private Int64? _charId;
-		/// <summary>
-		/// Wrapper for the CharID member of a localpilots type.
-		/// </summary>
-		public Int64 CharID
-		{
-			get
-			{
-				if (_charId == null)
-					_charId = this.GetInt64("CharID");
-				return _charId.Value;
-			}
-		}
-
 		private string _type;
 		/// <summary>
 		/// Wrapper for the Type member of a localpilots type.
@@ -96,13 +62,13 @@ namespace EVE.ISXEVE
 		}
 
 		private Corporation _corp;
-	    public Corporation Corp
-	    {
-	        get
-	        {
-	            return _corp ?? (_corp = new Corporation(GetMember("Corp")));
-	        }
-	    }
+		public Corporation Corp
+		{
+			get
+			{
+				return _corp ?? (_corp = new Corporation(GetMember("Corp")));
+			}
+		}
 
 		private string _alliance;
 		/// <summary>
@@ -186,15 +152,6 @@ namespace EVE.ISXEVE
 			return ExecuteMethod("SetStanding", Standing.ToString(), Reason);
 		}
 
-		/// <summary>
-		/// Invite a localpilot to your fleet.
-		/// </summary>
-		/// <returns></returns>
-		public bool InviteToFleet()
-		{
-			Tracing.SendCallback("Pilot.InviteToFleet");
-			return ExecuteMethod("InviteToFleet");
-		}
 		#endregion
 	}
 }

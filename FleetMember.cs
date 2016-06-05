@@ -22,19 +22,6 @@ namespace EVE.ISXEVE
 		#endregion
 
 		#region Members
-		public Int64 ID
-		{
-			get { return this.GetInt64("ID"); }
-		}
-
-		/// <summary>
-		/// Wrapper for CharID member of fleetmember type.
-		/// </summary>
-		public Int64 CharID
-		{
-			get { return this.GetInt64("CharID"); }
-		}
-
 		/// <summary>
 		/// Wrapper for Job member of fleetmember type.
 		/// </summary>

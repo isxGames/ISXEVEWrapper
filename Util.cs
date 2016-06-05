@@ -9,66 +9,66 @@ using LavishScriptAPI.Interfaces;
 
 namespace EVE.ISXEVE
 {
-    /// <summary>
-    /// CallbackDelegate used in trace logging.
-    /// </summary>
-    /// <param name="method"></param>
-    /// <param name="args"></param>
-    public delegate void CallbackDelegate(string method, string args);
-    /// <summary>
-    /// Class used for trace logging.
-    /// </summary>
-    public class Tracing
-    {
+	/// <summary>
+	/// CallbackDelegate used in trace logging.
+	/// </summary>
+	/// <param name="method"></param>
+	/// <param name="args"></param>
+	public delegate void CallbackDelegate(string method, string args);
+	/// <summary>
+	/// Class used for trace logging.
+	/// </summary>
+	public class Tracing
+	{
 		/// <summary>
 		/// Callback to use for logging.
 		/// </summary>
 		public static CallbackDelegate Callback;
 
-        /// <summary>
-        /// Add a callback delegate for trace logging.
-        /// </summary>
-        /// <param name="callbackDelegate"></param>
-        public static void AddCallback(CallbackDelegate callbackDelegate)
-        {
-            Callback = callbackDelegate;
-        }
+		/// <summary>
+		/// Add a callback delegate for trace logging.
+		/// </summary>
+		/// <param name="callbackDelegate"></param>
+		public static void AddCallback(CallbackDelegate callbackDelegate)
+		{
+			Callback = callbackDelegate;
+		}
 
-        /// <summary>
-        /// Clear the callback delegate.
-        /// </summary>
-        public static void RemoveCallback()
-        {
-            Callback = null;
-        }
+		/// <summary>
+		/// Clear the callback delegate.
+		/// </summary>
+		public static void RemoveCallback()
+		{
+			Callback = null;
+		}
 
-        /// <summary>
-        /// Use the callback delegate to send a log message.
-        /// </summary>
-        /// <param name="message"></param>
-        /// <param name="args"></param>
-        public static void SendCallback(string message, params object[] args)
-        {
-        	if (Callback == null) return;
+		/// <summary>
+		/// Use the callback delegate to send a log message.
+		/// </summary>
+		/// <param name="message"></param>
+		/// <param name="args"></param>
+		public static void SendCallback(string message, params object[] args)
+		{
+			if (Callback == null) return;
 
-        	var argString = new StringBuilder();
-        	if (args.Length > 0)
-        	{
-        		argString.Append(args[0].ToString());
-        	}
-        	for (int idx = 1; idx < args.Length; idx++)
-        	{
-        		argString.Append(String.Format(", {0}", args[idx]));
-        	}
+			var argString = new StringBuilder();
+			if (args.Length > 0)
+			{
+				argString.Append(args[0].ToString());
+			}
+			for (int idx = 1; idx < args.Length; idx++)
+			{
+				argString.Append(String.Format(", {0}", args[idx]));
+			}
 
-        	Callback(message, argString.ToString());
-        }
-    }
+			Callback(message, argString.ToString());
+		}
+	}
 
 	public static class Util
 	{
-	    private static readonly Dictionary<Type, Type> _implementingTypesByInterfaceType = new Dictionary<Type, Type>();
-	    private static readonly Dictionary<Type, ConstructorInfo> _constructorInfoByType = new Dictionary<Type, ConstructorInfo>(); 
+		private static readonly Dictionary<Type, Type> _implementingTypesByInterfaceType = new Dictionary<Type, Type>();
+		private static readonly Dictionary<Type, ConstructorInfo> _constructorInfoByType = new Dictionary<Type, ConstructorInfo>();
 
 		private static T[] PrefixArray<T>(T first, T[] rest)
 		{
@@ -82,49 +82,50 @@ namespace EVE.ISXEVE
 			return newArray;
 		}
 
-        private static Type GetImplementingTypeForInterfaceType(Type interfaceType)
-        {
-            if (!_implementingTypesByInterfaceType.ContainsKey(interfaceType))
-            {
-                var implementingType = interfaceType.Assembly.GetTypes()
-                    .Where(t => t.IsClass)
-                    .FirstOrDefault(interfaceType.IsAssignableFrom);
+		private static Type GetImplementingTypeForInterfaceType(Type interfaceType)
+		{
+			if (!_implementingTypesByInterfaceType.ContainsKey(interfaceType))
+			{
+				var implementingType = interfaceType.Assembly.GetTypes()
+					.Where(t => t.IsClass)
+					.FirstOrDefault(interfaceType.IsAssignableFrom);
 
-                if (implementingType == null)
-                {
-                    throw new InvalidOperationException(string.Format("Could not find implementing type for interface type {0}.", interfaceType.Name));
-                }
+				if (implementingType == null)
+				{
+					throw new InvalidOperationException(string.Format("Could not find implementing type for interface type {0}.", interfaceType.Name));
+				}
 
-                _implementingTypesByInterfaceType.Add(interfaceType, implementingType);
-            }
+				_implementingTypesByInterfaceType.Add(interfaceType, implementingType);
+			}
 
-            return _implementingTypesByInterfaceType[interfaceType];
-        }
+			return _implementingTypesByInterfaceType[interfaceType];
+		}
 
-        private static ConstructorInfo GetConstructorInfoForType(Type type)
-        {
-            if (!_constructorInfoByType.ContainsKey(type))
-            {
-                ConstructorInfo constructorInfo;
-                if (type.IsInterface)
-                {
-                    var implementingType = GetImplementingTypeForInterfaceType(type);
-                    constructorInfo = implementingType.GetConstructor(new[] {typeof (LavishScriptObject)});
-                }
-                else
-                {
-                    constructorInfo = type.GetConstructor(new[] {typeof (LavishScriptObject)});
-                }
+		private static ConstructorInfo GetConstructorInfoForType(Type type)
+		{
+			if (!_constructorInfoByType.ContainsKey(type))
+			{
+				ConstructorInfo constructorInfo;
+				if (type.IsInterface)
+				{
+					var implementingType = GetImplementingTypeForInterfaceType(type);
+					constructorInfo = implementingType.GetConstructor(new[] { typeof(LavishScriptObject) });
+				}
+				else
+				{
+					constructorInfo = type.GetConstructor(new[] { typeof(LavishScriptObject) });
+				}
 
-                if (constructorInfo == null)
-                    throw new InvalidOperationException(string.Format("Could not find a constructor for type {0}.", type.Name));
+				if (constructorInfo == null)
+					throw new InvalidOperationException(string.Format("Could not find a constructor for type {0}.", type.Name));
 
-                _constructorInfoByType.Add(type, constructorInfo);
-            }
+				_constructorInfoByType.Add(type, constructorInfo);
+			}
 
-            return _constructorInfoByType[type];
-        }
+			return _constructorInfoByType[type];
+		}
 
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1820:TestForEmptyStringsUsingStringLength")]
 		private static List<T> IndexToLavishScriptObjectList<T>(LavishScriptObject index, string lsTypeName)
 		{
 			//string methodName = "IndexToLSOList";
@@ -135,12 +136,12 @@ namespace EVE.ISXEVE
 			var count = index.GetMember<int>("Used");
 
 			if (count == 0)
-			{	
+			{
 				return list;
 			}
 
 			//Tracing.SendCallback(methodName, "get constructor info");
-		    var constructorInfo = GetConstructorInfoForType(typeof(T));
+			var constructorInfo = GetConstructorInfoForType(typeof(T));
 
 			//Tracing.SendCallback(methodName, "loop add items");
 			for (var i = 1; i <= count; i++)
@@ -168,7 +169,7 @@ namespace EVE.ISXEVE
 				}
 
 				var lsObject = LavishScript.Objects.NewObject(lsTypeName, objectId);
-                var item = (T)constructorInfo.Invoke(new object[] { lsObject });
+				var item = (T)constructorInfo.Invoke(new object[] { lsObject });
 				list.Add(item);
 			}
 
@@ -190,10 +191,10 @@ namespace EVE.ISXEVE
 		{
 			//Tracing.SendCallback("IndextoList", LSTypeName);
 			//return typeof(T).Is(typeof(ILSObject)) ? IndexToLavishScriptObjectList<T>(index, lsTypeName) : IndexToStructList<T>(index);
-            return (typeof(ILSObject)).IsAssignableFrom(typeof(T)) ? IndexToLavishScriptObjectList<T>(index, lsTypeName) : IndexToStructList<T>(index);
+			return (typeof(ILSObject)).IsAssignableFrom(typeof(T)) ? IndexToLavishScriptObjectList<T>(index, lsTypeName) : IndexToStructList<T>(index);
 		}
 
-	    public static T GetIndexMember<T>(LavishScriptObject index, int number)
+		public static T GetIndexMember<T>(LavishScriptObject index, int number)
 		{
 			if (typeof(T).IsSubclassOf(typeof(LavishScriptObject)))
 				return (T)typeof(T).GetConstructor(new[] { typeof(LavishScriptObject) }).Invoke(new object[] { index.GetIndex(number.ToString()) });
@@ -280,20 +281,20 @@ namespace EVE.ISXEVE
 			}
 		}
 
-        /// <summary>
-        /// Translate an index of a given LavishScript type returned from the given member on the given object to a List of a .NET datatype equivalent.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="obj"></param>
-        /// <param name="memberName"></param>
-        /// <param name="lsTypeName"></param>
-        /// <param name="args"></param>
-        /// <returns></returns>
+		/// <summary>
+		/// Translate an index of a given LavishScript type returned from the given member on the given object to a List of a .NET datatype equivalent.
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <param name="obj"></param>
+		/// <param name="memberName"></param>
+		/// <param name="lsTypeName"></param>
+		/// <param name="args"></param>
+		/// <returns></returns>
 		public static List<T> GetListFromMember<T>(this ILSObject obj, string memberName, string lsTypeName, params string[] args)
 		{
 			//var methodName = "GetListFromMember";
 			//Tracing.SendCallback(methodName, MemberName, LSTypeName);
-			
+
 			if (obj == null || !obj.IsValid)
 				return null;
 

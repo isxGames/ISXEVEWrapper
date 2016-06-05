@@ -89,7 +89,8 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public enum AgentDivisions
 		{
-			Accounting = 1,
+			None = 0,
+			Accounting,
 			Administration,
 			Advisory,
 			Archives,
@@ -117,7 +118,9 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public enum AgentTypes
 		{
-			NonAgent = 1,
+
+			None = 0,
+			Agent,
 			BasicAgent,
 			TutorialAgent,
 			ResearchAgent,
