@@ -19,18 +19,19 @@ namespace EVE.ISXEVE
 
 		#region .Net Event Raisers
 		/*
-        protected virtual void EVE_EVEEvent(object Sender, LSEventArgs e)
-        {
-            System.EventHandler<LSEventArgs> temp = ReceivedNotice;
-            if (temp != null)
-                temp(Sender, e);
-        }
-        */
+		protected virtual void EVE_EVEEvent(object Sender, LSEventArgs e)
+		{
+			System.EventHandler<LSEventArgs> temp = ReceivedNotice;
+			if (temp != null)
+				temp(Sender, e);
+		}
+		*/
 		#endregion
 
 		/// <summary>
 		/// Event destructor.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1821:RemoveEmptyFinalizers")]
 		~Event()
 		{
 			//LavishScript.Events.DetachEventTarget(LavishScript.Events.RegisterEvent("EVE_EVEEvent"), EVE_Event);
