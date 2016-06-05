@@ -11,3 +11,4 @@ ISXEVEWrapperTest/obj
 *.suo
 /*.tss
 /.HistoryData
+/.cov
