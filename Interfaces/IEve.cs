@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using LavishScriptAPI.Interfaces;
+using EVE.ISXEVE.Enums;
 
 namespace EVE.ISXEVE.Interfaces
 {
@@ -324,7 +325,7 @@ namespace EVE.ISXEVE.Interfaces
 		/// <param name="typeID"></param>
 		/// <param name="orderType"></param>
 		/// <returns></returns>
-		List<MarketOrder> GetMarketOrders(int typeID, EVE.OrderType orderType);
+		List<MarketOrder> GetMarketOrders(int typeID, OrderType orderType);
 
 		/// <summary>
 		/// Wrapper for the Toggle3DDisplay method of the eve type.

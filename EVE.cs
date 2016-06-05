@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using EVE.ISXEVE.Enums;
 using EVE.ISXEVE.Extensions;
 using EVE.ISXEVE.Interfaces;
 using LavishScriptAPI;
@@ -708,23 +709,6 @@ namespace EVE.ISXEVE
 		{
 			Tracing.SendCallback("EVE.ToggleTextureLoading");
 			return ExecuteMethod("ToggleTextureLoading");
-		}
-
-		/// <summary>
-		/// Type of market order (buy or sell).
-		/// </summary>
-		public enum OrderType
-		{
-			None = 0,
-			/// <summary>
-			/// A buy order.
-			/// </summary>
-			Buy = 1,
-
-			/// <summary>
-			/// A sell order.
-			/// </summary>
-			Sell = 2
 		}
 
 		/// <summary>
