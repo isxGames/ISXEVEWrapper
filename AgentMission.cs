@@ -23,6 +23,28 @@ namespace EVE.ISXEVE
 		}
 		#endregion
 
+		#region enums
+		/// <summary>
+		/// State of the mission
+		/// </summary>
+		public enum MissionState
+		{
+			Offered = 1,
+			Accepted
+		}
+
+		/// <summary>
+		/// Type of the mission
+		/// </summary>
+		public enum MissionType
+		{
+			Courier = 1,
+			Encounter,
+			Mining,
+			Unknown
+		}
+		#endregion
+
 		#region Members
 		/// <summary>
 		/// Wrapper for the State member of the agentmission type.
@@ -83,15 +105,15 @@ namespace EVE.ISXEVE
 			return Util.GetListFromMethod<BookMark>(this, "GetBookmarks", "bookmark");
 		}
 
-        public bool RemoteOfferable
-        {
-            get { return this.GetBool("RemoteOfferable"); }
-        }
+		public bool RemoteOfferable
+		{
+			get { return this.GetBool("RemoteOfferable"); }
+		}
 
-        public bool RemoteCompletable
-        {
-            get { return this.GetBool("RemoteCompletable"); }
-        }
+		public bool RemoteCompletable
+		{
+			get { return this.GetBool("RemoteCompletable"); }
+		}
 		#endregion
 
 		#region Methods
