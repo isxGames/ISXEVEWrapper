@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using EVE.ISXEVE;
 using EVE.ISXEVE.Extensions;
 using EVE.ISXEVE.Interfaces;
 using LavishScriptAPI;
@@ -37,6 +38,16 @@ namespace EVE.ISXEVE
 		public Entity(long entityID)
 			: base(LavishScript.Objects.GetObject("Entity", entityID.ToString()))
 		{
+		}
+		#endregion
+
+		#region Static Members
+		public static List<Entity> All
+		{
+			get
+			{
+				return new EVE().QueryEntities();
+			}
 		}
 		#endregion
 
