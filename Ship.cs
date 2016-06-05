@@ -671,33 +671,33 @@ namespace EVE.ISXEVE
 			}
 		}
 
-	    /// <summary>
-	    /// Wrapper for the Cargo member of the ship type.
-	    /// </summary>
-	    /// <param name="i"></param>
-	    /// <returns></returns>
-	    public IItem Cargo(int i)
+		/// <summary>
+		/// Wrapper for the Cargo member of the ship type.
+		/// </summary>
+		/// <param name="i"></param>
+		/// <returns></returns>
+		public IItem Cargo(int i)
 		{
 			return new Item(GetMember("Cargo", i.ToString()));
 		}
 
-	    /// <summary>
-	    /// Wrapper for the Cargo member of the ship type.
-	    /// </summary>
-	    /// <param name="name"></param>
-	    /// <returns></returns>
-	    public IItem Cargo(string name)
+		/// <summary>
+		/// Wrapper for the Cargo member of the ship type.
+		/// </summary>
+		/// <param name="name"></param>
+		/// <returns></returns>
+		public IItem Cargo(string name)
 		{
 			return new Item(GetMember("Cargo", name));
 		}
 
 		private List<IItem> _cargo;
 
-	    /// <summary>
-	    /// Wrapper for the GetCargo member of the ship type.
-	    /// </summary>
-	    /// <returns></returns>
-	    public List<IItem> GetCargo()
+		/// <summary>
+		/// Wrapper for the GetCargo member of the ship type.
+		/// </summary>
+		/// <returns></returns>
+		public List<IItem> GetCargo()
 		{
 			Tracing.SendCallback("Ship.GetCargo");
 			return _cargo ?? (_cargo = Util.GetListFromMethod<IItem>(this, "GetCargo", "item"));
@@ -719,11 +719,11 @@ namespace EVE.ISXEVE
 
 		private List<IItem> _oreHoldCargo;
 
-	    /// <summary>
-	    /// Wrapper for the GetOreHoldCargo method of the ship type
-	    /// </summary>
-	    /// <returns></returns>
-	    public List<IItem> GetOreHoldCargo()
+		/// <summary>
+		/// Wrapper for the GetOreHoldCargo method of the ship type
+		/// </summary>
+		/// <returns></returns>
+		public List<IItem> GetOreHoldCargo()
 		{
 			return _oreHoldCargo ?? (_oreHoldCargo = Util.GetListFromMethod<IItem>(this, "GetOreHoldCargo", "item"));
 		}
@@ -759,33 +759,33 @@ namespace EVE.ISXEVE
 			}
 		}
 
-	    /// <summary>
-	    /// Wrapper for the Drone member of the ship type.
-	    /// </summary>
-	    /// <param name="i"></param>
-	    /// <returns></returns>
-	    public IItem Drone(int i)
+		/// <summary>
+		/// Wrapper for the Drone member of the ship type.
+		/// </summary>
+		/// <param name="i"></param>
+		/// <returns></returns>
+		public IItem Drone(int i)
 		{
 			return new Item(GetMember("Drone", i.ToString()));
 		}
 
-	    /// <summary>
-	    /// Wrapper for the Drone member of the ship type.
-	    /// </summary>
-	    /// <param name="name"></param>
-	    /// <returns></returns>
-	    public IItem Drone(string name)
+		/// <summary>
+		/// Wrapper for the Drone member of the ship type.
+		/// </summary>
+		/// <param name="name"></param>
+		/// <returns></returns>
+		public IItem Drone(string name)
 		{
 			return new Item(GetMember("Drone", name));
 		}
 
 		private List<IItem> _drones;
 
-	    /// <summary>
-	    /// Wrapper for the GetDrones member of the ship type.
-	    /// </summary>
-	    /// <returns></returns>
-	    public List<IItem> GetDrones()
+		/// <summary>
+		/// Wrapper for the GetDrones member of the ship type.
+		/// </summary>
+		/// <returns></returns>
+		public List<IItem> GetDrones()
 		{
 			Tracing.SendCallback("Ship.GetDrones", string.Empty);
 			return _drones ?? (_drones = Util.GetListFromMethod<IItem>(this, "GetDrones", "item"));
@@ -805,12 +805,12 @@ namespace EVE.ISXEVE
 			return new Module(GetMember("Module", slottype.ToString() + number.ToString()));
 		}
 
-	    /// <summary>
-	    /// Wrapper for the Module member of the ship type.
-	    /// </summary>
-	    /// <param name="slotname"></param>
-	    /// <returns></returns>
-	    public IModule Module(string slotname)
+		/// <summary>
+		/// Wrapper for the Module member of the ship type.
+		/// </summary>
+		/// <param name="slotname"></param>
+		/// <returns></returns>
+		public IModule Module(string slotname)
 		{
 			return new Module(GetMember("Module", slotname));
 		}
@@ -824,37 +824,37 @@ namespace EVE.ISXEVE
 			return Module(slottype, number).ToItem;
 		}
 
-	    /// <summary>
-	    /// Wrapper for the ModuleItem member of the ship type.
-	    /// </summary>
-	    /// <param name="slotname"></param>
-	    /// <returns></returns>
-	    public IItem ModuleItem(string slotname)
+		/// <summary>
+		/// Wrapper for the ModuleItem member of the ship type.
+		/// </summary>
+		/// <param name="slotname"></param>
+		/// <returns></returns>
+		public IItem ModuleItem(string slotname)
 		{
 			return Module(slotname).ToItem;
 		}
 
 		private List<IModule> _modules;
 
-	    /// <summary>
-	    /// Modules fit to the ship
-	    /// Note: Must be in space.
-	    /// </summary>
-	    public List<IModule> GetModules()
+		/// <summary>
+		/// Modules fit to the ship
+		/// Note: Must be in space.
+		/// </summary>
+		public List<IModule> GetModules()
 		{
 			Tracing.SendCallback("Ship.GetModules");
 			return _modules ?? (_modules = Util.GetListFromMethod<IModule>(this, "GetModules", "module"));
 		}
 		#endregion
 
-	    private Scanners _scanners;
-        /// <summary>
-        /// Wraps the Scanners member of the Ship datatype.
-        /// </summary>
-	    public Scanners Scanners
-	    {
-            get { return _scanners ?? (_scanners = new Scanners(GetMember("Scanners"))); }
-	    }
+		private Scanners _scanners;
+		/// <summary>
+		/// Wraps the Scanners member of the Ship datatype.
+		/// </summary>
+		public Scanners Scanners
+		{
+			get { return _scanners ?? (_scanners = new Scanners(GetMember("Scanners"))); }
+		}
 		#endregion
 
 		#region LavishScript Methods
@@ -893,25 +893,47 @@ namespace EVE.ISXEVE
 			return ExecuteMethod("Open");
 		}
 
-	    public bool StripFitting()
-	    {
-	        return ExecuteMethod("StripFitting");
-	    }
+		public bool StripFitting()
+		{
+			return ExecuteMethod("StripFitting");
+		}
 
-        /// <summary>
-        /// Initiate the self-destruct process.
-        /// Note: This spawns a modal window you will need to confirm.
-        /// </summary>
-        /// <returns></returns>
-	    public bool SelfDestruct()
-	    {
-	        return ExecuteMethod("SelfDestruct");
-	    }
+		/// <summary>
+		/// Initiate the self-destruct process.
+		/// Note: This spawns a modal window you will need to confirm.
+		/// </summary>
+		/// <returns></returns>
+		public bool SelfDestruct()
+		{
+			return ExecuteMethod("SelfDestruct");
+		}
 
-	    public bool SetStarbaseForcefieldPassword(string password)
-	    {
-	        return ExecuteMethod("SetStarbaseForcefieldPassword", password);
-	    }
+		public bool SetStarbaseForcefieldPassword(string password)
+		{
+			return ExecuteMethod("SetStarbaseForcefieldPassword", password);
+		}
+		#endregion
+	}
+
+	public class MyShip : Ship
+	{
+		#region Constructors
+		/// <summary>
+		/// Ship copy constructor.
+		/// </summary>
+		/// <param name="Obj"></param>
+		public MyShip(LavishScriptObject Obj)
+			: base(Obj)
+		{
+		}
+
+		/// <summary>
+		/// Ship constructor.
+		/// </summary>
+		public MyShip()
+			: base(LavishScript.Objects.GetObject("MyShip"))
+		{
+		}
 		#endregion
 	}
 }
