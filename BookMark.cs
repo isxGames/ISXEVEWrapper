@@ -12,7 +12,7 @@ namespace EVE.ISXEVE
 	{
 		#region Constructors
 		/// <summary>
-		/// Bookmark object copy constructor
+		/// BookMark object copy constructor
 		/// </summary>
 		/// <param name="Copy"></param>
 		public BookMark(LavishScriptObject Copy)
@@ -48,6 +48,22 @@ namespace EVE.ISXEVE
 		public int TypeID
 		{
 			get { return this.GetInt("TypeID"); }
+		}
+
+		/// <summary>
+		/// Wrapper for the ToEntity.GroupID member of a bookmark object
+		/// </summary>
+		public int GroupID
+		{
+			get
+			{
+				Entity entity = new Entity(GetMember("ToEntity"));
+				if (!LavishScriptObject.IsNullOrInvalid(entity))
+				{
+					return entity.GroupID;
+				}
+				return -1;
+			}
 		}
 
 		/// <summary>
@@ -175,60 +191,60 @@ namespace EVE.ISXEVE
 			}
 		}
 
-        /// <summary>
-        /// Wrapper for the CreatorID member of a bookmark object
-        /// </summary>
-        public Int64 CreatorID
-        {
-            get
-            {
-                Tracing.SendCallback("Bookmark.CreatorID");
-                return this.GetInt64("CreatorID");
-            }
-        }
+		/// <summary>
+		/// Wrapper for the CreatorID member of a bookmark object
+		/// </summary>
+		public Int64 CreatorID
+		{
+			get
+			{
+				Tracing.SendCallback("Bookmark.CreatorID");
+				return this.GetInt64("CreatorID");
+			}
+		}
 
-        /// <summary>
-        /// (NOTE:  Only works for agent bookmarks.)
-        /// </summary>
-        public bool DeadSpace
-        {
-            get { return this.GetBool("DeadSpace"); }
-        }
+		/// <summary>
+		/// (NOTE:  Only works for agent bookmarks.)
+		/// </summary>
+		public bool DeadSpace
+		{
+			get { return this.GetBool("DeadSpace"); }
+		}
 
-        /// <summary>
-        /// Wrapper for the OwnerID member of the 'bookmark' type.
-        /// </summary>
-	    public long OwnerID
-	    {
-	        get
-	        {
-	            Tracing.SendCallback("BookMark.OwnerID");
-	            return this.GetInt64("OwnerID");
-	        }
-	    }
+		/// <summary>
+		/// Wrapper for the OwnerID member of the 'bookmark' type.
+		/// </summary>
+		public long OwnerID
+		{
+			get
+			{
+				Tracing.SendCallback("BookMark.OwnerID");
+				return this.GetInt64("OwnerID");
+			}
+		}
 
-	    private int? _jumpsTo;
-	    public int JumpsTo
-	    {
-	        get
-	        {
-	            if (_jumpsTo == null)
-	                _jumpsTo = this.GetInt("JumpsTo");
-	            return _jumpsTo.Value;
-	        }
-	    }
+		private int? _jumpsTo;
+		public int JumpsTo
+		{
+			get
+			{
+				if (_jumpsTo == null)
+					_jumpsTo = this.GetInt("JumpsTo");
+				return _jumpsTo.Value;
+			}
+		}
 		#endregion
 
 		#region Methods
-        /// <summary>
-        /// This will only work with bookmarks for which there is an "AlignTo To" option available via the in-game UI.
-        /// </summary>
-        /// <returns></returns>
-        public bool AlignTo()
-        {
+		/// <summary>
+		/// This will only work with bookmarks for which there is an "AlignTo To" option available via the in-game UI.
+		/// </summary>
+		/// <returns></returns>
+		public bool AlignTo()
+		{
 			Tracing.SendCallback("BM.AlignTo", string.Empty);
-            return ExecuteMethod("AlignTo");
-        }
+			return ExecuteMethod("AlignTo");
+		}
 
 		/// <summary>
 		/// Warp to 0 distance
@@ -275,15 +291,32 @@ namespace EVE.ISXEVE
 			return ExecuteMethod("AddWaypoint");
 		}
 
-        /// <summary>
-        /// Determine the # of jumps to the given solarsystem or station ID
-        /// </summary>
-        /// <param name="solarSystemOrStationId"></param>
-        /// <returns></returns>
-	    public int GetJumpsTo(int solarSystemOrStationId)
-        {
-            return this.GetInt("JumpsTo", solarSystemOrStationId.ToString());
-        }
+		/// <summary>
+		/// Determine the # of jumps to the given solarsystem or station ID
+		/// </summary>
+		/// <param name="solarSystemOrStationId"></param>
+		/// <returns></returns>
+		public int GetJumpsTo(int solarSystemOrStationId)
+		{
+			return this.GetInt("JumpsTo", solarSystemOrStationId.ToString());
+		}
 		#endregion
+	}
+
+	public class Bookmark : BookMark
+	{
+		// Exists purely to give a BookMark-compatible class that is compatible with EveComFramework naming
+
+		#region Constructors
+		/// <summary>
+		/// Bookmark object copy constructor
+		/// </summary>
+		/// <param name="Copy"></param>
+		public Bookmark(LavishScriptObject Copy)
+			: base(Copy)
+		{
+		}
+		#endregion
+
 	}
 }
