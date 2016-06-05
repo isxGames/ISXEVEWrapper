@@ -75,18 +75,18 @@ namespace EVE.ISXEVE
 		}
 
 		private double? _bounty;
-        /// <summary>
-        /// Wrapper for the Bounty member of the Entity datatype.
-        /// </summary>
-	    public double Bounty
-	    {
-            get
-            {
+		/// <summary>
+		/// Wrapper for the Bounty member of the Entity datatype.
+		/// </summary>
+		public double Bounty
+		{
+			get
+			{
 				if (_bounty == null)
 					_bounty = this.GetDouble("Bounty");
-            	return _bounty.Value;
-            }
-	    }
+				return _bounty.Value;
+			}
+		}
 
 		private string _category;
 		/// <summary>
@@ -94,7 +94,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Category
 		{
-			get {return _category ?? (_category = this.GetString("Category")); }
+			get { return _category ?? (_category = this.GetString("Category")); }
 		}
 
 		private int? _categoryId;
@@ -137,16 +137,16 @@ namespace EVE.ISXEVE
 		}
 
 		private Corporation _corp;
-	    /// <summary>
-	    /// Wrapper for the Corporation member of the entity type.
-	    /// </summary>
-	    public Corporation Corp
-	    {
-	        get
-	        {
-	            return _corp ?? (_corp = new Corporation(GetMember("Corporation")));
-	        }
-	    }
+		/// <summary>
+		/// Wrapper for the Corporation member of the entity type.
+		/// </summary>
+		public Corporation Corp
+		{
+			get
+			{
+				return _corp ?? (_corp = new Corporation(GetMember("Corporation")));
+			}
+		}
 
 		private int? _formationId;
 		/// <summary>
@@ -201,26 +201,26 @@ namespace EVE.ISXEVE
 		}
 
 		private bool? _isWreckViewed;
-        public bool IsWreckViewed
-        {
-            get
-            {
+		public bool IsWreckViewed
+		{
+			get
+			{
 				if (_isWreckViewed == null)
 					_isWreckViewed = this.GetBool("IsWreckViewed");
-            	return _isWreckViewed.Value;
-            }
-        }
+				return _isWreckViewed.Value;
+			}
+		}
 
 		private bool? _isAbandoned;
-	    public bool IsAbandoned
-	    {
-	        get
-	        {
+		public bool IsAbandoned
+		{
+			get
+			{
 				if (_isAbandoned == null)
 					_isAbandoned = this.GetBool("IsAbandoned");
-	        	return _isAbandoned.Value;
-	        }
-	    }
+				return _isAbandoned.Value;
+			}
+		}
 
 		private double? _maxVelocity;
 		/// <summary>
@@ -959,78 +959,78 @@ namespace EVE.ISXEVE
 		}
 
 		private Jammer _jammer;
-        /// <summary>
-        /// Get the Jammer member of the Entity object
-        /// </summary>
-        public Jammer ToJammer
-        {
-            get
-            {
-                return _jammer ?? (_jammer = new Jammer(GetMember("ToJammer")));
-            }
-        }
+		/// <summary>
+		/// Get the Jammer member of the Entity object
+		/// </summary>
+		public Jammer ToJammer
+		{
+			get
+			{
+				return _jammer ?? (_jammer = new Jammer(GetMember("ToJammer")));
+			}
+		}
 
-	    private EntityWormhole _entityWormhole;
+		private EntityWormhole _entityWormhole;
 
-	    public EntityWormhole ToEntityWormhole
-	    {
-	        get { return _entityWormhole ?? (_entityWormhole = new EntityWormhole(GetMember("ToWormhole"))); }
-	    }
+		public EntityWormhole ToEntityWormhole
+		{
+			get { return _entityWormhole ?? (_entityWormhole = new EntityWormhole(GetMember("ToWormhole"))); }
+		}
 
-	    private Int64? _surveyScannerOreQuantity;
-        /// <summary>
-        /// Wrapper for the SurveyScannerOreQuantity member of the Entity datatype.
-        /// </summary>
-	    public Int64 SurveyScannerOreQuantity
-	    {
-	        get
-	        {
-	            if (_surveyScannerOreQuantity == null)
-	                _surveyScannerOreQuantity = this.GetInt64("SurveyScannerOreQuantity");
+		private Int64? _surveyScannerOreQuantity;
+		/// <summary>
+		/// Wrapper for the SurveyScannerOreQuantity member of the Entity datatype.
+		/// </summary>
+		public Int64 SurveyScannerOreQuantity
+		{
+			get
+			{
+				if (_surveyScannerOreQuantity == null)
+					_surveyScannerOreQuantity = this.GetInt64("SurveyScannerOreQuantity");
 
-	            return _surveyScannerOreQuantity.Value;
-	        }
-	    }
+				return _surveyScannerOreQuantity.Value;
+			}
+		}
 
-	    private bool? _hasShipScannerResults;
-        /// <summary>
-        /// Wrapper for the HasShipScannerResults member of the Entity datatype.
-        /// </summary>
-	    public bool HasShipScannerResults
-	    {
-	        get
-	        {
-	            if (_hasShipScannerResults == null)
-	                _hasShipScannerResults = this.GetBool("HasShipScannerResults");
+		private bool? _hasShipScannerResults;
+		/// <summary>
+		/// Wrapper for the HasShipScannerResults member of the Entity datatype.
+		/// </summary>
+		public bool HasShipScannerResults
+		{
+			get
+			{
+				if (_hasShipScannerResults == null)
+					_hasShipScannerResults = this.GetBool("HasShipScannerResults");
 
-	            return _hasShipScannerResults.Value;
-	        }
-	    }
+				return _hasShipScannerResults.Value;
+			}
+		}
 
-        private List<ItemInfoList> _shipScannerResults;
-        /// <summary>
-        /// Wrapper for the GetShipScannerResults method of the entity datatype.
-        /// </summary>
-        /// <returns></returns>
-        public List<ItemInfoList> GetShipScannerResults()
-        {
-            return _shipScannerResults ?? (_shipScannerResults = this.GetListFromMethod<ItemInfoList>("GetShipScannerResults", "iteminfolist"));
-        }
+		private List<ItemInfoList> _shipScannerResults;
+		/// <summary>
+		/// Wrapper for the GetShipScannerResults method of the entity datatype.
+		/// </summary>
+		/// <returns></returns>
+		public List<ItemInfoList> GetShipScannerResults()
+		{
+			return _shipScannerResults ?? (_shipScannerResults = this.GetListFromMethod<ItemInfoList>("GetShipScannerResults", "iteminfolist"));
+		}
 
-	    private bool? _hasCargoScannerResults;
-        /// <summary>
-        /// Wrapper for the HasCargoScannerResults member of the Entity datatype.
-        /// </summary>
-	    public bool HasCargoScannerResults
-	    {
-	        get
-	        {
-	            if (_hasCargoScannerResults == null)
-	                _hasCargoScannerResults = this.GetBool("HasCargoScannerResults");
+		private bool? _hasCargoScannerResults;
+		/// <summary>
+		/// Wrapper for the HasCargoScannerResults member of the Entity datatype.
+		/// </summary>
+		public bool HasCargoScannerResults
+		{
+			get
+			{
+				if (_hasCargoScannerResults == null)
+					_hasCargoScannerResults = this.GetBool("HasCargoScannerResults");
 
-	            return _hasCargoScannerResults.Value;
-	        }
-	    }
+				return _hasCargoScannerResults.Value;
+			}
+		}
 
 		private string _fleetTag;
 		/// <summary>
@@ -1048,69 +1048,69 @@ namespace EVE.ISXEVE
 		}
 
 		private List<ItemInfoList> _cargoScannerResults;
-        /// <summary>
-        /// Wrapper for the GetCargoScannerResults method of the entity datatype.
-        /// </summary>
-        /// <returns></returns>
-        public List<ItemInfoList> GetCargoScannerResults()
-        {
-            return _cargoScannerResults ?? (_cargoScannerResults = this.GetListFromMethod<ItemInfoList>("GetCargoScannerResults", "iteminfolist"));
-        }
+		/// <summary>
+		/// Wrapper for the GetCargoScannerResults method of the entity datatype.
+		/// </summary>
+		/// <returns></returns>
+		public List<ItemInfoList> GetCargoScannerResults()
+		{
+			return _cargoScannerResults ?? (_cargoScannerResults = this.GetListFromMethod<ItemInfoList>("GetCargoScannerResults", "iteminfolist"));
+		}
 
-	    private double? _shipScannerCapacitorCharge;
-        /// <summary>
-        /// Wrapper for the ShipScannerCapacitorCharge member of the Entity datatype.
-        /// </summary>
-	    public double ShipScannerCapacitorCharge
-	    {
-	        get
-	        {
-	            if (_shipScannerCapacitorCharge == null)
-	                _shipScannerCapacitorCharge = this.GetDouble("ShipScannerCapacitorCharge");
+		private double? _shipScannerCapacitorCharge;
+		/// <summary>
+		/// Wrapper for the ShipScannerCapacitorCharge member of the Entity datatype.
+		/// </summary>
+		public double ShipScannerCapacitorCharge
+		{
+			get
+			{
+				if (_shipScannerCapacitorCharge == null)
+					_shipScannerCapacitorCharge = this.GetDouble("ShipScannerCapacitorCharge");
 
-	            return _shipScannerCapacitorCharge.Value;
-	        }
-	    }
+				return _shipScannerCapacitorCharge.Value;
+			}
+		}
 
-	    private double? _shipScannerCapacitorCapacity;
-        /// <summary>
-        /// Wrapper for the ShipScannerCapacitorCapacity member of the Entity datatype.
-        /// </summary>
-	    public double ShipScannerCapacitorCapacity
-	    {
-	        get
-	        {
-	            if (_shipScannerCapacitorCapacity == null)
-	                _shipScannerCapacitorCapacity = this.GetDouble("ShipScannerCapacitorCapacity");
+		private double? _shipScannerCapacitorCapacity;
+		/// <summary>
+		/// Wrapper for the ShipScannerCapacitorCapacity member of the Entity datatype.
+		/// </summary>
+		public double ShipScannerCapacitorCapacity
+		{
+			get
+			{
+				if (_shipScannerCapacitorCapacity == null)
+					_shipScannerCapacitorCapacity = this.GetDouble("ShipScannerCapacitorCapacity");
 
-	            return _shipScannerCapacitorCapacity.Value;
-	        }
-	    }
+				return _shipScannerCapacitorCapacity.Value;
+			}
+		}
 
-	    public bool? _isPos;
+		public bool? _isPos;
 
-	    public bool IsPos
-	    {
-	        get
-	        {
-	            if (_isPos == null)
-	                _isPos = this.GetBool("IsPOS");
-	            return _isPos.Value;
-	        }
-	    }
+		public bool IsPos
+		{
+			get
+			{
+				if (_isPos == null)
+					_isPos = this.GetBool("IsPOS");
+				return _isPos.Value;
+			}
+		}
 
-	    private string _posState;
+		private string _posState;
 
-        /// <summary>
-        /// The following return values (with the exception of "N/A") may be 
-        /// localized: N/A, anchored, anchoring, online, onlining, unanchored, 
-        /// unanchoring, vulnerable, invulnerable, reinforced, operating, 
-        /// incapacitated
-        /// </summary>
-	    public string PosState
-	    {
-            get { return _posState ?? (_posState = this.GetString("POSState")); }
-	    }
+		/// <summary>
+		/// The following return values (with the exception of "N/A") may be 
+		/// localized: N/A, anchored, anchoring, online, onlining, unanchored, 
+		/// unanchoring, vulnerable, invulnerable, reinforced, operating, 
+		/// incapacitated
+		/// </summary>
+		public string PosState
+		{
+			get { return _posState ?? (_posState = this.GetString("POSState")); }
+		}
 		#endregion
 
 		#region Methods
@@ -1336,7 +1336,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool WarpToAndDock()
 		{
-		Tracing.SendCallback("Entity.WarpToAndDock");
+			Tracing.SendCallback("Entity.WarpToAndDock");
 			return ExecuteMethod("WarpToAndDock");
 		}
 
@@ -1349,23 +1349,23 @@ namespace EVE.ISXEVE
 			return ExecuteMethod("Jump");
 		}
 
-        /// <summary>
-        /// This is the preferred method if your script is abandoning one thing at a time.
-        /// </summary>
-        public bool Abandon()
-        {
-            Tracing.SendCallback("Entity.Abandon", string.Empty);
-            return ExecuteMethod("Abandon");
-        }
+		/// <summary>
+		/// This is the preferred method if your script is abandoning one thing at a time.
+		/// </summary>
+		public bool Abandon()
+		{
+			Tracing.SendCallback("Entity.Abandon", string.Empty);
+			return ExecuteMethod("Abandon");
+		}
 
-        /// <summary>
-        /// Abandons all of nearby entities of the same group type
-        /// </summary>
-        public bool AbandonAll()
-        {
-            Tracing.SendCallback("Entity.AbandonAll", string.Empty);
-            return ExecuteMethod("AbandonAll");
-        }
+		/// <summary>
+		/// Abandons all of nearby entities of the same group type
+		/// </summary>
+		public bool AbandonAll()
+		{
+			Tracing.SendCallback("Entity.AbandonAll", string.Empty);
+			return ExecuteMethod("AbandonAll");
+		}
 
 		#region Mines
 		/// <summary>
@@ -1439,10 +1439,42 @@ namespace EVE.ISXEVE
 		}
 		#endregion
 
-	    public bool SetAsSelectedItem()
-	    {
-	        return ExecuteMethod("SetAsSelectedItem");
-	    }
+		public bool SetAsSelectedItem()
+		{
+			return ExecuteMethod("SetAsSelectedItem");
+		}
+		#endregion
+	}
+
+	public class Drone : Entity
+	{
+		#region Constructors
+		/// <summary>
+		/// Copy constructor for the Drone object.
+		/// </summary>
+		/// <param name="Obj"></param>
+		public Drone(LavishScriptObject Obj)
+			: base(Obj)
+		{
+		}
+
+		/// <summary>
+		/// Search for a Drone using LS Query syntax.
+		/// </summary>
+		/// <param queryString="queryString"></param>
+		public Drone(string queryString)
+			: base(LavishScript.Objects.GetObject("Entity", queryString))
+		{
+		}
+
+		/// <summary>
+		/// Search for a Drone matching the given ID.
+		/// </summary>
+		/// <param name="entityID"></param>
+		public Drone(long entityID)
+			: base(LavishScript.Objects.GetObject("Entity", entityID.ToString()))
+		{
+		}
 		#endregion
 	}
 

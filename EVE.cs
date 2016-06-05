@@ -323,7 +323,6 @@ namespace EVE.ISXEVE
 
 		/// <summary>
 		/// Get all entities
-		/// Note: Uses Lavishscript query syntax, query will be created and destroyed after use
 		/// </summary>
 		/// <returns></returns>
 		public List<Entity> QueryEntities()
