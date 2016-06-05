@@ -23,6 +23,7 @@ namespace EVE.ISXEVE
 		/// <summary>
 		/// Callback to use for logging.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2211:NonConstantFieldsShouldNotBeVisible")]
 		public static CallbackDelegate Callback;
 
 		/// <summary>
