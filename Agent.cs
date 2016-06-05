@@ -12,36 +12,6 @@ namespace EVE.ISXEVE
 	/// </summary>
 	public class Agent : LavishScriptObject
 	{
-        /// <summary>
-        /// Factory method for fetching an agent by index.
-        /// </summary>
-        /// <param name="index"></param>
-        /// <returns></returns>
-        public static Agent ByIndex(int index)
-        {
-            return new Agent(index);
-        }
-
-        /// <summary>
-        /// Factory method for fetching an agent by ID.
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public static Agent ById(int id)
-        {
-            return new Agent("", id);
-        }
-
-        /// <summary>
-        /// Factory method for fetching an agent by name.
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        public static Agent ByName(string name)
-        {
-            return new Agent(name);
-        }
-
 		#region Constructors
 		/// <summary>
 		/// Agent copy constructor.
@@ -78,6 +48,86 @@ namespace EVE.ISXEVE
 		public Agent(string Name)
 			: base(LavishScript.Objects.GetObject("Agent", Name))
 		{
+		}
+		#endregion
+
+		#region Factories
+		/// <summary>
+		/// Factory method for fetching an agent by index.
+		/// </summary>
+		/// <param name="index"></param>
+		/// <returns></returns>
+		public static Agent ByIndex(int index)
+		{
+			return new Agent(index);
+		}
+
+		/// <summary>
+		/// Factory method for fetching an agent by ID.
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns></returns>
+		public static Agent ById(int id)
+		{
+			return new Agent("", id);
+		}
+
+		/// <summary>
+		/// Factory method for fetching an agent by name.
+		/// </summary>
+		/// <param name="name"></param>
+		/// <returns></returns>
+		public static Agent ByName(string name)
+		{
+			return new Agent(name);
+		}
+		#endregion
+
+		#region Enums
+		/// <summary>
+		/// Divisions of agents
+		/// </summary>
+		public enum AgentDivisions
+		{
+			Accounting = 1,
+			Administration,
+			Advisory,
+			Archives,
+			Astrosurveying,
+			Command,
+			Financial = 8,
+			Intelligence,
+			InternalSecurity,
+			Legal,
+			Manufacturing,
+			Marketing,
+			Personnel = 15,
+			Production,
+			PublicRelations,
+			RD,
+			Storage = 20,
+			Surveillance,
+			Distribution,
+			Mining,
+			Security
+		}
+
+		/// <summary>
+		/// Types of agents
+		/// </summary>
+		public enum AgentTypes
+		{
+			NonAgent = 1,
+			BasicAgent,
+			TutorialAgent,
+			ResearchAgent,
+			CONCORDAgent,
+			GenericStorylineMissionAgent,
+			StorylineMissionAgent,
+			EventMissionAgent,
+			FactionalWarfareAgent,
+			EpicArcAgent,
+			AuraAgent
 		}
 		#endregion
 
@@ -121,20 +171,20 @@ namespace EVE.ISXEVE
 			}
 		}
 
-	    private int? _agentTypeId;
-        /// <summary>
-        /// Wrapper for the AgentTypeID member of the agent type.
-        /// </summary>
-	    public int AgentTypeID
-	    {
-	        get
-	        {
-	            if (_agentTypeId == null)
-	                _agentTypeId = this.GetInt("AgentTypeID");
+		private int? _agentTypeId;
+		/// <summary>
+		/// Wrapper for the AgentTypeID member of the agent type.
+		/// </summary>
+		public int AgentTypeID
+		{
+			get
+			{
+				if (_agentTypeId == null)
+					_agentTypeId = this.GetInt("AgentTypeID");
 
-	            return _agentTypeId.Value;
-	        }
-	    }
+				return _agentTypeId.Value;
+			}
+		}
 
 		private string _division;
 		/// <summary>
@@ -201,14 +251,14 @@ namespace EVE.ISXEVE
 			}
 		}
 
-	    private string _gender;
-        /// <summary>
-        /// Wrapper for the Gender member of the agent datatype.
-        /// </summary>
-	    public string Gender
-	    {
-            get { return _gender ?? (_gender = this.GetString("Gender")); }
-	    }
+		private string _gender;
+		/// <summary>
+		/// Wrapper for the Gender member of the agent datatype.
+		/// </summary>
+		public string Gender
+		{
+			get { return _gender ?? (_gender = this.GetString("Gender")); }
+		}
 
 		private float? _standingTo;
 		/// <summary>
@@ -228,11 +278,11 @@ namespace EVE.ISXEVE
 		/// <summary>
 		/// Wrapper for the Solarsystem member of the agent type.
 		/// </summary>
-        public SolarSystem Solarsystem
+		public SolarSystem Solarsystem
 		{
 			get
 			{
-                return _solarsystem ?? (_solarsystem = new SolarSystem(GetMember("Solarsystem")));
+				return _solarsystem ?? (_solarsystem = new SolarSystem(GetMember("Solarsystem")));
 			}
 		}
 
@@ -293,29 +343,29 @@ namespace EVE.ISXEVE
 			return _dialogResponses ?? (_dialogResponses = Util.GetListFromMethod<DialogString>(this, "GetDialogResponses", "dialogstring"));
 		}
 
-	    private bool? _isLocatorAgent;
-        /// <summary>
-        /// Wrapper for the IsLocatorAgent member of the agent datatype.
-        /// </summary>
-	    public bool IsLocatorAgent
-	    {
-	        get
-	        {
-	            if (_isLocatorAgent == null)
-	                _isLocatorAgent = this.GetBool("IsLocatorAgent");
+		private bool? _isLocatorAgent;
+		/// <summary>
+		/// Wrapper for the IsLocatorAgent member of the agent datatype.
+		/// </summary>
+		public bool IsLocatorAgent
+		{
+			get
+			{
+				if (_isLocatorAgent == null)
+					_isLocatorAgent = this.GetBool("IsLocatorAgent");
 
-	            return _isLocatorAgent.Value;
-	        }
-	    }
+				return _isLocatorAgent.Value;
+			}
+		}
 
-	    private string _agentTypeName;
-        /// <summary>
-        /// Wrapper for the AgentTypeName member of the agent datatype.
-        /// </summary>
-	    public string AgentTypeName
-	    {
-            get { return _agentTypeName ?? (_agentTypeName = this.GetString("AgentTypeName")); }
-	    }
+		private string _agentTypeName;
+		/// <summary>
+		/// Wrapper for the AgentTypeName member of the agent datatype.
+		/// </summary>
+		public string AgentTypeName
+		{
+			get { return _agentTypeName ?? (_agentTypeName = this.GetString("AgentTypeName")); }
+		}
 		#endregion
 
 		#region Methods
