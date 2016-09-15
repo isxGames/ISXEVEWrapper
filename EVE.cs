@@ -14,8 +14,8 @@ namespace EVE.ISXEVE
 	public class EVE : LavishScriptObject, IEve
 	{
 		#region Constants
-		public const string OnChannelMessageEvent = "EVE_OnChannelMessage";
-		#endregion
+
+	  #endregion
 
 		#region Constructors
 		/// <summary>
@@ -448,10 +448,19 @@ namespace EVE.ISXEVE
 			return ExecuteMethod("AddWaypoint", solarSystemID.ToString());
 		}
 
-		/// <summary>
-		/// Closes any of the simple 'information message boxes', etc that might be up.
-		/// </summary>
-		public bool CloseAllMessageBoxes()
+    /// <summary>
+    /// Closes all waypoints.
+    /// </summary>
+    public bool ClearAllWaypoints()
+    {
+      Tracing.SendCallback("EVE.ClearAllWaypoints", string.Empty);
+      return ExecuteMethod("ClearAllWaypoints");
+    }
+
+    /// <summary>
+    /// Closes any of the simple 'information message boxes', etc that might be up.
+    /// </summary>
+    public bool CloseAllMessageBoxes()
 		{
 			Tracing.SendCallback("EVE.CloseAllMessageBoxes", string.Empty);
 			return ExecuteMethod("CloseAllMessageBoxes");
