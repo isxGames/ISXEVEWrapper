@@ -110,16 +110,16 @@ namespace EVE.ISXEVE
 		/// <summary>
 		///  9.  Duration                                          (int type)     [The max length of the order, in days]
 		/// </summary>
-		public int Duration
+		public Int64 Duration
 		{
-			get { return this.GetInt("Duration"); }
+			get { return this.GetInt64("Duration"); }
 		}
 		/// <summary>
 		///  10. StationID                                         (int type)     [Station where the order is located]
 		/// </summary>
-		public int StationID
+		public Int64 StationID
 		{
-			get { return this.GetInt("StationID"); }
+			get { return this.GetInt64("StationID"); }
 		}
 		/// <summary>
 		///  11. Station                                           (string type)
@@ -131,9 +131,9 @@ namespace EVE.ISXEVE
 		/// <summary>
 		///  12. RegionID                                          (int type)     [Region where the order is located]
 		/// </summary>
-		public int RegionID
+		public Int64 RegionID
 		{
-			get { return this.GetInt("RegionID"); }
+			get { return this.GetInt64("RegionID"); }
 		}
 		/// <summary>
 		///  13. Region                                            (string type)
@@ -145,9 +145,9 @@ namespace EVE.ISXEVE
 		/// <summary>
 		///  14. SolarSystemID                                     (int type)     [Solar System where the order is located]
 		/// </summary>
-		public int SolarSystemID
+		public Int64 SolarSystemID
 		{
-			get { return this.GetInt("SolarSystemID"); }
+			get { return this.GetInt64("SolarSystemID"); }
 		}
 		/// <summary>
 		///  15. SolarSystem                                       (string type)
@@ -159,9 +159,9 @@ namespace EVE.ISXEVE
 		/// <summary>
 		///  16. Range                                             (int type)    
 		/// </summary>
-		public int Range
+		public Int64 Range
 		{
-			get { return this.GetInt("Range"); }
+			get { return this.GetInt64("Range"); }
 		}
 		/// <summary>
 		///  17. Jumps                                             (int type)     [Jumps to the station where the order is located]
@@ -188,9 +188,9 @@ namespace EVE.ISXEVE
 		/// <summary>
 		///  20. TypeID                                            (int type)
 		/// </summary>
-		public int TypeID
+		public Int64 TypeID
 		{
-			get { return this.GetInt("TypeID"); }
+			get { return this.GetInt64("TypeID"); }
 		}
 		/// <summary>
 		///  21. Name                                              (string type)

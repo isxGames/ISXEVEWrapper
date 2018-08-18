@@ -87,13 +87,18 @@ namespace EVE.ISXEVE
 			return new EveSellItemsWindow(LavishScript.Objects.GetObject("EVEWindow", "SellItems"));
 		}
 
-		#endregion
+	    public static EveMarketActionWindow GetMarketActionWindow()
+	    {
+	        return new EveMarketActionWindow(LavishScript.Objects.GetObject("EVEWindow", "MarketAction"));
+	    }
 
-		#region Members
-		/// <summary>
-		/// Wrapper for the Caption member of the evewindow type.
-		/// </summary>
-		public string Caption
+        #endregion
+
+        #region Members
+        /// <summary>
+        /// Wrapper for the Caption member of the evewindow type.
+        /// </summary>
+        public string Caption
 		{
 			get { return this.GetString("Caption"); }
 		}
@@ -210,6 +215,12 @@ namespace EVE.ISXEVE
 			Tracing.SendCallback("EVEWindow.StackAll");
 			return ExecuteMethod("StackAll");
 		}
-		#endregion
-	}
+
+        public bool LootAll()
+        {
+            Tracing.SendCallback("EVEWindow.LootAll");
+            return ExecuteMethod("LootAll");
+        }
+        #endregion
+    }
 }
