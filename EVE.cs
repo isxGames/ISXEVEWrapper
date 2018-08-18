@@ -14,8 +14,8 @@ namespace EVE.ISXEVE
 	public class EVE : LavishScriptObject, IEve
 	{
 		#region Constants
-
-	  #endregion
+		public const string OnChannelMessageEvent = "EVE_OnChannelMessage";
+		#endregion
 
 		#region Constructors
 		/// <summary>
@@ -448,19 +448,10 @@ namespace EVE.ISXEVE
 			return ExecuteMethod("AddWaypoint", solarSystemID.ToString());
 		}
 
-    /// <summary>
-    /// Closes all waypoints.
-    /// </summary>
-    public bool ClearAllWaypoints()
-    {
-      Tracing.SendCallback("EVE.ClearAllWaypoints", string.Empty);
-      return ExecuteMethod("ClearAllWaypoints");
-    }
-
-    /// <summary>
-    /// Closes any of the simple 'information message boxes', etc that might be up.
-    /// </summary>
-    public bool CloseAllMessageBoxes()
+		/// <summary>
+		/// Closes any of the simple 'information message boxes', etc that might be up.
+		/// </summary>
+		public bool CloseAllMessageBoxes()
 		{
 			Tracing.SendCallback("EVE.CloseAllMessageBoxes", string.Empty);
 			return ExecuteMethod("CloseAllMessageBoxes");
@@ -501,12 +492,37 @@ namespace EVE.ISXEVE
 			return ExecuteMethod("LaunchDrones", lsIndex.GetLSReference());
 		}
 
-		/// <summary>
-		/// Wrapper for the ItemInfo member of the EVE datatype.
-		/// </summary>
-		/// <param name="typeId"></param>
-		/// <returns></returns>
-		public IItemInfo ItemInfo(int typeId)
+        /// <summary>
+        /// Wrapper for the DronesReturnToDroneBay method of the eve type.
+        /// </summary>
+        /// <param name="DroneIDs"></param>
+        /// <returns></returns>
+        public bool DronesReturnToDroneBay(List<Int64> DroneIDs)
+        {
+            Tracing.SendCallback("EVE.DronesReturnToDroneBay", DroneIDs);
+            if (DroneIDs.Count == 0)
+            {
+                return false;
+            }
+
+            var lsIndex = LavishScript.Objects.NewObject("index:int64");
+
+            for (var index = 0; index < DroneIDs.Count; index++)
+            {
+                lsIndex.ExecuteMethod("Insert", DroneIDs[index].ToString());
+            }
+            //InnerSpace.Echo("*** " + LSIndex.GetMember<int>("Used"));
+            // TODO - Test this to make sure passing a populated index into ExecuteMethod works
+            // - CyberTech
+            return ExecuteMethod("DronesReturnToDroneBay", lsIndex.GetLSReference());
+        }
+
+        /// <summary>
+        /// Wrapper for the ItemInfo member of the EVE datatype.
+        /// </summary>
+        /// <param name="typeId"></param>
+        /// <returns></returns>
+        public IItemInfo ItemInfo(int typeId)
 		{
 			Tracing.SendCallback("EVE.ItemInfo", typeId);
 
@@ -625,33 +641,22 @@ namespace EVE.ISXEVE
 				String.Format("Corporation Folder {0}", corporationHangarFolder));
 		}
 
-		/// <summary>
-		/// 2. PlaceBuyOrder[StationID#, TypeID#, Price#, Quantity#, &lt;Range&gt;, MinQuantity#, &lt;Duration&gt;]
-		///  ~ &lt;Range&gt; can be: "Station", "System", "Region", 1, 2, 3, 4, 5, 10, 20, 30, 40
-		///  ~ Duration is in DAYS
-		///  ~ To get your current stationID# use ${Me.StationID}
-		///  ~ Quantity# is the MAX quantity you will buy overall, while MinQuantity# is the minimum that you will buy in a single transaction
-		///  ~ NOTE: If you place a buy order that already matches a sell order that's on market, it will act as an 'instant' buy order.
-		/// </summary>
-		public bool PlaceBuyOrder(int stationID, int typeID, double price, int quantity, string range, int minQuantity, int duration)
-		{
-			Tracing.SendCallback("EVE.PlaceBuyOrder", stationID, typeID, price, quantity, range, minQuantity, duration);
-			return ExecuteMethod("PlaceBuyOrder",
-				stationID.ToString(),
-				typeID.ToString(),
-				price.ToString(),
-				quantity.ToString(),
-				range,
-				minQuantity.ToString(),
-				duration.ToString());
-		}
+	    /// <summary>
+	    /// 2. CreateMarketBuyOrder[TypeID#]
+	    /// </summary>
+	    public bool CreateMarketBuyOrder(int typeID)
+	    {
+	        Tracing.SendCallback("EVE.CreateMarketBuyOrder", typeID);
+	        return ExecuteMethod("CreateMarketBuyOrder",
+	            typeID.ToString());
+	    }
 
-		/// <summary>
-		///   2. ClearMarketOrderCache     {This clears your market order cache.  It is useful if you're doing a lot of market transactions and want 
-		///                                 to keep things tidy.}
-		/// </summary>
-		/// <returns></returns>
-		public bool ClearMarketOrderCache()
+        /// <summary>
+        ///   2. ClearMarketOrderCache     {This clears your market order cache.  It is useful if you're doing a lot of market transactions and want 
+        ///                                 to keep things tidy.}
+        /// </summary>
+        /// <returns></returns>
+        public bool ClearMarketOrderCache()
 		{
 			Tracing.SendCallback("EVE.ClearMarketOrderCache");
 			return ExecuteMethod("ClearMarketOrderCache");
