@@ -124,29 +124,7 @@ namespace EVE.ISXEVE
 			get { return this.GetString("Text"); }
 		}
 
-		/// <summary>
-		/// The ID of the ship or other object that this window belongs to, i.e. EVEWindow[MyShipCargo].ItemID will be your ship ID
-		/// </summary>
-		public Int64 ItemID
-		{
-			get { return this.GetInt64("ItemID"); }
-		}
 
-		/// <summary>
-		/// The capacity of the container represented by this EVEWindow.
-		/// </summary>
-		public double Capacity
-		{
-			get { return this.GetDouble("Capacity"); }
-		}
-
-		/// <summary>
-		/// The used capacity of the container represented by this EVEWindow.
-		/// </summary>
-		public double UsedCapacity
-		{
-			get { return this.GetDouble("UsedCapacity"); }
-		}
 		#endregion
 
 		#region Methods
