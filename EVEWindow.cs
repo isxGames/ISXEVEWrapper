@@ -87,13 +87,18 @@ namespace EVE.ISXEVE
 			return new EveSellItemsWindow(LavishScript.Objects.GetObject("EVEWindow", "SellItems"));
 		}
 
-		#endregion
+	    public static EveMarketActionWindow GetMarketActionWindow()
+	    {
+	        return new EveMarketActionWindow(LavishScript.Objects.GetObject("EVEWindow", "MarketAction"));
+	    }
 
-		#region Members
-		/// <summary>
-		/// Wrapper for the Caption member of the evewindow type.
-		/// </summary>
-		public string Caption
+        #endregion
+
+        #region Members
+        /// <summary>
+        /// Wrapper for the Caption member of the evewindow type.
+        /// </summary>
+        public string Caption
 		{
 			get { return this.GetString("Caption"); }
 		}
@@ -119,29 +124,7 @@ namespace EVE.ISXEVE
 			get { return this.GetString("Text"); }
 		}
 
-		/// <summary>
-		/// The ID of the ship or other object that this window belongs to, i.e. EVEWindow[MyShipCargo].ItemID will be your ship ID
-		/// </summary>
-		public Int64 ItemID
-		{
-			get { return this.GetInt64("ItemID"); }
-		}
 
-		/// <summary>
-		/// The capacity of the container represented by this EVEWindow.
-		/// </summary>
-		public double Capacity
-		{
-			get { return this.GetDouble("Capacity"); }
-		}
-
-		/// <summary>
-		/// The used capacity of the container represented by this EVEWindow.
-		/// </summary>
-		public double UsedCapacity
-		{
-			get { return this.GetDouble("UsedCapacity"); }
-		}
 		#endregion
 
 		#region Methods
@@ -210,6 +193,12 @@ namespace EVE.ISXEVE
 			Tracing.SendCallback("EVEWindow.StackAll");
 			return ExecuteMethod("StackAll");
 		}
-		#endregion
-	}
+
+        public bool LootAll()
+        {
+            Tracing.SendCallback("EVEWindow.LootAll");
+            return ExecuteMethod("LootAll");
+        }
+        #endregion
+    }
 }

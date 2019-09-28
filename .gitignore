@@ -12,3 +12,5 @@ ISXEVEWrapperTest/obj
 /*.tss
 /.HistoryData
 /.cov
+/.vs
+Properties/VersionInfo.cs

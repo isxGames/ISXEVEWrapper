@@ -172,24 +172,6 @@ namespace EVE.ISXEVE
             }
         }
 
-        private Entity _toEntity;
-        /// <summary>
-        /// Wrapper for the ToEntity member of the SystemAnomaly datatype.
-        /// </summary>
-        public Entity ToEntity
-        {
-            get { return _toEntity ?? (_toEntity = new Entity(GetMember("ToEntity"))); }
-        }
-
-        private Item _toItem;
-        /// <summary>
-        /// Wrapper for the ToItem member of the SystemAnomaly datatype.
-        /// </summary>
-        public Item ToItem
-        {
-            get { return _toItem ?? (_toItem = new Item(GetMember("ToItem"))); }
-        }
-
         private double? _x;
         /// <summary>
         /// Wrapper for the X member of the SystemAnomaly datatype.

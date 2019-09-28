@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using EVE.ISXEVE.Extensions;
 using EVE.ISXEVE.Interfaces;
 using LavishScriptAPI;
 
@@ -92,5 +93,66 @@ namespace EVE.ISXEVE
 		{
 			return _children ?? (_children = Util.GetListFromMethod<IEveInvChildWindow>(this, "GetChildren", "eveinvchildwindow"));
 		}
-	}
+
+        #region Members
+	    /// <summary>
+	    /// The ID of the ship or other object that this window belongs to, i.e. EVEWindow[MyShipCargo].ItemID will be your ship ID
+	    /// </summary>
+	    public Int64 ItemID
+	    {
+	        get { return this.GetInt64("ItemID"); }
+	    }
+
+	    /// <summary>
+	    /// The capacity of the container represented by this EVEWindow.
+	    /// </summary>
+	    public double Capacity
+	    {
+	        get { return this.GetDouble("Capacity"); }
+	    }
+
+	    /// <summary>
+	    /// The used capacity of the container represented by this EVEWindow.
+	    /// </summary>
+	    public double UsedCapacity
+	    {
+	        get { return this.GetDouble("UsedCapacity"); }
+	    }
+
+        /// <summary>
+        /// The used LocationFlag of the container represented by this EVEWindow.
+        /// </summary>
+        public string LocationFlag
+        {
+	        get { return this.GetString("LocationFlag"); }
+	    }
+
+        /// <summary>
+        /// The used LocationFlagID of the container represented by this EVEWindow.
+        /// </summary>
+        public int LocationFlagID
+        {
+	        get { return this.GetInt("LocationFlagID"); }
+	    }
+
+        /// <summary>
+        /// The used IsInRange of the container represented by this EVEWindow.
+        /// </summary>
+        public bool IsInRange
+        {
+	        get { return this.GetBool("IsInRange"); }
+	    }
+
+        /// <summary>
+        /// The used HasCapacity of the container represented by this EVEWindow.
+        /// </summary>
+        public bool HasCapacity
+        {
+	        get { return this.GetBool("HasCapacity"); }
+	    }
+        #endregion
+
+
+
+    }
 }
