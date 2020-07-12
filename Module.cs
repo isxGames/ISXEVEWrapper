@@ -996,6 +996,16 @@ namespace EVE.ISXEVE
 			Tracing.SendCallback("Module.PutOffline");
 			return ExecuteMethod("PutOffline");
 		}
+
+		/// <summary>
+		/// Wrapper for the ToggleOverload method of a module object
+		/// </summary>
+		/// <returns></returns>
+		public bool ToggleOverload()
+		{
+			Tracing.SendCallback("Module.ToggleOverload");
+			return ExecuteMethod("ToggleOverload");
+		}
 		#endregion
 	}
 }
