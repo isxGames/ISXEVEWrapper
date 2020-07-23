@@ -1,4 +1,6 @@
 using System;
+using System.Globalization;
+
 using EVE.ISXEVE.Extensions;
 using EVE.ISXEVE.Interfaces;
 using LavishScriptAPI;
@@ -260,8 +262,8 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool WarpTo(int Distance)
 		{
-			Tracing.SendCallback("BM.WarpTo", Distance.ToString());
-			return ExecuteMethod("WarpTo", Distance.ToString());
+			Tracing.SendCallback("BM.WarpTo", Distance.ToString(CultureInfo.CurrentCulture));
+			return ExecuteMethod("WarpTo", Distance.ToString(CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>
@@ -298,7 +300,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public int GetJumpsTo(int solarSystemOrStationId)
 		{
-			return this.GetInt("JumpsTo", solarSystemOrStationId.ToString());
+			return this.GetInt("JumpsTo", solarSystemOrStationId.ToString(CultureInfo.CurrentCulture));
 		}
 		#endregion
 	}

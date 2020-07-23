@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Globalization;
+
 using EVE.ISXEVE.Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
@@ -27,7 +29,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		/// <param name="Index"></param>
 		public Agent(int Index)
-			: base(LavishScript.Objects.GetObject("Agent", Index.ToString()))
+			: base(LavishScript.Objects.GetObject("Agent", Index.ToString(CultureInfo.CurrentCulture)))
 		{
 		}
 
@@ -37,7 +39,7 @@ namespace EVE.ISXEVE
 		/// <param name="ByID"></param>
 		/// <param name="ID"></param>
 		public Agent(string ByID, int ID)
-			: base(LavishScript.Objects.GetObject("Agent", "id", ID.ToString()))
+			: base(LavishScript.Objects.GetObject("Agent", "id", ID.ToString(CultureInfo.CurrentCulture)))
 		{
 		}
 

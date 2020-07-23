@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+
 using EVE.ISXEVE.Extensions;
 using EVE.ISXEVE.Interfaces;
 using LavishScriptAPI;
@@ -678,7 +680,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public IItem Cargo(int i)
 		{
-			return new Item(GetMember("Cargo", i.ToString()));
+			return new Item(GetMember("Cargo", i.ToString(CultureInfo.CurrentCulture)));
 		}
 
 		/// <summary>
@@ -766,7 +768,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public IItem Drone(int i)
 		{
-			return new Item(GetMember("Drone", i.ToString()));
+			return new Item(GetMember("Drone", i.ToString(CultureInfo.CurrentCulture)));
 		}
 
 		/// <summary>
@@ -802,7 +804,7 @@ namespace EVE.ISXEVE
 			if (number < 0 || number > 7)
 				throw new Exception("Slot number must be between 0 and 7, inclusive");
 
-			return new Module(GetMember("Module", slottype.ToString() + number.ToString()));
+			return new Module(GetMember("Module", slottype.ToString() + number.ToString(CultureInfo.CurrentCulture)));
 		}
 
 		/// <summary>
@@ -866,7 +868,7 @@ namespace EVE.ISXEVE
 		{
 			// TODO - Remove this when stealthbot is updated.
 			Tracing.SendCallback("Ship.StackAllCargo - Redirecting to EVEWindow");
-			var wnd = new EVEWindow(LavishScript.Objects.GetObject("EVEWindow", "ByName", ID.ToString()));
+			var wnd = new EVEWindow(LavishScript.Objects.GetObject("EVEWindow", "ByName", ID.ToString(CultureInfo.CurrentCulture)));
 			return wnd.StackAll();
 		}
 

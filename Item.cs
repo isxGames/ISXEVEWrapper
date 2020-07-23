@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+
 using EVE.ISXEVE.Extensions;
 using EVE.ISXEVE.Interfaces;
 using LavishScriptAPI;
@@ -192,7 +194,7 @@ namespace EVE.ISXEVE
 
         public bool IsContrabandForFaction(int FactionID)
         {
-            return this.GetBool("IsContraband", FactionID.ToString());
+            return this.GetBool("IsContraband", FactionID.ToString(CultureInfo.CurrentCulture));
         }
 
         /// <summary>
@@ -364,9 +366,9 @@ namespace EVE.ISXEVE
 		//{
 		//	Tracing.SendCallback("Item.PlaceSellOrder", price, quantity, duration);
 		//	return ExecuteMethod("PlaceSellOrder",
-		//		price.ToString(),
-		//		quantity.ToString(),
-		//		duration.ToString());
+		//		price.ToString(CultureInfo.CurrentCulture),
+		//		quantity.ToString(CultureInfo.CurrentCulture),
+		//		duration.ToString(CultureInfo.CurrentCulture));
 		//}
 
 		/// <summary>
@@ -399,7 +401,7 @@ namespace EVE.ISXEVE
         {
             Tracing.SendCallback("Item.MoveTo", ToLocationID, destinationName);
 
-            return ExecuteMethod("MoveTo", ToLocationID.ToString(), destinationName);
+            return ExecuteMethod("MoveTo", ToLocationID.ToString(CultureInfo.CurrentCulture), destinationName);
         }
 
         /// <summary>
@@ -413,7 +415,7 @@ namespace EVE.ISXEVE
         {
             Tracing.SendCallback("Item.MoveTo", ToLocationID, destinationName, quantity);
 
-            return ExecuteMethod("MoveTo", ToLocationID.ToString(), destinationName, quantity.ToString());
+            return ExecuteMethod("MoveTo", ToLocationID.ToString(CultureInfo.CurrentCulture), destinationName, quantity.ToString(CultureInfo.CurrentCulture));
         }
 
         /// <summary>
@@ -428,8 +430,8 @@ namespace EVE.ISXEVE
         {
             Tracing.SendCallback("Item.MoveTo", ToLocationID, destinationName, quantity, corporateFolderNumber);
 
-            return ExecuteMethod("MoveTo", ToLocationID.ToString(), destinationName,
-                quantity.ToString(), string.Format("Corporation Folder {0}", corporateFolderNumber));
+            return ExecuteMethod("MoveTo", ToLocationID.ToString(CultureInfo.CurrentCulture), destinationName,
+                quantity.ToString(CultureInfo.CurrentCulture), string.Format(CultureInfo.CurrentCulture, "Corporation Folder {0}", corporateFolderNumber));
         }
 
         /// <summary>
@@ -456,7 +458,7 @@ namespace EVE.ISXEVE
         {
             Tracing.SendCallback("Item.MoveTo", ToLocationName, destinationName, quantity);
 
-            return ExecuteMethod("MoveTo", ToLocationName, destinationName, quantity.ToString());
+            return ExecuteMethod("MoveTo", ToLocationName, destinationName, quantity.ToString(CultureInfo.CurrentCulture));
         }
 
         /// <summary>
@@ -472,7 +474,7 @@ namespace EVE.ISXEVE
             Tracing.SendCallback("Item.MoveTo", ToLocationName, destinationName, quantity, corporateFolderNumber);
 
             return ExecuteMethod("MoveTo", ToLocationName, destinationName,
-                quantity.ToString(), string.Format("Corporation Folder {0}", corporateFolderNumber));
+                quantity.ToString(CultureInfo.CurrentCulture), string.Format(CultureInfo.CurrentCulture, "Corporation Folder {0}", corporateFolderNumber));
         }
 
         public List<int> GetContrabandFactions()

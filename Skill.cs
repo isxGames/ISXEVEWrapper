@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+
 using EVE.ISXEVE.Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
@@ -163,8 +165,8 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool AddToQueue(int skillLevel)
 		{
-			Tracing.SendCallback("Skill.AddtoQueue", skillLevel.ToString());
-			return ExecuteMethod("AddToQueue", skillLevel.ToString());
+			Tracing.SendCallback("Skill.AddtoQueue", skillLevel.ToString(CultureInfo.CurrentCulture));
+			return ExecuteMethod("AddToQueue", skillLevel.ToString(CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>

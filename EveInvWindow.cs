@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+
 using EVE.ISXEVE.Extensions;
 using EVE.ISXEVE.Interfaces;
 using LavishScriptAPI;
@@ -36,7 +38,7 @@ namespace EVE.ISXEVE
 	    /// <returns></returns>
 	    public IEveInvChildWindow GetChildWindow(long id)
 		{
-			return new EveInvChildWindow(GetMember("ChildWindow", id.ToString()));
+			return new EveInvChildWindow(GetMember("ChildWindow", id.ToString(CultureInfo.CurrentCulture)));
 		}
 
 	    /// <summary>
@@ -68,7 +70,7 @@ namespace EVE.ISXEVE
 	    /// <returns></returns>
 	    public IEveInvChildWindow GetChildWindow(long id, string name)
 		{
-			return new EveInvChildWindow(GetMember("ChildWindow", id.ToString(), name));
+			return new EveInvChildWindow(GetMember("ChildWindow", id.ToString(CultureInfo.CurrentCulture), name));
 		}
 
 	    /// <summary>
@@ -80,7 +82,7 @@ namespace EVE.ISXEVE
 	    /// <returns></returns>
 	    public IEveInvChildWindow GetChildWindow(long id, string name, string location)
 		{
-			return new EveInvChildWindow(GetMember("ChildWindow", id.ToString(), name, location));
+			return new EveInvChildWindow(GetMember("ChildWindow", id.ToString(CultureInfo.CurrentCulture), name, location));
 		}
 
 		private List<IEveInvChildWindow> _children;

@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Globalization;
+
 using EVE.ISXEVE.Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
@@ -225,7 +227,7 @@ namespace EVE.ISXEVE
 		public bool Modify(double newPrice)
 		{
 			Tracing.SendCallback("MyOrder.Modify", newPrice);
-			return ExecuteMethod("Modify", newPrice.ToString());
+			return ExecuteMethod("Modify", newPrice.ToString(CultureInfo.CurrentCulture));
 		}
 		#endregion
 	}

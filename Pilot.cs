@@ -1,4 +1,6 @@
 using System;
+using System.Globalization;
+
 using EVE.ISXEVE.Extensions;
 using LavishScriptAPI;
 
@@ -23,7 +25,7 @@ namespace EVE.ISXEVE
 		/// Get a Local pilot by ID.
 		/// </summary>
 		public Pilot(Int64 CharID)
-			: base(LavishScript.Objects.GetObject("Local", CharID.ToString()))
+			: base(LavishScript.Objects.GetObject("Local", CharID.ToString(CultureInfo.CurrentCulture)))
 		{
 		}
 
@@ -138,7 +140,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double StandingTo(int ID)
 		{
-			return this.GetDouble("StandingTo", ID.ToString());
+			return this.GetDouble("StandingTo", ID.ToString(CultureInfo.CurrentCulture));
 		}
 		#endregion
 
@@ -149,7 +151,7 @@ namespace EVE.ISXEVE
 		public bool SetStanding(int Standing, string Reason)
 		{
 			Tracing.SendCallback("Pilot.SetStanding", Standing, Reason);
-			return ExecuteMethod("SetStanding", Standing.ToString(), Reason);
+			return ExecuteMethod("SetStanding", Standing.ToString(CultureInfo.CurrentCulture), Reason);
 		}
 
 		#endregion

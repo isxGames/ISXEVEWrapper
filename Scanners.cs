@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Globalization;
+
 using LavishScriptAPI;
 
 namespace EVE.ISXEVE
@@ -37,7 +39,7 @@ namespace EVE.ISXEVE
         /// <returns></returns>
         public SurveyScanner Survey(Int64 moduleId)
         {
-            return new SurveyScanner(GetMember("Survey", moduleId.ToString()));
+            return new SurveyScanner(GetMember("Survey", moduleId.ToString(CultureInfo.CurrentCulture)));
         }
 
         /// <summary>
@@ -47,7 +49,7 @@ namespace EVE.ISXEVE
         /// <returns></returns>
         public ShipScanner Ship(Int64 moduleId)
         {
-            return new ShipScanner(GetMember("Ship", moduleId.ToString()));
+            return new ShipScanner(GetMember("Ship", moduleId.ToString(CultureInfo.CurrentCulture)));
         }
 
         /// <summary>
@@ -57,7 +59,7 @@ namespace EVE.ISXEVE
         /// <returns></returns>
         public CargoScanner Cargo(Int64 moduleId)
         {
-            return new CargoScanner(GetMember("Cargo", moduleId.ToString()));
+            return new CargoScanner(GetMember("Cargo", moduleId.ToString(CultureInfo.CurrentCulture)));
         }
     }
 }

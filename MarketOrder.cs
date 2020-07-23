@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Globalization;
+
 using EVE.ISXEVE.Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
@@ -207,7 +209,7 @@ namespace EVE.ISXEVE
 
         public bool IsContrabandForFaction(int FactionID)
         {
-            return this.GetBool("IsContraband", FactionID.ToString());
+            return this.GetBool("IsContraband", FactionID.ToString(CultureInfo.CurrentCulture));
         }
 		#endregion
 

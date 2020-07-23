@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Globalization;
+
 using EVE.ISXEVE.Extensions;
 using EVE.ISXEVE.Interfaces;
 using InnerSpaceAPI;
@@ -60,7 +62,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public static EVEWindow GetWindowByItemId(Int64 itemId)
 		{
-			return new EVEWindow(LavishScript.Objects.GetObject("EVEWindow", "ByItemID", itemId.ToString()));
+			return new EVEWindow(LavishScript.Objects.GetObject("EVEWindow", "ByItemID", itemId.ToString(CultureInfo.CurrentCulture)));
 		}
 
 		/// <summary>

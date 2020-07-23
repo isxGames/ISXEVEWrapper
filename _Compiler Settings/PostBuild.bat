@@ -10,7 +10,7 @@ if "%InnerSpacePath:~-15%" == "\InnerSpace.exe" set InnerSpacePath=%InnerSpacePa
 :NEXTFILE
 	if "%~1"=="" goto :EOF
 	echo * Copy %1 to "%InnerSpacePath%\.NET Programs"
-	copy /Y "%~1" "%InnerSpacePath%\.NET Programs" >NUL
+	copy /Y "%~1" "%InnerSpacePath%\.NET Programs"
 	shift
 	goto :NEXTFILE
 

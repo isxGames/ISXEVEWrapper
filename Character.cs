@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+
 using EVE.ISXEVE.Extensions;
 using EVE.ISXEVE.Enums;
 using InnerSpaceAPI;
@@ -54,7 +56,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public Standing StandingTo(Int64 charID, Int64 corpID, int allianceID)
 		{
-			return new Standing(GetMember("StandingTo", charID.ToString(), corpID.ToString(), allianceID.ToString()));
+			return new Standing(GetMember("StandingTo", charID.ToString(CultureInfo.CurrentCulture), corpID.ToString(CultureInfo.CurrentCulture), allianceID.ToString(CultureInfo.CurrentCulture)));
 		}
 
 		private bool? _autoPilotOn;
@@ -339,7 +341,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public Skill Skill(int Index)
 		{
-			return new Skill(GetMember("Skill", Index.ToString()));
+			return new Skill(GetMember("Skill", Index.ToString(CultureInfo.CurrentCulture)));
 		}
 
 		private Skill _skillCurrentlyTraining;
@@ -421,7 +423,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public Entity GetTarget(int i)
 		{
-			Tracing.SendCallback("Character.GetTargets", i.ToString());
+			Tracing.SendCallback("Character.GetTargets", i.ToString(CultureInfo.CurrentCulture));
 			return Util.GetFromIndexMethod<Entity>(this, "GetTargets", "entity", i);
 		}
 
@@ -487,11 +489,11 @@ namespace EVE.ISXEVE
 		public List<Item> GetCorpHangarItems(int corporationFolderNumber)
 		{
 			if (corporationFolderNumber < 1 || corporationFolderNumber > 7)
-				throw new ArgumentException("Corporation folder number must between 1 and 7, inclusive.", "corporationFolderNumber");
+				throw new ArgumentException("Corporation folder number must between 1 and 7, inclusive.", nameof(corporationFolderNumber));
 
 			Tracing.SendCallback("Character.GetCorpHangarItems");
 			return Util.GetListFromMethod<Item>(this, "GetCorpHangarItems", "item",
-												string.Format("Corporation Folder {0}", corporationFolderNumber));
+												string.Format(CultureInfo.CurrentCulture, "Corporation Folder {0}", corporationFolderNumber));
 		}
 
 		private List<Item> _corpHangarShips;
@@ -520,7 +522,7 @@ namespace EVE.ISXEVE
 		public List<Item> GetAssets(Int64 StationID)
 		{
 			Tracing.SendCallback("Character.GetAssets", StationID);
-			return Util.GetListFromMethod<Item>(this, "GetAssets", "item", StationID.ToString());
+			return Util.GetListFromMethod<Item>(this, "GetAssets", "item", StationID.ToString(CultureInfo.CurrentCulture));
 		}
 
 		private List<Int64> _stationsWithAssets;
@@ -556,7 +558,7 @@ namespace EVE.ISXEVE
 		public List<MyOrder> GetMyOrders(int typeID)
 		{
 			Tracing.SendCallback("Character.GetMyOrders", typeID);
-			return Util.GetListFromMethod<MyOrder>(this, "GetMyOrders", "myorder", typeID.ToString());
+			return Util.GetListFromMethod<MyOrder>(this, "GetMyOrders", "myorder", typeID.ToString(CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>
@@ -579,7 +581,7 @@ namespace EVE.ISXEVE
 		public List<MyOrder> GetMyOrders(OrderType orderType, int typeID)
 		{
 			Tracing.SendCallback("Character.GetMyOrders", orderType, typeID);
-			return Util.GetListFromMethod<MyOrder>(this, "GetMyOrders", "myorder", orderType.ToString(), typeID.ToString());
+			return Util.GetListFromMethod<MyOrder>(this, "GetMyOrders", "myorder", orderType.ToString(), typeID.ToString(CultureInfo.CurrentCulture));
 		}
 
 		private int? _targetCount;
@@ -631,12 +633,12 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public Being ContactByIndex(int index)
 		{
-			return new Being(GetMember("Contact", index.ToString()));
+			return new Being(GetMember("Contact", index.ToString(CultureInfo.CurrentCulture)));
 		}
 
 		public Being ContactById(int id)
 		{
-			return new Being(GetMember("Contact", "id", id.ToString()));
+			return new Being(GetMember("Contact", "id", id.ToString(CultureInfo.CurrentCulture)));
 		}
 
 		public Being ContactByName(string name)
@@ -651,8 +653,8 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool SetVelocity(int SpeedAsPercentage)
 		{
-			Tracing.SendCallback("Character.SetVelocity", SpeedAsPercentage.ToString());
-			return ExecuteMethod("SetVelocity", SpeedAsPercentage.ToString());
+			Tracing.SendCallback("Character.SetVelocity", SpeedAsPercentage.ToString(CultureInfo.CurrentCulture));
+			return ExecuteMethod("SetVelocity", SpeedAsPercentage.ToString(CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>
@@ -665,7 +667,7 @@ namespace EVE.ISXEVE
 		public bool SetCorpStanding(int CorpID, float Standing, string Reason)
 		{
 			Tracing.SendCallback("Character.SetCorpStanding", CorpID, Standing, Reason);
-			return ExecuteMethod("SetCorpStanding", CorpID.ToString(), Standing.ToString(), Reason);
+			return ExecuteMethod("SetCorpStanding", CorpID.ToString(CultureInfo.CurrentCulture), Standing.ToString(CultureInfo.CurrentCulture), Reason);
 		}
 
 		/// <summary>
@@ -678,7 +680,7 @@ namespace EVE.ISXEVE
 		public bool SetPilotStanding(Int64 CharID, float Standing, string Reason)
 		{
 			Tracing.SendCallback("Character.SetPilotStanding", CharID, Standing, Reason);
-			return ExecuteMethod("SetPilotStanding", CharID.ToString(), Standing.ToString(), Reason);
+			return ExecuteMethod("SetPilotStanding", CharID.ToString(CultureInfo.CurrentCulture), Standing.ToString(CultureInfo.CurrentCulture), Reason);
 		}
 
 		/// <summary>

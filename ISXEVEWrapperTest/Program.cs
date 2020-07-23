@@ -2,6 +2,7 @@ using System;
 using System.Configuration;
 using System.Collections.Generic;
 using System.Windows.Forms;
+
 using LavishVMAPI;
 using InnerSpaceAPI;
 using LavishScriptAPI;
@@ -43,8 +44,8 @@ namespace ISXEVEWrapperTest
 				//    InnerSpace.Echo(Ext.ISXEVE().SecsToString(500));
 
 				//Extension Ext = new Extension();
-				//InnerSpace.Echo(Ext.Me.Name.ToString());
-				//InnerSpace.Echo(Me.Ship.ToString());
+				//InnerSpace.Echo(Ext.Me.Name.ToString(CultureInfo.CurrentCulture));
+				//InnerSpace.Echo(Me.Ship.ToString(CultureInfo.CurrentCulture));
 
 
 			}

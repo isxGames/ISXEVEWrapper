@@ -1,4 +1,6 @@
 using System;
+using System.Globalization;
+
 using EVE.ISXEVE.Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
@@ -94,8 +96,8 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool WarpTo(int Distance)
 		{
-			Tracing.SendCallback("FleetMember.WarpTo", Distance.ToString());
-			return ExecuteMethod("WarpTo", Distance.ToString());
+			Tracing.SendCallback("FleetMember.WarpTo", Distance.ToString(CultureInfo.CurrentCulture));
+			return ExecuteMethod("WarpTo", Distance.ToString(CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>
@@ -112,8 +114,8 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool WarpFleetTo(int Distance)
 		{
-			Tracing.SendCallback("FleetMember.WarpFleetTo", Distance.ToString());
-			return ExecuteMethod("WarpFleetTo", Distance.ToString());
+			Tracing.SendCallback("FleetMember.WarpFleetTo", Distance.ToString(CultureInfo.CurrentCulture));
+			return ExecuteMethod("WarpFleetTo", Distance.ToString(CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>
@@ -144,7 +146,7 @@ namespace EVE.ISXEVE
 		public bool Move(Int64 WingID, Int64 SquadID)
 		{
 			Tracing.SendCallback("FleetMember.Move", WingID, SquadID);
-			return ExecuteMethod("Move", WingID.ToString(), SquadID.ToString());
+			return ExecuteMethod("Move", WingID.ToString(CultureInfo.CurrentCulture), SquadID.ToString(CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>
@@ -156,7 +158,7 @@ namespace EVE.ISXEVE
 		public bool MoveToSquadCommander(Int64 WingID, Int64 SquadID)
 		{
 			Tracing.SendCallback("FleetMember.MoveToSquadCommander", WingID, SquadID);
-			return ExecuteMethod("MoveToSquadCommander", WingID.ToString(), SquadID.ToString());
+			return ExecuteMethod("MoveToSquadCommander", WingID.ToString(CultureInfo.CurrentCulture), SquadID.ToString(CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>
@@ -166,8 +168,8 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool MoveToWingCommander(Int64 WingID)
 		{
-			Tracing.SendCallback("FleetMember.MoveToWingCommander", WingID.ToString());
-			return ExecuteMethod("MoveToWingCommander", WingID.ToString());
+			Tracing.SendCallback("FleetMember.MoveToWingCommander", WingID.ToString(CultureInfo.CurrentCulture));
+			return ExecuteMethod("MoveToWingCommander", WingID.ToString(CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>
