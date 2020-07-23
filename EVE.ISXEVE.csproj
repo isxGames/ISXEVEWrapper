@@ -97,7 +97,6 @@
     <Compile Include="Enums\FleetRole.cs" />
     <Compile Include="Enums\Group.cs" />
     <Compile Include="Enums\OrderType.cs" />
-    <Compile Include="EveCom Shims\InventoryContainer.cs" />
     <Compile Include="ActiveDrone.cs" />
     <Compile Include="Agent.cs" />
     <Compile Include="AgentMission.cs" />
@@ -113,7 +112,6 @@
     <Compile Include="Constellation.cs" />
     <Compile Include="EntityWormhole.cs" />
     <Compile Include="EveChat.cs" />
-    <Compile Include="EveCom Shims\Session.cs" />
     <Compile Include="EveMarketActionWindow.cs" />
     <Compile Include="EveSellItemsWindow.cs" />
     <Compile Include="EveFittingWindow.cs" />
@@ -218,9 +216,7 @@
     <None Include="_Compiler Settings\PostBuild.bat" />
     <None Include="_Compiler Settings\PreBuild.bat" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ISXEVE Datatypes\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Analyzer Include="packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.3.3.0-beta2.final\analyzers\dotnet\cs\Microsoft.CodeAnalysis.VersionCheckAnalyzer.resources.dll" />
     <Analyzer Include="packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.3.3.0-beta2.final\analyzers\dotnet\Microsoft.CodeAnalysis.VersionCheckAnalyzer.dll" />
