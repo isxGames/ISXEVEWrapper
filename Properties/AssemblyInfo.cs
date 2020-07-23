@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("isxGames")]
 [assembly: AssemblyProduct("EVE.ISXEVE")]
-[assembly: AssemblyCopyright("Copyright isxGames © 2007-2013")]
+[assembly: AssemblyCopyright("Copyright isxGames © 2007-2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
