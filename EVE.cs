@@ -492,37 +492,37 @@ namespace EVE.ISXEVE
 			return ExecuteMethod("LaunchDrones", lsIndex.GetLSReference());
 		}
 
-        /// <summary>
-        /// Wrapper for the DronesReturnToDroneBay method of the eve type.
-        /// </summary>
-        /// <param name="DroneIDs"></param>
-        /// <returns></returns>
-        public bool DronesReturnToDroneBay(List<Int64> DroneIDs)
-        {
-            Tracing.SendCallback("EVE.DronesReturnToDroneBay", DroneIDs);
-            if (DroneIDs.Count == 0)
-            {
-                return false;
-            }
+		/// <summary>
+		/// Wrapper for the DronesReturnToDroneBay method of the eve type.
+		/// </summary>
+		/// <param name="DroneIDs"></param>
+		/// <returns></returns>
+		public bool DronesReturnToDroneBay(List<Int64> DroneIDs)
+		{
+			Tracing.SendCallback("EVE.DronesReturnToDroneBay", DroneIDs);
+			if (DroneIDs.Count == 0)
+			{
+				return false;
+			}
 
-            var lsIndex = LavishScript.Objects.NewObject("index:int64");
+			var lsIndex = LavishScript.Objects.NewObject("index:int64");
 
-            for (var index = 0; index < DroneIDs.Count; index++)
-            {
-                lsIndex.ExecuteMethod("Insert", DroneIDs[index].ToString());
-            }
-            //InnerSpace.Echo("*** " + LSIndex.GetMember<int>("Used"));
-            // TODO - Test this to make sure passing a populated index into ExecuteMethod works
-            // - CyberTech
-            return ExecuteMethod("DronesReturnToDroneBay", lsIndex.GetLSReference());
-        }
+			for (var index = 0; index < DroneIDs.Count; index++)
+			{
+				lsIndex.ExecuteMethod("Insert", DroneIDs[index].ToString());
+			}
+			//InnerSpace.Echo("*** " + LSIndex.GetMember<int>("Used"));
+			// TODO - Test this to make sure passing a populated index into ExecuteMethod works
+			// - CyberTech
+			return ExecuteMethod("DronesReturnToDroneBay", lsIndex.GetLSReference());
+		}
 
-        /// <summary>
-        /// Wrapper for the ItemInfo member of the EVE datatype.
-        /// </summary>
-        /// <param name="typeId"></param>
-        /// <returns></returns>
-        public IItemInfo ItemInfo(int typeId)
+		/// <summary>
+		/// Wrapper for the ItemInfo member of the EVE datatype.
+		/// </summary>
+		/// <param name="typeId"></param>
+		/// <returns></returns>
+		public IItemInfo ItemInfo(int typeId)
 		{
 			Tracing.SendCallback("EVE.ItemInfo", typeId);
 
@@ -641,22 +641,22 @@ namespace EVE.ISXEVE
 				String.Format("Corporation Folder {0}", corporationHangarFolder));
 		}
 
-	    /// <summary>
-	    /// 2. CreateMarketBuyOrder[TypeID#]
-	    /// </summary>
-	    public bool CreateMarketBuyOrder(int typeID)
-	    {
-	        Tracing.SendCallback("EVE.CreateMarketBuyOrder", typeID);
-	        return ExecuteMethod("CreateMarketBuyOrder",
-	            typeID.ToString());
-	    }
+		/// <summary>
+		/// 2. CreateMarketBuyOrder[TypeID#]
+		/// </summary>
+		public bool CreateMarketBuyOrder(int typeID)
+		{
+			Tracing.SendCallback("EVE.CreateMarketBuyOrder", typeID);
+			return ExecuteMethod("CreateMarketBuyOrder",
+				typeID.ToString());
+		}
 
-        /// <summary>
-        ///   2. ClearMarketOrderCache     {This clears your market order cache.  It is useful if you're doing a lot of market transactions and want 
-        ///                                 to keep things tidy.}
-        /// </summary>
-        /// <returns></returns>
-        public bool ClearMarketOrderCache()
+		/// <summary>
+		///   2. ClearMarketOrderCache     {This clears your market order cache.  It is useful if you're doing a lot of market transactions and want 
+		///                                 to keep things tidy.}
+		/// </summary>
+		/// <returns></returns>
+		public bool ClearMarketOrderCache()
 		{
 			Tracing.SendCallback("EVE.ClearMarketOrderCache");
 			return ExecuteMethod("ClearMarketOrderCache");
