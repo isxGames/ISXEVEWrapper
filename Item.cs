@@ -8,11 +8,11 @@ using LavishScriptAPI;
 
 namespace EVE.ISXEVE
 {
-    /// <summary>
-    /// Wrapper for the item data type.
-    /// </summary>
+	/// <summary>
+	/// Wrapper for the item data type.
+	/// </summary>
 	public class Item : ItemInfo, IItem
-    {
+	{
 		#region Constructors
 		/// <summary>
 		/// Item copy constructor.
@@ -26,7 +26,7 @@ namespace EVE.ISXEVE
 
 		#region Members
 
-        /// <summary>
+		/// <summary>
 		/// Wrapper for the CargoCapacity member of the item type.
 		/// </summary>
 		public double CargoCapacity
@@ -51,7 +51,7 @@ namespace EVE.ISXEVE
 			get { return this.GetDouble("UsedCargoCapacity"); }
 		}
 
-        /// <summary>
+		/// <summary>
 		/// Wrapper for the CategoryType member of the item type.
 		/// </summary>
 		public CategoryType CategoryType
@@ -62,25 +62,25 @@ namespace EVE.ISXEVE
 			}
 		}
 
-        /// <summary>
-        /// Basic, STandard, Bronze, Platinum, etc. When opening the insurance window, call IsInsured != null to verify
-        /// it has loaded the insurance records before attempting to validate insurance.
-        /// </summary>
-	    public string InsuranceLevel
-	    {
-	        get { return this.GetString("InsuranceLevel"); }
-	    }
+		/// <summary>
+		/// Basic, STandard, Bronze, Platinum, etc. When opening the insurance window, call IsInsured != null to verify
+		/// it has loaded the insurance records before attempting to validate insurance.
+		/// </summary>
+		public string InsuranceLevel
+		{
+			get { return this.GetString("InsuranceLevel"); }
+		}
 
-        /// <summary>
-        /// Ships only, CAN return NULL if insurance window has not fully loaded yet
-        /// </summary>
-	    public bool? IsInsured
-	    {
-            get 
-            {
-            	return this.GetNullableBool("IsInsured");
-            }
-	    }
+		/// <summary>
+		/// Ships only, CAN return NULL if insurance window has not fully loaded yet
+		/// </summary>
+		public bool? IsInsured
+		{
+			get 
+			{
+				return this.GetNullableBool("IsInsured");
+			}
+		}
 
 		/// <summary>
 		/// This returns TRUE if the item is a 'repackable' type AND if it's currently 
@@ -124,7 +124,7 @@ namespace EVE.ISXEVE
 			get { return this.GetInt("MacroLocationID"); }
 		}
 
-        /// <summary>
+		/// <summary>
 		/// Wrapper for the MaxFlightTime member of the item type.
 		/// </summary>
 		public double MaxFlightTime
@@ -156,7 +156,7 @@ namespace EVE.ISXEVE
 			get { return this.GetInt("OwnerID"); }
 		}
 
-        /// <summary>
+		/// <summary>
 		/// Wrapper for the Quantity member of the item type.
 		/// </summary>
 		public int Quantity
@@ -164,7 +164,7 @@ namespace EVE.ISXEVE
 			get { return this.GetInt("Quantity"); }
 		}
 
-        /// <summary>
+		/// <summary>
 		/// Wrapper for the Slot member of the item type.
 		/// For corporate hangar divisions 2-7, this is 'CorpSAG#', where # is 2-7.
 		/// For corporate hangar division 1, this is 'Hangar'.
@@ -184,7 +184,7 @@ namespace EVE.ISXEVE
 			get { return this.GetInt("SlotID"); }
 		}
 
-        /// <summary>
+		/// <summary>
 		/// Wrapper for the GivenName member of the item type.
 		/// </summary>
 		public string GivenName
@@ -192,84 +192,84 @@ namespace EVE.ISXEVE
 			get { return this.GetString("GivenName"); }
 		}
 
-        public bool IsContrabandForFaction(int FactionID)
-        {
-            return this.GetBool("IsContraband", FactionID.ToString(CultureInfo.CurrentCulture));
-        }
+		public bool IsContrabandForFaction(int FactionID)
+		{
+			return this.GetBool("IsContraband", FactionID.ToString(CultureInfo.CurrentCulture));
+		}
 
-        /// <summary>
-        /// Gets the EM damage.
-        /// </summary>
-        public double EMDamage
-        {
-            get { return this.GetDouble("EMDamage"); }
-        }
+		/// <summary>
+		/// Gets the EM damage.
+		/// </summary>
+		public double EMDamage
+		{
+			get { return this.GetDouble("EMDamage"); }
+		}
 
-        /// <summary>
-        /// Gets the explosive damage.
-        /// </summary>
-        public double ExplosiveDamage
-        {
-            get { return this.GetDouble("ExplosiveDamage"); }
-        }
+		/// <summary>
+		/// Gets the explosive damage.
+		/// </summary>
+		public double ExplosiveDamage
+		{
+			get { return this.GetDouble("ExplosiveDamage"); }
+		}
 
-        /// <summary>
-        /// Gets the kinetic damage.
-        /// </summary>
-        public double KineticDamage
-        {
-            get { return this.GetDouble("KineticDamage"); }
-        }
+		/// <summary>
+		/// Gets the kinetic damage.
+		/// </summary>
+		public double KineticDamage
+		{
+			get { return this.GetDouble("KineticDamage"); }
+		}
 
-        /// <summary>
-        /// Gets the thermal damage.
-        /// </summary>
-        public double ThermalDamage
-        {
-            get { return this.GetDouble("ThermalDamage"); }
-        }
+		/// <summary>
+		/// Gets the thermal damage.
+		/// </summary>
+		public double ThermalDamage
+		{
+			get { return this.GetDouble("ThermalDamage"); }
+		}
 
-        public double ExplosionVelocity
-        {
-            get { return this.GetDouble("ExplosionVelocity"); }
-        }
+		public double ExplosionVelocity
+		{
+			get { return this.GetDouble("ExplosionVelocity"); }
+		}
 
-        public double ExplosionRadius
-        {
-            get { return this.GetDouble("ExplosionRadius"); }
-        }
-        #endregion
+		public double ExplosionRadius
+		{
+			get { return this.GetDouble("ExplosionRadius"); }
+		}
+		#endregion
 
 		#region Methods
-        public void ApplyPilotLicense()
-        {
-            Tracing.SendCallback("Item.ApplyPilotLicense");
-            ExecuteMethod("ApplyPilotLicense");
-        }
+		public void ApplyPilotLicense()
+		{
+			Tracing.SendCallback("Item.ApplyPilotLicense");
+			ExecuteMethod("ApplyPilotLicense");
+		}
 
-        public void AssembleShip()
-        {
-            Tracing.SendCallback("Item.AssembleShip");
-            ExecuteMethod("AssembleShip");
-        }
+		public void AssembleShip()
+		{
+			Tracing.SendCallback("Item.AssembleShip");
+			ExecuteMethod("AssembleShip");
+		}
 
-        public void AssembleContainer()
-        {
-            Tracing.SendCallback("Item.AssembleContainer");
-            ExecuteMethod("AssembleContainer");
-        }
+		public void AssembleContainer()
+		{
+			Tracing.SendCallback("Item.AssembleContainer");
+			ExecuteMethod("AssembleContainer");
+		}
 
-        public void ConsumeBooster()
-        {
-            Tracing.SendCallback("Item.ConsumeBooster");
-            ExecuteMethod("ConsumeBooster");
-        }
+		public void ConsumeBooster()
+		{
+			Tracing.SendCallback("Item.ConsumeBooster");
+			ExecuteMethod("ConsumeBooster");
+		}
 
-        public void InjectSkill()
-        {
-            Tracing.SendCallback("Item.InjectSkill");
-            ExecuteMethod("InjectSkill");
-        }
+		public void InjectSkill()
+		{
+			Tracing.SendCallback("Item.InjectSkill");
+			ExecuteMethod("InjectSkill");
+		}
 
 		/// <summary>
 		/// Wrapper for the Jettison method of the item type.
@@ -301,11 +301,11 @@ namespace EVE.ISXEVE
 			return ExecuteMethod("MakeActive");
 		}
 
-        public void PluginImplant()
-        {
-            Tracing.SendCallback("Item.PluginImplant");
-            ExecuteMethod("PluginImplant");
-        }
+		public void PluginImplant()
+		{
+			Tracing.SendCallback("Item.PluginImplant");
+			ExecuteMethod("PluginImplant");
+		}
 
 		/// <summary>
 		/// The "Repackage" METHOD of the 'item' datatype is now fully 
@@ -328,6 +328,26 @@ namespace EVE.ISXEVE
 		{
 			Tracing.SendCallback("Item.FitToActiveShip");
 			return ExecuteMethod("FitToActiveShip");
+		}
+
+		/// <summary>
+		/// Wrapper for the Refine method of the item type.
+		/// </summary>
+		/// <returns></returns>
+		public bool Refine()
+		{
+			Tracing.SendCallback("Item.Refine");
+			return ExecuteMethod("Refine");
+		}
+
+		/// <summary>
+		/// Wrapper for the Reprocess method of the item type.
+		/// </summary>
+		/// <returns></returns>
+		public bool Reprocess()
+		{
+			Tracing.SendCallback("Item.Reprocess");
+			return ExecuteMethod("Reprocess");
 		}
 
 		/// <summary>
@@ -391,136 +411,136 @@ namespace EVE.ISXEVE
 			return ExecuteMethod("Close");
 		}
 
-        /// <summary>
-        /// Wrapper for the MoveTo method of the item type.
-        /// </summary>
+		/// <summary>
+		/// Wrapper for the MoveTo method of the item type.
+		/// </summary>
 		/// <param name="ToLocationID"></param>
 		/// <param name="destinationName"></param>
-        /// <returns></returns>
-        public bool MoveTo(Int64 ToLocationID, string destinationName)
-        {
-            Tracing.SendCallback("Item.MoveTo", ToLocationID, destinationName);
+		/// <returns></returns>
+		public bool MoveTo(Int64 ToLocationID, string destinationName)
+		{
+			Tracing.SendCallback("Item.MoveTo", ToLocationID, destinationName);
 
-            return ExecuteMethod("MoveTo", ToLocationID.ToString(CultureInfo.CurrentCulture), destinationName);
-        }
+			return ExecuteMethod("MoveTo", ToLocationID.ToString(CultureInfo.CurrentCulture), destinationName);
+		}
 
-        /// <summary>
-        /// Wrapper for the MoveTo method of the item type.
-        /// </summary>
+		/// <summary>
+		/// Wrapper for the MoveTo method of the item type.
+		/// </summary>
 		/// <param name="ToLocationID"></param>
-        /// <param name="destinationName"></param>
-        /// <param name="quantity"></param>
-        /// <returns></returns>
-        public bool MoveTo(Int64 ToLocationID, string destinationName, int quantity)
-        {
-            Tracing.SendCallback("Item.MoveTo", ToLocationID, destinationName, quantity);
+		/// <param name="destinationName"></param>
+		/// <param name="quantity"></param>
+		/// <returns></returns>
+		public bool MoveTo(Int64 ToLocationID, string destinationName, int quantity)
+		{
+			Tracing.SendCallback("Item.MoveTo", ToLocationID, destinationName, quantity);
 
-            return ExecuteMethod("MoveTo", ToLocationID.ToString(CultureInfo.CurrentCulture), destinationName, quantity.ToString(CultureInfo.CurrentCulture));
-        }
+			return ExecuteMethod("MoveTo", ToLocationID.ToString(CultureInfo.CurrentCulture), destinationName, quantity.ToString(CultureInfo.CurrentCulture));
+		}
 
-        /// <summary>
-        /// Wrapper for the MoveTo method of the item type.
-        /// </summary>
+		/// <summary>
+		/// Wrapper for the MoveTo method of the item type.
+		/// </summary>
 		/// <param name="ToLocationID"></param>
-        /// <param name="destinationName"></param>
-        /// <param name="quantity"></param>
-        /// <param name="corporateFolderNumber"></param>
-        /// <returns></returns>
-        public bool MoveTo(Int64 ToLocationID, string destinationName, int quantity, int corporateFolderNumber)
-        {
-            Tracing.SendCallback("Item.MoveTo", ToLocationID, destinationName, quantity, corporateFolderNumber);
+		/// <param name="destinationName"></param>
+		/// <param name="quantity"></param>
+		/// <param name="corporateFolderNumber"></param>
+		/// <returns></returns>
+		public bool MoveTo(Int64 ToLocationID, string destinationName, int quantity, int corporateFolderNumber)
+		{
+			Tracing.SendCallback("Item.MoveTo", ToLocationID, destinationName, quantity, corporateFolderNumber);
 
-            return ExecuteMethod("MoveTo", ToLocationID.ToString(CultureInfo.CurrentCulture), destinationName,
-                quantity.ToString(CultureInfo.CurrentCulture), string.Format(CultureInfo.CurrentCulture, "Corporation Folder {0}", corporateFolderNumber));
-        }
+			return ExecuteMethod("MoveTo", ToLocationID.ToString(CultureInfo.CurrentCulture), destinationName,
+				quantity.ToString(CultureInfo.CurrentCulture), string.Format(CultureInfo.CurrentCulture, "Corporation Folder {0}", corporateFolderNumber));
+		}
 
-        /// <summary>
-        /// Wrapper for the MoveTo method of the item type.
-        /// </summary>
-        /// <param name="ToLocationName">'MyShip', 'MyStationHangar', or 'MyStationCorporateHangar'</param>
-        /// <param name="ToDestinationName"></param>
-        /// <returns></returns>
-        public bool MoveTo(string ToLocationName, string ToDestinationName)
-        {
-            Tracing.SendCallback("Item.MoveTo", ToLocationName, ToDestinationName);
+		/// <summary>
+		/// Wrapper for the MoveTo method of the item type.
+		/// </summary>
+		/// <param name="ToLocationName">'MyShip', 'MyStationHangar', or 'MyStationCorporateHangar'</param>
+		/// <param name="ToDestinationName"></param>
+		/// <returns></returns>
+		public bool MoveTo(string ToLocationName, string ToDestinationName)
+		{
+			Tracing.SendCallback("Item.MoveTo", ToLocationName, ToDestinationName);
 
-            return ExecuteMethod("MoveTo", ToLocationName, ToDestinationName);
-        }
+			return ExecuteMethod("MoveTo", ToLocationName, ToDestinationName);
+		}
 
-        /// <summary>
-        /// Wrapper for the MoveTo method of the item type.
-        /// </summary>
-        /// <param name="ToLocationName">'MyShip', 'MyStationHangar', or 'MyStationCorporateHangar'</param>
-        /// <param name="destinationName"></param>
-        /// <param name="quantity"></param>
-        /// <returns></returns>
-        public bool MoveTo(string ToLocationName, string destinationName, int quantity)
-        {
-            Tracing.SendCallback("Item.MoveTo", ToLocationName, destinationName, quantity);
+		/// <summary>
+		/// Wrapper for the MoveTo method of the item type.
+		/// </summary>
+		/// <param name="ToLocationName">'MyShip', 'MyStationHangar', or 'MyStationCorporateHangar'</param>
+		/// <param name="destinationName"></param>
+		/// <param name="quantity"></param>
+		/// <returns></returns>
+		public bool MoveTo(string ToLocationName, string destinationName, int quantity)
+		{
+			Tracing.SendCallback("Item.MoveTo", ToLocationName, destinationName, quantity);
 
-            return ExecuteMethod("MoveTo", ToLocationName, destinationName, quantity.ToString(CultureInfo.CurrentCulture));
-        }
+			return ExecuteMethod("MoveTo", ToLocationName, destinationName, quantity.ToString(CultureInfo.CurrentCulture));
+		}
 
-        /// <summary>
-        /// Wrapper for the MoveTo method of the item type.
-        /// </summary>
-        /// <param name="ToLocationName">'MyShip', 'MyStationHangar', or 'MyStationCorporateHangar'</param>
-        /// <param name="destinationName"></param>
-        /// <param name="quantity"></param>
-        /// <param name="corporateFolderNumber"></param>
-        /// <returns></returns>
-        public bool MoveTo(string ToLocationName, string destinationName, int quantity, int corporateFolderNumber)
-        {
-            Tracing.SendCallback("Item.MoveTo", ToLocationName, destinationName, quantity, corporateFolderNumber);
+		/// <summary>
+		/// Wrapper for the MoveTo method of the item type.
+		/// </summary>
+		/// <param name="ToLocationName">'MyShip', 'MyStationHangar', or 'MyStationCorporateHangar'</param>
+		/// <param name="destinationName"></param>
+		/// <param name="quantity"></param>
+		/// <param name="corporateFolderNumber"></param>
+		/// <returns></returns>
+		public bool MoveTo(string ToLocationName, string destinationName, int quantity, int corporateFolderNumber)
+		{
+			Tracing.SendCallback("Item.MoveTo", ToLocationName, destinationName, quantity, corporateFolderNumber);
 
-            return ExecuteMethod("MoveTo", ToLocationName, destinationName,
-                quantity.ToString(CultureInfo.CurrentCulture), string.Format(CultureInfo.CurrentCulture, "Corporation Folder {0}", corporateFolderNumber));
-        }
+			return ExecuteMethod("MoveTo", ToLocationName, destinationName,
+				quantity.ToString(CultureInfo.CurrentCulture), string.Format(CultureInfo.CurrentCulture, "Corporation Folder {0}", corporateFolderNumber));
+		}
 
-        public List<int> GetContrabandFactions()
-        {
-            return Util.GetListFromMethod<int>(this, "GetContrabandFactions", "int");
-        }
+		public List<int> GetContrabandFactions()
+		{
+			return Util.GetListFromMethod<int>(this, "GetContrabandFactions", "int");
+		}
 
-        //Opens the repair window 
-        public bool GetRepairQuote()
-        {
-            return ExecuteMethod("GetRepairQuote");
-        }
+		//Opens the repair window 
+		public bool GetRepairQuote()
+		{
+			return ExecuteMethod("GetRepairQuote");
+		}
 
 		#endregion
 	}
 
-    public enum ToDestinationNames
-    {
-        /// <summary>
-        /// The traditional cargo hold
-        /// </summary>
-        CargoHold,
-        DroneBay,
-        /// <summary>
-        /// Will work on your ship as well as the coproration hangars of a capital ship or POS
-        /// </summary>
-        CorpHangars,
-        /// <summary>
-        /// Will work on your ship as well as the maintenance bay of a capital ship
-        /// </summary>
-        MaintenanceBay,
-        OreHold,
-        FuelBay,
-        GasHold,
-        MineralHold,
-        SalvageHold,
-        IndustrialShipHold,
-        AmmoHold,
-        StationCorporateHangar,
-        Hangar
-    }
+	public enum ToDestinationNames
+	{
+		/// <summary>
+		/// The traditional cargo hold
+		/// </summary>
+		CargoHold,
+		DroneBay,
+		/// <summary>
+		/// Will work on your ship as well as the coproration hangars of a capital ship or POS
+		/// </summary>
+		CorpHangars,
+		/// <summary>
+		/// Will work on your ship as well as the maintenance bay of a capital ship
+		/// </summary>
+		MaintenanceBay,
+		OreHold,
+		FuelBay,
+		GasHold,
+		MineralHold,
+		SalvageHold,
+		IndustrialShipHold,
+		AmmoHold,
+		StationCorporateHangar,
+		Hangar
+	}
 
-    public enum ToLocationNames
-    {
-        MyShip,
-        MyStationHangar,
-        MyStationCorporateHangar
-    }
+	public enum ToLocationNames
+	{
+		MyShip,
+		MyStationHangar,
+		MyStationCorporateHangar
+	}
 }
