@@ -1,12 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Globalization;
-
 using EVE.ISXEVE.Enums;
 using EVE.ISXEVE.Extensions;
 using EVE.ISXEVE.Interfaces;
 using LavishScriptAPI;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
 
 namespace EVE.ISXEVE
 {
@@ -435,9 +433,25 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool CreateBookmark(string label, string notes, string location)
 		{
-			Tracing.SendCallback("EVE.CreateBookmark", label, notes, location);
-			return ExecuteMethod("CreateBookmark", label, notes, location);
+			
+			return CreateBookmark(label, notes, location, BookmarkExpiry.Forever);
 		}
+
+		/// <summary>
+		/// Creates a bookmark.
+		/// </summary>
+		public bool CreateBookmark(string label, string notes, string location, BookmarkExpiry bookmarkExpiry)
+		{
+			Tracing.SendCallback("EVE.CreateBookmark", label, notes, location, bookmarkExpiry.ToString("D"));
+			return ExecuteMethod("CreateBookmark", label, notes, location, bookmarkExpiry.ToString("D"));
+		}
+
+		public enum BookmarkExpiry
+        {
+			Forever,
+			ThreeHours,
+			TwoDays
+        }
 
 		/// <summary>
 		/// Wrapper for the AddWaypoint method of the eve type.
