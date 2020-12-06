@@ -1069,7 +1069,7 @@
         StructureAssemblyRigMDrone = 1584,
         StructureAssemblyRigMConsumable = 1585,
         StructureAssemblyRigMModule = 1586,
-        StructureAssemblyRigLModule, Consumable, Drone = 1587,
+        StructureAssemblyRigLModuleConsumableDrone = 1587,
         StructureAssemblyRigLTechIShip = 1588,
         StructureAssemblyRigLTechIiShip = 1589,
         StructureAssemblyRigLTechIiComponent = 1590,
