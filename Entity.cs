@@ -442,7 +442,9 @@ namespace EVE.ISXEVE
 		/// <summary>
 		/// Wrapper for the vX member of the entity type.
 		/// </summary>
+#pragma warning disable IDE1006 // Naming Styles
 		public double vX
+#pragma warning restore IDE1006 // Naming Styles
 		{
 			get
 			{
@@ -456,7 +458,9 @@ namespace EVE.ISXEVE
 		/// <summary>
 		/// Wrapper for the vY member of the entity type.
 		/// </summary>
+#pragma warning disable IDE1006 // Naming Styles
 		public double vY
+#pragma warning restore IDE1006 // Naming Styles
 		{
 			get
 			{
@@ -470,7 +474,9 @@ namespace EVE.ISXEVE
 		/// <summary>
 		/// Wrapper for the vZ member of the entity type.
 		/// </summary>
+#pragma warning disable IDE1006 // Naming Styles
 		public double vZ
+#pragma warning restore IDE1006 // Naming Styles
 		{
 			get
 			{

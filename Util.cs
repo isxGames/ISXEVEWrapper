@@ -263,20 +263,20 @@ namespace EVE.ISXEVE
 			number += 1;
 
 			if (obj == null || !obj.IsValid || number <= 0)
-				return default(T);
+				return default;
 
 			using (var index = LavishScript.Objects.NewObject("index:" + lsTypeName))
 			{
 				var allargs = PrefixArray(index.LSReference, args);
 
 				if (!obj.ExecuteMethod(methodName, allargs))
-					return default(T);
+					return default;
 
 				using (var used = index.GetMember("Used"))
 				{
 					// if it failed or we want one off the end, return
 					if (LavishScriptObject.IsNullOrInvalid(used) || used.GetValue<int>() < number)
-						return default(T);
+						return default;
 				}
 
 				var member = GetIndexMember<T>(index, number);
@@ -330,7 +330,7 @@ namespace EVE.ISXEVE
 			number += 1;
 
 			if (obj == null || !obj.IsValid)
-				return default(T);
+				return default;
 
 			using (var index = LavishScript.Objects.NewObject("index:" + lsTypeName))
 			{
@@ -339,7 +339,7 @@ namespace EVE.ISXEVE
 				using (var retval = obj.GetMember(memberName, allargs))
 				{
 					if (LavishScriptObject.IsNullOrInvalid(retval) || retval.GetValue<int>() < number)
-						return default(T);
+						return default;
 				}
 
 				var member = GetIndexMember<T>(index, number);

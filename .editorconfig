@@ -8,3 +8,11 @@ dotnet_diagnostic.CA1716.severity = none
 
 # CA1707: Remove the underscores from member name EVE.ISXEVE.Enums.Command.CmdFleetBroadcast_EnemySpotted.
 dotnet_diagnostic.CA1707.severity = none
+
+dotnet_diagnostic.CA1822.severity = none
+
+dotnet_code_quality.CA1062.exclude_extension_method_this_parameter = true
+dotnet_style_prefer_simplified_boolean_expressions = false
+
+# CA1717: Only FlagsAttribute enums should have plural names
+dotnet_diagnostic.CA1717.severity = none

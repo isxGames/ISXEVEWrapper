@@ -447,11 +447,11 @@ namespace EVE.ISXEVE
 		}
 
 		public enum BookmarkExpiry
-        {
+		{
 			Forever,
 			ThreeHours,
 			TwoDays
-        }
+		}
 
 		/// <summary>
 		/// Wrapper for the AddWaypoint method of the eve type.
@@ -805,11 +805,13 @@ namespace EVE.ISXEVE
 		/// <param name="DefaultValue">Value to return if conversion fails</param>
 		private static Int64 StringToInt64(string Int64Str, Int64 DefaultValue = 0)
 		{
+#pragma warning disable IDE0018 // Inline variable declaration
 			Int64 retVal;
+#pragma warning restore IDE0018 // Inline variable declaration
 
 			if (!Int64.TryParse(Int64Str, out retVal))
 			{
-				return DefaultValue;
+				retVal = DefaultValue;
 			}
 
 			return retVal;
