@@ -1,17 +1,16 @@
+using EVE.ISXEVE.Extensions;
+using EVE.ISXEVE.Interfaces;
+using LavishScriptAPI;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 
-using EVE.ISXEVE.Extensions;
-using EVE.ISXEVE.Interfaces;
-using LavishScriptAPI;
-
 namespace EVE.ISXEVE
 {
-	/// <summary>
-	/// Wrapper for the item data type.
-	/// </summary>
-	public class Item : ItemInfo, IItem
+    /// <summary>
+    /// Wrapper for the item data type.
+    /// </summary>
+    public class Item : ItemInfo, IItem
 	{
 		#region Constructors
 		/// <summary>
@@ -285,10 +284,21 @@ namespace EVE.ISXEVE
 		/// Drones only.
 		/// </summary>
 		/// <returns></returns>
+		[Obsolete("The 'Launch' method of the item datatype is deprecated.   The 'LaunchDrones' method should now be used instead.")]
 		public bool Launch()
 		{
 			Tracing.SendCallback("Item.Launch");
 			return ExecuteMethod("Launch");
+		}
+
+		/// <summary>
+		/// For things such as MTUs.
+		/// </summary>
+		/// <returns></returns>
+		public bool LaunchForSelf()
+		{
+			Tracing.SendCallback("Item.LaunchForSelf");
+			return ExecuteMethod("LaunchForSelf");
 		}
 
 		/// <summary>
