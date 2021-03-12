@@ -11,6 +11,11 @@ namespace EVE.ISXEVE.Interfaces
     /// </summary>
     public interface IEve : ILSObject
 	{
+		 /// <summary>
+                 /// Optimisation route.
+                 /// </summary>
+                 bool OptimizeAutopilotRoute();
+		
 		/// <summary>
 		/// Wrapper for the StationID member of the eve type.
 		/// </summary>
