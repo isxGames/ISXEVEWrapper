@@ -40,6 +40,48 @@ namespace EVE.ISXEVE
 
 		#region Members
 
+		private bool? _IsLimitedEngagement;
+		/// <summary>
+		/// Returns the IsIsLimitedEngagement flagg member of a Pilot object.
+		/// </summary>
+		public bool IsLimitedEngagement
+		{
+		    get
+		    {
+			if (_IsLimitedEngagement == null)
+			    _IsLimitedEngagement = this.GetBool("IsLimitedEngagement");
+			return _IsLimitedEngagement.Value;
+		    }
+		}
+
+		private bool? _IsCriminal;
+		/// <summary>
+		/// Returns the Criminal  flag member of a Pilot object.
+		/// </summary>
+		public bool IsCriminal
+		{
+		    get
+		    {
+			if (_IsCriminal == null)
+			    _IsCriminal = this.GetBool("IsCriminal");
+			return _IsCriminal.Value;
+		    }
+		}
+
+		private bool? _IsSuspect;
+		/// <summary>
+		/// Returns the Suspect  flag member of a Pilot object.
+		/// </summary>
+		public bool IsSuspect
+		{
+		    get
+		    {
+			if (_IsSuspect == null)
+			    _IsSuspect = this.GetBool("IsSuspect");
+			return _IsSuspect.Value;
+		    }
+		}
+
 		private string _type;
 		/// <summary>
 		/// Wrapper for the Type member of a localpilots type.
