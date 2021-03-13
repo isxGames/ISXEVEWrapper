@@ -95,6 +95,20 @@ namespace EVE.ISXEVE
 			}
 		}
 
+		private int? _WarFactionID;
+		/// <summary>
+		/// This is, FactionWar Country ID (-1 - NoFW, 500002 -Minmatarian, 500003 - Amarrian)
+		/// </summary>
+		public int WarFactionID
+		{
+		    get
+		    {
+			if (_WarFactionID == null)
+			    _WarFactionID = this.GetInt("WarFactionID");
+			return _WarFactionID.Value;
+		    }
+		}
+
 		private string _allianceTicker;
 		/// <summary>
 		/// Wrapper for the AllianceTicker member of a localpilots type.
