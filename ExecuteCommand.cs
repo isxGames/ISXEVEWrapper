@@ -333,6 +333,11 @@ namespace EVE.ISXEVE
 		/// Reset monitor (??)
 		/// </summary>
 		CmdResetMonitor,
+		
+		/// <summary>
+		/// Reconnect To Abandoned Drones in Space
+		/// </summary>
+		CmdReconnectToDrones,
 
 		/// <summary>
 		/// Broadcast "enemy spotted" to fleet
