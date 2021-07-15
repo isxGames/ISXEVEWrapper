@@ -122,6 +122,11 @@ namespace EVE.ISXEVE.Interfaces
         /// Warp to the given distance
         /// </summary>
         bool WarpTo(int Distance);
+        
+        /// <summary>
+        /// Warp fleet to 0 distance
+        /// </summary>
+        bool WarpFleetTo();
 
         /// <summary>
         /// Removes bookmark.
