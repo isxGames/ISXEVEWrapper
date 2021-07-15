@@ -256,6 +256,8 @@ namespace EVE.ISXEVE
 			Tracing.SendCallback("BM.WarpTo");
 			return ExecuteMethod("WarpTo");
 		}
+		
+		
 
 		/// <summary>
 		/// Warp to the given distance
@@ -264,6 +266,15 @@ namespace EVE.ISXEVE
 		{
 			Tracing.SendCallback("BM.WarpTo", Distance.ToString(CultureInfo.CurrentCulture));
 			return ExecuteMethod("WarpTo", Distance.ToString(CultureInfo.CurrentCulture));
+		}
+		
+		/// <summary>
+		/// Warp fleet to 0 distance
+		/// </summary>
+		public bool WarpFleetTo()
+		{
+			Tracing.SendCallback("BM.WarpFleetTo");
+			return ExecuteMethod("WarpFleetTo");
 		}
 
 		/// <summary>
