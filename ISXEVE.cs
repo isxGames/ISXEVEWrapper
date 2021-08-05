@@ -1,8 +1,9 @@
-using EVE.ISXEVE.Extensions;
-#pragma warning disable 1591
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Globalization;
+
+using EVE.ISXEVE.Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
 
@@ -65,7 +66,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string SecsToString(int seconds)
 		{
-			return this.GetString("SecsToString", seconds.ToString());
+			return this.GetString("SecsToString", seconds.ToString(CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>
@@ -93,32 +94,32 @@ namespace EVE.ISXEVE
 			ExecuteMethod("Unload");
 		}
 
-        public void Debug_SetTypeValidation(bool enabled)
-        {
-            Tracing.SendCallback("ISXEVE.Debug_SetTypeValidation", enabled);
-            ExecuteMethod("Debug_SetTypeValidation", enabled.ToString());
-        }
+		public void Debug_SetTypeValidation(bool enabled)
+		{
+			Tracing.SendCallback("ISXEVE.Debug_SetTypeValidation", enabled);
+			ExecuteMethod("Debug_SetTypeValidation", enabled.ToString(CultureInfo.CurrentCulture));
+		}
 
-        /// <summary>
-        /// Disables flushing/closing the ISXEVE logfile between logs, critical for intensive debug logging. Use only when requested by ISXEVE dev.
-        /// </summary>
-        /// <param name="enabled"></param>
-        public void Debug_SetHighPerfLogging(bool enabled)
-        {
-            Tracing.SendCallback("ISXEVE.Debug_SetHighPerfLogging", enabled);
-            ExecuteMethod("Debug_SetHighPerfLogging", enabled.ToString());
-        }
+		/// <summary>
+		/// Disables flushing/closing the ISXEVE logfile between logs, critical for intensive debug logging. Use only when requested by ISXEVE dev.
+		/// </summary>
+		/// <param name="enabled"></param>
+		public void Debug_SetHighPerfLogging(bool enabled)
+		{
+			Tracing.SendCallback("ISXEVE.Debug_SetHighPerfLogging", enabled);
+			ExecuteMethod("Debug_SetHighPerfLogging", enabled.ToString(CultureInfo.CurrentCulture));
+		}
 
-        /// <summary>
-        /// This will send a message to the ISXEVE logfile. Useful for marking script actions around ISXEVE output.
-        /// </summary>
-        /// <param name="scriptName"></param>
-        /// <param name="logMessage"></param>
-        public void Debug_LogMsg(string scriptName, string logMessage)
-        {
-            Tracing.SendCallback("ISXEVE.Debug_LogMsg", scriptName, logMessage);
-            ExecuteMethod("Debug_LogMsg", scriptName, logMessage);
-        }
+		/// <summary>
+		/// This will send a message to the ISXEVE logfile. Useful for marking script actions around ISXEVE output.
+		/// </summary>
+		/// <param name="scriptName"></param>
+		/// <param name="logMessage"></param>
+		public void Debug_LogMsg(string scriptName, string logMessage)
+		{
+			Tracing.SendCallback("ISXEVE.Debug_LogMsg", scriptName, logMessage);
+			ExecuteMethod("Debug_LogMsg", scriptName, logMessage);
+		}
 		#endregion
 	}
 }

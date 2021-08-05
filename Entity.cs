@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+
 using EVE.ISXEVE;
 using EVE.ISXEVE.Extensions;
 using EVE.ISXEVE.Interfaces;
@@ -36,7 +38,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		/// <param name="entityID"></param>
 		public Entity(long entityID)
-			: base(LavishScript.Objects.GetObject("Entity", entityID.ToString()))
+			: base(LavishScript.Objects.GetObject("Entity", entityID.ToString(CultureInfo.CurrentCulture)))
 		{
 		}
 		#endregion
@@ -440,7 +442,9 @@ namespace EVE.ISXEVE
 		/// <summary>
 		/// Wrapper for the vX member of the entity type.
 		/// </summary>
+#pragma warning disable IDE1006 // Naming Styles
 		public double vX
+#pragma warning restore IDE1006 // Naming Styles
 		{
 			get
 			{
@@ -454,7 +458,9 @@ namespace EVE.ISXEVE
 		/// <summary>
 		/// Wrapper for the vY member of the entity type.
 		/// </summary>
+#pragma warning disable IDE1006 // Naming Styles
 		public double vY
+#pragma warning restore IDE1006 // Naming Styles
 		{
 			get
 			{
@@ -468,7 +474,9 @@ namespace EVE.ISXEVE
 		/// <summary>
 		/// Wrapper for the vZ member of the entity type.
 		/// </summary>
+#pragma warning disable IDE1006 // Naming Styles
 		public double vZ
+#pragma warning restore IDE1006 // Naming Styles
 		{
 			get
 			{
@@ -556,7 +564,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public double DistanceTo(long entityId)
 		{
-			return this.GetDouble("DistanceTo", entityId.ToString());
+			return this.GetDouble("DistanceTo", entityId.ToString(CultureInfo.CurrentCulture));
 		}
 
 		private double? _followRange;
@@ -1148,8 +1156,8 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool WarpTo(int Distance)
 		{
-			Tracing.SendCallback("Entity.WarpTo", Distance.ToString());
-			return ExecuteMethod("WarpTo", Distance.ToString());
+			Tracing.SendCallback("Entity.WarpTo", Distance.ToString(CultureInfo.CurrentCulture));
+			return ExecuteMethod("WarpTo", Distance.ToString(CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>
@@ -1167,7 +1175,7 @@ namespace EVE.ISXEVE
 		public bool WarpFleetTo(int Distance)
 		{
 			Tracing.SendCallback("Entity.WarpFleetTo", string.Empty);
-			return ExecuteMethod("WarpFleetTo", Distance.ToString());
+			return ExecuteMethod("WarpFleetTo", Distance.ToString(CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>
@@ -1213,8 +1221,8 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool Approach(int Distance)
 		{
-			Tracing.SendCallback("Entity.Approach", Distance.ToString());
-			return ExecuteMethod("Approach", Distance.ToString());
+			Tracing.SendCallback("Entity.Approach", Distance.ToString(CultureInfo.CurrentCulture));
+			return ExecuteMethod("Approach", Distance.ToString(CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>
@@ -1231,8 +1239,8 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool KeepAtRange(int Distance)
 		{
-			Tracing.SendCallback("Entity.KeepAtRange", Distance.ToString());
-			return ExecuteMethod("KeepAtRange", Distance.ToString());
+			Tracing.SendCallback("Entity.KeepAtRange", Distance.ToString(CultureInfo.CurrentCulture));
+			return ExecuteMethod("KeepAtRange", Distance.ToString(CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>
@@ -1250,8 +1258,8 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool Orbit(int Distance)
 		{
-			Tracing.SendCallback("Entity.Orbit", Distance.ToString());
-			return ExecuteMethod("Orbit", Distance.ToString());
+			Tracing.SendCallback("Entity.Orbit", Distance.ToString(CultureInfo.CurrentCulture));
+			return ExecuteMethod("Orbit", Distance.ToString(CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>
@@ -1289,7 +1297,7 @@ namespace EVE.ISXEVE
 		{
 			// TODO - Remove this when stealthbot is updated.
 			Tracing.SendCallback("Entity.StackAllCargo - Redirecting to EVEWindow");
-			EVEWindow wnd = new EVEWindow(LavishScript.Objects.GetObject("EVEWindow", "ByName", this.ID.ToString()));
+			EVEWindow wnd = new EVEWindow(LavishScript.Objects.GetObject("EVEWindow", "ByName", this.ID.ToString(CultureInfo.CurrentCulture)));
 			return wnd.StackAll();
 		}
 
@@ -1483,7 +1491,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		/// <param name="entityID"></param>
 		public Drone(long entityID)
-			: base(LavishScript.Objects.GetObject("Entity", entityID.ToString()))
+			: base(LavishScript.Objects.GetObject("Entity", entityID.ToString(CultureInfo.CurrentCulture)))
 		{
 		}
 		#endregion

@@ -1,3 +1,5 @@
+using System.Globalization;
+
 using LavishScriptAPI;
 
 namespace EVE.ISXEVE
@@ -21,7 +23,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public static SolarSystem ByID(int ID)
 		{
-            return new SolarSystem(LavishScript.Objects.GetObject("Universe", ID.ToString()));
+            return new SolarSystem(LavishScript.Objects.GetObject("Universe", ID.ToString(CultureInfo.CurrentCulture)));
 		}
 		#endregion
 	}

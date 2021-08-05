@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Globalization;
+
 using EVE.ISXEVE.Extensions;
 using LavishScriptAPI;
 
@@ -67,7 +69,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public FleetMember GetMember(Int64 charID)
 		{
-			return GetMember<FleetMember>("Member", charID.ToString());
+			return GetMember<FleetMember>("Member", charID.ToString(CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>
@@ -85,7 +87,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool IsMember(Int64 charID)
 		{
-			return this.GetBool("IsMember", charID.ToString());
+			return this.GetBool("IsMember", charID.ToString(CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>
@@ -95,7 +97,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public string WingName(Int64 wingID)
 		{
-			return this.GetString("WingName", wingID.ToString());
+			return this.GetString("WingName", wingID.ToString(CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>
@@ -115,7 +117,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public string SquadName(Int64 squadID)
 		{
-			return this.GetString("SquadName", squadID.ToString());
+			return this.GetString("SquadName", squadID.ToString(CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>
@@ -148,7 +150,7 @@ namespace EVE.ISXEVE
 		public bool Broadcast_AlignTo(int entityID)
 		{
 			Tracing.SendCallback("Fleet.Broadcast_AlignTo", entityID);
-			return ExecuteMethod("Broadcast_AlignTo", entityID.ToString());
+			return ExecuteMethod("Broadcast_AlignTo", entityID.ToString(CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>
@@ -229,7 +231,7 @@ namespace EVE.ISXEVE
 		public bool Broadcast_JumpTo(int solarSystemID)
 		{
 			Tracing.SendCallback("Fleet.Broadcast_JumpTo");
-			return ExecuteMethod("Broadcast_JumpTo", solarSystemID.ToString());
+			return ExecuteMethod("Broadcast_JumpTo", solarSystemID.ToString(CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>
@@ -260,7 +262,7 @@ namespace EVE.ISXEVE
 		public bool Broadcast_Target(long entityID)
 		{
 			Tracing.SendCallback("Fleet.Broadcast_Target", entityID);
-			return ExecuteMethod("Broadcast_Target", entityID.ToString());
+			return ExecuteMethod("Broadcast_Target", entityID.ToString(CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>
@@ -271,7 +273,7 @@ namespace EVE.ISXEVE
 		public bool Broadcast_TravelTo(int solarSystemID)
 		{
 			Tracing.SendCallback("Fleet.Broadcast_TravelTo", solarSystemID);
-			return ExecuteMethod("Broadcast_TravelTo", solarSystemID.ToString());
+			return ExecuteMethod("Broadcast_TravelTo", solarSystemID.ToString(CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>
@@ -282,7 +284,7 @@ namespace EVE.ISXEVE
 		public bool Broadcast_WarpTo(long entityID)
 		{
 			Tracing.SendCallback("Fleet.Broadcast_WarpTo", entityID);
-			return ExecuteMethod("Broadcast_WarpTo", entityID.ToString());
+			return ExecuteMethod("Broadcast_WarpTo", entityID.ToString(CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>
@@ -294,7 +296,7 @@ namespace EVE.ISXEVE
 		public bool ChangeSquadName(Int64 squadID, string name)
 		{
 			Tracing.SendCallback("Fleet.ChangeSquadName", squadID, name);
-			return ExecuteMethod("ChangeSquadName", squadID.ToString(), name);
+			return ExecuteMethod("ChangeSquadName", squadID.ToString(CultureInfo.CurrentCulture), name);
 		}
 
 		/// <summary>
@@ -306,7 +308,7 @@ namespace EVE.ISXEVE
 		public bool ChangeWingName(Int64 wingID, string name)
 		{
 			Tracing.SendCallback("Fleet.ChangeWingName", wingID, name);
-			return ExecuteMethod("ChangeWingName", wingID.ToString(), name);
+			return ExecuteMethod("ChangeWingName", wingID.ToString(CultureInfo.CurrentCulture), name);
 		}
 
 		/// <summary>
@@ -317,7 +319,7 @@ namespace EVE.ISXEVE
 		public bool CreateSquad(Int64 wingID)
 		{
 			Tracing.SendCallback("Fleet.CreateSquad", wingID);
-			return ExecuteMethod("CreateSquad", wingID.ToString());
+			return ExecuteMethod("CreateSquad", wingID.ToString(CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>
@@ -338,7 +340,7 @@ namespace EVE.ISXEVE
 		public bool DeleteSquad(Int64 squadID)
 		{
 			Tracing.SendCallback("Fleet.DeleteSquad");
-			return ExecuteMethod("DeleteSquad", squadID.ToString());
+			return ExecuteMethod("DeleteSquad", squadID.ToString(CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>
@@ -349,7 +351,7 @@ namespace EVE.ISXEVE
 		public bool DeleteWing(Int64 wingID)
 		{
 			Tracing.SendCallback("Fleet.DeleteWing");
-			return ExecuteMethod("DeleteWing", wingID.ToString());
+			return ExecuteMethod("DeleteWing", wingID.ToString(CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>
@@ -379,8 +381,8 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public List<Int64> GetSquads(Int64 wingID)
 		{
-			Tracing.SendCallback("Fleet.GetSquads", wingID.ToString());
-			return Util.GetListFromMethod<Int64>(this, "GetSquads", "int64", wingID.ToString());
+			Tracing.SendCallback("Fleet.GetSquads", wingID.ToString(CultureInfo.CurrentCulture));
+			return Util.GetListFromMethod<Int64>(this, "GetSquads", "int64", wingID.ToString(CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>
@@ -420,7 +422,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool WarpToFleetMember(Int64 fleetMemberCharID)
 		{
-			Tracing.SendCallback("Fleet.WarpToFleetMember", fleetMemberCharID.ToString());
+			Tracing.SendCallback("Fleet.WarpToFleetMember", fleetMemberCharID.ToString(CultureInfo.CurrentCulture));
 			return WarpToFleetMember(fleetMemberCharID, 0);
 		}
 
@@ -433,7 +435,7 @@ namespace EVE.ISXEVE
 		public bool WarpToFleetMember(Int64 fleetMemberCharID, double distance)
 		{
 			Tracing.SendCallback("Fleet.WarpToFleetMember", fleetMemberCharID, distance);
-			return ExecuteMethod("WarpToFleetMember", fleetMemberCharID.ToString(), distance.ToString());
+			return ExecuteMethod("WarpToFleetMember", fleetMemberCharID.ToString(CultureInfo.CurrentCulture), distance.ToString(CultureInfo.CurrentCulture));
 		}
 
 	    public bool SetIgnoreFleetWarp()

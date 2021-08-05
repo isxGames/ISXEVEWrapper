@@ -1,4 +1,6 @@
 using System;
+using System.Globalization;
+
 using EVE.ISXEVE.Extensions;
 using EVE.ISXEVE.Interfaces;
 using LavishScriptAPI;
@@ -921,8 +923,8 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool Activate(Int64 EntityID)
 		{
-			Tracing.SendCallback("Module.Activate", EntityID.ToString());
-			return ExecuteMethod("Activate", EntityID.ToString());
+			Tracing.SendCallback("Module.Activate", EntityID.ToString(CultureInfo.CurrentCulture));
+			return ExecuteMethod("Activate", EntityID.ToString(CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>
@@ -942,8 +944,8 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool ChangeAmmo(Int64 AmmoID)
 		{
-			Tracing.SendCallback("Module.ChangeAmmo", AmmoID.ToString());
-			return ExecuteMethod("ChangeAmmo", AmmoID.ToString());
+			Tracing.SendCallback("Module.ChangeAmmo", AmmoID.ToString(CultureInfo.CurrentCulture));
+			return ExecuteMethod("ChangeAmmo", AmmoID.ToString(CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>
@@ -954,7 +956,7 @@ namespace EVE.ISXEVE
 		public bool ChangeAmmo(Int64 AmmoID, int Quantity)
 		{
 			Tracing.SendCallback("Module.ChangeAmmo", AmmoID, Quantity);
-			return ExecuteMethod("ChangeAmmo", AmmoID.ToString(), Quantity.ToString());
+			return ExecuteMethod("ChangeAmmo", AmmoID.ToString(CultureInfo.CurrentCulture), Quantity.ToString(CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>

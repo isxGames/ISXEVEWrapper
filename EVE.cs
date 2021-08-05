@@ -1,10 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using EVE.ISXEVE.Enums;
 using EVE.ISXEVE.Extensions;
 using EVE.ISXEVE.Interfaces;
 using LavishScriptAPI;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
 
 namespace EVE.ISXEVE
 {
@@ -35,8 +35,16 @@ namespace EVE.ISXEVE
 		{
 		}
 		#endregion
-
-		/// <summary>
+		 /// <summary>
+                 ///   Optimisation Route
+                 /// </summary>
+                 /// <returns></returns>
+		public bool OptimizeAutopilotRoute()
+		{
+		    Tracing.SendCallback("EVE.OptimizeAutopilotRoute");
+		    return ExecuteMethod("OptimizeAutopilotRoute");
+		}
+			/// <summary>
 		/// Wrapper for the StationID member of the eve type.
 		/// </summary>
 		/// <param name="stationID"></param>
@@ -44,7 +52,7 @@ namespace EVE.ISXEVE
 		public Station Station(int stationID)
 		{
 			Tracing.SendCallback("EVE.Station", stationID);
-			return GetMember<Station>("Station", stationID.ToString());
+			return GetMember<Station>("Station", stationID.ToString(CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>
@@ -115,8 +123,8 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public int GetJumpsTo(int solarSystemOrStationId)
 		{
-			Tracing.SendCallback("EVE.GetJumpsTo", solarSystemOrStationId.ToString());
-			return this.GetInt("JumpsTo", solarSystemOrStationId.ToString());
+			Tracing.SendCallback("EVE.GetJumpsTo", solarSystemOrStationId.ToString(CultureInfo.CurrentCulture));
+			return this.GetInt("JumpsTo", solarSystemOrStationId.ToString(CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>
@@ -127,7 +135,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public int GetJumpsBetween(int firstSolarSystem, int secondSolarSystemId)
 		{
-			return this.GetInt("JumpsBetween", firstSolarSystem.ToString(), secondSolarSystemId.ToString());
+			return this.GetInt("JumpsBetween", firstSolarSystem.ToString(CultureInfo.CurrentCulture), secondSolarSystemId.ToString(CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>
@@ -136,7 +144,7 @@ namespace EVE.ISXEVE
 		public double DistanceBetween(Int64 firstEntityID, Int64 secondEntityID)
 		{
 			Tracing.SendCallback("EVE.DistanceBetween", firstEntityID, secondEntityID);
-			return this.GetDouble("DistanceBetween", firstEntityID.ToString(), secondEntityID.ToString());
+			return this.GetDouble("DistanceBetween", firstEntityID.ToString(CultureInfo.CurrentCulture), secondEntityID.ToString(CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>
@@ -277,7 +285,7 @@ namespace EVE.ISXEVE
 		public int NumAssetsAtStation(int stationID)
 		{
 			Tracing.SendCallback("EVE.NumAssetsAtStation", stationID);
-			return this.GetInt("NumAssetsAtStation", stationID.ToString());
+			return this.GetInt("NumAssetsAtStation", stationID.ToString(CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>
@@ -286,7 +294,7 @@ namespace EVE.ISXEVE
 		public string GetLocationNameByID(int stationID)
 		{
 			Tracing.SendCallback("EVE.GetLocationNameByID", stationID);
-			return this.GetString("GetLocationNameByID", stationID.ToString());
+			return this.GetString("GetLocationNameByID", stationID.ToString(CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>
@@ -306,8 +314,8 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public List<Entity> QueryEntities(int queryID)
 		{
-			Tracing.SendCallback("EVE.QueryEntities", queryID.ToString());
-			return Util.GetListFromMethod<Entity>(this, "QueryEntities", "entity", queryID.ToString());
+			Tracing.SendCallback("EVE.QueryEntities", queryID.ToString(CultureInfo.CurrentCulture));
+			return Util.GetListFromMethod<Entity>(this, "QueryEntities", "entity", queryID.ToString(CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>
@@ -339,8 +347,8 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool PopulateEntities(bool forceRepopulate)
 		{
-			Tracing.SendCallback("EVE.PopulateEntities", forceRepopulate.ToString());
-			return ExecuteMethod("PopulateEntities", forceRepopulate.ToString());
+			Tracing.SendCallback("EVE.PopulateEntities", forceRepopulate.ToString(CultureInfo.CurrentCulture));
+			return ExecuteMethod("PopulateEntities", forceRepopulate.ToString(CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>
@@ -372,7 +380,7 @@ namespace EVE.ISXEVE
 			var lsIndex = LavishScript.Objects.NewObject("index:int64");
 			foreach (var droneID in drones)
 			{
-				lsIndex.ExecuteMethod("Insert", droneID.ToString());
+				lsIndex.ExecuteMethod("Insert", droneID.ToString(CultureInfo.CurrentCulture));
 			}
 			return ExecuteMethod("DronesEngageMyTarget", lsIndex.GetLSReference());
 		}
@@ -389,7 +397,7 @@ namespace EVE.ISXEVE
 			var lsIndex = LavishScript.Objects.NewObject("index:int64");
 			foreach (var droneID in drones)
 			{
-				lsIndex.ExecuteMethod("Insert", droneID.ToString());
+				lsIndex.ExecuteMethod("Insert", droneID.ToString(CultureInfo.CurrentCulture));
 			}
 			return ExecuteMethod("DronesMineRepeatedly", lsIndex.GetLSReference());
 		}
@@ -433,8 +441,24 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool CreateBookmark(string label, string notes, string location)
 		{
-			Tracing.SendCallback("EVE.CreateBookmark", label, notes, location);
-			return ExecuteMethod("CreateBookmark", label, notes, location);
+			
+			return CreateBookmark(label, notes, location, BookmarkExpiry.Forever);
+		}
+
+		/// <summary>
+		/// Creates a bookmark.
+		/// </summary>
+		public bool CreateBookmark(string label, string notes, string location, BookmarkExpiry bookmarkExpiry)
+		{
+			Tracing.SendCallback("EVE.CreateBookmark", label, notes, location, bookmarkExpiry.ToString("D"));
+			return ExecuteMethod("CreateBookmark", label, notes, location, bookmarkExpiry.ToString("D"));
+		}
+
+		public enum BookmarkExpiry
+		{
+			Forever,
+			ThreeHours,
+			TwoDays
 		}
 
 		/// <summary>
@@ -445,7 +469,7 @@ namespace EVE.ISXEVE
 		public bool AddWaypoint(int solarSystemID)
 		{
 			Tracing.SendCallback("EVE.AddWaypoint", solarSystemID);
-			return ExecuteMethod("AddWaypoint", solarSystemID.ToString());
+			return ExecuteMethod("AddWaypoint", solarSystemID.ToString(CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>
@@ -484,7 +508,7 @@ namespace EVE.ISXEVE
 
 			for (var index = 0; index < DroneIDs.Count; index++)
 			{
-				lsIndex.ExecuteMethod("Insert", DroneIDs[index].ToString());
+				lsIndex.ExecuteMethod("Insert", DroneIDs[index].ToString(CultureInfo.CurrentCulture));
 			}
 			//InnerSpace.Echo("*** " + LSIndex.GetMember<int>("Used"));
 			// TODO - Test this to make sure passing a populated index into ExecuteMethod works
@@ -492,41 +516,41 @@ namespace EVE.ISXEVE
 			return ExecuteMethod("LaunchDrones", lsIndex.GetLSReference());
 		}
 
-        /// <summary>
-        /// Wrapper for the DronesReturnToDroneBay method of the eve type.
-        /// </summary>
-        /// <param name="DroneIDs"></param>
-        /// <returns></returns>
-        public bool DronesReturnToDroneBay(List<Int64> DroneIDs)
-        {
-            Tracing.SendCallback("EVE.DronesReturnToDroneBay", DroneIDs);
-            if (DroneIDs.Count == 0)
-            {
-                return false;
-            }
+		/// <summary>
+		/// Wrapper for the DronesReturnToDroneBay method of the eve type.
+		/// </summary>
+		/// <param name="DroneIDs"></param>
+		/// <returns></returns>
+		public bool DronesReturnToDroneBay(List<Int64> DroneIDs)
+		{
+			Tracing.SendCallback("EVE.DronesReturnToDroneBay", DroneIDs);
+			if (DroneIDs.Count == 0)
+			{
+				return false;
+			}
 
-            var lsIndex = LavishScript.Objects.NewObject("index:int64");
+			var lsIndex = LavishScript.Objects.NewObject("index:int64");
 
-            for (var index = 0; index < DroneIDs.Count; index++)
-            {
-                lsIndex.ExecuteMethod("Insert", DroneIDs[index].ToString());
-            }
-            //InnerSpace.Echo("*** " + LSIndex.GetMember<int>("Used"));
-            // TODO - Test this to make sure passing a populated index into ExecuteMethod works
-            // - CyberTech
-            return ExecuteMethod("DronesReturnToDroneBay", lsIndex.GetLSReference());
-        }
+			for (var index = 0; index < DroneIDs.Count; index++)
+			{
+				lsIndex.ExecuteMethod("Insert", DroneIDs[index].ToString(CultureInfo.CurrentCulture));
+			}
+			//InnerSpace.Echo("*** " + LSIndex.GetMember<int>("Used"));
+			// TODO - Test this to make sure passing a populated index into ExecuteMethod works
+			// - CyberTech
+			return ExecuteMethod("DronesReturnToDroneBay", lsIndex.GetLSReference());
+		}
 
-        /// <summary>
-        /// Wrapper for the ItemInfo member of the EVE datatype.
-        /// </summary>
-        /// <param name="typeId"></param>
-        /// <returns></returns>
-        public IItemInfo ItemInfo(int typeId)
+		/// <summary>
+		/// Wrapper for the ItemInfo member of the EVE datatype.
+		/// </summary>
+		/// <param name="typeId"></param>
+		/// <returns></returns>
+		public IItemInfo ItemInfo(int typeId)
 		{
 			Tracing.SendCallback("EVE.ItemInfo", typeId);
 
-			return new ItemInfo(GetMember("ItemInfo", typeId.ToString()));
+			return new ItemInfo(GetMember("ItemInfo", typeId.ToString(CultureInfo.CurrentCulture)));
 		}
 
 		public List<EVEWindow> GetEveWindows()
@@ -553,12 +577,12 @@ namespace EVE.ISXEVE
 
 			for (var index = 0; index < items.Count; index++)
 			{
-				lsIndex.ExecuteMethod("Insert", items[index].ToString());
+				lsIndex.ExecuteMethod("Insert", items[index].ToString(CultureInfo.CurrentCulture));
 			}
 			//InnerSpace.Echo("*** " + LSIndex.GetMember<int>("Used"));
 			// TODO - Test this to make sure passing a populated index into ExecuteMethod works
 			// - CyberTech
-			return ExecuteMethod("MoveItemsTo", lsIndex.GetLSReference(), ToLocationID.ToString(), destinationName);
+			return ExecuteMethod("MoveItemsTo", lsIndex.GetLSReference(), ToLocationID.ToString(CultureInfo.CurrentCulture), destinationName);
 		}
 
 		/// <summary>
@@ -580,11 +604,11 @@ namespace EVE.ISXEVE
 			var lsIndex = LavishScript.Objects.NewObject("index:int64");
 			for (var index = 0; index < items.Count; index++)
 			{
-				lsIndex.ExecuteMethod("Insert", items[index].ToString());
+				lsIndex.ExecuteMethod("Insert", items[index].ToString(CultureInfo.CurrentCulture));
 			}
 
-			return ExecuteMethod("MoveItemsTo", lsIndex.GetLSReference(), ToLocationID.ToString(), destinationName,
-				String.Format("Corporation Folder {0}", corporationHangarFolder));
+			return ExecuteMethod("MoveItemsTo", lsIndex.GetLSReference(), ToLocationID.ToString(CultureInfo.CurrentCulture), destinationName,
+				String.Format(CultureInfo.CurrentCulture, "Corporation Folder {0}", corporationHangarFolder));
 		}
 
 
@@ -607,7 +631,7 @@ namespace EVE.ISXEVE
 
 			for (var index = 0; index < items.Count; index++)
 			{
-				lsIndex.ExecuteMethod("Insert", items[index].ToString());
+				lsIndex.ExecuteMethod("Insert", items[index].ToString(CultureInfo.CurrentCulture));
 			}
 			//InnerSpace.Echo("*** " + LSIndex.GetMember<int>("Used"));
 			// TODO - Test this to make sure passing a populated index into ExecuteMethod works
@@ -634,29 +658,29 @@ namespace EVE.ISXEVE
 			var lsIndex = LavishScript.Objects.NewObject("index:int64");
 			for (var index = 0; index < items.Count; index++)
 			{
-				lsIndex.ExecuteMethod("Insert", items[index].ToString());
+				lsIndex.ExecuteMethod("Insert", items[index].ToString(CultureInfo.CurrentCulture));
 			}
 
 			return ExecuteMethod("MoveItemsTo", lsIndex.GetLSReference(), ToLocationName, destinationName,
-				String.Format("Corporation Folder {0}", corporationHangarFolder));
+				String.Format(CultureInfo.CurrentCulture, "Corporation Folder {0}", corporationHangarFolder));
 		}
 
-	    /// <summary>
-	    /// 2. CreateMarketBuyOrder[TypeID#]
-	    /// </summary>
-	    public bool CreateMarketBuyOrder(int typeID)
-	    {
-	        Tracing.SendCallback("EVE.CreateMarketBuyOrder", typeID);
-	        return ExecuteMethod("CreateMarketBuyOrder",
-	            typeID.ToString());
-	    }
+		/// <summary>
+		/// 2. CreateMarketBuyOrder[TypeID#]
+		/// </summary>
+		public bool CreateMarketBuyOrder(int typeID)
+		{
+			Tracing.SendCallback("EVE.CreateMarketBuyOrder", typeID);
+			return ExecuteMethod("CreateMarketBuyOrder",
+				typeID.ToString(CultureInfo.CurrentCulture));
+		}
 
-        /// <summary>
-        ///   2. ClearMarketOrderCache     {This clears your market order cache.  It is useful if you're doing a lot of market transactions and want 
-        ///                                 to keep things tidy.}
-        /// </summary>
-        /// <returns></returns>
-        public bool ClearMarketOrderCache()
+		/// <summary>
+		///   2. ClearMarketOrderCache     {This clears your market order cache.  It is useful if you're doing a lot of market transactions and want 
+		///                                 to keep things tidy.}
+		/// </summary>
+		/// <returns></returns>
+		public bool ClearMarketOrderCache()
 		{
 			Tracing.SendCallback("EVE.ClearMarketOrderCache");
 			return ExecuteMethod("ClearMarketOrderCache");
@@ -671,7 +695,7 @@ namespace EVE.ISXEVE
 		{
 			Tracing.SendCallback("EVE.FetchMarketOrders", typeID);
 
-			return ExecuteMethod("FetchMarketOrders", typeID.ToString());
+			return ExecuteMethod("FetchMarketOrders", typeID.ToString(CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>
@@ -683,7 +707,7 @@ namespace EVE.ISXEVE
 		{
 			Tracing.SendCallback("GetMarketOrders", typeID);
 
-			return Util.GetListFromMethod<MarketOrder>(this, "GetMarketOrders", "marketorder", typeID.ToString());
+			return Util.GetListFromMethod<MarketOrder>(this, "GetMarketOrders", "marketorder", typeID.ToString(CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>
@@ -696,7 +720,7 @@ namespace EVE.ISXEVE
 		{
 			Tracing.SendCallback("GetMarketOrders", typeID, orderType);
 
-			return Util.GetListFromMethod<MarketOrder>(this, "GetMarketOrders", "marketorder", typeID.ToString(), orderType.ToString());
+			return Util.GetListFromMethod<MarketOrder>(this, "GetMarketOrders", "marketorder", typeID.ToString(CultureInfo.CurrentCulture), orderType.ToString());
 		}
 
 		/// <summary>
@@ -789,11 +813,13 @@ namespace EVE.ISXEVE
 		/// <param name="DefaultValue">Value to return if conversion fails</param>
 		private static Int64 StringToInt64(string Int64Str, Int64 DefaultValue = 0)
 		{
+#pragma warning disable IDE0018 // Inline variable declaration
 			Int64 retVal;
+#pragma warning restore IDE0018 // Inline variable declaration
 
 			if (!Int64.TryParse(Int64Str, out retVal))
 			{
-				return DefaultValue;
+				retVal = DefaultValue;
 			}
 
 			return retVal;

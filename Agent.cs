@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Globalization;
+
 using EVE.ISXEVE.Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
@@ -27,17 +29,21 @@ namespace EVE.ISXEVE
 		/// </summary>
 		/// <param name="Index"></param>
 		public Agent(int Index)
-			: base(LavishScript.Objects.GetObject("Agent", Index.ToString()))
+			: base(LavishScript.Objects.GetObject("Agent", Index.ToString(CultureInfo.CurrentCulture)))
 		{
 		}
 
 		/// <summary>
 		/// Agent constructor by ID.
 		/// </summary>
-		/// <param name="ByID"></param>
+		/// <param name="ByID">String param to differentiate. Pass empty string.</param>
 		/// <param name="ID"></param>
+#pragma warning disable IDE0060 // Remove unused parameter
+#pragma warning disable CA1801 // Review unused parameters
 		public Agent(string ByID, int ID)
-			: base(LavishScript.Objects.GetObject("Agent", "id", ID.ToString()))
+#pragma warning restore CA1801 // Review unused parameters
+#pragma warning restore IDE0060 // Remove unused parameter
+			: base(LavishScript.Objects.GetObject("Agent", "id", ID.ToString(CultureInfo.CurrentCulture)))
 		{
 		}
 
@@ -157,21 +163,6 @@ namespace EVE.ISXEVE
 		public string Name
 		{
 			get { return _name ?? (_name = this.GetString("Name")); }
-		}
-
-		private int? _typeId;
-		/// <summary>
-		/// Wrapper for the TypeID member of the agent type.
-		/// </summary>
-		[Obsolete]
-		public int TypeID
-		{
-			get
-			{
-				if (_typeId == null)
-					_typeId = this.GetInt("TypeID");
-				return _typeId.Value;
-			}
 		}
 
 		private int? _agentTypeId;

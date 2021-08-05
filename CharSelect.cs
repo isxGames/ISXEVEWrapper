@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Globalization;
 using EVE.ISXEVE.Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
@@ -38,7 +39,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public bool CharExists(Int64 ID)
 		{
-			return this.GetBool("CharExists", ID.ToString());
+			return this.GetBool("CharExists", ID.ToString(CultureInfo.CurrentCulture));
 		}
 
         public bool CharExists(string name)
@@ -65,8 +66,8 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool ClickCharacter(int CharID)
 		{
-			Tracing.SendCallback("CharSelect.ClickCharacter", CharID.ToString());
-			return ExecuteMethod("ClickCharacter", CharID.ToString());
+			Tracing.SendCallback("CharSelect.ClickCharacter", CharID.ToString(CultureInfo.CurrentCulture));
+			return ExecuteMethod("ClickCharacter", CharID.ToString(CultureInfo.CurrentCulture));
 		}
 		#endregion
 	}

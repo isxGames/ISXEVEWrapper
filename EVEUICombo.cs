@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Globalization;
+
 using EVE.ISXEVE.Extensions;
 using LavishScriptAPI;
 
@@ -47,7 +49,7 @@ namespace EVE.ISXEVE
         public bool SelectByIndex(string index)
         {
             Tracing.SendCallback("EVEUICombo.SelectByIndex", index);
-            return ExecuteMethod("SelectByIndex", index.ToString());
+            return ExecuteMethod("SelectByIndex", index.ToString(CultureInfo.CurrentCulture));
         }
 
         /// <summary>
@@ -58,7 +60,7 @@ namespace EVE.ISXEVE
         public bool SelectByValue(string value)
         {
             Tracing.SendCallback("EVEUICombo.SelectByValue", value);
-            return ExecuteMethod("SelectByValue", value.ToString());
+            return ExecuteMethod("SelectByValue", value.ToString(CultureInfo.CurrentCulture));
         }
 
         /// <summary>
@@ -69,7 +71,7 @@ namespace EVE.ISXEVE
         public bool SelectByLabel(string label)
         {
             Tracing.SendCallback("EVEUICombo.SelectByLabel", label);
-            return ExecuteMethod("SelectByLabel", label.ToString());
+            return ExecuteMethod("SelectByLabel", label.ToString(CultureInfo.CurrentCulture));
         }
 
 

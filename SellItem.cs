@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Globalization;
+
 using EVE.ISXEVE.Extensions;
 using LavishScriptAPI;
 
@@ -118,13 +120,13 @@ namespace EVE.ISXEVE
 		public bool SetAskPrice(double price)
 		{
 			Tracing.SendCallback("SellItem.SetAskPrice", price);
-			return ExecuteMethod("SetAskPrice", price.ToString());
+			return ExecuteMethod("SetAskPrice", price.ToString(CultureInfo.CurrentCulture));
 		}
 
 		public bool SetQuantity(int quantity)
 		{
 			Tracing.SendCallback("SellItem.SetQuantity", quantity);
-			return ExecuteMethod("SetQuantity", quantity.ToString());
+			return ExecuteMethod("SetQuantity", quantity.ToString(CultureInfo.CurrentCulture));
 		}
 
         #endregion

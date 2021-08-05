@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
+
 using LavishScriptAPI;
 
 namespace EVE.ISXEVE
@@ -20,7 +22,7 @@ namespace EVE.ISXEVE
         /// <returns></returns>
         public bool StartScan(int angle, int range)
         {
-            return ExecuteMethod("StartScan", angle.ToString(), range.ToString());
+            return ExecuteMethod("StartScan", angle.ToString(CultureInfo.CurrentCulture), range.ToString(CultureInfo.CurrentCulture));
         }
 
         /// <summary>
@@ -31,7 +33,7 @@ namespace EVE.ISXEVE
         /// <returns></returns>
         public List<DirectionalScannerResult> GetScanResults(int angle, int range)
         {
-            return this.GetListFromMethod<DirectionalScannerResult>("GetScanResults", "DirectionalScannerresult", angle.ToString(), range.ToString());
+            return this.GetListFromMethod<DirectionalScannerResult>("GetScanResults", "DirectionalScannerresult", angle.ToString(CultureInfo.CurrentCulture), range.ToString(CultureInfo.CurrentCulture));
         }
     }
 }

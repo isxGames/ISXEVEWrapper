@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Globalization;
+
 using EVE.ISXEVE.Extensions;
 using LavishScriptAPI;
 
@@ -243,7 +245,7 @@ namespace EVE.ISXEVE
         /// <returns></returns>
         public bool WarpTo(int distance, bool isFleetWarp)
         {
-            return ExecuteMethod("WarpTo", distance.ToString(), isFleetWarp.ToString());
+            return ExecuteMethod("WarpTo", distance.ToString(CultureInfo.CurrentCulture), isFleetWarp.ToString(CultureInfo.CurrentCulture));
         }
     }
 }

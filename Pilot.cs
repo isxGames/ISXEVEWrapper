@@ -1,4 +1,6 @@
 using System;
+using System.Globalization;
+
 using EVE.ISXEVE.Extensions;
 using LavishScriptAPI;
 
@@ -23,7 +25,7 @@ namespace EVE.ISXEVE
 		/// Get a Local pilot by ID.
 		/// </summary>
 		public Pilot(Int64 CharID)
-			: base(LavishScript.Objects.GetObject("Local", CharID.ToString()))
+			: base(LavishScript.Objects.GetObject("Local", CharID.ToString(CultureInfo.CurrentCulture)))
 		{
 		}
 
@@ -37,6 +39,48 @@ namespace EVE.ISXEVE
 		#endregion
 
 		#region Members
+
+		private bool? _IsLimitedEngagement;
+		/// <summary>
+		/// Returns the IsIsLimitedEngagement flagg member of a Pilot object.
+		/// </summary>
+		public bool IsLimitedEngagement
+		{
+		    get
+		    {
+			if (_IsLimitedEngagement == null)
+			    _IsLimitedEngagement = this.GetBool("IsLimitedEngagement");
+			return _IsLimitedEngagement.Value;
+		    }
+		}
+
+		private bool? _IsCriminal;
+		/// <summary>
+		/// Returns the Criminal  flag member of a Pilot object.
+		/// </summary>
+		public bool IsCriminal
+		{
+		    get
+		    {
+			if (_IsCriminal == null)
+			    _IsCriminal = this.GetBool("IsCriminal");
+			return _IsCriminal.Value;
+		    }
+		}
+
+		private bool? _IsSuspect;
+		/// <summary>
+		/// Returns the Suspect  flag member of a Pilot object.
+		/// </summary>
+		public bool IsSuspect
+		{
+		    get
+		    {
+			if (_IsSuspect == null)
+			    _IsSuspect = this.GetBool("IsSuspect");
+			return _IsSuspect.Value;
+		    }
+		}
 
 		private string _type;
 		/// <summary>
@@ -93,6 +137,20 @@ namespace EVE.ISXEVE
 			}
 		}
 
+		private int? _WarFactionID;
+		/// <summary>
+		/// This is, FactionWar Country ID (-1 - NoFW, 500002 -Minmatarian, 500003 - Amarrian)
+		/// </summary>
+		public int WarFactionID
+		{
+		    get
+		    {
+			if (_WarFactionID == null)
+			    _WarFactionID = this.GetInt("WarFactionID");
+			return _WarFactionID.Value;
+		    }
+		}
+
 		private string _allianceTicker;
 		/// <summary>
 		/// Wrapper for the AllianceTicker member of a localpilots type.
@@ -138,7 +196,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double StandingTo(int ID)
 		{
-			return this.GetDouble("StandingTo", ID.ToString());
+			return this.GetDouble("StandingTo", ID.ToString(CultureInfo.CurrentCulture));
 		}
 		#endregion
 
@@ -149,7 +207,7 @@ namespace EVE.ISXEVE
 		public bool SetStanding(int Standing, string Reason)
 		{
 			Tracing.SendCallback("Pilot.SetStanding", Standing, Reason);
-			return ExecuteMethod("SetStanding", Standing.ToString(), Reason);
+			return ExecuteMethod("SetStanding", Standing.ToString(CultureInfo.CurrentCulture), Reason);
 		}
 
 		#endregion

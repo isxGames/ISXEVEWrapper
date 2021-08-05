@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Globalization;
+
 using EVE.ISXEVE.Extensions;
 using LavishScriptAPI;
 
@@ -98,7 +100,7 @@ namespace EVE.ISXEVE
         /// <returns></returns>
         public bool Echo(string text, Int64 charId)
         {
-            return ExecuteMethod("Echo", text, charId.ToString());
+            return ExecuteMethod("Echo", text, charId.ToString(CultureInfo.CurrentCulture));
         }
 
         #endregion

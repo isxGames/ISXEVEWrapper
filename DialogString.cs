@@ -4,6 +4,7 @@ using System.Text;
 using EVE.ISXEVE.Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
+using System.Globalization;
 
 namespace EVE.ISXEVE
 {
@@ -46,8 +47,8 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public bool Say(int ToWhomID)
 		{
-			Tracing.SendCallback("DialogString.Say", ToWhomID.ToString());
-			return ExecuteMethod("Say", ToWhomID.ToString());
+			Tracing.SendCallback("DialogString.Say", ToWhomID.ToString(CultureInfo.CurrentCulture));
+			return ExecuteMethod("Say", ToWhomID.ToString(CultureInfo.CurrentCulture));
 		}
 		#endregion
 

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Globalization;
+
 using EVE.ISXEVE.Extensions;
 using LavishScriptAPI;
 
@@ -74,7 +76,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public SellItem Item(int Index)
 		{
-			return new SellItem(GetMember("Item", Index.ToString()));
+			return new SellItem(GetMember("Item", Index.ToString(CultureInfo.CurrentCulture)));
 		}
 
         #endregion
@@ -89,7 +91,7 @@ namespace EVE.ISXEVE
 		public bool SetDuration(int duration)
 		{
 			Tracing.SendCallback("EveSellItemsWindow.SetDuration", duration);
-			return ExecuteMethod("SetDuration", duration.ToString());
+			return ExecuteMethod("SetDuration", duration.ToString(CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>

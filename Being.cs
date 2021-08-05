@@ -1,4 +1,6 @@
 using System;
+using System.Globalization;
+
 using EVE.ISXEVE.Extensions;
 using InnerSpaceAPI;
 using LavishScriptAPI;
@@ -113,7 +115,7 @@ namespace EVE.ISXEVE
 
 	    public bool GiveMoney(Int64 amount, string reason)
 	    {
-	        return ExecuteMethod("GiveMoney", amount.ToString(), reason);
+	        return ExecuteMethod("GiveMoney", amount.ToString(CultureInfo.CurrentCulture), reason);
 	    }
 		#endregion
 	}

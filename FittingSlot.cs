@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Globalization;
+
 using EVE.ISXEVE.Extensions;
 using LavishScriptAPI;
 
@@ -101,7 +103,7 @@ namespace EVE.ISXEVE
 
         public bool FitItem(Int64 itemId)
         {
-            return ExecuteMethod("FitItem", itemId.ToString());
+            return ExecuteMethod("FitItem", itemId.ToString(CultureInfo.CurrentCulture));
         }
         #endregion
     }

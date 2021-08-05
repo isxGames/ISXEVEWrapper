@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Globalization;
+
 using LavishScriptAPI;
 
 namespace EVE.ISXEVE
@@ -17,7 +19,7 @@ namespace EVE.ISXEVE
 
         public static ChatChannel GetChat(Int64 channelId)
         {
-            return new ChatChannel(LavishScript.Objects.GetObject("Chat", channelId.ToString()));
+            return new ChatChannel(LavishScript.Objects.GetObject("Chat", channelId.ToString(CultureInfo.CurrentCulture)));
         }
     }
 }

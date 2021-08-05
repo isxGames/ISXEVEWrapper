@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Globalization;
+
 using EVE.ISXEVE.Extensions;
 using LavishScriptAPI;
 
@@ -44,7 +46,7 @@ namespace EVE.ISXEVE
         public bool SetValue(string value)
         {
             Tracing.SendCallback("EVEUISingleLineEdit.SetValue", value);
-            return ExecuteMethod("SetValue", value.ToString());
+            return ExecuteMethod("SetValue", value.ToString(CultureInfo.CurrentCulture));
         }
 
         #endregion

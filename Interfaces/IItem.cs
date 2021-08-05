@@ -1,6 +1,6 @@
+using LavishScriptAPI.Interfaces;
 using System;
 using System.Collections.Generic;
-using LavishScriptAPI.Interfaces;
 
 namespace EVE.ISXEVE.Interfaces
 {
@@ -149,6 +149,12 @@ namespace EVE.ISXEVE.Interfaces
         /// </summary>
         /// <returns></returns>
         bool Launch();
+
+        /// <summary>
+		/// For things such as MTUs.
+		/// </summary>
+		/// <returns></returns>
+		bool LaunchForSelf();
 
         /// <summary>
         /// Select this ship to be your active ship.  The ship

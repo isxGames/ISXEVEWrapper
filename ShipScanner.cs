@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+
 using LavishScriptAPI;
 
 namespace EVE.ISXEVE
@@ -22,7 +24,7 @@ namespace EVE.ISXEVE
         /// <returns></returns>
         public bool StartScan(Int64 entityId, bool clearPreviousResults)
         {
-            return ExecuteMethod("StartScan", entityId.ToString(), clearPreviousResults.ToString());
+            return ExecuteMethod("StartScan", entityId.ToString(CultureInfo.CurrentCulture), clearPreviousResults.ToString(CultureInfo.CurrentCulture));
         }
     }
 }

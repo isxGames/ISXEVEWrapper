@@ -1,15 +1,21 @@
+using EVE.ISXEVE.Enums;
+using LavishScriptAPI.Interfaces;
 using System;
 using System.Collections.Generic;
-using LavishScriptAPI.Interfaces;
-using EVE.ISXEVE.Enums;
+using static EVE.ISXEVE.EVE;
 
 namespace EVE.ISXEVE.Interfaces
 {
-	/// <summary>
-	/// Wrapper for the EVE datatype.
-	/// </summary>
-	public interface IEve : ILSObject
+    /// <summary>
+    /// Wrapper for the EVE datatype.
+    /// </summary>
+    public interface IEve : ILSObject
 	{
+		 /// <summary>
+                 /// Optimisation route.
+                 /// </summary>
+                 bool OptimizeAutopilotRoute();
+		
 		/// <summary>
 		/// Wrapper for the StationID member of the eve type.
 		/// </summary>
@@ -224,6 +230,11 @@ namespace EVE.ISXEVE.Interfaces
 		/// Creates a bookmark.
 		/// </summary>
 		bool CreateBookmark(string label, string notes, string location);
+
+		/// <summary>
+		/// Creates a bookmark.
+		/// </summary>
+		bool CreateBookmark(string label, string notes, string location, BookmarkExpiry bookmarkExpiry);
 
 		/// <summary>
 		/// Wrapper for the AddWaypoint method of the eve type.

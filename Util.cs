@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Globalization;
+
 using EVE.ISXEVE.Extensions;
 using LavishScriptAPI;
 using LavishScriptAPI.Interfaces;
@@ -59,7 +61,7 @@ namespace EVE.ISXEVE
 			}
 			for (int idx = 1; idx < args.Length; idx++)
 			{
-				argString.Append(String.Format(", {0}", args[idx]));
+				argString.Append(String.Format(CultureInfo.InvariantCulture, ", {0}", args[idx]));
 			}
 
 			Callback(message, argString.ToString());
@@ -93,7 +95,7 @@ namespace EVE.ISXEVE
 
 				if (implementingType == null)
 				{
-					throw new InvalidOperationException(string.Format("Could not find implementing type for interface type {0}.", interfaceType.Name));
+					throw new InvalidOperationException(string.Format(CultureInfo.InvariantCulture, "Could not find implementing type for interface type {0}.", interfaceType.Name));
 				}
 
 				_implementingTypesByInterfaceType.Add(interfaceType, implementingType);
@@ -118,7 +120,7 @@ namespace EVE.ISXEVE
 				}
 
 				if (constructorInfo == null)
-					throw new InvalidOperationException(string.Format("Could not find a constructor for type {0}.", type.Name));
+					throw new InvalidOperationException(string.Format(CultureInfo.InvariantCulture, "Could not find a constructor for type {0}.", type.Name));
 
 				_constructorInfoByType.Add(type, constructorInfo);
 			}
@@ -147,11 +149,11 @@ namespace EVE.ISXEVE
 			//Tracing.SendCallback(methodName, "loop add items");
 			for (var i = 1; i <= count; i++)
 			{
-				var objectLso = index.GetIndex(i.ToString());
+				var objectLso = index.GetIndex(i.ToString(CultureInfo.CurrentCulture));
 
 				if (LavishScriptObject.IsNullOrInvalid(objectLso))
 				{
-					Tracing.SendCallback(String.Format("Error: Index contains invalid LSO. NewObject will fail; aborting."));
+					Tracing.SendCallback(String.Format(CultureInfo.InvariantCulture, "Error: Index contains invalid LSO. NewObject will fail; aborting."));
 					return list;
 				}
 
@@ -159,13 +161,13 @@ namespace EVE.ISXEVE
 
 				if (objectId == null)
 				{
-					Tracing.SendCallback(String.Format("Error: LStype \"{0}\" has no ID member. NewObject will fail; aborting.", lsTypeName));
+					Tracing.SendCallback(String.Format(CultureInfo.InvariantCulture, "Error: LStype \"{0}\" has no ID member. NewObject will fail; aborting.", lsTypeName));
 					return list;
 				}
 
 				if (objectId == string.Empty)
 				{
-					Tracing.SendCallback(String.Format("Error: LStype \"{0}\" has an ID member but it is returning an empty string. NewObject will fail; aborting.", lsTypeName));
+					Tracing.SendCallback(String.Format(CultureInfo.InvariantCulture, "Error: LStype \"{0}\" has an ID member but it is returning an empty string. NewObject will fail; aborting.", lsTypeName));
 					return list;
 				}
 
@@ -183,7 +185,7 @@ namespace EVE.ISXEVE
 			var count = index.GetMember<int>("Used");
 
 			for (var i = 1; i <= count; i++)
-				list.Add(index.GetIndex<T>(i.ToString()));
+				list.Add(index.GetIndex<T>(i.ToString(CultureInfo.CurrentCulture)));
 
 			return list;
 		}
@@ -198,8 +200,8 @@ namespace EVE.ISXEVE
 		public static T GetIndexMember<T>(LavishScriptObject index, int number)
 		{
 			if (typeof(T).IsSubclassOf(typeof(LavishScriptObject)))
-				return (T)typeof(T).GetConstructor(new[] { typeof(LavishScriptObject) }).Invoke(new object[] { index.GetIndex(number.ToString()) });
-			return index.GetIndex<T>(number.ToString());
+				return (T)typeof(T).GetConstructor(new[] { typeof(LavishScriptObject) }).Invoke(new object[] { index.GetIndex(number.ToString(CultureInfo.CurrentCulture)) });
+			return index.GetIndex<T>(number.ToString(CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>
@@ -261,20 +263,20 @@ namespace EVE.ISXEVE
 			number += 1;
 
 			if (obj == null || !obj.IsValid || number <= 0)
-				return default(T);
+				return default;
 
 			using (var index = LavishScript.Objects.NewObject("index:" + lsTypeName))
 			{
 				var allargs = PrefixArray(index.LSReference, args);
 
 				if (!obj.ExecuteMethod(methodName, allargs))
-					return default(T);
+					return default;
 
 				using (var used = index.GetMember("Used"))
 				{
 					// if it failed or we want one off the end, return
 					if (LavishScriptObject.IsNullOrInvalid(used) || used.GetValue<int>() < number)
-						return default(T);
+						return default;
 				}
 
 				var member = GetIndexMember<T>(index, number);
@@ -328,7 +330,7 @@ namespace EVE.ISXEVE
 			number += 1;
 
 			if (obj == null || !obj.IsValid)
-				return default(T);
+				return default;
 
 			using (var index = LavishScript.Objects.NewObject("index:" + lsTypeName))
 			{
@@ -337,7 +339,7 @@ namespace EVE.ISXEVE
 				using (var retval = obj.GetMember(memberName, allargs))
 				{
 					if (LavishScriptObject.IsNullOrInvalid(retval) || retval.GetValue<int>() < number)
-						return default(T);
+						return default;
 				}
 
 				var member = GetIndexMember<T>(index, number);
