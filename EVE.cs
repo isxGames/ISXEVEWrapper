@@ -35,16 +35,18 @@ namespace EVE.ISXEVE
 		{
 		}
 		#endregion
-		 /// <summary>
-                 ///   Optimisation Route
-                 /// </summary>
-                 /// <returns></returns>
+
+		/// <summary>
+		///   Optimisation Route
+		/// </summary>
+		/// <returns></returns>
 		public bool OptimizeAutopilotRoute()
 		{
 		    Tracing.SendCallback("EVE.OptimizeAutopilotRoute");
 		    return ExecuteMethod("OptimizeAutopilotRoute");
 		}
-			/// <summary>
+		
+		/// <summary>
 		/// Wrapper for the StationID member of the eve type.
 		/// </summary>
 		/// <param name="stationID"></param>

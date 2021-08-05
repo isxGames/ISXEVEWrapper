@@ -1350,6 +1350,31 @@ namespace EVE.ISXEVE
 			}
 		}
 
+		public enum BookmarkExpiry
+		{
+			Forever,
+			ThreeHours,
+			TwoDays
+		}
+
+		/// <summary>
+		/// Creates a bookmark.
+		/// </summary>
+		public bool CreateBookmark(string Label, string Notes, string Location)
+		{
+
+			return CreateBookmark(Label, Notes, Location, BookmarkExpiry.Forever);
+		}
+
+		/// <summary>
+		/// Creates a bookmark.
+		/// </summary>
+		public bool CreateBookmark(string Label, string Notes, string Location, BookmarkExpiry bookmarkExpiry)
+		{
+			Tracing.SendCallback("EVE.CreateBookmark", Label, Notes, Location, bookmarkExpiry.ToString("D"));
+			return ExecuteMethod("CreateBookmark", Label, Notes, Location, bookmarkExpiry.ToString("D"));
+		}
+
 		/// <summary>
 		/// For stations, similar to choosing 'Dock' from the station right click menu while in space.
 		/// </summary>
