@@ -88,6 +88,14 @@ namespace EVE.ISXEVE
 		{
 			get { return this.GetInt("SolarSystemID"); }
 		}
+		
+		/// <summary>
+		/// Wrapper for the Distance member of a bookmark object
+		/// </summary>
+		public double Distance
+		{
+			get { return this.GetDouble("Distance"); }
+		}
 
 		/// <summary>
 		/// Wrapper for the X member of a bookmark object
