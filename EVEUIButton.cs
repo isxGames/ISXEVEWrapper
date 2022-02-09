@@ -10,7 +10,6 @@ namespace EVE.ISXEVE
         {
 
         }
-
         #endregion
 
         #region Members
@@ -19,22 +18,15 @@ namespace EVE.ISXEVE
         {
             get { return _Text ?? (_Text = this.GetString("Text")); }
         }
-
-
-
-
         #endregion
 
         #region Methods
-
         public bool Press()
         {
             Tracing.SendCallback("EVEUIButton.Press");
             return ExecuteMethod("Press");
 
         }
-
-
         #endregion
 
     }

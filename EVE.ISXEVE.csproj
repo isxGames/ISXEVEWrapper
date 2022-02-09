@@ -74,11 +74,11 @@
   <ItemGroup>
     <Reference Include="Lavish.InnerSpace, Version=1.0.0.0, Culture=neutral, PublicKeyToken=9029a3ab4cbe108d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\InnerSpace\Lavish.InnerSpace.dll</HintPath>
+      <HintPath>..\Lavish.InnerSpace.dll</HintPath>
     </Reference>
     <Reference Include="Lavish.LavishVMRuntime, Version=1.0.0.0, Culture=neutral, PublicKeyToken=9029a3ab4cbe108d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\InnerSpace\Lavish.LavishVMRuntime.dll</HintPath>
+      <HintPath>..\Lavish.LavishVMRuntime.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -116,6 +116,7 @@
     <Compile Include="EveSellItemsWindow.cs" />
     <Compile Include="EveFittingWindow.cs" />
     <Compile Include="EveRepairShopWindow.cs" />
+    <Compile Include="EVEUIButton.cs" />
     <Compile Include="EVEUICombo.cs" />
     <Compile Include="EVEUISingleLineEdit.cs" />
     <Compile Include="EVEUILabel.cs" />
