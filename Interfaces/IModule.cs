@@ -524,7 +524,7 @@ namespace EVE.ISXEVE.Interfaces
         bool PutOffline();
 
         /// <summary>
-        /// Wrapper for the PutOffline method of a module object
+        /// Wrapper for the ToggleOverload method of a module object
         /// </summary>
         /// <returns></returns>
         bool ToggleOverload();

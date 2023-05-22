@@ -6,10 +6,7 @@ namespace EVE.ISXEVE
     public class EVEUIButton : LavishScriptObject
     {
         #region Constructors
-        public EVEUIButton(LavishScriptObject obj) : base(obj)
-        {
-
-        }
+        public EVEUIButton(LavishScriptObject obj) : base(obj)  {}
         #endregion
 
         #region Members
@@ -25,9 +22,7 @@ namespace EVE.ISXEVE
         {
             Tracing.SendCallback("EVEUIButton.Press");
             return ExecuteMethod("Press");
-
         }
         #endregion
-
     }
 }
