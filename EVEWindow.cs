@@ -96,11 +96,11 @@ namespace EVE.ISXEVE
 
         #endregion
 
-        #region Members
-        /// <summary>
-        /// Wrapper for the Caption member of the evewindow type.
-        /// </summary>
-        public string Caption
+    #region Members
+    /// <summary>
+    /// Wrapper for the Caption member of the evewindow type.
+    /// </summary>
+    public string Caption
 		{
 			get { return this.GetString("Caption"); }
 		}
@@ -127,27 +127,28 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
-		/// how many buttons are  in the window 
+		/// how many buttons are in the window 
 		/// </summary>
 		public int NumButtons
 		{
 			get { return this.GetInt("NumButtons"); }
 		}
+    
 		/// <summary>
 		/// give button object for name: like "ok", "Accept"...
 		/// </summary>
 		public EVEUIButton Button(string buttonName)
 		{
-			return new EVEUIButton(GetMember("Button", buttonName));
+		    return new EVEUIButton(GetMember("Button", buttonName));
 		}
+    
 		/// <summary>
 		/// give button object for nummber in NumButtons : "1", "2", "3"...
 		/// </summary>
 		public EVEUIButton Button(int i)
 		{
-			return new EVEUIButton(GetMember("Button", i.ToString(CultureInfo.CurrentCulture)));
+		    return new EVEUIButton(GetMember("Button", i.ToString(CultureInfo.CurrentCulture)));      
 		}
-
 		#endregion
 
 		#region Methods

@@ -1,4 +1,4 @@
-﻿using EVE.ISXEVE.Extensions;
+using EVE.ISXEVE.Extensions;
 using LavishScriptAPI;
 
 namespace EVE.ISXEVE
@@ -6,11 +6,7 @@ namespace EVE.ISXEVE
     public class EVEUIButton : LavishScriptObject
     {
         #region Constructors
-        public EVEUIButton(LavishScriptObject obj) : base(obj)
-        {
-
-        }
-
+        public EVEUIButton(LavishScriptObject obj) : base(obj)  {}
         #endregion
 
         #region Members
@@ -19,23 +15,14 @@ namespace EVE.ISXEVE
         {
             get { return _Text ?? (_Text = this.GetString("Text")); }
         }
-
-
-
-
         #endregion
 
         #region Methods
-
         public bool Press()
         {
             Tracing.SendCallback("EVEUIButton.Press");
             return ExecuteMethod("Press");
-
         }
-
-
         #endregion
-
     }
 }
