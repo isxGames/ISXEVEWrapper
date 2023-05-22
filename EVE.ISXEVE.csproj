@@ -14,7 +14,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>EVE.ISXEVE</RootNamespace>
-    <AssemblyName>ISXEVEWrapperQu</AssemblyName>
+    <AssemblyName>ISXEVEWrapper</AssemblyName>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
@@ -48,7 +48,7 @@
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>CODE_ANALYSIS;DEBUG;TRACE</DefineConstants>
-    <DocumentationFile>bin\Debug\ISXEVEWrapperQu.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\ISXEVEWrapper.xml</DocumentationFile>
     <NoWarn>1591</NoWarn>
     <DebugType>full</DebugType>
     <PlatformTarget>x64</PlatformTarget>
@@ -61,7 +61,7 @@
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
-    <DocumentationFile>bin\Release\ISXEVEWrapperQu.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\ISXEVEWrapper.xml</DocumentationFile>
     <Optimize>true</Optimize>
     <WarningLevel>3</WarningLevel>
     <NoWarn>1591</NoWarn>
