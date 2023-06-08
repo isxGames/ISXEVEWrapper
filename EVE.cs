@@ -51,7 +51,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		/// <param name="stationID"></param>
 		/// <returns></returns>
-		public Station Station(int stationID)
+		public Station Station(long stationID)
 		{
 			Tracing.SendCallback("EVE.Station", stationID);
 			return GetMember<Station>("Station", stationID.ToString(CultureInfo.CurrentCulture));
@@ -284,7 +284,7 @@ namespace EVE.ISXEVE
 		/// <summary>
 		/// 1.  NumAssetsAtStation[#] (int type) [Returns the number of items currently housed at the StationID# given.]
 		/// </summary>
-		public int NumAssetsAtStation(int stationID)
+		public int NumAssetsAtStation(long stationID)
 		{
 			Tracing.SendCallback("EVE.NumAssetsAtStation", stationID);
 			return this.GetInt("NumAssetsAtStation", stationID.ToString(CultureInfo.CurrentCulture));

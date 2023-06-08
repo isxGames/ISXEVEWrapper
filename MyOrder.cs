@@ -122,9 +122,9 @@ namespace EVE.ISXEVE
 		/// <summary>
 		///  10. StationID                                         (int type)     [Station where the order is located]
 		/// </summary>
-		public int StationID
+		public long StationID
 		{
-			get { return this.GetInt("StationID"); }
+			get { return this.GetInt64("StationID"); }
 		}
 		/// <summary>
 		///  11. Station                                           (string type)
