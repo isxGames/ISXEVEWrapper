@@ -21,7 +21,7 @@ namespace EVE.ISXEVE.Interfaces
 		/// </summary>
 		/// <param name="stationID"></param>
 		/// <returns></returns>
-		Station Station(int stationID);
+		Station Station(long stationID);
 
 		/// <summary>
 		/// Number of entities currently in range of your overhead
@@ -140,7 +140,7 @@ namespace EVE.ISXEVE.Interfaces
 		/// <summary>
 		/// 1.  NumAssetsAtStation[#] (int type) [Returns the number of items currently housed at the StationID# given.]
 		/// </summary>
-		int NumAssetsAtStation(int stationID);
+		int NumAssetsAtStation(long stationID);
 
 		/// <summary>
 		/// 2.  GetLocationNameByID[#] (string type) [Useful for changing a StationID# to an actual name.]

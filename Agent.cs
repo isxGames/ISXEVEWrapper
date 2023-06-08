@@ -289,16 +289,16 @@ namespace EVE.ISXEVE
 			get { return _station ?? (_station = this.GetString("Station")); }
 		}
 
-		private int? _stationId;
+		private long? _stationId;
 		/// <summary>
 		/// Wrapper for the StationID member of the agent type.
 		/// </summary>
-		public int StationID
+		public long StationID
 		{
 			get
 			{
 				if (_stationId == null)
-					_stationId = this.GetInt("StationID");
+					_stationId = this.GetInt64("StationID");
 				return _stationId.Value;
 			}
 		}
