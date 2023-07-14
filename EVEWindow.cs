@@ -133,6 +133,26 @@ namespace EVE.ISXEVE
 		{
 			get { return this.GetInt("NumButtons"); }
 		}
+
+  		public int X
+		{
+			get { return this.GetInt("X"); }
+		}
+
+		public int Y
+		{
+			get { return this.GetInt("Y"); }
+		}
+
+		public int Height
+		{
+			get { return this.GetInt("Height"); }
+		}
+
+		public int Width
+		{
+			get { return this.GetInt("Width"); }
+		}
     
 		/// <summary>
 		/// give button object for name: like "ok", "Accept"...
