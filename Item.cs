@@ -264,6 +264,13 @@ namespace EVE.ISXEVE
 			ExecuteMethod("ConsumeBooster");
 		}
 
+  		public bool Compress()
+		{
+			Tracing.SendCallback("Item.Compress");
+			return ExecuteMethod("Compress");
+		}
+
+
 		public void InjectSkill()
 		{
 			Tracing.SendCallback("Item.InjectSkill");
