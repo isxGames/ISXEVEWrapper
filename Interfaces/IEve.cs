@@ -67,7 +67,7 @@ namespace EVE.ISXEVE.Interfaces
 		/// Returns the number of chat channels currently open in your UI
 		/// </summary>
 		/// <returns></returns>
-		Int32 NumOpenChannels { get; }
+		Int32 ChatChannelCount { get; }
 
 		/// <summary>
 		/// Returns a list of the "SystemIDs" of the systems along your current destination (autopilot) route.
