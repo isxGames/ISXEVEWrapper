@@ -276,9 +276,9 @@ namespace EVE.ISXEVE
 		/// Returns the number of chat channels currently open in your UI
 		/// </summary>
 		/// <returns></returns>
-		public Int32 NumOpenChannels
-		{
-			get { return this.GetInt("NumOpenChannels"); }
+		public Int32 ChatChannelCount
+        {
+			get { return this.GetInt("ChatChannelCount"); }
 		}
 
 		/// <summary>
