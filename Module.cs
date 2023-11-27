@@ -179,7 +179,7 @@ namespace EVE.ISXEVE
 			get
 			{
 				if (_isActivatable == null)
-					_isActivatable = this.GetBool("IsActivatabe");
+					_isActivatable = this.GetBool("IsActivatable");
 				return _isActivatable.Value;
 			}
 		}
