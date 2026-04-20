@@ -543,6 +543,48 @@ namespace EVE.ISXEVE
 			}
 		}
 
+		private double? _angularVelocity;
+		/// <summary>
+		/// Wrapper for the AngularVelocity member of the entity type.
+		/// </summary>
+		public double AngularVelocity
+		{
+			get
+			{
+				if (_angularVelocity == null)
+					_angularVelocity = this.GetDouble("AngularVelocity");
+				return _angularVelocity.Value;
+			}
+		}
+
+		private double? _radialVelocity;
+		/// <summary>
+		/// Wrapper for the RadialVelocity member of the entity type.
+		/// </summary>
+		public double RadialVelocity
+		{
+			get
+			{
+				if (_radialVelocity == null)
+					_radialVelocity = this.GetDouble("RadialVelocity");
+				return _radialVelocity.Value;
+			}
+		}
+
+		private double? _transversalVelocity;
+		/// <summary>
+		/// Wrapper for the TransversalVelocity member of the entity type.
+		/// </summary>
+		public double TransversalVelocity
+		{
+			get
+			{
+				if (_transversalVelocity == null)
+					_transversalVelocity = this.GetDouble("TransversalVelocity");
+				return _transversalVelocity.Value;
+			}
+		}
+
 		private double? _distance;
 		/// <summary>
 		/// Wrapper for the Distance member of the entity type.
@@ -565,6 +607,20 @@ namespace EVE.ISXEVE
 		public double DistanceTo(long entityId)
 		{
 			return this.GetDouble("DistanceTo", entityId.ToString(CultureInfo.CurrentCulture));
+		}
+
+		private double? _distance2;
+		/// <summary>
+		/// Wrapper for the Distance2 member of the entity type.
+		/// </summary>
+		public double Distance2
+		{
+			get
+			{
+				if (_distance2 == null)
+					_distance2 = this.GetDouble("Distance2");
+				return _distance2.Value;
+			}
 		}
 
 		private double? _followRange;
@@ -797,6 +853,62 @@ namespace EVE.ISXEVE
 			}
 		}
 
+		private bool? _isCelestial;
+		/// <summary>
+		/// Wrapper for the IsCelestial member of the entity type.
+		/// </summary>
+		public bool IsCelestial
+		{
+			get
+			{
+				if (_isCelestial == null)
+					_isCelestial = this.GetBool("IsCelestial");
+				return _isCelestial.Value;
+			}
+		}
+
+		private bool? _isFleetMember;
+		/// <summary>
+		/// Wrapper for the IsFleetMember member of the entity type.
+		/// </summary>
+		public bool IsFleetMember
+		{
+			get
+			{
+				if (_isFleetMember == null)
+					_isFleetMember = this.GetBool("IsFleetMember");
+				return _isFleetMember.Value;
+			}
+		}
+
+		private bool? _isJammingMe;
+		/// <summary>
+		/// Wrapper for the IsJammingMe member of the entity type.
+		/// </summary>
+		public bool IsJammingMe
+		{
+			get
+			{
+				if (_isJammingMe == null)
+					_isJammingMe = this.GetBool("IsJammingMe");
+				return _isJammingMe.Value;
+			}
+		}
+
+		private bool? _isDockable;
+		/// <summary>
+		/// Wrapper for the IsDockable member of the entity type.
+		/// </summary>
+		public bool IsDockable
+		{
+			get
+			{
+				if (_isDockable == null)
+					_isDockable = this.GetBool("IsDockable");
+				return _isDockable.Value;
+			}
+		}
+
 		private bool? _haveLootRights;
 		/// <summary>
 		/// Wrapper for the HaveLootRights member of the entity type.
@@ -996,6 +1108,42 @@ namespace EVE.ISXEVE
 			get { return _entityWormhole ?? (_entityWormhole = new EntityWormhole(GetMember("ToWormhole"))); }
 		}
 
+		private FleetMember _toFleetMember;
+		/// <summary>
+		/// Wrapper for the ToFleetMember member of the entity type.
+		/// </summary>
+		public FleetMember ToFleetMember
+		{
+			get { return _toFleetMember ?? (_toFleetMember = new FleetMember(GetMember("ToFleetMember"))); }
+		}
+
+		private EveInvWindow _cargoWindow;
+		/// <summary>
+		/// Wrapper for the CargoWindow member of the entity type.
+		/// </summary>
+		public EveInvWindow CargoWindow
+		{
+			get { return _cargoWindow ?? (_cargoWindow = new EveInvWindow(GetMember("CargoWindow"))); }
+		}
+
+		private EveInvWindow _lootWindow;
+		/// <summary>
+		/// Wrapper for the LootWindow member of the entity type.
+		/// </summary>
+		public EveInvWindow LootWindow
+		{
+			get { return _lootWindow ?? (_lootWindow = new EveInvWindow(GetMember("LootWindow"))); }
+		}
+
+		private EveInvWindow _storageWindow;
+		/// <summary>
+		/// Wrapper for the StorageWindow member of the entity type.
+		/// </summary>
+		public EveInvWindow StorageWindow
+		{
+			get { return _storageWindow ?? (_storageWindow = new EveInvWindow(GetMember("StorageWindow"))); }
+		}
+
 		private Int64? _surveyScannerOreQuantity;
 		/// <summary>
 		/// Wrapper for the SurveyScannerOreQuantity member of the Entity datatype.
@@ -1133,6 +1281,15 @@ namespace EVE.ISXEVE
 		#endregion
 
 		#region Methods
+		/// <summary>
+		/// Wrapper for the Set method of the entity type.
+		/// </summary>
+		public bool Set(long entityID)
+		{
+			Tracing.SendCallback("Entity.Set", entityID.ToString(CultureInfo.CurrentCulture));
+			return ExecuteMethod("Set", entityID.ToString(CultureInfo.CurrentCulture));
+		}
+
 		/// <summary>
 		/// Activate the entity.
 		/// </summary>
@@ -1291,6 +1448,69 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
+		/// Wrapper for the OpenCargo method of the entity type.
+		/// </summary>
+		public bool OpenCargo()
+		{
+			Tracing.SendCallback("Entity.OpenCargo");
+			return ExecuteMethod("OpenCargo");
+		}
+
+		/// <summary>
+		/// Wrapper for the OpenCorpHangars method of the entity type.
+		/// </summary>
+		public bool OpenCorpHangars()
+		{
+			Tracing.SendCallback("Entity.OpenCorpHangars");
+			return ExecuteMethod("OpenCorpHangars");
+		}
+
+		/// <summary>
+		/// Wrapper for the OpenMaintenanceBay method of the entity type.
+		/// </summary>
+		public bool OpenMaintenanceBay()
+		{
+			Tracing.SendCallback("Entity.OpenMaintenanceBay");
+			return ExecuteMethod("OpenMaintenanceBay");
+		}
+
+		/// <summary>
+		/// Wrapper for the OpenStorage method of the entity type.
+		/// </summary>
+		public bool OpenStorage()
+		{
+			Tracing.SendCallback("Entity.OpenStorage");
+			return ExecuteMethod("OpenStorage");
+		}
+
+		/// <summary>
+		/// Wrapper for the CloseCargo method of the entity type.
+		/// </summary>
+		public bool CloseCargo()
+		{
+			Tracing.SendCallback("Entity.CloseCargo");
+			return ExecuteMethod("CloseCargo");
+		}
+
+		/// <summary>
+		/// Wrapper for the CloseStorage method of the entity type.
+		/// </summary>
+		public bool CloseStorage()
+		{
+			Tracing.SendCallback("Entity.CloseStorage");
+			return ExecuteMethod("CloseStorage");
+		}
+
+		/// <summary>
+		/// Wrapper for the GetCorpHangarsCargo method of the entity type.
+		/// </summary>
+		public List<IItem> GetCorpHangarsCargo()
+		{
+			Tracing.SendCallback("Entity.GetCorpHangarsCargo");
+			return Util.GetListFromMethod<IItem>(this, "GetCorpHangarsCargo", "item");
+		}
+
+		/// <summary>
 		/// Same as right click, Stack All -- consolidates stacks
 		/// </summary>
 		public bool StackAllCargo()
@@ -1308,6 +1528,24 @@ namespace EVE.ISXEVE
 		{
 			Tracing.SendCallback("Entity.SetName", Name);
 			return ExecuteMethod("SetName", Name);
+		}
+
+		/// <summary>
+		/// Wrapper for the SetFleetTag method of the entity type.
+		/// </summary>
+		public bool SetFleetTag(string tag)
+		{
+			Tracing.SendCallback("Entity.SetFleetTag", tag);
+			return ExecuteMethod("SetFleetTag", tag);
+		}
+
+		/// <summary>
+		/// Wrapper for the MarkWreckViewed method of the entity type.
+		/// </summary>
+		public bool MarkWreckViewed()
+		{
+			Tracing.SendCallback("Entity.MarkWreckViewed");
+			return ExecuteMethod("MarkWreckViewed");
 		}
 
 
@@ -1473,6 +1711,76 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
+		/// Wrapper for the ScoopToCargoHold method of the entity type.
+		/// </summary>
+		public bool ScoopToCargoHold()
+		{
+			if (Tracing.Callback != null)
+				Tracing.SendCallback("Entity.ScoopToCargoHold", string.Empty);
+			return ExecuteMethod("ScoopToCargoHold");
+		}
+
+		/// <summary>
+		/// Wrapper for the ScoopToShipMaintenanceBay method of the entity type.
+		/// </summary>
+		public bool ScoopToShipMaintenanceBay()
+		{
+			if (Tracing.Callback != null)
+				Tracing.SendCallback("Entity.ScoopToShipMaintenanceBay", string.Empty);
+			return ExecuteMethod("ScoopToShipMaintenanceBay");
+		}
+
+		/// <summary>
+		/// Wrapper for the AbandonDrone method of the entity type.
+		/// </summary>
+		public bool AbandonDrone()
+		{
+			if (Tracing.Callback != null)
+				Tracing.SendCallback("Entity.AbandonDrone", string.Empty);
+			return ExecuteMethod("AbandonDrone");
+		}
+
+		/// <summary>
+		/// Wrapper for the DroneAssist method of the entity type.
+		/// </summary>
+		public bool DroneAssist()
+		{
+			if (Tracing.Callback != null)
+				Tracing.SendCallback("Entity.DroneAssist", string.Empty);
+			return ExecuteMethod("DroneAssist");
+		}
+
+		/// <summary>
+		/// Wrapper for the DroneGuard method of the entity type.
+		/// </summary>
+		public bool DroneGuard()
+		{
+			if (Tracing.Callback != null)
+				Tracing.SendCallback("Entity.DroneGuard", string.Empty);
+			return ExecuteMethod("DroneGuard");
+		}
+
+		/// <summary>
+		/// Wrapper for the DelegateFighterControl method of the entity type.
+		/// </summary>
+		public bool DelegateFighterControl()
+		{
+			if (Tracing.Callback != null)
+				Tracing.SendCallback("Entity.DelegateFighterControl", string.Empty);
+			return ExecuteMethod("DelegateFighterControl");
+		}
+
+		/// <summary>
+		/// Wrapper for the ReturnFighterControl method of the entity type.
+		/// </summary>
+		public bool ReturnFighterControl()
+		{
+			if (Tracing.Callback != null)
+				Tracing.SendCallback("Entity.ReturnFighterControl", string.Empty);
+			return ExecuteMethod("ReturnFighterControl");
+		}
+
+		/// <summary>
 		/// Mines only
 		/// </summary>
 		public bool EngageMyTarget()
@@ -1486,6 +1794,15 @@ namespace EVE.ISXEVE
 		public bool SetAsSelectedItem()
 		{
 			return ExecuteMethod("SetAsSelectedItem");
+		}
+
+		/// <summary>
+		/// Wrapper for the AccessCustomsOffice method of the entity type.
+		/// </summary>
+		public bool AccessCustomsOffice()
+		{
+			Tracing.SendCallback("Entity.AccessCustomsOffice");
+			return ExecuteMethod("AccessCustomsOffice");
 		}
 		#endregion
 	}
