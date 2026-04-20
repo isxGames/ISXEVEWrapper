@@ -138,6 +138,14 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
+		/// Wrapper for the Created member of a bookmark object (evetime)
+		/// </summary>
+		public EVETime Created
+		{
+			get { return new EVETime(GetMember("Created")); }
+		}
+
+		/// <summary>
 		/// Wrapper for the DateCreated member of a bookmark object
 		/// </summary>
 		public string DateCreated
@@ -233,6 +241,18 @@ namespace EVE.ISXEVE
 			}
 		}
 
+		/// <summary>
+		/// Wrapper for the FolderID member of the 'bookmark' type.
+		/// </summary>
+		public Int64 FolderID
+		{
+			get
+			{
+				Tracing.SendCallback("BookMark.FolderID");
+				return this.GetInt64("FolderID");
+			}
+		}
+
 		private int? _jumpsTo;
 		public int JumpsTo
 		{
@@ -286,6 +306,24 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
+		/// Warp fleet to the given distance
+		/// </summary>
+		public bool WarpFleetTo(int Distance)
+		{
+			Tracing.SendCallback("BM.WarpFleetTo", Distance.ToString(CultureInfo.CurrentCulture));
+			return ExecuteMethod("WarpFleetTo", Distance.ToString(CultureInfo.CurrentCulture));
+		}
+
+		/// <summary>
+		/// Approach the bookmark location.
+		/// </summary>
+		public bool Approach()
+		{
+			Tracing.SendCallback("BM.Approach");
+			return ExecuteMethod("Approach");
+		}
+
+		/// <summary>
 		/// Removes bookmark.
 		/// </summary>
 		public bool Remove()
@@ -310,6 +348,24 @@ namespace EVE.ISXEVE
 		{
 			Tracing.SendCallback("BM.AddWaypoint");
 			return ExecuteMethod("AddWaypoint");
+		}
+
+		/// <summary>
+		/// Add bookmark to waypoint list. If insertAsFirst is true, the bookmark is inserted as the first waypoint.
+		/// </summary>
+		public bool AddWaypoint(bool insertAsFirst)
+		{
+			Tracing.SendCallback("BM.AddWaypoint", insertAsFirst.ToString(CultureInfo.CurrentCulture));
+			return ExecuteMethod("AddWaypoint", insertAsFirst.ToString(CultureInfo.CurrentCulture));
+		}
+
+		/// <summary>
+		/// Clear the waypoint associated with this bookmark.
+		/// </summary>
+		public bool ClearWaypoint()
+		{
+			Tracing.SendCallback("BM.ClearWaypoint");
+			return ExecuteMethod("ClearWaypoint");
 		}
 
 		/// <summary>
