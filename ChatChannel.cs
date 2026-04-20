@@ -37,6 +37,16 @@ namespace EVE.ISXEVE
             get { return this.GetString("MOTD"); }
         }
 
+        public string Category
+        {
+            get { return this.GetString("Category"); }
+        }
+
+        public EVETime LastActivityTime
+        {
+            get { return new EVETime(GetMember("LastActivityTime")); }
+        }
+
         public bool NewMessageReceived
         {
             get { return this.GetBool("NewMessageReceived"); }

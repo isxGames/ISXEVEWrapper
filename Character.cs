@@ -696,6 +696,17 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
+		/// Wrapper for the OpenCorpHangar method of the character type.
+		/// Only functions while in station or a structure.
+		/// </summary>
+		/// <returns></returns>
+		public bool OpenCorpHangar()
+		{
+			Tracing.SendCallback("Character.OpenCorpHangar");
+			return ExecuteMethod("OpenCorpHangar");
+		}
+
+		/// <summary>
 		///  2. UpdateMyOrders   
 		///     ~ This method should be called before any calling of "GetMyOrders".
 		/// </summary>
