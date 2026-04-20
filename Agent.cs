@@ -268,6 +268,48 @@ namespace EVE.ISXEVE
 			}
 		}
 
+		private float? _standingToCorp;
+		/// <summary>
+		/// Wrapper for the StandingToCorp member of the agent type.
+		/// </summary>
+		public float StandingToCorp
+		{
+			get
+			{
+				if (_standingToCorp == null)
+					_standingToCorp = this.GetFloat("StandingToCorp");
+				return _standingToCorp.Value;
+			}
+		}
+
+		private float? _standingToFaction;
+		/// <summary>
+		/// Wrapper for the StandingToFaction member of the agent type.
+		/// </summary>
+		public float StandingToFaction
+		{
+			get
+			{
+				if (_standingToFaction == null)
+					_standingToFaction = this.GetFloat("StandingToFaction");
+				return _standingToFaction.Value;
+			}
+		}
+
+		private float? _effectiveStanding;
+		/// <summary>
+		/// Wrapper for the EffectiveStanding member of the agent type.
+		/// </summary>
+		public float EffectiveStanding
+		{
+			get
+			{
+				if (_effectiveStanding == null)
+					_effectiveStanding = this.GetFloat("EffectiveStanding");
+				return _effectiveStanding.Value;
+			}
+		}
+
 		private SolarSystem _solarsystem;
 		/// <summary>
 		/// Wrapper for the Solarsystem member of the agent type.
