@@ -45,9 +45,18 @@ namespace EVE.ISXEVE
 			Mining,
 			Unknown
 		}
+
 		#endregion
 
 		#region Members
+		/// <summary>
+		/// Wrapper for the ID member of the agentmission type.
+		/// </summary>
+		public int ID
+		{
+			get { return this.GetInt("ID"); }
+		}
+
 		/// <summary>
 		/// Wrapper for the State member of the agentmission type.
 		/// </summary>
@@ -105,6 +114,14 @@ namespace EVE.ISXEVE
 		{
 			Tracing.SendCallback("AgentMission.GetDetails");
 			return Util.GetListFromMethod<BookMark>(this, "GetBookmarks", "bookmark");
+		}
+
+		/// <summary>
+		/// Wrapper for the ImportantMission member of the agentmission type.
+		/// </summary>
+		public bool ImportantMission
+		{
+			get { return this.GetBool("ImportantMission"); }
 		}
 
 		public bool RemoteOfferable
