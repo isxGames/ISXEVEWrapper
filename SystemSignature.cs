@@ -205,6 +205,25 @@ namespace EVE.ISXEVE
         }
 
         /// <summary>
+        /// Wrapper for the WarpTo method of the SystemSignature datatype. Warps to 0 distance with FleetWarp=false.
+        /// </summary>
+        /// <returns></returns>
+        public bool WarpTo()
+        {
+            return ExecuteMethod("WarpTo");
+        }
+
+        /// <summary>
+        /// Wrapper for the WarpTo method of the SystemSignature datatype. Warps to the given distance with FleetWarp=false.
+        /// </summary>
+        /// <param name="distance"></param>
+        /// <returns></returns>
+        public bool WarpTo(int distance)
+        {
+            return ExecuteMethod("WarpTo", distance.ToString(CultureInfo.CurrentCulture));
+        }
+
+        /// <summary>
         /// Wrapper for the WarpTo method of the SystemSignature datatype.
         /// </summary>
         /// <param name="distance"></param>

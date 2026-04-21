@@ -137,6 +137,26 @@ namespace EVE.ISXEVE
 	    {
 	        get { return _solarSystem ?? (_solarSystem = new SolarSystem(GetMember("SolarSystem"))); }
 	    }
+
+		/// <summary>
+		/// Wrapper for the Cargo[index] member of the station datatype. Returns the cargo item at the given 1-based index.
+		/// </summary>
+		/// <param name="index">1-based cargo slot index.</param>
+		public Item Cargo(int index)
+		{
+			Tracing.SendCallback("Station.Cargo", index.ToString(System.Globalization.CultureInfo.CurrentCulture));
+			return new Item(GetMember("Cargo", index.ToString(System.Globalization.CultureInfo.CurrentCulture)));
+		}
+
+		/// <summary>
+		/// Wrapper for the Cargo[name] member of the station datatype. Returns the cargo item matching the given name.
+		/// </summary>
+		/// <param name="name">Item name to look up.</param>
+		public Item Cargo(string name)
+		{
+			Tracing.SendCallback("Station.Cargo", name);
+			return new Item(GetMember("Cargo", name));
+		}
 		#endregion
 
 		#region Methods

@@ -1,4 +1,6 @@
-﻿using LavishScriptAPI;
+﻿using System.Globalization;
+
+using LavishScriptAPI;
 
 namespace EVE.ISXEVE
 {
@@ -17,6 +19,16 @@ namespace EVE.ISXEVE
         public bool StartScan()
         {
             return ExecuteMethod("StartScan");
+        }
+
+        /// <summary>
+        /// Starts a single cycle of the survey module. When showResultsWindow is true, the in-game results window is shown (ISXEVE blocks it by default).
+        /// </summary>
+        /// <param name="showResultsWindow"></param>
+        /// <returns></returns>
+        public bool StartScan(bool showResultsWindow)
+        {
+            return ExecuteMethod("StartScan", showResultsWindow.ToString(CultureInfo.CurrentCulture));
         }
 
         /// <summary>

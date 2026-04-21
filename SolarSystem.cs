@@ -1,4 +1,6 @@
-﻿using EVE.ISXEVE.Extensions;
+﻿using System.Collections.Generic;
+
+using EVE.ISXEVE.Extensions;
 using LavishScriptAPI;
 
 namespace EVE.ISXEVE
@@ -80,6 +82,33 @@ namespace EVE.ISXEVE
         {
             Tracing.SendCallback("Interstellar.SetDestination");
             return ExecuteMethod("SetDestination");
+        }
+
+        /// <summary>
+        /// Wrapper for the GetPlanetIDs method of the solarsystem datatype. Populates and returns a list of planet item IDs in this solar system.
+        /// </summary>
+        /// <returns></returns>
+        public List<int> GetPlanetIDs()
+        {
+            Tracing.SendCallback("SolarSystem.GetPlanetIDs");
+            return Util.GetListFromMethod<int>(this, "GetPlanetIDs", "int");
+        }
+
+        /// <summary>
+        /// Wrapper for the GetNumPlanetsByType method of the solarsystem datatype.
+        /// </summary>
+        /// <remarks>
+        /// The underlying LavishScript method populates a collection:int in-place, keyed by planet-type-name (string) with int counts.
+        /// The caller must pre-declare a variable of type "collection:int" and pass its name. Example:
+        ///   <c>declare myPlanets collection:int</c> ...then... <c>${Universe[${Me.SolarSystemID}].GetNumPlanetsByType[myPlanets]}</c>
+        /// The C# wrapper cannot return the collection directly because Util has no collection-to-dict helper.
+        /// </remarks>
+        /// <param name="collectionLsVarName">Name of a pre-declared LavishScript collection:int variable to populate.</param>
+        /// <returns>True if the method succeeded.</returns>
+        public bool GetNumPlanetsByType(string collectionLsVarName)
+        {
+            Tracing.SendCallback("SolarSystem.GetNumPlanetsByType", collectionLsVarName);
+            return ExecuteMethod("GetNumPlanetsByType", collectionLsVarName);
         }
     }
 }

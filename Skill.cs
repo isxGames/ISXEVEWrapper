@@ -150,11 +150,39 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
+		/// Wrapper for the Points member of the skill type.
+		/// Replaces the renamed-away "SkillPoints" member (ISXEVE 2023-07-12).
+		/// </summary>
+		public int Points
+		{
+			get { return this.GetInt("Points"); }
+		}
+
+		/// <summary>
 		/// Wrapper for Level member of skill type.
 		/// </summary>
 		public int Level
 		{
 			get { return this.GetInt("Level"); }
+		}
+
+		/// <summary>
+		/// Wrapper for the TrainedLevel member of the skill type.
+		/// Replaces the renamed-away "SkillLevel"/"Level" member (ISXEVE 2023-07-12).
+		/// </summary>
+		public int TrainedLevel
+		{
+			get { return this.GetInt("TrainedLevel"); }
+		}
+
+		/// <summary>
+		/// Wrapper for the EffectiveLevel member of the skill type.
+		/// Added ISXEVE 2023-07-12. Returns the skill's effective level
+		/// (may exceed TrainedLevel when boosted by implants or similar).
+		/// </summary>
+		public int EffectiveLevel
+		{
+			get { return this.GetInt("EffectiveLevel"); }
 		}
 		#endregion
 

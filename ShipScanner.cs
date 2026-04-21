@@ -26,5 +26,18 @@ namespace EVE.ISXEVE
         {
             return ExecuteMethod("StartScan", entityId.ToString(CultureInfo.CurrentCulture), clearPreviousResults.ToString(CultureInfo.CurrentCulture));
         }
+
+        /// <summary>
+        /// If ClearPreviousResults is false, then new results are appended to previous. Results will be available in Entity.GetShipScannerResults().
+        /// When showResultsWindow is true, the native scan-results window is displayed when the event fires; when false (default), the wrapper blocks that window.
+        /// </summary>
+        /// <param name="entityId"></param>
+        /// <param name="clearPreviousResults"></param>
+        /// <param name="showResultsWindow"></param>
+        /// <returns></returns>
+        public bool StartScan(Int64 entityId, bool clearPreviousResults, bool showResultsWindow)
+        {
+            return ExecuteMethod("StartScan", entityId.ToString(CultureInfo.CurrentCulture), clearPreviousResults.ToString(CultureInfo.CurrentCulture), showResultsWindow.ToString(CultureInfo.CurrentCulture));
+        }
     }
 }
