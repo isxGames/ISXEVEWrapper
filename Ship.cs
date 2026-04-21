@@ -236,6 +236,15 @@ namespace EVE.ISXEVE
 			get { return _toItem ?? (_toItem = new Item(GetMember("ToItem"))); }
 		}
 
+		private Entity _toEntity;
+		/// <summary>
+		/// Wrapper for the Ship.ToEntity member. Only valid when in space.
+		/// </summary>
+		public Entity ToEntity
+		{
+			get { return _toEntity ?? (_toEntity = new Entity(GetMember("ToEntity"))); }
+		}
+
 		private double? _cpuLoad;
 		/// <summary>
 		/// Wrapper for the CPULoad member of the ship type.
@@ -572,6 +581,20 @@ namespace EVE.ISXEVE
 			}
 		}
 
+		private double? _warpSpeedMultiplier;
+		/// <summary>
+		/// Wrapper for the WarpSpeedMultiplier member of the ship type.
+		/// </summary>
+		public double WarpSpeedMultiplier
+		{
+			get
+			{
+				if (_warpSpeedMultiplier == null)
+					_warpSpeedMultiplier = this.GetDouble("WarpSpeedMultiplier");
+				return _warpSpeedMultiplier.Value;
+			}
+		}
+
 		private double? _launcherSlotsLeft;
 		/// <summary>
 		/// Wrapper for the LauncherSlotsLeft member of the ship type.
@@ -729,6 +752,88 @@ namespace EVE.ISXEVE
 		{
 			return _oreHoldCargo ?? (_oreHoldCargo = Util.GetListFromMethod<IItem>(this, "GetOreHoldCargo", "item"));
 		}
+
+		private List<IItem> _fuelHoldCargo;
+		/// <summary>
+		/// Wrapper for the GetFuelHoldCargo method of the ship type.
+		/// </summary>
+		public List<IItem> GetFuelHoldCargo()
+		{
+			return _fuelHoldCargo ?? (_fuelHoldCargo = Util.GetListFromMethod<IItem>(this, "GetFuelHoldCargo", "item"));
+		}
+
+		private List<IItem> _gasHoldCargo;
+		/// <summary>
+		/// Wrapper for the GetGasHoldCargo method of the ship type.
+		/// </summary>
+		public List<IItem> GetGasHoldCargo()
+		{
+			return _gasHoldCargo ?? (_gasHoldCargo = Util.GetListFromMethod<IItem>(this, "GetGasHoldCargo", "item"));
+		}
+
+		private List<IItem> _mineralHoldCargo;
+		/// <summary>
+		/// Wrapper for the GetMineralHoldCargo method of the ship type.
+		/// </summary>
+		public List<IItem> GetMineralHoldCargo()
+		{
+			return _mineralHoldCargo ?? (_mineralHoldCargo = Util.GetListFromMethod<IItem>(this, "GetMineralHoldCargo", "item"));
+		}
+
+		private List<IItem> _salvageHoldCargo;
+		/// <summary>
+		/// Wrapper for the GetSalvageHoldCargo method of the ship type.
+		/// </summary>
+		public List<IItem> GetSalvageHoldCargo()
+		{
+			return _salvageHoldCargo ?? (_salvageHoldCargo = Util.GetListFromMethod<IItem>(this, "GetSalvageHoldCargo", "item"));
+		}
+
+		private List<IItem> _industrialShipHoldCargo;
+		/// <summary>
+		/// Wrapper for the GetIndustrialShipHoldCargo method of the ship type.
+		/// </summary>
+		public List<IItem> GetIndustrialShipHoldCargo()
+		{
+			return _industrialShipHoldCargo ?? (_industrialShipHoldCargo = Util.GetListFromMethod<IItem>(this, "GetIndustrialShipHoldCargo", "item"));
+		}
+
+		private List<IItem> _ammoHoldCargo;
+		/// <summary>
+		/// Wrapper for the GetAmmoHoldCargo method of the ship type.
+		/// </summary>
+		public List<IItem> GetAmmoHoldCargo()
+		{
+			return _ammoHoldCargo ?? (_ammoHoldCargo = Util.GetListFromMethod<IItem>(this, "GetAmmoHoldCargo", "item"));
+		}
+
+		private List<IItem> _maintenanceHoldCargo;
+		/// <summary>
+		/// Wrapper for the GetMaintenanceHoldCargo method of the ship type.
+		/// </summary>
+		public List<IItem> GetMaintenanceHoldCargo()
+		{
+			return _maintenanceHoldCargo ?? (_maintenanceHoldCargo = Util.GetListFromMethod<IItem>(this, "GetMaintenanceHoldCargo", "item"));
+		}
+
+		private List<IItem> _corpHangarsCargo;
+		/// <summary>
+		/// Wrapper for the GetCorpHangarsCargo method of the ship type.
+		/// Retrieves items from all corporation hangar folders.
+		/// </summary>
+		public List<IItem> GetCorpHangarsCargo()
+		{
+			return _corpHangarsCargo ?? (_corpHangarsCargo = Util.GetListFromMethod<IItem>(this, "GetCorpHangarsCargo", "item"));
+		}
+
+		private List<IItem> _fleetHangarCargo;
+		/// <summary>
+		/// Wrapper for the GetFleetHangarCargo method of the ship type.
+		/// </summary>
+		public List<IItem> GetFleetHangarCargo()
+		{
+			return _fleetHangarCargo ?? (_fleetHangarCargo = Util.GetListFromMethod<IItem>(this, "GetFleetHangarCargo", "item"));
+		}
 		#endregion
 
 		#region Drone
@@ -744,6 +849,20 @@ namespace EVE.ISXEVE
 				if (_droneBayCapacity == null)
 					_droneBayCapacity = this.GetDouble("DronebayCapacity");
 				return _droneBayCapacity.Value;
+			}
+		}
+
+		private double? _droneBandwidth;
+		/// <summary>
+		/// Wrapper for the DroneBandwidth member of the ship type.
+		/// </summary>
+		public double DroneBandwidth
+		{
+			get
+			{
+				if (_droneBandwidth == null)
+					_droneBandwidth = this.GetDouble("DroneBandwidth");
+				return _droneBandwidth.Value;
 			}
 		}
 
@@ -847,6 +966,17 @@ namespace EVE.ISXEVE
 			Tracing.SendCallback("Ship.GetModules");
 			return _modules ?? (_modules = Util.GetListFromMethod<IModule>(this, "GetModules", "module"));
 		}
+
+		private List<IItem> _rigs;
+
+		/// <summary>
+		/// Rigs fit to the ship.
+		/// </summary>
+		public List<IItem> GetRigs()
+		{
+			Tracing.SendCallback("Ship.GetRigs");
+			return _rigs ?? (_rigs = Util.GetListFromMethod<IItem>(this, "GetRigs", "item"));
+		}
 		#endregion
 
 		private Scanners _scanners;
@@ -913,6 +1043,53 @@ namespace EVE.ISXEVE
 		public bool SetStarbaseForcefieldPassword(string password)
 		{
 			return ExecuteMethod("SetStarbaseForcefieldPassword", password);
+		}
+
+		/// <summary>
+		/// Wrapper for the Approach method of the ship type. Takes a direction vector (x, y, z);
+		/// the vector is normalized internally, so any non-zero length is acceptable.
+		/// Note: Must be in space.
+		/// </summary>
+		public bool Approach(double x, double y, double z)
+		{
+			Tracing.SendCallback("Ship.Approach");
+			return ExecuteMethod("Approach",
+				x.ToString(CultureInfo.CurrentCulture),
+				y.ToString(CultureInfo.CurrentCulture),
+				z.ToString(CultureInfo.CurrentCulture));
+		}
+
+		/// <summary>
+		/// Wrapper for the Align method of the ship type. Takes a direction vector (x, y, z);
+		/// the vector is normalized internally, so any non-zero length is acceptable.
+		/// Note: Must be in space.
+		/// </summary>
+		public bool Align(double x, double y, double z)
+		{
+			Tracing.SendCallback("Ship.Align");
+			return ExecuteMethod("Align",
+				x.ToString(CultureInfo.CurrentCulture),
+				y.ToString(CultureInfo.CurrentCulture),
+				z.ToString(CultureInfo.CurrentCulture));
+		}
+
+		/// <summary>
+		/// Wrapper for the Jettison method of the ship type.
+		/// Jettisons the given item IDs from the ship's cargo. Note: Must be in space.
+		/// </summary>
+		public bool Jettison(List<Int64> itemIDs)
+		{
+			Tracing.SendCallback("Ship.Jettison");
+			if (itemIDs == null || itemIDs.Count == 0)
+				return false;
+
+			var lsIndex = LavishScript.Objects.NewObject("index:int64");
+			for (var i = 0; i < itemIDs.Count; i++)
+			{
+				lsIndex.ExecuteMethod("Insert", itemIDs[i].ToString(CultureInfo.CurrentCulture));
+			}
+
+			return ExecuteMethod("Jettison", lsIndex.GetLSReference());
 		}
 		#endregion
 	}

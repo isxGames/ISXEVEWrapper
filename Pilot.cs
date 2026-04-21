@@ -210,6 +210,16 @@ namespace EVE.ISXEVE
 			return ExecuteMethod("SetStanding", Standing.ToString(CultureInfo.CurrentCulture), Reason);
 		}
 
+		/// <summary>
+		/// Opens the show-info window for this pilot.
+		/// </summary>
+		/// <returns></returns>
+		public bool OpenShowInfo()
+		{
+			Tracing.SendCallback("Pilot.OpenShowInfo");
+			return ExecuteMethod("OpenShowInfo");
+		}
+
 		#endregion
 	}
 }
