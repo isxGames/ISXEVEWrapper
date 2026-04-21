@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using EVE.ISXEVE.Extensions;
 using EVE.ISXEVE.Interfaces;
 using LavishScriptAPI;
@@ -145,6 +146,26 @@ namespace EVE.ISXEVE
 		public bool OpenAsNewWindow()
 		{
 			return ExecuteMethod("OpenAsNewWindow");
+		}
+
+		/// <summary>
+		/// Wrapper for the GetItems method of eveinvchildwindow.  Returns the items contained in this child window.
+		/// NOTE: ISXEVE rejects this call for 0.5 seconds after MakeActive; retry if it returns null.
+		/// </summary>
+		/// <returns></returns>
+		public List<Item> GetItems()
+		{
+			return Util.GetListFromMethod<Item>(this, "GetItems", "item");
+		}
+
+		/// <summary>
+		/// Wrapper for the StackAll method of eveinvchildwindow.  Stacks all items in this child window.
+		/// NOTE: ISXEVE rejects this call for 0.5 seconds after MakeActive.
+		/// </summary>
+		/// <returns></returns>
+		public bool StackAll()
+		{
+			return ExecuteMethod("StackAll");
 		}
 
 		#endregion
