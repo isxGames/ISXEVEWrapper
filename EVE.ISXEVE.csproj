@@ -110,8 +110,12 @@
     <Compile Include="ChatChannel.cs" />
     <Compile Include="ChatChannelMessage.cs" />
     <Compile Include="Constellation.cs" />
+    <Compile Include="Planet.cs" />
     <Compile Include="EntityWormhole.cs" />
     <Compile Include="EveChat.cs" />
+    <Compile Include="EveAgentDialogWindow.cs" />
+    <Compile Include="EveCustomsOfficeWindow.cs" />
+    <Compile Include="EveDirectionalScannerWindow.cs" />
     <Compile Include="EveMarketActionWindow.cs" />
     <Compile Include="EveSellItemsWindow.cs" />
     <Compile Include="EveFittingWindow.cs" />
@@ -178,6 +182,7 @@
     <Compile Include="SlotType.cs" />
     <Compile Include="Standings.cs" />
     <Compile Include="Station.cs" />
+    <Compile Include="Structure.cs" />
     <Compile Include="Universe.cs" />
     <Compile Include="Util.cs" />
     <Compile Include="Wallet.cs" />
