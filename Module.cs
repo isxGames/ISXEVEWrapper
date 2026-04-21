@@ -142,6 +142,20 @@ namespace EVE.ISXEVE
 			}
 		}
 
+		private bool? _isReloading;
+		/// <summary>
+		/// Wrapper for the IsReloading member of a module object.
+		/// </summary>
+		public bool IsReloading
+		{
+			get
+			{
+				if (_isReloading == null)
+					_isReloading = this.GetBool("IsReloading");
+				return _isReloading.Value;
+			}
+		}
+
 		private bool? _isOnline;
 		/// <summary>
 		/// Is module online (as opposed to active)
@@ -195,6 +209,78 @@ namespace EVE.ISXEVE
 				if (_isAutoReloadOn == null)
 					_isAutoReloadOn = this.GetBool("IsAutoReloadOn");
 				return _isAutoReloadOn.Value;
+			}
+		}
+
+		private bool? _autoRepeat;
+		/// <summary>
+		/// Wrapper for the AutoRepeat member of a module object.
+		/// </summary>
+		public bool AutoRepeat
+		{
+			get
+			{
+				if (_autoRepeat == null)
+					_autoRepeat = this.GetBool("AutoRepeat");
+				return _autoRepeat.Value;
+			}
+		}
+
+		private bool? _isBeingRepaired;
+		/// <summary>
+		/// Wrapper for the IsBeingRepaired member of a module object. (From Overload/Heat Damage)
+		/// </summary>
+		public bool IsBeingRepaired
+		{
+			get
+			{
+				if (_isBeingRepaired == null)
+					_isBeingRepaired = this.GetBool("IsBeingRepaired");
+				return _isBeingRepaired.Value;
+			}
+		}
+
+		private bool? _isBlinking;
+		/// <summary>
+		/// Wrapper for the IsBlinking member of a module object.
+		/// </summary>
+		public bool IsBlinking
+		{
+			get
+			{
+				if (_isBlinking == null)
+					_isBlinking = this.GetBool("IsBlinking");
+				return _isBlinking.Value;
+			}
+		}
+
+		private bool? _isBankSlave;
+		/// <summary>
+		/// Wrapper for the IsBankSlave member of a module object.
+		/// True if this module is in a weapon bank and is a slave (one of the modules that doesn't show on the UI).
+		/// </summary>
+		public bool IsBankSlave
+		{
+			get
+			{
+				if (_isBankSlave == null)
+					_isBankSlave = this.GetBool("IsBankSlave");
+				return _isBankSlave.Value;
+			}
+		}
+
+		private bool? _isBankMaster;
+		/// <summary>
+		/// Wrapper for the IsBankMaster member of a module object.
+		/// True if this module is in a weapon bank and is the master of that bank (the one that shows on the UI).
+		/// </summary>
+		public bool IsBankMaster
+		{
+			get
+			{
+				if (_isBankMaster == null)
+					_isBankMaster = this.GetBool("IsBankMaster");
+				return _isBankMaster.Value;
 			}
 		}
 
@@ -273,6 +359,31 @@ namespace EVE.ISXEVE
 				if (_targetId == null)
 					_targetId = this.GetInt64("TargetID");
 				return _targetId.Value;
+			}
+		}
+
+		private Entity _lastTargeted;
+		/// <summary>
+		/// Wrapper for the LastTargeted member of a module object.
+		/// (Alias for LastTarget.)
+		/// </summary>
+		public Entity LastTargeted
+		{
+			get { return _lastTargeted ?? (_lastTargeted = new Entity(GetMember("LastTargeted"))); }
+		}
+
+		private Int64? _lastTargetedId;
+		/// <summary>
+		/// Wrapper for the LastTargetedID member of a module object.
+		/// (Alias for TargetID.)
+		/// </summary>
+		public Int64 LastTargetedID
+		{
+			get
+			{
+				if (_lastTargetedId == null)
+					_lastTargetedId = this.GetInt64("LastTargetedID");
+				return _lastTargetedId.Value;
 			}
 		}
 
@@ -655,6 +766,14 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
+		/// Wrapper for the MiningAmountPerSecond member of a module object.
+		/// </summary>
+		public double? MiningAmountPerSecond
+		{
+			get { return this.GetNullableDouble("MiningAmountPerSecond"); }
+		}
+
+		/// <summary>
 		/// Wrapper for the CrystalsDamage member of a module object.
 		/// </summary>
 		public double? CrystalsDamage
@@ -751,6 +870,14 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
+		/// Wrapper for the EffectivenessFalloff member of a module object.
+		/// </summary>
+		public double? EffectivenessFalloff
+		{
+			get { return this.GetNullableDouble("EffectivenessFalloff"); }
+		}
+
+		/// <summary>
 		/// Wrapper for the SignatureResolution member of a module object.
 		/// </summary>
 		public double? SignatureResolution
@@ -764,6 +891,30 @@ namespace EVE.ISXEVE
 		public double? OverloadOptimalRangeBonus
 		{
 			get { return this.GetNullableDouble("OverloadOptimalRangeBonus"); }
+		}
+
+		/// <summary>
+		/// Wrapper for the SensorRecalibrationTime member of a module object. (seconds)
+		/// </summary>
+		public double? SensorRecalibrationTime
+		{
+			get { return this.GetNullableDouble("SensorRecalibrationTime"); }
+		}
+
+		/// <summary>
+		/// Wrapper for the ReactivationDelay member of a module object. (seconds)
+		/// </summary>
+		public double? ReactivationDelay
+		{
+			get { return this.GetNullableDouble("ReactivationDelay"); }
+		}
+
+		/// <summary>
+		/// Wrapper for the ScanResolutionBonus member of a module object.
+		/// </summary>
+		public int? ScanResolutionBonus
+		{
+			get { return this.GetNullableInt("ScanResolutionBonus"); }
 		}
 
 		/// <summary>
@@ -893,6 +1044,38 @@ namespace EVE.ISXEVE
 		{
 			get { return this.GetNullableDouble("EnergyNeutralized"); }
 		}
+
+		/// <summary>
+		/// Wrapper for the PowerTransferAmount member of a module object.
+		/// </summary>
+		public double? PowerTransferAmount
+		{
+			get { return this.GetNullableDouble("PowerTransferAmount"); }
+		}
+
+		/// <summary>
+		/// Wrapper for the PowerTransferRange member of a module object.
+		/// </summary>
+		public double? PowerTransferRange
+		{
+			get { return this.GetNullableDouble("PowerTransferRange"); }
+		}
+
+		/// <summary>
+		/// Wrapper for the EnergyDestabilizationRange member of a module object.
+		/// </summary>
+		public double? EnergyDestabilizationRange
+		{
+			get { return this.GetNullableDouble("EnergyDestabilizationRange"); }
+		}
+
+		/// <summary>
+		/// Wrapper for the EnergyDestabilizationAmount member of a module object.
+		/// </summary>
+		public double? EnergyDestabilizationAmount
+		{
+			get { return this.GetNullableDouble("EnergyDestabilizationAmount"); }
+		}
 		#endregion
 		#endregion
 
@@ -980,6 +1163,53 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
+		/// Wrapper for the SetManualOn method of a module object.
+		/// </summary>
+		public bool SetManualOn()
+		{
+			Tracing.SendCallback("Module.SetManualOn");
+			return ExecuteMethod("SetManualOn");
+		}
+
+		/// <summary>
+		/// Wrapper for the SetManualOff method of a module object.
+		/// </summary>
+		public bool SetManualOff()
+		{
+			Tracing.SendCallback("Module.SetManualOff");
+			return ExecuteMethod("SetManualOff");
+		}
+
+		/// <summary>
+		/// Wrapper for the Reload method of a module object.
+		/// </summary>
+		public bool Reload()
+		{
+			Tracing.SendCallback("Module.Reload");
+			return ExecuteMethod("Reload");
+		}
+
+		/// <summary>
+		/// Wrapper for the ReloadAll method of a module object.
+		/// (For modules that have the 'Reload all' menu option available.)
+		/// </summary>
+		public bool ReloadAll()
+		{
+			Tracing.SendCallback("Module.ReloadAll");
+			return ExecuteMethod("ReloadAll");
+		}
+
+		/// <summary>
+		/// Wrapper for the UnloadToCargo method of a module object.
+		/// (For modules that contain charges/ammo.)
+		/// </summary>
+		public bool UnloadToCargo()
+		{
+			Tracing.SendCallback("Module.UnloadToCargo");
+			return ExecuteMethod("UnloadToCargo");
+		}
+
+		/// <summary>
 		/// Wrapper for the PutOnline method of a module object
 		/// </summary>
 		/// <returns></returns>
@@ -1007,6 +1237,24 @@ namespace EVE.ISXEVE
 		{
 			Tracing.SendCallback("Module.ToggleOverload");
 			return ExecuteMethod("ToggleOverload");
+		}
+
+		/// <summary>
+		/// Wrapper for the Repair method of a module object.
+		/// </summary>
+		public bool Repair()
+		{
+			Tracing.SendCallback("Module.Repair");
+			return ExecuteMethod("Repair");
+		}
+
+		/// <summary>
+		/// Wrapper for the CancelRepair method of a module object.
+		/// </summary>
+		public bool CancelRepair()
+		{
+			Tracing.SendCallback("Module.CancelRepair");
+			return ExecuteMethod("CancelRepair");
 		}
 		#endregion
 	}
