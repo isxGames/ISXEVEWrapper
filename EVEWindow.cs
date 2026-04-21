@@ -97,10 +97,22 @@ namespace EVE.ISXEVE
         #endregion
 
     #region Members
-    /// <summary>
-    /// Wrapper for the Caption member of the evewindow type.
-    /// </summary>
-    public string Caption
+		/// <summary>
+		/// Wrapper for the Name member of the evewindow type.  This is the internal EVE window
+		/// registration name (the key used by <c>EVEWindow[Name]</c> TLO lookup), NOT the visible
+		/// title bar text.  For the visible title bar, use <see cref="Caption"/> instead.
+		/// </summary>
+		public string Name
+		{
+			get { return this.GetString("Name"); }
+		}
+
+		/// <summary>
+		/// Wrapper for the Caption member of the evewindow type.  This is the visible title bar
+		/// text of the window.  For the internal registration name used by <c>EVEWindow[...]</c>
+		/// lookups, use <see cref="Name"/> instead.
+		/// </summary>
+		public string Caption
 		{
 			get { return this.GetString("Caption"); }
 		}

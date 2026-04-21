@@ -396,6 +396,18 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
+		/// Wrapper for the Invite method of the fleet type.
+		/// Sends a fleet invite to the character with the given CharID.
+		/// </summary>
+		/// <param name="charID"></param>
+		/// <returns></returns>
+		public bool Invite(Int64 charID)
+		{
+			Tracing.SendCallback("Fleet.Invite", charID);
+			return ExecuteMethod("Invite", charID.ToString(CultureInfo.CurrentCulture));
+		}
+
+		/// <summary>
 		/// Wrapper for the LeaveFleet method of the fleet type.
 		/// </summary>
 		/// <returns></returns>
@@ -403,6 +415,16 @@ namespace EVE.ISXEVE
 		{
 			Tracing.SendCallback("Fleet.LeaveFleet", string.Empty);
 			return ExecuteMethod("LeaveFleet");
+		}
+
+		/// <summary>
+		/// Wrapper for the Regroup method of the fleet type.
+		/// </summary>
+		/// <returns></returns>
+		public bool Regroup()
+		{
+			Tracing.SendCallback("Fleet.Regroup");
+			return ExecuteMethod("Regroup");
 		}
 
 		/// <summary>

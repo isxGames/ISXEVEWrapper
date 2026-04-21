@@ -79,6 +79,40 @@ namespace EVE.ISXEVE
 		{
 			get { return this.GetInt64("WingID"); }
 		}
+
+		/// <summary>
+		/// Wrapper for HasActiveBeacon member of fleetmember type.
+		/// </summary>
+		public bool HasActiveBeacon
+		{
+			get { return this.GetBool("HasActiveBeacon"); }
+		}
+
+		/// <summary>
+		/// Wrapper for IsWingCommander member of fleetmember type.
+		/// </summary>
+		public bool IsWingCommander
+		{
+			get { return this.GetBool("IsWingCommander"); }
+		}
+
+		/// <summary>
+		/// Wrapper for IsSquadCommander member of fleetmember type.
+		/// </summary>
+		public bool IsSquadCommander
+		{
+			get { return this.GetBool("IsSquadCommander"); }
+		}
+
+		/// <summary>
+		/// Wrapper for ToEntity member of fleetmember type.
+		/// Returns an Entity object for this fleet member if they are within
+		/// overview range; otherwise the returned object will be invalid.
+		/// </summary>
+		public Entity ToEntity
+		{
+			get { return new Entity(GetMember("ToEntity")); }
+		}
 		#endregion
 
 		#region Methods
@@ -180,6 +214,46 @@ namespace EVE.ISXEVE
 		{
 			Tracing.SendCallback("FleetMember.MoveToFleetCommander");
 			return ExecuteMethod("MoveToFleetCommander");
+		}
+
+		/// <summary>
+		/// Wrapper for AddToWatchList method of fleetmember type.
+		/// </summary>
+		/// <remarks>
+		/// Source-side TODO notes that this method does not work when the target
+		/// fleet member is not in the local chat. If the call appears to silently
+		/// no-op, verify the target is currently in local.
+		/// </remarks>
+		/// <returns></returns>
+		public bool AddToWatchList()
+		{
+			Tracing.SendCallback("FleetMember.AddToWatchList");
+			return ExecuteMethod("AddToWatchList");
+		}
+
+		/// <summary>
+		/// Wrapper for RemoveFromWatchList method of fleetmember type.
+		/// </summary>
+		/// <remarks>
+		/// Source-side TODO notes that this method does not work when the target
+		/// fleet member is not in the local chat. If the call appears to silently
+		/// no-op, verify the target is currently in local.
+		/// </remarks>
+		/// <returns></returns>
+		public bool RemoveFromWatchList()
+		{
+			Tracing.SendCallback("FleetMember.RemoveFromWatchList");
+			return ExecuteMethod("RemoveFromWatchList");
+		}
+
+		/// <summary>
+		/// Wrapper for SetBooster method of fleetmember type.
+		/// </summary>
+		/// <returns></returns>
+		public bool SetBooster()
+		{
+			Tracing.SendCallback("FleetMember.SetBooster");
+			return ExecuteMethod("SetBooster");
 		}
 		#endregion
 	}
