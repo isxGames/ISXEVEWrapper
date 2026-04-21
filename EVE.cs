@@ -74,6 +74,14 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
+		/// Minimum warp distance (in meters) from EVE's internal constants.
+		/// </summary>
+		public int MinWarpDistance
+		{
+			get { return this.GetInt("MinWarpDistance"); }
+		}
+
+		/// <summary>
 		/// Returns a list of the "SystemIDs" of the systems along your current destination (autopilot) route.
 		/// Returns a single -1 if you currently have no destinations.
 		/// </summary>
@@ -127,6 +135,18 @@ namespace EVE.ISXEVE
 		{
 			Tracing.SendCallback("EVE.GetJumpsTo", solarSystemOrStationId.ToString(CultureInfo.CurrentCulture));
 			return this.GetInt("JumpsTo", solarSystemOrStationId.ToString(CultureInfo.CurrentCulture));
+		}
+
+		/// <summary>
+		/// Returns number of jumps to the given station.  Distinct from GetJumpsTo: this dispatches the
+		/// JumpsToStation member which resolves station-specific distance via the market quote service.
+		/// </summary>
+		/// <param name="stationID"></param>
+		/// <returns></returns>
+		public int GetJumpsToStation(long stationID)
+		{
+			Tracing.SendCallback("EVE.GetJumpsToStation", stationID);
+			return this.GetInt("JumpsToStation", stationID.ToString(CultureInfo.CurrentCulture));
 		}
 
 		/// <summary>
@@ -210,6 +230,14 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
+		/// True if ISXEVE is currently running within a Python critical section (tasklet).
+		/// </summary>
+		public bool InCriticalSection
+		{
+			get { return this.GetBool("InCriticalSection"); }
+		}
+
+		/// <summary>
 		/// Wrapper for the GetLocalPilots member of the eve type.
 		/// </summary>
 		/// <param name="args"></param>
@@ -264,12 +292,53 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
-		/// the agents in your *addressbook* 
+		/// the agents in your *addressbook*
 		/// </summary>
 		public List<Being> GetAgents()
 		{
 			Tracing.SendCallback("EVE.GetAgents");
 			return Util.GetListFromMethod<Being>(this, "GetAgents", "being");
+		}
+
+		/// <summary>
+		/// Wrapper for the no-arg form of the Agent member of the eve type.  Returns the total number of agents in the game.
+		/// </summary>
+		public int AgentCount
+		{
+			get { return this.GetInt("Agent"); }
+		}
+
+		/// <summary>
+		/// Wrapper for the Agent[#] member of the eve type.  Returns an Agent object by index.
+		/// </summary>
+		/// <param name="index"></param>
+		/// <returns></returns>
+		public Agent AgentByIndex(int index)
+		{
+			Tracing.SendCallback("EVE.AgentByIndex", index);
+			return new Agent(GetMember("Agent", index.ToString(CultureInfo.CurrentCulture)));
+		}
+
+		/// <summary>
+		/// Wrapper for the Agent["id", #] member of the eve type.  Returns an Agent object by agent ID.
+		/// </summary>
+		/// <param name="agentID"></param>
+		/// <returns></returns>
+		public Agent AgentByID(long agentID)
+		{
+			Tracing.SendCallback("EVE.AgentByID", agentID);
+			return new Agent(GetMember("Agent", "id", agentID.ToString(CultureInfo.CurrentCulture)));
+		}
+
+		/// <summary>
+		/// Wrapper for the Agent[name] member of the eve type.  Returns an Agent object by agent name.
+		/// </summary>
+		/// <param name="name"></param>
+		/// <returns></returns>
+		public Agent AgentByName(string name)
+		{
+			Tracing.SendCallback("EVE.AgentByName", name);
+			return new Agent(GetMember("Agent", name));
 		}
 
 		/// <summary>
@@ -343,6 +412,18 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
+		/// Evaluate a LavishScript query (by ID from the query system) against a data object reference.
+		/// </summary>
+		/// <param name="queryID">LavishScript query ID</param>
+		/// <param name="dataObjectQuery">Data object query string (e.g., "Entity[id,#]")</param>
+		/// <returns>true if the data object matches the query, false otherwise</returns>
+		public bool QueryEvaluate(int queryID, string dataObjectQuery)
+		{
+			Tracing.SendCallback("EVE.QueryEvaluate", queryID, dataObjectQuery);
+			return this.GetBool("QueryEvaluate", queryID.ToString(CultureInfo.CurrentCulture), dataObjectQuery);
+		}
+
+		/// <summary>
 		/// if bool is true, forces repopulation of entities. This should be called ONCE after isxeve is loaded... any more will have no effect.
 		/// </summary>
 		/// <param name="forceRepopulate"></param>
@@ -402,6 +483,177 @@ namespace EVE.ISXEVE
 				lsIndex.ExecuteMethod("Insert", droneID.ToString(CultureInfo.CurrentCulture));
 			}
 			return ExecuteMethod("DronesMineRepeatedly", lsIndex.GetLSReference());
+		}
+
+		/// <summary>
+		/// Order drones to mine (one cycle).
+		/// </summary>
+		/// <param name="drones">ActiveDrone IDs</param>
+		/// <returns></returns>
+		public bool DronesMine(List<Int64> drones)
+		{
+			Tracing.SendCallback("EVE.DronesMine");
+			if (drones.Count == 0)
+			{
+				return false;
+			}
+
+			var lsIndex = LavishScript.Objects.NewObject("index:int64");
+			foreach (var droneID in drones)
+			{
+				lsIndex.ExecuteMethod("Insert", droneID.ToString(CultureInfo.CurrentCulture));
+			}
+			return ExecuteMethod("DronesMine", lsIndex.GetLSReference());
+		}
+
+		/// <summary>
+		/// Order drones to scoop a target wreck/cargo container to the drone bay.
+		/// </summary>
+		/// <param name="drones">ActiveDrone IDs</param>
+		/// <returns></returns>
+		public bool DronesScoopToDroneBay(List<Int64> drones)
+		{
+			Tracing.SendCallback("EVE.DronesScoopToDroneBay");
+			if (drones.Count == 0)
+			{
+				return false;
+			}
+
+			var lsIndex = LavishScript.Objects.NewObject("index:int64");
+			foreach (var droneID in drones)
+			{
+				lsIndex.ExecuteMethod("Insert", droneID.ToString(CultureInfo.CurrentCulture));
+			}
+			return ExecuteMethod("DronesScoopToDroneBay", lsIndex.GetLSReference());
+		}
+
+		/// <summary>
+		/// Abandon the given drones.
+		/// </summary>
+		/// <param name="drones">ActiveDrone IDs</param>
+		/// <returns></returns>
+		public bool AbandonDrones(List<Int64> drones)
+		{
+			Tracing.SendCallback("EVE.AbandonDrones");
+			if (drones.Count == 0)
+			{
+				return false;
+			}
+
+			var lsIndex = LavishScript.Objects.NewObject("index:int64");
+			foreach (var droneID in drones)
+			{
+				lsIndex.ExecuteMethod("Insert", droneID.ToString(CultureInfo.CurrentCulture));
+			}
+			return ExecuteMethod("AbandonDrones", lsIndex.GetLSReference());
+		}
+
+		/// <summary>
+		/// Return control of the given fighters to yourself.
+		/// </summary>
+		/// <param name="fighters">ActiveDrone IDs (fighters)</param>
+		/// <returns></returns>
+		public bool ReturnFighterControl(List<Int64> fighters)
+		{
+			Tracing.SendCallback("EVE.ReturnFighterControl");
+			if (fighters.Count == 0)
+			{
+				return false;
+			}
+
+			var lsIndex = LavishScript.Objects.NewObject("index:int64");
+			foreach (var fighterID in fighters)
+			{
+				lsIndex.ExecuteMethod("Insert", fighterID.ToString(CultureInfo.CurrentCulture));
+			}
+			return ExecuteMethod("ReturnFighterControl", lsIndex.GetLSReference());
+		}
+
+		/// <summary>
+		/// Delegate control of the given fighters to another fleet member.
+		/// </summary>
+		/// <param name="fighters">ActiveDrone IDs (fighters)</param>
+		/// <param name="toCharID">Character ID of the fleet member to delegate control to</param>
+		/// <returns></returns>
+		public bool DelegateFighterControl(List<Int64> fighters, Int64 toCharID)
+		{
+			Tracing.SendCallback("EVE.DelegateFighterControl", toCharID);
+			if (fighters.Count == 0)
+			{
+				return false;
+			}
+
+			var lsIndex = LavishScript.Objects.NewObject("index:int64");
+			foreach (var fighterID in fighters)
+			{
+				lsIndex.ExecuteMethod("Insert", fighterID.ToString(CultureInfo.CurrentCulture));
+			}
+			return ExecuteMethod("DelegateFighterControl", lsIndex.GetLSReference(), toCharID.ToString(CultureInfo.CurrentCulture));
+		}
+
+		/// <summary>
+		/// Order drones to assist another pilot.
+		/// </summary>
+		/// <param name="drones">ActiveDrone IDs</param>
+		/// <param name="charID">Character ID of the pilot to assist</param>
+		/// <returns></returns>
+		public bool DronesAssist(List<Int64> drones, Int64 charID)
+		{
+			Tracing.SendCallback("EVE.DronesAssist", charID);
+			if (drones.Count == 0)
+			{
+				return false;
+			}
+
+			var lsIndex = LavishScript.Objects.NewObject("index:int64");
+			foreach (var droneID in drones)
+			{
+				lsIndex.ExecuteMethod("Insert", droneID.ToString(CultureInfo.CurrentCulture));
+			}
+			return ExecuteMethod("DronesAssist", lsIndex.GetLSReference(), charID.ToString(CultureInfo.CurrentCulture));
+		}
+
+		/// <summary>
+		/// Order drones to guard another pilot.
+		/// </summary>
+		/// <param name="drones">ActiveDrone IDs</param>
+		/// <param name="charID">Character ID of the pilot to guard</param>
+		/// <returns></returns>
+		public bool DronesGuard(List<Int64> drones, Int64 charID)
+		{
+			Tracing.SendCallback("EVE.DronesGuard", charID);
+			if (drones.Count == 0)
+			{
+				return false;
+			}
+
+			var lsIndex = LavishScript.Objects.NewObject("index:int64");
+			foreach (var droneID in drones)
+			{
+				lsIndex.ExecuteMethod("Insert", droneID.ToString(CultureInfo.CurrentCulture));
+			}
+			return ExecuteMethod("DronesGuard", lsIndex.GetLSReference(), charID.ToString(CultureInfo.CurrentCulture));
+		}
+
+		/// <summary>
+		/// Order drones to return and orbit your ship.
+		/// </summary>
+		/// <param name="drones">ActiveDrone IDs</param>
+		/// <returns></returns>
+		public bool DronesReturnAndOrbit(List<Int64> drones)
+		{
+			Tracing.SendCallback("EVE.DronesReturnAndOrbit");
+			if (drones.Count == 0)
+			{
+				return false;
+			}
+
+			var lsIndex = LavishScript.Objects.NewObject("index:int64");
+			foreach (var droneID in drones)
+			{
+				lsIndex.ExecuteMethod("Insert", droneID.ToString(CultureInfo.CurrentCulture));
+			}
+			return ExecuteMethod("DronesReturnAndOrbit", lsIndex.GetLSReference());
 		}
 
 		/// <summary>
@@ -472,6 +724,42 @@ namespace EVE.ISXEVE
 		{
 			Tracing.SendCallback("EVE.AddWaypoint", solarSystemID);
 			return ExecuteMethod("AddWaypoint", solarSystemID.ToString(CultureInfo.CurrentCulture));
+		}
+
+		/// <summary>
+		/// Wrapper for the AddWaypoint method of the eve type.  Overload that allows inserting the waypoint
+		/// at the head of the current route instead of appending.
+		/// </summary>
+		/// <param name="solarSystemID"></param>
+		/// <param name="insertAsFirst">If true, insert as the first waypoint in the route.</param>
+		/// <returns></returns>
+		public bool AddWaypoint(int solarSystemID, bool insertAsFirst)
+		{
+			Tracing.SendCallback("EVE.AddWaypoint", solarSystemID, insertAsFirst);
+			return ExecuteMethod("AddWaypoint",
+				solarSystemID.ToString(CultureInfo.CurrentCulture),
+				insertAsFirst ? "TRUE" : "FALSE");
+		}
+
+		/// <summary>
+		/// Clear the given solar system from your current route.
+		/// </summary>
+		/// <param name="solarSystemID"></param>
+		/// <returns></returns>
+		public bool ClearWaypoint(int solarSystemID)
+		{
+			Tracing.SendCallback("EVE.ClearWaypoint", solarSystemID);
+			return ExecuteMethod("ClearWaypoint", solarSystemID.ToString(CultureInfo.CurrentCulture));
+		}
+
+		/// <summary>
+		/// Clear all waypoints from your current route.
+		/// </summary>
+		/// <returns></returns>
+		public bool ClearAllWaypoints()
+		{
+			Tracing.SendCallback("EVE.ClearAllWaypoints");
+			return ExecuteMethod("ClearAllWaypoints");
 		}
 
 		/// <summary>
@@ -668,6 +956,44 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
+		/// Wrapper for the StackItems method of the eve type.  Stack all items at the given location (by ID).
+		/// </summary>
+		/// <param name="locationID"></param>
+		/// <param name="destinationName"></param>
+		/// <returns></returns>
+		public bool StackItems(Int64 locationID, string destinationName)
+		{
+			Tracing.SendCallback("EVE.StackItems", locationID, destinationName);
+			return ExecuteMethod("StackItems", locationID.ToString(CultureInfo.CurrentCulture), destinationName);
+		}
+
+		/// <summary>
+		/// Wrapper for the StackItems method of the eve type.  Stack all items at the given location.
+		/// </summary>
+		/// <param name="ToLocationName">'MyShip','MyStationHangar', or 'MyStationCorporateHangar'</param>
+		/// <param name="destinationName"></param>
+		/// <returns></returns>
+		public bool StackItems(string ToLocationName, string destinationName)
+		{
+			Tracing.SendCallback("EVE.StackItems", ToLocationName, destinationName);
+			return ExecuteMethod("StackItems", ToLocationName, destinationName);
+		}
+
+		/// <summary>
+		/// Wrapper for the StackItems method of the eve type.  Stack all items in the given corporation hangar folder.
+		/// </summary>
+		/// <param name="ToLocationName">'MyShip','MyStationHangar', or 'MyStationCorporateHangar'</param>
+		/// <param name="destinationName"></param>
+		/// <param name="corporationHangarFolder"></param>
+		/// <returns></returns>
+		public bool StackItems(string ToLocationName, string destinationName, int corporationHangarFolder)
+		{
+			Tracing.SendCallback("EVE.StackItems", ToLocationName, destinationName, corporationHangarFolder);
+			return ExecuteMethod("StackItems", ToLocationName, destinationName,
+				String.Format(CultureInfo.CurrentCulture, "Corporation Folder {0}", corporationHangarFolder));
+		}
+
+		/// <summary>
 		/// 2. CreateMarketBuyOrder[TypeID#]
 		/// </summary>
 		public bool CreateMarketBuyOrder(int typeID)
@@ -777,6 +1103,17 @@ namespace EVE.ISXEVE
 		{
 			Tracing.SendCallback("EVE.RefreshBookmarks");
 			return ExecuteMethod("RefreshBookmarks");
+		}
+
+		/// <summary>
+		/// Open the Planetary Industry (PI) window for the given planet.
+		/// </summary>
+		/// <param name="planetID"></param>
+		/// <returns></returns>
+		public bool ViewPlanetaryIndustry(Int64 planetID)
+		{
+			Tracing.SendCallback("EVE.ViewPlanetaryIndustry", planetID);
+			return ExecuteMethod("ViewPlanetaryIndustry", planetID.ToString(CultureInfo.CurrentCulture));
 		}
 	}
 
