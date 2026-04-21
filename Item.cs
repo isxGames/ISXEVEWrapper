@@ -156,6 +156,18 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
+		/// Wrapper for the BookmarkID member of the item type.
+		/// </summary>
+		/// <remarks>
+		/// Returns the bookmark ID when this item is a bookmark voucher (groupID == groupVoucher).
+		/// Returns -1 when the item is not a voucher, or when the voucher's bookmark cannot be resolved.
+		/// </remarks>
+		public int BookmarkID
+		{
+			get { return this.GetInt("BookmarkID"); }
+		}
+
+		/// <summary>
 		/// Wrapper for the Quantity member of the item type.
 		/// </summary>
 		public int Quantity
@@ -237,6 +249,38 @@ namespace EVE.ISXEVE
 		{
 			get { return this.GetDouble("ExplosionRadius"); }
 		}
+
+		/// <summary>
+		/// Signature radius bonus applied by this item (e.g., target painter / sig-bloom modules).
+		/// </summary>
+		public double SignatureRadiusBonus
+		{
+			get { return this.GetDouble("SignatureRadiusBonus"); }
+		}
+
+		/// <summary>
+		/// Falloff multiplier applied by this item (e.g., tracking computer / tracking enhancer scripts).
+		/// </summary>
+		public double FallofMultiplier
+		{
+			get { return this.GetDouble("FallofMultiplier"); }
+		}
+
+		/// <summary>
+		/// Tracking speed multiplier applied by this item (e.g., tracking computer / tracking enhancer scripts).
+		/// </summary>
+		public double TrackingSpeedMultiplier
+		{
+			get { return this.GetDouble("TrackingSpeedMultiplier"); }
+		}
+
+		/// <summary>
+		/// Meta level of this item.
+		/// </summary>
+		public double MetaLevel
+		{
+			get { return this.GetDouble("MetaLevel"); }
+		}
 		#endregion
 
 		#region Methods
@@ -306,6 +350,48 @@ namespace EVE.ISXEVE
 		{
 			Tracing.SendCallback("Item.LaunchForSelf");
 			return ExecuteMethod("LaunchForSelf");
+		}
+
+		/// <summary>
+		/// Launch drones.  Replacement for the deprecated 'Launch' method.
+		/// </summary>
+		/// <returns></returns>
+		public bool LaunchDrones()
+		{
+			Tracing.SendCallback("Item.LaunchDrones");
+			return ExecuteMethod("LaunchDrones");
+		}
+
+		/// <summary>
+		/// Launch this item on behalf of your corporation.
+		/// </summary>
+		/// <returns></returns>
+		public bool LaunchForCorp()
+		{
+			Tracing.SendCallback("Item.LaunchForCorp");
+			return ExecuteMethod("LaunchForCorp");
+		}
+
+		/// <summary>
+		/// Launch this item on behalf of your corporation.  When <paramref name="ignoreWarning"/>
+		/// is true, any confirmation warning is suppressed.
+		/// </summary>
+		/// <param name="ignoreWarning">Pass true to bypass the confirmation warning.</param>
+		/// <returns></returns>
+		public bool LaunchForCorp(bool ignoreWarning)
+		{
+			Tracing.SendCallback("Item.LaunchForCorp", ignoreWarning);
+			return ExecuteMethod("LaunchForCorp", ignoreWarning.ToString(CultureInfo.CurrentCulture));
+		}
+
+		/// <summary>
+		/// Leave this ship (exit the pod).
+		/// </summary>
+		/// <returns></returns>
+		public bool LeaveShip()
+		{
+			Tracing.SendCallback("Item.LeaveShip");
+			return ExecuteMethod("LeaveShip");
 		}
 
 		/// <summary>
@@ -519,10 +605,51 @@ namespace EVE.ISXEVE
 			return Util.GetListFromMethod<int>(this, "GetContrabandFactions", "int");
 		}
 
-		//Opens the repair window 
+		//Opens the repair window
 		public bool GetRepairQuote()
 		{
 			return ExecuteMethod("GetRepairQuote");
+		}
+
+		/// <summary>
+		/// Populate a pre-declared LavishScript 'collection:float' with insurance quotes for this ship
+		/// (keyed by insurance-level name, value = ISK quote amount).
+		/// </summary>
+		/// <remarks>
+		/// The insurance window MUST be open before calling; ISXEVE reads the quote lines directly from it.
+		/// Only valid on items of Category 6 (Ship).
+		/// The LavishScript variable named by <paramref name="collectionLsVarName"/> must already exist as
+		/// a 'collection:float' in the script scope.  ISXEVE has no dictionary marshaller in this wrapper,
+		/// so callers iterate the collection from LavishScript after this call returns true.
+		/// </remarks>
+		/// <param name="collectionLsVarName">Name of a pre-declared 'collection:float' LavishScript variable.</param>
+		/// <returns>True on success.</returns>
+		public bool GetInsuranceQuotes(string collectionLsVarName)
+		{
+			Tracing.SendCallback("Item.GetInsuranceQuotes", collectionLsVarName);
+			return ExecuteMethod("GetInsuranceQuotes", collectionLsVarName);
+		}
+
+		/// <summary>
+		/// Insure this ship at the specified quote cost.  Only valid on items of Category 6 (Ship).
+		/// </summary>
+		/// <param name="cost">The ISK cost of the insurance quote being accepted.</param>
+		/// <returns>True on success.</returns>
+		public bool Insure(double cost)
+		{
+			Tracing.SendCallback("Item.Insure", cost);
+			return ExecuteMethod("Insure", cost.ToString(CultureInfo.CurrentCulture));
+		}
+
+		/// <summary>
+		/// Activate an abyssal filament key to enter an abyssal pocket.  Only valid on items in
+		/// the Abyssal Keys group.
+		/// </summary>
+		/// <returns></returns>
+		public bool UseAbyssalFilament()
+		{
+			Tracing.SendCallback("Item.UseAbyssalFilament");
+			return ExecuteMethod("UseAbyssalFilament");
 		}
 
 		#endregion
