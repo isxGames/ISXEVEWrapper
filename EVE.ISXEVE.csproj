@@ -133,7 +133,6 @@
     <Compile Include="ItemInfo.cs" />
     <Compile Include="Corporation.cs" />
     <Compile Include="CorporationWallet.cs" />
-    <Compile Include="DialogString.cs" />
     <Compile Include="EveInvChildWindow.cs" />
     <Compile Include="EveInvWindow.cs" />
     <Compile Include="EVETime.cs" />
@@ -173,7 +172,6 @@
     <Compile Include="Interstellar.cs" />
     <Compile Include="ISXEVE.cs" />
     <Compile Include="Item.cs" />
-    <Compile Include="Login.cs" />
     <Compile Include="Module.cs" />
     <Compile Include="Pilot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

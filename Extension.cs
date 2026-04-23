@@ -148,18 +148,6 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
-		/// Check with LavishScriptObject.IsNullOrInvalid. If its not valid,
-		/// you're not at the login screen.
-		/// </summary>
-		public Login Login
-		{
-			get
-			{
-				return new Login();
-			}
-		}
-
-		/// <summary>
 		/// can refer to any solarsystem, region, or constellation
 		/// </summary>
 		public Interstellar InterstellarByName(string Name)

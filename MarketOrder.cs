@@ -202,15 +202,6 @@ namespace EVE.ISXEVE
 			get { return this.GetString("Name"); }
 		}
 
-        public bool IsContraband
-        {
-            get { return this.GetBool("IsContraband"); }
-        }
-
-        public bool IsContrabandForFaction(int FactionID)
-        {
-            return this.GetBool("IsContraband", FactionID.ToString(CultureInfo.CurrentCulture));
-        }
 		#endregion
 
 		#region Methods

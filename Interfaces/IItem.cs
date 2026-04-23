@@ -174,12 +174,6 @@ namespace EVE.ISXEVE.Interfaces
         bool Repackage();
 
         /// <summary>
-        /// Wrapper for the FitToActiveShip method of the item type.
-        /// </summary>
-        /// <returns></returns>
-        bool FitToActiveShip();
-
-        /// <summary>
         /// Wrapper for the TrainSkill method of the item type.
         /// </summary>
         /// <returns></returns>

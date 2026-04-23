@@ -424,16 +424,6 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
-		/// Wrapper for the FitToActiveShip method of the item type.
-		/// </summary>
-		/// <returns></returns>
-		public bool FitToActiveShip()
-		{
-			Tracing.SendCallback("Item.FitToActiveShip");
-			return ExecuteMethod("FitToActiveShip");
-		}
-
-		/// <summary>
 		/// Wrapper for the Refine method of the item type.
 		/// </summary>
 		/// <returns></returns>

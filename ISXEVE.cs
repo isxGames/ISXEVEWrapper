@@ -108,15 +108,6 @@ namespace EVE.ISXEVE
 		#endregion
 
 		#region Methods
-		/// <summary>
-		/// Unload the extension.
-		/// </summary>
-		public void Unload()
-		{
-			Tracing.SendCallback("ISXEVE.Unload");
-			ExecuteMethod("Unload");
-		}
-
 		public void Debug_SetTypeValidation(bool enabled)
 		{
 			Tracing.SendCallback("ISXEVE.Debug_SetTypeValidation", enabled);

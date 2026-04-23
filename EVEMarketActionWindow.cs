@@ -145,16 +145,6 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
-		/// Wraps the Cancel method of the EveSellItemsWindow datatype.
-		/// </summary>
-		/// <returns></returns>
-		public bool Cancel()
-		{
-			Tracing.SendCallback("EVEMarketActionWindow.Cancel");
-			return ExecuteMethod("Cancel");
-		}
-
-		/// <summary>
 		/// Wraps the Close method of the EVEMarketActionWindow datatype.  Shadows the inherited
 		/// EVEWindow.Close() because EVEMarketActionWindowType::GetMethod (DT-EVEWindows.cpp:1954)
 		/// registers its own Close handler that dispatches to the market-action window's specific
