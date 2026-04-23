@@ -112,7 +112,7 @@ namespace EVE.ISXEVE
 		/// <returns></returns>
 		public List<BookMark> GetBookmarks()
 		{
-			Tracing.SendCallback("AgentMission.GetDetails");
+			Tracing.SendCallback("AgentMission.GetBookmarks");
 			return Util.GetListFromMethod<BookMark>(this, "GetBookmarks", "bookmark");
 		}
 
