@@ -53,8 +53,14 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
-		/// Wrapper for the ToEntity.GroupID member of a bookmark object
+		/// Wrapper-side convenience that returns the GroupID of the entity this bookmark points to, or -1 if unavailable.
 		/// </summary>
+		/// <remarks>
+		/// This is NOT a native ISXEVE bookmark-datatype member — the bookmark datatype has no GroupID member in
+		/// source (see DataTypes.h BookmarkType enum). This helper delegates to <c>ToEntity.GroupID</c>, which only
+		/// resolves when the bookmark refers to an entity that is currently loaded in space (i.e., the player is in
+		/// the bookmark's solar system AND the entity is within cached-entity range). Returns -1 otherwise.
+		/// </remarks>
 		public int GroupID
 		{
 			get
@@ -253,15 +259,14 @@ namespace EVE.ISXEVE
 			}
 		}
 
-		private int? _jumpsTo;
+		/// <summary>
+		/// Wrapper for the JumpsTo member of a bookmark object. Computed live by ISXEVE from the bookmark's
+		/// own location to the player's current location — NOT cached, so route changes (gate jumps,
+		/// destination updates) are reflected immediately on each read.
+		/// </summary>
 		public int JumpsTo
 		{
-			get
-			{
-				if (_jumpsTo == null)
-					_jumpsTo = this.GetInt("JumpsTo");
-				return _jumpsTo.Value;
-			}
+			get { return this.GetInt("JumpsTo"); }
 		}
 		#endregion
 
@@ -369,10 +374,17 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
-		/// Determine the # of jumps to the given solarsystem or station ID
+		/// Determine the # of jumps to the given solarsystem or station ID.
 		/// </summary>
-		/// <param name="solarSystemOrStationId"></param>
+		/// <remarks>
+		/// The ISXEVE bookmark.JumpsTo member does NOT accept a user-supplied argument; it always computes
+		/// from the bookmark's own location to the player's current location. The id parameter passed here is
+		/// silently ignored by the extension, and this method returns the same value as the <see cref="JumpsTo"/>
+		/// property. To compute jumps to an arbitrary solarsystem/station, use <c>Universe[id].JumpsTo</c> instead.
+		/// </remarks>
+		/// <param name="solarSystemOrStationId">Ignored by ISXEVE.</param>
 		/// <returns></returns>
+		[Obsolete("Argument is ignored by ISXEVE; returns same as JumpsTo property. Use Universe[id].JumpsTo for arbitrary destinations.")]
 		public int GetJumpsTo(int solarSystemOrStationId)
 		{
 			return this.GetInt("JumpsTo", solarSystemOrStationId.ToString(CultureInfo.CurrentCulture));

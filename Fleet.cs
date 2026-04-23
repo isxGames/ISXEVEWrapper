@@ -438,7 +438,8 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
-		/// Wrapper for the WarpToFleetMember method of the fleet type.
+		/// Warps the fleet to the given fleet member.
+		/// Dispatches the source-side "WarpFleetToMember" method.
 		/// </summary>
 		/// <param name="fleetMemberCharID"></param>
 		/// <returns></returns>
@@ -449,7 +450,8 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
-		/// Wrapper for the WarpToFleetMember method of the fleet type.
+		/// Warps the fleet to the given fleet member at the given distance.
+		/// Dispatches the source-side "WarpFleetToMember" method.
 		/// </summary>
 		/// <param name="fleetMemberCharID"></param>
 		/// <param name="distance"></param>
@@ -457,7 +459,7 @@ namespace EVE.ISXEVE
 		public bool WarpToFleetMember(Int64 fleetMemberCharID, double distance)
 		{
 			Tracing.SendCallback("Fleet.WarpToFleetMember", fleetMemberCharID, distance);
-			return ExecuteMethod("WarpToFleetMember", fleetMemberCharID.ToString(CultureInfo.CurrentCulture), distance.ToString(CultureInfo.CurrentCulture));
+			return ExecuteMethod("WarpFleetToMember", fleetMemberCharID.ToString(CultureInfo.CurrentCulture), distance.ToString(CultureInfo.CurrentCulture));
 		}
 
 	    public bool SetIgnoreFleetWarp()

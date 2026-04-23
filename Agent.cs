@@ -142,16 +142,16 @@ namespace EVE.ISXEVE
 
 		#region Members
 
-		private int? _id;
+		private long? _id;
 		/// <summary>
 		/// Wrapper for the ID member of the agent type.
 		/// </summary>
-		public int ID
+		public long ID
 		{
 			get
 			{
 				if (_id == null)
-					_id = this.GetInt("ID");
+					_id = this.GetInt64("ID");
 				return _id.Value;
 			}
 		}

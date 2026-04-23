@@ -81,30 +81,6 @@ namespace EVE.ISXEVE
             }
         }
 
-        private string _category;
-        /// <summary>
-        /// Wrapper for the Category member of the ItemInfo datatype.
-        /// </summary>
-        public string Category
-        {
-            get { return _category ?? (_category = this.GetString("Category")); }
-        }
-
-        private int? _categoryId;
-        /// <summary>
-        /// Wrapper for the CategoryID member of the ItemInfo datatype.
-        /// </summary>
-        public int CategoryID
-        {
-            get
-            {
-                if (_categoryId == null)
-                    _categoryId = this.GetInt("CategoryID");
-
-                return _categoryId.Value;
-            }
-        }
-
         private bool? _isContraband;
         /// <summary>
         /// Wrapper for the IsContraband member of the ItemInfo datatype.

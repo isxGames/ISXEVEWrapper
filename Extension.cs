@@ -40,13 +40,15 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
-		/// Create an Entity object based on an ID.
+		/// Create an Entity object based on an ID.  Entity IDs are 64-bit in the ISXEVE source
+		/// (the Entity TLO handler at <c>TopLevelObjects.cpp:444</c> parses <c>argv[0]</c> via
+		/// <c>_atoi64</c>); passing an int-sized value silently truncates modern entity IDs.
 		/// </summary>
-		/// <param name="ID"></param>
+		/// <param name="ID">64-bit entity ID.</param>
 		/// <returns></returns>
-		public Entity Entity(int ID)
+		public Entity Entity(long ID)
 		{
-			return new Entity(string.Format("ID = \"{0}\"", ID));
+			return new Entity(string.Format(System.Globalization.CultureInfo.InvariantCulture, "ID = \"{0}\"", ID));
 		}
 
 		/// <summary>

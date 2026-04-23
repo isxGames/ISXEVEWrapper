@@ -36,7 +36,7 @@ namespace EVE.ISXEVE
             get
             {
                 if (_size == null)
-                    _size = this.GetFloat("Float");
+                    _size = this.GetFloat("Size");
 
                 return _size.Value;
             }

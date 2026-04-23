@@ -157,7 +157,7 @@ namespace EVE.ISXEVE
 		{
 			get
 			{
-				return _corp ?? (_corp = new Corporation(GetMember("Corporation")));
+				return _corp ?? (_corp = new Corporation(GetMember("Corp")));
 			}
 		}
 

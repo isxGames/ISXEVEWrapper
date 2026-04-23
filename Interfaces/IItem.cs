@@ -20,6 +20,16 @@ namespace EVE.ISXEVE.Interfaces
         double UsedCargoCapacity { get; }
 
         /// <summary>
+        /// Wrapper for the Category member of the item type.
+        /// </summary>
+        string Category { get; }
+
+        /// <summary>
+        /// Wrapper for the CategoryID member of the item type.
+        /// </summary>
+        int CategoryID { get; }
+
+        /// <summary>
         /// Wrapper for the CategoryType member of the item type.
         /// </summary>
         CategoryType CategoryType { get; }
@@ -80,7 +90,7 @@ namespace EVE.ISXEVE.Interfaces
         /// <summary>
         /// Wrapper for the OwnerID member of the item type.
         /// </summary>
-        int OwnerID { get; }
+        long OwnerID { get; }
 
         /// <summary>
         /// Wrapper for the Quantity member of the item type.
@@ -100,6 +110,7 @@ namespace EVE.ISXEVE.Interfaces
         /// <summary>
         /// Wrapper for the GivenName member of the item type.
         /// </summary>
+        [Obsolete("GivenName is deprecated in ISXEVE. Use Name — it returns the given name when appropriate.")]
         string GivenName { get; }
 
         /// <summary>

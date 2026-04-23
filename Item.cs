@@ -51,6 +51,22 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
+		/// Wrapper for the Category member of the item type.
+		/// </summary>
+		public string Category
+		{
+			get { return this.GetString("Category"); }
+		}
+
+		/// <summary>
+		/// Wrapper for the CategoryID member of the item type.
+		/// </summary>
+		public int CategoryID
+		{
+			get { return this.GetInt("CategoryID"); }
+		}
+
+		/// <summary>
 		/// Wrapper for the CategoryType member of the item type.
 		/// </summary>
 		public CategoryType CategoryType
@@ -150,9 +166,9 @@ namespace EVE.ISXEVE
 		/// <summary>
 		/// Wrapper for the OwnerID member of the item type.
 		/// </summary>
-		public int OwnerID
+		public long OwnerID
 		{
-			get { return this.GetInt("OwnerID"); }
+			get { return this.GetInt64("OwnerID"); }
 		}
 
 		/// <summary>
@@ -198,6 +214,7 @@ namespace EVE.ISXEVE
 		/// <summary>
 		/// Wrapper for the GivenName member of the item type.
 		/// </summary>
+		[Obsolete("GivenName is deprecated in ISXEVE. Use Name — it returns the given name when appropriate.")]
 		public string GivenName
 		{
 			get { return this.GetString("GivenName"); }

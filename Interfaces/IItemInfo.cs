@@ -31,16 +31,6 @@ namespace EVE.ISXEVE.Interfaces
         int GroupID { get; }
 
         /// <summary>
-        /// Wrapper for the Category member of the ItemInfo datatype.
-        /// </summary>
-        string Category { get; }
-
-        /// <summary>
-        /// Wrapper for the CategoryID member of the ItemInfo datatype.
-        /// </summary>
-        int CategoryID { get; }
-
-        /// <summary>
         /// Wrapper for the IsContraband member of the ItemInfo datatype.
         /// </summary>
         bool IsContraband { get; }
