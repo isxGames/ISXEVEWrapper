@@ -83,7 +83,7 @@ namespace EVE.ISXEVE
 
         public int AllianceToPilot
         {
-            get { return this.GetInt("AlliancetoPilot"); }
+            get { return this.GetInt("AllianceToPilot"); }
         }
 		#endregion
 	}

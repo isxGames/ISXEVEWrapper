@@ -316,7 +316,7 @@ namespace EVE.ISXEVE
 		{
 			get
 			{
-				return _defaultEffectName ?? (_defaultEffectName = this.GetString("DefaultEffectiveName"));
+				return _defaultEffectName ?? (_defaultEffectName = this.GetString("DefaultEffectName"));
 			}
 		}
 
@@ -326,7 +326,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string DefaultEffectDescription
 		{
-			get { return _defaultEffectDescription ?? (_defaultEffectDescription = this.GetString("DefaultEffectiveDescription")); }
+			get { return _defaultEffectDescription ?? (_defaultEffectDescription = this.GetString("DefaultEffectDescription")); }
 		}
 
 		private Entity _lastTarget;
@@ -922,7 +922,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? OverloadRepairBonus
 		{
-			get { return this.GetDouble("OverloadRepairBonus"); }
+			get { return this.GetNullableDouble("OverloadRepairBonus"); }
 		}
 
 		/// <summary>
@@ -930,7 +930,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public double? OverloadDurationBonus
 		{
-			get { return this.GetDouble("OverloadDurationBonus"); }
+			get { return this.GetNullableDouble("OverloadDurationBonus"); }
 		}
 
 		/// <summary>

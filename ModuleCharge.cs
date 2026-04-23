@@ -83,7 +83,7 @@ namespace EVE.ISXEVE
 		/// </summary>
 		public string Category
 		{
-			get { return _category ?? (_category = this.GetString("Categroy")); }
+			get { return _category ?? (_category = this.GetString("Category")); }
 		}
 
 		private int? _categoryId;

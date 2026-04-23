@@ -133,7 +133,9 @@ namespace EVE.ISXEVE
 		/// <summary>
 		/// Wrapper for AddToQueue method of the skill type.
 		/// </summary>
+		/// <param name="skillLevel">Ignored by ISXEVE (kept for backwards compatibility).</param>
 		/// <returns></returns>
+		[Obsolete("The skillLevel argument is ignored by ISXEVE — the level is determined by the skill's own skillLevel attribute in source. Pass any int for legacy compatibility.")]
 		public bool AddToQueue(int skillLevel)
 		{
 			Tracing.SendCallback("Skill.AddtoQueue", skillLevel.ToString(CultureInfo.CurrentCulture));
@@ -144,6 +146,7 @@ namespace EVE.ISXEVE
 		/// Wrapper for StartTraining method of the skill type.
 		/// </summary>
 		/// <returns></returns>
+		[Obsolete("StartTraining is deprecated in ISXEVE and prints a console warning on each call. Use AddToQueue instead.")]
 		public bool StartTraining()
 		{
 			Tracing.SendCallback("Skill.StartTraining", string.Empty);

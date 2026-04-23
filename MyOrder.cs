@@ -148,18 +148,22 @@ namespace EVE.ISXEVE
 			get { return this.GetString("Region"); }
 		}
 		/// <summary>
-		///  14. SolarSystemID                                     (int type)     [Solar System where the order is located]
+		///  14. SolarSystemID                                     (int64 type)     [Solar System where the order is located]
 		/// </summary>
-		public int SolarSystemID
+		public long SolarSystemID
 		{
-			get { return this.GetInt("SolarSystemID"); }
+			get { return this.GetInt64("SolarSystemID"); }
 		}
 		/// <summary>
-		///  15. SolarSystem                                       (string type)
+		///  15. SolarSystem                                       (solarsystem type)
 		/// </summary>
-		public string SolarSystem
+		/// <remarks>
+		/// As of ISXEVE 2023-06-21, the SolarSystem member returns a 'solarsystem' datatype object
+		/// rather than a string.  To get the system name, read <c>SolarSystem.Name</c>.
+		/// </remarks>
+		public SolarSystem SolarSystem
 		{
-			get { return this.GetString("SolarSystemID"); }
+			get { return new SolarSystem(this.GetMember("SolarSystem")); }
 		}
 		/// <summary>
 		///  16. Range                                             (int type)    
