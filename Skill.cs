@@ -89,30 +89,6 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
-		/// Wrapper for ID member of skill type.
-		/// </summary>
-		public int ID
-		{
-			get { return this.GetInt("ID"); }
-		}
-
-		/// <summary>
-		/// Wrapper for Group member of skill type.
-		/// </summary>
-		public string Group
-		{
-			get { return this.GetString("Group"); }
-		}
-
-		/// <summary>
-		/// Wrapper for GroupID member of skill type.
-		/// </summary>
-		public int GroupID
-		{
-			get { return this.GetInt("GroupID"); }
-		}
-
-		/// <summary>
 		/// Wrapper for IsTraining member of skill type.
 		/// </summary>
 		public bool IsTraining
@@ -121,8 +97,8 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
-		/// NOTE: This will be the time left to train this skill to the next level, 
-		/// no matter if the skill is currently being trained or not. If the value 
+		/// NOTE: This will be the time left to train this skill to the next level,
+		/// no matter if the skill is currently being trained or not. If the value
 		/// is ZERO, then the skill is maxed out. 
 		/// ALSO! To get an accurate value for this, a skill must not be currently 
 		/// training. So, if you need to know the time remaining on a skill that is 
@@ -142,16 +118,7 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
-		/// Wrapper for SkillPoints member of skill type.
-		/// </summary>
-		public int SkillPoints
-		{
-			get { return this.GetInt("SkillPoints"); }
-		}
-
-		/// <summary>
 		/// Wrapper for the Points member of the skill type.
-		/// Replaces the renamed-away "SkillPoints" member (ISXEVE 2023-07-12).
 		/// </summary>
 		public int Points
 		{
@@ -159,16 +126,7 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
-		/// Wrapper for Level member of skill type.
-		/// </summary>
-		public int Level
-		{
-			get { return this.GetInt("Level"); }
-		}
-
-		/// <summary>
 		/// Wrapper for the TrainedLevel member of the skill type.
-		/// Replaces the renamed-away "SkillLevel"/"Level" member (ISXEVE 2023-07-12).
 		/// </summary>
 		public int TrainedLevel
 		{
@@ -195,16 +153,6 @@ namespace EVE.ISXEVE
 		{
 			Tracing.SendCallback("Skill.AddtoQueue", skillLevel.ToString(CultureInfo.CurrentCulture));
 			return ExecuteMethod("AddToQueue", skillLevel.ToString(CultureInfo.CurrentCulture));
-		}
-
-		/// <summary>
-		/// Wrapper for AbortTraining method of the skill type.
-		/// </summary>
-		/// <returns></returns>
-		public bool AbortTraining()
-		{
-			Tracing.SendCallback("Skill.AbortTraining", string.Empty);
-			return ExecuteMethod("AbortTraining");
 		}
 
 		/// <summary>
