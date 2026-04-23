@@ -36,7 +36,7 @@ namespace EVE.ISXEVE
 		public List<Item> GetHangarItems()
 		{
 			Tracing.SendCallback("Station.GetHangarItems");
-			return Util.GetListFromMethod<Item>(this, "GetHangerItems", "item");
+			return Util.GetListFromMethod<Item>(this, "GetHangarItems", "item");
 		}
 
 		/// <summary>
@@ -45,7 +45,7 @@ namespace EVE.ISXEVE
 		public List<Item> GetHangarShips()
 		{
 			Tracing.SendCallback("Station.GetCorpHangarShips");
-			return Util.GetListFromMethod<Item>(this, "GetHangerShips", "item");
+			return Util.GetListFromMethod<Item>(this, "GetHangarShips", "item");
 		}
 
 		/// <summary>

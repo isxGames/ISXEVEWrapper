@@ -16,19 +16,13 @@ namespace EVE.ISXEVE
 		{
 		}
 
-		private bool? _isSensorOverlayActive;
 		/// <summary>
-		/// Wrapper for the IsSensorOverlayActive member of the SystemScanner datatype.
+		/// Wrapper for the IsSensorOverlayActive member of the SystemScanner datatype. Queried live
+		/// on every access so the state reflects user-driven overlay toggles immediately.
 		/// </summary>
 		public bool IsSensorOverlayActive
 		{
-			get
-			{
-				if (_isSensorOverlayActive == null)
-					_isSensorOverlayActive = this.GetBool("IsSensorOverlayActive");
-
-				return _isSensorOverlayActive.Value;
-			}
+			get { return this.GetBool("IsSensorOverlayActive"); }
 		}
 
 		/// <summary>
@@ -49,24 +43,24 @@ namespace EVE.ISXEVE
 			return ExecuteMethod("DisableSensorOverlay");
 		}
 
-		private List<SystemAnomaly> _systemAnomalies;
 		/// <summary>
-		/// Wrapper for the GetAnomalies method of the SystemScanner datatype.
+		/// Wrapper for the GetAnomalies method of the SystemScanner datatype. Re-queries the sensor suite
+		/// service on every call — results reflect current anomaly state (new sites, completed sites).
 		/// </summary>
 		/// <returns></returns>
 		public List<SystemAnomaly> GetAnomalies()
 		{
-			return _systemAnomalies ?? (_systemAnomalies = this.GetListFromMethod<SystemAnomaly>("GetAnomalies", "systemanomaly"));
+			return this.GetListFromMethod<SystemAnomaly>("GetAnomalies", "systemanomaly");
 		}
 
-		private List<SystemSignature> _systemSignatures;
 		/// <summary>
-		/// Wrapper for the GetSignatures method of the SystemScanner datatype.
+		/// Wrapper for the GetSignatures method of the SystemScanner datatype. Re-queries the sensor suite
+		/// service on every call — results reflect current signature state (new sigs, resolved sigs).
 		/// </summary>
 		/// <returns></returns>
 		public List<SystemSignature> GetSignatures()
 		{
-			return _systemSignatures ?? (_systemSignatures = this.GetListFromMethod<SystemSignature>("GetSignatures", "systemsignature"));
+			return this.GetListFromMethod<SystemSignature>("GetSignatures", "systemsignature");
 		}
 	}
 }

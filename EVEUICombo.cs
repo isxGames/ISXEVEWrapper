@@ -53,14 +53,23 @@ namespace EVE.ISXEVE
         }
 
         /// <summary>
-        /// Wraps the SelectByValue method of the EVEUISingleLineEdit datatype.
+        /// Wraps the SelectByValue method of the EVEUICombo datatype.
         /// </summary>
+        /// <remarks>
+        /// The registered LavishScript method name is actually <c>SetectByValue</c> (typo in
+        /// <c>DataTypes.h:2555,2566</c> and <c>DT-EVEUIElements.cpp:287</c>) — documented
+        /// correctly as <c>SelectByValue</c> in <c>ISXEVEChanges.txt:437</c>, but registered
+        /// with the typo via the <c>TypeMethod(SetectByValue)</c> macro.  This wrapper
+        /// dispatches the typo'd name to match the actual registered method and restore
+        /// functionality.  If the source is ever fixed to rename to <c>SelectByValue</c>, this
+        /// string must be updated.
+        /// </remarks>
         /// <param name="value">set Value value</param>
         /// <returns></returns>
         public bool SelectByValue(string value)
         {
             Tracing.SendCallback("EVEUICombo.SelectByValue", value);
-            return ExecuteMethod("SelectByValue", value.ToString(CultureInfo.CurrentCulture));
+            return ExecuteMethod("SetectByValue", value.ToString(CultureInfo.CurrentCulture));
         }
 
         /// <summary>

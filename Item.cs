@@ -413,7 +413,7 @@ namespace EVE.ISXEVE
 
 		/// <summary>
 		/// Select this ship to be your active ship.  The ship
-		/// must be in your hanger (ie. from Station.GetHangerShips())
+		/// must be in your hangar (ie. from Station.GetHangarShips())
 		/// </summary>
 		public bool MakeActive()
 		{

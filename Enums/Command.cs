@@ -189,7 +189,7 @@ namespace EVE.ISXEVE.Enums
 		OpenWallet,
 		OpenCompare,
 		OpenInventory,
-		WinCmdToggleWindowed,
+		CmdToggleWindowed,
 		CmdToggleTrackSelectedItem,
 		CmdTagItem_1,
 		CmdTagItem_2,

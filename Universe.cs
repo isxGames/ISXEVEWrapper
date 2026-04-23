@@ -5,25 +5,32 @@ using LavishScriptAPI;
 namespace EVE.ISXEVE
 {
 	/// <summary>
-	/// Wrapper for the universe data type.
+	/// Wrapper for the universe TLO. The ISXEVE Universe TLO returns one of five interstellar-family
+	/// types depending on the ID kind: region, constellation, solarsystem, planet, or the interstellar
+	/// base type for other celestials. Callers who know the ID's category can downcast (for example,
+	/// <c>(SolarSystem)Universe.ByID(systemID)</c>).
 	/// </summary>
 	public class Universe
 	{
 		#region Statics
 		/// <summary>
-		/// can refer to any solarsystem, region, or constellation
+		/// Can refer to any solarsystem, region, constellation, planet, or other celestial. The returned
+		/// object is the interstellar base type; downcast to <see cref="SolarSystem"/>, <see cref="Region"/>,
+		/// <see cref="Constellation"/>, or <see cref="Planet"/> based on the ID's known category.
 		/// </summary>
-        public static SolarSystem ByName(string name)
+        public static Interstellar ByName(string name)
 		{
-            return new SolarSystem(LavishScript.Objects.GetObject("Universe", name));
+            return new Interstellar(LavishScript.Objects.GetObject("Universe", name));
 		}
 
 		/// <summary>
-		/// can refer to any solarsystem, region, or constellation
+		/// Can refer to any solarsystem, region, constellation, planet, or other celestial. The returned
+		/// object is the interstellar base type; downcast to <see cref="SolarSystem"/>, <see cref="Region"/>,
+		/// <see cref="Constellation"/>, or <see cref="Planet"/> based on the ID's known category.
 		/// </summary>
-		public static SolarSystem ByID(int ID)
+		public static Interstellar ByID(long ID)
 		{
-            return new SolarSystem(LavishScript.Objects.GetObject("Universe", ID.ToString(CultureInfo.CurrentCulture)));
+            return new Interstellar(LavishScript.Objects.GetObject("Universe", ID.ToString(CultureInfo.CurrentCulture)));
 		}
 		#endregion
 	}

@@ -635,9 +635,11 @@ namespace EVE.ISXEVE
 		PrintScreen,
 
 		/// <summary>
-		/// Toggle between full-screen and windowed mode
+		/// Toggle between full-screen and windowed mode.  Documented in
+		/// <c>ISXEVEChanges.txt:5411</c> as <c>CmdToggleWindowed</c>; the prior
+		/// <c>WinCmdToggleWindowed</c> name never matched any registered command string.
 		/// </summary>
-		WinCmdToggleWindowed,
+		CmdToggleWindowed,
 		/// <summary>
 		/// Open the Inventory window
 		/// </summary>
