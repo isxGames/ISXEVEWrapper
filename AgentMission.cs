@@ -135,16 +135,5 @@ namespace EVE.ISXEVE
 		}
 		#endregion
 
-		#region Methods
-		/// <summary>
-		/// Get the details.
-		/// </summary>
-		public bool GetDetails()
-		{
-			Tracing.SendCallback("AgentMission.GetDetails");
-			return ExecuteMethod("GetDetails");
-		}
-		#endregion
-
 	}
 }

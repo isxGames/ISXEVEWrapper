@@ -359,26 +359,6 @@ namespace EVE.ISXEVE
 			}
 		}
 
-		private string _dialog;
-		/// <summary>
-		/// Wrapper for the Dialog member of the agent type.
-		/// </summary>
-		public string Dialog
-		{
-			get { return _dialog ?? (_dialog = this.GetString("Dialog")); }
-		}
-
-		private List<DialogString> _dialogResponses;
-		/// <summary>
-		/// Wrapper for the GetDialogResponses member of the agent type.
-		/// </summary>
-		/// <returns></returns>
-		public List<DialogString> GetDialogResponses()
-		{
-			Tracing.SendCallback("Agent:GetDialogResponses");
-			return _dialogResponses ?? (_dialogResponses = Util.GetListFromMethod<DialogString>(this, "GetDialogResponses", "dialogstring"));
-		}
-
 		private bool? _isLocatorAgent;
 		/// <summary>
 		/// Wrapper for the IsLocatorAgent member of the agent datatype.
