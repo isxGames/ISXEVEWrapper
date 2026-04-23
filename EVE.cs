@@ -58,6 +58,21 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
+		/// Wrapper for the Structure member of the eve type.  Works very similarly to
+		/// <see cref="Station(long)"/>, but only returns a <see cref="Structure"/> object when
+		/// given a proper Upwell-structure / citadel ID.  Source: <c>DT-Members.cpp:378-390</c>
+		/// validates via <c>g_EVE.idCheckers.IsStructure(ID)</c>; returns null/invalid for
+		/// non-structure IDs.  Per <c>ISXEVEChanges.txt:535-539</c>.
+		/// </summary>
+		/// <param name="structureID"></param>
+		/// <returns></returns>
+		public Structure Structure(long structureID)
+		{
+			Tracing.SendCallback("EVE.Structure", structureID);
+			return GetMember<Structure>("Structure", structureID.ToString(CultureInfo.CurrentCulture));
+		}
+
+		/// <summary>
 		/// Number of entities currently in range of your overhead
 		/// </summary>
 		public int EntitiesCount
