@@ -54,9 +54,9 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
-		/// This just goes through all the skills looking for the skill
-		/// currently being trained.  Check LavishScriptObject.IsNullOrInvalid 
-		/// on the result.
+		/// Returns the skill currently being trained, delegating to the
+		/// SkillCurrentlyTraining member of the character datatype.
+		/// Check LavishScriptObject.IsNullOrInvalid on the result.
 		/// </summary>
 		public static Skill SkillBeingTrained
 		{
@@ -65,14 +65,7 @@ namespace EVE.ISXEVE
 				Me me = new Me();
 
 				if (!LavishScriptObject.IsNullOrInvalid(me))
-				{
-					List<Skill> skills = GetSkills();
-
-					foreach (Skill skill in skills)
-						if (!LavishScriptObject.IsNullOrInvalid(skill) &&
-							skill.IsTraining)
-							return skill;
-				}
+					return me.SkillCurrentlyTraining;
 
 				return new Skill(null);
 			}
@@ -86,14 +79,6 @@ namespace EVE.ISXEVE
 		public string Name
 		{
 			get { return this.GetString("Name"); }
-		}
-
-		/// <summary>
-		/// Wrapper for IsTraining member of skill type.
-		/// </summary>
-		public bool IsTraining
-		{
-			get { return this.GetBool("IsTraining"); }
 		}
 
 		/// <summary>
