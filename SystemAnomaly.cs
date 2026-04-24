@@ -222,6 +222,11 @@ namespace EVE.ISXEVE
         /// <summary>
         /// Wrapper for the AlignTo method of the SystemAnomaly datatype.
         /// </summary>
+        /// <remarks>
+        /// Currently a no-op in ISXEVE source — the case block returns true without invoking
+        /// alignment. Callers needing to actually align to this scan result should route through
+        /// the underlying entity (via ToEntity if available) or a bookmark at the result's coordinates.
+        /// </remarks>
         /// <returns></returns>
         public bool AlignTo()
         {
@@ -231,6 +236,11 @@ namespace EVE.ISXEVE
         /// <summary>
         /// Wrapper for the Approach method of the SystemAnomaly datatype.
         /// </summary>
+        /// <remarks>
+        /// Currently a no-op in ISXEVE source — the case block returns true without invoking
+        /// approach. Callers needing to actually approach this scan result should route through
+        /// the underlying entity (via ToEntity if available) or a bookmark at the result's coordinates.
+        /// </remarks>
         /// <returns></returns>
         public bool Approach()
         {
