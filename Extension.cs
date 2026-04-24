@@ -160,7 +160,7 @@ namespace EVE.ISXEVE
 		/// <summary>
 		/// can refer to any solarsystem, region, or constellation
 		/// </summary>
-		public Interstellar InterstellarByID(int ID)
+		public Interstellar InterstellarByID(long ID)
 		{
 			return Universe.ByID(ID);
 		}

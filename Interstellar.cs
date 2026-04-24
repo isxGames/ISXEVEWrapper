@@ -23,11 +23,12 @@ namespace EVE.ISXEVE
 
 		#region Members
 		/// <summary>
-		/// Wrapper for ID member of interstellar type.
+		/// Wrapper for ID member of interstellar type. Returns int64 since the 2023-06-20 engine update
+		/// widened the interstellar.ID member from int to int64.
 		/// </summary>
-		public int ID
+		public long ID
 		{
-			get { return this.GetInt("ID"); }
+			get { return this.GetInt64("ID"); }
 		}
 
 		/// <summary>
