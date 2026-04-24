@@ -7,7 +7,7 @@ namespace EVE.ISXEVE.Enums
 	/// </summary>
 	public enum Faction
 	{
-		Unknown,
+		Unknown = 500021,
 		CaldariState = 500001,
 		MinmatarRepublic,
 		AmarrEmpire,

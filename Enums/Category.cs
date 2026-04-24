@@ -46,6 +46,7 @@ namespace EVE.ISXEVE.Enums
 		Cells = 59,
 		SpecialEditionAssets = 63,
 		Structure = 65,
+		StructureModule = 66,
 		Infantry = 350001
 	}
 }
