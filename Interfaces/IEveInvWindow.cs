@@ -47,6 +47,26 @@ namespace EVE.ISXEVE.Interfaces
         double UsedCapacity { get; }
 
         /// <summary>
+        /// The LocationFlag of the container represented by this EVEWindow.
+        /// </summary>
+        string LocationFlag { get; }
+
+        /// <summary>
+        /// The LocationFlagID of the container represented by this EVEWindow.
+        /// </summary>
+        int LocationFlagID { get; }
+
+        /// <summary>
+        /// True if the container represented by this EVEWindow is currently in range of your ship.
+        /// </summary>
+        bool IsInRange { get; }
+
+        /// <summary>
+        /// True if the container represented by this EVEWindow has a capacity value (i.e., is a capacity-bearing container).
+        /// </summary>
+        bool HasCapacity { get; }
+
+        /// <summary>
         /// Get a child window by ID.
         /// </summary>
         /// <param name="id"></param>

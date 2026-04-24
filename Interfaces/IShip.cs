@@ -354,5 +354,20 @@ namespace EVE.ISXEVE.Interfaces
         bool Open();
 
         bool StripFitting();
+
+        /// <summary>
+        /// Wraps the Scanners member of the Ship datatype.
+        /// </summary>
+        Scanners Scanners { get; }
+
+        /// <summary>
+        /// Initiate the self-destruct process. Note: This spawns a modal window you will need to confirm.
+        /// </summary>
+        bool SelfDestruct();
+
+        /// <summary>
+        /// Wrapper for the SetStarbaseForcefieldPassword method of the ship type.
+        /// </summary>
+        bool SetStarbaseForcefieldPassword(string password);
     }
 }

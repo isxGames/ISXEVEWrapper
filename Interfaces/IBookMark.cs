@@ -21,7 +21,13 @@ namespace EVE.ISXEVE.Interfaces
         int TypeID { get; }
 
         /// <summary>
-        /// If the bookmark refers to an entity currently available on your 
+        /// Wrapper-side convenience that returns the GroupID of the entity this bookmark points to, or -1 if unavailable.
+        /// NOT a native ISXEVE bookmark member; delegates to ToEntity.GroupID (only resolves when the entity is loaded in space).
+        /// </summary>
+        int GroupID { get; }
+
+        /// <summary>
+        /// If the bookmark refers to an entity currently available on your
         /// overhead, it will return said entity. Use LavishScriptObject.IsNullOrInvalid
         /// to check for validity
         /// </summary>
@@ -31,6 +37,11 @@ namespace EVE.ISXEVE.Interfaces
         /// Wrapper for the SolarSystemID member of a bookmark object
         /// </summary>
         int SolarSystemID { get; }
+
+        /// <summary>
+        /// Wrapper for the Distance member of a bookmark object
+        /// </summary>
+        double Distance { get; }
 
         /// <summary>
         /// Wrapper for the X member of a bookmark object
@@ -108,6 +119,11 @@ namespace EVE.ISXEVE.Interfaces
         long OwnerID { get; }
 
         /// <summary>
+        /// Wrapper for the JumpsTo member of a bookmark object. Computed live by ISXEVE on every read.
+        /// </summary>
+        int JumpsTo { get; }
+
+        /// <summary>
         /// This will only work with bookmarks for which there is an "AlignTo To" option available via the in-game UI.
         /// </summary>
         /// <returns></returns>
@@ -142,5 +158,17 @@ namespace EVE.ISXEVE.Interfaces
         /// Add bookmark to waypoint list.
         /// </summary>
         bool AddWaypoint();
+
+        /// <summary>
+        /// Determine the # of jumps to the given solarsystem or station ID.
+        /// </summary>
+        /// <remarks>
+        /// The ISXEVE bookmark.JumpsTo member does NOT accept a user-supplied argument; the id parameter
+        /// is silently ignored and this method returns the same value as the <see cref="JumpsTo"/> property.
+        /// Use <c>Universe[id].JumpsTo</c> for arbitrary destinations.
+        /// </remarks>
+        /// <param name="solarSystemOrStationId">Ignored by ISXEVE.</param>
+        [Obsolete("Argument is ignored by ISXEVE; returns same as JumpsTo property. Use Universe[id].JumpsTo for arbitrary destinations.")]
+        int GetJumpsTo(int solarSystemOrStationId);
     }
 }

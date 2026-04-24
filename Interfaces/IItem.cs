@@ -176,13 +176,31 @@ namespace EVE.ISXEVE.Interfaces
         void PluginImplant();
 
         /// <summary>
-        /// The "Repackage" METHOD of the 'item' datatype is now fully 
-        /// automated.  Please be sure that if you're doing multiple 
-        /// repackagings, that you place at least a 'wait 20' or 'wait 30' 
-        /// between repackages in order to allow isxeve to properly accept 
+        /// The "Repackage" METHOD of the 'item' datatype is now fully
+        /// automated.  Please be sure that if you're doing multiple
+        /// repackagings, that you place at least a 'wait 20' or 'wait 30'
+        /// between repackages in order to allow isxeve to properly accept
         /// the dialog boxes before moving on.
         /// </summary>
         bool Repackage();
+
+        /// <summary>
+        /// Wrapper for the Compress method of the item type.
+        /// </summary>
+        /// <returns></returns>
+        bool Compress();
+
+        /// <summary>
+        /// Wrapper for the Refine method of the item type.
+        /// </summary>
+        /// <returns></returns>
+        bool Refine();
+
+        /// <summary>
+        /// Wrapper for the Reprocess method of the item type.
+        /// </summary>
+        /// <returns></returns>
+        bool Reprocess();
 
         /// <summary>
         /// Wrapper for the TrainSkill method of the item type.

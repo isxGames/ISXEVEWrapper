@@ -262,6 +262,13 @@ namespace EVE.ISXEVE.Interfaces
 		bool LaunchDrones(List<Int64> DroneIDs);
 
 		/// <summary>
+		/// Wrapper for the DronesReturnToDroneBay method of the eve type.
+		/// </summary>
+		/// <param name="DroneIDs"></param>
+		/// <returns></returns>
+		bool DronesReturnToDroneBay(List<Int64> DroneIDs);
+
+		/// <summary>
 		/// Wrapper for the MoveItemsTo method fo the eve type.
 		/// </summary>
 		/// <param name="items"></param>
