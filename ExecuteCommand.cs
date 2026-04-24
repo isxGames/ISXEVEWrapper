@@ -342,47 +342,47 @@ namespace EVE.ISXEVE
 		/// <summary>
 		/// Broadcast "enemy spotted" to fleet
 		/// </summary>
-		CmdSendBroadcast_EnemySpotted,
+		CmdFleetBroadcast_EnemySpotted,
 
 		/// <summary>
 		/// Broadcast "need armor" to fleet
 		/// </summary>
-		CmdSendBroadcast_HealArmor,
+		CmdFleetBroadcast_HealArmor,
 
 		/// <summary>
 		/// Broadcast "need cap" to fleet
 		/// </summary>
-		CmdSendBroadcast_HealCapacitor,
+		CmdFleetBroadcast_HealCapacitor,
 
 		/// <summary>
 		/// Broadcast "need shields" to fleet
 		/// </summary>
-		CmdSendBroadcast_HealShield,
+		CmdFleetBroadcast_HealShield,
 
 		/// <summary>
 		/// Broadcast "hold position" to fleet
 		/// </summary>
-		CmdSendBroadcast_HoldPosition,
+		CmdFleetBroadcast_HoldPosition,
 
 		/// <summary>
 		/// Broadcast "in position" to fleet
 		/// </summary>
-		CmdSendBroadcast_InPosition,
+		CmdFleetBroadcast_InPosition,
 
 		/// <summary>
 		/// Broadcast jump beacon location to fleet
 		/// </summary>
-		CmdSendBroadcast_JumpBeacon,
+		CmdFleetBroadcast_JumpBeacon,
 
 		/// <summary>
 		/// Broadcast a location to fleet
 		/// </summary>
-		CmdSendBroadcast_Location,
+		CmdFleetBroadcast_Location,
 
 		/// <summary>
 		/// Broadcast "need backup" to fleet
 		/// </summary>
-		CmdSendBroadcast_NeedBackup,
+		CmdFleetBroadcast_NeedBackup,
 
 		/// <summary>
 		/// Stop ship
@@ -597,7 +597,7 @@ namespace EVE.ISXEVE
 		/// <summary>
 		/// Open reprocessing window
 		/// </summary>
-		OpenReprocessingplant,
+		OpenReprocessingPlant,
 
 		/// <summary>
 		/// Open scanner window
@@ -620,11 +620,6 @@ namespace EVE.ISXEVE
 		OpenStationManagement,
 
 		/// <summary>
-		/// Open tutorial window
-		/// </summary>
-		OpenTutorials,
-
-		/// <summary>
 		/// Open wallet window
 		/// </summary>
 		OpenWallet,
@@ -635,18 +630,19 @@ namespace EVE.ISXEVE
 		PrintScreen,
 
 		/// <summary>
-		/// Toggle between full-screen and windowed mode.  Documented in
-		/// <c>ISXEVEChanges.txt:5411</c> as <c>CmdToggleWindowed</c>; the prior
-		/// <c>WinCmdToggleWindowed</c> name never matched any registered command string.
+		/// Toggle between full-screen and windowed mode (alt-Enter on Windows).
+		/// The <c>Win</c> prefix is intentional — this is the ONE command on
+		/// <c>CommandService</c> that doesn't follow the generic <c>Cmd*</c>
+		/// convention because it's a Windows-specific keybind.  Verified against
+		/// EVE source at <c>carbonui\services\command.py:57,368,538</c> and
+		/// <c>eve\client\script\ui\eveCommands.py:293,1277</c>.  The
+		/// <c>ISXEVEChanges.txt:5411</c> changelog entry writing this as
+		/// <c>CmdToggleWindowed</c> is a 2007-era typo.
 		/// </summary>
-		CmdToggleWindowed,
+		WinCmdToggleWindowed,
 		/// <summary>
 		/// Open the Inventory window
 		/// </summary>
-		OpenInventory,
-		/// <summary>
-		/// Open the cargohold of the active ship in a new window
-		/// </summary>
-		OpenCargoholdOfActiveShip
+		OpenInventory
 	}
 }
