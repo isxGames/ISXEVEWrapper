@@ -728,6 +728,19 @@ namespace EVE.ISXEVE
 			return _cargo ?? (_cargo = Util.GetListFromMethod<IItem>(this, "GetCargo", "item"));
 		}
 
+		/// <summary>
+		/// Wrapper for the GetHoldItems method of the ship type.  Lists the items in any named ship hold, for
+		/// holds the dedicated GetXxxCargo methods do not cover.  The hold must already be primed (open), the
+		/// same as <see cref="GetCargo"/>.
+		/// </summary>
+		/// <param name="holdName">The hold name (e.g. "CargoHold", "OreHold", "FleetHangar").</param>
+		/// <returns></returns>
+		public List<IItem> GetHoldItems(string holdName)
+		{
+			Tracing.SendCallback("Ship.GetHoldItems", holdName);
+			return Util.GetListFromMethod<IItem>(this, "GetHoldItems", "item", holdName);
+		}
+
 		private bool? _hasOreHold;
 		/// <summary>
 		/// Wrapper for the HasOreHold member of the ship type.

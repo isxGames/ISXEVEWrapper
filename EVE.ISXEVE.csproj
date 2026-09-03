@@ -115,6 +115,11 @@
     <Compile Include="EveChat.cs" />
     <Compile Include="EveAgentDialogWindow.cs" />
     <Compile Include="EveCustomsOfficeWindow.cs" />
+    <Compile Include="EVEIndustryWindow.cs" />
+    <Compile Include="Colony.cs" />
+    <Compile Include="ExtractorControlUnit.cs" />
+    <Compile Include="EVECustomsOfficeItem.cs" />
+    <Compile Include="PILaunchpad.cs" />
     <Compile Include="EveDirectionalScannerWindow.cs" />
     <Compile Include="EveMarketActionWindow.cs" />
     <Compile Include="EveSellItemsWindow.cs" />

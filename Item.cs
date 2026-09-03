@@ -298,6 +298,22 @@ namespace EVE.ISXEVE
 		{
 			get { return this.GetDouble("MetaLevel"); }
 		}
+
+		/// <summary>
+		/// Returns true if this item is a blueprint (categoryID == Blueprint).
+		/// </summary>
+		public bool IsBlueprint
+		{
+			get { return this.GetBool("IsBlueprint"); }
+		}
+
+		/// <summary>
+		/// Returns true if this item is a blueprint copy (BPC) as opposed to an original (BPO).
+		/// </summary>
+		public bool IsBlueprintCopy
+		{
+			get { return this.GetBool("IsBlueprintCopy"); }
+		}
 		#endregion
 
 		#region Methods
@@ -657,6 +673,17 @@ namespace EVE.ISXEVE
 		{
 			Tracing.SendCallback("Item.UseAbyssalFilament");
 			return ExecuteMethod("UseAbyssalFilament");
+		}
+
+		/// <summary>
+		/// Mirrors the client "Use Blueprint" action: opens/focuses the Industry window with this blueprint
+		/// selected.  Only valid on blueprint items; starts no job and makes no server call.
+		/// </summary>
+		/// <returns></returns>
+		public bool UseBlueprint()
+		{
+			Tracing.SendCallback("Item.UseBlueprint");
+			return ExecuteMethod("UseBlueprint");
 		}
 
 		#endregion

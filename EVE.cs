@@ -144,6 +144,20 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
+		/// Returns the character's colonized planets (Planetary Interaction).
+		/// </summary>
+		/// <remarks>
+		/// The colony data is primed asynchronously: the first read after entering space may return an empty
+		/// list while ISXEVE fetches the colonies in the background; poll again on a later frame.
+		/// </remarks>
+		/// <returns></returns>
+		public List<Colony> GetColonies()
+		{
+			Tracing.SendCallback("EVE.GetColonies");
+			return Util.GetListFromMethodDirect<Colony>(this, "GetColonies", "colony");
+		}
+
+		/// <summary>
 		/// Returns number of jumps to the given solarsystem or station.
 		/// </summary>
 		public int GetJumpsTo(int solarSystemOrStationId)

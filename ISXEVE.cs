@@ -59,6 +59,16 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
+		/// Returns true once an unload of the extension has been requested (via CMD_ShutdownEVE / ext -unload).
+		/// Bot shutdown scripts can poll <c>${ISXEVE.IsUnloading}</c> and stop issuing API calls while the
+		/// extension drains its in-flight macho calls.
+		/// </summary>
+		public bool IsUnloading
+		{
+			get { return this.GetBool("IsUnloading"); }
+		}
+
+		/// <summary>
 		/// This is simply a utility for scripts to convert any number of seconds into a string:
 		/// 0 - 59 = "# seconds"
 		/// 60 - 3599 = "# minutes and # seconds"

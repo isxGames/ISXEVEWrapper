@@ -257,6 +257,44 @@ namespace EVE.ISXEVE
 			}
 		}
 
+		/// <summary>
+		/// Like <see cref="GetListFromMethod{T}"/>, but constructs each wrapper DIRECTLY from the populated index
+		/// element rather than round-tripping it through NewObject(lsType, ID).  Required for datatypes backed by a
+		/// borrowed pointer (LSTypeDef_Ptr) -- e.g. colony, extractorcontrolunit, pilaunchpad -- which are not
+		/// reconstructable from an ID (and frequently expose no ID member at all), so the standard by-ID list helper
+		/// would return an empty/invalid list for them.
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <param name="obj"></param>
+		/// <param name="methodName"></param>
+		/// <param name="lsTypeName"></param>
+		/// <param name="args"></param>
+		/// <returns></returns>
+		public static List<T> GetListFromMethodDirect<T>(this ILSObject obj, string methodName, string lsTypeName, params string[] args)
+		{
+			if (obj == null || !obj.IsValid)
+				return null;
+
+			using (var index = LavishScript.Objects.NewObject("index:" + lsTypeName))
+			{
+				string[] allargs;
+				if (args.Length > 0)
+					allargs = PrefixArray(index.LSReference, args);
+				else
+					allargs = new[] { index.LSReference };
+
+				if (!obj.ExecuteMethod(methodName, allargs))
+					return null;
+
+				var list = new List<T>();
+				var count = index.GetMember<int>("Used");
+				for (var i = 1; i <= count; i++)
+					list.Add(GetIndexMember<T>(index, i));
+
+				return list;
+			}
+		}
+
 		internal static T GetFromIndexMethod<T>(ILSObject obj, string methodName, string lsTypeName, int number, params string[] args)
 		{
 			// argument is 0-based

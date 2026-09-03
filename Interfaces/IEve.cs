@@ -97,6 +97,11 @@ namespace EVE.ISXEVE.Interfaces
 		List<BookMark> GetBookmarks();
 
 		/// <summary>
+		/// Returns the character's colonized planets (Planetary Interaction).
+		/// </summary>
+		List<Colony> GetColonies();
+
+		/// <summary>
 		/// Returns number of jump to a station. Returns -1 if you're currently in the station.
 		/// </summary>
 		int GetJumpsTo(int solarSystemOrStationId);

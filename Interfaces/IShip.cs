@@ -275,6 +275,13 @@ namespace EVE.ISXEVE.Interfaces
         List<IItem> GetCargo();
 
         /// <summary>
+        /// Wrapper for the GetHoldItems method of the ship type.  Lists the items in any named ship hold.
+        /// </summary>
+        /// <param name="holdName">The hold name (e.g. "CargoHold", "OreHold", "FleetHangar").</param>
+        /// <returns></returns>
+        List<IItem> GetHoldItems(string holdName);
+
+        /// <summary>
         /// Wrapper for the GetOreHoldCargo method of the ship type
         /// </summary>
         /// <returns></returns>
