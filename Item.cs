@@ -639,7 +639,7 @@ namespace EVE.ISXEVE
 		/// (keyed by insurance-level name, value = ISK quote amount).
 		/// </summary>
 		/// <remarks>
-		/// The insurance window MUST be open before calling; ISXEVE reads the quote lines directly from it.
+		/// ISXEVE auto-primes the insurance data, so this works whenever docked — no insurance window need be open.
 		/// Only valid on items of Category 6 (Ship).
 		/// The LavishScript variable named by <paramref name="collectionLsVarName"/> must already exist as
 		/// a 'collection:float' in the script scope.  ISXEVE has no dictionary marshaller in this wrapper,
