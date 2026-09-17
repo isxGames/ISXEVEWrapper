@@ -32,6 +32,15 @@ namespace EVE.ISXEVE
             get { return _system ?? (_system = new SystemScanner(GetMember("System"))); }
         }
 
+        private ProbeScanner _probe;
+        /// <summary>
+        /// Wraps the Probe member of the Scanners datatype.
+        /// </summary>
+        public ProbeScanner Probe
+        {
+            get { return _probe ?? (_probe = new ProbeScanner(GetMember("Probe"))); }
+        }
+
         /// <summary>
         /// Wraps the Survey member of the Scanners datatype.
         /// </summary>

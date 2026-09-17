@@ -156,6 +156,38 @@ namespace EVE.ISXEVE
 			}
 		}
 
+		/// <summary>
+		/// Total reload length, in seconds.
+		/// </summary>
+		public double ReloadDuration
+		{
+			get { return this.GetDouble("ReloadDuration"); }
+		}
+
+		/// <summary>
+		/// Seconds left on the reactivation cooldown.
+		/// </summary>
+		public double CooldownTimeLeft
+		{
+			get { return this.GetDouble("CooldownTimeLeft"); }
+		}
+
+		/// <summary>
+		/// Seconds left in the current activation cycle.
+		/// </summary>
+		public double DurationTimeLeft
+		{
+			get { return this.GetDouble("DurationTimeLeft"); }
+		}
+
+		/// <summary>
+		/// Seconds left on an ongoing nanite/overheat repair.
+		/// </summary>
+		public double RepairTimeLeft
+		{
+			get { return this.GetDouble("RepairTimeLeft"); }
+		}
+
 		private bool? _isOnline;
 		/// <summary>
 		/// Is module online (as opposed to active)

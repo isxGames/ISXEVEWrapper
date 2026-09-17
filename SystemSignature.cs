@@ -123,6 +123,21 @@ namespace EVE.ISXEVE
             }
         }
 
+        private double? _certainty;
+        /// <summary>
+        /// 0-100 probe-scan signal strength; 0 until scanned down.
+        /// </summary>
+        public double Certainty
+        {
+            get
+            {
+                if (_certainty == null)
+                    _certainty = this.GetDouble("Certainty");
+
+                return _certainty.Value;
+            }
+        }
+
         private Entity _toEntity;
         /// <summary>
         /// Wrapper for the ToEntity member of the SystemSignature datatype.

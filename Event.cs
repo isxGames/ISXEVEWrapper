@@ -49,5 +49,13 @@ namespace EVE.ISXEVE
 		/// Underlying registered name: <c>isxGames_onHTTPResponse</c>.
 		/// </summary>
 		public const string OnHTTPResponse = "isxGames_onHTTPResponse";
+
+		/// <summary>
+		/// Fired once per NEW broadcast your fleet receives.  Four string event args:
+		/// <c>argv[0]</c> is the broadcast Type, <c>argv[1]</c> the SenderID, <c>argv[2]</c> the
+		/// TargetID, and <c>argv[3]</c> the SolarSystemID.
+		/// Underlying registered name: <c>EVE_OnFleetBroadcast</c>.
+		/// </summary>
+		public const string OnFleetBroadcast = "EVE_OnFleetBroadcast";
 	}
 }

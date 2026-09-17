@@ -174,6 +174,21 @@ namespace EVE.ISXEVE
             }
         }
 
+        private double? _certainty;
+        /// <summary>
+        /// 0-100 probe-scan signal strength.
+        /// </summary>
+        public double Certainty
+        {
+            get
+            {
+                if (_certainty == null)
+                    _certainty = this.GetDouble("Certainty");
+
+                return _certainty.Value;
+            }
+        }
+
         private double? _x;
         /// <summary>
         /// Wrapper for the X member of the SystemAnomaly datatype.

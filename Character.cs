@@ -312,6 +312,62 @@ namespace EVE.ISXEVE
 				return this.GetDouble("MaxJumpClones");
 			}
 		}
+
+		/// <summary>
+		/// Wrapper for the NumJumpClones member of the character type.
+		/// </summary>
+		public int NumJumpClones
+		{
+			get { return this.GetInt("NumJumpClones"); }
+		}
+
+		/// <summary>
+		/// Raw Windows FILETIME of your last clone jump; 0 = never.
+		/// </summary>
+		public Int64 LastCloneJumpTime
+		{
+			get { return this.GetInt64("LastCloneJumpTime"); }
+		}
+
+		/// <summary>
+		/// Clone-jump cooldown, in HOURS.
+		/// </summary>
+		public double CloneJumpCoolDown
+		{
+			get { return this.GetDouble("CloneJumpCoolDown"); }
+		}
+
+		/// <summary>
+		/// FILETIME when the next clone jump becomes available.
+		/// </summary>
+		public Int64 NextCloneJumpTime
+		{
+			get { return this.GetInt64("NextCloneJumpTime"); }
+		}
+
+		/// <summary>
+		/// Wrapper for the CloneJumpReady member of the character type.
+		/// </summary>
+		public bool CloneJumpReady
+		{
+			get { return this.GetBool("CloneJumpReady"); }
+		}
+
+		/// <summary>
+		/// Wrapper for the CanJumpClone member of the character type.
+		/// </summary>
+		public bool CanJumpClone
+		{
+			get { return this.GetBool("CanJumpClone"); }
+		}
+
+		/// <summary>
+		/// Wrapper for the IsCloneJumping member of the character type.
+		/// </summary>
+		public bool IsCloneJumping
+		{
+			get { return this.GetBool("IsCloneJumping"); }
+		}
 		#endregion
 
 		private Station _station;
@@ -648,6 +704,61 @@ namespace EVE.ISXEVE
 		#endregion
 
 		#region Methods
+		/// <summary>
+		/// Wrapper for the GetJumpClones method of the character type.
+		/// Jump-clone reads require being docked at a station or structure.
+		/// </summary>
+		/// <returns></returns>
+		public List<JumpClone> GetJumpClones()
+		{
+			Tracing.SendCallback("Character.GetJumpClones");
+			return Util.GetListFromMethod<JumpClone>(this, "GetJumpClones", "jumpclone");
+		}
+
+		/// <summary>
+		/// Wrapper for the ActivateJumpClone method of the character type.
+		/// </summary>
+		/// <param name="cloneID"></param>
+		/// <returns></returns>
+		public bool ActivateJumpClone(Int64 cloneID)
+		{
+			Tracing.SendCallback("Character.ActivateJumpClone", cloneID.ToString(CultureInfo.CurrentCulture));
+			return ExecuteMethod("ActivateJumpClone", cloneID.ToString(CultureInfo.CurrentCulture));
+		}
+
+		/// <summary>
+		/// Wrapper for the InstallJumpClone method of the character type.
+		/// </summary>
+		/// <returns></returns>
+		public bool InstallJumpClone()
+		{
+			Tracing.SendCallback("Character.InstallJumpClone");
+			return ExecuteMethod("InstallJumpClone");
+		}
+
+		/// <summary>
+		/// Wrapper for the DestroyJumpClone method of the character type.
+		/// </summary>
+		/// <param name="cloneID"></param>
+		/// <returns></returns>
+		public bool DestroyJumpClone(Int64 cloneID)
+		{
+			Tracing.SendCallback("Character.DestroyJumpClone", cloneID.ToString(CultureInfo.CurrentCulture));
+			return ExecuteMethod("DestroyJumpClone", cloneID.ToString(CultureInfo.CurrentCulture));
+		}
+
+		/// <summary>
+		/// Wrapper for the SetJumpCloneName method of the character type.
+		/// </summary>
+		/// <param name="cloneID"></param>
+		/// <param name="name"></param>
+		/// <returns></returns>
+		public bool SetJumpCloneName(Int64 cloneID, string name)
+		{
+			Tracing.SendCallback("Character.SetJumpCloneName", cloneID, name);
+			return ExecuteMethod("SetJumpCloneName", cloneID.ToString(CultureInfo.CurrentCulture), name);
+		}
+
 		/// <summary>
 		/// Argument is a PERCENTAGE of your max velocity.
 		/// </summary>

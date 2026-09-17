@@ -142,6 +142,8 @@
     <Compile Include="EveInvWindow.cs" />
     <Compile Include="EVETime.cs" />
     <Compile Include="Fleet.cs" />
+    <Compile Include="FleetBroadcast.cs" />
+    <Compile Include="JumpClone.cs" />
     <Compile Include="Interfaces\IEve.cs" />
     <Compile Include="Interfaces\IEveInvChildWindow.cs" />
     <Compile Include="Interfaces\IEveInvWindow.cs" />
@@ -156,6 +158,9 @@
     <Compile Include="Overview.cs" />
     <Compile Include="Region.cs" />
     <Compile Include="Scanners.cs" />
+    <Compile Include="ProbeScanner.cs" />
+    <Compile Include="Probe.cs" />
+    <Compile Include="ProbeScanResult.cs" />
     <Compile Include="ShipScanner.cs" />
     <Compile Include="SolarSystem.cs" />
     <Compile Include="SurveyScanner.cs" />

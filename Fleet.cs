@@ -129,6 +129,14 @@ namespace EVE.ISXEVE
 		{
 			return this.GetInt64("SquadNameToID", squadName);
 		}
+
+		/// <summary>
+		/// Wrapper for the BroadcastCount member of the fleet type.
+		/// </summary>
+		public int BroadcastCount
+		{
+			get { return this.GetInt("BroadcastCount"); }
+		}
 		#endregion
 
 		#region Methods
@@ -362,6 +370,16 @@ namespace EVE.ISXEVE
 		{
 			Tracing.SendCallback("Fleet.GetMembers", string.Empty);
 			return Util.GetListFromMethod<FleetMember>(this, "GetMembers", "fleetmember");
+		}
+
+		/// <summary>
+		/// Wrapper for the GetBroadcasts method of the fleet type.
+		/// </summary>
+		/// <returns></returns>
+		public List<FleetBroadcast> GetBroadcasts()
+		{
+			Tracing.SendCallback("Fleet.GetBroadcasts", string.Empty);
+			return Util.GetListFromMethod<FleetBroadcast>(this, "GetBroadcasts", "fleetbroadcast");
 		}
 
 		/// <summary>
