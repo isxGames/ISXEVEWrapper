@@ -139,7 +139,16 @@ namespace EVE.ISXEVE
 		}
 
 		/// <summary>
-		/// how many buttons are in the window 
+		/// Wrapper for the Header member of the evewindow type.  This is the header line of a
+		/// telecom transmission window.  Returns NULL for windows that do not have a header.
+		/// </summary>
+		public string Header
+		{
+			get { return this.GetString("Header"); }
+		}
+
+		/// <summary>
+		/// how many buttons are in the window
 		/// </summary>
 		public int NumButtons
 		{
